@@ -1,0 +1,9 @@
+name: Manual Redeploy via API
+on:
+  repository_dispatch:
+    types: [sanity-publish]
+
+jobs:
+  redeploy:
+    uses: ./.github/workflows/deploy.yml   # 既存ワークフローを再利用
+    secrets: inherit

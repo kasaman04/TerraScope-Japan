@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "services": "サービス",
+    "blog": "ブログ",
+    "about": "会社概要",
+    "contact": "お問い合わせ",
+    "case_studies": "事例紹介"
+  },
+  "cta": {
+    "contact": "お問い合わせ",
+    "get_started": "始める",
+    "learn_more": "詳しく見る",
+    "read_more": "続きを読む",
+    "view_details": "詳細を見る"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "send": "送信",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "back": "戻る",
+    "next": "次へ",
+    "previous": "前へ"
+  },
+  "footer": {
+    "company": "ランドビスタグローバル",
+    "description": "日本の外国人投資家向け専門的土地調査サービス",
+    "rights": "全著作権所有"
+  },
+  "cookie": {
+    "message": "サイトの改善と利用状況の分析のためにクッキーを使用します。",
+    "learn": "詳しく見る",
+    "accept": "承諾"
+  }
+}

@@ -1,0 +1,116 @@
+---
+export interface Props {
+  dataSrc: string;
+}
+
+const { dataSrc } = Astro.props;
+
+// Mock FAQ data - will be replaced with actual YAML loading
+const faqs = [
+  {
+    question: "How long does each service take?",
+    answer: "Light Survey: 3 business days, Full Risk Report: 7 business days, VR Capture: 5 business days. Rush delivery available for additional fee."
+  },
+  {
+    question: "What information do I need to provide?",
+    answer: "We need the property address, plot map (if available), intended use, and your specific concerns or questions about the property."
+  },
+  {
+    question: "Do you cover all regions of Japan?",
+    answer: "Yes, we provide services nationwide. Some remote areas may have additional travel costs for on-site visits."
+  },
+  {
+    question: "Can I upgrade my service package later?",
+    answer: "Yes, you can upgrade to a more comprehensive package within 30 days of your initial order. We'll credit the amount already paid."
+  },
+  {
+    question: "What if I'm not satisfied with the report?",
+    answer: "We offer a 100% satisfaction guarantee. If you're not happy with your report, we'll revise it or provide a full refund within 14 days."
+  },
+  {
+    question: "Do you provide English-language reports?",
+    answer: "Yes, all our reports are provided in English with Japanese technical terms explained in plain language."
+  }
+];
+---
+
+<div class="space-y-4">
+  {faqs.map((faq, index) => (
+    <div class="border border-gray-200 rounded-lg">
+      <button
+        type="button"
+        class="accordion-button w-full text-left px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:bg-gray-50"
+        aria-expanded="false"
+        data-target={`accordion-${index}`}
+      >
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-semibold text-gray-900">{faq.question}</h3>
+          <svg
+            class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </button>
+      <div
+        id={`accordion-${index}`}
+        class="accordion-content hidden px-6 pb-4"
+      >
+        <p class="text-gray-700">{faq.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+    
+    accordionButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const target = this.getAttribute('data-target');
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.accordion-icon');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        // Close all accordion items
+        accordionButtons.forEach(btn => {
+          const btnTarget = btn.getAttribute('data-target');
+          const btnContent = document.getElementById(btnTarget);
+          const btnIcon = btn.querySelector('.accordion-icon');
+          
+          btn.setAttribute('aria-expanded', 'false');
+          btnContent.classList.add('hidden');
+          btnIcon.style.transform = 'rotate(0deg)';
+        });
+        
+        // Open clicked item if it was closed
+        if (!isExpanded) {
+          this.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .accordion-content {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      max-height: 0;
+    }
+    to {
+      opacity: 1;
+      max-height: 200px;
+    }
+  }
+</style>

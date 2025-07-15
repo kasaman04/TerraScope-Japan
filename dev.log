@@ -1,0 +1,16 @@
+
+> land-vista@0.0.1 dev
+> astro dev
+
+17:39:22 [types] Generated 59ms
+
+ astro  v4.16.18 ready in 17312 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+17:39:23 watching for file changes...
+17:39:47 [ERROR] Expected ';', '}' or <eof>
+  Stack trace:
+    at /mnt/c/Users/iwasa kazuma/Claude Code/外国人_土地/land-vista/mnt/c/Users/iwasa kazuma/Claude Code/外国人_土地/land-vista/node_modules/rollup/dist/es/shared/parseAst.js:401:41
+    [...] See full stack trace in the browser, or rerun with --verbose.

@@ -1,0 +1,194 @@
+---
+export interface Props {
+  entry: {
+    slug: string;
+    title: string;
+    service: string;
+    cover: string;
+    summary: string;
+    result: string;
+    date: string;
+    location: string;
+    metrics: string[];
+  };
+}
+
+const { entry } = Astro.props;
+
+function getServiceBadge(service: string) {
+  switch (service) {
+    case 'full': return 'Full Risk Assessment';
+    case 'vr': return 'VR Capture Service';
+    case 'light': return 'Light Survey';
+    default: return service;
+  }
+}
+
+function getServiceColor(service: string) {
+  switch (service) {
+    case 'full': return 'bg-blue-600';
+    case 'vr': return 'bg-purple-600';
+    case 'light': return 'bg-green-600';
+    default: return 'bg-gray-600';
+  }
+}
+---
+
+<div class="case-modal fixed inset-0 z-50 hidden" data-modal-slug={entry.slug}>
+  <!-- Backdrop -->
+  <div class="modal-backdrop fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
+  
+  <!-- Modal Content -->
+  <div class="modal-content fixed inset-4 md:inset-x-8 md:inset-y-12 lg:inset-x-20 lg:inset-y-16 bg-white rounded-xl overflow-hidden shadow-2xl">
+    <!-- Close Button -->
+    <button 
+      class="modal-close absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 hover:bg-white shadow-md transition-colors"
+      aria-label="Close modal"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Scrollable Content -->
+    <div class="h-full overflow-y-auto">
+      <!-- Cover Image -->
+      <div class="relative h-64 md:h-80">
+        <img 
+          src={entry.cover} 
+          alt={entry.title}
+          class="w-full h-full object-cover"
+          onerror="this.src='https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6 text-white">
+          <span class={`inline-block px-3 py-1 rounded-full text-sm font-medium mb-3 ${getServiceColor(entry.service)}`}>
+            {getServiceBadge(entry.service)}
+          </span>
+          <h2 class="text-2xl md:text-3xl font-bold mb-2">{entry.title}</h2>
+          <p class="text-sm opacity-90">{entry.date} • {entry.location}</p>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 md:p-8 lg:p-10">
+        <!-- Summary -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold mb-3 text-gray-900">Overview</h3>
+          <p class="text-gray-700 leading-relaxed">{entry.summary}</p>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold mb-4 text-gray-900">Key Metrics</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {entry.metrics.map((metric) => (
+              <div class="bg-gray-50 rounded-lg px-4 py-3 text-sm text-gray-700">
+                {metric}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="mb-8 p-6 bg-green-50 rounded-xl border border-green-200">
+          <h3 class="text-lg font-semibold mb-3 text-green-900">Result</h3>
+          <p class="text-green-800 leading-relaxed">{entry.result}</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center pt-4 border-t">
+          <p class="text-gray-600 mb-4">Want similar results for your property?</p>
+          <a 
+            href="/contact" 
+            class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md"
+          >
+            Get a Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const modals = document.querySelectorAll('.case-modal');
+    
+    modals.forEach(modal => {
+      const backdrop = modal.querySelector('.modal-backdrop');
+      const closeBtn = modal.querySelector('.modal-close');
+      
+      // Close on backdrop click
+      backdrop?.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+      
+      // Close on close button click
+      closeBtn?.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+      
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+    
+    // Open modal when case card is clicked
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('[data-case-slug]');
+      if (card) {
+        const slug = card.dataset.caseSlug;
+        const modal = document.querySelector(`[data-modal-slug="${slug}"]`);
+        if (modal) {
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .case-modal {
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .modal-content {
+    animation: slideIn 0.3s ease-out;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  @media (min-width: 768px) {
+    .modal-content {
+      max-height: calc(100vh - 6rem);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>

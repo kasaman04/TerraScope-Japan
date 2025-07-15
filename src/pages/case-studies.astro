@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CaseCard from '../components/CaseCard.astro';
+import CaseModal from '../components/CaseModal.astro';
+import caseStudiesData from '../assets/data/case_studies.js';
+
+const pageData = {
+  title: 'Case Studies – Real Results',
+  description: 'See how overseas buyers used our surveys and VR capture to purchase land in Japan with confidence.',
+  lang: 'en'
+};
+---
+
+<BaseLayout {...pageData}>
+  <!-- Hero Section -->
+  <section class="relative isolate">
+    <img 
+      src="/assets/img/case-hero.jpg" 
+      alt="" 
+      class="w-full h-[40vh] object-cover brightness-75"
+      onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'"
+    />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">Success Stories</h1>
+      <p class="text-lg">Proof that thorough due-diligence pays off.</p>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+      {caseStudiesData.map((caseStudy) => (
+        <CaseCard entry={caseStudy} />
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">Your project could be next.</h2>
+    <a href="/contact" class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg">
+      Get a free quote
+    </a>
+  </section>
+
+  <!-- Modals -->
+  {caseStudiesData.map((caseStudy) => (
+    <CaseModal entry={caseStudy} />
+  ))}
+</BaseLayout>

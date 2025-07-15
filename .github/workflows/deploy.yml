@@ -1,0 +1,35 @@
+name: CI & Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      pages: write      # allow gh-pages push
+      id-token: write   # allow OIDC for Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with: { version: 9 }
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run build
+        env:
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          PUBLIC_SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          PUBLIC_SANITY_API_VERSION: "2025-07-15"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with: { path: "./dist" }
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

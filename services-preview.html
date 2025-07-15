@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services – Land Survey & VR Capture Packages</title>
+    <meta name="description" content="Select the right level of due diligence: Light Survey, Full Risk Report, or 360° VR Capture.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .btn {
+            @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors;
+        }
+        
+        .btn-lg {
+            @apply px-6 py-3 text-base;
+        }
+        
+        .btn-white {
+            @apply bg-white text-primary-600 hover:bg-gray-50;
+        }
+        
+        .hero-services {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect width="1200" height="400" fill="%23059669"/><text x="600" y="200" font-family="Arial" font-size="36" fill="white" text-anchor="middle">Services Hero Image</text></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .accordion-content {
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-xl font-bold text-gray-900">
+                        LAND VISTA Global
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="/" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="/services" class="text-primary-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                        <a href="/about" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="/contact" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative isolate hero-services">
+            <div class="w-full h-[40vh] flex flex-col items-center justify-center text-white">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Our Services</h1>
+                <p class="text-lg">From quick checks to full due-diligence, choose a package that fits.</p>
+            </div>
+        </section>
+
+        <!-- Service Cards Section -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+                    <p class="text-xl text-gray-600">Choose the right level of detail for your investment</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6 service-card">
+                        <h3 class="text-2xl font-semibold mb-2">Light Survey</h3>
+                        <p class="text-3xl font-bold text-primary-600 mb-6">¥50,000</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">Boundary & basic zoning check</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">English summary (4 pages)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">Delivery in 3 business days</span>
+                            </li>
+                        </ul>
+                        <a href="/services/light" class="btn btn-lg w-full bg-primary-600 text-white hover:bg-primary-700">
+                            View details
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg p-6 service-card">
+                        <h3 class="text-2xl font-semibold mb-2">Full Risk Report</h3>
+                        <p class="text-3xl font-bold text-primary-600 mb-6">¥120,000</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">Flood, landslide, seismic risk</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">Legal & tax checklist</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">15-page PDF + Q&A call</span>
+                            </li>
+                        </ul>
+                        <a href="/services/full" class="btn btn-lg w-full bg-primary-600 text-white hover:bg-primary-700">
+                            View details
+                        </a>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg p-6 service-card">
+                        <h3 class="text-2xl font-semibold mb-2">360° VR Capture</h3>
+                        <p class="text-3xl font-bold text-primary-600 mb-6">¥30,000</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">4K drone & 360° footage</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">Edited highlight reel</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-gray-700">Delivery in 5 business days</span>
+                            </li>
+                        </ul>
+                        <a href="/services/vr" class="btn btn-lg w-full bg-primary-600 text-white hover:bg-primary-700">
+                            View details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Table Section -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Compare Our Services</h2>
+                    <p class="text-xl text-gray-600">Choose the package that best fits your needs</p>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Features</th>
+                                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-lg font-bold">Light Survey</span>
+                                        <span class="text-2xl font-bold text-primary-600 mt-1">¥50,000</span>
+                                    </div>
+                                </th>
+                                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-lg font-bold">Full Risk Report</span>
+                                        <span class="text-2xl font-bold text-primary-600 mt-1">¥120,000</span>
+                                    </div>
+                                </th>
+                                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-900">
+                                    <div class="flex flex-col items-center">
+                                        <span class="text-lg font-bold">360° VR Capture</span>
+                                        <span class="text-2xl font-bold text-primary-600 mt-1">¥30,000</span>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="bg-white">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Boundary Check</td>
+                                <td class="px-6 py-4 text-center text-sm text-green-600 font-bold text-lg">✓</td>
+                                <td class="px-6 py-4 text-center text-sm text-green-600 font-bold text-lg">✓</td>
+                                <td class="px-6 py-4 text-center text-sm text-red-500 font-bold text-lg">✗</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Zoning Analysis</td>
+                                <td class="px-6 py-4 text-center text-sm text-green-600 font-bold text-lg">✓</td>
+                                <td class="px-6 py-4 text-center text-sm text-green-600 font-bold text-lg">✓</td>
+                                <td class="px-6 py-4 text-center text-sm text-red-500 font-bold text-lg">✗</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Risk Assessment</td>
+                                <td class="px-6 py-4 text-center text-sm text-gray-700">Basic</td>
+                                <td class="px-6 py-4 text-center text-sm text-gray-700">Comprehensive</td>
+                                <td class="px-6 py-4 text-center text-sm text-gray-700">Visual</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Site Visit</td>
+                                <td class="px-6 py-4 text-center text-sm text-red-500 font-bold text-lg">✗</td>
+                                <td class="px-6 py-4 text-center text-sm text-green-600 font-bold text-lg">✓</td>
+                                <td class="px-6 py-4 text-center text-sm text-green-600 font-bold text-lg">✓</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">VR Capture</td>
+                                <td class="px-6 py-4 text-center text-sm text-red-500 font-bold text-lg">✗</td>
+                                <td class="px-6 py-4 text-center text-sm text-red-500 font-bold text-lg">✗</td>
+                                <td class="px-6 py-4 text-center text-sm text-green-600 font-bold text-lg">✓</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Delivery Time</td>
+                                <td class="px-6 py-4 text-center text-sm text-gray-700">3 days</td>
+                                <td class="px-6 py-4 text-center text-sm text-gray-700">7 days</td>
+                                <td class="px-6 py-4 text-center text-sm text-gray-700">5 days</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">Q&A Call</td>
+                                <td class="px-6 py-4 text-center text-sm text-red-500 font-bold text-lg">✗</td>
+                                <td class="px-6 py-4 text-center text-sm text-gray-700">30 min</td>
+                                <td class="px-6 py-4 text-center text-sm text-red-500 font-bold text-lg">✗</td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="bg-gray-50">
+                            <tr>
+                                <td class="px-6 py-4"></td>
+                                <td class="px-6 py-4 text-center">
+                                    <a href="/services/light" class="btn btn-lg bg-primary-600 text-white hover:bg-primary-700 w-full">
+                                        Choose Light Survey
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <a href="/services/full" class="btn btn-lg bg-primary-600 text-white hover:bg-primary-700 w-full">
+                                        Choose Full Risk Report
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <a href="/services/vr" class="btn btn-lg bg-primary-600 text-white hover:bg-primary-700 w-full">
+                                        Choose 360° VR Capture
+                                    </a>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Timeline Section -->
+        <section class="max-w-5xl mx-auto px-6 py-16">
+            <h2 class="text-2xl font-semibold mb-8 text-center">How it works</h2>
+            <ol class="relative border-s border-gray-300">
+                <li class="mb-10 ms-4">
+                    <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+                    <h3 class="text-lg font-semibold">Submit property info & goals</h3>
+                    <p class="text-gray-600">Location, plot map, intended use, and your key questions.</p>
+                </li>
+                <li class="mb-10 ms-4">
+                    <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+                    <h3 class="text-lg font-semibold">We conduct the survey</h3>
+                    <p class="text-gray-600">Desktop research, GIS analysis, on-site check, or VR capture.</p>
+                </li>
+                <li class="ms-4">
+                    <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+                    <h3 class="text-lg font-semibold">Receive your report + Q&A call</h3>
+                    <p class="text-gray-600">PDF download and a 30-min consultation to clarify next steps.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-gray-50 py-14">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-2xl font-semibold text-center mb-8">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="border border-gray-200 rounded-lg">
+                        <button type="button" class="accordion-button w-full text-left px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:bg-gray-50" aria-expanded="false" data-target="accordion-0">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-semibold text-gray-900">How long does each service take?</h3>
+                                <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="accordion-0" class="accordion-content hidden px-6 pb-4">
+                            <p class="text-gray-700">Light Survey: 3 business days, Full Risk Report: 7 business days, VR Capture: 5 business days. Rush delivery available for additional fee.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg">
+                        <button type="button" class="accordion-button w-full text-left px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:bg-gray-50" aria-expanded="false" data-target="accordion-1">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-semibold text-gray-900">What information do I need to provide?</h3>
+                                <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="accordion-1" class="accordion-content hidden px-6 pb-4">
+                            <p class="text-gray-700">We need the property address, plot map (if available), intended use, and your specific concerns or questions about the property.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg">
+                        <button type="button" class="accordion-button w-full text-left px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:bg-gray-50" aria-expanded="false" data-target="accordion-2">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg font-semibold text-gray-900">Do you cover all regions of Japan?</h3>
+                                <svg class="accordion-icon w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </button>
+                        <div id="accordion-2" class="accordion-content hidden px-6 pb-4">
+                            <p class="text-gray-700">Yes, we provide services nationwide. Some remote areas may have additional travel costs for on-site visits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="bg-primary-600 py-12 text-center text-white">
+            <h2 class="text-2xl font-semibold mb-4">Need a custom scope?</h2>
+            <a href="/contact" class="btn btn-lg btn-white shadow-lg">
+                Request a free quote
+            </a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">LAND VISTA Global</h3>
+                    <p class="text-gray-400">See the land before you stand</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/services/light-survey" class="text-gray-400 hover:text-white">Light Survey</a></li>
+                        <li><a href="/services/full-report" class="text-gray-400 hover:text-white">Full Risk Report</a></li>
+                        <li><a href="/services/vr-capture" class="text-gray-400 hover:text-white">360° VR Capture</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="/blog" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold mb-4 uppercase tracking-wider">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/privacy" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="/terms" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 LAND VISTA Global. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    const content = document.getElementById(target);
+                    const icon = this.querySelector('.accordion-icon');
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all accordion items
+                    accordionButtons.forEach(btn => {
+                        const btnTarget = btn.getAttribute('data-target');
+                        const btnContent = document.getElementById(btnTarget);
+                        const btnIcon = btn.querySelector('.accordion-icon');
+                        
+                        btn.setAttribute('aria-expanded', 'false');
+                        btnContent.classList.add('hidden');
+                        btnIcon.style.transform = 'rotate(0deg)';
+                    });
+                    
+                    // Open clicked item if it was closed
+                    if (!isExpanded) {
+                        this.setAttribute('aria-expanded', 'true');
+                        content.classList.remove('hidden');
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

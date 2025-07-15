@@ -1,0 +1,21 @@
+- key: light
+  title: "Light Survey"
+  price: "¥50,000"
+  bullets:
+    - "Boundary & basic zoning check"
+    - "English summary (4 pages)"
+    - "Delivery in 3 business days"
+- key: full
+  title: "Full Risk Report"
+  price: "¥120,000"
+  bullets:
+    - "Flood, landslide, seismic risk"
+    - "Legal & tax checklist"
+    - "15-page PDF + Q&A call"
+- key: vr
+  title: "360° VR Capture"
+  price: "¥30,000"
+  bullets:
+    - "4K drone & 360° footage"
+    - "Edited highlight reel"
+    - "Delivery in 5 business days"

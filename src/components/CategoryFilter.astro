@@ -1,0 +1,82 @@
+---
+export interface Props {
+  dataSrc: string;
+  currentCategory?: string;
+}
+
+const { dataSrc, currentCategory } = Astro.props;
+
+// Mock categories data for now
+const categories = [
+  { id: 'hazard', label: 'Hazard Risk' },
+  { id: 'legal', label: 'Legal & Tax' },
+  { id: 'drone', label: 'Drone & VR' },
+  { id: 'case', label: 'Case Studies' }
+];
+
+// Get current URL for building filter links
+const url = new URL(Astro.request.url);
+const currentTag = url.searchParams.get('tag');
+const currentPage = url.searchParams.get('page');
+
+const buildFilterUrl = (categoryId?: string) => {
+  const params = new URLSearchParams();
+  
+  if (categoryId) {
+    params.set('cat', categoryId);
+  }
+  
+  if (currentTag) {
+    params.set('tag', currentTag);
+  }
+  
+  // Reset to page 1 when filtering
+  const queryString = params.toString();
+  return queryString ? `/blog/?${queryString}` : '/blog/';
+};
+---
+
+<div class="flex flex-wrap items-center gap-2">
+  <span class="text-sm font-medium text-gray-700 mr-2">Categories:</span>
+  
+  <!-- All Categories -->
+  <a 
+    href={buildFilterUrl()}
+    class={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+      !currentCategory 
+        ? 'bg-primary-600 text-white' 
+        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+    }`}
+  >
+    All
+  </a>
+  
+  <!-- Category Pills -->
+  {categories.map((category) => (
+    <a 
+      href={buildFilterUrl(category.id)}
+      class={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+        currentCategory === category.id
+          ? 'bg-primary-600 text-white' 
+          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+      }`}
+    >
+      {category.label}
+    </a>
+  ))}
+</div>
+
+<style>
+  a {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

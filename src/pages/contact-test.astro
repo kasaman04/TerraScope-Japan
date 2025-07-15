@@ -1,0 +1,75 @@
+---
+const title = "Contact Form Test";
+const description = "Test page for contact form";
+const lang = "en";
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold mb-6">Contact Form Test</h1>
+        
+        <form method="POST" action="/api/submit-contact" class="space-y-4">
+            <input type="hidden" name="service" value="Test Service" />
+            
+            <div>
+                <label for="name" class="block font-medium mb-1">Name</label>
+                <input 
+                    id="name"
+                    name="name" 
+                    type="text"
+                    required 
+                    value="Test User"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2"
+                />
+            </div>
+            
+            <div>
+                <label for="email" class="block font-medium mb-1">Email</label>
+                <input 
+                    id="email"
+                    name="email" 
+                    type="email" 
+                    required 
+                    value="test@example.com"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2"
+                />
+            </div>
+            
+            <div>
+                <label for="msg" class="block font-medium mb-1">Message</label>
+                <textarea 
+                    id="msg"
+                    name="msg" 
+                    rows="3"
+                    class="w-full border border-gray-300 rounded-md px-3 py-2"
+                >This is a test message from the HTML form.</textarea>
+            </div>
+            
+            <button 
+                type="submit" 
+                class="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-700"
+            >
+                Send Test Message
+            </button>
+        </form>
+        
+        <div class="mt-6 text-sm text-gray-600">
+            <p><strong>API URL:</strong> /api/submit-contact</p>
+            <p><strong>Method:</strong> POST</p>
+            <p><strong>Form encoding:</strong> application/x-www-form-urlencoded</p>
+        </div>
+        
+        <div class="mt-4">
+            <a href="/contact" class="text-blue-600 hover:underline">→ Go to actual contact page</a>
+        </div>
+    </div>
+</body>
+</html>
