@@ -12,7 +12,7 @@ export interface Props {
 }
 
 const { title = 'LAND VISTA Global', description = '', lang = 'en', noindex = false } = Astro.props.frontmatter || Astro.props;
-const GA_ID = import.meta.env.PUBLIC_GA_ID;
+const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-XXXXXXXXXX'; // プレースホルダー
 ---
 
 <!DOCTYPE html>

@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://yourusername.github.io/land-vista/sitemap-index.xml
+Sitemap: https://kasaman04.github.io/TerraScope-Japan/sitemap-index.xml
 
 # Disallow test and draft pages
 Disallow: /contact-test/

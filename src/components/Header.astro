@@ -94,13 +94,22 @@ const t = useTranslations(lang);
 
   function changeLocale(targetLang) {
     const currentPath = window.location.pathname;
-    const pathWithoutLang = currentPath.replace(/^\/(en|ja|zh|zh-TW|ko)/, '');
+    const basePath = '/TerraScope-Japan';
+    
+    // Remove base path first
+    let pathWithoutBase = currentPath;
+    if (pathWithoutBase.startsWith(basePath)) {
+      pathWithoutBase = pathWithoutBase.substring(basePath.length);
+    }
+    
+    // Remove language prefix
+    const pathWithoutLang = pathWithoutBase.replace(/^\/(ja|zh|zh-TW|ko)/, '');
     
     let newPath;
     if (targetLang === 'en') {
-      newPath = pathWithoutLang || '/';
+      newPath = `${basePath}${pathWithoutLang || ''}`;
     } else {
-      newPath = `/${targetLang}${pathWithoutLang || '/'}`;
+      newPath = `${basePath}/${targetLang}${pathWithoutLang || ''}`;
     }
     
     window.location.href = newPath;

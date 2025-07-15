@@ -56,7 +56,11 @@ try {
 ---
 
 <BaseLayout {...pageData}>
-  <HeroVideo />
+  <HeroVideo 
+    src="/assets/video/sample-hero-360.mp4"
+    headline="投資する前に、土地を見る"
+    subheadline="360°映像・法的明確性・リスク分析"
+  />
   <ServiceCards items={services} show="all" ctaLabel="詳細を見る" />
   <Testimonials />
   <Steps items={[
