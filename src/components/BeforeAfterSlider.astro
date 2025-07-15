@@ -17,7 +17,7 @@ const {
   height = '400px'
 } = Astro.props;
 
-const sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
+const sliderId = `slider-${Math.random().toString(36).substring(2, 11)}`;
 ---
 
 <div class="before-after-slider" data-height={height}>
@@ -75,7 +75,7 @@ const sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
   )}
 </div>
 
-<script define:vars={{ sliderId }}>
+<script is:inline define:vars={{ sliderId }}>
   function initSlider() {
     const container = document.getElementById(sliderId);
     const input = document.getElementById(`input-${sliderId}`);

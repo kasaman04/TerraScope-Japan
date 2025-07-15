@@ -1,10 +1,10 @@
 ---
 export interface Props {
-  dataSrc: string;
+  dataSrc?: string;
   currentCategory?: string;
 }
 
-const { dataSrc, currentCategory } = Astro.props;
+const { currentCategory } = Astro.props;
 
 // Mock categories data for now
 const categories = [
@@ -17,7 +17,6 @@ const categories = [
 // Get current URL for building filter links
 const url = new URL(Astro.request.url);
 const currentTag = url.searchParams.get('tag');
-const currentPage = url.searchParams.get('page');
 
 const buildFilterUrl = (categoryId?: string) => {
   const params = new URLSearchParams();

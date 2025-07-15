@@ -3,7 +3,7 @@ export interface Props {
   action?: string;
 }
 
-const { action } = Astro.props;
+const { action = "https://land-vista-form.pages.dev" } = Astro.props;
 // Cloudflare Worker URL (to be updated after deployment)
 const workerUrl = "https://land-vista-form.pages.dev";
 ---
@@ -62,7 +62,7 @@ const workerUrl = "https://land-vista-form.pages.dev";
   </button>
 </form>
 
-<script define:vars={{ workerUrl }}>
+<script is:inline define:vars={{ workerUrl }}>
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     
