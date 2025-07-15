@@ -9,9 +9,14 @@ jobs:
   build:
     permissions:
       contents: read
-      pages: write      # allow gh-pages push
-      id-token: write   # allow OIDC for Pages
+      pages: write
+      id-token: write
+      actions: read
+      deployments: write
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v4
@@ -28,9 +33,13 @@ jobs:
           PUBLIC_SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
           PUBLIC_SANITY_API_VERSION: "2025-07-15"
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with: { path: "./dist" }
+        with: 
+          path: "./dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
