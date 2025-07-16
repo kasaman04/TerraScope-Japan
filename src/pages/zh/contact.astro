@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const title = "联系我们 – 预约免费咨询";
+const description = "就日本土地投资与专业团队进行免费咨询。首次咨询免费。";
+const lang = "zh";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        预约免费咨询
+      </h1>
+      <p class="text-xl text-gray-600 mb-8">
+        专业团队将详细解释日本土地投资相关事宜
+      </p>
+      <div class="text-sm text-gray-500">
+        首次30分钟咨询免费 • 24小时内回复
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">联系表单</h2>
+        <ContactForm lang={lang} />
+      </div>
+
+      <!-- Contact Information -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">随时联系我们</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">营业时间</h3>
+            <p class="text-gray-600">
+              周一 - 周五: 9:00 - 18:00 (JST)<br>
+              周六: 10:00 - 16:00 (JST)<br>
+              周日和节假日: 休息
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">服务区域</h3>
+            <p class="text-gray-600">
+              全日本覆盖<br>
+              *离岛和山区可能产生额外费用
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">支持语言</h3>
+            <p class="text-gray-600">
+              日语、英语<br>
+              *其他语言请单独咨询
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Overview -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-semibold mb-4">服务概述</h2>
+        <p class="text-gray-600">根据投资目的选择最优计划</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">轻度调查</h3>
+          <div class="text-2xl font-bold mb-4">¥50,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 边界线・用途地域确认</li>
+            <li>• 4页英文摘要</li>
+            <li>• 3个工作日交付</li>
+          </ul>
+          <a href="/zh/services/light-survey/" class="text-primary-600 hover:text-primary-700 font-medium">
+            查看详情 →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border-2 border-primary-500">
+          <div class="text-center mb-3">
+            <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs">推荐</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">全面风险报告</h3>
+          <div class="text-2xl font-bold mb-4">¥120,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 自然灾害风险评估</li>
+            <li>• 法务・税务核查</li>
+            <li>• 18页详细报告</li>
+            <li>• 含问答通话</li>
+          </ul>
+          <a href="/zh/services/full-report/" class="text-primary-600 hover:text-primary-700 font-medium">
+            查看详情 →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">360° VR拍摄</h3>
+          <div class="text-2xl font-bold mb-4">¥30,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 4K无人机拍摄</li>
+            <li>• 360°全景视频</li>
+            <li>• VR头显兼容</li>
+          </ul>
+          <a href="/zh/services/vr-capture/" class="text-primary-600 hover:text-primary-700 font-medium">
+            查看详情 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
