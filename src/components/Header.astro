@@ -9,10 +9,12 @@ const baseUrl = import.meta.env.BASE_URL;
 
 // Helper function to create proper URLs with base path and language
 function getLocalizedUrl(path: string) {
+  // Ensure path has trailing slash for directories
+  const normalizedPath = path === '' ? '' : (path.endsWith('/') ? path : `${path}/`);
   if (lang === 'en') {
-    return `${baseUrl}${path}`.replace(/\/+/g, '/');
+    return `${baseUrl}${normalizedPath}`.replace(/\/+/g, '/');
   }
-  return `${baseUrl}${lang}/${path}`.replace(/\/+/g, '/');
+  return `${baseUrl}${lang}/${normalizedPath}`.replace(/\/+/g, '/');
 }
 ---
 
