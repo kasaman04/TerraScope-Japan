@@ -16,6 +16,50 @@ function getLocalizedUrl(path: string) {
   }
   return `${baseUrl}${lang}/${normalizedPath}`.replace(/\/+/g, '/');
 }
+
+// Helper function to get current page path without language
+function getCurrentPath() {
+  let pathname = Astro.url.pathname;
+  const basePath = baseUrl.replace(/\/$/, '');
+  
+  if (basePath && pathname.startsWith(basePath)) {
+    pathname = pathname.substring(basePath.length);
+  }
+  
+  // Remove language prefix
+  return pathname.replace(/^\/(ja|zh|zh-TW|ko)(\/|$)/, '/');
+}
+
+// Generate language URLs for current page
+const currentPath = getCurrentPath();
+const languageUrls = {
+  en: currentPath === '/' ? '/' : currentPath,
+  ja: currentPath === '/' ? '/ja/' : `/ja${currentPath}`,
+  zh: currentPath === '/' ? '/zh/' : `/zh${currentPath}`,
+  'zh-TW': currentPath === '/' ? '/zh-TW/' : `/zh-TW${currentPath}`,
+  ko: currentPath === '/' ? '/ko/' : `/ko${currentPath}`
+};
+
+// Check if page exists for each language
+const availablePages = {
+  'en': ['/', '/services/', '/about/', '/contact/', '/blog/', '/case-studies/'],
+  'ja': ['/', '/services/', '/about/', '/contact/'],
+  'zh': ['/', '/services/', '/about/', '/contact/'],
+  'zh-TW': ['/', '/services/', '/about/', '/contact/'],
+  'ko': ['/', '/services/', '/about/', '/contact/']
+};
+
+// Fallback to home if page doesn't exist for language
+Object.keys(languageUrls).forEach(langKey => {
+  const pages = availablePages[langKey] || ['/'];
+  if (!pages.includes(currentPath)) {
+    if (langKey === 'en') {
+      languageUrls[langKey] = '/';
+    } else {
+      languageUrls[langKey] = `/${langKey}/`;
+    }
+  }
+});
 ---
 
 <header class="bg-white shadow-sm">
@@ -56,11 +100,11 @@ function getLocalizedUrl(path: string) {
           role="menu"
         >
           <div class="py-1" role="none">
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ja">日本語</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh">中文</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh-TW">繁體中文</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ko">한국어</a>
+            <a href={languageUrls.en} class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</a>
+            <a href={languageUrls.ja} class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ja">日本語</a>
+            <a href={languageUrls.zh} class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh">中文</a>
+            <a href={languageUrls['zh-TW']} class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh-TW">繁體中文</a>
+            <a href={languageUrls.ko} class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ko">한국어</a>
           </div>
         </div>
         
@@ -116,12 +160,12 @@ function getLocalizedUrl(path: string) {
       }
     });
     
-    // Handle language changes
+    // Language links now use direct URLs, no need for JavaScript handling
+    // But keep the menu close functionality
     languageLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetLang = this.dataset.lang;
-        changeLocale(targetLang);
+      link.addEventListener('click', function() {
+        languageMenu?.classList.add('hidden');
+        languageToggle?.setAttribute('aria-expanded', 'false');
       });
     });
     
@@ -149,43 +193,4 @@ function getLocalizedUrl(path: string) {
       }
     });
   });
-
-  function changeLocale(targetLang) {
-    const currentPath = window.location.pathname;
-    
-    // Remove any existing language prefix from the path
-    let pathWithoutLang = currentPath.replace(/^\/(ja|zh|zh-TW|ko)(\/|$)/, '/');
-    
-    // Define available pages for each language
-    const availablePages = {
-      'en': ['/', '/services/', '/about/', '/contact/', '/blog/', '/case-studies/'],
-      'ja': ['/', '/services/', '/about/', '/contact/'],
-      'zh': ['/', '/services/', '/about/', '/contact/'],
-      'zh-TW': ['/', '/services/', '/about/', '/contact/'],
-      'ko': ['/', '/services/', '/about/', '/contact/']
-    };
-    
-    // Check if the current page exists for the target language
-    const targetPages = availablePages[targetLang] || ['/'];
-    let targetPath = pathWithoutLang;
-    
-    // If the page doesn't exist for the target language, fallback to home
-    if (!targetPages.includes(pathWithoutLang)) {
-      targetPath = '/';
-    }
-    
-    // Build the new URL
-    let newPath;
-    if (targetLang === 'en') {
-      newPath = targetPath;
-    } else {
-      newPath = `/${targetLang}${targetPath}`;
-    }
-    
-    // Clean up double slashes and ensure proper formatting
-    newPath = newPath.replace(/\/+/g, '/');
-    
-    // Navigate to the new URL
-    window.location.href = newPath;
-  }
 </script>
