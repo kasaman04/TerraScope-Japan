@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceCards from '../../../components/ServiceCards.astro';
+import PricingTable from '../../../components/PricingTable.astro';
+import Accordion from '../../../components/Accordion.astro';
+import { sanity } from "../../../lib/sanity";
+
+const title = "サービス – 土地調査・VRキャプチャーパッケージ";
+const description = "適切なレベルのデューデリジェンスを選択：ライト調査、フルリスクレポート、360° VRキャプチャー。";
+const lang = "ja";
+const hero_bg = "/assets/img/hero-services.jpg";
+
+// Fetch services from Sanity with fallback
+let services = [];
+try {
+  if (sanity) {
+    services = await sanity.fetch(`*[_type=="service"]{
+      key, title, price, bullets
+    }`);
+  }
+} catch (error) {
+  console.log('Sanity fetch error, using fallback data:', error.message);
+  // Fallback data until Sanity is properly configured
+  services = [
+    {
+      key: "light",
+      title: "ライト調査",
+      price: "¥50,000",
+      bullets: [
+        "境界線・基本用途地域確認",
+        "英語サマリー（4ページ）",
+        "3営業日以内にお届け"
+      ]
+    },
+    {
+      key: "full",
+      title: "フルリスクレポート",
+      price: "¥120,000",
+      bullets: [
+        "洪水・土砂崩れ・地震リスク",
+        "法律・税務チェックリスト",
+        "15ページPDF＋Q&Aコール"
+      ]
+    },
+    {
+      key: "vr",
+      title: "360° VRキャプチャー",
+      price: "¥30,000",
+      bullets: [
+        "4Kドローン・360°映像",
+        "VRヘッドセット対応",
+        "リモート視察に最適"
+      ]
+    }
+  ];
+}
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative">
+    <img 
+      src={hero_bg} 
+      alt="" 
+      class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75"
+      loading="eager"
+      onerror="this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80'"
+    >
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
+        日本の土地投資を安全に
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl opacity-90">
+        3つのサービスレベルから、あなたの投資目的に最適なプランを選択
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">サービス一覧</h2>
+      <p class="text-xl text-gray-600">
+        ライト調査から本格的なリスク評価まで、段階的なサポートを提供
+      </p>
+    </div>
+
+    <ServiceCards services={services} lang={lang} />
+  </section>
+
+  <!-- How it Works -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">ご利用の流れ</h2>
+        <p class="text-xl text-gray-600">
+          3つのステップで、安心の土地調査をお届けします
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">1</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">情報提出</h3>
+          <p class="text-gray-600">
+            調査対象の土地情報をフォームでお送りください。住所・地番があれば開始できます。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">2</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">調査実施</h3>
+          <p class="text-gray-600">
+            デスクトップ調査または現地調査を実施。専門スタッフが詳細に検証します。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">3</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">レポート納品</h3>
+          <p class="text-gray-600">
+            英語レポートをお渡しし、必要に応じてQ&Aセッションで詳細をご説明します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">よくあるご質問</h2>
+    
+    <Accordion items={[
+      {
+        question: "全国どこでも対応していますか？",
+        answer: "はい、日本全国対応しています。ただし、離島や一部の山間部では追加料金が発生する場合があります。"
+      },
+      {
+        question: "英語以外の言語に対応していますか？",
+        answer: "現在は英語と日本語での対応となります。その他の言語については個別にご相談ください。"
+      },
+      {
+        question: "調査後のサポートはありますか？",
+        answer: "フルリスクレポートをご注文のお客様には、30日間の無料サポートを提供しています。"
+      },
+      {
+        question: "法人での利用は可能ですか？",
+        answer: "はい、法人・個人問わずご利用いただけます。請求書払いも対応可能です。"
+      }
+    ]} />
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">
+      日本の土地投資を始めませんか？
+    </h2>
+    <a 
+      href="/ja/contact/" 
+      class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg"
+    >
+      無料相談を申し込む
+    </a>
+  </section>
+</BaseLayout>
