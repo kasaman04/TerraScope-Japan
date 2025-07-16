@@ -109,7 +109,7 @@ function getLocalizedUrl(path: string) {
     const currentPath = window.location.pathname;
     // Get base path from the meta tag
     const baseUrlMeta = document.querySelector('meta[name="astro-base-url"]');
-    const basePath = baseUrlMeta ? baseUrlMeta.getAttribute('content').replace(/\/$/, '') : '/land-vista';
+    const basePath = baseUrlMeta ? baseUrlMeta.getAttribute('content').replace(/\/$/, '') : '';
     
     // Remove base path first
     let pathWithoutBase = currentPath;
