@@ -35,8 +35,9 @@ function getLocalizedUrl(path: string) {
         </nav>
       </div>
       
-      <!-- Language Switcher -->
-      <div class="relative">
+      <div class="flex items-center space-x-4">
+        <!-- Language Switcher -->
+        <div class="relative">
         <button 
           id="language-toggle" 
           class="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
@@ -62,17 +63,45 @@ function getLocalizedUrl(path: string) {
             <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ko">한국어</a>
           </div>
         </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button 
+            id="mobile-menu-button"
+            type="button" 
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href={getLocalizedUrl('')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.home')}</a>
+        <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.services')}</a>
+        <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.about')}</a>
+        <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.contact')}</a>
       </div>
     </div>
   </nav>
 </header>
 
 <script>
-  // Language switcher functionality
+  // Language switcher and mobile menu functionality
   document.addEventListener('DOMContentLoaded', function() {
     const languageToggle = document.getElementById('language-toggle');
     const languageMenu = document.getElementById('language-menu');
     const languageLinks = document.querySelectorAll('.language-link');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
     
     // Toggle language menu
     languageToggle?.addEventListener('click', function(e) {
@@ -96,11 +125,27 @@ function getLocalizedUrl(path: string) {
       });
     });
     
-    // Close menu when clicking outside
+    // Toggle mobile menu
+    mobileMenuButton?.addEventListener('click', function() {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+    
+    // Close menus when clicking outside
     document.addEventListener('click', function(e) {
       if (!languageToggle?.contains(e.target) && !languageMenu?.contains(e.target)) {
         languageMenu?.classList.add('hidden');
         languageToggle?.setAttribute('aria-expanded', 'false');
+      }
+      if (!mobileMenuButton?.contains(e.target) && !mobileMenu?.contains(e.target)) {
+        mobileMenu?.classList.add('hidden');
+        mobileMenuButton?.setAttribute('aria-expanded', 'false');
       }
     });
   });
