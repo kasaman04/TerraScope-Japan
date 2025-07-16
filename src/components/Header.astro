@@ -160,11 +160,12 @@ const currentPath = getCurrentPath();
         const targetLang = this.dataset.lang;
         let currentPath = this.dataset.currentPath || '/';
         
+        console.log('Language switch clicked:', targetLang);
+        console.log('Current path from data:', currentPath);
+        console.log('Window location:', window.location.pathname);
+        
         // Get the actual current path from URL and clean it
         let actualPath = window.location.pathname;
-        
-        // Remove base path if present
-        const basePath = ''; // No base path for user site
         
         // Remove language prefix from actual path
         if (actualPath.match(/^\/(ja|zh|zh-TW|ko)\//)) {
@@ -180,6 +181,8 @@ const currentPath = getCurrentPath();
         if (!actualPath.endsWith('/') && !actualPath.includes('.')) {
           actualPath += '/';
         }
+        
+        console.log('Cleaned actual path:', actualPath);
         
         // Use the cleaned actual path
         currentPath = actualPath;
@@ -206,12 +209,15 @@ const currentPath = getCurrentPath();
           }
         } else {
           // Fallback to home page
+          console.log('Page not found for language, falling back to home');
           if (targetLang === 'en') {
             targetUrl = '/';
           } else {
             targetUrl = `/${targetLang}/`;
           }
         }
+        
+        console.log('Target URL:', targetUrl);
         
         // Close menu
         languageMenu?.classList.add('hidden');
