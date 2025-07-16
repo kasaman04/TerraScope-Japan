@@ -67,6 +67,9 @@ const currentPath = getCurrentPath();
           <a href={getLocalizedUrl('')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.home')}</a>
           <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.services')}</a>
           <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.about')}</a>
+          {lang === 'en' || lang === 'ja' ? (
+            <a href={getLocalizedUrl('blog')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.blog')}</a>
+          ) : null}
           <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.contact')}</a>
         </nav>
       </div>
@@ -143,6 +146,9 @@ const currentPath = getCurrentPath();
         <a href={getLocalizedUrl('')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.home')}</a>
         <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.services')}</a>
         <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.about')}</a>
+        {lang === 'en' || lang === 'ja' ? (
+          <a href={getLocalizedUrl('blog')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.blog')}</a>
+        ) : null}
         <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.contact')}</a>
         
         <!-- Mobile Language Switcher -->
@@ -280,7 +286,7 @@ const currentPath = getCurrentPath();
         // Available pages for each language
         const availablePages = {
           'en': ['/', '/services/', '/about/', '/contact/', '/blog/', '/case-studies/'],
-          'ja': ['/', '/services/', '/about/', '/contact/'],
+          'ja': ['/', '/services/', '/about/', '/contact/', '/blog/'],
           'zh': ['/', '/services/', '/about/', '/contact/'],
           'zh-TW': ['/', '/services/', '/about/', '/contact/'],
           'ko': ['/', '/services/', '/about/', '/contact/']

@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+
+const title = "ブログ – 土地投資ガイド";
+const description = "日本の土地購入、規制、リスク管理に関する詳細ガイド。";
+const lang = "ja";
+
+// 英語版のブログ記事を取得
+const posts = await Astro.glob('../../../content/posts/*.md');
+
+// 日付順にソート（新しい順）
+const sortedPosts = posts.sort((a, b) => 
+  new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+);
+
+// 最新の3記事のみ表示
+const featuredPosts = sortedPosts.slice(0, 3);
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Hero Section -->
+  <section class="relative isolate">
+    <img 
+      src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+      alt="" 
+      class="w-full h-[35vh] object-cover brightness-75"
+    />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">専門知識ハブ</h1>
+      <p class="text-lg">海外投資家のための実用的な洞察</p>
+    </div>
+  </section>
+
+  <!-- Blog Introduction -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl font-semibold mb-4">土地投資の専門情報</h2>
+      <p class="text-gray-600 leading-relaxed">
+        日本の土地投資に関する法的規制、リスク評価、市場動向などの専門情報を日本語で提供しています。
+        海外投資家の皆様が安全で収益性の高い投資を行えるよう、実践的なガイドをお届けします。
+      </p>
+    </div>
+
+    <!-- Featured Articles -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
+      {featuredPosts.map((post) => (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img 
+            src={post.frontmatter.image || "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"}
+            alt={post.frontmatter.title}
+            class="w-full h-48 object-cover"
+            loading="lazy"
+          />
+          <div class="p-6">
+            <div class="flex items-center mb-2">
+              <span class="text-sm text-primary-600 font-medium">
+                {new Date(post.frontmatter.date).toLocaleDateString('ja-JP', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900">{post.frontmatter.title}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              {post.frontmatter.description}
+            </p>
+            <a 
+              href={post.url} 
+              class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm"
+            >
+              続きを読む
+              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Topics Section -->
+    <div class="bg-gray-50 rounded-lg p-8">
+      <h3 class="text-xl font-semibold mb-6 text-center">主要トピック</h3>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h4 class="font-semibold mb-2">法的規制</h4>
+          <p class="text-sm text-gray-600">外国人土地法、都市計画法などの重要な規制について</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h4 class="font-semibold mb-2">自然災害リスク</h4>
+          <p class="text-sm text-gray-600">地震、津波、洪水などのリスク評価と対策</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 00-2-2z" />
+            </svg>
+          </div>
+          <h4 class="font-semibold mb-2">市場分析</h4>
+          <p class="text-sm text-gray-600">地域別の投資機会と価格動向の分析</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center mt-12">
+      <h3 class="text-xl font-semibold mb-4">より詳しい情報をお求めですか？</h3>
+      <p class="text-gray-600 mb-6">
+        専門家による個別コンサルテーションで、あなたの投資計画に最適なアドバイスを提供します。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/contact/" 
+          class="btn bg-primary-600 text-white hover:bg-primary-700 px-6 py-3"
+        >
+          無料相談を予約
+        </a>
+        <a 
+          href="/blog/" 
+          class="btn border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3"
+        >
+          英語記事を読む
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
