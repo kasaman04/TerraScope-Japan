@@ -15,9 +15,11 @@ const pageData = {
 // Fetch services from Sanity with fallback
 let services = [];
 try {
-  services = await sanity.fetch(`*[_type=="service"]{
-    key, title, price, bullets
-  }`);
+  if (sanity) {
+    services = await sanity.fetch(`*[_type=="service"]{
+      key, title, price, bullets
+    }`);
+  }
 } catch (error) {
   console.log('Sanity fetch error, using fallback data:', error.message);
   services = [
