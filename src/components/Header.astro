@@ -125,6 +125,16 @@ const currentPath = getCurrentPath();
         <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.services')}</a>
         <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.about')}</a>
         <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.contact')}</a>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="border-t border-gray-200 pt-4 mt-4">
+          <div class="px-3 py-2 text-sm font-medium text-gray-500">言語 / Language</div>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="en" data-current-path={currentPath}>English</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="ja" data-current-path={currentPath}>日本語</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="zh" data-current-path={currentPath}>中文</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="zh-TW" data-current-path={currentPath}>繁體中文</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="ko" data-current-path={currentPath}>한국어</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -160,10 +170,6 @@ const currentPath = getCurrentPath();
         const targetLang = this.dataset.lang;
         let currentPath = this.dataset.currentPath || '/';
         
-        console.log('Language switch clicked:', targetLang);
-        console.log('Current path from data:', currentPath);
-        console.log('Window location:', window.location.pathname);
-        
         // Get the actual current path from URL and clean it
         let actualPath = window.location.pathname;
         
@@ -181,8 +187,6 @@ const currentPath = getCurrentPath();
         if (!actualPath.endsWith('/') && !actualPath.includes('.')) {
           actualPath += '/';
         }
-        
-        console.log('Cleaned actual path:', actualPath);
         
         // Use the cleaned actual path
         currentPath = actualPath;
@@ -209,7 +213,6 @@ const currentPath = getCurrentPath();
           }
         } else {
           // Fallback to home page
-          console.log('Page not found for language, falling back to home');
           if (targetLang === 'en') {
             targetUrl = '/';
           } else {
@@ -217,14 +220,14 @@ const currentPath = getCurrentPath();
           }
         }
         
-        console.log('Target URL:', targetUrl);
-        
         // Set flag to prevent auto-redirect
         sessionStorage.setItem('userChosenLanguage', targetLang);
         
-        // Close menu
+        // Close menus
         languageMenu?.classList.add('hidden');
         languageToggle?.setAttribute('aria-expanded', 'false');
+        mobileMenu?.classList.add('hidden');
+        mobileMenuButton?.setAttribute('aria-expanded', 'false');
         
         // Navigate to target URL
         window.location.href = targetUrl;
