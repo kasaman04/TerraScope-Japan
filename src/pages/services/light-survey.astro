@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Checklist from '../../components/Checklist.astro';
+import PdfPreview from '../../components/PdfPreview.astro';
+import StepTimeline from '../../components/StepTimeline.astro';
+import Accordion from '../../components/Accordion.astro';
+
+const title = "Light Survey – Boundary & Zoning Quick Check";
+const description = "A fast, affordable due-diligence package for overseas buyers who need essential insights before making an offer.";
+const lang = "en";
+const hero_bg = "/assets/img/light-hero.jpg";
+const price = "¥50,000";
+const turnaround = "3 business days";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- ===== Hero ===== -->
+  <section class="relative isolate">
+    <img src={hero_bg} alt="" class="w-full h-[35vh] object-cover brightness-75" />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">Light Survey</h1>
+      <p class="text-lg">Quick boundary & zoning check, delivered in {turnaround}.</p>
+      <span class="px-4 py-2 mt-4 bg-primary-600 rounded-md text-xl font-semibold">¥50,000</span>
+    </div>
+  </section>
+
+  <!-- ===== Package Overview ===== -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-6">What's included</h2>
+    <Checklist items={[
+      "Official boundary confirmation with on-site photos",
+      "Zoning & land-use map overlay in English",
+      "Basic hazard screening (flood & landslide)",
+      "4-page English summary PDF",
+      "30-min follow-up call to discuss next steps"
+    ]}/>
+  </section>
+
+  <!-- ===== Sample Report Preview ===== -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-semibold mb-6">See a sample report</h2>
+      <PdfPreview
+        thumbnail="/assets/img/sample-light-thumb.jpg"
+        src="/assets/pdf/sample-light-survey.pdf"
+        caption="Download our redacted example (2 MB)"
+      />
+    </div>
+  </section>
+
+  <!-- ===== Workflow Timeline ===== -->
+  <StepTimeline steps={[
+    { title:"Submit property info", desc:"Send us the plot map, location pin and your concerns." },
+    { title:"Desktop & on-site check", desc:"We verify boundaries, zoning, and hazards." },
+    { title:"Deliver PDF & call", desc:"Receive the report and ask questions in a video call." },
+  ]}
+  />
+
+  <!-- ===== Optional Add-ons ===== -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-6">Optional add-ons</h2>
+    <ul class="grid md:grid-cols-2 gap-6">
+      <li class="p-6 border rounded-xl">
+        <h3 class="font-semibold mb-2">360° VR Capture <span class="text-primary-600">+¥30,000</span></h3>
+        <p class="text-gray-600">4K drone & 360° footage stitched into an interactive viewer.</p>
+      </li>
+      <li class="p-6 border rounded-xl">
+        <h3 class="font-semibold mb-2">Full Risk Upgrade <span class="text-primary-600">+¥70,000</span></h3>
+        <p class="text-gray-600">Hazard deep-dive, legal & tax checklist — pays only the difference!</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold text-center mb-8">FAQ</h2>
+      <Accordion dataSrc="/assets/data/faq_light.yaml" />
+    </div>
+  </section>
+
+  <!-- ===== Final CTA ===== -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">Ready for peace of mind?</h2>
+    <a href="/contact?service=light" class="btn btn-lg btn-white shadow-lg">
+      Request your Light Survey
+    </a>
+  </section>
+</BaseLayout>

@@ -1,0 +1,330 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BlogCTA from '../components/BlogCTA.astro';
+import Accordion from '../components/Accordion.astro';
+
+export interface Props {
+  frontmatter?: any;
+}
+
+const { frontmatter } = Astro.props;
+
+// Extract and process frontmatter
+const {
+  title,
+  description,
+  date,
+  lang = 'en',
+  cover,
+  categories = [],
+  tags = [],
+  reading_time,
+  cta_service,
+  faq = []
+} = frontmatter || {};
+
+// Calculate reading time if not provided (rough estimate: 200 words per minute)
+const calculateReadingTime = (content: string): number => {
+  const wordCount = content.split(/\s+/).length;
+  return Math.ceil(wordCount / 200);
+};
+
+// Format date
+const formatDate = (dateString: string): string => {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+// Tag colors mapping
+const tagColors: Record<string, string> = {
+  flood: 'bg-cyan-100 text-cyan-800',
+  zoning: 'bg-emerald-100 text-emerald-800',
+  permit: 'bg-amber-100 text-amber-800',
+  legal: 'bg-blue-100 text-blue-800',
+  hazard: 'bg-red-100 text-red-800',
+  drone: 'bg-purple-100 text-purple-800',
+  case: 'bg-gray-100 text-gray-800',
+  default: 'bg-gray-100 text-gray-600'
+};
+
+const getTagColor = (tag: string) => {
+  return tagColors[tag] || tagColors.default;
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <article class="max-w-4xl mx-auto px-6 py-12">
+    <!-- Article Header -->
+    <header class="mb-12">
+      <!-- Cover Image -->
+      {cover && (
+        <div class="w-full h-64 md:h-96 mb-8 rounded-xl overflow-hidden">
+          <img 
+            src={cover} 
+            alt={title}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+      )}
+      
+      <!-- Meta Information -->
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
+        <time dateTime={date}>
+          {formatDate(date)}
+        </time>
+        
+        {reading_time && (
+          <span class="flex items-center">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            {reading_time} min read
+          </span>
+        )}
+        
+        {categories.length > 0 && (
+          <span class="px-3 py-1 bg-primary-100 text-primary-800 rounded-full text-xs font-medium">
+            {categories[0]}
+          </span>
+        )}
+      </div>
+      
+      <!-- Title -->
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        {title}
+      </h1>
+      
+      <!-- Description -->
+      {description && (
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          {description}
+        </p>
+      )}
+      
+      <!-- Tags -->
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag: string) => (
+            <span class={`px-3 py-1 text-sm font-medium rounded-full ${getTagColor(tag)}`}>
+              #{tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+    
+    <!-- Article Content -->
+    <div class="prose prose-lg max-w-none">
+      <div class="article-content">
+        <slot />
+      </div>
+    </div>
+    
+    <!-- Service CTA (if specified) -->
+    {cta_service && (
+      <BlogCTA service={cta_service} />
+    )}
+    
+    <!-- FAQ Section (if provided) -->
+    {faq.length > 0 && (
+      <section class="mt-16 pt-8 border-t border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          {faq.map((item: any, index: number) => (
+            <div class="border border-gray-200 rounded-lg">
+              <button
+                type="button"
+                class="faq-button w-full text-left px-6 py-4 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:bg-gray-50"
+                aria-expanded="false"
+                data-target={`faq-${index}`}
+              >
+                <div class="flex justify-between items-center">
+                  <h3 class="text-lg font-semibold text-gray-900">{item.q}</h3>
+                  <svg
+                    class="faq-icon w-5 h-5 text-gray-500 transform transition-transform duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </button>
+              <div
+                id={`faq-${index}`}
+                class="faq-content hidden px-6 pb-4"
+              >
+                <p class="text-gray-700">{item.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+    
+    <!-- Navigation -->
+    <nav class="mt-16 pt-8 border-t border-gray-200">
+      <div class="flex justify-between items-center">
+        <a 
+          href="/blog/" 
+          class="flex items-center text-primary-600 hover:text-primary-700 font-medium"
+        >
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Blog
+        </a>
+        
+        <div class="flex gap-4">
+          <!-- Share buttons can be added here -->
+          <button class="text-gray-500 hover:text-gray-700">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </article>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqButtons = document.querySelectorAll('.faq-button');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const target = this.getAttribute('data-target');
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.faq-icon');
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        // Close all FAQ items
+        faqButtons.forEach(btn => {
+          const btnTarget = btn.getAttribute('data-target');
+          const btnContent = document.getElementById(btnTarget);
+          const btnIcon = btn.querySelector('.faq-icon');
+          
+          btn.setAttribute('aria-expanded', 'false');
+          btnContent.classList.add('hidden');
+          btnIcon.style.transform = 'rotate(0deg)';
+        });
+        
+        // Open clicked item if it was closed
+        if (!isExpanded) {
+          this.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Prose styles for article content */
+  .prose {
+    color: #374151;
+    line-height: 1.75;
+  }
+  
+  .prose h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+  
+  .prose h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #111827;
+  }
+  
+  .prose p {
+    margin-bottom: 1.25rem;
+  }
+  
+  .prose blockquote {
+    border-left: 4px solid #0284c7;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    background: #f0f9ff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+  
+  .prose th,
+  .prose td {
+    border: 1px solid #d1d5db;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .prose th {
+    background: #f9fafb;
+    font-weight: 600;
+  }
+  
+  .prose code {
+    background: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+  }
+  
+  .prose pre {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  
+  .prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .prose li {
+    margin: 0.5rem 0;
+  }
+  
+  .faq-content {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      max-height: 0;
+    }
+    to {
+      opacity: 1;
+      max-height: 200px;
+    }
+  }
+</style>

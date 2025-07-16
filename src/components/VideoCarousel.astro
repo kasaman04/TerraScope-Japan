@@ -1,0 +1,396 @@
+---
+export interface Props {
+  videos: Array<{
+    id: string;
+    title: string;
+    description: string;
+    thumbnail: string;
+    videoUrl: string;
+    duration?: string;
+  }>;
+}
+
+const { videos } = Astro.props;
+---
+
+<div class="video-carousel-container">
+  <div class="video-carousel">
+    <div class="video-track" id="videoTrack">
+      {videos.map((video, index) => (
+        <div class="video-slide" data-video-id={video.id}>
+          <div class="video-thumbnail" onclick={`playVideo('${video.videoUrl}', '${video.title}')`}>
+            <img 
+              src={video.thumbnail} 
+              alt={video.title}
+              class="w-full h-full object-cover rounded-lg"
+              loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+            />
+            <div class="video-overlay">
+              <div class="play-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" fill="white" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              {video.duration && (
+                <div class="video-duration">
+                  {video.duration}
+                </div>
+              )}
+            </div>
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">{video.title}</h3>
+            <p class="video-description">{video.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Navigation buttons -->
+  <div class="carousel-nav">
+    <button class="nav-btn nav-prev" onclick="previousVideo()" aria-label="Previous video">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button class="nav-btn nav-next" onclick="nextVideo()" aria-label="Next video">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Dots indicator -->
+  <div class="carousel-dots">
+    {videos.map((_, index) => (
+      <button 
+        class={`dot ${index === 0 ? 'active' : ''}`}
+        onclick={`goToSlide(${index})`}
+        aria-label={`Go to video ${index + 1}`}
+      ></button>
+    ))}
+  </div>
+</div>
+
+<!-- Video Modal -->
+<dialog id="videoModal" class="video-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalTitle" class="text-xl font-semibold"></h3>
+      <button onclick="closeVideoModal()" class="close-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <video 
+        id="modalVideo"
+        controls
+        class="w-full h-auto max-h-96 rounded-lg"
+        preload="none"
+      >
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  function initVideoCarousel() {
+    let currentSlide = 0;
+    const videoTrack = document.getElementById('videoTrack');
+    const totalSlides = document.querySelectorAll('.video-slide').length;
+  
+  function updateCarousel() {
+    const slideWidth = document.querySelector('.video-slide').offsetWidth + 20; // including gap
+    videoTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+    
+    // Update dots
+    document.querySelectorAll('.dot').forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentSlide);
+    });
+    
+    // Update navigation buttons
+    document.querySelector('.nav-prev').disabled = currentSlide === 0;
+    document.querySelector('.nav-next').disabled = currentSlide === totalSlides - 1;
+  }
+  
+  function nextVideo() {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateCarousel();
+    }
+  }
+  
+  function previousVideo() {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateCarousel();
+    }
+  }
+  
+  function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+  }
+  
+  function playVideo(videoUrl, title) {
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalTitle = document.getElementById('modalTitle');
+    
+    modalTitle.textContent = title;
+    modalVideo.src = videoUrl;
+    modal.showModal();
+  }
+  
+  function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    
+    modalVideo.pause();
+    modalVideo.src = '';
+    modal.close();
+  }
+  
+    // Initialize carousel
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCarousel();
+      
+      // Handle modal close on backdrop click
+      document.getElementById('videoModal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+          closeVideoModal();
+        }
+      });
+      
+      // Handle keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') previousVideo();
+        if (e.key === 'ArrowRight') nextVideo();
+        if (e.key === 'Escape') closeVideoModal();
+      });
+    });
+  }
+
+  // Lazy initialize video carousel
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => initVideoCarousel());
+  } else {
+    setTimeout(() => initVideoCarousel(), 2000);
+  }
+</script>
+
+<style>
+  .video-carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .video-carousel {
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+  }
+  
+  .video-track {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    gap: 20px;
+  }
+  
+  .video-slide {
+    min-width: 300px;
+    flex-shrink: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .video-slide {
+      min-width: 400px;
+    }
+  }
+  
+  .video-thumbnail {
+    position: relative;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .video-thumbnail:hover .video-overlay {
+    opacity: 1;
+  }
+  
+  .play-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    transition: transform 0.2s ease;
+  }
+  
+  .play-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .video-duration {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .video-info {
+    padding: 16px 0;
+  }
+  
+  .video-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1f2937;
+  }
+  
+  .video-description {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .carousel-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .nav-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    pointer-events: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-btn:hover {
+    background: white;
+  }
+  
+  .nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .nav-prev {
+    margin-left: -20px;
+  }
+  
+  .nav-next {
+    margin-right: -20px;
+  }
+  
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d1d5db;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .dot.active,
+  .dot:hover {
+    background: #3b82f6;
+  }
+  
+  .video-modal {
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 800px;
+  }
+  
+  .video-modal::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: #6b7280;
+    transition: color 0.2s ease;
+  }
+  
+  .close-btn:hover {
+    color: #374151;
+  }
+</style>

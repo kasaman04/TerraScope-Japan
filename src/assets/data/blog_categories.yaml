@@ -1,0 +1,11 @@
+- id: hazard
+  label: "Hazard Risk"
+
+- id: legal
+  label: "Legal & Tax"
+
+- id: drone
+  label: "Drone & VR"
+
+- id: case
+  label: "Case Studies"

@@ -1,0 +1,334 @@
+---
+export interface Props {
+  before: string;
+  after: string;
+  caption?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  height?: string;
+}
+
+const { 
+  before, 
+  after, 
+  caption = '', 
+  beforeLabel = 'Before', 
+  afterLabel = 'After',
+  height = '400px'
+} = Astro.props;
+
+const sliderId = `slider-${Math.random().toString(36).substring(2, 11)}`;
+---
+
+<div class="before-after-slider" data-height={height}>
+  <div class="slider-container" id={sliderId}>
+    <div class="image-container">
+      <!-- Before Image -->
+      <img 
+        src={before} 
+        alt={`${beforeLabel} image`}
+        class="image before-image"
+        loading="lazy"
+        onerror="this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+      />
+      
+      <!-- After Image -->
+      <img 
+        src={after} 
+        alt={`${afterLabel} image`}
+        class="image after-image"
+        loading="lazy"
+        onerror="this.src='https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
+      />
+      
+      <!-- Slider Handle -->
+      <div class="slider-handle" id={`handle-${sliderId}`}>
+        <div class="handle-line"></div>
+        <div class="handle-circle">
+          <svg class="handle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/>
+          </svg>
+        </div>
+      </div>
+      
+      <!-- Labels -->
+      <div class="label before-label">{beforeLabel}</div>
+      <div class="label after-label">{afterLabel}</div>
+    </div>
+    
+    <!-- Range Input -->
+    <input 
+      type="range" 
+      min="0" 
+      max="100" 
+      value="50" 
+      class="range-input"
+      id={`input-${sliderId}`}
+      aria-label="Slide to compare before and after images"
+    />
+  </div>
+  
+  {caption && (
+    <div class="caption">
+      <p class="caption-text">{caption}</p>
+    </div>
+  )}
+</div>
+
+<script is:inline define:vars={{ sliderId }}>
+  function initSlider() {
+    const container = document.getElementById(sliderId);
+    const input = document.getElementById(`input-${sliderId}`);
+    const handle = document.getElementById(`handle-${sliderId}`);
+    const afterImage = container.querySelector('.after-image');
+    
+    if (!container || !input || !handle || !afterImage) return;
+    
+    function updateSlider(value) {
+      const percentage = value + '%';
+      afterImage.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+      handle.style.left = percentage;
+      
+      // Update input value if not triggered by input
+      if (input.value !== value.toString()) {
+        input.value = value;
+      }
+    }
+    
+    // Handle input change
+    input.addEventListener('input', (e) => {
+      updateSlider(e.target.value);
+    });
+    
+    // Handle mouse drag on handle
+    let isDragging = false;
+    
+    handle.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+      
+      updateSlider(percentage);
+    });
+    
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+    
+    // Handle touch events for mobile
+    handle.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      
+      const rect = container.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = touch.clientX - rect.left;
+      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+      
+      updateSlider(percentage);
+    });
+    
+    document.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+    
+    // Initialize
+    updateSlider(50);
+  }
+  
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSlider);
+  } else {
+    initSlider();
+  }
+</script>
+
+<style>
+  .before-after-slider {
+    margin: 2rem 0;
+    max-width: 100%;
+  }
+  
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: var(--slider-height, 400px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    cursor: ew-resize;
+  }
+  
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+  }
+  
+  .before-image {
+    z-index: 1;
+  }
+  
+  .after-image {
+    z-index: 2;
+    clip-path: inset(0 50% 0 0);
+    transition: clip-path 0.1s ease;
+  }
+  
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    z-index: 3;
+    transform: translateX(-50%);
+    cursor: ew-resize;
+  }
+  
+  .handle-line {
+    width: 2px;
+    height: 100%;
+    background: white;
+    margin: 0 auto;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
+  }
+  
+  .handle-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: 2px solid #3b82f6;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: ew-resize;
+    transition: all 0.2s ease;
+  }
+  
+  .handle-circle:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  
+  .handle-icon {
+    width: 20px;
+    height: 20px;
+    transform: rotate(90deg);
+  }
+  
+  .label {
+    position: absolute;
+    top: 16px;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    z-index: 4;
+    pointer-events: none;
+  }
+  
+  .before-label {
+    left: 16px;
+  }
+  
+  .after-label {
+    right: 16px;
+  }
+  
+  .range-input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: ew-resize;
+    z-index: 5;
+  }
+  
+  .caption {
+    margin-top: 12px;
+    text-align: center;
+  }
+  
+  .caption-text {
+    color: #6b7280;
+    font-size: 14px;
+    font-style: italic;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .slider-container {
+      height: 250px;
+    }
+    
+    .handle-circle {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .handle-icon {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .label {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+  }
+  
+  /* Focus styles for accessibility */
+  .range-input:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Animation for initial load */
+  .before-after-slider {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

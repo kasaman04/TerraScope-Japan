@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+  imgSrc: string;
+  headline: string;
+  sub: string;
+}
+
+const { imgSrc, headline, sub } = Astro.props;
+---
+
+<section class="relative isolate">
+  <img 
+    src={imgSrc} 
+    alt="" 
+    class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75 aspect-[16/9]"
+    loading="eager"
+    onerror="this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'"
+  />
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
+      {headline}
+    </h1>
+    <p class="text-lg md:text-xl max-w-2xl opacity-90">
+      {sub}
+    </p>
+  </div>
+</section>

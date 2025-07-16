@@ -1,0 +1,74 @@
+---
+import { languages, defaultLang } from '../utils/i18n';
+
+export interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  lang?: string;
+}
+
+const { title, description, noindex = false, lang = defaultLang } = Astro.props;
+
+// Get the current path without language prefix and base path
+const currentPath = Astro.url.pathname;
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Remove base path first, then language prefix
+let pathWithoutBase = currentPath;
+if (pathWithoutBase.startsWith(basePath)) {
+  pathWithoutBase = pathWithoutBase.substring(basePath.length);
+}
+// Remove language prefix
+const pathWithoutLang = pathWithoutBase.replace(/^\/(ja|zh|zh-TW|ko)/, '');
+const cleanPath = pathWithoutLang === '' || pathWithoutLang === '/' ? '' : pathWithoutLang;
+
+// Get the site origin from astro.config.mjs
+const siteOrigin = Astro.site?.origin || 'https://kasaman04.github.io';
+
+// Canonical URL (always points to the default language version)
+const canonical = `${siteOrigin}${basePath}${cleanPath}`;
+
+// Generate alternate URLs for all languages
+const alternateUrls = languages.map(locale => {
+  const localePrefix = locale === defaultLang ? '' : `/${locale}`;
+  const url = `${siteOrigin}${basePath}${localePrefix}${cleanPath}`;
+  return { locale, url };
+});
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+<meta name="astro-base-url" content={import.meta.env.BASE_URL} />
+
+{noindex && <meta name="robots" content="noindex" />}
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonical} />
+
+<!-- Alternate language versions -->
+{alternateUrls.map(({ locale, url }) => (
+  <link rel="alternate" hreflang={locale} href={url} />
+))}
+
+<!-- Default language fallback -->
+<link rel="alternate" hreflang="x-default" href={canonical} />
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content="Land Vista Global" />
+<meta property="og:locale" content={lang === 'ja' ? 'ja_JP' : lang === 'zh' ? 'zh_CN' : lang === 'zh-TW' ? 'zh_TW' : lang === 'ko' ? 'ko_KR' : 'en_US'} />
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

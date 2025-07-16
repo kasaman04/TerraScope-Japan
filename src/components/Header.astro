@@ -1,0 +1,140 @@
+---
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get base URL for proper routing
+const baseUrl = import.meta.env.BASE_URL;
+
+// Helper function to create proper URLs with base path and language
+function getLocalizedUrl(path: string) {
+  // Ensure path has trailing slash for directories
+  const normalizedPath = path === '' ? '' : (path.endsWith('/') ? path : `${path}/`);
+  if (lang === 'en') {
+    return `${baseUrl}${normalizedPath}`.replace(/\/+/g, '/');
+  }
+  return `${baseUrl}${lang}/${normalizedPath}`.replace(/\/+/g, '/');
+}
+---
+
+<header class="bg-white shadow-sm">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <a href={getLocalizedUrl('')} class="text-xl font-bold text-gray-900">
+          LAND VISTA Global
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <nav class="ml-10 flex items-baseline space-x-4" aria-label="Main navigation">
+          <a href={getLocalizedUrl('')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.home')}</a>
+          <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.services')}</a>
+          <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.about')}</a>
+          <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.contact')}</a>
+        </nav>
+      </div>
+      
+      <!-- Language Switcher -->
+      <div class="relative">
+        <button 
+          id="language-toggle" 
+          class="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-label="Toggle language menu"
+        >
+          🌐
+          <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div 
+          id="language-menu" 
+          class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
+          role="menu"
+        >
+          <div class="py-1" role="none">
+            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en">English</a>
+            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ja">日本語</a>
+            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh">中文</a>
+            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh-TW">繁體中文</a>
+            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ko">한국어</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Language switcher functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const languageToggle = document.getElementById('language-toggle');
+    const languageMenu = document.getElementById('language-menu');
+    const languageLinks = document.querySelectorAll('.language-link');
+    
+    // Toggle language menu
+    languageToggle?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const isHidden = languageMenu.classList.contains('hidden');
+      if (isHidden) {
+        languageMenu.classList.remove('hidden');
+        languageToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        languageMenu.classList.add('hidden');
+        languageToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    
+    // Handle language changes
+    languageLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetLang = this.dataset.lang;
+        changeLocale(targetLang);
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!languageToggle?.contains(e.target) && !languageMenu?.contains(e.target)) {
+        languageMenu?.classList.add('hidden');
+        languageToggle?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  function changeLocale(targetLang) {
+    const currentPath = window.location.pathname;
+    // Get base path from the meta tag
+    const baseUrlMeta = document.querySelector('meta[name="astro-base-url"]');
+    const basePath = baseUrlMeta ? baseUrlMeta.getAttribute('content').replace(/\/$/, '') : '/land-vista';
+    
+    // Remove base path first
+    let pathWithoutBase = currentPath;
+    if (basePath && pathWithoutBase.startsWith(basePath + '/')) {
+      pathWithoutBase = pathWithoutBase.substring(basePath.length);
+    } else if (pathWithoutBase === basePath) {
+      pathWithoutBase = '/';
+    }
+    
+    // Remove language prefix
+    const pathWithoutLang = pathWithoutBase.replace(/^\/(en|ja|zh|zh-TW|ko)(\/|$)/, '/');
+    
+    let newPath;
+    if (targetLang === 'en') {
+      newPath = `${basePath}${pathWithoutLang}`;
+    } else {
+      newPath = `${basePath}/${targetLang}${pathWithoutLang}`;
+    }
+    
+    // Clean up double slashes and ensure proper formatting
+    newPath = newPath.replace(/\/+/g, '/');
+    if (!newPath.endsWith('/') && !newPath.includes('.')) {
+      newPath += '/';
+    }
+    
+    window.location.href = newPath;
+  }
+</script>

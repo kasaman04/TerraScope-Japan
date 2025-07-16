@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import CategoryFilter from '../../components/CategoryFilter.astro';
+import TagFilter from '../../components/TagFilter.astro';
+import Pagination from '../../components/Pagination.astro';
+
+const title = "Insights – Blog Index";
+const description = "In-depth guides on Japanese land purchase, regulations and risk management.";
+const lang = "en";
+const hero_bg = "/assets/img/blog-hero.jpg";
+const per_page = 9;
+
+// Get all blog posts
+const posts = await Astro.glob('../../content/posts/*.md');
+
+// Get URL parameters for filtering
+const url = new URL(Astro.request.url);
+const categoryFilter = url.searchParams.get('cat');
+const tagFilter = url.searchParams.get('tag');
+const currentPage = parseInt(url.searchParams.get('page') || '1');
+
+// Filter posts
+let filteredPosts = posts;
+
+if (categoryFilter) {
+  filteredPosts = filteredPosts.filter(post => 
+    post.frontmatter.categories?.includes(categoryFilter)
+  );
+}
+
+if (tagFilter) {
+  filteredPosts = filteredPosts.filter(post => 
+    post.frontmatter.tags?.includes(tagFilter)
+  );
+}
+
+// Sort by date (newest first)
+filteredPosts.sort((a, b) => 
+  new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+);
+
+// Pagination
+const totalPosts = filteredPosts.length;
+const totalPages = Math.ceil(totalPosts / per_page);
+const startIndex = (currentPage - 1) * per_page;
+const endIndex = startIndex + per_page;
+const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- ===== Hero ===== -->
+  <section class="relative isolate">
+    <img src={hero_bg} alt="" class="w-full h-[35vh] object-cover brightness-75" />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">Knowledge Hub</h1>
+      <p class="text-lg">Actionable insights for overseas buyers.</p>
+    </div>
+  </section>
+
+  <!-- ===== Filters ===== -->
+  <section class="max-w-6xl mx-auto px-6 py-10">
+    <div class="flex flex-wrap items-center gap-4">
+      <CategoryFilter dataSrc="/assets/data/blog_categories.yaml" currentCategory={categoryFilter} />
+      <TagFilter dataSrc="/assets/data/blog_tags.yaml" currentTag={tagFilter} />
+    </div>
+  </section>
+
+  <!-- ===== Blog Grid ===== -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    {paginatedPosts.length > 0 ? (
+      <>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {paginatedPosts.map((post) => (
+            <BlogCard entry={post} />
+          ))}
+        </div>
+
+        <!-- Pagination -->
+        {totalPages > 1 && (
+          <Pagination 
+            total={totalPages} 
+            current={currentPage} 
+            baseUrl="/blog/"
+            categoryFilter={categoryFilter}
+            tagFilter={tagFilter}
+          />
+        )}
+      </>
+    ) : (
+      <div class="text-center py-16">
+        <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">No articles found</h3>
+        <p class="text-gray-600">Try adjusting your filters or check back later for new content.</p>
+        <a href="/blog/" class="btn bg-primary-600 text-white hover:bg-primary-700 mt-4">
+          Clear filters
+        </a>
+      </div>
+    )}
+  </section>
+</BaseLayout>

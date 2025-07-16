@@ -1,0 +1,136 @@
+---
+export interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const { frontmatter, url } = entry;
+
+// Format date
+const formatDate = (date: string | Date) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+// Generate slug from URL or title
+const slug = url || frontmatter.slug || frontmatter.title?.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+
+// Tag colors mapping
+const tagColors: Record<string, string> = {
+  flood: 'bg-cyan-100 text-cyan-800',
+  zoning: 'bg-emerald-100 text-emerald-800',
+  permit: 'bg-amber-100 text-amber-800',
+  legal: 'bg-blue-100 text-blue-800',
+  hazard: 'bg-red-100 text-red-800',
+  drone: 'bg-purple-100 text-purple-800',
+  case: 'bg-gray-100 text-gray-800',
+  default: 'bg-gray-100 text-gray-600'
+};
+
+const getTagColor = (tag: string) => {
+  return tagColors[tag] || tagColors.default;
+};
+---
+
+<article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+  <!-- Cover Image -->
+  <div class="h-40 w-full bg-gradient-to-br from-primary-100 to-primary-200 relative overflow-hidden">
+    {frontmatter.cover ? (
+      <img 
+        src={frontmatter.cover} 
+        alt={frontmatter.title}
+        class="h-full w-full object-cover"
+        loading="lazy"
+      />
+    ) : (
+      <div class="h-full w-full flex items-center justify-center">
+        <svg class="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      </div>
+    )}
+    
+    <!-- Category Badge -->
+    {frontmatter.categories && frontmatter.categories.length > 0 && (
+      <div class="absolute top-3 left-3">
+        <span class="px-2 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-gray-800 rounded-full">
+          {frontmatter.categories[0]}
+        </span>
+      </div>
+    )}
+  </div>
+
+  <!-- Content -->
+  <div class="p-6">
+    <!-- Date -->
+    <time class="text-sm text-gray-500 mb-2 block">
+      {formatDate(frontmatter.date)}
+    </time>
+
+    <!-- Title -->
+    <h3 class="text-xl font-semibold text-gray-900 mb-3 leading-tight">
+      <a href={`/blog/${slug}`} class="hover:text-primary-600 transition-colors">
+        {frontmatter.title}
+      </a>
+    </h3>
+
+    <!-- Excerpt -->
+    <p class="text-gray-600 mb-4 line-clamp-3">
+      {frontmatter.excerpt || frontmatter.description || 'Read this insightful article about Japanese land investment.'}
+    </p>
+
+    <!-- Tags -->
+    {frontmatter.tags && frontmatter.tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-4">
+        {frontmatter.tags.slice(0, 3).map((tag: string) => (
+          <span class={`px-2 py-1 text-xs font-medium rounded-full ${getTagColor(tag)}`}>
+            {tag}
+          </span>
+        ))}
+        {frontmatter.tags.length > 3 && (
+          <span class="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-600">
+            +{frontmatter.tags.length - 3} more
+          </span>
+        )}
+      </div>
+    )}
+
+    <!-- Read More Link -->
+    <a 
+      href={`/blog/${slug}`}
+      class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm transition-colors"
+    >
+      Read more
+      <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</article>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  article {
+    animation: fadeInUp 0.6s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
