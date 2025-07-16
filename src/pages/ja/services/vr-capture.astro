@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Checklist from '../../../components/Checklist.astro';
+import StepTimeline from '../../../components/StepTimeline.astro';
+
+const title = "360° VR撮影 - イマーシブ不動産体験";
+const description = "4Kドローンと360°カメラで撮影した高品質VR映像で、遠隔地からでもまるで現地にいるような土地の視察体験を提供します。";
+const lang = "ja";
+const price = "¥30,000";
+const turnaround = "5営業日";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Hero Section -->
+  <section class="relative isolate">
+    <img 
+      src="https://images.unsplash.com/photo-1636633762833-5d1658f1e29b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+      alt="" 
+      class="w-full h-[35vh] object-cover brightness-75"
+    />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">360° VR撮影</h1>
+      <p class="text-lg">遠隔地から体験する次世代の土地視察</p>
+      <span class="px-4 py-2 mt-4 bg-primary-600 rounded-md text-xl font-semibold">¥30,000</span>
+    </div>
+  </section>
+
+  <!-- Package Overview -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-6">含まれる内容</h2>
+    <Checklist items={[
+      "4Kドローンによる空撮映像",
+      "360°パノラマ地上撮影",
+      "インタラクティブVRビューアー",
+      "VRヘッドセット対応",
+      "高解像度写真データの提供",
+      "アクセス・周辺環境の撮影",
+      "Web埋め込み可能な形式",
+      "1年間のクラウドホスティング"
+    ]}/>
+  </section>
+
+  <!-- VR Technology Features -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold mb-8 text-center">VR技術の特徴</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 text-primary-600">4K Ultra HD</h3>
+          <p class="text-sm text-gray-600">最新の4Kドローンと専用360°カメラで、鮮明で臨場感のある映像を撮影</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 text-primary-600">360度パノラマ</h3>
+          <p class="text-sm text-gray-600">あらゆる角度から土地を確認でき、まるで現地にいるような体験を提供</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 text-primary-600">マルチデバイス対応</h3>
+          <p class="text-sm text-gray-600">PC、スマートフォン、VRヘッドセットなど、あらゆるデバイスで視聴可能</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 text-primary-600">高速ストリーミング</h3>
+          <p class="text-sm text-gray-600">最適化された配信技術で、世界中どこからでもスムーズに視聴</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 011 1v2a1 1 0 01-1 1h-1v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8H3a1 1 0 01-1-1V5a1 1 0 011-1h4z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibent mb-3 text-primary-600">情報タグ付き</h3>
+          <p class="text-sm text-gray-600">重要なポイントに説明テキストや追加情報を埋め込み</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold mb-3 text-primary-600">共有・埋め込み</h3>
+          <p class="text-sm text-gray-600">URLで簡単共有、ウェブサイトへの埋め込みも可能</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shooting Coverage -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-8 text-center">撮影カバレッジ</h2>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-blue-800">空撮（ドローン）</h3>
+        <ul class="space-y-2 text-blue-700">
+          <li>• 土地全体の俯瞰映像</li>
+          <li>• 周辺環境・アクセス道路</li>
+          <li>• 地形の起伏・高低差</li>
+          <li>• 近隣建物との位置関係</li>
+          <li>• 景観・眺望の確認</li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-green-800">地上撮影（360°）</h3>
+        <ul class="space-y-2 text-green-700">
+          <li>• 土地内の歩行体験</li>
+          <li>• 境界線・角地の詳細</li>
+          <li>• 地面の状態・植生</li>
+          <li>• インフラ設備の確認</li>
+          <li>• 日当たり・風通しの体感</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold mb-8 text-center">活用シーン</h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow-md text-center">
+          <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">遠隔地投資家</h3>
+          <p class="text-sm text-gray-600">現地訪問が困難な海外在住投資家の事前調査</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">家族・パートナー共有</h3>
+          <p class="text-sm text-gray-600">関係者全員での土地確認・意思決定サポート</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">記録・文書化</h3>
+          <p class="text-sm text-gray-600">投資検討プロセスの記録・プレゼンテーション資料</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specifications -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-8 text-center">技術仕様</h2>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white border rounded-lg p-6">
+        <h3 class="text-lg font-semibold mb-4 text-primary-600">映像品質</h3>
+        <ul class="space-y-2 text-gray-600">
+          <li><strong>解像度:</strong> 4K (3840×2160)</li>
+          <li><strong>フレームレート:</strong> 30fps</li>
+          <li><strong>ビットレート:</strong> 最大50Mbps</li>
+          <li><strong>色深度:</strong> 10bit</li>
+          <li><strong>ファイル形式:</strong> MP4, WebM</li>
+        </ul>
+      </div>
+
+      <div class="bg-white border rounded-lg p-6">
+        <h3 class="text-lg font-semibold mb-4 text-primary-600">対応デバイス</h3>
+        <ul class="space-y-2 text-gray-600">
+          <li><strong>VRヘッドセット:</strong> Oculus, HTC Vive</li>
+          <li><strong>スマートフォン:</strong> iOS, Android</li>
+          <li><strong>PC:</strong> Windows, Mac, Linux</li>
+          <li><strong>ブラウザ:</strong> Chrome, Safari, Firefox</li>
+          <li><strong>その他:</strong> スマートTV, タブレット</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow Timeline -->
+  <StepTimeline steps={[
+    { title:"撮影計画立案", desc:"天候・時間帯を考慮した最適な撮影スケジュールを策定" },
+    { title:"現地撮影", desc:"ドローン・360°カメラによる包括的な映像撮影" },
+    { title:"編集・制作", desc:"高品質なVRコンテンツへの編集・情報タグ追加" },
+    { title:"配信・納品", desc:"専用ビューアーでの配信開始とデータ提供" }
+  ]}
+  />
+
+  <!-- Pricing Add-ons -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold mb-8 text-center">オプション・アドオン</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 border-2 border-primary-200">
+          <h3 class="font-semibold mb-2">延長撮影 <span class="text-primary-600">+¥10,000</span></h3>
+          <p class="text-sm text-gray-600">複数の時間帯での撮影（朝・昼・夕方）</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border-2 border-primary-200">
+          <h3 class="font-semibold mb-2">ナレーション追加 <span class="text-primary-600">+¥15,000</span></h3>
+          <p class="text-sm text-gray-600">プロによる日本語・英語音声ガイド</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 border-2 border-primary-200">
+          <h3 class="font-semibold mb-2">カスタムブランディング <span class="text-primary-600">+¥5,000</span></h3>
+          <p class="text-sm text-gray-600">企業ロゴ・カラーテーマのカスタマイズ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">次世代の土地視察を体験しませんか？</h2>
+    <p class="mb-6 text-primary-100">4K VR技術で、まるで現地にいるような詳細な土地確認が可能です</p>
+    <a href="/ja/contact?service=vr" class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg">
+      360° VR撮影を依頼する
+    </a>
+  </section>
+</BaseLayout>
