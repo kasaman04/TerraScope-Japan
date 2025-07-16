@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl } from '../utils/i18n';
+
 export interface Service {
   key: string;
   title: string;
@@ -15,6 +17,18 @@ export interface Props {
 const { items = [], show, ctaLabel = "Learn more" } = Astro.props;
 
 const displayServices = show === "all" ? items : items.slice(0, show);
+
+// Get language and base URL for proper routing
+const lang = getLangFromUrl(Astro.url);
+const baseUrl = import.meta.env.BASE_URL;
+
+// Helper function to create proper URLs with base path and language
+function getLocalizedUrl(path: string) {
+  if (lang === 'en') {
+    return `${baseUrl}${path}`.replace(/\/+/g, '/');
+  }
+  return `${baseUrl}${lang}/${path}`.replace(/\/+/g, '/');
+}
 ---
 
 <section class="py-16">
@@ -38,7 +52,7 @@ const displayServices = show === "all" ? items : items.slice(0, show);
               </li>
             ))}
           </ul>
-          <a href={service.key === 'light' ? '/services/light-survey' : `/services/${service.key}`} class="btn btn-lg w-full bg-primary-600 text-white hover:bg-primary-700">
+          <a href={getLocalizedUrl(service.key === 'light' ? 'services/light-survey' : `services/${service.key}`)} class="btn btn-lg w-full bg-primary-600 text-white hover:bg-primary-700">
             {ctaLabel}
           </a>
         </div>

@@ -3,22 +3,33 @@ import { getLangFromUrl, useTranslations } from '../utils/i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Get base URL for proper routing
+const baseUrl = import.meta.env.BASE_URL;
+
+// Helper function to create proper URLs with base path and language
+function getLocalizedUrl(path: string) {
+  if (lang === 'en') {
+    return `${baseUrl}${path}`.replace(/\/+/g, '/');
+  }
+  return `${baseUrl}${lang}/${path}`.replace(/\/+/g, '/');
+}
 ---
 
 <header class="bg-white shadow-sm">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center">
-        <a href="/" class="text-xl font-bold text-gray-900">
+        <a href={getLocalizedUrl('')} class="text-xl font-bold text-gray-900">
           LAND VISTA Global
         </a>
       </div>
       <div class="hidden md:block">
         <nav class="ml-10 flex items-baseline space-x-4" aria-label="Main navigation">
-          <a href="/" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.home')}</a>
-          <a href="/services" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.services')}</a>
-          <a href="/about" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.about')}</a>
-          <a href="/contact" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.contact')}</a>
+          <a href={getLocalizedUrl('')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.home')}</a>
+          <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.services')}</a>
+          <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.about')}</a>
+          <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.contact')}</a>
         </nav>
       </div>
       
@@ -94,22 +105,32 @@ const t = useTranslations(lang);
 
   function changeLocale(targetLang) {
     const currentPath = window.location.pathname;
-    const basePath = '/TerraScope-Japan';
+    // Get base path from the meta tag
+    const baseUrlMeta = document.querySelector('meta[name="astro-base-url"]');
+    const basePath = baseUrlMeta ? baseUrlMeta.getAttribute('content').replace(/\/$/, '') : '/land-vista';
     
     // Remove base path first
     let pathWithoutBase = currentPath;
-    if (pathWithoutBase.startsWith(basePath)) {
+    if (basePath && pathWithoutBase.startsWith(basePath + '/')) {
       pathWithoutBase = pathWithoutBase.substring(basePath.length);
+    } else if (pathWithoutBase === basePath) {
+      pathWithoutBase = '/';
     }
     
     // Remove language prefix
-    const pathWithoutLang = pathWithoutBase.replace(/^\/(ja|zh|zh-TW|ko)/, '');
+    const pathWithoutLang = pathWithoutBase.replace(/^\/(en|ja|zh|zh-TW|ko)(\/|$)/, '/');
     
     let newPath;
     if (targetLang === 'en') {
-      newPath = `${basePath}${pathWithoutLang || ''}`;
+      newPath = `${basePath}${pathWithoutLang}`;
     } else {
-      newPath = `${basePath}/${targetLang}${pathWithoutLang || ''}`;
+      newPath = `${basePath}/${targetLang}${pathWithoutLang}`;
+    }
+    
+    // Clean up double slashes and ensure proper formatting
+    newPath = newPath.replace(/\/+/g, '/');
+    if (!newPath.endsWith('/') && !newPath.includes('.')) {
+      newPath += '/';
     }
     
     window.location.href = newPath;

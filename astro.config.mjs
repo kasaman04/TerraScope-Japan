@@ -16,6 +16,6 @@ export default defineConfig({
     port: 4321,
     host: true
   },
-  base: "/TerraScope-Japan/",
-  site: "https://kasaman04.github.io/TerraScope-Japan/",
+  base: "/land-vista/",
+  site: "https://kasaman04.github.io/land-vista/",
 });

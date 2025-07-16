@@ -12,7 +12,7 @@ const { title, description, noindex = false, lang = defaultLang } = Astro.props;
 
 // Get the current path without language prefix and base path
 const currentPath = Astro.url.pathname;
-const basePath = '/TerraScope-Japan';
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 // Remove base path first, then language prefix
 let pathWithoutBase = currentPath;
@@ -40,6 +40,7 @@ const alternateUrls = languages.map(locale => {
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
+<meta name="astro-base-url" content={import.meta.env.BASE_URL} />
 
 {noindex && <meta name="robots" content="noindex" />}
 

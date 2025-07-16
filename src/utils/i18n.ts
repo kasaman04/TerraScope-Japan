@@ -106,10 +106,24 @@ export const translations = {
 };
 
 export function getLangFromUrl(url: URL): string {
-  const [, lang] = url.pathname.split('/');
-  if (languages.includes(lang)) {
-    return lang;
+  // Remove base path if present
+  let pathname = url.pathname;
+  
+  // Get base path from environment - remove trailing slash if present
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+  
+  if (basePath && pathname.startsWith(basePath)) {
+    pathname = pathname.substring(basePath.length);
   }
+  
+  // Extract language from path
+  const segments = pathname.split('/').filter(Boolean);
+  const potentialLang = segments[0];
+  
+  if (potentialLang && languages.includes(potentialLang)) {
+    return potentialLang;
+  }
+  
   return defaultLang;
 }
 
