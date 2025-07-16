@@ -73,30 +73,49 @@ const currentPath = getCurrentPath();
       
       <div class="flex items-center space-x-4">
         <!-- Language Switcher -->
-        <div class="relative">
-        <button 
-          id="language-toggle" 
-          class="flex items-center text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-label="Toggle language menu"
-        >
-          🌐
-          <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div 
-          id="language-menu" 
-          class="hidden absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5"
-          role="menu"
-        >
-          <div class="py-1" role="none">
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="en" data-current-path={currentPath}>English</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ja" data-current-path={currentPath}>日本語</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh" data-current-path={currentPath}>中文</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="zh-TW" data-current-path={currentPath}>繁體中文</a>
-            <a href="#" class="language-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang="ko" data-current-path={currentPath}>한국어</a>
+        <div class="relative inline-block text-left">
+          <button 
+            type="button"
+            id="language-toggle" 
+            class="inline-flex items-center justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            🌐 Language
+            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <div 
+            id="language-menu"
+            class="hidden origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="language-toggle"
+          >
+            <div class="py-1" role="none">
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="en" data-current-path={currentPath}>
+                <span class="mr-3">🇺🇸</span>
+                English
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="ja" data-current-path={currentPath}>
+                <span class="mr-3">🇯🇵</span>
+                日本語
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="zh" data-current-path={currentPath}>
+                <span class="mr-3">🇨🇳</span>
+                中文
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="zh-TW" data-current-path={currentPath}>
+                <span class="mr-3">🇹🇼</span>
+                繁體中文
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="ko" data-current-path={currentPath}>
+                <span class="mr-3">🇰🇷</span>
+                한국어
+              </a>
+            </div>
           </div>
         </div>
         
@@ -143,64 +162,122 @@ const currentPath = getCurrentPath();
 <script>
   // Language switcher and mobile menu functionality
   document.addEventListener('DOMContentLoaded', function() {
-    console.log('Header script loaded');
+    console.log('=== Header Script Initialize ===');
+    
+    // Get elements
     const languageToggle = document.getElementById('language-toggle');
     const languageMenu = document.getElementById('language-menu');
     const languageLinks = document.querySelectorAll('.language-link');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    console.log('languageToggle found:', !!languageToggle);
-    console.log('languageMenu found:', !!languageMenu);
-    console.log('languageLinks count:', languageLinks.length);
+    // Debug element detection
+    console.log('Elements found:');
+    console.log('- languageToggle:', !!languageToggle, languageToggle);
+    console.log('- languageMenu:', !!languageMenu, languageMenu);
+    console.log('- languageLinks:', languageLinks.length);
+    console.log('- mobileMenuButton:', !!mobileMenuButton);
+    console.log('- mobileMenu:', !!mobileMenu);
     
-    // Toggle language menu
-    languageToggle?.addEventListener('click', function(e) {
-      e.preventDefault();
-      console.log('Language toggle clicked');
+    // Language toggle functionality with multiple event types
+    function toggleLanguageMenu() {
+      console.log('=== Toggle Function Called ===');
+      if (!languageMenu) {
+        console.error('Language menu not found!');
+        return;
+      }
+      
       const isHidden = languageMenu.classList.contains('hidden');
-      console.log('Menu is hidden:', isHidden);
+      console.log('Current state - hidden:', isHidden);
+      
       if (isHidden) {
         languageMenu.classList.remove('hidden');
-        languageToggle.setAttribute('aria-expanded', 'true');
-        console.log('Menu opened');
+        languageToggle?.setAttribute('aria-expanded', 'true');
+        console.log('✅ Menu opened');
       } else {
         languageMenu.classList.add('hidden');
+        languageToggle?.setAttribute('aria-expanded', 'false');
+        console.log('✅ Menu closed');
+      }
+    }
+    
+    // Add multiple event listeners for better compatibility
+    if (languageToggle) {
+      console.log('Adding event listeners to language toggle');
+      
+      // Primary click handler
+      languageToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('🖱️ Click event triggered');
+        toggleLanguageMenu();
+      });
+      
+      // Backup pointer events
+      languageToggle.addEventListener('pointerdown', function(e) {
+        console.log('👆 Pointer down event triggered');
+      });
+      
+      // Touch events for mobile
+      languageToggle.addEventListener('touchstart', function(e) {
+        console.log('📱 Touch start event triggered');
+      });
+      
+      // Keyboard support
+      languageToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          console.log('⌨️ Keyboard event triggered:', e.key);
+          toggleLanguageMenu();
+        }
+      });
+    } else {
+      console.error('❌ Language toggle button not found!');
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (languageToggle && languageMenu && 
+          !languageToggle.contains(e.target) && 
+          !languageMenu.contains(e.target)) {
+        languageMenu.classList.add('hidden');
         languageToggle.setAttribute('aria-expanded', 'false');
-        console.log('Menu closed');
+        console.log('📍 Menu closed by outside click');
       }
     });
     
-    // Handle language changes with improved logic
-    languageLinks.forEach(link => {
+    // Handle language selection
+    languageLinks.forEach((link, index) => {
+      console.log(`Setting up language link ${index + 1}:`, link.dataset.lang);
+      
       link.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         
         const targetLang = this.dataset.lang;
-        let currentPath = this.dataset.currentPath || '/';
+        console.log('🌍 Language selected:', targetLang);
         
-        // Get the actual current path from URL and clean it
-        let actualPath = window.location.pathname;
+        // Get current path and clean it
+        let currentPath = window.location.pathname;
         
-        // Remove language prefix from actual path
-        if (actualPath.match(/^\/(ja|zh|zh-TW|ko)\//)) {
-          actualPath = actualPath.replace(/^\/(ja|zh|zh-TW|ko)/, '');
-        } else if (actualPath.match(/^\/(ja|zh|zh-TW|ko)$/)) {
-          actualPath = '/';
+        // Remove language prefix
+        if (currentPath.match(/^\/(ja|zh|zh-TW|ko)\//)) {
+          currentPath = currentPath.replace(/^\/(ja|zh|zh-TW|ko)/, '');
+        } else if (currentPath.match(/^\/(ja|zh|zh-TW|ko)$/)) {
+          currentPath = '/';
         }
         
         // Ensure proper format
-        if (!actualPath.startsWith('/')) {
-          actualPath = '/' + actualPath;
+        if (!currentPath.startsWith('/')) {
+          currentPath = '/' + currentPath;
         }
-        if (!actualPath.endsWith('/') && !actualPath.includes('.')) {
-          actualPath += '/';
+        if (!currentPath.endsWith('/') && !currentPath.includes('.')) {
+          currentPath += '/';
         }
         
-        // Use the cleaned actual path
-        currentPath = actualPath;
+        console.log('📍 Current path:', currentPath);
         
-        // Define available pages for each language
+        // Available pages for each language
         const availablePages = {
           'en': ['/', '/services/', '/about/', '/contact/', '/blog/', '/case-studies/'],
           'ja': ['/', '/services/', '/about/', '/contact/'],
@@ -214,14 +291,13 @@ const currentPath = getCurrentPath();
         const pages = availablePages[targetLang] || ['/'];
         
         if (pages.includes(currentPath)) {
-          // Page exists for target language
           if (targetLang === 'en') {
             targetUrl = currentPath;
           } else {
             targetUrl = `/${targetLang}${currentPath}`;
           }
         } else {
-          // Fallback to home page
+          console.log('⚠️ Page not available, redirecting to home');
           if (targetLang === 'en') {
             targetUrl = '/';
           } else {
@@ -229,7 +305,9 @@ const currentPath = getCurrentPath();
           }
         }
         
-        // Set flag to prevent auto-redirect
+        console.log('🎯 Target URL:', targetUrl);
+        
+        // Set session storage to prevent auto-redirect
         sessionStorage.setItem('userChosenLanguage', targetLang);
         
         // Close menus
@@ -238,7 +316,8 @@ const currentPath = getCurrentPath();
         mobileMenu?.classList.add('hidden');
         mobileMenuButton?.setAttribute('aria-expanded', 'false');
         
-        // Navigate to target URL
+        // Navigate
+        console.log('🚀 Navigating to:', targetUrl);
         window.location.href = targetUrl;
       });
     });
