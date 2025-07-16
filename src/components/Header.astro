@@ -152,34 +152,40 @@ function getLocalizedUrl(path: string) {
 
   function changeLocale(targetLang) {
     const currentPath = window.location.pathname;
-    // Get base path from the meta tag
-    const baseUrlMeta = document.querySelector('meta[name="astro-base-url"]');
-    const basePath = baseUrlMeta ? baseUrlMeta.getAttribute('content').replace(/\/$/, '') : '';
     
-    // Remove base path first
-    let pathWithoutBase = currentPath;
-    if (basePath && pathWithoutBase.startsWith(basePath + '/')) {
-      pathWithoutBase = pathWithoutBase.substring(basePath.length);
-    } else if (pathWithoutBase === basePath) {
-      pathWithoutBase = '/';
+    // Remove any existing language prefix from the path
+    let pathWithoutLang = currentPath.replace(/^\/(ja|zh|zh-TW|ko)(\/|$)/, '/');
+    
+    // Define available pages for each language
+    const availablePages = {
+      'en': ['/', '/services/', '/about/', '/contact/', '/blog/', '/case-studies/'],
+      'ja': ['/', '/services/', '/about/', '/contact/'],
+      'zh': ['/', '/services/', '/about/', '/contact/'],
+      'zh-TW': ['/', '/services/', '/about/', '/contact/'],
+      'ko': ['/', '/services/', '/about/', '/contact/']
+    };
+    
+    // Check if the current page exists for the target language
+    const targetPages = availablePages[targetLang] || ['/'];
+    let targetPath = pathWithoutLang;
+    
+    // If the page doesn't exist for the target language, fallback to home
+    if (!targetPages.includes(pathWithoutLang)) {
+      targetPath = '/';
     }
     
-    // Remove language prefix
-    const pathWithoutLang = pathWithoutBase.replace(/^\/(en|ja|zh|zh-TW|ko)(\/|$)/, '/');
-    
+    // Build the new URL
     let newPath;
     if (targetLang === 'en') {
-      newPath = `${basePath}${pathWithoutLang}`;
+      newPath = targetPath;
     } else {
-      newPath = `${basePath}/${targetLang}${pathWithoutLang}`;
+      newPath = `/${targetLang}${targetPath}`;
     }
     
     // Clean up double slashes and ensure proper formatting
     newPath = newPath.replace(/\/+/g, '/');
-    if (!newPath.endsWith('/') && !newPath.includes('.')) {
-      newPath += '/';
-    }
     
+    // Navigate to the new URL
     window.location.href = newPath;
   }
 </script>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "關於我們 – 企業資訊";
+const description = "了解LAND VISTA Global團隊以及土地盡職調查透明度的重要性。";
+const lang = "zh-TW";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative isolate">
+    <img 
+      src="/assets/img/about-hero.jpg" 
+      alt="" 
+      class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75 aspect-[16/9]"
+      loading="eager"
+      onerror="this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'"
+    >
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
+        土地盡職調查，重新構想。
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl opacity-90">
+        將分散的日本資料轉化為面向海外投資者的清晰、可操作的洞察。
+      </p>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold mb-8 text-center">我們的價值觀</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <div class="text-center">
+        <div class="flex justify-center mb-4">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">透明度</h3>
+        <p class="text-gray-600 leading-relaxed">我們明示所有假設和資料來源。</p>
+      </div>
+
+      <div class="text-center">
+        <div class="flex justify-center mb-4">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">準確性</h3>
+        <p class="text-gray-600 leading-relaxed">認證測量師和雙語法務合作夥伴審查每份報告。</p>
+      </div>
+
+      <div class="text-center">
+        <div class="flex justify-center mb-4">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">可及性</h3>
+        <p class="text-gray-600 leading-relaxed">讓全世界任何人都能理解日本的土地資料。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">準備與我們合作？</h2>
+    <a 
+      href="/zh-TW/contact/" 
+      class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg"
+    >
+      預約免費通話
+    </a>
+  </section>
+</BaseLayout>

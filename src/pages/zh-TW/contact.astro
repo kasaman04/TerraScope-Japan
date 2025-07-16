@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const title = "聯繫我們 – 預約免費諮詢";
+const description = "就日本土地投資與專業團隊進行免費諮詢。首次諮詢免費。";
+const lang = "zh-TW";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        預約免費諮詢
+      </h1>
+      <p class="text-xl text-gray-600 mb-8">
+        專業團隊將詳細解釋日本土地投資相關事宜
+      </p>
+      <div class="text-sm text-gray-500">
+        首次30分鐘諮詢免費 • 24小時內回覆
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">聯繫表單</h2>
+        <ContactForm lang={lang} />
+      </div>
+
+      <!-- Contact Information -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">隨時聯繫我們</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">營業時間</h3>
+            <p class="text-gray-600">
+              週一 - 週五: 9:00 - 18:00 (JST)<br>
+              週六: 10:00 - 16:00 (JST)<br>
+              週日和節假日: 休息
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">服務區域</h3>
+            <p class="text-gray-600">
+              全日本覆蓋<br>
+              *離島和山區可能產生額外費用
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">支援語言</h3>
+            <p class="text-gray-600">
+              日語、英語<br>
+              *其他語言請單獨諮詢
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Overview -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-semibold mb-4">服務概述</h2>
+        <p class="text-gray-600">根據投資目的選擇最優計劃</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">輕度調查</h3>
+          <div class="text-2xl font-bold mb-4">¥50,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 邊界線・用途地域確認</li>
+            <li>• 4頁英文摘要</li>
+            <li>• 3個工作日交付</li>
+          </ul>
+          <a href="/zh-TW/services/light-survey/" class="text-primary-600 hover:text-primary-700 font-medium">
+            查看詳情 →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border-2 border-primary-500">
+          <div class="text-center mb-3">
+            <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs">推薦</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">全面風險報告</h3>
+          <div class="text-2xl font-bold mb-4">¥120,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 自然災害風險評估</li>
+            <li>• 法務・稅務核查</li>
+            <li>• 18頁詳細報告</li>
+            <li>• 含問答通話</li>
+          </ul>
+          <a href="/zh-TW/services/full-report/" class="text-primary-600 hover:text-primary-700 font-medium">
+            查看詳情 →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">360° VR拍攝</h3>
+          <div class="text-2xl font-bold mb-4">¥30,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 4K無人機拍攝</li>
+            <li>• 360°全景視頻</li>
+            <li>• VR頭戴裝置相容</li>
+          </ul>
+          <a href="/zh-TW/services/vr-capture/" class="text-primary-600 hover:text-primary-700 font-medium">
+            查看詳情 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
