@@ -35,7 +35,9 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-XXXXXXXXXX'; // プレースホ
     <!-- Auto language redirect -->
     <script>
       // Only run on the default language pages (no language prefix)
-      if (!window.location.pathname.match(/^\/(ja|zh|zh-TW|ko)/)) {
+      // and only if user hasn't explicitly chosen a language
+      if (!window.location.pathname.match(/^\/(ja|zh|zh-TW|ko)/) && 
+          !sessionStorage.getItem('userChosenLanguage')) {
         const languageMap = { 
           "ja": "ja", 
           "zh": "zh", 

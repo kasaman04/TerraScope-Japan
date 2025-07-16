@@ -219,6 +219,9 @@ const currentPath = getCurrentPath();
         
         console.log('Target URL:', targetUrl);
         
+        // Set flag to prevent auto-redirect
+        sessionStorage.setItem('userChosenLanguage', targetLang);
+        
         // Close menu
         languageMenu?.classList.add('hidden');
         languageToggle?.setAttribute('aria-expanded', 'false');
