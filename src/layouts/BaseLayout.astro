@@ -34,6 +34,11 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-XXXXXXXXXX'; // プレースホ
     
     <!-- Auto language redirect -->
     <script>
+      console.log('=== Auto Redirect Check ===');
+      console.log('Current pathname:', window.location.pathname);
+      console.log('Has language prefix:', !!window.location.pathname.match(/^\/(ja|zh|zh-TW|ko)/));
+      console.log('User chosen language:', sessionStorage.getItem('userChosenLanguage'));
+      
       // Only run on the default language pages (no language prefix)
       // and only if user hasn't explicitly chosen a language
       if (!window.location.pathname.match(/^\/(ja|zh|zh-TW|ko)/) && 

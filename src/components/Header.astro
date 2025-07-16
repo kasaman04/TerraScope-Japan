@@ -170,6 +170,11 @@ const currentPath = getCurrentPath();
         const targetLang = this.dataset.lang;
         let currentPath = this.dataset.currentPath || '/';
         
+        console.log('=== Language Switch Debug ===');
+        console.log('Target language:', targetLang);
+        console.log('Current URL:', window.location.href);
+        console.log('Current pathname:', window.location.pathname);
+        
         // Get the actual current path from URL and clean it
         let actualPath = window.location.pathname;
         
@@ -190,6 +195,9 @@ const currentPath = getCurrentPath();
         
         // Use the cleaned actual path
         currentPath = actualPath;
+        
+        console.log('Cleaned path:', actualPath);
+        console.log('Using currentPath:', currentPath);
         
         // Define available pages for each language
         const availablePages = {
@@ -213,12 +221,16 @@ const currentPath = getCurrentPath();
           }
         } else {
           // Fallback to home page
+          console.log('Page not available for', targetLang, 'falling back to home');
           if (targetLang === 'en') {
             targetUrl = '/';
           } else {
             targetUrl = `/${targetLang}/`;
           }
         }
+        
+        console.log('Final target URL:', targetUrl);
+        console.log('Available pages for', targetLang + ':', availablePages[targetLang]);
         
         // Set flag to prevent auto-redirect
         sessionStorage.setItem('userChosenLanguage', targetLang);
