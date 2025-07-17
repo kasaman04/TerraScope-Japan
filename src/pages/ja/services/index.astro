@@ -67,49 +67,92 @@ try {
 
 <BaseLayout title={title} description={description} lang={lang}>
   <!-- Hero Section -->
-  <section class="relative">
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-green-600"></div>
     <img 
       src={hero_bg} 
       alt="" 
-      class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75"
+      class="w-full h-[60vh] md:h-[70vh] object-cover opacity-30"
       loading="eager"
-      onerror="this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80'"
+      onerror="this.style.display='none'"
     >
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
-        安心して住める日本生活を
-      </h1>
-      <p class="text-lg md:text-xl max-w-2xl opacity-90">
-        外国人の不安を解消する3つのサポートプラン。災害対策から生活手続きまで、言語の壁なくサポートします。
-      </p>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-4 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-5xl mx-auto">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🌍 外国人専門サポート
+          </span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <span class="bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+            安心して住める
+          </span><br>
+          <span class="text-white">日本生活を</span>
+        </h1>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 leading-relaxed opacity-95">
+          外国人の不安を解消する3つのサポートプラン。<br class="hidden sm:block">
+          災害対策から生活手続きまで、言語の壁なくサポートします。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="#services" 
+            class="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-full hover:bg-blue-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+          >
+            📋 プランを見る
+          </a>
+          <a 
+            href="#faq" 
+            class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+          >
+            ❓ よくある質問
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Services Overview -->
-  <section class="max-w-7xl mx-auto px-6 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">「安心して住める」ためのサービスプラン比較</h2>
-      <p class="text-xl text-gray-600">
-        日本に慣れていない外国人でも安心して住めるよう、3つのサービスプランをご用意。<br>
+  <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800 mb-6">
+        🛡️ 安心のサポートプラン
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        「安心して住める」ための<br class="hidden sm:block">
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          サービスプラン比較
+        </span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+        日本に慣れていない外国人でも安心して住めるよう、3つのサービスプランをご用意。<br class="hidden md:block">
         それぞれサポート範囲と安心感のレベルが異なり、あなたの不安解消に応じて選択できます。
       </p>
     </div>
 
-    <!-- Add additional explanation before service cards -->
-    <div class="bg-blue-50 rounded-lg p-6 mb-12">
-      <div class="flex items-start space-x-4">
+    <!-- Plan Selection Guide -->
+    <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 lg:p-8 mb-16 border border-blue-100">
+      <div class="flex flex-col lg:flex-row items-start lg:items-center space-y-4 lg:space-y-0 lg:space-x-6">
         <div class="flex-shrink-0">
-          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-            <span class="text-2xl">🛡️</span>
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
+            <span class="text-3xl">🤔</span>
           </div>
         </div>
-        <div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">どのプランが適切かわからない方へ</h3>
-          <p class="text-gray-700 leading-relaxed">
-            <strong>ライトプラン</strong>：「とりあえず基本は安心」したい方<br>
-            <strong>スタンダードプラン</strong>：「現地で困らないかな？」という不安をかなり軽減したい方<br>
-            <strong>プレミアムプラン</strong>：「困ったときは任せられる」完全な安心を求める方
-          </p>
+        <div class="flex-1">
+          <h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-4">どのプランが適切かわからない方へ</h3>
+          <div class="grid md:grid-cols-3 gap-4 text-sm lg:text-base">
+            <div class="bg-white rounded-lg p-4 border border-blue-200">
+              <div class="font-semibold text-blue-600 mb-2">🛡️ ライトプラン</div>
+              <p class="text-gray-700">「とりあえず基本は安心」したい方</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-green-200">
+              <div class="font-semibold text-green-600 mb-2">⭐ スタンダードプラン</div>
+              <p class="text-gray-700">「現地で困らないかな？」という不安をかなり軽減したい方</p>
+            </div>
+            <div class="bg-white rounded-lg p-4 border border-purple-200">
+              <div class="font-semibold text-purple-600 mb-2">👑 プレミアムプラン</div>
+              <p class="text-gray-700">「困ったときは任せられる」完全な安心を求める方</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -118,42 +161,62 @@ try {
   </section>
 
   <!-- How it Works -->
-  <section class="bg-gray-50 py-16">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">安心サポートの流れ</h2>
-        <p class="text-xl text-gray-600">
+  <section class="bg-gradient-to-b from-gray-50 to-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-green-100 text-green-800 mb-6">
+          📋 サポートプロセス
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          安心サポートの流れ
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
           外国人の不安に寄り添い、母国語で安心して相談できる3ステップ
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
-            <span class="text-2xl font-bold">1</span>
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div class="text-center group">
+          <div class="relative mb-6">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl p-6 mb-4 w-20 h-20 mx-auto flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl font-bold">1</span>
+            </div>
+            <div class="absolute -top-2 -right-2 bg-blue-100 text-blue-600 rounded-full p-2">
+              <span class="text-2xl">🗣️</span>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-3">多言語で無料相談</h3>
-          <p class="text-gray-600">
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">多言語で無料相談</h3>
+          <p class="text-gray-600 leading-relaxed">
             英語でお気軽にご相談ください。あなたの不安や希望をお聞かせし、最適なプランをご提案します。
           </p>
         </div>
 
-        <div class="text-center">
-          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
-            <span class="text-2xl font-bold">2</span>
+        <div class="text-center group">
+          <div class="relative mb-6">
+            <div class="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl p-6 mb-4 w-20 h-20 mx-auto flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl font-bold">2</span>
+            </div>
+            <div class="absolute -top-2 -right-2 bg-green-100 text-green-600 rounded-full p-2">
+              <span class="text-2xl">🔍</span>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-3">安心サポート実施</h3>
-          <p class="text-gray-600">
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">安心サポート実施</h3>
+          <p class="text-gray-600 leading-relaxed">
             バイリンガルスタッフが災害リスクから生活手続きまで、必要な情報を徹底調査。あなたの状況に合わせてカスタマイズします。
           </p>
         </div>
 
-        <div class="text-center">
-          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
-            <span class="text-2xl font-bold">3</span>
+        <div class="text-center group">
+          <div class="relative mb-6">
+            <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl p-6 mb-4 w-20 h-20 mx-auto flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
+              <span class="text-3xl font-bold">3</span>
+            </div>
+            <div class="absolute -top-2 -right-2 bg-purple-100 text-purple-600 rounded-full p-2">
+              <span class="text-2xl">🤝</span>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold mb-3">継続サポート</h3>
-          <p class="text-gray-600">
+          <h3 class="text-2xl font-bold mb-4 text-gray-900">継続サポート</h3>
+          <p class="text-gray-600 leading-relaxed">
             英語レポートとオンライン相談で詳細説明。入居後も一定期間は困り事相談でき、日本生活のヘルプデスクとして活用してください。
           </p>
         </div>
@@ -162,9 +225,21 @@ try {
   </section>
 
   <!-- FAQ Section -->
-  <section class="max-w-4xl mx-auto px-6 py-16">
-    <h2 class="text-3xl font-bold text-center mb-12">日本での生活に関する外国人のよくある疑問・不安FAQ</h2>
-    <p class="text-center text-gray-600 mb-8">日本への移住を検討する外国人が抱きがちな不安や疑問点にお答えします</p>
+  <section id="faq" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-800 mb-6">
+        ❓ よくあるご質問
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        日本での生活に関する<br class="hidden sm:block">
+        <span class="bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
+          外国人のよくある疑問・不安FAQ
+        </span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        日本への移住を検討する外国人が抱きがちな不安や疑問点にお答えします
+      </p>
+    </div>
     
     <Accordion items={[
       {
@@ -203,32 +278,70 @@ try {
   </section>
 
   <!-- CTA Section -->
-  <section class="bg-primary-600 py-16 text-center text-white">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-3xl font-bold mb-4">
-        安心して日本生活を始めませんか？
+  <section class="relative overflow-hidden py-20 lg:py-32">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-green-600"></div>
+    <div class="absolute inset-0 bg-black/20"></div>
+    
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-20 h-20 bg-white rounded-full"></div>
+      <div class="absolute top-32 right-20 w-16 h-16 bg-white rounded-full"></div>
+      <div class="absolute bottom-20 left-32 w-12 h-12 bg-white rounded-full"></div>
+      <div class="absolute bottom-10 right-10 w-24 h-24 bg-white rounded-full"></div>
+    </div>
+    
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <div class="mb-8">
+        <span class="inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+          🌟 今すぐ始めませんか？
+        </span>
+      </div>
+      
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+        安心して<span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">日本生活</span>を<br class="hidden sm:block">
+        始めませんか？
       </h2>
-      <p class="text-xl mb-8 opacity-90">
-        言語の壁や文化の違いで不安なことがあっても、私たちがサポートします。<br>
-        まずはお気軽に、英語でご相談ください。
+      
+      <p class="text-xl md:text-2xl mb-12 opacity-95 max-w-3xl mx-auto leading-relaxed">
+        言語の壁や文化の違いで不安なことがあっても、私たちがサポートします。<br class="hidden md:block">
+        まずはお気軽に、<strong>英語でご相談</strong>ください。
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      
+      <div class="flex flex-col sm:flex-row gap-6 justify-center mb-12">
         <a 
           href="/ja/contact/" 
-          class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg px-8 py-3"
+          class="group inline-flex items-center justify-center px-10 py-5 bg-white text-blue-600 font-bold text-lg rounded-2xl hover:bg-blue-50 transition-all duration-300 shadow-2xl hover:shadow-3xl hover:scale-105 transform"
         >
-          🗣️ 無料相談を申し込む
+          <span class="text-2xl mr-3">🗣️</span>
+          無料相談を申し込む
+          <svg class="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </a>
+        
         <a 
           href="#" 
-          class="btn btn-lg border-2 border-white text-white hover:bg-white hover:text-primary-600 px-8 py-3"
+          class="inline-flex items-center justify-center px-10 py-5 bg-white/20 backdrop-blur-sm text-white font-bold text-lg rounded-2xl border-2 border-white/30 hover:bg-white/30 transition-all duration-300"
         >
-          📄 サービス資料をダウンロード
+          <span class="text-2xl mr-3">📄</span>
+          サービス資料をダウンロード
         </a>
       </div>
-      <p class="text-sm mt-6 opacity-75">
-        ✅ 24時間以内に返信 ✅ 英語・日本語対応 ✅ 完全無料
-      </p>
+      
+      <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        <div class="flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm rounded-lg py-3 px-4">
+          <span class="text-2xl">⚡</span>
+          <span class="font-semibold">24時間以内に返信</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm rounded-lg py-3 px-4">
+          <span class="text-2xl">🌍</span>
+          <span class="font-semibold">英語・日本語対応</span>
+        </div>
+        <div class="flex items-center justify-center space-x-2 bg-white/10 backdrop-blur-sm rounded-lg py-3 px-4">
+          <span class="text-2xl">💯</span>
+          <span class="font-semibold">完全無料</span>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

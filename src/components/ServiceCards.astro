@@ -4,22 +4,31 @@ import { getLangFromUrl } from '../utils/i18n';
 export interface Service {
   key: string;
   title: string;
+  subtitle?: string;
   price: string;
   bullets: string[];
 }
 
 export interface Props {
-  items: Service[];
-  show: number | "all";
+  services: Service[];
+  lang?: string;
+  show?: number | "all";
   ctaLabel?: string;
 }
 
-const { items = [], show, ctaLabel = "Learn more" } = Astro.props;
+const { services = [], show = "all", ctaLabel = "詳細を見る", lang: propLang } = Astro.props;
 
-const displayServices = show === "all" ? items : items.slice(0, show);
+const displayServices = show === "all" ? services : services.slice(0, show);
+
+// Plan colors and icons
+const planStyles = {
+  light: { color: 'bg-blue-50 border-blue-200', accent: 'text-blue-600', icon: '🛡️' },
+  standard: { color: 'bg-green-50 border-green-200', accent: 'text-green-600', icon: '⭐' },
+  premium: { color: 'bg-purple-50 border-purple-200', accent: 'text-purple-600', icon: '👑' }
+};
 
 // Get language and base URL for proper routing
-const lang = getLangFromUrl(Astro.url);
+const lang = propLang || getLangFromUrl(Astro.url);
 const baseUrl = import.meta.env.BASE_URL;
 
 // Helper function to create proper URLs with base path and language
@@ -31,32 +40,57 @@ function getLocalizedUrl(path: string) {
 }
 ---
 
-<section class="py-16">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
-      <p class="text-xl text-gray-600">Choose the right level of detail for your investment</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8">
-      {displayServices.map((service) => (
-        <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-          <h3 class="text-2xl font-semibold mb-2">{service.title}</h3>
-          <p class="text-3xl font-bold text-primary-600 mb-6">{service.price}</p>
-          <ul class="space-y-3 mb-6">
-            {service.bullets.map((bullet) => (
-              <li class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+<div class="grid lg:grid-cols-3 gap-8">
+  {displayServices.map((service) => {
+    const style = planStyles[service.key] || planStyles.light;
+    const isPopular = service.key === 'standard';
+    
+    return (
+      <div class={`relative bg-white rounded-2xl shadow-lg border-2 ${style.color} p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${isPopular ? 'scale-105 ring-4 ring-green-200' : ''}`}>
+        {isPopular && (
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+            <span class="bg-green-500 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
+              ⭐ 最も人気
+            </span>
+          </div>
+        )}
+        
+        <div class="text-center mb-6">
+          <div class="text-4xl mb-3">{style.icon}</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">{service.title}</h3>
+          {service.subtitle && (
+            <p class="text-gray-600 text-sm leading-relaxed">{service.subtitle}</p>
+          )}
+        </div>
+        
+        <div class="text-center mb-8">
+          <span class={`text-4xl font-bold ${style.accent}`}>{service.price}</span>
+          <p class="text-gray-500 text-sm mt-1">税込価格</p>
+        </div>
+        
+        <div class="space-y-4 mb-8">
+          {service.bullets.map((bullet, index) => (
+            <div class="flex items-start space-x-3">
+              <div class={`flex-shrink-0 w-6 h-6 rounded-full ${style.accent.replace('text-', 'bg-').replace('-600', '-100')} flex items-center justify-center mt-0.5`}>
+                <svg class={`w-4 h-4 ${style.accent}`} fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                 </svg>
-                <span class="text-gray-700">{bullet}</span>
-              </li>
-            ))}
-          </ul>
-          <a href={getLocalizedUrl(service.key === 'light' ? 'services/light-survey' : `services/${service.key}`)} class="btn btn-lg w-full bg-primary-600 text-white hover:bg-primary-700">
-            {ctaLabel}
-          </a>
+              </div>
+              <span class="text-gray-700 text-sm leading-relaxed">{bullet}</span>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+        
+        <div class="text-center">
+          <a 
+            href={getLocalizedUrl('contact')} 
+            class={`btn btn-lg w-full ${style.accent.replace('text-', 'bg-').replace('-600', '-500')} text-white hover:${style.accent.replace('text-', 'bg-').replace('-600', '-600')} transform transition-all duration-200 hover:scale-105 shadow-lg`}
+          >
+            🗣️ {ctaLabel}
+          </a>
+          <p class="text-xs text-gray-500 mt-3">📞 24時間以内に返信 | 🌍 英語対応</p>
+        </div>
+      </div>
+    );
+  })}
+</div>
