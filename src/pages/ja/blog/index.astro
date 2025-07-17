@@ -1,141 +1,306 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import BlogCard from '../../../components/BlogCard.astro';
 
-const title = "ブログ – 土地投資ガイド";
-const description = "日本の土地購入、規制、リスク管理に関する詳細ガイド。";
+const title = "日本で暮らす - 地域別生活情報ガイド";
+const description = "外国人が日本で暮らすことを検討する際の、地域ごとの生活視点情報を提供。防災、インフラ、生活コスト、再開発、法制度などを詳しく解説。";
 const lang = "ja";
 
-// 英語版のブログ記事を取得
-const posts = await Astro.glob('../../../content/posts/*.md');
+// 地域データの定義
+const regions = [
+  {
+    name: "関東地方",
+    prefectures: [
+      { 
+        name: "東京都", 
+        slug: "tokyo",
+        image: "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "日本の首都。ビジネスと文化の中心地",
+        cities: ["千代田区", "港区", "新宿区", "渋谷区", "世田谷区", "武蔵野市"]
+      },
+      { 
+        name: "神奈川県", 
+        slug: "kanagawa",
+        image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "横浜・鎌倉・湘南エリアを持つ人気の居住地",
+        cities: ["横浜市", "川崎市", "鎌倉市", "藤沢市", "相模原市"]
+      },
+      { 
+        name: "千葉県", 
+        slug: "chiba",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "成田空港と東京ディズニーリゾートの所在地",
+        cities: ["千葉市", "船橋市", "柏市", "浦安市", "成田市"]
+      },
+      { 
+        name: "埼玉県", 
+        slug: "saitama",
+        image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "東京へのアクセス良好な住宅地",
+        cities: ["さいたま市", "川口市", "所沢市", "越谷市", "川越市"]
+      }
+    ]
+  },
+  {
+    name: "関西地方",
+    prefectures: [
+      { 
+        name: "大阪府", 
+        slug: "osaka",
+        image: "https://images.unsplash.com/photo-1589451560115-9f86a404f3de?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "西日本の経済中心地。食文化が豊か",
+        cities: ["大阪市", "堺市", "豊中市", "吹田市", "枚方市"]
+      },
+      { 
+        name: "京都府", 
+        slug: "kyoto",
+        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "伝統文化と現代が調和する古都",
+        cities: ["京都市", "宇治市", "長岡京市", "亀岡市"]
+      },
+      { 
+        name: "兵庫県", 
+        slug: "hyogo",
+        image: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "神戸港を中心とした国際都市",
+        cities: ["神戸市", "姫路市", "西宮市", "尼崎市", "明石市"]
+      }
+    ]
+  },
+  {
+    name: "その他の地方",
+    prefectures: [
+      { 
+        name: "北海道", 
+        slug: "hokkaido",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "広大な自然と冬のリゾート地",
+        cities: ["札幌市", "旭川市", "函館市", "小樽市", "帯広市"]
+      },
+      { 
+        name: "愛知県", 
+        slug: "aichi",
+        image: "https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "自動車産業の中心地",
+        cities: ["名古屋市", "豊田市", "岡崎市", "一宮市", "豊橋市"]
+      },
+      { 
+        name: "福岡県", 
+        slug: "fukuoka",
+        image: "https://images.unsplash.com/photo-1586551292408-e03ccbcbd4b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        description: "九州の玄関口。アジアへのアクセス良好",
+        cities: ["福岡市", "北九州市", "久留米市", "春日市", "大野城市"]
+      }
+    ]
+  }
+];
 
-// 日付順にソート（新しい順）
-const sortedPosts = posts.sort((a, b) => 
-  new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
-);
-
-// 最新の3記事のみ表示
-const featuredPosts = sortedPosts.slice(0, 3);
+// 記事テーマの定義
+const articleThemes = [
+  { icon: "🛡️", title: "防災", subtitle: "地震・水害リスクと避難体制" },
+  { icon: "🏥", title: "生活インフラ", subtitle: "スーパー・病院・学校" },
+  { icon: "💰", title: "生活コスト", subtitle: "家賃・光熱費・交通費など" },
+  { icon: "🏗️", title: "再開発・公共整備", subtitle: "今後の暮らしやすさ" },
+  { icon: "📜", title: "法制度", subtitle: "外国人の購入制限・手続き" },
+  { icon: "📷", title: "現地調査レポート", subtitle: "映像と写真で見る街" }
+];
 ---
 
 <BaseLayout {title} {description} {lang}>
   <!-- Hero Section -->
-  <section class="relative isolate">
-    <img 
-      src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-      alt="" 
-      class="w-full h-[35vh] object-cover brightness-75"
-    />
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
-      <h1 class="text-3xl md:text-4xl font-bold mb-2">専門知識ハブ</h1>
-      <p class="text-lg">海外投資家のための実用的な洞察</p>
+  <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-32 h-32 border border-white rounded-full"></div>
+      <div class="absolute top-40 right-32 w-24 h-24 border border-white rounded-full"></div>
+      <div class="absolute bottom-32 left-40 w-20 h-20 border border-white rounded-full"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center text-white">
+      <div class="mb-8">
+        <span class="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+          🏠 外国人のための地域別暮らし情報
+        </span>
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        日本で<span class="text-yellow-300">暮らす</span><br>
+        <span class="text-lg md:text-xl font-normal opacity-90">あなたに最適な地域を見つけよう</span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl mb-8 opacity-95 max-w-4xl mx-auto leading-relaxed">
+        外国人が日本で安心して暮らせるよう、各地域の生活情報を詳しく解説。<br class="hidden md:block">
+        防災・インフラ・生活コスト・法制度まで、居住者視点で徹底調査しています。
+      </p>
     </div>
   </section>
 
-  <!-- Blog Introduction -->
-  <section class="max-w-4xl mx-auto px-6 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-2xl font-semibold mb-4">土地投資の専門情報</h2>
-      <p class="text-gray-600 leading-relaxed">
-        日本の土地投資に関する法的規制、リスク評価、市場動向などの専門情報を日本語で提供しています。
-        海外投資家の皆様が安全で収益性の高い投資を行えるよう、実践的なガイドをお届けします。
-      </p>
-    </div>
+  <!-- Article Themes Overview -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          6つの視点から<span class="text-blue-600">地域を理解</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          暮らしに必要な情報を、外国人の視点でわかりやすく解説します
+        </p>
+      </div>
 
-    <!-- Featured Articles -->
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
-      {featuredPosts.map((post) => (
-        <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-          <img 
-            src={post.frontmatter.image || "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"}
-            alt={post.frontmatter.title}
-            class="w-full h-48 object-cover"
-            loading="lazy"
-          />
-          <div class="p-6">
-            <div class="flex items-center mb-2">
-              <span class="text-sm text-primary-600 font-medium">
-                {new Date(post.frontmatter.date).toLocaleDateString('ja-JP', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </span>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articleThemes.map((theme) => (
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <span class="text-3xl mr-4">{theme.icon}</span>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">{theme.title}</h3>
+                <p class="text-sm text-gray-600">{theme.subtitle}</p>
+              </div>
             </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">{post.frontmatter.title}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">
-              {post.frontmatter.description}
-            </p>
-            <a 
-              href={post.url} 
-              class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm"
-            >
-              続きを読む
-              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Region Selection -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          地域を選んで<span class="text-blue-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          都道府県を選択して、市区町村ごとの詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      {regions.map((region) => (
+        <div class="mb-16">
+          <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">{region.name}</h3>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {region.prefectures.map((prefecture) => (
+              <div class="group cursor-pointer" onclick={`showCities('${prefecture.slug}')`}>
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div class="relative h-48 overflow-hidden">
+                    <img 
+                      src={prefecture.image}
+                      alt={prefecture.name}
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                      <h4 class="text-xl font-bold mb-1">{prefecture.name}</h4>
+                      <p class="text-sm opacity-90">{prefecture.description}</p>
+                    </div>
+                  </div>
+                  
+                  <div id={`cities-${prefecture.slug}`} class="hidden p-4 bg-gray-50">
+                    <p class="text-sm font-semibold text-gray-700 mb-3">主要な市区町村：</p>
+                    <div class="grid grid-cols-2 gap-2">
+                      {prefecture.cities.map((city) => (
+                        <a 
+                          href={`/ja/blog/${prefecture.slug}/${city.toLowerCase().replace(/[市区町村]/g, '')}/`}
+                          class="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                        >
+                          {city}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       ))}
     </div>
+  </section>
 
-    <!-- Topics Section -->
-    <div class="bg-gray-50 rounded-lg p-8">
-      <h3 class="text-xl font-semibold mb-6 text-center">主要トピック</h3>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+  <!-- Sample Article Preview -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          記事サンプル：<span class="text-blue-600">東京都武蔵野市</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          実際の記事がどのような内容か、サンプルをご覧ください
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">東京都 武蔵野市での暮らし</h3>
+          <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+            <div>
+              <p><strong>人口：</strong>約14万人</p>
+              <p><strong>特徴：</strong>井の頭公園が人気の閑静エリア。中央線で新宿にも近い。</p>
+            </div>
+            <div>
+              <p><strong>外国人人口：</strong>約3,000人（2.1%）</p>
+              <p><strong>主要言語：</strong>英語、中国語、韓国語対応施設あり</p>
+            </div>
           </div>
-          <h4 class="font-semibold mb-2">法的規制</h4>
-          <p class="text-sm text-gray-600">外国人土地法、都市計画法などの重要な規制について</p>
         </div>
 
-        <div class="text-center">
-          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+        <div class="border-t pt-6">
+          <h4 class="text-lg font-bold text-gray-900 mb-4">暮らしに役立つ記事一覧</h4>
+          <div class="grid md:grid-cols-2 gap-4">
+            {articleThemes.map((theme) => (
+              <a 
+                href="/ja/blog/tokyo/musashino/article-01/" 
+                class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <span class="text-2xl mr-3">{theme.icon}</span>
+                <div>
+                  <p class="font-semibold text-gray-900">{theme.title}</p>
+                  <p class="text-sm text-gray-600">{theme.subtitle}</p>
+                </div>
+              </a>
+            ))}
           </div>
-          <h4 class="font-semibold mb-2">自然災害リスク</h4>
-          <p class="text-sm text-gray-600">地震、津波、洪水などのリスク評価と対策</p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 00-2-2z" />
-            </svg>
-          </div>
-          <h4 class="font-semibold mb-2">市場分析</h4>
-          <p class="text-sm text-gray-600">地域別の投資機会と価格動向の分析</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Call to Action -->
-    <div class="text-center mt-12">
-      <h3 class="text-xl font-semibold mb-4">より詳しい情報をお求めですか？</h3>
-      <p class="text-gray-600 mb-6">
-        専門家による個別コンサルテーションで、あなたの投資計画に最適なアドバイスを提供します。
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        もっと詳しく<span class="text-yellow-300">調査してほしい</span>ですか？
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        あなたが検討している地域について、プロによる詳細な調査レポートを提供します
       </p>
+      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a 
-          href="/ja/contact/" 
-          class="btn bg-primary-600 text-white hover:bg-primary-700 px-6 py-3"
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
         >
-          無料相談を予約
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
         </a>
         <a 
-          href="/blog/" 
-          class="btn border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3"
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
         >
-          英語記事を読む
+          <span class="mr-3">💬</span>
+          無料相談する
         </a>
       </div>
     </div>
   </section>
+
+  <script>
+    function showCities(prefectureSlug) {
+      const citiesDiv = document.getElementById(`cities-${prefectureSlug}`);
+      if (citiesDiv) {
+        citiesDiv.classList.toggle('hidden');
+      }
+    }
+  </script>
 </BaseLayout>
