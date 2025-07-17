@@ -161,59 +161,121 @@ const articleThemes = [
     </div>
   </section>
 
-  <!-- Region Selection -->
+  <!-- Dynamic City Selection -->
   <section class="py-16 lg:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          地域を選んで<span class="text-blue-600">詳しい情報を見る</span>
+          市区町村を選んで<span class="text-blue-600">詳しい情報を見る</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          都道府県を選択して、市区町村ごとの詳細な生活情報をご覧ください
+          都道府県と市区町村を選択して、詳細な生活情報をご覧ください
         </p>
       </div>
 
-      {regions.map((region) => (
-        <div class="mb-16">
-          <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">{region.name}</h3>
+      <!-- Selection Interface -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <div class="bg-gray-50 rounded-2xl p-8">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="prefecture-select" class="block text-sm font-semibold text-gray-700 mb-2">
+                都道府県を選択
+              </label>
+              <select id="prefecture-select" onchange="updateCities()" 
+                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <option value="">選択してください</option>
+                <option value="tokyo">東京都</option>
+                <option value="kanagawa">神奈川県</option>
+                <option value="chiba">千葉県</option>
+                <option value="saitama">埼玉県</option>
+                <option value="osaka">大阪府</option>
+                <option value="kyoto">京都府</option>
+                <option value="hyogo">兵庫県</option>
+                <option value="hokkaido">北海道</option>
+                <option value="aichi">愛知県</option>
+                <option value="fukuoka">福岡県</option>
+              </select>
+            </div>
+            
+            <div>
+              <label for="city-select" class="block text-sm font-semibold text-gray-700 mb-2">
+                市区町村を選択
+              </label>
+              <select id="city-select" onchange="displayCityInfo()" 
+                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+                      disabled>
+                <option value="">都道府県を先に選択してください</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- City Information Display -->
+      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6 text-white">
+            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <p id="population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="foreign-population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="main-features" class="opacity-90"></p>
+              </div>
+            </div>
+          </div>
           
-          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {region.prefectures.map((prefecture) => (
-              <div class="group cursor-pointer" onclick={`showCities('${prefecture.slug}')`}>
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div class="relative h-48 overflow-hidden">
-                    <img 
-                      src={prefecture.image}
-                      alt={prefecture.name}
-                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 text-white">
-                      <h4 class="text-xl font-bold mb-1">{prefecture.name}</h4>
-                      <p class="text-sm opacity-90">{prefecture.description}</p>
-                    </div>
-                  </div>
-                  
-                  <div id={`cities-${prefecture.slug}`} class="hidden p-4 bg-gray-50">
-                    <p class="text-sm font-semibold text-gray-700 mb-3">主要な市区町村：</p>
-                    <div class="grid grid-cols-2 gap-2">
-                      {prefecture.cities.map((city) => (
-                        <a 
-                          href={`/ja/blog/${prefecture.slug}/${city.toLowerCase().replace(/[市区町村]/g, '')}/`}
-                          class="text-sm text-blue-600 hover:text-blue-800 hover:underline"
-                        >
-                          {city}
-                        </a>
-                      ))}
+          <div class="p-8">
+            <p id="city-description" class="text-gray-600 mb-8"></p>
+            
+            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
+            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
+            
+            <div class="mt-8 text-center">
+              <a id="view-city-page" href="#" 
+                 class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold text-lg rounded-full hover:bg-blue-700 transition-all duration-300">
+                <span class="mr-3">📋</span>
+                詳細ページを見る
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Static Region Display for fallback -->
+      <div id="region-cards" class="space-y-16">
+        {regions.map((region) => (
+          <div class="mb-16">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">{region.name}</h3>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {region.prefectures.map((prefecture) => (
+                <div class="group cursor-pointer" onclick={`selectPrefecture('${prefecture.slug}')`}>
+                  <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-48 overflow-hidden">
+                      <img 
+                        src={prefecture.image}
+                        alt={prefecture.name}
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div class="absolute bottom-4 left-4 text-white">
+                        <h4 class="text-xl font-bold mb-1">{prefecture.name}</h4>
+                        <p class="text-sm opacity-90">{prefecture.description}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 
@@ -296,11 +358,203 @@ const articleThemes = [
   </section>
 
   <script>
-    function showCities(prefectureSlug) {
-      const citiesDiv = document.getElementById(`cities-${prefectureSlug}`);
-      if (citiesDiv) {
-        citiesDiv.classList.toggle('hidden');
+    // 市区町村データ
+    const cityData = {
+      tokyo: {
+        name: "東京都",
+        cities: {
+          musashino: {
+            title: "武蔵野市",
+            population: "人口：約14万7千人",
+            foreignPopulation: "外国人人口：約3,200人（2.2%）",
+            features: "井の頭公園で有名な閑静エリア",
+            description: "吉祥寺を中心とした人気エリア。都心へのアクセスと住環境のバランスが魅力の武蔵野市は、外国人にも住みやすい環境が整っています。",
+            articles: [
+              { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/tokyo/musashino/article-01/" },
+              { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/tokyo/musashino/article-02/" },
+              { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/tokyo/musashino/article-03/" },
+              { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/tokyo/musashino/article-04/" },
+              { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/tokyo/musashino/article-05/" },
+              { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/tokyo/musashino/article-06/" }
+            ],
+            pageUrl: "/ja/blog/tokyo/musashino/"
+          },
+          kunitachi: {
+            title: "国立市",
+            population: "人口：約7万5千人",
+            foreignPopulation: "外国人人口：約1,800人（2.4%）",
+            features: "文教都市として有名",
+            description: "一橋大学があることで知られる文教都市。街並みが美しく整備されており、学術的な雰囲気が漂う住環境です。",
+            articles: [
+              { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/tokyo/kunitachi/article-01/" },
+              { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/tokyo/kunitachi/article-02/" },
+              { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/tokyo/kunitachi/article-03/" },
+              { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/tokyo/kunitachi/article-04/" },
+              { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/tokyo/kunitachi/article-05/" },
+              { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/tokyo/kunitachi/article-06/" }
+            ],
+            pageUrl: "/ja/blog/tokyo/kunitachi/"
+          },
+          shibuya: {
+            title: "渋谷区",
+            population: "人口：約23万人",
+            foreignPopulation: "外国人人口：約15,000人（6.5%）",
+            features: "国際的な商業・文化の中心地",
+            description: "若者文化と国際ビジネスの発信地。多様性に富んだ環境で、多くの外国人が住み働いています。",
+            articles: [
+              { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/tokyo/shibuya/article-01/" },
+              { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/tokyo/shibuya/article-02/" },
+              { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/tokyo/shibuya/article-03/" },
+              { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/tokyo/shibuya/article-04/" },
+              { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/tokyo/shibuya/article-05/" },
+              { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/tokyo/shibuya/article-06/" }
+            ],
+            pageUrl: "/ja/blog/tokyo/shibuya/"
+          }
+        }
+      },
+      kanagawa: {
+        name: "神奈川県",
+        cities: {
+          yokohama: {
+            title: "横浜市",
+            population: "人口：約377万人",
+            foreignPopulation: "外国人人口：約10万人（2.7%）",
+            features: "国際港湾都市",
+            description: "日本最大の港湾都市として発展。中華街やみなとみらいなど、国際色豊かな環境が魅力です。",
+            articles: [
+              { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kanagawa/yokohama/article-01/" },
+              { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kanagawa/yokohama/article-02/" },
+              { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kanagawa/yokohama/article-03/" },
+              { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kanagawa/yokohama/article-04/" },
+              { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kanagawa/yokohama/article-05/" },
+              { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kanagawa/yokohama/article-06/" }
+            ],
+            pageUrl: "/ja/blog/kanagawa/yokohama/"
+          }
+        }
+      },
+      osaka: {
+        name: "大阪府",
+        cities: {
+          osaka: {
+            title: "大阪市",
+            population: "人口：約275万人",
+            foreignPopulation: "外国人人口：約13万人（4.7%）",
+            features: "西日本の経済中心地",
+            description: "商業と文化の街として栄える西日本最大の都市。食文化が豊かで、外国人コミュニティも活発です。",
+            articles: [
+              { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/osaka/article-01/" },
+              { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/osaka/article-02/" },
+              { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/osaka/article-03/" },
+              { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/osaka/article-04/" },
+              { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/osaka/article-05/" },
+              { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/osaka/article-06/" }
+            ],
+            pageUrl: "/ja/blog/osaka/osaka/"
+          }
+        }
       }
+    };
+
+    // 都道府県選択時に市区町村リストを更新
+    function updateCities() {
+      const prefectureSelect = document.getElementById("prefecture-select");
+      const citySelect = document.getElementById("city-select");
+      const cityInfo = document.getElementById("city-info");
+      
+      const selectedPrefecture = prefectureSelect.value;
+      
+      // 市区町村選択をリセット
+      citySelect.innerHTML = '<option value="">市区町村を選択してください</option>';
+      cityInfo.style.display = "none";
+      
+      if (selectedPrefecture && cityData[selectedPrefecture]) {
+        citySelect.disabled = false;
+        const cities = cityData[selectedPrefecture].cities;
+        
+        Object.keys(cities).forEach(cityKey => {
+          const option = document.createElement("option");
+          option.value = cityKey;
+          option.textContent = cities[cityKey].title;
+          citySelect.appendChild(option);
+        });
+      } else {
+        citySelect.disabled = true;
+      }
+    }
+
+    // 市区町村選択時に詳細情報を表示
+    function displayCityInfo() {
+      const prefectureSelect = document.getElementById("prefecture-select");
+      const citySelect = document.getElementById("city-select");
+      const cityInfo = document.getElementById("city-info");
+      
+      const selectedPrefecture = prefectureSelect.value;
+      const selectedCity = citySelect.value;
+      
+      if (!selectedPrefecture || !selectedCity || !cityData[selectedPrefecture]?.cities[selectedCity]) {
+        cityInfo.style.display = "none";
+        return;
+      }
+      
+      const city = cityData[selectedPrefecture].cities[selectedCity];
+      
+      // 基本情報を更新
+      document.getElementById("city-title").textContent = city.title;
+      document.getElementById("population").textContent = city.population;
+      document.getElementById("foreign-population").textContent = city.foreignPopulation;
+      document.getElementById("main-features").textContent = city.features;
+      document.getElementById("city-description").textContent = city.description;
+      
+      // 記事リンクを更新
+      const linksContainer = document.getElementById("article-links");
+      linksContainer.innerHTML = "";
+      
+      city.articles.forEach(article => {
+        const linkDiv = document.createElement("div");
+        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
+        
+        const link = document.createElement("a");
+        link.href = article.url;
+        link.className = "flex items-center text-gray-900 hover:text-blue-600 transition-colors";
+        link.innerHTML = `
+          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
+          <div>
+            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
+          </div>
+        `;
+        
+        linkDiv.appendChild(link);
+        linksContainer.appendChild(linkDiv);
+      });
+      
+      // 詳細ページリンクを更新
+      document.getElementById("view-city-page").href = city.pageUrl;
+      
+      // 情報ボックスを表示
+      cityInfo.style.display = "block";
+      
+      // スムーズスクロール
+      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // 都道府県カードクリック時の処理
+    function selectPrefecture(prefectureSlug) {
+      const prefectureSelect = document.getElementById("prefecture-select");
+      prefectureSelect.value = prefectureSlug;
+      updateCities();
+      
+      // プルダウン部分にスムーズスクロール
+      document.querySelector('.max-w-2xl.mx-auto.mb-12').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }
+
+    // レガシー関数（既存のリンクとの互換性のため）
+    function showCities(prefectureSlug) {
+      selectPrefecture(prefectureSlug);
     }
   </script>
 </BaseLayout>
