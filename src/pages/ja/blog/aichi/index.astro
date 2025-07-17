@@ -14,6 +14,11 @@ const aichiCities = {
     features: "中部地方の中心都市",
     description: "中部地方最大の都市。製造業が盛んで、多くの外国人研修生や技能実習生が住んでいます。",
     image: "https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["中部中心都市", "製造業", "技能実習"],
+    englishHospital: true,
+    airport: "◎（中部国際空港直結）",
+    rent: "中程度",
+    recommend: "製造業で働く外国人・研修生",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aichi/nagoya/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aichi/nagoya/article-02/" },
@@ -31,6 +36,11 @@ const aichiCities = {
     features: "自動車産業の中心地",
     description: "トヨタ自動車の本社所在地。自動車関連企業が多く、国際的な製造業の街として発展しています。",
     image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["自動車産業", "トヨタ", "国際企業"],
+    englishHospital: true,
+    airport: "○（中部国際空港へ電車で）",
+    rent: "中程度",
+    recommend: "自動車業界で働く外国人",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aichi/toyota/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aichi/toyota/article-02/" },
@@ -168,22 +178,35 @@ const aichiCities = {
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
           {Object.entries(aichiCities).map(([key, city]) => (
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-                 onclick={`selectCity('${key}')`}>
-              <div class="relative h-32 overflow-hidden">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-48 overflow-hidden">
                 <img 
                   src={city.image}
                   alt={city.title}
-                  class="w-full h-full object-cover"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-2 left-3 text-white">
-                  <h4 class="font-bold">{city.title}</h4>
+                <div class="absolute bottom-3 left-3 text-white">
+                  <h4 class="font-bold text-lg">{city.title}</h4>
+                </div>
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
+                <!-- タグ表示 -->
+                <div class="flex gap-2 mb-3">
+                  {city.tags && city.tags.slice(0, 2).map(tag => (
+                    <span class="text-xs bg-rose-100 text-rose-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                  ))}
+                </div>
                 <p class="text-xs text-gray-500">{city.population}</p>
               </div>
             </div>
