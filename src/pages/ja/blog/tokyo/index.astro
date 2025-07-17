@@ -272,25 +272,27 @@ const tokyoCities = {
                 <img 
                   src={city.image}
                   alt={city.title}
-                  class="w-full h-full object-cover"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-2 left-3 text-white">
+                <div class="absolute bottom-3 left-3 text-white">
                   <h4 class="font-bold text-lg">{city.title}</h4>
                 </div>
-                <div class="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-full p-1">
-                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                   </svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
-                <div class="flex gap-1 mb-2">
+                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
+                <!-- タグ表示 -->
+                <div class="flex gap-2 mb-3">
                   {city.tags && city.tags.slice(0, 2).map(tag => (
-                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">{tag}</span>
+                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full font-medium">{tag}</span>
                   ))}
                 </div>
                 <p class="text-xs text-gray-500">{city.population}</p>
@@ -301,9 +303,9 @@ const tokyoCities = {
       </div>
 
       <!-- Modal -->
-      <div id="city-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
-        <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto">
-          <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+      <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+          <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
           <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
           
@@ -346,9 +348,9 @@ const tokyoCities = {
                class="flex-1 text-center bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition-colors">
               📖 詳しい記事を見る
             </a>
-            <button onclick="selectCity(currentCityKey)" 
+            <button id="close-modal-btn"
                     class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-              プルダウンで表示
+              閉じる
             </button>
           </div>
         </div>
@@ -661,26 +663,37 @@ const tokyoCities = {
       if (city.tags) {
         city.tags.forEach(tag => {
           const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full';
+          tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium';
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });
       }
 
-      // モーダルを表示
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // スクロールを無効化
+      // モーダルを表示（アニメーション付き）
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
     }
 
     // モーダルを閉じる
     function closeCityModal() {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // スクロールを有効化
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
       currentCityKey = '';
     }
 
-    // モーダル閉じるボタンのイベント
+    // イベントリスナー
+    const closeModalBtn = document.getElementById('close-modal-btn');
     modalClose.addEventListener('click', closeCityModal);
+    closeModalBtn.addEventListener('click', closeCityModal);
 
     // モーダル背景クリックで閉じる
     modal.addEventListener('click', (e) => {
@@ -691,7 +704,7 @@ const tokyoCities = {
 
     // ESCキーでモーダルを閉じる
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.style.display === 'flex') {
+      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
         closeCityModal();
       }
     });
