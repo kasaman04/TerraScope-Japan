@@ -1,275 +1,400 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import TeamGrid from '../../components/TeamGrid.astro';
-import ValuesList from '../../components/ValuesList.astro';
-import Timeline from '../../components/Timeline.astro';
-import LogoCloud from '../../components/LogoCloud.astro';
+import { sanity } from "../../lib/sanity";
 
-const title = "私たちについて – 企業情報";
-const description = "LAND VISTA Globalチームについてと、土地デューデリジェンスの透明性がなぜ重要かをご紹介します。";
+const title = "安心して日本で暮らすための、土地調査の専門家";
+const description = "私たちは、日本での暮らしを検討する海外在住者・外国人のために、安全・生活・制度の面から土地リスクを総合的に調査します。";
 const lang = "ja";
+
+// チームメンバーデータ
+const teamMembers = [
+  {
+    name: "岩佐 和真",
+    nameEn: "Kazuma Iwasa",
+    role: "創設者・地域調査責任者",
+    languages: "日本語・英語",
+    description: "地域調査・行政対応を専門とし、外国人の日本での住居選択を10年以上サポート。不動産業界での豊富な経験を持つ。",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    linkedin: "#"
+  },
+  {
+    name: "陳 明",
+    nameEn: "Chen Ming", 
+    role: "中国語対応・制度翻訳",
+    languages: "中国語・日本語・英語",
+    description: "中国語圏のクライアント対応を担当。日本の複雑な制度を分かりやすく翻訳・説明することを専門とする。",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    linkedin: "#"
+  },
+  {
+    name: "金 ユジン",
+    nameEn: "Yujin Kim",
+    role: "韓国語対応・現地調査",
+    languages: "韓国語・日本語・英語", 
+    description: "韓国語での対応と現地調査を担当。きめ細やかな調査と丁寧な説明で、安心できる住居選択をサポート。",
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b390?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+    linkedin: "#"
+  }
+];
+
+// 実績事例データ
+const caseStudies = [
+  {
+    title: "東京・練馬区の戸建て購入者のための防災＋再開発＋生活インフラ調査",
+    description: "アメリカ在住の日本系家族向けに、子育て環境と災害リスクを重点的に調査",
+    result: "安全性A評価、教育環境優良の判定で購入決定をサポート"
+  },
+  {
+    title: "北海道でのリゾートマンション購入に向けた360°現地撮影レポート",
+    description: "カナダ在住投資家向けに、雪景色や周辺環境を360°映像で詳細記録",
+    result: "現地に行かずに購入判断が可能な詳細情報を提供"
+  },
+  {
+    title: "大阪・住吉区のファミリー向け賃貸住宅調査",
+    description: "中国系家族向けに、中華街アクセスや中国語対応施設を重点調査",
+    result: "文化的な生活環境も含めた総合評価で安心の住居選択を実現"
+  }
+];
 ---
 
 <BaseLayout title={title} description={description} lang={lang}>
   <!-- Hero Section -->
-  <section class="relative isolate">
-    <img 
-      src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-      alt="" 
-      class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75 aspect-[16/9]"
-      loading="eager"
-    >
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
-        土地デューデリジェンス、再構築。
-      </h1>
-      <p class="text-lg md:text-xl max-w-2xl opacity-90">
-        散在する日本のデータを、海外投資家向けの明確で実用的な洞察に変換します。
-      </p>
+  <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-32 h-32 border border-white rounded-full"></div>
+      <div class="absolute top-40 right-32 w-24 h-24 border border-white rounded-full"></div>
+      <div class="absolute bottom-32 left-40 w-20 h-20 border border-white rounded-full"></div>
     </div>
-  </section>
-
-  <!-- Values Section -->
-  <section class="max-w-5xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-semibold mb-8 text-center">私たちの価値観</h2>
-    <div class="grid gap-8 md:grid-cols-3">
-      <div class="text-center">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="text-white">
+          <div class="mb-6">
+            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+              🏠 外国人専門 住居調査
+            </span>
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            安心して日本で暮らすための、<br>
+            <span class="text-yellow-300">土地調査の専門家</span>
+          </h1>
+          
+          <p class="text-xl md:text-2xl mb-8 opacity-95 leading-relaxed">
+            私たちは、日本での暮らしを検討する海外在住者・外国人のために、<br class="hidden lg:block">
+            安全・生活・制度の面から土地リスクを総合的に調査します。
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/ja/services/" class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300 shadow-xl">
+              <span class="mr-3">🔍</span>
+              サービスを見る
+            </a>
+            <a href="#team" class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300">
+              <span class="mr-3">👥</span>
+              チームを見る
+            </a>
           </div>
         </div>
-        <h3 class="text-xl font-semibold mb-3 text-gray-900">透明性</h3>
-        <p class="text-gray-600 leading-relaxed">すべての仮定とデータソースを明示します。</p>
-      </div>
-
-      <div class="text-center">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 text-gray-900">正確性</h3>
-        <p class="text-gray-600 leading-relaxed">認定測量士とバイリンガル法務パートナーが各レポートを審査します。</p>
-      </div>
-
-      <div class="text-center">
-        <div class="flex justify-center mb-4">
-          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-        </div>
-        <h3 class="text-xl font-semibold mb-3 text-gray-900">アクセス</h3>
-        <p class="text-gray-600 leading-relaxed">日本の土地データを、世界中のどなたにも理解しやすくします。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="bg-gray-50 py-16">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-2xl font-semibold mb-10 text-center">チーム紹介</h2>
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-        <div class="text-center bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-          <div class="mb-4">
+        
+        <div class="relative">
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
             <img 
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-              alt="田中亮" 
-              class="w-24 h-24 rounded-full mx-auto object-cover"
-              loading="lazy"
+              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              alt="日本の街並み調査風景" 
+              class="w-full rounded-xl shadow-2xl"
+              loading="eager"
+              onerror="this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"
             >
           </div>
-          <h3 class="text-xl font-semibold mb-1 text-gray-900">田中 亮</h3>
-          <p class="text-primary-600 font-medium mb-3">創設者 / 調査責任者</p>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
-            北海道・九州での10年の経験を持つ認定土地家屋調査士。国際クライアント向けの農村部・沿岸部不動産評価を専門とします。
-          </p>
-          <a 
-            href="https://linkedin.com/in/ryotanaka" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-            aria-label="田中亮のLinkedInプロフィール"
-          >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
-            </svg>
-          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Mission Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Our <span class="text-blue-600">Mission</span>
+        </h2>
+        <div class="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+            <p>
+              <strong class="text-gray-900">日本の土地選びは外国人にとって情報の壁が大きい。</strong>
+            </p>
+            <p>
+              防災・制度・生活インフラ・言語の問題で「住んだあとに困る」ケースも少なくありません。地震や津波のリスク、医療機関や学校の情報、行政手続きの複雑さなど、現地に住む人でも把握が困難な情報が数多く存在します。
+            </p>
+            <p>
+              <strong class="text-blue-600">私たちは「安心して暮らせる土地」を、事前調査で支援します。</strong>
+            </p>
+            <p>
+              不動産購入者だけでなく、賃貸での居住者にも有用な情報を提供。あなたの新しい生活が成功するよう、専門知識と現地調査で徹底的にサポートいたします。
+            </p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-blue-50 p-6 rounded-xl text-center">
+            <div class="text-3xl font-bold text-blue-600 mb-2">500+</div>
+            <div class="text-sm text-gray-600">調査完了件数</div>
+          </div>
+          <div class="bg-green-50 p-6 rounded-xl text-center">
+            <div class="text-3xl font-bold text-green-600 mb-2">25</div>
+            <div class="text-sm text-gray-600">対応都道府県</div>
+          </div>
+          <div class="bg-purple-50 p-6 rounded-xl text-center">
+            <div class="text-3xl font-bold text-purple-600 mb-2">4</div>
+            <div class="text-sm text-gray-600">対応言語</div>
+          </div>
+          <div class="bg-orange-50 p-6 rounded-xl text-center">
+            <div class="text-3xl font-bold text-orange-600 mb-2">98%</div>
+            <div class="text-sm text-gray-600">顧客満足度</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Why Choose <span class="text-blue-600">Us?</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          他社とは異なる3つの特徴で、外国人の皆様に安心をお届けします
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">📸</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">現地調査 + 映像レポート</h3>
+          </div>
+          <div class="space-y-4">
+            <p class="text-gray-600">
+              ドローン・360°カメラで現地映像も提供。遠隔地からでも現場の様子を詳細に確認できます。
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                4K高画質での撮影
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                360°パノラマ映像
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                VRヘッドセット対応
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div class="text-center bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-          <div class="mb-4">
-            <img 
-              src="https://images.unsplash.com/photo-1494790108755-2616b612b390?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-              alt="陳 サラ" 
-              class="w-24 h-24 rounded-full mx-auto object-cover"
-              loading="lazy"
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">📊</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">防災・再開発・法制度まで網羅</h3>
+          </div>
+          <div class="space-y-4">
+            <p class="text-gray-600">
+              ハザード・開発計画・外国人手続き等を1つのレポートで提供します。
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                災害リスク詳細分析
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                都市開発計画調査
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                外国人向け法的手続き
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">🌍</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">多言語サポート</h3>
+          </div>
+          <div class="space-y-4">
+            <p class="text-gray-600">
+              日本語・英語・中国語・韓国語に対応。母国語での安心サポートを提供します。
+            </p>
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                ネイティブスタッフ対応
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                専門用語の丁寧な翻訳
+              </li>
+              <li class="flex items-center">
+                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                文化的背景を考慮したアドバイス
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet Our Team Section -->
+  <section id="team" class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Our <span class="text-blue-600">Team</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          多様な専門性と言語能力を持つプロフェッショナルチームが、あなたの安心をサポートします
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        {teamMembers.map((member) => (
+          <div class="bg-gradient-to-b from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+            <div class="mb-6">
+              <img 
+                src={member.image}
+                alt={member.name}
+                class="w-24 h-24 rounded-full mx-auto object-cover mb-4 ring-4 ring-blue-100"
+                loading="lazy"
+              >
+              <h3 class="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+              <p class="text-sm text-gray-500 mb-2">{member.nameEn}</p>
+              <p class="text-blue-600 font-semibold mb-2">{member.role}</p>
+              <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                🌐 {member.languages}
+              </div>
+            </div>
+            
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              {member.description}
+            </p>
+            
+            <a 
+              href={member.linkedin}
+              class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+              aria-label={`${member.name}のLinkedInプロフィール`}
             >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+              </svg>
+            </a>
           </div>
-          <h3 class="text-xl font-semibold mb-1 text-gray-900">陳 サラ</h3>
-          <p class="text-primary-600 font-medium mb-3">法務アナリスト</p>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
-            不動産・用途地域法を専門とするバイリンガル法務助手。海外投資家が日本の複雑な土地所有規制をナビゲートするお手伝いをします。
-          </p>
-          <a 
-            href="https://linkedin.com/in/sarachen" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-            aria-label="陳サラのLinkedInプロフィール"
-          >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
-            </svg>
-          </a>
-        </div>
-
-        <div class="text-center bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
-          <div class="mb-4">
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" 
-              alt="山本 健二" 
-              class="w-24 h-24 rounded-full mx-auto object-cover"
-              loading="lazy"
-            >
-          </div>
-          <h3 class="text-xl font-semibold mb-1 text-gray-900">山本 健二</h3>
-          <p class="text-primary-600 font-medium mb-3">VRキャプチャー専門家</p>
-          <p class="text-gray-600 text-sm leading-relaxed mb-4">
-            プロのドローンパイロット・360°ビデオグラファー。遠隔購入者のために日本の土地を生き生きと描くイマーシブ不動産ツアーを制作します。
-          </p>
-          <a 
-            href="https://linkedin.com/in/kenjiyamamoto" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-            aria-label="山本健二のLinkedInプロフィール"
-          >
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
-            </svg>
-          </a>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Journey Timeline -->
-  <section class="max-w-5xl mx-auto px-6 py-16">
-    <h2 class="text-2xl font-semibold mb-8 text-center">私たちの歩み</h2>
-    <div class="max-w-3xl mx-auto">
-      <div class="relative">
-        <!-- Vertical Line -->
-        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-primary-200"></div>
-        <div class="space-y-8">
-          <div class="relative flex items-start">
-            <!-- Dot -->
-            <div class="flex-shrink-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center relative z-10">
-              <div class="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-            <!-- Content -->
-            <div class="ml-6 pb-8">
-              <div class="bg-white rounded-lg p-6 shadow-md">
-                <div class="flex items-center mb-2">
-                  <span class="text-2xl font-bold text-primary-600 mr-3">2023年</span>
-                </div>
-                <p class="text-gray-700 leading-relaxed">
-                  プロトタイプマップツールをクローズドベータユーザーにリリース。初期フィードバックがアクセシブルな土地データのビジョンを形成。
-                </p>
-              </div>
-            </div>
-          </div>
+  <!-- Case Studies Section -->
+  <section class="py-16 lg:py-24 bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Case <span class="text-yellow-400">Studies</span>
+        </h2>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">
+          実際の調査事例をご紹介します。お客様の多様なニーズにお応えしてきました
+        </p>
+      </div>
 
-          <div class="relative flex items-start">
-            <!-- Dot -->
-            <div class="flex-shrink-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center relative z-10">
-              <div class="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-            <!-- Content -->
-            <div class="ml-6 pb-8">
-              <div class="bg-white rounded-lg p-6 shadow-md">
-                <div class="flex items-center mb-2">
-                  <span class="text-2xl font-bold text-primary-600 mr-3">2024年</span>
-                </div>
-                <p class="text-gray-700 leading-relaxed">
-                  初の海外クライアントがフルレポートを使ってニセコで土地を購入。地元測量士とのパートナーシップが5都道府県に拡大。
-                </p>
+      <div class="grid md:grid-cols-3 gap-8">
+        {caseStudies.map((caseStudy, index) => (
+          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+            <div class="mb-4">
+              <div class="w-12 h-12 bg-yellow-400 text-gray-900 rounded-full flex items-center justify-center mb-4 font-bold text-lg">
+                {index + 1}
               </div>
+              <h3 class="text-lg font-bold mb-3 leading-tight">{caseStudy.title}</h3>
+            </div>
+            
+            <p class="text-sm opacity-90 mb-4 leading-relaxed">
+              {caseStudy.description}
+            </p>
+            
+            <div class="border-l-4 border-yellow-400 pl-4">
+              <p class="text-sm font-medium text-yellow-400">結果</p>
+              <p class="text-sm opacity-90">{caseStudy.result}</p>
             </div>
           </div>
+        ))}
+      </div>
 
-          <div class="relative flex items-start">
-            <!-- Dot -->
-            <div class="flex-shrink-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center relative z-10">
-              <div class="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-            <!-- Content -->
-            <div class="ml-6 pb-8">
-              <div class="bg-white rounded-lg p-6 shadow-md">
-                <div class="flex items-center mb-2">
-                  <span class="text-2xl font-bold text-primary-600 mr-3">2025年</span>
-                </div>
-                <p class="text-gray-700 leading-relaxed">
-                  360° VRキャプチャーサービス開始；AI Conf Tokyoで特集。月間100名以上の国際投資家にサービス提供。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="text-center mt-12">
+        <a href="/ja/case-studies/" class="inline-flex items-center px-8 py-4 bg-yellow-400 text-gray-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300">
+          <span class="mr-3">📋</span>
+          すべての調査事例を見る
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Featured In -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-lg font-medium text-gray-500 mb-8">掲載メディア</h3>
-      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-        <div class="flex-shrink-0">
-          <img 
-            src="/assets/img/logos/hubspot.png" 
-            alt="メディアロゴ1" 
-            class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-            loading="lazy"
-            onerror="this.src='https://via.placeholder.com/120x40/cccccc/666666?text=Logo'"
-          >
+  <!-- Contact Us Section -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-8">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+          Contact <span class="text-yellow-300">Us</span>
+        </h2>
+        <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto leading-relaxed">
+          不安なこと・調査してほしい地域など、<br class="hidden md:block">
+          まずはお気軽にご相談ください。
+        </p>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 gap-6 mb-12 max-w-2xl mx-auto">
+        <a href="/ja/contact/" class="bg-yellow-400 text-blue-900 font-bold py-6 px-8 rounded-2xl hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">
+          <div class="text-2xl mb-2">💬</div>
+          <div class="text-lg">お問い合わせ</div>
+          <div class="text-sm opacity-75">無料相談受付中</div>
+        </a>
+        <a href="/ja/services/#faq" class="bg-white/20 backdrop-blur-sm text-white font-bold py-6 px-8 rounded-2xl border border-white/30 hover:bg-white/30 transition-all duration-300 transform hover:scale-105">
+          <div class="text-2xl mb-2">❓</div>
+          <div class="text-lg">よくある質問</div>
+          <div class="text-sm opacity-75">FAQ を見る</div>
+        </a>
+      </div>
+      
+      <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-sm">
+        <div class="flex items-center justify-center space-x-2">
+          <span class="text-2xl">⚡</span>
+          <span>24時間以内に返信</span>
         </div>
-        <div class="flex-shrink-0">
-          <img 
-            src="/assets/img/logos/aiconf.png" 
-            alt="メディアロゴ2" 
-            class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-            loading="lazy"
-            onerror="this.src='https://via.placeholder.com/120x40/cccccc/666666?text=Logo'"
-          >
+        <div class="flex items-center justify-center space-x-2">
+          <span class="text-2xl">🌍</span>
+          <span>多言語対応</span>
         </div>
-        <div class="flex-shrink-0">
-          <img 
-            src="/assets/img/logos/japannews.png" 
-            alt="メディアロゴ3" 
-            class="h-8 md:h-10 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-            loading="lazy"
-            onerror="this.src='https://via.placeholder.com/120x40/cccccc/666666?text=Logo'"
-          >
+        <div class="flex items-center justify-center space-x-2">
+          <span class="text-2xl">💯</span>
+          <span>無料相談</span>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="bg-primary-600 py-12 text-center text-white">
-    <h2 class="text-2xl font-semibold mb-4">一緒に働きませんか？</h2>
-    <a 
-      href="/ja/contact/" 
-      class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg"
-    >
-      無料相談を予約
-    </a>
   </section>
 </BaseLayout>
