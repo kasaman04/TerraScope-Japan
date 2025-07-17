@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "京都市での暮らし - 外国人向け生活情報";
+const description = "京都市での外国人向け生活情報。清水寺、金閣寺から祇園、嵐山まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-indigo-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-indigo-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/kyoto/" class="hover:text-indigo-600">京都府</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">京都市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-indigo-700 to-purple-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="京都市の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            ⛩️ 京都市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          京都市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          千年の都、伝統と現代が調和する歴史的な街
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約146万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約45,000人（3.1%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">面積</p>
+            <p class="text-lg">827.83 km²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          京都市の<span class="text-indigo-600">概要</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          1000年以上の歴史を持つ古都、伝統文化と現代技術が融合する街
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">京都市の特徴</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-indigo-600 font-bold">1</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">歴史的文化遺産</h4>
+                <p class="text-gray-600">17の世界遺産を持つ古都で、清水寺、金閣寺、銀閣寺など多くの歴史的建造物があります。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-indigo-600 font-bold">2</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">学術都市</h4>
+                <p class="text-gray-600">京都大学をはじめ多くの大学があり、学生や研究者が多く住む国際的な学術都市です。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-indigo-600 font-bold">3</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">伝統と現代の調和</h4>
+                <p class="text-gray-600">古い町並みと現代的な施設が共存し、独特の風情を保ちながら発展しています。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-gray-600">主要駅</span>
+              <span class="font-semibold">京都駅、四条駅、三条駅</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">平均家賃（1K）</span>
+              <span class="font-semibold">約5.2万円</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">大阪駅までの時間</span>
+              <span class="font-semibold">約30分</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">世界遺産数</span>
+              <span class="font-semibold">17箇所</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Living Areas Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          主要な<span class="text-indigo-600">居住エリア</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          京都市内の外国人に人気のエリアをご紹介
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">祇園・東山</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium mr-2">伝統的</span>
+            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">観光地</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            清水寺や八坂神社がある京都の代表的な観光地。伝統的な町並みが美しいエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">四条・河原町</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium mr-2">繁華街</span>
+            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">ショッピング</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            京都の中心繁華街で、ショッピングやグルメが楽しめる便利なエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">京都駅周辺</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">交通便利</span>
+            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">新幹線</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            新幹線の駅があり、交通の便が良い。現代的な施設が充実しているエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">左京区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">大学街</span>
+            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">学生街</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            京都大学がある学生街。留学生が多く、国際的な環境が整っています。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★★★</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">嵐山・太秦</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">自然豊か</span>
+            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">観光地</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            竹林の道で有名な嵐山。自然豊かで静かな住環境が楽しめるエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：やや高い</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">伏見区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
+            <span class="inline-block bg-lime-100 text-lime-800 px-3 py-1 rounded-full text-sm font-medium">リーズナブル</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            伏見稲荷大社で有名。住宅地が多く、家賃が比較的安いエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：安い</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultural Heritage Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          京都の<span class="text-indigo-600">文化遺産</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          世界に誇る歴史的文化遺産と伝統文化
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏛️</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">世界遺産</h3>
+          <p class="text-gray-600 text-sm">
+            清水寺、金閣寺、銀閣寺など17の世界遺産
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🎭</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">伝統芸能</h3>
+          <p class="text-gray-600 text-sm">
+            茶道、華道、能楽など日本の伝統文化
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🌸</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">四季の美</h3>
+          <p class="text-gray-600 text-sm">
+            桜、紅葉など四季折々の美しい風景
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍵</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">京料理</h3>
+          <p class="text-gray-600 text-sm">
+            懐石料理、京野菜など洗練された食文化
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          京都市の<span class="text-indigo-600">生活情報</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          京都市での生活に必要な詳細情報をまとめました
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/ja/blog/kyoto/kyoto/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🛡️</span>
+            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            京都市の地震リスク、災害対策、避難場所について詳しく解説します。
+          </p>
+          <div class="text-indigo-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/kyoto/kyoto/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏥</span>
+            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
+          </p>
+          <div class="text-indigo-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/kyoto/kyoto/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">💰</span>
+            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            京都市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+          </p>
+          <div class="text-indigo-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/kyoto/kyoto/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏗️</span>
+            <h3 class="text-xl font-bold text-gray-900">観光と生活の両立</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            観光都市京都で日常生活を送る際の注意点やメリットについて。
+          </p>
+          <div class="text-indigo-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/kyoto/kyoto/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📜</span>
+            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
+          </p>
+          <div class="text-indigo-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/kyoto/kyoto/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📷</span>
+            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            実際に京都市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
+          </p>
+          <div class="text-indigo-600 font-semibold">詳細を見る →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pros and Cons Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          京都市に住む<span class="text-indigo-600">メリット・デメリット</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-green-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👍</span>
+            メリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>世界遺産に囲まれた美しい歴史的環境</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>多くの大学があり国際的な学術環境</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>大阪・東京より生活コストが安い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>伝統文化を身近に体験できる</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>大阪・奈良へのアクセスが良い</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👎</span>
+            デメリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>観光客が多く、混雑が激しい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>東京に比べて就職機会が限定的</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>古い街並みのため建築制限が厳しい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>夏の暑さと湿度が厳しい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>保守的な地域性がある</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-indigo-600 to-purple-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        京都市での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        京都市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-indigo-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "さいたま市での暮らし - 外国人向け生活情報";
+const description = "さいたま市での外国人向け生活情報。大宮、浦和、与野から見沼区まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-emerald-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-emerald-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/saitama/" class="hover:text-emerald-600">埼玉県</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">さいたま市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-emerald-700 to-green-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="さいたま市の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🌳 さいたま市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          さいたま市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          首都圏のベッドタウン、住みやすさと利便性を兼ね備えた街
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約133万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約28,000人（2.1%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">面積</p>
+            <p class="text-lg">217.43 km²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          さいたま市の<span class="text-emerald-600">概要</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          埼玉県の県庁所在地、東京へのアクセス抜群の住みやすい街
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">さいたま市の特徴</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-emerald-600 font-bold">1</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">首都圏の交通要衝</h4>
+                <p class="text-gray-600">JR各線、私鉄、新幹線が集まる交通の要衝で、東京都心へのアクセスが非常に良好です。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-emerald-600 font-bold">2</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">計画的な都市開発</h4>
+                <p class="text-gray-600">2001年に3市が合併して誕生した新しい政令指定都市で、計画的な都市開発が進んでいます。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-emerald-600 font-bold">3</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">子育てしやすい環境</h4>
+                <p class="text-gray-600">公園や教育施設が充実し、子育て支援策も豊富で、ファミリー層に人気の街です。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-gray-600">主要駅</span>
+              <span class="font-semibold">大宮駅、浦和駅、与野駅</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">平均家賃（1K）</span>
+              <span class="font-semibold">約6.8万円</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">東京駅までの時間</span>
+              <span class="font-semibold">約25分</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">住みやすさランキング</span>
+              <span class="font-semibold">全国上位</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Living Areas Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          主要な<span class="text-emerald-600">居住エリア</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          さいたま市内の外国人に人気のエリアをご紹介
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">大宮区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium mr-2">ターミナル</span>
+            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">商業地</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            さいたま市の中心地で、新幹線も停車する交通の要衝。商業施設が充実しています。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">浦和区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium mr-2">文教地区</span>
+            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">県庁所在</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            埼玉県庁があり、文教地区として知られる。高級住宅地で教育環境が充実しています。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">中央区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">新都心</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">官公庁</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            さいたま新都心があり、官公庁やビジネス施設が集積する新しい街の中心部です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：やや高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">南区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
+            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">ファミリー</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            住宅地が多く、ファミリー層に人気。比較的家賃が安く、生活しやすいエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">北区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
+            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">自然豊か</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            住宅地が中心で、自然環境が良好。静かな環境で落ち着いた生活を送れます。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">見沼区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2">郊外</span>
+            <span class="inline-block bg-lime-100 text-lime-800 px-3 py-1 rounded-full text-sm font-medium">リーズナブル</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            市内で最も面積が広く、農地や住宅地が混在。家賃が比較的安いエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：安い</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transportation Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          さいたま市の<span class="text-emerald-600">交通アクセス</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          首都圏の交通要衝として抜群のアクセス性
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🚄</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">新幹線</h3>
+          <p class="text-gray-600 text-sm">
+            東北・上越・北陸新幹線が停車し、全国各地へのアクセスが良好
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🚊</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">JR線</h3>
+          <p class="text-gray-600 text-sm">
+            東海道線、宇都宮線、高崎線など多数の路線が乗り入れ
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🚇</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">私鉄</h3>
+          <p class="text-gray-600 text-sm">
+            東武線、西武線で東京都心へ直通アクセス
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🚌</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">バス</h3>
+          <p class="text-gray-600 text-sm">
+            市内循環バスや高速バスが充実
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          さいたま市の<span class="text-emerald-600">生活情報</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          さいたま市での生活に必要な詳細情報をまとめました
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/ja/blog/saitama/saitama/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🛡️</span>
+            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            さいたま市の地震リスク、災害対策、避難場所について詳しく解説します。
+          </p>
+          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/saitama/saitama/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏥</span>
+            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
+          </p>
+          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/saitama/saitama/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">💰</span>
+            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            さいたま市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+          </p>
+          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/saitama/saitama/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏗️</span>
+            <h3 class="text-xl font-bold text-gray-900">通勤・アクセス情報</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            東京都心への通勤アクセス、各路線の特徴、通勤時間について詳しく解説。
+          </p>
+          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/saitama/saitama/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📜</span>
+            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
+          </p>
+          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/saitama/saitama/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📷</span>
+            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            実際にさいたま市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
+          </p>
+          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pros and Cons Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          さいたま市に住む<span class="text-emerald-600">メリット・デメリット</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-green-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👍</span>
+            メリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>東京都心へのアクセスが抜群</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>子育て支援が充実している</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>東京都内より家賃が安い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>計画的な街づくりで住みやすい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>災害リスクが比較的低い</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👎</span>
+            デメリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>東京都心への通勤ラッシュが激しい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>地域の個性や文化が薄い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>エンターテインメントが少ない</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>車がないと不便な地域もある</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>夏の暑さが厳しい</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-emerald-600 to-green-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        さいたま市での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        さいたま市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-emerald-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

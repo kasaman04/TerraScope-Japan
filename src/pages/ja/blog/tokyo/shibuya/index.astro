@@ -1,0 +1,381 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "渋谷区での暮らし - 外国人向け生活情報";
+const description = "渋谷区での外国人向け生活情報。渋谷スクランブル交差点から代官山、恵比寿まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-purple-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-purple-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/tokyo/" class="hover:text-purple-600">東京都</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">渋谷区</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-purple-700 to-pink-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="渋谷区の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🎨 渋谷区
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          渋谷区での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          若者文化の発信地で最先端のライフスタイルを
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約23万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約18,000人（7.8%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">面積</p>
+            <p class="text-lg">15.11 km²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          渋谷区の<span class="text-purple-600">概要</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          世界的に有名なスクランブル交差点を中心とした若者文化の発信地
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">渋谷区の特徴</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-600 font-bold">1</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">若者文化の中心地</h4>
+                <p class="text-gray-600">ファッション、音楽、アートなど、日本の若者文化を世界に発信する街です。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-600 font-bold">2</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">多様な居住エリア</h4>
+                <p class="text-gray-600">渋谷の喧騒から代官山の洗練、恵比寿のグルメまで、多様な住環境が選べます。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-purple-600 font-bold">3</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">IT・クリエイティブの聖地</h4>
+                <p class="text-gray-600">多くのIT企業やクリエイティブ企業が集まる、イノベーションの拠点です。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-gray-600">主要駅</span>
+              <span class="font-semibold">渋谷駅、恵比寿駅、代官山駅</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">平均家賃（1K）</span>
+              <span class="font-semibold">約10.2万円</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">コンビニ数</span>
+              <span class="font-semibold">約180店舗</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">外国語対応病院</span>
+              <span class="font-semibold">多数あり</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Living Areas Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          主要な<span class="text-purple-600">居住エリア</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          渋谷区内の外国人に人気のエリアをご紹介
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">渋谷駅周辺</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium mr-2">繁華街</span>
+            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">交通便利</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            世界的に有名なスクランブル交差点がある、日本の若者文化の中心地です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★★</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">恵比寿エリア</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">グルメ</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">大人の街</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            高級レストランやバーが集まる、大人の街。恵比寿ガーデンプレイスが有名です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：非常に高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">代官山エリア</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">おしゃれ</span>
+            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">セレブ</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            高級ブティックやカフェが並ぶ、洗練された大人の街として人気です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：非常に高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          渋谷区の<span class="text-purple-600">生活情報</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          渋谷区での生活に必要な詳細情報をまとめました
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/ja/blog/tokyo/shibuya/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🛡️</span>
+            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            渋谷区の地震リスク、避難場所、防災対策について詳しく解説します。
+          </p>
+          <div class="text-purple-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shibuya/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏥</span>
+            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
+          </p>
+          <div class="text-purple-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shibuya/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">💰</span>
+            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            渋谷区の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+          </p>
+          <div class="text-purple-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shibuya/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏗️</span>
+            <h3 class="text-xl font-bold text-gray-900">再開発・都市計画</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            渋谷区の再開発プロジェクトや都市計画、今後の発展予定について。
+          </p>
+          <div class="text-purple-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shibuya/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📜</span>
+            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
+          </p>
+          <div class="text-purple-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shibuya/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📷</span>
+            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            実際に渋谷区を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
+          </p>
+          <div class="text-purple-600 font-semibold">詳細を見る →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pros and Cons Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          渋谷区に住む<span class="text-purple-600">メリット・デメリット</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-green-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👍</span>
+            メリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>最新のファッション・グルメ・エンターテインメントが身近</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>多様な文化が混在する国際的な環境</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>交通アクセスが良好で都内各地へ便利</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>IT・クリエイティブ業界の仕事が豊富</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>24時間営業の店舗が多く、生活が便利</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👎</span>
+            デメリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>家賃が非常に高く、生活コストが高い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>人混みが激しく、騒音レベルが高い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>落ち着いた住環境を求める人には不向き</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>緑地や公園が少ない</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>観光客が多く、混雑が日常的</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-purple-600 to-pink-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        渋谷区での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        渋谷区の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-purple-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,381 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "新宿区での暮らし - 外国人向け生活情報";
+const description = "新宿区での外国人向け生活情報。新宿駅周辺の商業地域から住宅地まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/tokyo/" class="hover:text-blue-600">東京都</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">新宿区</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-blue-700 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="新宿区の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🏙️ 新宿区
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          新宿区での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          東京の中心地で多様な文化が交差する街
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約35万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約46,000人（13.1%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">面積</p>
+            <p class="text-lg">18.22 km²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          新宿区の<span class="text-blue-600">概要</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          日本最大のターミナル駅・新宿駅を中心とした東京の副都心
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">新宿区の特徴</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-blue-600 font-bold">1</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">日本最大のターミナル駅</h4>
+                <p class="text-gray-600">新宿駅は1日の利用者数が世界最多で、あらゆる場所へのアクセスが抜群です。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-blue-600 font-bold">2</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">多文化共生の街</h4>
+                <p class="text-gray-600">外国人住民比率が高く、多様な文化が共存する国際的な環境です。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-blue-600 font-bold">3</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">充実した商業・娯楽施設</h4>
+                <p class="text-gray-600">デパート、映画館、レストラン、カラオケなど、あらゆる娯楽施設が揃っています。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-gray-600">主要駅</span>
+              <span class="font-semibold">新宿駅、高田馬場駅、四ツ谷駅</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">平均家賃（1K）</span>
+              <span class="font-semibold">約9.5万円</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">コンビニ数</span>
+              <span class="font-semibold">約350店舗</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">外国語対応病院</span>
+              <span class="font-semibold">多数あり</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Living Areas Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          主要な<span class="text-blue-600">居住エリア</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          新宿区内の外国人に人気のエリアをご紹介
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">新宿駅周辺</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-2">商業地域</span>
+            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">交通便利</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            日本最大のターミナル駅周辺。商業施設が充実し、あらゆる場所へのアクセスが抜群です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★★</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">高田馬場エリア</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium mr-2">学生街</span>
+            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">リーズナブル</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            早稲田大学があり、学生向けの飲食店や施設が充実。比較的リーズナブルな生活が可能です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">四ツ谷エリア</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium mr-2">オフィス街</span>
+            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium">静か</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            オフィス街として発展し、比較的静かな環境。皇居にも近く、緑豊かなエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          新宿区の<span class="text-blue-600">生活情報</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          新宿区での生活に必要な詳細情報をまとめました
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/ja/blog/tokyo/shinjuku/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🛡️</span>
+            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            新宿区の地震リスク、避難場所、防災対策について詳しく解説します。
+          </p>
+          <div class="text-blue-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shinjuku/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏥</span>
+            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
+          </p>
+          <div class="text-blue-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shinjuku/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">💰</span>
+            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            新宿区の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+          </p>
+          <div class="text-blue-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shinjuku/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏗️</span>
+            <h3 class="text-xl font-bold text-gray-900">再開発・都市計画</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            新宿区の再開発プロジェクトや都市計画、今後の発展予定について。
+          </p>
+          <div class="text-blue-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shinjuku/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📜</span>
+            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
+          </p>
+          <div class="text-blue-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/tokyo/shinjuku/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📷</span>
+            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            実際に新宿区を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
+          </p>
+          <div class="text-blue-600 font-semibold">詳細を見る →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pros and Cons Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          新宿区に住む<span class="text-blue-600">メリット・デメリット</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-green-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👍</span>
+            メリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>日本最大のターミナル駅で交通アクセスが最高</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>多文化共生環境で外国人が住みやすい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>24時間営業の店舗が多く、生活が便利</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>外国語対応の病院や施設が充実</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>エンターテインメント施設が豊富</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👎</span>
+            デメリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>家賃が高く、生活コストが高い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>人口密度が高く、混雑が激しい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>騒音レベルが高い地域がある</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>緑地や公園が少ない</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>歓楽街があり、治安面で注意が必要なエリアがある</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        新宿区での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        新宿区の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

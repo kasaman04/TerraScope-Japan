@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "大阪市での暮らし - 外国人向け生活情報";
+const description = "大阪市での外国人向け生活情報。梅田、難波、天王寺から住吉、西成まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-orange-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-orange-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/osaka/" class="hover:text-orange-600">大阪府</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">大阪市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-orange-700 to-red-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="大阪市の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🏯 大阪市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          大阪市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          西日本最大の都市、商人の街で人情あふれる生活を
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約275万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約134,000人（4.9%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">面積</p>
+            <p class="text-lg">225.21 km²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          大阪市の<span class="text-orange-600">概要</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          西日本最大の都市として、商業・文化・交通の中心地として発展
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">大阪市の特徴</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-orange-600 font-bold">1</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">商人の街の文化</h4>
+                <p class="text-gray-600">「商人の街」として発展した歴史があり、実用的で人情味あふれる文化が根付いています。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-orange-600 font-bold">2</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">多様な外国人コミュニティ</h4>
+                <p class="text-gray-600">コリアンタウンをはじめ、様々な外国人コミュニティが発達し、多文化共生が進んでいます。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-orange-600 font-bold">3</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">関西の交通ハブ</h4>
+                <p class="text-gray-600">関西国際空港や新幹線駅を有し、関西圏全体へのアクセスが良好です。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-gray-600">主要駅</span>
+              <span class="font-semibold">梅田駅、難波駅、天王寺駅</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">平均家賃（1K）</span>
+              <span class="font-semibold">約5.8万円</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">東京駅までの時間</span>
+              <span class="font-semibold">約3時間</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">外国人住民比率</span>
+              <span class="font-semibold">4.9%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Living Areas Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          主要な<span class="text-orange-600">居住エリア</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          大阪市内の外国人に人気のエリアをご紹介
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">梅田・北区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium mr-2">ビジネス街</span>
+            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">繁華街</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            大阪のビジネス・商業の中心地。交通の便が良く、都市的な生活を楽しめます。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">難波・中央区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium mr-2">観光地</span>
+            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">エンターテインメント</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            道頓堀や心斎橋がある観光・娯楽の中心地。大阪の文化を身近に感じられます。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">天王寺・阿倍野</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">再開発</span>
+            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">交通便利</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            近年再開発が進み、あべのハルカスなど新しい施設が充実した地域です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">生野区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">コリアンタウン</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">多文化</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            日本最大のコリアンタウンがあり、多様な外国人コミュニティが共存しています。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：安い</p>
+            <p>外国人向け：★★★★★</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">住吉・住之江</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
+            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">ベイエリア</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            住宅地として発展し、ベイエリアに近く比較的静かな環境です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">西成区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2">下町</span>
+            <span class="inline-block bg-lime-100 text-lime-800 px-3 py-1 rounded-full text-sm font-medium">格安</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            家賃が最も安いエリアの一つ。多様な背景を持つ住民が共存する地域です。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：非常に安い</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Culture & Food Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          大阪の<span class="text-orange-600">文化と食</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          「くいだおれ」の街で楽しむ豊かな食文化
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍳</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">大阪グルメ</h3>
+          <p class="text-gray-600 text-sm">
+            たこ焼き、お好み焼き、串カツなど大阪名物が豊富
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🗣️</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">関西弁</h3>
+          <p class="text-gray-600 text-sm">
+            親しみやすい関西弁で温かいコミュニケーション
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🎭</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">お笑い文化</h3>
+          <p class="text-gray-600 text-sm">
+            吉本興業発祥の地でお笑い文化が根付いている
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏪</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">商売の街</h3>
+          <p class="text-gray-600 text-sm">
+            商人の街として発展した実用的な文化
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          大阪市の<span class="text-orange-600">生活情報</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          大阪市での生活に必要な詳細情報をまとめました
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/ja/blog/osaka/osaka/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🛡️</span>
+            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            大阪市の地震リスク、津波対策、避難場所について詳しく解説します。
+          </p>
+          <div class="text-orange-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/osaka/osaka/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏥</span>
+            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
+          </p>
+          <div class="text-orange-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/osaka/osaka/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">💰</span>
+            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            大阪市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+          </p>
+          <div class="text-orange-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/osaka/osaka/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏗️</span>
+            <h3 class="text-xl font-bold text-gray-900">再開発・都市計画</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            大阪市の再開発プロジェクトや都市計画、2025年万博に向けた発展について。
+          </p>
+          <div class="text-orange-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/osaka/osaka/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📜</span>
+            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
+          </p>
+          <div class="text-orange-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/osaka/osaka/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📷</span>
+            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            実際に大阪市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
+          </p>
+          <div class="text-orange-600 font-semibold">詳細を見る →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pros and Cons Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          大阪市に住む<span class="text-orange-600">メリット・デメリット</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-green-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👍</span>
+            メリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>東京より生活コストが安い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>多様な外国人コミュニティが充実</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>人情味あふれる文化で親しみやすい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>食文化が豊かで美味しい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>関西圏全体へのアクセスが良い</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👎</span>
+            デメリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>東京に比べて就職機会が限定的</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>関西弁に慣れる必要がある</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>夏の暑さと湿度が厳しい</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>エリアによって治安に差がある</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>国際的なサービスは東京より少ない</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-orange-600 to-red-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        大阪市での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        大阪市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-orange-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

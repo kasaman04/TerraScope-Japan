@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "千葉市での暮らし - 外国人向け生活情報";
+const description = "千葉市での外国人向け生活情報。中央区、花見川区、稲毛区から若葉区まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-sky-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-sky-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/chiba/" class="hover:text-sky-600">千葉県</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">千葉市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-sky-700 to-blue-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="千葉市の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🌊 千葉市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          千葉市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          東京湾に面した千葉県の県庁所在地、海と緑の豊かな街
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約98万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約26,000人（2.7%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">面積</p>
+            <p class="text-lg">271.77 km²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          千葉市の<span class="text-sky-600">概要</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          東京湾に面した千葉県の県庁所在地、政令指定都市
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-6">千葉市の特徴</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-sky-600 font-bold">1</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">東京湾岸の立地</h4>
+                <p class="text-gray-600">東京湾に面し、海浜幕張などの埋立地開発により発展した現代的な都市です。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-sky-600 font-bold">2</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">成田空港へのアクセス</h4>
+                <p class="text-gray-600">成田国際空港に近く、国際的なアクセスが良好。外国人にとって利便性が高い立地です。</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="w-8 h-8 bg-sky-100 rounded-full flex items-center justify-center mr-4 mt-1">
+                <span class="text-sky-600 font-bold">3</span>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">自然環境の豊かさ</h4>
+                <p class="text-gray-600">海岸線や緑地公園が多く、都市でありながら自然豊かな環境が楽しめます。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-8">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-gray-600">主要駅</span>
+              <span class="font-semibold">千葉駅、海浜幕張駅、蘇我駅</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">平均家賃（1K）</span>
+              <span class="font-semibold">約5.8万円</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">東京駅までの時間</span>
+              <span class="font-semibold">約40分</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">成田空港までの時間</span>
+              <span class="font-semibold">約1時間</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Living Areas Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          主要な<span class="text-sky-600">居住エリア</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          千葉市内の外国人に人気のエリアをご紹介
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">中央区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-sky-100 text-sky-800 px-3 py-1 rounded-full text-sm font-medium mr-2">中心街</span>
+            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">県庁所在</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            千葉市の中心部で、千葉駅があり県庁や市役所などの行政機関が集まるエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">美浜区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-2">埋立地</span>
+            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">現代的</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            海浜幕張を中心とした埋立地で、現代的な高層マンションやオフィスビルが立ち並ぶエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：高い</p>
+            <p>外国人向け：★★★★★</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">花見川区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
+            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">ファミリー</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            住宅地が中心で、花見川沿いの自然環境が豊か。ファミリー層に人気のエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">稲毛区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">学生街</span>
+            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">大学</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            千葉大学がある学生街。留学生も多く、国際的な雰囲気があります。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：普通</p>
+            <p>外国人向け：★★★★☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">若葉区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">郊外</span>
+            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">自然豊か</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            千葉市で最も面積が広い区。自然環境が豊かで、静かな住環境が楽しめます。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：安い</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-4">緑区</h3>
+          <div class="mb-4">
+            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
+            <span class="inline-block bg-lime-100 text-lime-800 px-3 py-1 rounded-full text-sm font-medium">リーズナブル</span>
+          </div>
+          <p class="text-gray-600 mb-4">
+            住宅地が中心で、比較的家賃が安い。自然環境も良好で住みやすいエリアです。
+          </p>
+          <div class="text-sm text-gray-500">
+            <p>家賃相場：安い</p>
+            <p>外国人向け：★★★☆☆</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Makuhari Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          千葉市の<span class="text-sky-600">国際都市機能</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          海浜幕張を中心とした国際ビジネス拠点
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏢</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">幕張メッセ</h3>
+          <p class="text-gray-600 text-sm">
+            国際会議場・展示場として多くの国際イベントを開催
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏬</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">QVCマリンフィールド</h3>
+          <p class="text-gray-600 text-sm">
+            千葉ロッテマリーンズの本拠地球場
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏖️</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">海浜公園</h3>
+          <p class="text-gray-600 text-sm">
+            東京湾に面した広大な海浜公園
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🛍️</span>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">アウトレット</h3>
+          <p class="text-gray-600 text-sm">
+            三井アウトレットパークなど大型商業施設
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          千葉市の<span class="text-sky-600">生活情報</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          千葉市での生活に必要な詳細情報をまとめました
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <a href="/ja/blog/chiba/chiba/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🛡️</span>
+            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            千葉市の地震リスク、液状化対策、津波対策について詳しく解説します。
+          </p>
+          <div class="text-sky-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/chiba/chiba/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏥</span>
+            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
+          </p>
+          <div class="text-sky-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/chiba/chiba/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">💰</span>
+            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            千葉市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+          </p>
+          <div class="text-sky-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/chiba/chiba/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">🏗️</span>
+            <h3 class="text-xl font-bold text-gray-900">空港アクセス・国際性</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            成田空港へのアクセス、国際的な環境、海外との往来について詳しく解説。
+          </p>
+          <div class="text-sky-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/chiba/chiba/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📜</span>
+            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
+          </p>
+          <div class="text-sky-600 font-semibold">詳細を見る →</div>
+        </a>
+
+        <a href="/ja/blog/chiba/chiba/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-4">📷</span>
+            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
+          </div>
+          <p class="text-gray-600 mb-4">
+            実際に千葉市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
+          </p>
+          <div class="text-sky-600 font-semibold">詳細を見る →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pros and Cons Section -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          千葉市に住む<span class="text-sky-600">メリット・デメリット</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-green-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👍</span>
+            メリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>成田空港へのアクセスが良い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>海と緑の自然環境が豊か</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>東京都内より家賃が安い</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>幕張メッセなど国際的な施設が充実</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-600 mr-3">✓</span>
+              <span>大型商業施設が豊富</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-red-50 rounded-xl p-8">
+          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
+            <span class="text-3xl mr-3">👎</span>
+            デメリット
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>東京都心への通勤時間がかかる</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>液状化リスクがある地域もある</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>台風や津波のリスクがある</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>エリアによっては交通が不便</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-red-600 mr-3">✗</span>
+              <span>都市の個性や文化が薄い</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-sky-600 to-blue-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        千葉市での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        千葉市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-sky-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
