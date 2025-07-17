@@ -1,0 +1,402 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "大阪府での暮らし - 市区町村別生活情報";
+const description = "大阪府の各市区町村での外国人向け生活情報。大阪市・堺市・豊中市など関西圏の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 大阪府の市区町村データ
+const osakaCities = {
+  osaka: {
+    title: "大阪市",
+    population: "人口：約275万人",
+    foreignPopulation: "外国人人口：約13万人（4.7%）",
+    features: "関西経済の中心地",
+    description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
+    image: "https://images.unsplash.com/photo-1589451560115-9f86a404f3de?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/osaka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/osaka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/osaka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/osaka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/osaka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/osaka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/osaka/"
+  },
+  sakai: {
+    title: "堺市",
+    population: "人口：約83万人",
+    foreignPopulation: "外国人人口：約2万人（2.4%）",
+    features: "歴史ある商業都市",
+    description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
+    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/sakai/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/sakai/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/sakai/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/sakai/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/sakai/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/sakai/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/sakai/"
+  },
+  toyonaka: {
+    title: "豊中市",
+    population: "人口：約40万人",
+    foreignPopulation: "外国人人口：約8,500人（2.1%）",
+    features: "住宅地・空港アクセス良好",
+    description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
+    image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/toyonaka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/toyonaka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/toyonaka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/toyonaka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/toyonaka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/toyonaka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/toyonaka/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">大阪府</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-orange-800 to-red-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1589451560115-9f86a404f3de?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="大阪府の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 大阪府
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          大阪府での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          関西の中心地・大阪府で食文化と商業が栄える活気あふれる生活
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約880万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約25万人（2.8%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">43自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-orange-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          プルダウンから市区町村を選択して、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Selection Interface -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <label for="city-select" class="block text-lg font-semibold text-gray-700 mb-4">
+            📍 大阪府の市区町村を選択
+          </label>
+          <select id="city-select" onchange="displayCityInfo()" 
+                  class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-lg">
+            <option value="">市区町村を選択してください</option>
+            {Object.entries(osakaCities).map(([key, city]) => (
+              <option value={key}>{city.title}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <!-- City Information Display -->
+      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div class="bg-gradient-to-r from-orange-600 to-red-800 px-8 py-6 text-white">
+            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <p id="population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="foreign-population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="main-features" class="opacity-90"></p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-8">
+            <p id="city-description" class="text-gray-600 mb-8"></p>
+            
+            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
+            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
+            
+            <div class="mt-8 text-center">
+              <a id="view-city-page" href="#" 
+                 class="inline-flex items-center px-8 py-4 bg-orange-600 text-white font-bold text-lg rounded-full hover:bg-orange-700 transition-all duration-300">
+                <span class="mr-3">📋</span>
+                詳細ページを見る
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Cities Preview -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          {Object.entries(osakaCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                 onclick={`selectCity('${key}')`}>
+              <div class="relative h-32 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Osaka Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          大阪府で暮らす<span class="text-orange-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって大阪府が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍜</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">食文化の都</h3>
+          <p class="text-gray-600">
+            たこ焼き、お好み焼きなど独特の食文化。多様な飲食店と外国料理も充実しています。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">💼</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">経済の中心地</h3>
+          <p class="text-gray-600">
+            西日本最大の経済圏。多様な業界と就労機会があり、キャリア形成に有利です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">😄</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">フレンドリーな気質</h3>
+          <p class="text-gray-600">
+            関西弁に代表される親しみやすい気質。外国人にもオープンで温かい地域性です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-orange-600 to-red-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        大阪府での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-orange-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // 大阪府市区町村データ
+    const cityData = {
+      osaka: {
+        title: "大阪市",
+        population: "人口：約275万人",
+        foreignPopulation: "外国人人口：約13万人（4.7%）",
+        features: "関西経済の中心地",
+        description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/osaka/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/osaka/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/osaka/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/osaka/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/osaka/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/osaka/article-06/" }
+        ],
+        pageUrl: "/ja/blog/osaka/osaka/"
+      },
+      sakai: {
+        title: "堺市",
+        population: "人口：約83万人",
+        foreignPopulation: "外国人人口：約2万人（2.4%）",
+        features: "歴史ある商業都市",
+        description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/sakai/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/sakai/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/sakai/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/sakai/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/sakai/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/sakai/article-06/" }
+        ],
+        pageUrl: "/ja/blog/osaka/sakai/"
+      },
+      toyonaka: {
+        title: "豊中市",
+        population: "人口：約40万人",
+        foreignPopulation: "外国人人口：約8,500人（2.1%）",
+        features: "住宅地・空港アクセス良好",
+        description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/toyonaka/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/toyonaka/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/toyonaka/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/toyonaka/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/toyonaka/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/toyonaka/article-06/" }
+        ],
+        pageUrl: "/ja/blog/osaka/toyonaka/"
+      }
+    };
+
+    // 市区町村選択時に詳細情報を表示
+    function displayCityInfo() {
+      const citySelect = document.getElementById("city-select");
+      const cityInfo = document.getElementById("city-info");
+      
+      const selectedCity = citySelect.value;
+      
+      if (!selectedCity || !cityData[selectedCity]) {
+        cityInfo.style.display = "none";
+        return;
+      }
+      
+      const city = cityData[selectedCity];
+      
+      // 基本情報を更新
+      document.getElementById("city-title").textContent = city.title;
+      document.getElementById("population").textContent = city.population;
+      document.getElementById("foreign-population").textContent = city.foreignPopulation;
+      document.getElementById("main-features").textContent = city.features;
+      document.getElementById("city-description").textContent = city.description;
+      
+      // 記事リンクを更新
+      const linksContainer = document.getElementById("article-links");
+      linksContainer.innerHTML = "";
+      
+      city.articles.forEach(article => {
+        const linkDiv = document.createElement("div");
+        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
+        
+        const link = document.createElement("a");
+        link.href = article.url;
+        link.className = "flex items-center text-gray-900 hover:text-orange-600 transition-colors";
+        link.innerHTML = `
+          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
+          <div>
+            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
+          </div>
+        `;
+        
+        linkDiv.appendChild(link);
+        linksContainer.appendChild(linkDiv);
+      });
+      
+      // 詳細ページリンクを更新
+      document.getElementById("view-city-page").href = city.pageUrl;
+      
+      // 情報ボックスを表示
+      cityInfo.style.display = "block";
+      
+      // スムーズスクロール
+      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // 人気市区町村カードクリック時
+    function selectCity(cityKey) {
+      const citySelect = document.getElementById("city-select");
+      citySelect.value = cityKey;
+      displayCityInfo();
+    }
+  </script>
+</BaseLayout>

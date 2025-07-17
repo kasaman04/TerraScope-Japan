@@ -1,0 +1,369 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "福岡県での暮らし - 市区町村別生活情報";
+const description = "福岡県の各市区町村での外国人向け生活情報。福岡市・北九州市など九州の玄関口福岡県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 福岡県の市区町村データ
+const fukuokaCities = {
+  fukuoka: {
+    title: "福岡市",
+    population: "人口：約161万人",
+    foreignPopulation: "外国人人口：約3.7万人（2.3%）",
+    features: "九州の中心都市",
+    description: "九州最大の都市でアジアとの玄関口。IT産業や国際ビジネスが発達し、外国人にも住みやすい環境が整っています。",
+    image: "https://images.unsplash.com/photo-1586551292408-e03ccbcbd4b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukuoka/fukuoka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukuoka/fukuoka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukuoka/fukuoka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukuoka/fukuoka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukuoka/fukuoka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukuoka/fukuoka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/fukuoka/fukuoka/"
+  },
+  kitakyushu: {
+    title: "北九州市",
+    population: "人口：約93万人",
+    foreignPopulation: "外国人人口：約1.8万人（1.9%）",
+    features: "工業都市・環境都市",
+    description: "重工業で発展した都市で、現在は環境技術に力を入れています。アジア各国との交流も活発です。",
+    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukuoka/kitakyushu/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukuoka/kitakyushu/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukuoka/kitakyushu/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukuoka/kitakyushu/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukuoka/kitakyushu/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukuoka/kitakyushu/article-06/" }
+    ],
+    pageUrl: "/ja/blog/fukuoka/kitakyushu/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">福岡県</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-emerald-800 to-green-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1586551292408-e03ccbcbd4b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="福岡県の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 福岡県
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          福岡県での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          九州の玄関口・アジアへのアクセス良好な国際的な福岡県
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約512万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約8.9万人（1.7%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">60自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-emerald-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          プルダウンから市区町村を選択して、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Selection Interface -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <label for="city-select" class="block text-lg font-semibold text-gray-700 mb-4">
+            📍 福岡県の市区町村を選択
+          </label>
+          <select id="city-select" onchange="displayCityInfo()" 
+                  class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-lg">
+            <option value="">市区町村を選択してください</option>
+            {Object.entries(fukuokaCities).map(([key, city]) => (
+              <option value={key}>{city.title}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <!-- City Information Display -->
+      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div class="bg-gradient-to-r from-emerald-600 to-green-800 px-8 py-6 text-white">
+            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <p id="population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="foreign-population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="main-features" class="opacity-90"></p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-8">
+            <p id="city-description" class="text-gray-600 mb-8"></p>
+            
+            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
+            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
+            
+            <div class="mt-8 text-center">
+              <a id="view-city-page" href="#" 
+                 class="inline-flex items-center px-8 py-4 bg-emerald-600 text-white font-bold text-lg rounded-full hover:bg-emerald-700 transition-all duration-300">
+                <span class="mr-3">📋</span>
+                詳細ページを見る
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Cities Preview -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
+          {Object.entries(fukuokaCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                 onclick={`selectCity('${key}')`}>
+              <div class="relative h-32 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fukuoka Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          福岡県で暮らす<span class="text-emerald-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって福岡県が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🌏</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">アジアの玄関口</h3>
+          <p class="text-gray-600">
+            アジア各国への直行便が多く、国際的なビジネスと文化交流の拠点です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">💻</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">IT・スタートアップ</h3>
+          <p class="text-gray-600">
+            IT産業やスタートアップ企業が多く、先進的な働き方と国際的な環境が整っています。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍜</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">グルメ・食文化</h3>
+          <p class="text-gray-600">
+            博多ラーメン、もつ鍋など独特の食文化。新鮮な海産物も豊富で食生活が充実します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-emerald-600 to-green-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        福岡県での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-emerald-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // 福岡県市区町村データ
+    const cityData = {
+      fukuoka: {
+        title: "福岡市",
+        population: "人口：約161万人",
+        foreignPopulation: "外国人人口：約3.7万人（2.3%）",
+        features: "九州の中心都市",
+        description: "九州最大の都市でアジアとの玄関口。IT産業や国際ビジネスが発達し、外国人にも住みやすい環境が整っています。",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukuoka/fukuoka/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukuoka/fukuoka/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukuoka/fukuoka/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukuoka/fukuoka/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukuoka/fukuoka/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukuoka/fukuoka/article-06/" }
+        ],
+        pageUrl: "/ja/blog/fukuoka/fukuoka/"
+      },
+      kitakyushu: {
+        title: "北九州市",
+        population: "人口：約93万人",
+        foreignPopulation: "外国人人口：約1.8万人（1.9%）",
+        features: "工業都市・環境都市",
+        description: "重工業で発展した都市で、現在は環境技術に力を入れています。アジア各国との交流も活発です。",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukuoka/kitakyushu/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukuoka/kitakyushu/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukuoka/kitakyushu/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukuoka/kitakyushu/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukuoka/kitakyushu/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukuoka/kitakyushu/article-06/" }
+        ],
+        pageUrl: "/ja/blog/fukuoka/kitakyushu/"
+      }
+    };
+
+    // 市区町村選択時に詳細情報を表示
+    function displayCityInfo() {
+      const citySelect = document.getElementById("city-select");
+      const cityInfo = document.getElementById("city-info");
+      
+      const selectedCity = citySelect.value;
+      
+      if (!selectedCity || !cityData[selectedCity]) {
+        cityInfo.style.display = "none";
+        return;
+      }
+      
+      const city = cityData[selectedCity];
+      
+      // 基本情報を更新
+      document.getElementById("city-title").textContent = city.title;
+      document.getElementById("population").textContent = city.population;
+      document.getElementById("foreign-population").textContent = city.foreignPopulation;
+      document.getElementById("main-features").textContent = city.features;
+      document.getElementById("city-description").textContent = city.description;
+      
+      // 記事リンクを更新
+      const linksContainer = document.getElementById("article-links");
+      linksContainer.innerHTML = "";
+      
+      city.articles.forEach(article => {
+        const linkDiv = document.createElement("div");
+        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
+        
+        const link = document.createElement("a");
+        link.href = article.url;
+        link.className = "flex items-center text-gray-900 hover:text-emerald-600 transition-colors";
+        link.innerHTML = `
+          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
+          <div>
+            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
+          </div>
+        `;
+        
+        linkDiv.appendChild(link);
+        linksContainer.appendChild(linkDiv);
+      });
+      
+      // 詳細ページリンクを更新
+      document.getElementById("view-city-page").href = city.pageUrl;
+      
+      // 情報ボックスを表示
+      cityInfo.style.display = "block";
+      
+      // スムーズスクロール
+      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // 人気市区町村カードクリック時
+    function selectCity(cityKey) {
+      const citySelect = document.getElementById("city-select");
+      citySelect.value = cityKey;
+      displayCityInfo();
+    }
+  </script>
+</BaseLayout>
