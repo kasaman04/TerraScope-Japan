@@ -1,0 +1,580 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "青森県での暮らし - 市区町村別生活情報";
+const description = "青森県の各市区町村での外国人向け生活情報。青森市・弘前市・八戸市などリンゴと美しい自然の青森県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 青森県の市区町村データ
+const aomoriCities = {
+  aomori: {
+    title: "青森市",
+    population: "人口：約28万人",
+    foreignPopulation: "外国人人口：約2,800人（1.0%）",
+    features: "県庁所在地・ねぶた祭り",
+    description: "青森県の中心都市。ねぶた祭りで有名で、本州最北端の県庁所在地として発展している。",
+    image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["県庁所在地", "ねぶた祭り", "本州最北端"],
+    englishHospital: true,
+    airport: "◎（青森空港直結）",
+    rent: "安い",
+    recommend: "地方都市の落ち着いた環境を求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aomori/aomori/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aomori/aomori/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aomori/aomori/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aomori/aomori/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aomori/aomori/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aomori/aomori/article-06/" }
+    ],
+    pageUrl: "/ja/blog/aomori/aomori/"
+  },
+  hirosaki: {
+    title: "弘前市",
+    population: "人口：約16万人",
+    foreignPopulation: "外国人人口：約1,200人（0.8%）",
+    features: "弘前城・桜の名所",
+    description: "弘前城と桜で有名な城下町。歴史と文化が息づく美しい街です。",
+    image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["城下町", "桜の名所", "歴史文化"],
+    englishHospital: false,
+    airport: "○（青森空港経由）",
+    rent: "非常に安い",
+    recommend: "歴史と文化を愛する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aomori/hirosaki/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aomori/hirosaki/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aomori/hirosaki/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aomori/hirosaki/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aomori/hirosaki/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aomori/hirosaki/article-06/" }
+    ],
+    pageUrl: "/ja/blog/aomori/hirosaki/"
+  },
+  hachinohe: {
+    title: "八戸市",
+    population: "人口：約22万人",
+    foreignPopulation: "外国人人口：約1,800人（0.8%）",
+    features: "工業都市・港町",
+    description: "青森県第2の都市。工業と漁業が盛んで、太平洋に面した港町として発展。",
+    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["工業都市", "港町", "漁業"],
+    englishHospital: true,
+    airport: "△（三沢空港経由）",
+    rent: "安い",
+    recommend: "工業関係で働く外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aomori/hachinohe/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aomori/hachinohe/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aomori/hachinohe/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aomori/hachinohe/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aomori/hachinohe/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aomori/hachinohe/article-06/" }
+    ],
+    pageUrl: "/ja/blog/aomori/hachinohe/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">青森県</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-blue-800 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="青森県の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 青森県
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          青森県での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          リンゴと美しい自然に恵まれた本州最北端の青森県
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約123万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約8,500人（0.7%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">40自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-blue-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          プルダウンから市区町村を選択して、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Selection Interface -->
+      <div class="max-w-2xl mx-auto mb-12">
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <label for="city-select" class="block text-lg font-semibold text-gray-700 mb-4">
+            📍 青森県の市区町村を選択
+          </label>
+          <select id="city-select" onchange="displayCityInfo()" 
+                  class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg">
+            <option value="">市区町村を選択してください</option>
+            {Object.entries(aomoriCities).map(([key, city]) => (
+              <option value={key}>{city.title}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <!-- City Information Display -->
+      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div class="bg-gradient-to-r from-blue-600 to-indigo-800 px-8 py-6 text-white">
+            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+              <div>
+                <p id="population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="foreign-population" class="opacity-90"></p>
+              </div>
+              <div>
+                <p id="main-features" class="opacity-90"></p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-8">
+            <p id="city-description" class="text-gray-600 mb-8"></p>
+            
+            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
+            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
+            
+            <div class="mt-8 text-center">
+              <a id="view-city-page" href="#" 
+                 class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold text-lg rounded-full hover:bg-blue-700 transition-all duration-300">
+                <span class="mr-3">📋</span>
+                詳細ページを見る
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Cities Preview -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Object.entries(aomoriCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white">
+                  <h4 class="font-bold text-lg">{city.title}</h4>
+                </div>
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
+                <!-- タグ表示 -->
+                <div class="flex gap-2 mb-3">
+                  {city.tags && city.tags.slice(0, 2).map(tag => (
+                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                  ))}
+                </div>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+          <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+
+          <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
+          
+          <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+          <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+          <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">人口:</strong> 
+              <span id="modal-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">外国人人口:</strong> 
+              <span id="modal-foreign-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">英語対応病院:</strong> 
+              <span id="modal-english-hospital" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">空港アクセス:</strong> 
+              <span id="modal-airport" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">家賃相場:</strong> 
+              <span id="modal-rent" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+              <strong class="text-gray-700">おすすめ:</strong> 
+              <span id="modal-recommend" class="text-gray-900"></span>
+            </div>
+          </div>
+
+          <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+          <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+          <div class="flex gap-3">
+            <a id="modal-article-link" href="#" 
+               class="flex-1 text-center bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
+              📖 詳しい記事を見る
+            </a>
+            <button id="close-modal-btn"
+                    class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
+              閉じる
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aomori Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          青森県で暮らす<span class="text-blue-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって青森県が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍎</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな自然と食材</h3>
+          <p class="text-gray-600">
+            リンゴをはじめとする豊富な農産物と、美しい自然環境に恵まれています。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">💰</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">低い生活コスト</h3>
+          <p class="text-gray-600">
+            家賃や物価が安く、経済的な負担を抑えた生活が可能です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🎌</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">伝統文化体験</h3>
+          <p class="text-gray-600">
+            ねぶた祭りなど、日本の伝統文化を身近に体験できる環境があります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        青森県での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // 青森県市区町村データ
+    const cityData = {
+      aomori: {
+        title: "青森市",
+        population: "人口：約28万人",
+        foreignPopulation: "外国人人口：約2,800人（1.0%）",
+        features: "県庁所在地・ねぶた祭り",
+        description: "青森県の中心都市。ねぶた祭りで有名で、本州最北端の県庁所在地として発展している。",
+        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "ねぶた祭り", "本州最北端"],
+        englishHospital: true,
+        airport: "◎（青森空港直結）",
+        rent: "安い",
+        recommend: "地方都市の落ち着いた環境を求める外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aomori/aomori/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aomori/aomori/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aomori/aomori/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aomori/aomori/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aomori/aomori/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aomori/aomori/article-06/" }
+        ],
+        pageUrl: "/ja/blog/aomori/aomori/"
+      },
+      hirosaki: {
+        title: "弘前市",
+        population: "人口：約16万人",
+        foreignPopulation: "外国人人口：約1,200人（0.8%）",
+        features: "弘前城・桜の名所",
+        description: "弘前城と桜で有名な城下町。歴史と文化が息づく美しい街です。",
+        image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["城下町", "桜の名所", "歴史文化"],
+        englishHospital: false,
+        airport: "○（青森空港経由）",
+        rent: "非常に安い",
+        recommend: "歴史と文化を愛する外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aomori/hirosaki/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aomori/hirosaki/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aomori/hirosaki/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aomori/hirosaki/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aomori/hirosaki/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aomori/hirosaki/article-06/" }
+        ],
+        pageUrl: "/ja/blog/aomori/hirosaki/"
+      },
+      hachinohe: {
+        title: "八戸市",
+        population: "人口：約22万人",
+        foreignPopulation: "外国人人口：約1,800人（0.8%）",
+        features: "工業都市・港町",
+        description: "青森県第2の都市。工業と漁業が盛んで、太平洋に面した港町として発展。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "港町", "漁業"],
+        englishHospital: true,
+        airport: "△（三沢空港経由）",
+        rent: "安い",
+        recommend: "工業関係で働く外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aomori/hachinohe/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aomori/hachinohe/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aomori/hachinohe/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aomori/hachinohe/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aomori/hachinohe/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aomori/hachinohe/article-06/" }
+        ],
+        pageUrl: "/ja/blog/aomori/hachinohe/"
+      }
+    };
+
+    // 市区町村選択時に詳細情報を表示
+    function displayCityInfo() {
+      const citySelect = document.getElementById("city-select");
+      const cityInfo = document.getElementById("city-info");
+      
+      const selectedCity = citySelect.value;
+      
+      if (!selectedCity || !cityData[selectedCity]) {
+        cityInfo.style.display = "none";
+        return;
+      }
+      
+      const city = cityData[selectedCity];
+      
+      // 基本情報を更新
+      document.getElementById("city-title").textContent = city.title;
+      document.getElementById("population").textContent = city.population;
+      document.getElementById("foreign-population").textContent = city.foreignPopulation;
+      document.getElementById("main-features").textContent = city.features;
+      document.getElementById("city-description").textContent = city.description;
+      
+      // 記事リンクを更新
+      const linksContainer = document.getElementById("article-links");
+      linksContainer.innerHTML = "";
+      
+      city.articles.forEach(article => {
+        const linkDiv = document.createElement("div");
+        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
+        
+        const link = document.createElement("a");
+        link.href = article.url;
+        link.className = "flex items-center text-gray-900 hover:text-blue-600 transition-colors";
+        link.innerHTML = `
+          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
+          <div>
+            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
+          </div>
+        `;
+        
+        linkDiv.appendChild(link);
+        linksContainer.appendChild(linkDiv);
+      });
+      
+      // 詳細ページリンクを更新
+      document.getElementById("view-city-page").href = city.pageUrl;
+      
+      // 情報ボックスを表示
+      cityInfo.style.display = "block";
+      
+      // スムーズスクロール
+      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // 人気市区町村カードクリック時
+    function selectCity(cityKey) {
+      const citySelect = document.getElementById("city-select");
+      citySelect.value = cityKey;
+      displayCityInfo();
+    }
+
+    // モーダル関連の変数とイベント処理
+    let currentCityKey = '';
+    const modal = document.getElementById('city-modal');
+    const modalClose = document.getElementById('modal-close');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    // モーダルを開く
+    function openCityModal(cityKey) {
+      currentCityKey = cityKey;
+      const city = cityData[cityKey];
+      
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-image').src = city.image;
+      document.getElementById('modal-image').alt = city.title;
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+      document.getElementById('modal-article-link').href = city.pageUrl;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // モーダルを表示（アニメーション付き）
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeCityModal() {
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+      currentCityKey = '';
+    }
+
+    // イベントリスナー
+    modalClose.addEventListener('click', closeCityModal);
+    closeModalBtn.addEventListener('click', closeCityModal);
+
+    // モーダル背景クリックで閉じる
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeCityModal();
+      }
+    });
+
+    // ESCキーでモーダルを閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+        closeCityModal();
+      }
+    });
+  </script>
+</BaseLayout>
