@@ -9,13 +9,13 @@ const lang = "ja";
 const tokyoCities = {
   musashino: {
     title: "武蔵野市",
-    population: "人口：約14万7千人",
-    foreignPopulation: "外国人人口：約3,200人（2.2%）",
+    population: "約14万7千人",
+    foreignPopulation: "約3,200人（2.2%）",
     features: "井の頭公園で有名な閑静エリア",
     description: "吉祥寺を中心とした人気エリア。都心へのアクセスと住環境のバランスが魅力の武蔵野市は、外国人にも住みやすい環境が整っています。",
     image: "https://images.unsplash.com/photo-1555400038-63f5ba517a47?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["交通便利", "自然豊か", "ファミリー向け"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（新宿経由で30分）",
     rent: "中程度",
     recommend: "都心アクセスと住環境を両立したい外国人",
@@ -31,13 +31,13 @@ const tokyoCities = {
   },
   kunitachi: {
     title: "国立市",
-    population: "人口：約7万5千人",
-    foreignPopulation: "外国人人口：約1,800人（2.4%）",
+    population: "約7万5千人",
+    foreignPopulation: "約1,800人（2.4%）",
     features: "文教都市として有名",
     description: "一橋大学があることで知られる文教都市。街並みが美しく整備されており、学術的な雰囲気が漂う住環境です。",
     image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["文教都市", "美しい街並み", "学術的"],
-    englishHospital: false,
+    englishHospital: "なし",
     airport: "○（立川経由で45分）",
     rent: "比較的安い",
     recommend: "落ち着いた学術環境を求める外国人",
@@ -53,13 +53,13 @@ const tokyoCities = {
   },
   shibuya: {
     title: "渋谷区",
-    population: "人口：約23万人",
-    foreignPopulation: "外国人人口：約15,000人（6.5%）",
+    population: "約23万人",
+    foreignPopulation: "約15,000人（6.5%）",
     features: "国際的な商業・文化の中心地",
     description: "若者文化と国際ビジネスの発信地。多様性に富んだ環境で、多くの外国人が住み働いています。",
     image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["国際的", "若者文化", "商業中心"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（リムジンバスあり）",
     rent: "高め",
     recommend: "都心に住みたい外国人",
@@ -75,13 +75,13 @@ const tokyoCities = {
   },
   minato: {
     title: "港区",
-    population: "人口：約26万人",
-    foreignPopulation: "外国人人口：約22,000人（8.5%）",
+    population: "約26万人",
+    foreignPopulation: "約22,000人（8.5%）",
     features: "高級住宅地・ビジネス街",
     description: "東京タワー、六本木、赤坂を擁する国際的なエリア。外国人駐在員も多く、インターナショナルな環境が整っています。",
     image: "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["高級住宅地", "国際的", "ビジネス中心"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（羽田空港直通）",
     rent: "非常に高い",
     recommend: "外国人駐在員・高所得者",
@@ -97,13 +97,13 @@ const tokyoCities = {
   },
   setagaya: {
     title: "世田谷区",
-    population: "人口：約92万人",
-    foreignPopulation: "外国人人口：約18,000人（2.0%）",
+    population: "約92万人",
+    foreignPopulation: "約18,000人（2.0%）",
     features: "閑静な住宅地・ファミリー向け",
     description: "東京23区最大の人口を誇る住宅地。緑も多く、ファミリー層に人気のエリアです。",
     image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["ファミリー向け", "住宅地", "緑豊か"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（成城学園経由で50分）",
     rent: "中程度",
     recommend: "子育て世代の外国人ファミリー",
@@ -119,13 +119,13 @@ const tokyoCities = {
   },
   shinjuku: {
     title: "新宿区",
-    population: "人口：約35万人",
-    foreignPopulation: "外国人人口：約42,000人（12.0%）",
+    population: "約35万人",
+    foreignPopulation: "約42,000人（12.0%）",
     features: "都心・多国籍エリア",
     description: "東京の中心地の一つ。新大久保コリアンタウンなど、多国籍な文化が根付いているエリアです。",
     image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["多国籍", "都心", "外国人多い"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（成田・羽田直通）",
     rent: "高め",
     recommend: "多様性を求める外国人",
@@ -434,7 +434,7 @@ const tokyoCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 東京都市区町村データ（JavaScriptオブジェクト）
     const cityData = {
       musashino: {
@@ -445,7 +445,7 @@ const tokyoCities = {
         description: "吉祥寺を中心とした人気エリア。都心へのアクセスと住環境のバランスが魅力の武蔵野市は、外国人にも住みやすい環境が整っています。",
         image: "https://images.unsplash.com/photo-1555400038-63f5ba517a47?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["交通便利", "自然豊か", "ファミリー向け"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（新宿経由で30分）",
         rent: "中程度",
         recommend: "都心アクセスと住環境を両立したい外国人",
@@ -467,7 +467,7 @@ const tokyoCities = {
         description: "一橋大学があることで知られる文教都市。街並みが美しく整備されており、学術的な雰囲気が漂う住環境です。",
         image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["文教都市", "美しい街並み", "学術的"],
-        englishHospital: false,
+        englishHospital: "なし",
         airport: "○（立川経由で45分）",
         rent: "比較的安い",
         recommend: "落ち着いた学術環境を求める外国人",
@@ -489,7 +489,7 @@ const tokyoCities = {
         description: "若者文化と国際ビジネスの発信地。多様性に富んだ環境で、多くの外国人が住み働いています。",
         image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["国際的", "若者文化", "商業中心"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（リムジンバスあり）",
         rent: "高め",
         recommend: "都心に住みたい外国人",
@@ -511,7 +511,7 @@ const tokyoCities = {
         description: "東京タワー、六本木、赤坂を擁する国際的なエリア。外国人駐在員も多く、インターナショナルな環境が整っています。",
         image: "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["高級住宅地", "国際的", "ビジネス中心"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（羽田空港直通）",
         rent: "非常に高い",
         recommend: "外国人駐在員・高所得者",
@@ -533,7 +533,7 @@ const tokyoCities = {
         description: "東京23区最大の人口を誇る住宅地。緑も多く、ファミリー層に人気のエリアです。",
         image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["ファミリー向け", "住宅地", "緑豊か"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（成城学園経由で50分）",
         rent: "中程度",
         recommend: "子育て世代の外国人ファミリー",
@@ -555,7 +555,7 @@ const tokyoCities = {
         description: "東京の中心地の一つ。新大久保コリアンタウンなど、多国籍な文化が根付いているエリアです。",
         image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["多国籍", "都心", "外国人多い"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（成田・羽田直通）",
         rent: "高め",
         recommend: "多様性を求める外国人",
@@ -650,7 +650,7 @@ const tokyoCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -678,7 +678,7 @@ const tokyoCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -690,23 +690,25 @@ const tokyoCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    const closeModalBtn = document.getElementById('close-modal-btn');
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // DOMContentLoadedでイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>
