@@ -9,13 +9,13 @@ const lang = "ja";
 const tochigiCities = {
   utsunomiya: {
     title: "宇都宮市",
-    population: "人口：約52万人",
-    foreignPopulation: "外国人人口：約12,000人（2.3%）",
+    population: "約52万人",
+    foreignPopulation: "約12,000人（2.3%）",
     features: "県庁所在地・餃子の街",
     description: "栃木県の中心都市。餃子の街として全国的に有名な県庁所在地として発展している。",
     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["県庁所在地", "餃子の街", "中心都市"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（羽田空港経由）",
     rent: "普通",
     recommend: "都市機能と地方の良さを求める外国人",
@@ -31,13 +31,13 @@ const tochigiCities = {
   },
   oyama: {
     title: "小山市",
-    population: "人口：約17万人",
-    foreignPopulation: "外国人人口：約6,000人（3.5%）",
+    population: "約17万人",
+    foreignPopulation: "約6,000人（3.5%）",
     features: "交通の要衝・新幹線",
     description: "新幹線が停車する交通の要衝。製造業が発達した工業都市として発展。",
     image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["交通の要衝", "新幹線", "工業都市"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（羽田空港経由）",
     rent: "普通",
     recommend: "交通アクセスを重視する外国人",
@@ -53,13 +53,13 @@ const tochigiCities = {
   },
   tochigi: {
     title: "栃木市",
-    population: "人口：約16万人",
-    foreignPopulation: "外国人人口：約3,500人（2.2%）",
+    population: "約16万人",
+    foreignPopulation: "約3,500人（2.2%）",
     features: "蔵の街・歴史",
     description: "江戸時代の蔵が残る歴史の街。巴波川沿いの美しい景観で有名。",
     image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["蔵の街", "歴史", "美しい景観"],
-    englishHospital: false,
+    englishHospital: "なし",
     airport: "○（羽田空港経由）",
     rent: "安い",
     recommend: "歴史と文化を愛する外国人",
@@ -75,13 +75,13 @@ const tochigiCities = {
   },
   sano: {
     title: "佐野市",
-    population: "人口：約11万人",
-    foreignPopulation: "外国人人口：約2,200人（2.0%）",
+    population: "約11万人",
+    foreignPopulation: "約2,200人（2.0%）",
     features: "佐野ラーメン・アウトレット",
     description: "佐野ラーメンで有名。佐野プレミアムアウトレットでも知られる。",
     image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["佐野ラーメン", "アウトレット", "グルメ"],
-    englishHospital: false,
+    englishHospital: "なし",
     airport: "○（羽田空港経由）",
     rent: "安い",
     recommend: "グルメとショッピングを楽しみたい外国人",
@@ -390,18 +390,18 @@ const tochigiCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 栃木県市区町村データ
     const cityData = {
       utsunomiya: {
         title: "宇都宮市",
-        population: "人口：約52万人",
-        foreignPopulation: "外国人人口：約12,000人（2.3%）",
+        population: "約52万人",
+        foreignPopulation: "約12,000人（2.3%）",
         features: "県庁所在地・餃子の街",
         description: "栃木県の中心都市。餃子の街として全国的に有名な県庁所在地として発展している。",
         image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "餃子の街", "中心都市"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（羽田空港経由）",
         rent: "普通",
         recommend: "都市機能と地方の良さを求める外国人",
@@ -417,13 +417,13 @@ const tochigiCities = {
       },
       oyama: {
         title: "小山市",
-        population: "人口：約17万人",
-        foreignPopulation: "外国人人口：約6,000人（3.5%）",
+        population: "約17万人",
+        foreignPopulation: "約6,000人（3.5%）",
         features: "交通の要衝・新幹線",
         description: "新幹線が停車する交通の要衝。製造業が発達した工業都市として発展。",
         image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["交通の要衝", "新幹線", "工業都市"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（羽田空港経由）",
         rent: "普通",
         recommend: "交通アクセスを重視する外国人",
@@ -439,13 +439,13 @@ const tochigiCities = {
       },
       tochigi: {
         title: "栃木市",
-        population: "人口：約16万人",
-        foreignPopulation: "外国人人口：約3,500人（2.2%）",
+        population: "約16万人",
+        foreignPopulation: "約3,500人（2.2%）",
         features: "蔵の街・歴史",
         description: "江戸時代の蔵が残る歴史の街。巴波川沿いの美しい景観で有名。",
         image: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["蔵の街", "歴史", "美しい景観"],
-        englishHospital: false,
+        englishHospital: "なし",
         airport: "○（羽田空港経由）",
         rent: "安い",
         recommend: "歴史と文化を愛する外国人",
@@ -461,13 +461,13 @@ const tochigiCities = {
       },
       sano: {
         title: "佐野市",
-        population: "人口：約11万人",
-        foreignPopulation: "外国人人口：約2,200人（2.0%）",
+        population: "約11万人",
+        foreignPopulation: "約2,200人（2.0%）",
         features: "佐野ラーメン・アウトレット",
         description: "佐野ラーメンで有名。佐野プレミアムアウトレットでも知られる。",
         image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["佐野ラーメン", "アウトレット", "グルメ"],
-        englishHospital: false,
+        englishHospital: "なし",
         airport: "○（羽田空港経由）",
         rent: "安い",
         recommend: "グルメとショッピングを楽しみたい外国人",
@@ -563,7 +563,7 @@ const tochigiCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -591,7 +591,7 @@ const tochigiCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -603,22 +603,25 @@ const tochigiCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // DOMContentLoaded内にイベントリスナーを配置
+    document.addEventListener('DOMContentLoaded', () => {
+      // イベントリスナー
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>

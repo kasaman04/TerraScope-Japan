@@ -9,9 +9,10 @@ const lang = "ja";
 const chibaCities = {
   chiba: {
     title: "千葉市",
-    population: "人口：約98万人",
-    foreignPopulation: "外国人人口：約2.8万人（2.9%）",
+    population: "約98万人",
+    foreignPopulation: "約2.8万人（2.9%）",
     features: "県庁所在地・幕張新都心",
+    englishHospital: "あり",
     description: "千葉県の中心都市。幕張新都心や千葉港を擁し、国際的なビジネス環境も整っています。",
     image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     articles: [
@@ -26,9 +27,10 @@ const chibaCities = {
   },
   funabashi: {
     title: "船橋市",
-    population: "人口：約64万人",
-    foreignPopulation: "外国人人口：約1.5万人（2.3%）",
+    population: "約64万人",
+    foreignPopulation: "約1.5万人（2.3%）",
     features: "東京近郊住宅地",
+    englishHospital: "限定的",
     description: "東京都心まで30分圏内の住宅地。商業施設も充実し、利便性の高い生活環境です。",
     image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     articles: [
@@ -43,9 +45,10 @@ const chibaCities = {
   },
   urayasu: {
     title: "浦安市",
-    population: "人口：約17万人",
-    foreignPopulation: "外国人人口：約4,800人（2.8%）",
+    population: "約17万人",
+    foreignPopulation: "約4,800人（2.8%）",
     features: "東京ディズニーリゾート",
+    englishHospital: "あり",
     description: "東京ディズニーリゾートで有名。東京都心へのアクセスも良好で、国際的な住環境が整っています。",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     articles: [
@@ -286,14 +289,15 @@ const chibaCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 千葉県市区町村データ
     const cityData = {
       chiba: {
         title: "千葉市",
-        population: "人口：約98万人",
-        foreignPopulation: "外国人人口：約2.8万人（2.9%）",
+        population: "約98万人",
+        foreignPopulation: "約2.8万人（2.9%）",
         features: "県庁所在地・幕張新都心",
+        englishHospital: "あり",
         description: "千葉県の中心都市。幕張新都心や千葉港を擁し、国際的なビジネス環境も整っています。",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/chiba/chiba/article-01/" },
@@ -307,9 +311,10 @@ const chibaCities = {
       },
       funabashi: {
         title: "船橋市",
-        population: "人口：約64万人",
-        foreignPopulation: "外国人人口：約1.5万人（2.3%）",
+        population: "約64万人",
+        foreignPopulation: "約1.5万人（2.3%）",
         features: "東京近郊住宅地",
+        englishHospital: "限定的",
         description: "東京都心まで30分圏内の住宅地。商業施設も充実し、利便性の高い生活環境です。",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/chiba/funabashi/article-01/" },
@@ -323,9 +328,10 @@ const chibaCities = {
       },
       urayasu: {
         title: "浦安市",
-        population: "人口：約17万人",
-        foreignPopulation: "外国人人口：約4,800人（2.8%）",
+        population: "約17万人",
+        foreignPopulation: "約4,800人（2.8%）",
         features: "東京ディズニーリゾート",
+        englishHospital: "あり",
         description: "東京ディズニーリゾートで有名。東京都心へのアクセスも良好で、国際的な住環境が整っています。",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/chiba/urayasu/article-01/" },
@@ -339,64 +345,66 @@ const chibaCities = {
       }
     };
 
-    // 市区町村選択時に詳細情報を表示
-    function displayCityInfo() {
-      const citySelect = document.getElementById("city-select");
-      const cityInfo = document.getElementById("city-info");
-      
-      const selectedCity = citySelect.value;
-      
-      if (!selectedCity || !cityData[selectedCity]) {
-        cityInfo.style.display = "none";
-        return;
-      }
-      
-      const city = cityData[selectedCity];
-      
-      // 基本情報を更新
-      document.getElementById("city-title").textContent = city.title;
-      document.getElementById("population").textContent = city.population;
-      document.getElementById("foreign-population").textContent = city.foreignPopulation;
-      document.getElementById("main-features").textContent = city.features;
-      document.getElementById("city-description").textContent = city.description;
-      
-      // 記事リンクを更新
-      const linksContainer = document.getElementById("article-links");
-      linksContainer.innerHTML = "";
-      
-      city.articles.forEach(article => {
-        const linkDiv = document.createElement("div");
-        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
+    document.addEventListener('DOMContentLoaded', function() {
+      // 市区町村選択時に詳細情報を表示
+      window.displayCityInfo = function() {
+        const citySelect = document.getElementById("city-select");
+        const cityInfo = document.getElementById("city-info");
         
-        const link = document.createElement("a");
-        link.href = article.url;
-        link.className = "flex items-center text-gray-900 hover:text-green-600 transition-colors";
-        link.innerHTML = `
-          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
-          <div>
-            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
-          </div>
-        `;
+        const selectedCity = citySelect.value;
         
-        linkDiv.appendChild(link);
-        linksContainer.appendChild(linkDiv);
-      });
-      
-      // 詳細ページリンクを更新
-      document.getElementById("view-city-page").href = city.pageUrl;
-      
-      // 情報ボックスを表示
-      cityInfo.style.display = "block";
-      
-      // スムーズスクロール
-      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+        if (!selectedCity || !cityData[selectedCity]) {
+          cityInfo.style.display = "none";
+          return;
+        }
+        
+        const city = cityData[selectedCity];
+        
+        // 基本情報を更新
+        document.getElementById("city-title").textContent = city.title;
+        document.getElementById("population").textContent = city.population;
+        document.getElementById("foreign-population").textContent = city.foreignPopulation;
+        document.getElementById("main-features").textContent = city.features;
+        document.getElementById("city-description").textContent = city.description;
+        
+        // 記事リンクを更新
+        const linksContainer = document.getElementById("article-links");
+        linksContainer.innerHTML = "";
+        
+        city.articles.forEach(article => {
+          const linkDiv = document.createElement("div");
+          linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
+          
+          const link = document.createElement("a");
+          link.href = article.url;
+          link.className = "flex items-center text-gray-900 hover:text-green-600 transition-colors";
+          link.innerHTML = `
+            <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
+            <div>
+              <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
+            </div>
+          `;
+          
+          linkDiv.appendChild(link);
+          linksContainer.appendChild(linkDiv);
+        });
+        
+        // 詳細ページリンクを更新
+        document.getElementById("view-city-page").href = city.pageUrl;
+        
+        // 情報ボックスを表示
+        cityInfo.style.display = "block";
+        
+        // スムーズスクロール
+        cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
 
-    // 人気市区町村カードクリック時
-    function selectCity(cityKey) {
-      const citySelect = document.getElementById("city-select");
-      citySelect.value = cityKey;
-      displayCityInfo();
-    }
+      // 人気市区町村カードクリック時
+      window.selectCity = function(cityKey) {
+        const citySelect = document.getElementById("city-select");
+        citySelect.value = cityKey;
+        displayCityInfo();
+      };
+    });
   </script>
 </BaseLayout>

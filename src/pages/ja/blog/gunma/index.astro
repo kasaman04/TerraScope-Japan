@@ -9,13 +9,13 @@ const lang = "ja";
 const gunmaCities = {
   maebashi: {
     title: "前橋市",
-    population: "人口：約33万人",
-    foreignPopulation: "外国人人口：約10,500人（3.2%）",
+    population: "約33万人",
+    foreignPopulation: "約10,500人（3.2%）",
     features: "県庁所在地・赤城山",
     description: "群馬県の県庁所在地。赤城山の麓に位置し、自然豊かで住みやすい環境が整っています。",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["県庁所在地", "赤城山", "自然豊か"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "△（羽田空港経由）",
     rent: "安い",
     recommend: "県庁所在地の安定した環境を求める外国人",
@@ -31,13 +31,13 @@ const gunmaCities = {
   },
   takasaki: {
     title: "高崎市",
-    population: "人口：約37万人",
-    foreignPopulation: "外国人人口：約12,000人（3.3%）",
+    population: "約37万人",
+    foreignPopulation: "約12,000人（3.3%）",
     features: "商業都市・だるまの街",
     description: "群馬県最大の都市。だるまで有名な商業都市で、県内の経済の中心地として栄えています。",
     image: "https://images.unsplash.com/photo-1547634415-1b6db8b16fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["商業都市", "だるま", "経済中心"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "△（羽田空港経由）",
     rent: "安い",
     recommend: "商業・ビジネス関係で働く外国人",
@@ -53,13 +53,13 @@ const gunmaCities = {
   },
   ota: {
     title: "太田市",
-    population: "人口：約22万人",
-    foreignPopulation: "外国人人口：約9,800人（4.5%）",
+    population: "約22万人",
+    foreignPopulation: "約9,800人（4.5%）",
     features: "工業都市・SUBARU本社",
     description: "SUBARUの本社がある工業都市。多くの外国人が製造業に従事し、国際色豊かな街となっています。",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["工業都市", "SUBARU", "国際色豊か"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "△（羽田空港経由）",
     rent: "安い",
     recommend: "製造業で働く外国人",
@@ -368,18 +368,18 @@ const gunmaCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 群馬県市区町村データ
     const cityData = {
       maebashi: {
         title: "前橋市",
-        population: "人口：約33万人",
-        foreignPopulation: "外国人人口：約10,500人（3.2%）",
+        population: "約33万人",
+        foreignPopulation: "約10,500人（3.2%）",
         features: "県庁所在地・赤城山",
         description: "群馬県の県庁所在地。赤城山の麓に位置し、自然豊かで住みやすい環境が整っています。",
         image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "赤城山", "自然豊か"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "△（羽田空港経由）",
         rent: "安い",
         recommend: "県庁所在地の安定した環境を求める外国人",
@@ -395,13 +395,13 @@ const gunmaCities = {
       },
       takasaki: {
         title: "高崎市",
-        population: "人口：約37万人",
-        foreignPopulation: "外国人人口：約12,000人（3.3%）",
+        population: "約37万人",
+        foreignPopulation: "約12,000人（3.3%）",
         features: "商業都市・だるまの街",
         description: "群馬県最大の都市。だるまで有名な商業都市で、県内の経済の中心地として栄えています。",
         image: "https://images.unsplash.com/photo-1547634415-1b6db8b16fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["商業都市", "だるま", "経済中心"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "△（羽田空港経由）",
         rent: "安い",
         recommend: "商業・ビジネス関係で働く外国人",
@@ -417,13 +417,13 @@ const gunmaCities = {
       },
       ota: {
         title: "太田市",
-        population: "人口：約22万人",
-        foreignPopulation: "外国人人口：約9,800人（4.5%）",
+        population: "約22万人",
+        foreignPopulation: "約9,800人（4.5%）",
         features: "工業都市・SUBARU本社",
         description: "SUBARUの本社がある工業都市。多くの外国人が製造業に従事し、国際色豊かな街となっています。",
         image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["工業都市", "SUBARU", "国際色豊か"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "△（羽田空港経由）",
         rent: "安い",
         recommend: "製造業で働く外国人",
@@ -519,7 +519,7 @@ const gunmaCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -547,7 +547,7 @@ const gunmaCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -559,22 +559,25 @@ const gunmaCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // DOMContentLoaded後にイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', () => {
+      // イベントリスナー
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>
