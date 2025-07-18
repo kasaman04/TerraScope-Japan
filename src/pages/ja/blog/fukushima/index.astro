@@ -9,13 +9,13 @@ const lang = "ja";
 const fukushimaCities = {
   fukushima: {
     title: "福島市",
-    population: "人口：約28万人",
-    foreignPopulation: "外国人人口：約2,500人（0.9%）",
+    population: "約28万人",
+    foreignPopulation: "約2,500人（0.9%）",
     features: "県庁所在地・桃の里",
-    description: "福島県の中心都市。桃やりんごなどの果物の産地として有名な県庁所在地",
+    description: "福島県の中心都市。桃やりんごなどの果物の産地として有名な県庁所在地。",
     image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["県庁所在地", "桃の里", "果物産地"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（福島空港経由）",
     rent: "安い",
     recommend: "果物と自然を愛する外国人",
@@ -31,13 +31,13 @@ const fukushimaCities = {
   },
   iwaki: {
     title: "いわき市",
-    population: "人口：約33万人",
-    foreignPopulation: "外国人人口：約3,200人（1.0%）",
+    population: "約33万人",
+    foreignPopulation: "約3,200人（1.0%）",
     features: "炭鉱・ハワイアンズ",
-    description: "福島県最大の市。スパリゾートハワイアンズで有名な太平洋岸の都市",
+    description: "福島県最大の市。スパリゾートハワイアンズで有名な太平洋岸の都市。",
     image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["最大都市", "ハワイアンズ", "太平洋岸"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "△（福島空港経由）",
     rent: "安い",
     recommend: "海とレジャーを愛する外国人",
@@ -53,13 +53,13 @@ const fukushimaCities = {
   },
   koriyama: {
     title: "郡山市",
-    population: "人口：約32万人",
-    foreignPopulation: "外国人人口：約3,000人（0.9%）",
+    population: "約32万人",
+    foreignPopulation: "約3,000人（0.9%）",
     features: "商業都市・交通要衝",
-    description: "東北の商業中心地。交通の要衝として経済活動が活発",
+    description: "東北の商業中心地。交通の要衝として経済活動が活発。",
     image: "https://images.unsplash.com/photo-1555400969-3da2c7e2b31f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["商業都市", "交通要衝", "経済活動"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（福島空港経由）",
     rent: "安い",
     recommend: "ビジネスと利便性を重視する外国人",
@@ -75,13 +75,13 @@ const fukushimaCities = {
   },
   aizuwakamatsu: {
     title: "会津若松市",
-    population: "人口：約12万人",
-    foreignPopulation: "外国人人口：約800人（0.7%）",
+    population: "約12万人",
+    foreignPopulation: "約800人（0.7%）",
     features: "会津文化・歴史",
-    description: "会津藩の城下町。鶴ヶ城や白虎隊で有名な歴史都市",
+    description: "会津藩の城下町。鶴ヶ城や白虎隊で有名な歴史都市。",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["城下町", "歴史都市", "会津文化"],
-    englishHospital: false,
+    englishHospital: "なし",
     airport: "△（福島空港経由）",
     rent: "非常に安い",
     recommend: "歴史と文化を愛する外国人",
@@ -390,18 +390,18 @@ const fukushimaCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 福島県市区町村データ
     const cityData = {
       fukushima: {
         title: "福島市",
-        population: "人口：約28万人",
-        foreignPopulation: "外国人人口：約2,500人（0.9%）",
+        population: "約28万人",
+        foreignPopulation: "約2,500人（0.9%）",
         features: "県庁所在地・桃の里",
-        description: "福島県の中心都市。桃やりんごなどの果物の産地として有名な県庁所在地",
+        description: "福島県の中心都市。桃やりんごなどの果物の産地として有名な県庁所在地。",
         image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "桃の里", "果物産地"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（福島空港経由）",
         rent: "安い",
         recommend: "果物と自然を愛する外国人",
@@ -417,13 +417,13 @@ const fukushimaCities = {
       },
       iwaki: {
         title: "いわき市",
-        population: "人口：約33万人",
-        foreignPopulation: "外国人人口：約3,200人（1.0%）",
+        population: "約33万人",
+        foreignPopulation: "約3,200人（1.0%）",
         features: "炭鉱・ハワイアンズ",
-        description: "福島県最大の市。スパリゾートハワイアンズで有名な太平洋岸の都市",
+        description: "福島県最大の市。スパリゾートハワイアンズで有名な太平洋岸の都市。",
         image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["最大都市", "ハワイアンズ", "太平洋岸"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "△（福島空港経由）",
         rent: "安い",
         recommend: "海とレジャーを愛する外国人",
@@ -439,13 +439,13 @@ const fukushimaCities = {
       },
       koriyama: {
         title: "郡山市",
-        population: "人口：約32万人",
-        foreignPopulation: "外国人人口：約3,000人（0.9%）",
+        population: "約32万人",
+        foreignPopulation: "約3,000人（0.9%）",
         features: "商業都市・交通要衝",
-        description: "東北の商業中心地。交通の要衝として経済活動が活発",
+        description: "東北の商業中心地。交通の要衝として経済活動が活発。",
         image: "https://images.unsplash.com/photo-1555400969-3da2c7e2b31f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["商業都市", "交通要衝", "経済活動"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（福島空港経由）",
         rent: "安い",
         recommend: "ビジネスと利便性を重視する外国人",
@@ -461,13 +461,13 @@ const fukushimaCities = {
       },
       aizuwakamatsu: {
         title: "会津若松市",
-        population: "人口：約12万人",
-        foreignPopulation: "外国人人口：約800人（0.7%）",
+        population: "約12万人",
+        foreignPopulation: "約800人（0.7%）",
         features: "会津文化・歴史",
-        description: "会津藩の城下町。鶴ヶ城や白虎隊で有名な歴史都市",
+        description: "会津藩の城下町。鶴ヶ城や白虎隊で有名な歴史都市。",
         image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["城下町", "歴史都市", "会津文化"],
-        englishHospital: false,
+        englishHospital: "なし",
         airport: "△（福島空港経由）",
         rent: "非常に安い",
         recommend: "歴史と文化を愛する外国人",
@@ -563,7 +563,7 @@ const fukushimaCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -591,7 +591,7 @@ const fukushimaCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -603,22 +603,29 @@ const fukushimaCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+      const modalClose = document.getElementById('modal-close');
+      const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // 閉じるボタンのイベント
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>
