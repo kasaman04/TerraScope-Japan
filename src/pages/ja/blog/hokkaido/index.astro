@@ -14,6 +14,11 @@ const hokkaidoCities = {
     features: "道都・雪まつり",
     description: "北海道の中心都市。四季がはっきりしており、特に雪景色と食文化で世界的に有名です。",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["雪まつり", "道都", "外国人多め"],
+    englishHospital: "あり",
+    airport: "◎（新千歳空港直通）",
+    rent: "中程度",
+    recommend: "自然と都市生活を求める外国人",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/sapporo/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/sapporo/article-02/" },
@@ -31,6 +36,11 @@ const hokkaidoCities = {
     features: "歴史的港町・夜景",
     description: "美しい夜景と歴史的な街並みが魅力の港町。国際的な観光地として発展しています。",
     image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["港町", "夜景", "観光地"],
+    englishHospital: "限定的",
+    airport: "○（函館空港）",
+    rent: "安め",
+    recommend: "歴史と景観を重視する外国人",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/hakodate/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/hakodate/article-02/" },
@@ -295,9 +305,27 @@ const hokkaidoCities = {
           <strong class="text-gray-700">外国人人口:</strong> 
           <span id="modal-foreign-population" class="text-gray-900"></span>
         </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">英語対応病院:</strong> 
+          <span id="modal-english-hospital" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">空港アクセス:</strong> 
+          <span id="modal-airport" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">家賃相場:</strong> 
+          <span id="modal-rent" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+          <strong class="text-gray-700">おすすめ:</strong> 
+          <span id="modal-recommend" class="text-gray-900"></span>
+        </div>
       </div>
 
       <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
       <div class="flex gap-3">
         <a id="modal-article-link" href="#" 
@@ -322,6 +350,11 @@ const hokkaidoCities = {
         features: "道都・雪まつり",
         description: "北海道の中心都市。四季がはっきりしており、特に雪景色と食文化で世界的に有名です。",
         image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["雪まつり", "道都", "外国人多め"],
+        englishHospital: "あり",
+        airport: "◎（新千歳空港直通）",
+        rent: "中程度",
+        recommend: "自然と都市生活を求める外国人",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/sapporo/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/sapporo/article-02/" },
@@ -339,6 +372,11 @@ const hokkaidoCities = {
         features: "歴史的港町・夜景",
         description: "美しい夜景と歴史的な街並みが魅力の港町。国際的な観光地として発展しています。",
         image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["港町", "夜景", "観光地"],
+        englishHospital: "限定的",
+        airport: "○（函館空港）",
+        rent: "安め",
+        recommend: "歴史と景観を重視する外国人",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/hakodate/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/hakodate/article-02/" },
@@ -423,8 +461,24 @@ const hokkaidoCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
       document.getElementById('modal-description').textContent = city.description;
       document.getElementById('modal-article-link').href = city.pageUrl;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
 
       // モーダルを表示（アニメーション付き）
       const modal = document.getElementById('city-modal');
