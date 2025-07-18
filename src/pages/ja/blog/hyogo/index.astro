@@ -9,8 +9,8 @@ const lang = "ja";
 const hyogoCities = {
   kobe: {
     title: "神戸市",
-    population: "人口：約153万人",
-    foreignPopulation: "外国人人口：約4.6万人（3.0%）",
+    population: "約153万人",
+    foreignPopulation: "約4.6万人（3.0%）",
     features: "国際港湾都市",
     description: "美しい港町として知られる国際都市。外国文化が根付き、多様な国際コミュニティが形成されています。",
     image: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
@@ -26,8 +26,8 @@ const hyogoCities = {
   },
   himeji: {
     title: "姫路市",
-    population: "人口：約53万人",
-    foreignPopulation: "外国人人口：約8,900人（1.7%）",
+    population: "約53万人",
+    foreignPopulation: "約8,900人（1.7%）",
     features: "世界遺産・姫路城",
     description: "世界遺産姫路城で有名な歴史都市。工業も発達し、住環境と文化のバランスが良い地域です。",
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
@@ -269,13 +269,13 @@ const hyogoCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 兵庫県市区町村データ
     const cityData = {
       kobe: {
         title: "神戸市",
-        population: "人口：約153万人",
-        foreignPopulation: "外国人人口：約4.6万人（3.0%）",
+        population: "約153万人",
+        foreignPopulation: "約4.6万人（3.0%）",
         features: "国際港湾都市",
         description: "美しい港町として知られる国際都市。外国文化が根付き、多様な国際コミュニティが形成されています。",
         articles: [
@@ -290,8 +290,8 @@ const hyogoCities = {
       },
       himeji: {
         title: "姫路市",
-        population: "人口：約53万人",
-        foreignPopulation: "外国人人口：約8,900人（1.7%）",
+        population: "約53万人",
+        foreignPopulation: "約8,900人（1.7%）",
         features: "世界遺産・姫路城",
         description: "世界遺産姫路城で有名な歴史都市。工業も発達し、住環境と文化のバランスが良い地域です。",
         articles: [
@@ -305,6 +305,13 @@ const hyogoCities = {
         pageUrl: "/ja/blog/hyogo/himeji/"
       }
     };
+
+    // DOMContentLoaded内でイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+      // 関数をグローバルスコープに公開
+      window.displayCityInfo = displayCityInfo;
+      window.selectCity = selectCity;
+    });
 
     // 市区町村選択時に詳細情報を表示
     function displayCityInfo() {

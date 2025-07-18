@@ -9,8 +9,8 @@ const lang = "ja";
 const osakaCities = {
   osaka: {
     title: "大阪市",
-    population: "人口：約275万人",
-    foreignPopulation: "外国人人口：約13万人（4.7%）",
+    population: "約275万人",
+    foreignPopulation: "約13万人（4.7%）",
     features: "関西経済の中心地",
     description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
     image: "https://images.unsplash.com/photo-1589451560115-9f86a404f3de?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
@@ -26,8 +26,8 @@ const osakaCities = {
   },
   sakai: {
     title: "堺市",
-    population: "人口：約83万人",
-    foreignPopulation: "外国人人口：約2万人（2.4%）",
+    population: "約83万人",
+    foreignPopulation: "約2万人（2.4%）",
     features: "歴史ある商業都市",
     description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
     image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
@@ -43,8 +43,8 @@ const osakaCities = {
   },
   toyonaka: {
     title: "豊中市",
-    population: "人口：約40万人",
-    foreignPopulation: "外国人人口：約8,500人（2.1%）",
+    population: "約40万人",
+    foreignPopulation: "約8,500人（2.1%）",
     features: "住宅地・空港アクセス良好",
     description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
     image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
@@ -201,7 +201,7 @@ const osakaCities = {
               </div>
               <div class="p-4">
                 <p class="text-sm text-gray-600 mb-2">{city.features}</p>
-                <p class="text-xs text-gray-500">{city.population}</p>
+                <p class="text-xs text-gray-500">人口：{city.population}</p>
               </div>
             </div>
           ))}
@@ -286,13 +286,13 @@ const osakaCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 大阪府市区町村データ
     const cityData = {
       osaka: {
         title: "大阪市",
-        population: "人口：約275万人",
-        foreignPopulation: "外国人人口：約13万人（4.7%）",
+        population: "約275万人",
+        foreignPopulation: "約13万人（4.7%）",
         features: "関西経済の中心地",
         description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
         articles: [
@@ -307,8 +307,8 @@ const osakaCities = {
       },
       sakai: {
         title: "堺市",
-        population: "人口：約83万人",
-        foreignPopulation: "外国人人口：約2万人（2.4%）",
+        population: "約83万人",
+        foreignPopulation: "約2万人（2.4%）",
         features: "歴史ある商業都市",
         description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
         articles: [
@@ -323,8 +323,8 @@ const osakaCities = {
       },
       toyonaka: {
         title: "豊中市",
-        population: "人口：約40万人",
-        foreignPopulation: "外国人人口：約8,500人（2.1%）",
+        population: "約40万人",
+        foreignPopulation: "約8,500人（2.1%）",
         features: "住宅地・空港アクセス良好",
         description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
         articles: [
@@ -339,8 +339,11 @@ const osakaCities = {
       }
     };
 
-    // 市区町村選択時に詳細情報を表示
-    function displayCityInfo() {
+    document.addEventListener('DOMContentLoaded', function() {
+      // モーダル関連のイベントリスナーを設定
+      
+      // 市区町村選択時に詳細情報を表示
+      window.displayCityInfo = function() {
       const citySelect = document.getElementById("city-select");
       const cityInfo = document.getElementById("city-info");
       
@@ -355,8 +358,8 @@ const osakaCities = {
       
       // 基本情報を更新
       document.getElementById("city-title").textContent = city.title;
-      document.getElementById("population").textContent = city.population;
-      document.getElementById("foreign-population").textContent = city.foreignPopulation;
+      document.getElementById("population").textContent = "人口：" + city.population;
+      document.getElementById("foreign-population").textContent = "外国人人口：" + city.foreignPopulation;
       document.getElementById("main-features").textContent = city.features;
       document.getElementById("city-description").textContent = city.description;
       
@@ -392,11 +395,12 @@ const osakaCities = {
       cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // 人気市区町村カードクリック時
-    function selectCity(cityKey) {
-      const citySelect = document.getElementById("city-select");
-      citySelect.value = cityKey;
-      displayCityInfo();
-    }
+      // 人気市区町村カードクリック時
+      window.selectCity = function(cityKey) {
+        const citySelect = document.getElementById("city-select");
+        citySelect.value = cityKey;
+        displayCityInfo();
+      };
+    });
   </script>
 </BaseLayout>
