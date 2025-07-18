@@ -9,13 +9,13 @@ const lang = "ja";
 const aomoriCities = {
   aomori: {
     title: "青森市",
-    population: "人口：約28万人",
-    foreignPopulation: "外国人人口：約2,800人（1.0%）",
+    population: "約28万人",
+    foreignPopulation: "約1,377人（0.5%）",
     features: "県庁所在地・ねぶた祭り",
     description: "青森県の中心都市。ねぶた祭りで有名で、本州最北端の県庁所在地として発展している。",
     image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["県庁所在地", "ねぶた祭り", "本州最北端"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（青森空港直結）",
     rent: "安い",
     recommend: "地方都市の落ち着いた環境を求める外国人",
@@ -31,13 +31,13 @@ const aomoriCities = {
   },
   hirosaki: {
     title: "弘前市",
-    population: "人口：約16万人",
-    foreignPopulation: "外国人人口：約1,200人（0.8%）",
+    population: "約16万人",
+    foreignPopulation: "約1,200人（0.8%）",
     features: "弘前城・桜の名所",
     description: "弘前城と桜で有名な城下町。歴史と文化が息づく美しい街です。",
     image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["城下町", "桜の名所", "歴史文化"],
-    englishHospital: false,
+    englishHospital: "限定的",
     airport: "○（青森空港経由）",
     rent: "非常に安い",
     recommend: "歴史と文化を愛する外国人",
@@ -53,13 +53,13 @@ const aomoriCities = {
   },
   hachinohe: {
     title: "八戸市",
-    population: "人口：約22万人",
-    foreignPopulation: "外国人人口：約1,800人（0.8%）",
+    population: "約22万人",
+    foreignPopulation: "約1,760人（0.8%）",
     features: "工業都市・港町",
     description: "青森県第2の都市。工業と漁業が盛んで、太平洋に面した港町として発展。",
     image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["工業都市", "港町", "漁業"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "△（三沢空港経由）",
     rent: "安い",
     recommend: "工業関係で働く外国人",
@@ -200,18 +200,18 @@ const aomoriCities = {
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(aomoriCities).map(([key, city]) => (
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
                  onclick={`openCityModal('${key}')`}>
-              <div class="relative h-48 overflow-hidden">
+              <div class="relative h-32 overflow-hidden">
                 <img 
                   src={city.image}
                   alt={city.title}
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  class="w-full h-full object-cover"
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-3 left-3 text-white">
-                  <h4 class="font-bold text-lg">{city.title}</h4>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
                 </div>
                 <!-- 右上の詳細アイコン -->
                 <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
@@ -222,13 +222,7 @@ const aomoriCities = {
                 </div>
               </div>
               <div class="p-4">
-                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
-                <!-- タグ表示 -->
-                <div class="flex gap-2 mb-3">
-                  {city.tags && city.tags.slice(0, 2).map(tag => (
-                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">{tag}</span>
-                  ))}
-                </div>
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
                 <p class="text-xs text-gray-500">{city.population}</p>
               </div>
             </div>
@@ -368,18 +362,18 @@ const aomoriCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 青森県市区町村データ
     const cityData = {
       aomori: {
         title: "青森市",
-        population: "人口：約28万人",
-        foreignPopulation: "外国人人口：約2,800人（1.0%）",
+        population: "約28万人",
+        foreignPopulation: "約1,377人（0.5%）",
         features: "県庁所在地・ねぶた祭り",
         description: "青森県の中心都市。ねぶた祭りで有名で、本州最北端の県庁所在地として発展している。",
         image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "ねぶた祭り", "本州最北端"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（青森空港直結）",
         rent: "安い",
         recommend: "地方都市の落ち着いた環境を求める外国人",
@@ -395,13 +389,13 @@ const aomoriCities = {
       },
       hirosaki: {
         title: "弘前市",
-        population: "人口：約16万人",
-        foreignPopulation: "外国人人口：約1,200人（0.8%）",
+        population: "約16万人",
+        foreignPopulation: "約1,200人（0.8%）",
         features: "弘前城・桜の名所",
         description: "弘前城と桜で有名な城下町。歴史と文化が息づく美しい街です。",
         image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["城下町", "桜の名所", "歴史文化"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "○（青森空港経由）",
         rent: "非常に安い",
         recommend: "歴史と文化を愛する外国人",
@@ -417,13 +411,13 @@ const aomoriCities = {
       },
       hachinohe: {
         title: "八戸市",
-        population: "人口：約22万人",
-        foreignPopulation: "外国人人口：約1,800人（0.8%）",
+        population: "約22万人",
+        foreignPopulation: "約1,760人（0.8%）",
         features: "工業都市・港町",
         description: "青森県第2の都市。工業と漁業が盛んで、太平洋に面した港町として発展。",
         image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["工業都市", "港町", "漁業"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "△（三沢空港経由）",
         rent: "安い",
         recommend: "工業関係で働く外国人",
@@ -499,27 +493,21 @@ const aomoriCities = {
       displayCityInfo();
     }
 
-    // モーダル関連の変数とイベント処理
-    let currentCityKey = '';
-    const modal = document.getElementById('city-modal');
-    const modalClose = document.getElementById('modal-close');
-    const closeModalBtn = document.getElementById('close-modal-btn');
+    // モーダル関連の関数
 
     // モーダルを開く
     function openCityModal(cityKey) {
-      currentCityKey = cityKey;
       const city = cityData[cityKey];
-      
       if (!city) return;
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image;
+      document.getElementById('modal-image').src = city.image || 'https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';
       document.getElementById('modal-image').alt = city.title;
       document.getElementById('modal-title').textContent = city.title;
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -539,6 +527,7 @@ const aomoriCities = {
       }
 
       // モーダルを表示（アニメーション付き）
+      const modal = document.getElementById('city-modal');
       modal.classList.remove('invisible', 'opacity-0');
       modal.classList.add('opacity-100');
       modal.querySelector('.bg-white').classList.remove('scale-95');
@@ -547,7 +536,8 @@ const aomoriCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
+      const modal = document.getElementById('city-modal');
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -556,25 +546,31 @@ const aomoriCities = {
         modal.classList.add('invisible');
         document.body.style.overflow = 'auto';
       }, 300);
-      currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+      const modalClose = document.getElementById('modal-close');
+      const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // 閉じるボタンのイベント
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>
