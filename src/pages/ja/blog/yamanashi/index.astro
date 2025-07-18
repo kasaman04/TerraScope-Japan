@@ -9,13 +9,13 @@ const lang = "ja";
 const yamanashiCities = {
   kofu: {
     title: "甲府市",
-    population: "人口：約19万人",
-    foreignPopulation: "外国人人口：約4,200人（2.2%）",
+    population: "約19万人",
+    foreignPopulation: "約4,200人（2.2%）",
     features: "県庁所在地・武田信玄",
     description: "山梨県の県庁所在地。武田信玄ゆかりの城下町として栄え、盆地に位置する歴史ある都市です。",
     image: "https://images.unsplash.com/photo-1576635566830-607e89fd3c12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["県庁所在地", "武田信玄", "城下町"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "△（羽田空港経由）",
     rent: "普通",
     recommend: "歴史文化に興味のある外国人",
@@ -31,13 +31,13 @@ const yamanashiCities = {
   },
   fujiyoshida: {
     title: "富士吉田市",
-    population: "人口：約5万人",
-    foreignPopulation: "外国人人口：約1,800人（3.6%）",
+    population: "約5万人",
+    foreignPopulation: "約1,800人（3.6%）",
     features: "富士山観光・織物業",
     description: "富士山の麓に位置する観光都市。富士山観光の拠点として多くの外国人観光客が訪れ、国際色豊かな街です。",
     image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["富士山", "観光都市", "国際色豊か"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（羽田空港経由）",
     rent: "安い",
     recommend: "観光・サービス業で働く外国人",
@@ -53,13 +53,13 @@ const yamanashiCities = {
   },
   minamialps: {
     title: "南アルプス市",
-    population: "人口：約7万人",
-    foreignPopulation: "外国人人口：約1,950人（2.8%）",
+    population: "約7万人",
+    foreignPopulation: "約1,950人（2.8%）",
     features: "南アルプス・果樹栽培",
     description: "南アルプスに囲まれた自然豊かな都市。桃やブドウなどの果樹栽培が盛んで、農業体験も人気です。",
     image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["南アルプス", "果樹栽培", "自然豊か"],
-    englishHospital: false,
+    englishHospital: "なし",
     airport: "△（羽田空港経由）",
     rent: "安い",
     recommend: "農業・自然体験に興味のある外国人",
@@ -368,18 +368,18 @@ const yamanashiCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 山梨県市区町村データ
     const cityData = {
       kofu: {
         title: "甲府市",
-        population: "人口：約19万人",
-        foreignPopulation: "外国人人口：約4,200人（2.2%）",
+        population: "約19万人",
+        foreignPopulation: "約4,200人（2.2%）",
         features: "県庁所在地・武田信玄",
         description: "山梨県の県庁所在地。武田信玄ゆかりの城下町として栄え、盆地に位置する歴史ある都市です。",
         image: "https://images.unsplash.com/photo-1576635566830-607e89fd3c12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "武田信玄", "城下町"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "△（羽田空港経由）",
         rent: "普通",
         recommend: "歴史文化に興味のある外国人",
@@ -395,13 +395,13 @@ const yamanashiCities = {
       },
       fujiyoshida: {
         title: "富士吉田市",
-        population: "人口：約5万人",
-        foreignPopulation: "外国人人口：約1,800人（3.6%）",
+        population: "約5万人",
+        foreignPopulation: "約1,800人（3.6%）",
         features: "富士山観光・織物業",
         description: "富士山の麓に位置する観光都市。富士山観光の拠点として多くの外国人観光客が訪れ、国際色豊かな街です。",
         image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["富士山", "観光都市", "国際色豊か"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（羽田空港経由）",
         rent: "安い",
         recommend: "観光・サービス業で働く外国人",
@@ -417,13 +417,13 @@ const yamanashiCities = {
       },
       minamialps: {
         title: "南アルプス市",
-        population: "人口：約7万人",
-        foreignPopulation: "外国人人口：約1,950人（2.8%）",
+        population: "約7万人",
+        foreignPopulation: "約1,950人（2.8%）",
         features: "南アルプス・果樹栽培",
         description: "南アルプスに囲まれた自然豊かな都市。桃やブドウなどの果樹栽培が盛んで、農業体験も人気です。",
         image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["南アルプス", "果樹栽培", "自然豊か"],
-        englishHospital: false,
+        englishHospital: "なし",
         airport: "△（羽田空港経由）",
         rent: "安い",
         recommend: "農業・自然体験に興味のある外国人",
@@ -519,7 +519,7 @@ const yamanashiCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -547,7 +547,7 @@ const yamanashiCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -559,22 +559,25 @@ const yamanashiCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // DOMContentLoadedイベントでイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+      // イベントリスナー
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>
