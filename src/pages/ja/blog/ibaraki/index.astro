@@ -9,13 +9,13 @@ const lang = "ja";
 const ibarakiCities = {
   mito: {
     title: "水戸市",
-    population: "人口：約27万人",
-    foreignPopulation: "外国人人口：約5,500人（2.0%）",
+    population: "約27万人",
+    foreignPopulation: "約5,500人（2.0%）",
     features: "県庁所在地・偕楽園",
     description: "茨城県の中心都市。日本三名園の偕楽園で有名な県庁所在地として発展している。",
     image: "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["県庁所在地", "偕楽園", "日本三名園"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（茨城空港）",
     rent: "普通",
     recommend: "県庁所在地の安定した環境を求める外国人",
@@ -31,13 +31,13 @@ const ibarakiCities = {
   },
   tsukuba: {
     title: "つくば市",
-    population: "人口：約25万人",
-    foreignPopulation: "外国人人口：約8,000人（3.2%）",
+    population: "約25万人",
+    foreignPopulation: "約8,000人（3.2%）",
     features: "科学研究都市・国際的",
     description: "筑波研究学園都市の中心。国際的な研究機関が多数立地し、外国人研究者も多く住む。",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["研究学園都市", "国際的", "科学技術"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（成田空港直結）",
     rent: "やや高い",
     recommend: "研究者や国際的な環境を求める外国人",
@@ -53,13 +53,13 @@ const ibarakiCities = {
   },
   hitachi: {
     title: "日立市",
-    population: "人口：約17万人",
-    foreignPopulation: "外国人人口：約3,000人（1.8%）",
+    population: "約17万人",
+    foreignPopulation: "約3,000人（1.8%）",
     features: "企業城下町・工業",
     description: "日立製作所の企業城下町として発展した工業都市。製造業での就業機会が多い。",
     image: "https://images.unsplash.com/photo-1518709074710-5a6f8ca78d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["企業城下町", "工業都市", "製造業"],
-    englishHospital: false,
+    englishHospital: "限定的",
     airport: "△（茨城空港経由）",
     rent: "安い",
     recommend: "製造業で働く外国人",
@@ -75,13 +75,13 @@ const ibarakiCities = {
   },
   hitachinaka: {
     title: "ひたちなか市",
-    population: "人口：約15万人",
-    foreignPopulation: "外国人人口：約2,800人（1.9%）",
+    population: "約15万人",
+    foreignPopulation: "約2,800人（1.9%）",
     features: "港湾・工業団地",
     description: "ひたちなか海浜公園とネモフィラで有名。港湾と工業団地により経済が発展している。",
     image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["海浜公園", "ネモフィラ", "港湾都市"],
-    englishHospital: false,
+    englishHospital: "なし",
     airport: "△（茨城空港経由）",
     rent: "安い",
     recommend: "自然観光と工業の両方を楽しみたい外国人",
@@ -390,18 +390,18 @@ const ibarakiCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 茨城県市区町村データ
     const cityData = {
       mito: {
         title: "水戸市",
-        population: "人口：約27万人",
-        foreignPopulation: "外国人人口：約5,500人（2.0%）",
+        population: "約27万人",
+        foreignPopulation: "約5,500人（2.0%）",
         features: "県庁所在地・偕楽園",
         description: "茨城県の中心都市。日本三名園の偕楽園で有名な県庁所在地として発展している。",
         image: "https://images.unsplash.com/photo-1519452575417-564c1401ecc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "偕楽園", "日本三名園"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（茨城空港）",
         rent: "普通",
         recommend: "県庁所在地の安定した環境を求める外国人",
@@ -417,13 +417,13 @@ const ibarakiCities = {
       },
       tsukuba: {
         title: "つくば市",
-        population: "人口：約25万人",
-        foreignPopulation: "外国人人口：約8,000人（3.2%）",
+        population: "約25万人",
+        foreignPopulation: "約8,000人（3.2%）",
         features: "科学研究都市・国際的",
         description: "筑波研究学園都市の中心。国際的な研究機関が多数立地し、外国人研究者も多く住む。",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["研究学園都市", "国際的", "科学技術"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（成田空港直結）",
         rent: "やや高い",
         recommend: "研究者や国際的な環境を求める外国人",
@@ -439,13 +439,13 @@ const ibarakiCities = {
       },
       hitachi: {
         title: "日立市",
-        population: "人口：約17万人",
-        foreignPopulation: "外国人人口：約3,000人（1.8%）",
+        population: "約17万人",
+        foreignPopulation: "約3,000人（1.8%）",
         features: "企業城下町・工業",
         description: "日立製作所の企業城下町として発展した工業都市。製造業での就業機会が多い。",
         image: "https://images.unsplash.com/photo-1518709074710-5a6f8ca78d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["企業城下町", "工業都市", "製造業"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "△（茨城空港経由）",
         rent: "安い",
         recommend: "製造業で働く外国人",
@@ -461,13 +461,13 @@ const ibarakiCities = {
       },
       hitachinaka: {
         title: "ひたちなか市",
-        population: "人口：約15万人",
-        foreignPopulation: "外国人人口：約2,800人（1.9%）",
+        population: "約15万人",
+        foreignPopulation: "約2,800人（1.9%）",
         features: "港湾・工業団地",
         description: "ひたちなか海浜公園とネモフィラで有名。港湾と工業団地により経済が発展している。",
         image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["海浜公園", "ネモフィラ", "港湾都市"],
-        englishHospital: false,
+        englishHospital: "なし",
         airport: "△（茨城空港経由）",
         rent: "安い",
         recommend: "自然観光と工業の両方を楽しみたい外国人",
@@ -563,7 +563,7 @@ const ibarakiCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -591,7 +591,7 @@ const ibarakiCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -603,22 +603,29 @@ const ibarakiCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+      const modalClose = document.getElementById('modal-close');
+      const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // 閉じるボタンのイベント
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>
