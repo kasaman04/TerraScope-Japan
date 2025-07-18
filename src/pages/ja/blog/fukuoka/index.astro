@@ -9,13 +9,13 @@ const lang = "ja";
 const fukuokaCities = {
   fukuoka: {
     title: "福岡市",
-    population: "人口：約161万人",
-    foreignPopulation: "外国人人口：約3.7万人（2.3%）",
+    population: "約161万人",
+    foreignPopulation: "約3.7万人（2.3%）",
     features: "九州の中心都市",
     description: "九州最大の都市でアジアとの玄関口。IT産業や国際ビジネスが発達し、外国人にも住みやすい環境が整っています。",
     image: "https://images.unsplash.com/photo-1586551292408-e03ccbcbd4b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["国際都市", "IT産業", "アジア玄関口"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（福岡空港直結）",
     rent: "中程度",
     recommend: "国際的なビジネス環境を求める外国人",
@@ -31,13 +31,13 @@ const fukuokaCities = {
   },
   kitakyushu: {
     title: "北九州市",
-    population: "人口：約93万人",
-    foreignPopulation: "外国人人口：約1.8万人（1.9%）",
+    population: "約93万人",
+    foreignPopulation: "約1.8万人（1.9%）",
     features: "工業都市・環境都市",
     description: "重工業で発展した都市で、現在は環境技術に力を入れています。アジア各国との交流も活発です。",
     image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["工業都市", "環境技術", "製造業"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（小倉駅経由で福岡空港へ）",
     rent: "比較的安い",
     recommend: "製造業・環境分野で働く外国人",
@@ -333,18 +333,18 @@ const fukuokaCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 福岡県市区町村データ
     const cityData = {
       fukuoka: {
         title: "福岡市",
-        population: "人口：約161万人",
-        foreignPopulation: "外国人人口：約3.7万人（2.3%）",
+        population: "約161万人",
+        foreignPopulation: "約3.7万人（2.3%）",
         features: "九州の中心都市",
         description: "九州最大の都市でアジアとの玄関口。IT産業や国際ビジネスが発達し、外国人にも住みやすい環境が整っています。",
         image: "https://images.unsplash.com/photo-1586551292408-e03ccbcbd4b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["国際都市", "IT産業", "アジア玄関口"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（福岡空港直結）",
         rent: "中程度",
         recommend: "国際的なビジネス環境を求める外国人",
@@ -360,13 +360,13 @@ const fukuokaCities = {
       },
       kitakyushu: {
         title: "北九州市",
-        population: "人口：約93万人",
-        foreignPopulation: "外国人人口：約1.8万人（1.9%）",
+        population: "約93万人",
+        foreignPopulation: "約1.8万人（1.9%）",
         features: "工業都市・環境都市",
         description: "重工業で発展した都市で、現在は環境技術に力を入れています。アジア各国との交流も活発です。",
         image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["工業都市", "環境技術", "製造業"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（小倉駅経由で福岡空港へ）",
         rent: "比較的安い",
         recommend: "製造業・環境分野で働く外国人",
@@ -462,7 +462,7 @@ const fukuokaCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -490,7 +490,7 @@ const fukuokaCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -502,22 +502,25 @@ const fukuokaCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // DOMContentLoaded内でイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', () => {
+      // イベントリスナー
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>
