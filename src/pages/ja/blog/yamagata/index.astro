@@ -9,13 +9,13 @@ const lang = "ja";
 const yamagataCities = {
   yamagata: {
     title: "山形市",
-    population: "人口：約25万人",
-    foreignPopulation: "外国人人口：約2,000人（0.8%）",
+    population: "約25万人",
+    foreignPopulation: "約2,000人（0.8%）",
     features: "県庁所在地・蔵王温泉",
     description: "山形県の中心都市。蔵王温泉で有名、四季を通じて美しい自然を楽しめる県庁所在地。",
     image: "https://images.unsplash.com/photo-1602847844706-2b0b4f04b88e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["県庁所在地", "蔵王温泉", "四季"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（山形空港直結）",
     rent: "安い",
     recommend: "自然豊かな県庁所在地での生活を求める外国人",
@@ -31,13 +31,13 @@ const yamagataCities = {
   },
   sakata: {
     title: "酒田市",
-    population: "人口：約10万人",
-    foreignPopulation: "外国人人口：約800人（0.8%）",
+    population: "約10万人",
+    foreignPopulation: "約800人（0.8%）",
     features: "港町・庄内平野",
     description: "日本海に面した港町。庄内平野の豊かな農業地帯の中心都市。",
     image: "https://images.unsplash.com/photo-1574821857680-d7e6d53c6c50?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["港町", "庄内平野", "農業"],
-    englishHospital: false,
+    englishHospital: "限定的",
     airport: "○（庄内空港経由）",
     rent: "非常に安い",
     recommend: "農業や港湾関係で働く外国人",
@@ -53,13 +53,13 @@ const yamagataCities = {
   },
   tsuruoka: {
     title: "鶴岡市",
-    population: "人口：約12万人",
-    foreignPopulation: "外国人人口：約900人（0.8%）",
+    population: "約12万人",
+    foreignPopulation: "約900人（0.8%）",
     features: "城下町・食文化",
     description: "庄内藩の城下町。ユネスコ創造都市として食文化が豊か。",
     image: "https://images.unsplash.com/photo-1582640298872-a5e9a5b2b1f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["城下町", "食文化", "ユネスコ"],
-    englishHospital: false,
+    englishHospital: "限定的",
     airport: "○（庄内空港経由）",
     rent: "非常に安い",
     recommend: "食文化と歴史に興味のある外国人",
@@ -75,13 +75,13 @@ const yamagataCities = {
   },
   yonezawa: {
     title: "米沢市",
-    population: "人口：約8万人",
-    foreignPopulation: "外国人人口：約600人（0.8%）",
+    population: "約8万人",
+    foreignPopulation: "約600人（0.8%）",
     features: "上杉氏・織物",
     description: "上杉氏の城下町として発展。米沢織などの伝統工芸で有名。",
     image: "https://images.unsplash.com/photo-1562842008-2b69c3ff1c9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["上杉氏", "織物", "伝統工芸"],
-    englishHospital: false,
+    englishHospital: "なし",
     airport: "△（福島空港経由）",
     rent: "非常に安い",
     recommend: "伝統工芸や歴史に興味のある外国人",
@@ -390,18 +390,18 @@ const yamagataCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 山形県市区町村データ
     const cityData = {
       yamagata: {
         title: "山形市",
-        population: "人口：約25万人",
-        foreignPopulation: "外国人人口：約2,000人（0.8%）",
+        population: "約25万人",
+        foreignPopulation: "約2,000人（0.8%）",
         features: "県庁所在地・蔵王温泉",
         description: "山形県の中心都市。蔵王温泉で有名、四季を通じて美しい自然を楽しめる県庁所在地。",
         image: "https://images.unsplash.com/photo-1602847844706-2b0b4f04b88e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "蔵王温泉", "四季"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（山形空港直結）",
         rent: "安い",
         recommend: "自然豊かな県庁所在地での生活を求める外国人",
@@ -417,13 +417,13 @@ const yamagataCities = {
       },
       sakata: {
         title: "酒田市",
-        population: "人口：約10万人",
-        foreignPopulation: "外国人人口：約800人（0.8%）",
+        population: "約10万人",
+        foreignPopulation: "約800人（0.8%）",
         features: "港町・庄内平野",
         description: "日本海に面した港町。庄内平野の豊かな農業地帯の中心都市。",
         image: "https://images.unsplash.com/photo-1574821857680-d7e6d53c6c50?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["港町", "庄内平野", "農業"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "○（庄内空港経由）",
         rent: "非常に安い",
         recommend: "農業や港湾関係で働く外国人",
@@ -439,13 +439,13 @@ const yamagataCities = {
       },
       tsuruoka: {
         title: "鶴岡市",
-        population: "人口：約12万人",
-        foreignPopulation: "外国人人口：約900人（0.8%）",
+        population: "約12万人",
+        foreignPopulation: "約900人（0.8%）",
         features: "城下町・食文化",
         description: "庄内藩の城下町。ユネスコ創造都市として食文化が豊か。",
         image: "https://images.unsplash.com/photo-1582640298872-a5e9a5b2b1f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["城下町", "食文化", "ユネスコ"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "○（庄内空港経由）",
         rent: "非常に安い",
         recommend: "食文化と歴史に興味のある外国人",
@@ -461,13 +461,13 @@ const yamagataCities = {
       },
       yonezawa: {
         title: "米沢市",
-        population: "人口：約8万人",
-        foreignPopulation: "外国人人口：約600人（0.8%）",
+        population: "約8万人",
+        foreignPopulation: "約600人（0.8%）",
         features: "上杉氏・織物",
         description: "上杉氏の城下町として発展。米沢織などの伝統工芸で有名。",
         image: "https://images.unsplash.com/photo-1562842008-2b69c3ff1c9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["上杉氏", "織物", "伝統工芸"],
-        englishHospital: false,
+        englishHospital: "なし",
         airport: "△（福島空港経由）",
         rent: "非常に安い",
         recommend: "伝統工芸や歴史に興味のある外国人",
@@ -563,7 +563,7 @@ const yamagataCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -591,7 +591,7 @@ const yamagataCities = {
     }
 
     // モーダルを閉じる
-    function closeCityModal() {
+    function closeModal() {
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -603,22 +603,29 @@ const yamagataCities = {
       currentCityKey = '';
     }
 
-    // イベントリスナー
-    modalClose.addEventListener('click', closeCityModal);
-    closeModalBtn.addEventListener('click', closeCityModal);
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+      const modalClose = document.getElementById('modal-close');
+      const closeModalBtn = document.getElementById('close-modal-btn');
 
-    // モーダル背景クリックで閉じる
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeCityModal();
-      }
-    });
+      // 閉じるボタンのイベント
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
 
-    // ESCキーでモーダルを閉じる
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
-        closeCityModal();
-      }
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
     });
   </script>
 </BaseLayout>

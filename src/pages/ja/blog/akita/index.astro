@@ -2,23 +2,24 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
 const title = "秋田県での暮らし - 市区町村別生活情報";
-const description = "秋田県の各市区町村での外国人向け生活情報。秋田市・横手市・大仙市・能代市など美しい自然と文化の秋田県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const description = "秋田県の各市区町村での外国人向け生活情報。秋田市・横手市・大館市・由利本荘市など美しい自然と文化の秋田県の防災、インフラ、生活コストなど詳細情報をお届け。";
 const lang = "ja";
 
-// 秋田県の市区町村データ
+// 秋田県の市区町村データ（2024年最新）
 const akitaCities = {
   akita: {
     title: "秋田市",
-    population: "人口：約30万人",
-    foreignPopulation: "外国人人口：約2,200人（0.7%）",
-    features: "県庁所在地・竿燈祭り",
-    description: "秋田県の中心都市。竿燈祭りで有名な東北の日本海側中心都市として発展している。",
+    population: "人口：約29.9万人",
+    foreignPopulation: "外国人人口：約2,400人（0.8%）",
+    features: "県庁所在地・竿燈祭り・なまはげ",
+    description: "秋田県の中心都市。東北三大祭りの一つ竿燈祭りで有名。なまはげ文化の発信地で、美人県としても知られる。",
     image: "https://images.unsplash.com/photo-1636122433752-8e88e8e19e9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    tags: ["県庁所在地", "竿燈祭り", "日本海側"],
+    tags: ["県庁所在地", "竿燈祭り", "なまはげ", "美人県"],
     englishHospital: true,
     airport: "◎（秋田空港直結）",
     rent: "安い",
     recommend: "地方都市の落ち着いた環境を求める外国人",
+    specialFeatures: "秋田犬の故郷、きりたんぽ発祥の地",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/akita/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/akita/article-02/" },
@@ -31,16 +32,17 @@ const akitaCities = {
   },
   yokote: {
     title: "横手市",
-    population: "人口：約9万人",
-    foreignPopulation: "外国人人口：約600人（0.7%）",
-    features: "かまくら祭り・農業",
-    description: "雪国の文化と農業の街。かまくら祭りで全国的に有名。",
+    population: "人口：約8.0万人",
+    foreignPopulation: "外国人人口：約650人（0.8%）",
+    features: "かまくら祭り・農業・横手やきそば",
+    description: "雪国の文化と農業の街。かまくら祭りで全国的に有名。横手やきそばのB級グルメでも知られる。",
     image: "https://images.unsplash.com/photo-1611755840149-f59bbdb16564?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    tags: ["かまくら祭り", "農業", "雪国文化"],
+    tags: ["かまくら祭り", "農業", "雪国文化", "B級グルメ"],
     englishHospital: false,
     airport: "○（秋田空港経由）",
     rent: "非常に安い",
     recommend: "雪国文化と農業に興味がある外国人",
+    specialFeatures: "後三年合戦の舞台、リンゴの産地",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/yokote/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/yokote/article-02/" },
@@ -53,16 +55,17 @@ const akitaCities = {
   },
   daisen: {
     title: "大仙市",
-    population: "人口：約8万人",
-    foreignPopulation: "外国人人口：約400人（0.5%）",
-    features: "花火大会・自然",
-    description: "全国花火競技大会の開催地。美しい自然環境に恵まれた街。",
+    population: "人口：約7.3万人",
+    foreignPopulation: "外国人人口：約480人（0.7%）",
+    features: "全国花火競技大会・自然・農業",
+    description: "全国花火競技大会の開催地として有名。美しい自然環境と豊かな農業が特色の街。",
     image: "https://images.unsplash.com/photo-1536294738309-a948b2970c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    tags: ["花火大会", "自然環境", "伝統文化"],
+    tags: ["花火大会", "自然環境", "農業", "伝統文化"],
     englishHospital: false,
     airport: "△（秋田空港経由）",
     rent: "非常に安い",
     recommend: "自然豊かな環境を求める外国人",
+    specialFeatures: "日本一の花火、奥羽山脈の自然",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/daisen/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/daisen/article-02/" },
@@ -73,18 +76,65 @@ const akitaCities = {
     ],
     pageUrl: "/ja/blog/akita/daisen/"
   },
-  noshiro: {
-    title: "能代市",
-    population: "人口：約5万人",
-    foreignPopulation: "外国人人口：約200人（0.4%）",
-    features: "バスケの街・木材",
-    description: "バスケットボールの街として有名。木材産業の歴史ある街。",
-    image: "https://images.unsplash.com/photo-1577640258028-bd3b3e038c52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-    tags: ["バスケの街", "木材産業", "スポーツ"],
+  yurihonjo: {
+    title: "由利本荘市",
+    population: "人口：約7.1万人",
+    foreignPopulation: "外国人人口：約420人（0.6%）",
+    features: "鳥海山・由利高原・風力発電",
+    description: "鳥海山の麓に位置する自然豊かな街。風力発電の先進地で、由利高原の美しい景観が魅力。",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["鳥海山", "風力発電", "自然環境", "農業"],
     englishHospital: false,
     airport: "△（秋田空港経由）",
     rent: "非常に安い",
-    recommend: "スポーツ文化に興味がある外国人",
+    recommend: "自然環境と再生可能エネルギーに関心がある外国人",
+    specialFeatures: "鳥海山国定公園、本荘公園の桜",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/yurihonjo/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/yurihonjo/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/akita/yurihonjo/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/akita/yurihonjo/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/akita/yurihonjo/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/akita/yurihonjo/article-06/" }
+    ],
+    pageUrl: "/ja/blog/akita/yurihonjo/"
+  },
+  odate: {
+    title: "大館市",
+    population: "人口：約6.5万人",
+    foreignPopulation: "外国人人口：約380人（0.6%）",
+    features: "秋田犬の故郷・きりたんぽ・ハチ公",
+    description: "忠犬ハチ公の故郷として世界的に有名。秋田犬の故郷で、きりたんぽ鍋発祥の地としても知られる。",
+    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["秋田犬", "ハチ公", "きりたんぽ", "郷土料理"],
+    englishHospital: false,
+    airport: "△（秋田空港経由）",
+    rent: "非常に安い",
+    recommend: "日本文化と動物愛護に興味がある外国人",
+    specialFeatures: "忠犬ハチ公の故郷、秋田犬会館",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/odate/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/odate/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/akita/odate/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/akita/odate/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/akita/odate/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/akita/odate/article-06/" }
+    ],
+    pageUrl: "/ja/blog/akita/odate/"
+  },
+  noshiro: {
+    title: "能代市",
+    population: "人口：約5.2万人",
+    foreignPopulation: "外国人人口：約240人（0.5%）",
+    features: "バスケの街・木材・風の松原",
+    description: "バスケットボールの街として有名。木材産業と風の松原の美しい海岸線が特色の街。",
+    image: "https://images.unsplash.com/photo-1577640258028-bd3b3e038c52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["バスケの街", "木材産業", "スポーツ", "海岸"],
+    englishHospital: false,
+    airport: "△（秋田空港経由）",
+    rent: "非常に安い",
+    recommend: "スポーツ文化と伝統産業に興味がある外国人",
+    specialFeatures: "能代工業高校バスケ、風の松原",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/noshiro/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/noshiro/article-02/" },
@@ -139,11 +189,11 @@ const akitaCities = {
         <div class="grid md:grid-cols-3 gap-6 text-sm">
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">人口</p>
-            <p class="text-lg">約95万人</p>
+            <p class="text-lg">約92.5万人</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">外国人人口</p>
-            <p class="text-lg">約5,500人（0.6%）</p>
+            <p class="text-lg">約5,213人（0.6%）</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">市町村</p>
@@ -289,6 +339,10 @@ const akitaCities = {
               <strong class="text-gray-700">家賃相場:</strong> 
               <span id="modal-rent" class="text-gray-900"></span>
             </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">特色:</strong> 
+              <span id="modal-special-features" class="text-gray-900"></span>
+            </div>
             <div class="bg-gray-50 p-3 rounded-lg col-span-2">
               <strong class="text-gray-700">おすすめ:</strong> 
               <span id="modal-recommend" class="text-gray-900"></span>
@@ -326,34 +380,44 @@ const akitaCities = {
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-4 gap-8">
         <div class="text-center">
           <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🌲</span>
+            <span class="text-3xl">🐕</span>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな自然</h3>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">秋田犬の故郷</h3>
           <p class="text-gray-600">
-            白神山地や美しい山々に囲まれた豊かな自然環境で暮らせます。
+            忠犬ハチ公で有名な秋田犬発祥の地。日本の象徴的な犬種の文化に触れられます。
           </p>
         </div>
 
         <div class="text-center">
           <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🎭</span>
+            <span class="text-3xl">🏮</span>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">伝統祭り</h3>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">竿燈祭り</h3>
           <p class="text-gray-600">
-            竿燈祭りやかまくら祭りなど、独特な伝統文化を体験できます。
+            東北三大祭りの一つ。夏の夜空に舞う竿燈の美しさは圧巻です。
           </p>
         </div>
 
         <div class="text-center">
           <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🌾</span>
+            <span class="text-3xl">🍲</span>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">農業・林業</h3>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">きりたんぽ文化</h3>
           <p class="text-gray-600">
-            米どころと豊富な森林資源があり、農林業に関わる機会も豊富です。
+            秋田の代表的郷土料理。地元の食文化を深く体験できます。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">👹</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">なまはげ文化</h3>
+          <p class="text-gray-600">
+            ユネスコ無形文化遺産のなまはげ。独特な民俗文化に触れられます。
           </p>
         </div>
       </div>
@@ -391,20 +455,21 @@ const akitaCities = {
   </section>
 
   <script>
-    // 秋田県市区町村データ
+    // 秋田県市区町村データ（2024年最新）
     const cityData = {
       akita: {
         title: "秋田市",
-        population: "人口：約30万人",
-        foreignPopulation: "外国人人口：約2,200人（0.7%）",
-        features: "県庁所在地・竿燈祭り",
-        description: "秋田県の中心都市。竿燈祭りで有名な東北の日本海側中心都市として発展している。",
+        population: "人口：約29.9万人",
+        foreignPopulation: "外国人人口：約2,400人（0.8%）",
+        features: "県庁所在地・竿燈祭り・なまはげ",
+        description: "秋田県の中心都市。東北三大祭りの一つ竿燈祭りで有名。なまはげ文化の発信地で、美人県としても知られる。",
         image: "https://images.unsplash.com/photo-1636122433752-8e88e8e19e9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-        tags: ["県庁所在地", "竿燈祭り", "日本海側"],
+        tags: ["県庁所在地", "竿燈祭り", "なまはげ", "美人県"],
         englishHospital: true,
         airport: "◎（秋田空港直結）",
         rent: "安い",
         recommend: "地方都市の落ち着いた環境を求める外国人",
+        specialFeatures: "秋田犬の故郷、きりたんぽ発祥の地",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/akita/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/akita/article-02/" },
@@ -417,16 +482,17 @@ const akitaCities = {
       },
       yokote: {
         title: "横手市",
-        population: "人口：約9万人",
-        foreignPopulation: "外国人人口：約600人（0.7%）",
-        features: "かまくら祭り・農業",
-        description: "雪国の文化と農業の街。かまくら祭りで全国的に有名。",
+        population: "人口：約8.0万人",
+        foreignPopulation: "外国人人口：約650人（0.8%）",
+        features: "かまくら祭り・農業・横手やきそば",
+        description: "雪国の文化と農業の街。かまくら祭りで全国的に有名。横手やきそばのB級グルメでも知られる。",
         image: "https://images.unsplash.com/photo-1611755840149-f59bbdb16564?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-        tags: ["かまくら祭り", "農業", "雪国文化"],
+        tags: ["かまくら祭り", "農業", "雪国文化", "B級グルメ"],
         englishHospital: false,
         airport: "○（秋田空港経由）",
         rent: "非常に安い",
         recommend: "雪国文化と農業に興味がある外国人",
+        specialFeatures: "後三年合戦の舞台、リンゴの産地",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/yokote/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/yokote/article-02/" },
@@ -439,16 +505,17 @@ const akitaCities = {
       },
       daisen: {
         title: "大仙市",
-        population: "人口：約8万人",
-        foreignPopulation: "外国人人口：約400人（0.5%）",
-        features: "花火大会・自然",
-        description: "全国花火競技大会の開催地。美しい自然環境に恵まれた街。",
+        population: "人口：約7.3万人",
+        foreignPopulation: "外国人人口：約480人（0.7%）",
+        features: "全国花火競技大会・自然・農業",
+        description: "全国花火競技大会の開催地として有名。美しい自然環境と豊かな農業が特色の街。",
         image: "https://images.unsplash.com/photo-1536294738309-a948b2970c1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-        tags: ["花火大会", "自然環境", "伝統文化"],
+        tags: ["花火大会", "自然環境", "農業", "伝統文化"],
         englishHospital: false,
         airport: "△（秋田空港経由）",
         rent: "非常に安い",
         recommend: "自然豊かな環境を求める外国人",
+        specialFeatures: "日本一の花火、奥羽山脈の自然",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/daisen/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/daisen/article-02/" },
@@ -459,18 +526,65 @@ const akitaCities = {
         ],
         pageUrl: "/ja/blog/akita/daisen/"
       },
-      noshiro: {
-        title: "能代市",
-        population: "人口：約5万人",
-        foreignPopulation: "外国人人口：約200人（0.4%）",
-        features: "バスケの街・木材",
-        description: "バスケットボールの街として有名。木材産業の歴史ある街。",
-        image: "https://images.unsplash.com/photo-1577640258028-bd3b3e038c52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-        tags: ["バスケの街", "木材産業", "スポーツ"],
+      yurihonjo: {
+        title: "由利本荘市",
+        population: "人口：約7.1万人",
+        foreignPopulation: "外国人人口：約420人（0.6%）",
+        features: "鳥海山・由利高原・風力発電",
+        description: "鳥海山の麓に位置する自然豊かな街。風力発電の先進地で、由利高原の美しい景観が魅力。",
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["鳥海山", "風力発電", "自然環境", "農業"],
         englishHospital: false,
         airport: "△（秋田空港経由）",
         rent: "非常に安い",
-        recommend: "スポーツ文化に興味がある外国人",
+        recommend: "自然環境と再生可能エネルギーに関心がある外国人",
+        specialFeatures: "鳥海山国定公園、本荘公園の桜",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/yurihonjo/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/yurihonjo/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/akita/yurihonjo/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/akita/yurihonjo/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/akita/yurihonjo/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/akita/yurihonjo/article-06/" }
+        ],
+        pageUrl: "/ja/blog/akita/yurihonjo/"
+      },
+      odate: {
+        title: "大館市",
+        population: "人口：約6.5万人",
+        foreignPopulation: "外国人人口：約380人（0.6%）",
+        features: "秋田犬の故郷・きりたんぽ・ハチ公",
+        description: "忠犬ハチ公の故郷として世界的に有名。秋田犬の故郷で、きりたんぽ鍋発祥の地としても知られる。",
+        image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["秋田犬", "ハチ公", "きりたんぽ", "郷土料理"],
+        englishHospital: false,
+        airport: "△（秋田空港経由）",
+        rent: "非常に安い",
+        recommend: "日本文化と動物愛護に興味がある外国人",
+        specialFeatures: "忠犬ハチ公の故郷、秋田犬会館",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/odate/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/odate/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/akita/odate/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/akita/odate/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/akita/odate/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/akita/odate/article-06/" }
+        ],
+        pageUrl: "/ja/blog/akita/odate/"
+      },
+      noshiro: {
+        title: "能代市",
+        population: "人口：約5.2万人",
+        foreignPopulation: "外国人人口：約240人（0.5%）",
+        features: "バスケの街・木材・風の松原",
+        description: "バスケットボールの街として有名。木材産業と風の松原の美しい海岸線が特色の街。",
+        image: "https://images.unsplash.com/photo-1577640258028-bd3b3e038c52?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["バスケの街", "木材産業", "スポーツ", "海岸"],
+        englishHospital: false,
+        airport: "△（秋田空港経由）",
+        rent: "非常に安い",
+        recommend: "スポーツ文化と伝統産業に興味がある外国人",
+        specialFeatures: "能代工業高校バスケ、風の松原",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/akita/noshiro/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/akita/noshiro/article-02/" },
@@ -566,6 +680,7 @@ const akitaCities = {
       document.getElementById('modal-english-hospital').textContent = city.englishHospital ? 'あり' : 'なし';
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-special-features').textContent = city.specialFeatures;
       document.getElementById('modal-recommend').textContent = city.recommend;
       document.getElementById('modal-description').textContent = city.description;
       document.getElementById('modal-article-link').href = city.pageUrl;
