@@ -9,13 +9,13 @@ const lang = "ja";
 const aichiCities = {
   nagoya: {
     title: "名古屋市",
-    population: "人口：約233万人",
-    foreignPopulation: "外国人人口：約8.5万人（3.6%）",
+    population: "約233万人",
+    foreignPopulation: "約8.5万人（3.6%）",
     features: "中部地方の中心都市",
     description: "中部地方最大の都市。製造業が盛んで、多くの外国人研修生や技能実習生が住んでいます。",
     image: "https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["中部中心都市", "製造業", "技能実習"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "◎（中部国際空港直結）",
     rent: "中程度",
     recommend: "製造業で働く外国人・研修生",
@@ -31,13 +31,13 @@ const aichiCities = {
   },
   toyota: {
     title: "豊田市",
-    population: "人口：約42万人",
-    foreignPopulation: "外国人人口：約1.8万人（4.3%）",
+    population: "約42万人",
+    foreignPopulation: "約1.8万人（4.3%）",
     features: "自動車産業の中心地",
     description: "トヨタ自動車の本社所在地。自動車関連企業が多く、国際的な製造業の街として発展しています。",
     image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     tags: ["自動車産業", "トヨタ", "国際企業"],
-    englishHospital: true,
+    englishHospital: "あり",
     airport: "○（中部国際空港へ電車で）",
     rent: "中程度",
     recommend: "自動車業界で働く外国人",
@@ -292,13 +292,88 @@ const aichiCities = {
     </div>
   </section>
 
-  <script>
+  <!-- Modal -->  
+  <div id="cityModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <!-- Modal Header -->
+      <div class="sticky top-0 bg-gradient-to-r from-rose-600 to-pink-800 text-white px-6 py-4 rounded-t-2xl flex justify-between items-center">
+        <div>
+          <h3 id="modalCityTitle" class="text-2xl font-bold mb-2"></h3>
+          <div class="grid md:grid-cols-4 gap-4 text-sm">
+            <div>
+              <p class="opacity-75">人口</p>
+              <p id="modalPopulation" class="font-semibold"></p>
+            </div>
+            <div>
+              <p class="opacity-75">外国人人口</p>
+              <p id="modalForeignPopulation" class="font-semibold"></p>
+            </div>
+            <div>
+              <p class="opacity-75">英語対応病院</p>
+              <p id="modalEnglishHospital" class="font-semibold"></p>
+            </div>
+            <div>
+              <p class="opacity-75">空港アクセス</p>
+              <p id="modalAirport" class="font-semibold"></p>
+            </div>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="text-white hover:text-gray-200 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="p-6">
+        <!-- City Image -->
+        <div class="mb-6">
+          <img id="modalCityImage" src="" alt="" class="w-full h-64 object-cover rounded-xl">
+        </div>
+
+        <!-- Description -->
+        <div class="mb-6">
+          <p id="modalDescription" class="text-gray-600 text-lg leading-relaxed"></p>
+        </div>
+
+        <!-- Tags -->
+        <div class="mb-6">
+          <div id="modalTags" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="mb-8 p-4 bg-blue-50 rounded-xl">
+          <h4 class="font-semibold text-blue-900 mb-2">こんな方におすすめ</h4>
+          <p id="modalRecommend" class="text-blue-800"></p>
+        </div>
+
+        <!-- Articles -->
+        <div class="mb-8">
+          <h4 class="text-xl font-bold text-gray-900 mb-4">詳細記事</h4>
+          <div id="modalArticles" class="grid gap-3"></div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex gap-4">
+          <a id="modalPageLink" href="#" class="flex-1 bg-rose-600 text-white text-center py-3 px-6 rounded-lg font-semibold hover:bg-rose-700 transition-colors">
+            詳細ページを見る
+          </a>
+          <button onclick="closeModal()" class="px-6 py-3 border border-gray-300 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+            閉じる
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
     // 愛知県市区町村データ
     const cityData = {
       nagoya: {
         title: "名古屋市",
-        population: "人口：約233万人",
-        foreignPopulation: "外国人人口：約8.5万人（3.6%）",
+        population: "約233万人",
+        foreignPopulation: "約8.5万人（3.6%）",
         features: "中部地方の中心都市",
         description: "中部地方最大の都市。製造業が盛んで、多くの外国人研修生や技能実習生が住んでいます。",
         articles: [
@@ -313,8 +388,8 @@ const aichiCities = {
       },
       toyota: {
         title: "豊田市",
-        population: "人口：約42万人",
-        foreignPopulation: "外国人人口：約1.8万人（4.3%）",
+        population: "約42万人",
+        foreignPopulation: "約1.8万人（4.3%）",
         features: "自動車産業の中心地",
         description: "トヨタ自動車の本社所在地。自動車関連企業が多く、国際的な製造業の街として発展しています。",
         articles: [
@@ -381,6 +456,128 @@ const aichiCities = {
       // スムーズスクロール
       cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    // モーダル関連の追加データ
+    const modalCityData = {
+      nagoya: {
+        title: "名古屋市",
+        population: "約233万人",
+        foreignPopulation: "約8.5万人（3.6%）",
+        features: "中部地方の中心都市",
+        description: "中部地方最大の都市。製造業が盛んで、多くの外国人研修生や技能実習生が住んでいます。",
+        image: "https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["中部中心都市", "製造業", "技能実習"],
+        englishHospital: "あり",
+        airport: "◎（中部国際空港直結）",
+        rent: "中程度",
+        recommend: "製造業で働く外国人・研修生",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aichi/nagoya/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aichi/nagoya/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aichi/nagoya/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aichi/nagoya/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aichi/nagoya/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aichi/nagoya/article-06/" }
+        ],
+        pageUrl: "/ja/blog/aichi/nagoya/"
+      },
+      toyota: {
+        title: "豊田市",
+        population: "約42万人",
+        foreignPopulation: "約1.8万人（4.3%）",
+        features: "自動車産業の中心地",
+        description: "トヨタ自動車の本社所在地。自動車関連企業が多く、国際的な製造業の街として発展しています。",
+        image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["自動車産業", "トヨタ", "国際企業"],
+        englishHospital: "あり",
+        airport: "○（中部国際空港へ電車で）",
+        rent: "中程度",
+        recommend: "自動車業界で働く外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/aichi/toyota/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/aichi/toyota/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/aichi/toyota/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/aichi/toyota/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/aichi/toyota/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/aichi/toyota/article-06/" }
+        ],
+        pageUrl: "/ja/blog/aichi/toyota/"
+      }
+    };
+
+    // モーダルを開く
+    function openCityModal(cityKey) {
+      const city = modalCityData[cityKey];
+      if (!city) return;
+
+      // モーダル要素を取得
+      const modal = document.getElementById('cityModal');
+      
+      // 基本情報を設定
+      document.getElementById('modalCityTitle').textContent = city.title;
+      document.getElementById('modalPopulation').textContent = city.population;
+      document.getElementById('modalForeignPopulation').textContent = city.foreignPopulation;
+      document.getElementById('modalEnglishHospital').textContent = city.englishHospital;
+      document.getElementById('modalAirport').textContent = city.airport;
+      document.getElementById('modalCityImage').src = city.image;
+      document.getElementById('modalCityImage').alt = city.title;
+      document.getElementById('modalDescription').textContent = city.description;
+      document.getElementById('modalRecommend').textContent = city.recommend;
+      document.getElementById('modalPageLink').href = city.pageUrl;
+      
+      // タグを設定
+      const tagsContainer = document.getElementById('modalTags');
+      tagsContainer.innerHTML = '';
+      city.tags.forEach(tag => {
+        const tagElement = document.createElement('span');
+        tagElement.className = 'bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-sm font-medium';
+        tagElement.textContent = tag;
+        tagsContainer.appendChild(tagElement);
+      });
+      
+      // 記事リンクを設定
+      const articlesContainer = document.getElementById('modalArticles');
+      articlesContainer.innerHTML = '';
+      city.articles.forEach(article => {
+        const articleElement = document.createElement('a');
+        articleElement.href = article.url;
+        articleElement.className = 'flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors';
+        articleElement.innerHTML = `
+          <span class="text-xl mr-3">${article.title.split(' ')[0]}</span>
+          <span class="font-medium text-gray-900">${article.title.substring(article.title.indexOf(' ') + 1)}</span>
+        `;
+        articlesContainer.appendChild(articleElement);
+      });
+      
+      // モーダルを表示
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      const modal = document.getElementById('cityModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // DOMContentLoaded内でイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+      // モーダル背景クリックで閉じる
+      const modal = document.getElementById('cityModal');
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeModal();
+        }
+      });
+    });
 
     // 人気市区町村カードクリック時
     function selectCity(cityKey) {
