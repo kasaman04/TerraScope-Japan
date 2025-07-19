@@ -323,7 +323,7 @@ const osakaCities = {
 
     // モーダル制御変数
     let currentCityKey = '';
-    const modal = document.getElementById('city-modal');
+    let modal = null;
     
     // モーダルを開く
     function openCityModal(cityKey) {
@@ -335,45 +335,76 @@ const osakaCities = {
         return;
       }
 
-      // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title || '';
-      document.getElementById('modal-title').textContent = city.title || '';
-      document.getElementById('modal-features').textContent = city.features || '';
-      document.getElementById('modal-population').textContent = city.population || '';
-      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation || '';
-      document.getElementById('modal-english-hospital').textContent = city.englishHospital || '';
-      document.getElementById('modal-airport').textContent = city.airport || '';
-      document.getElementById('modal-rent').textContent = city.rent || '';
-      document.getElementById('modal-recommend').textContent = city.recommend || '';
-      document.getElementById('modal-description').textContent = city.description || '';
-      document.getElementById('modal-article-link').href = city.pageUrl || '#';
+      // モーダル要素を取得（存在チェック付き）
+      modal = document.getElementById('city-modal');
+      if (!modal) {
+        console.error('Modal element not found');
+        return;
+      }
+
+      // モーダル内容を更新（存在チェック付き）
+      const modalImage = document.getElementById('modal-image');
+      const modalTitle = document.getElementById('modal-title');
+      const modalFeatures = document.getElementById('modal-features');
+      const modalPopulation = document.getElementById('modal-population');
+      const modalForeignPopulation = document.getElementById('modal-foreign-population');
+      const modalEnglishHospital = document.getElementById('modal-english-hospital');
+      const modalAirport = document.getElementById('modal-airport');
+      const modalRent = document.getElementById('modal-rent');
+      const modalRecommend = document.getElementById('modal-recommend');
+      const modalDescription = document.getElementById('modal-description');
+      const modalArticleLink = document.getElementById('modal-article-link');
+      const tagsContainer = document.getElementById('modal-tags');
+
+      if (modalImage) {
+        modalImage.src = city.image || '';
+        modalImage.alt = city.title || '';
+      }
+      if (modalTitle) modalTitle.textContent = city.title || '';
+      if (modalFeatures) modalFeatures.textContent = city.features || '';
+      if (modalPopulation) modalPopulation.textContent = city.population || '';
+      if (modalForeignPopulation) modalForeignPopulation.textContent = city.foreignPopulation || '';
+      if (modalEnglishHospital) modalEnglishHospital.textContent = city.englishHospital || '';
+      if (modalAirport) modalAirport.textContent = city.airport || '';
+      if (modalRent) modalRent.textContent = city.rent || '';
+      if (modalRecommend) modalRecommend.textContent = city.recommend || '';
+      if (modalDescription) modalDescription.textContent = city.description || '';
+      if (modalArticleLink) modalArticleLink.href = city.pageUrl || '#';
 
       // タグを表示
-      const tagsContainer = document.getElementById('modal-tags');
-      tagsContainer.innerHTML = '';
-      if (city.tags && Array.isArray(city.tags)) {
-        city.tags.forEach(tag => {
-          const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium';
-          tagElement.textContent = tag;
-          tagsContainer.appendChild(tagElement);
-        });
+      if (tagsContainer) {
+        tagsContainer.innerHTML = '';
+        if (city.tags && Array.isArray(city.tags)) {
+          city.tags.forEach(tag => {
+            const tagElement = document.createElement('span');
+            tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium';
+            tagElement.textContent = tag;
+            tagsContainer.appendChild(tagElement);
+          });
+        }
       }
 
       // モーダルを表示（アニメーション付き）
       modal.classList.remove('invisible', 'opacity-0');
       modal.classList.add('opacity-100');
-      modal.querySelector('.bg-white').classList.remove('scale-95');
-      modal.querySelector('.bg-white').classList.add('scale-100');
+      const modalContent = modal.querySelector('.bg-white');
+      if (modalContent) {
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+      }
       document.body.style.overflow = 'hidden';
     }
 
     // モーダルを閉じる
     function closeModal() {
+      if (!modal) return;
+      
       modal.classList.add('opacity-0');
-      modal.querySelector('.bg-white').classList.add('scale-95');
-      modal.querySelector('.bg-white').classList.remove('scale-100');
+      const modalContent = modal.querySelector('.bg-white');
+      if (modalContent) {
+        modalContent.classList.add('scale-95');
+        modalContent.classList.remove('scale-100');
+      }
       
       setTimeout(() => {
         modal.classList.add('invisible');
