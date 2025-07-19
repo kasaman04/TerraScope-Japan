@@ -11,10 +11,14 @@ const kanagawaCities = {
     title: "横浜市",
     population: "約377万人",
     foreignPopulation: "約10万人（2.7%）",
-    englishHospital: "あり",
     features: "国際港湾都市",
     description: "日本最大の港湾都市として発展。中華街やみなとみらいなど、国際色豊かな環境が魅力です。",
     image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["国際港湾都市", "中華街", "みなとみらい", "多文化共生"],
+    englishHospital: "あり",
+    airport: "◎（羽田空港近接）",
+    rent: "やや高い",
+    recommend: "国際的な環境を求める外国人",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kanagawa/yokohama/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kanagawa/yokohama/article-02/" },
@@ -29,10 +33,14 @@ const kanagawaCities = {
     title: "川崎市",
     population: "約154万人",
     foreignPopulation: "約4万人（2.6%）",
-    englishHospital: "あり",
     features: "工業都市・多文化共生",
     description: "東京と横浜の間に位置し、多様な文化が共存する都市。外国人コミュニティも活発です。",
     image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["工業都市", "多文化共生", "外国人コミュニティ", "東京隣接"],
+    englishHospital: "あり",
+    airport: "○（羽田空港経由）",
+    rent: "中程度",
+    recommend: "多文化環境を求める外国人",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kanagawa/kawasaki/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kanagawa/kawasaki/article-02/" },
@@ -47,10 +55,14 @@ const kanagawaCities = {
     title: "鎌倉市",
     population: "約17万人",
     foreignPopulation: "約2,500人（1.5%）",
-    englishHospital: "限定的",
     features: "歴史文化都市・観光地",
     description: "古都鎌倉として知られる歴史ある街。自然豊かで落ち着いた住環境が魅力です。",
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["古都", "歴史文化", "自然豊か", "落ち着いた環境"],
+    englishHospital: "限定的",
+    airport: "△（羽田空港まで1時間）",
+    rent: "やや高い",
+    recommend: "歴史と自然を重視する外国人",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kanagawa/kamakura/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kanagawa/kamakura/article-02/" },
@@ -77,7 +89,7 @@ const kanagawaCities = {
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-blue-800 to-blue-900 overflow-hidden">
+  <section class="relative bg-gradient-to-br from-red-800 to-red-900 overflow-hidden">
     <div class="absolute inset-0 opacity-20">
       <img 
         src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
@@ -125,89 +137,105 @@ const kanagawaCities = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          市区町村を選んで<span class="text-blue-600">詳しい情報を見る</span>
+          市区町村を選んで<span class="text-red-600">詳しい情報を見る</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          プルダウンから市区町村を選択して、詳細な生活情報をご覧ください
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
         </p>
       </div>
 
-      <!-- Selection Interface -->
-      <div class="max-w-2xl mx-auto mb-12">
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <label for="city-select" class="block text-lg font-semibold text-gray-700 mb-4">
-            📍 神奈川県の市区町村を選択
-          </label>
-          <select id="city-select" onchange="showModal()" 
-                  class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg">
-            <option value="">市区町村を選択してください</option>
-            {Object.entries(kanagawaCities).map(([key, city]) => (
-              <option value={key}>{city.title}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <!-- City Information Display -->
-      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-8 py-6 text-white">
-            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
-            <div class="grid md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <p id="population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="foreign-population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="main-features" class="opacity-90"></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="p-8">
-            <p id="city-description" class="text-gray-600 mb-8"></p>
-            
-            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
-            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
-            
-            <div class="mt-8 text-center">
-              <a id="view-city-page" href="#" 
-                 class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-bold text-lg rounded-full hover:bg-blue-700 transition-all duration-300">
-                <span class="mr-3">📋</span>
-                詳細ページを見る
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Popular Cities Preview -->
-      <div class="mt-16">
-        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+      <!-- Cities Cards -->
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">人気の市区町村</h3>
         <div class="grid md:grid-cols-3 gap-6">
           {Object.entries(kanagawaCities).map(([key, city]) => (
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-                 onclick={`openModal('${key}')`}>
-              <div class="relative h-32 overflow-hidden">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-48 overflow-hidden">
                 <img 
                   src={city.image}
                   alt={city.title}
-                  class="w-full h-full object-cover"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-2 left-3 text-white">
-                  <h4 class="font-bold">{city.title}</h4>
+                <div class="absolute bottom-3 left-3 text-white">
+                  <h4 class="font-bold text-lg">{city.title}</h4>
+                </div>
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
                 </div>
               </div>
               <div class="p-4">
-                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
+                <!-- タグ表示 -->
+                <div class="flex gap-2 mb-3">
+                  {city.tags && city.tags.slice(0, 2).map(tag => (
+                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                  ))}
+                </div>
                 <p class="text-xs text-gray-500">{city.population}</p>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+          <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+
+          <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
+          
+          <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+          <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+          <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+            <div class="bg-gray-50 p-3 rounded">
+              <strong class="text-gray-700">人口:</strong> 
+              <span id="modal-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <strong class="text-gray-700">外国人人口:</strong> 
+              <span id="modal-foreign-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <strong class="text-gray-700">英語対応病院:</strong> 
+              <span id="modal-english-hospital" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <strong class="text-gray-700">空港アクセス:</strong> 
+              <span id="modal-airport" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded">
+              <strong class="text-gray-700">家賃相場:</strong> 
+              <span id="modal-rent" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded col-span-2">
+              <strong class="text-gray-700">おすすめ:</strong> 
+              <span id="modal-recommend" class="text-gray-900"></span>
+            </div>
+          </div>
+
+          <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+          <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+          <div class="flex gap-3">
+            <a id="modal-article-link" href="#" 
+               class="flex-1 text-center bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition-colors">
+              📖 詳しい記事を見る
+            </a>
+            <button id="close-modal-btn"
+                    class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
+              閉じる
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -218,7 +246,7 @@ const kanagawaCities = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          神奈川県で暮らす<span class="text-blue-600">メリット</span>
+          神奈川県で暮らす<span class="text-red-600">メリット</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
           外国人にとって神奈川県が魅力的な理由
@@ -227,7 +255,7 @@ const kanagawaCities = {
 
       <div class="grid md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <span class="text-3xl">🌊</span>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">国際港湾都市</h3>
@@ -237,7 +265,7 @@ const kanagawaCities = {
         </div>
 
         <div class="text-center">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <span class="text-3xl">🚃</span>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">東京へのアクセス</h3>
@@ -247,7 +275,7 @@ const kanagawaCities = {
         </div>
 
         <div class="text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <span class="text-3xl">🏞️</span>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">自然と都市の調和</h3>
@@ -260,7 +288,7 @@ const kanagawaCities = {
   </section>
 
   <!-- Call to Action -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-red-600 to-red-800 text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">
         神奈川県での住居選びを<span class="text-yellow-300">プロがサポート</span>
@@ -273,7 +301,7 @@ const kanagawaCities = {
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a 
           href="/ja/services/" 
-          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-red-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
         >
           <span class="mr-3">🔍</span>
           調査サービスを見る
@@ -290,15 +318,20 @@ const kanagawaCities = {
   </section>
 
   <script is:inline>
-    // 神奈川県市区町村データ
+    // 神奈川県市区町村データ（JavaScriptオブジェクト）
     const cityData = {
       yokohama: {
         title: "横浜市",
         population: "約377万人",
         foreignPopulation: "約10万人（2.7%）",
-        englishHospital: "あり",
         features: "国際港湾都市",
         description: "日本最大の港湾都市として発展。中華街やみなとみらいなど、国際色豊かな環境が魅力です。",
+        image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["国際港湾都市", "中華街", "みなとみらい", "多文化共生"],
+        englishHospital: "あり",
+        airport: "◎（羽田空港近接）",
+        rent: "やや高い",
+        recommend: "国際的な環境を求める外国人",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kanagawa/yokohama/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kanagawa/yokohama/article-02/" },
@@ -313,9 +346,14 @@ const kanagawaCities = {
         title: "川崎市",
         population: "約154万人",
         foreignPopulation: "約4万人（2.6%）",
-        englishHospital: "あり",
         features: "工業都市・多文化共生",
         description: "東京と横浜の間に位置し、多様な文化が共存する都市。外国人コミュニティも活発です。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "多文化共生", "外国人コミュニティ", "東京隣接"],
+        englishHospital: "あり",
+        airport: "○（羽田空港経由）",
+        rent: "中程度",
+        recommend: "多文化環境を求める外国人",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kanagawa/kawasaki/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kanagawa/kawasaki/article-02/" },
@@ -330,9 +368,14 @@ const kanagawaCities = {
         title: "鎌倉市",
         population: "約17万人",
         foreignPopulation: "約2,500人（1.5%）",
-        englishHospital: "限定的",
         features: "歴史文化都市・観光地",
         description: "古都鎌倉として知られる歴史ある街。自然豊かで落ち着いた住環境が魅力です。",
+        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["古都", "歴史文化", "自然豊か", "落ち着いた環境"],
+        englishHospital: "限定的",
+        airport: "△（羽田空港まで1時間）",
+        rent: "やや高い",
+        recommend: "歴史と自然を重視する外国人",
         articles: [
           { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kanagawa/kamakura/article-01/" },
           { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kanagawa/kamakura/article-02/" },
@@ -345,77 +388,85 @@ const kanagawaCities = {
       }
     };
 
-    // DOMContentLoadedイベントリスナーを追加
-    document.addEventListener('DOMContentLoaded', function() {
-      // モーダル関連のイベントリスナーをここに配置
-      console.log('Modal functionality initialized');
-    });
 
-    // 市区町村選択時に詳細情報を表示
-    function showModal() {
-      const citySelect = document.getElementById("city-select");
-      const cityInfo = document.getElementById("city-info");
+    // モーダル関連の変数とイベント処理
+    let currentCityKey = '';
+    const modal = document.getElementById('city-modal');
+    const modalClose = document.getElementById('modal-close');
+
+    // モーダルを開く
+    function openCityModal(cityKey) {
+      currentCityKey = cityKey;
+      const city = cityData[cityKey];
       
-      const selectedCity = citySelect.value;
-      
-      if (!selectedCity || !cityData[selectedCity]) {
-        cityInfo.style.display = "none";
-        return;
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-image').src = city.image;
+      document.getElementById('modal-image').alt = city.title;
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+      document.getElementById('modal-article-link').href = city.pageUrl;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
       }
-      
-      const city = cityData[selectedCity];
-      
-      // 基本情報を更新
-      document.getElementById("city-title").textContent = city.title;
-      document.getElementById("population").textContent = city.population;
-      document.getElementById("foreign-population").textContent = city.foreignPopulation;
-      document.getElementById("main-features").textContent = city.features;
-      document.getElementById("city-description").textContent = city.description;
-      
-      // 記事リンクを更新
-      const linksContainer = document.getElementById("article-links");
-      linksContainer.innerHTML = "";
-      
-      city.articles.forEach(article => {
-        const linkDiv = document.createElement("div");
-        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
-        
-        const link = document.createElement("a");
-        link.href = article.url;
-        link.className = "flex items-center text-gray-900 hover:text-blue-600 transition-colors";
-        link.innerHTML = `
-          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
-          <div>
-            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
-          </div>
-        `;
-        
-        linkDiv.appendChild(link);
-        linksContainer.appendChild(linkDiv);
-      });
-      
-      // 詳細ページリンクを更新
-      document.getElementById("view-city-page").href = city.pageUrl;
-      
-      // 情報ボックスを表示
-      cityInfo.style.display = "block";
-      
-      // スムーズスクロール
-      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // モーダルを表示（アニメーション付き）
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
     }
 
-    // 人気市区町村カードクリック時
-    function openModal(cityKey) {
-      const citySelect = document.getElementById("city-select");
-      citySelect.value = cityKey;
-      showModal();
-    }
-
-    // モーダルを閉じる関数
+    // モーダルを閉じる
     function closeModal() {
-      const cityInfo = document.getElementById("city-info");
-      cityInfo.style.display = "none";
-      document.getElementById("city-select").value = "";
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+      currentCityKey = '';
     }
+
+    // DOMContentLoadedでイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
+
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
   </script>
 </BaseLayout>
