@@ -320,8 +320,8 @@ const articles = [
               <div class="grid lg:grid-cols-3 gap-6">
                 {categoryArticles.slice(0, 3).map((article) => (
                   <div class="article-item bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
-                    <div class="flex">
-                      <div class="w-32 h-32 flex-shrink-0">
+                    <div class="flex h-32">
+                      <div class="w-32 h-full flex-shrink-0 overflow-hidden">
                         <img 
                           src={article.image || 'https://images.unsplash.com/photo-1589451560115-9f86a404f3de?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80'}
                           alt={article.title}
