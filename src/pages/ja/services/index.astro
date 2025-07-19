@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import Accordion from '../../../components/Accordion.astro';
-import { sanity } from "../../../lib/sanity";
 
-const title = "この地域は住むのに安全ですか？私たちがあなたのために調査します";
-const description = "日本に住む前に知っておきたい地域情報を、7営業日で安心レポートに。防災・生活インフラ・現地調査まで、外国人向け住居選択支援サービス。";
+const title = "安心して「日本に住む」を叶えるための調査サービス | Japan Life Research";
+const description = "防災・教育・生活コスト・再開発・外国人規制など、不安なことはプロに調べてもらいましょう。現地映像やPDFレポートで、あなたの不安を安心に変えるお手伝いをします。";
 const lang = "ja";
 
 // サービスプランのデータ
@@ -12,155 +10,110 @@ const servicePlans = [
   {
     key: "light",
     name: "ライト調査",
+    subtitle: "基本データレポート",
     price: "¥50,000",
-    duration: "3営業日",
-    description: "基本的な地域情報と安全性チェック",
+    duration: "3営業日以内",
+    target: "とりあえず基本情報だけ早く知りたい方向け",
     features: [
       "基本的な地域データ収集",
-      "ハザードマップ確認",
-      "主要施設の位置確認",
-      "公共交通アクセス調査",
+      "ハザードマップ分析",
+      "主要施設の位置確認（スーパー・病院など）",
+      "公共交通のアクセス",
       "基本レポート（日英対応）"
     ],
-    recommended: false,
-    onSiteVisit: false,
-    photoVideo: false
+    notIncluded: ["現地訪問", "写真・映像", "アフターサポート"],
+    recommended: false
   },
   {
     key: "standard", 
     name: "スタンダード調査",
+    subtitle: "現地撮影＋生活環境分析",
     price: "¥120,000",
-    duration: "5営業日",
-    description: "詳細な現地調査と生活環境分析",
+    duration: "5営業日以内",
+    target: "本気で住む場所を検討したい方向け",
     features: [
-      "ライト調査の全項目",
-      "現地スタッフによる訪問調査",
-      "写真・動画による記録",
+      "ライト調査のすべて",
+      "現地訪問調査（生活動線・騒音・周辺チェック）",
+      "写真・動画による記録（30枚以上＋歩行動画）",
       "近隣環境の詳細分析",
-      "生活コスト調査",
-      "詳細レポート（15ページ以上）"
+      "生活コスト調査（物価・家賃相場）",
+      "詳細PDFレポート（15ページ以上）",
+      "アフターサポート：7日間"
     ],
-    recommended: true,
-    onSiteVisit: true,
-    photoVideo: true
+    notIncluded: [],
+    recommended: true
   },
   {
     key: "full",
     name: "フル調査",
-    price: "¥300,000", 
-    duration: "7営業日",
-    description: "完全包括的な住居環境調査",
+    subtitle: "投資・法制度・内見代行つき",
+    price: "¥300,000",
+    duration: "7営業日以内",
+    target: "失敗できない居住／投資判断をしたい方向け",
     features: [
-      "スタンダード調査の全項目",
-      "法的制約・外国人規制の詳細調査",
+      "スタンダード調査のすべて",
+      "法制度・外国人規制の詳細調査",
       "将来の再開発計画調査",
       "投資価値・利回り分析",
-      "Q&Aビデオコール（30分）",
-      "アフターサポート（30日間）"
+      "内見代行（最大3件・室内対応可）",
+      "アフターサポート：30日間"
     ],
-    recommended: false,
-    onSiteVisit: true,
-    photoVideo: true
+    notIncluded: [],
+    recommended: false
   }
 ];
 
 // 調査項目のカテゴリ
 const investigationCategories = [
   {
-    icon: "🌊",
+    icon: "🛡️",
     title: "防災・災害リスク",
-    description: "地震・水害・津波リスクの詳細調査",
-    items: [
-      "過去の災害履歴と被害状況",
-      "ハザードマップの詳細分析",
-      "避難所までの距離と経路",
-      "建物の耐震性能評価",
-      "地盤の安定性調査"
-    ]
+    description: "地震・津波・水害リスクの詳細調査と避難経路の確認"
   },
   {
     icon: "🏥",
     title: "生活インフラ",
-    description: "日常生活に必要な施設とサービス",
-    items: [
-      "病院・クリニックの所在と対応言語",
-      "学校・教育機関の情報",
-      "スーパー・商業施設へのアクセス",
-      "公共交通機関の利便性",
-      "インターネット・通信環境"
-    ]
+    description: "病院・学校・商業施設などの生活に必要な施設情報"
   },
   {
     icon: "💰",
     title: "土地価格と投資価値",
-    description: "不動産価値と投資リターンの分析",
-    items: [
-      "過去5年間の価格推移",
-      "周辺相場との比較分析",
-      "賃貸利回りの計算",
-      "将来価値の予測",
-      "税制上のメリット・デメリット"
-    ]
+    description: "不動産価値の推移と将来の投資リターン分析"
   },
   {
     icon: "🏗️",
     title: "都市開発・再開発",
-    description: "将来の地域発展可能性",
-    items: [
-      "市町村の都市計画情報",
-      "インフラ整備の予定",
-      "大型開発プロジェクト",
-      "人口動態の変化予測",
-      "商業施設の出店計画"
-    ]
+    description: "将来の街づくり計画と地域発展の可能性"
   },
   {
     icon: "📋",
     title: "法制度・外国人規制",
-    description: "外国人の土地取得に関する法的側面",
-    items: [
-      "外国人土地法の適用状況",
-      "取得可能な土地の種類",
-      "必要な手続きと書類",
-      "税務上の注意点",
-      "将来的な規制変更の可能性"
-    ]
+    description: "外国人の土地取得に関する法的制約と手続き"
   },
   {
     icon: "📸",
     title: "現地調査・実地検証",
-    description: "実際に現地を訪問しての詳細調査",
-    items: [
-      "周辺環境の写真・動画記録",
-      "近隣住民へのヒアリング",
-      "騒音・臭気等の環境チェック",
-      "日照・風通しの確認",
-      "実際の生活動線の検証"
-    ]
+    description: "実際に現地を訪問しての写真・動画による詳細記録"
   }
 ];
 
 // FAQ データ
 const faqItems = [
   {
-    question: "日本語が話せなくても問題ありませんか？",
-    answer: "はい、全く問題ありません。当社のスタッフは英語・中国語に対応しており、レポートも日本語・英語の両言語で提供いたします。現地調査の際も、必要に応じて通訳スタッフが同行いたします。"
+    question: "日本語が話せなくても大丈夫ですか？",
+    answer: "はい、すべてのレポートは日英対応です。担当スタッフも英語での対応が可能ですので、安心してご相談ください。"
   },
   {
-    question: "調査の正確性はどの程度ですか？",
-    answer: "当社の調査は、公的機関のデータベース、現地での実地調査、専門家による分析を組み合わせて行っています。すべての情報には出典を明記し、可能な限り最新の情報を提供いたします。ただし、将来予測については参考情報としてご理解ください。"
+    question: "どんな場所でも調査可能ですか？",
+    answer: "基本的に全国対応ですが、離島や特殊な地域はご相談ください。アクセスが困難な地域については、追加料金が発生する場合があります。"
   },
   {
-    question: "どんな土地でも対応してくれますか？",
-    answer: "日本全国の土地に対応可能です。ただし、離島や山間部など一部のアクセスが困難な地域については、追加料金が発生する場合があります。まずは無料相談でお気軽にご相談ください。"
+    question: "レポートの形式は？",
+    answer: "PDFでの納品となります。必要に応じてGoogle Driveでも共有可能です。写真や図表を豊富に使用した、わかりやすいレポートをお届けします。"
   },
   {
-    question: "レポートはどのような形式で提供されますか？",
-    answer: "PDFレポートとして提供いたします。ライト調査は5-8ページ、スタンダード調査は15-20ページ、フル調査は25-30ページ程度の詳細レポートです。写真や図表を多用し、わかりやすい構成でお届けします。"
-  },
-  {
-    question: "調査後のサポートはありますか？",
-    answer: "スタンダード調査以上のプランには、レポート納品後のQ&Aサポートが含まれています。フル調査プランでは30日間のアフターサポートがあり、追加質問や現地情報の更新があった場合にもサポートいたします。"
+    question: "内見は本当にできますか？",
+    answer: "管理会社との調整後、室内の撮影・レポート作成が可能です（フル調査プランのみ）。事前に物件情報をお教えいただければ、内見の手配をいたします。"
   }
 ];
 ---
@@ -168,34 +121,30 @@ const faqItems = [
 <BaseLayout title={title} description={description} lang={lang}>
   <!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
-    <!-- Background Pattern -->
+    <!-- Background Icons -->
     <div class="absolute inset-0 opacity-10">
-      <div class="absolute top-20 left-20 w-32 h-32 border border-white rounded-full"></div>
-      <div class="absolute top-40 right-32 w-24 h-24 border border-white rounded-full"></div>
-      <div class="absolute bottom-32 left-40 w-20 h-20 border border-white rounded-full"></div>
+      <div class="absolute top-20 left-20 text-6xl">🗺️</div>
+      <div class="absolute top-32 right-32 text-5xl">🏠</div>
+      <div class="absolute bottom-32 left-40 text-4xl">📊</div>
+      <div class="absolute bottom-20 right-20 text-5xl">🛡️</div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-7xl opacity-20">🌍</div>
     </div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
       <div class="text-center text-white">
-        <div class="mb-8">
-          <span class="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
-            🌍 外国人専門 住居調査サービス
-          </span>
-        </div>
-        
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">
-          この地域は<span class="text-yellow-300">住むのに安全</span>ですか？<br>
-          <span class="text-lg md:text-xl font-normal opacity-90">私たちがあなたのために調査します</span>
+          日本に安心して暮らすために、<br>
+          <span class="text-yellow-300">調査という選択を</span>
         </h1>
         
         <p class="text-xl md:text-2xl mb-12 opacity-95 max-w-4xl mx-auto leading-relaxed">
-          日本に住む前に知っておきたい地域情報を、<strong class="text-yellow-300">7営業日で安心レポート</strong>に。<br class="hidden md:block">
-          防災・生活インフラ・投資価値まで、外国人目線で徹底調査いたします。
+          防災・教育・生活コスト・再開発・外国人規制など、不安なことはプロに調べてもらいましょう。<br class="hidden md:block">
+          現地映像やPDFレポートで、あなたの不安を安心に変えるお手伝いをします。
         </p>
         
         <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
-          <a href="#contact" class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300 shadow-xl">
-            <span class="mr-3">💬</span>
+          <a href="/ja/contact" class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300 shadow-xl">
+            <span class="mr-3">🔍</span>
             無料相談を申し込む
           </a>
           <a href="#sample" class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300">
@@ -203,47 +152,42 @@ const faqItems = [
             サンプルレポートを見る
           </a>
         </div>
-        
-        <div class="text-sm opacity-75">
-          ⚡ 通常7営業日で納品 | 🌍 日英対応 | 💯 満足保証
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Plan Overview -->
+  <!-- Plans Section -->
   <section id="plans" class="py-16 lg:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          あなたに最適な<span class="text-blue-600">調査プラン</span>を選択
+          あなたの不安・ニーズに応じた<br>
+          <span class="text-blue-600">3つの調査プラン</span>
         </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          ライトからフルまで、必要な情報レベルに応じて3つのプランをご用意しています
-        </p>
       </div>
 
-      <!-- Plan Comparison Table -->
-      <div class="overflow-x-auto mb-12">
-        <div class="grid lg:grid-cols-3 gap-8 min-w-[800px] lg:min-w-0">
-          {servicePlans.map((plan) => (
-            <div class={`relative bg-white rounded-2xl shadow-lg border-2 ${plan.recommended ? 'border-green-400 ring-4 ring-green-100' : 'border-gray-200'} p-8 transform transition-all duration-300 hover:scale-105`}>
-              {plan.recommended && (
-                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span class="bg-green-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                    おすすめ
-                  </span>
-                </div>
-              )}
-              
-              <div class="text-center mb-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <div class="text-4xl font-bold text-blue-600 mb-2">{plan.price}</div>
-                <div class="text-sm text-gray-500 mb-4">{plan.duration}で納品</div>
-                <p class="text-gray-600">{plan.description}</p>
+      <div class="grid lg:grid-cols-3 gap-8">
+        {servicePlans.map((plan) => (
+          <div class={`relative bg-white rounded-2xl shadow-lg border-2 ${plan.recommended ? 'border-green-400 ring-4 ring-green-100' : 'border-gray-200'} p-8 transform transition-all duration-300 hover:scale-105`}>
+            {plan.recommended && (
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span class="bg-green-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  おすすめ
+                </span>
               </div>
-              
-              <div class="space-y-4 mb-8">
+            )}
+            
+            <div class="text-center mb-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-1">{plan.name}</h3>
+              <p class="text-sm text-gray-600 mb-4">{plan.subtitle}</p>
+              <div class="text-4xl font-bold text-blue-600 mb-2">{plan.price}</div>
+              <div class="text-sm text-gray-500 mb-4">{plan.duration}</div>
+              <p class="text-gray-600 text-sm">{plan.target}</p>
+            </div>
+            
+            <div class="mb-8">
+              <h4 class="font-semibold text-gray-900 mb-4">調査内容：</h4>
+              <div class="space-y-3">
                 {plan.features.map((feature) => (
                   <div class="flex items-start space-x-3">
                     <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -252,81 +196,55 @@ const faqItems = [
                     <span class="text-gray-700 text-sm">{feature}</span>
                   </div>
                 ))}
+                {plan.notIncluded.length > 0 && plan.notIncluded.map((item) => (
+                  <div class="flex items-start space-x-3">
+                    <svg class="w-5 h-5 text-gray-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="text-gray-400 text-sm line-through">{item}</span>
+                  </div>
+                ))}
               </div>
-              
-              <div class="grid grid-cols-3 gap-4 mb-8 text-center text-sm">
-                <div>
-                  <div class="font-semibold text-gray-900">現地訪問</div>
-                  <div class={plan.onSiteVisit ? "text-green-500" : "text-gray-400"}>
-                    {plan.onSiteVisit ? "✓" : "✗"}
-                  </div>
-                </div>
-                <div>
-                  <div class="font-semibold text-gray-900">写真・映像</div>
-                  <div class={plan.photoVideo ? "text-green-500" : "text-gray-400"}>
-                    {plan.photoVideo ? "✓" : "✗"}
-                  </div>
-                </div>
-                <div>
-                  <div class="font-semibold text-gray-900">アフターサポート</div>
-                  <div class={plan.key === 'full' ? "text-green-500" : plan.key === 'standard' ? "text-yellow-500" : "text-gray-400"}>
-                    {plan.key === 'full' ? "30日" : plan.key === 'standard' ? "7日" : "✗"}
-                  </div>
-                </div>
-              </div>
-              
-              <a href="#contact" class={`block w-full text-center py-4 px-6 rounded-full font-bold transition-all duration-300 ${plan.recommended ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-blue-600 text-white hover:bg-blue-700'}`}>
-                このプランを相談
-              </a>
             </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Investigation Items -->
-  <section id="investigation" class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          <span class="text-blue-600">6つのカテゴリ</span>で徹底調査
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          住居選択に重要な要素を網羅的に調査し、安心できる判断材料を提供します
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {investigationCategories.map((category, index) => (
-          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100 hover:shadow-xl transition-all duration-300">
-            <div class="text-4xl mb-4">{category.icon}</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">{category.title}</h3>
-            <p class="text-gray-600 mb-4">{category.description}</p>
-            <ul class="space-y-2">
-              {category.items.map((item) => (
-                <li class="flex items-start space-x-2">
-                  <span class="text-blue-500 text-sm mt-1">•</span>
-                  <span class="text-sm text-gray-700">{item}</span>
-                </li>
-              ))}
-            </ul>
+            
+            <a href={`/ja/contact?plan=${plan.key}`} class={`block w-full text-center py-4 px-6 rounded-full font-bold transition-all duration-300 ${plan.recommended ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-blue-600 text-white hover:bg-blue-700'}`}>
+              このプランを相談
+            </a>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Case Study Teaser -->
+  <!-- Investigation Categories -->
+  <section id="categories" class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          安心できる生活環境かどうか、<br>
+          <span class="text-blue-600">6つの視点</span>から調査します
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {investigationCategories.map((category) => (
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100 hover:shadow-xl transition-all duration-300 text-center">
+            <div class="text-6xl mb-6">{category.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">{category.title}</h3>
+            <p class="text-gray-600">{category.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Report Section -->
   <section id="sample" class="py-16 lg:py-24 bg-gray-900 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-5xl font-bold mb-6">
-          実際の調査レポート<span class="text-yellow-400">サンプル</span>
+          実際のレポートをご覧ください
         </h2>
-        <p class="text-xl opacity-90 max-w-3xl mx-auto">
-          「ここまで細かく調査してくれるなら安心」と感じていただける詳細レポートの一部をご紹介
-        </p>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -334,209 +252,104 @@ const faqItems = [
           <div class="bg-white rounded-2xl p-8 shadow-2xl">
             <div class="mb-6">
               <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold inline-block mb-4">
-                スタンダード調査サンプル
+                📍 神奈川県藤沢市・湘南台エリアの調査結果（要約）
               </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">神奈川県藤沢市湘南台地区</h3>
-              <p class="text-gray-600">ファミリー向け住宅地の総合調査レポート</p>
             </div>
             
-            <div class="space-y-4 text-gray-800">
-              <div class="border-l-4 border-blue-500 pl-4">
-                <h4 class="font-semibold">防災評価: A評価</h4>
-                <p class="text-sm text-gray-600">過去30年間で大きな被災歴なし。標高25mで津波リスク極小。</p>
-              </div>
-              <div class="border-l-4 border-green-500 pl-4">
-                <h4 class="font-semibold">生活利便性: 優良</h4>
-                <p class="text-sm text-gray-600">駅徒歩8分、総合病院まで徒歩12分、国際学校あり。</p>
-              </div>
-              <div class="border-l-4 border-purple-500 pl-4">
-                <h4 class="font-semibold">投資価値: 安定</h4>
-                <p class="text-sm text-gray-600">過去5年間で+8%上昇。賃貸利回り4.2%。</p>
-              </div>
+            <div class="space-y-6 text-gray-800">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b">
+                    <th class="text-left py-2">評価軸</th>
+                    <th class="text-left py-2">内容</th>
+                    <th class="text-left py-2">評価</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b">
+                    <td class="py-2 font-medium">防災評価</td>
+                    <td class="py-2">津波リスク極小・災害歴なし</td>
+                    <td class="py-2 font-bold text-green-600">A評価</td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="py-2 font-medium">生活利便性</td>
+                    <td class="py-2">駅徒歩8分・国際学校あり</td>
+                    <td class="py-2 font-bold text-blue-600">優良</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-medium">投資価値</td>
+                    <td class="py-2">賃貸利回り4.2%</td>
+                    <td class="py-2 font-bold text-purple-600">安定</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
         
-        <div>
-          <div class="space-y-6">
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h4 class="text-xl font-bold mb-4">📊 データの信頼性</h4>
-              <ul class="space-y-2 text-sm">
-                <li>• 国土交通省・自治体公式データ使用</li>
-                <li>• 現地スタッフによる実地調査</li>
-                <li>• 不動産専門家による価値分析</li>
-                <li>• 地元住民へのヒアリング調査</li>
-              </ul>
-            </div>
-            
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-              <h4 class="text-xl font-bold mb-4">📸 視覚的な情報</h4>
-              <ul class="space-y-2 text-sm">
-                <li>• 周辺環境の写真30枚以上</li>
-                <li>• 動画による街並み紹介</li>
-                <li>• 地図・図表による分析</li>
-                <li>• 日照・眺望の記録</li>
-              </ul>
-            </div>
-            
-            <a href="#contact" class="block w-full text-center py-4 px-6 bg-yellow-400 text-gray-900 font-bold rounded-full hover:bg-yellow-300 transition-all duration-300">
-              完全版サンプルをダウンロード
-            </a>
+        <div class="text-center">
+          <div class="mb-8">
+            <h3 class="text-2xl font-bold mb-4">📷「レポートの一部を見る（PDF）」</h3>
+            <p class="text-lg opacity-90 mb-6">
+              実際の調査レポートのサンプルをダウンロードして、<br>
+              詳細な内容をご確認いただけます
+            </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process Flow -->
-  <section id="flow" class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          調査完了まで<span class="text-blue-600">わずか4ステップ</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          お申し込みから最短7営業日で、安心の調査レポートをお届けします
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-4 gap-8">
-        <div class="text-center group">
-          <div class="relative mb-6">
-            <div class="bg-blue-500 text-white rounded-full p-6 w-24 h-24 mx-auto flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-              <span class="text-2xl font-bold">1</span>
-            </div>
-            <div class="absolute -top-2 -right-2 bg-yellow-400 text-blue-900 rounded-full p-2">
-              <span class="text-xl">💬</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">無料相談</h3>
-          <p class="text-gray-600">
-            ご希望の地域と調査内容について、専門スタッフが詳しくヒアリング
-          </p>
-        </div>
-
-        <div class="text-center group">
-          <div class="relative mb-6">
-            <div class="bg-green-500 text-white rounded-full p-6 w-24 h-24 mx-auto flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-              <span class="text-2xl font-bold">2</span>
-            </div>
-            <div class="absolute -top-2 -right-2 bg-yellow-400 text-green-900 rounded-full p-2">
-              <span class="text-xl">🎯</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">エリア選定</h3>
-          <p class="text-gray-600">
-            候補地域を絞り込み、最適な調査プランを決定
-          </p>
-        </div>
-
-        <div class="text-center group">
-          <div class="relative mb-6">
-            <div class="bg-purple-500 text-white rounded-full p-6 w-24 h-24 mx-auto flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-              <span class="text-2xl font-bold">3</span>
-            </div>
-            <div class="absolute -top-2 -right-2 bg-yellow-400 text-purple-900 rounded-full p-2">
-              <span class="text-xl">🔍</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">調査開始</h3>
-          <p class="text-gray-600">
-            データ収集・現地調査・専門分析を並行して実施
-          </p>
-        </div>
-
-        <div class="text-center group">
-          <div class="relative mb-6">
-            <div class="bg-orange-500 text-white rounded-full p-6 w-24 h-24 mx-auto flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300">
-              <span class="text-2xl font-bold">4</span>
-            </div>
-            <div class="absolute -top-2 -right-2 bg-yellow-400 text-orange-900 rounded-full p-2">
-              <span class="text-xl">📋</span>
-            </div>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">レポート納品</h3>
-          <p class="text-gray-600">
-            詳細な調査レポートをお届け。必要に応じてQ&Aも対応
-          </p>
-        </div>
-      </div>
-
-      <div class="text-center mt-12">
-        <div class="bg-white rounded-2xl p-8 shadow-lg inline-block">
-          <div class="text-2xl font-bold text-gray-900 mb-2">⚡ 通常7営業日以内で完了</div>
-          <div class="text-gray-600">お急ぎの場合は特急オプション（+30%）もご利用いただけます</div>
+          
+          <a href="#contact" class="inline-flex items-center px-8 py-4 bg-yellow-400 text-gray-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300 shadow-xl">
+            <span class="mr-3">📋</span>
+            サンプルPDFをダウンロード
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq" class="py-16 lg:py-24 bg-white">
+  <section id="faq" class="py-16 lg:py-24 bg-gray-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          よくある<span class="text-blue-600">ご質問</span>
+          よくあるご質問
         </h2>
-        <p class="text-xl text-gray-600">
-          プラン選び・調査範囲・データ信頼性に関する疑問にお答えします
-        </p>
       </div>
 
-      <Accordion items={faqItems} />
+      <div class="space-y-6">
+        {faqItems.map((item, index) => (
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">
+              Q. {item.question}
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              → {item.answer}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- Final CTA -->
   <section id="contact" class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="mb-8">
-        <span class="inline-flex items-center px-6 py-3 rounded-full text-lg font-semibold bg-yellow-400 text-blue-900">
-          🎁 今なら無料相談受付中！
-        </span>
-      </div>
-      
       <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-        安心できる<span class="text-yellow-300">住居選択</span>を<br>
-        始めませんか？
+        不安を「安心」に変える一歩を
       </h2>
       
       <p class="text-xl md:text-2xl mb-12 opacity-95 max-w-4xl mx-auto">
         日本での新生活を成功させるために、<br class="hidden md:block">
-        まずは<strong>無料相談</strong>で詳しくお話しを聞かせてください。
+        まずは専門家にご相談ください。
       </p>
       
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <a href="/ja/contact" class="bg-yellow-400 text-blue-900 font-bold py-6 px-8 rounded-2xl hover:bg-yellow-300 transition-all duration-300 transform hover:scale-105">
-          <div class="text-2xl mb-2">💬</div>
-          <div class="text-lg">ライト調査</div>
-          <div class="text-sm opacity-75">¥50,000〜</div>
+      <div class="flex flex-col sm:flex-row gap-6 justify-center">
+        <a href="/ja/contact" class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300 shadow-xl">
+          <span class="mr-3">💬</span>
+          無料相談してみる
         </a>
-        <a href="/ja/contact" class="bg-green-500 text-white font-bold py-6 px-8 rounded-2xl hover:bg-green-400 transition-all duration-300 transform hover:scale-105 ring-4 ring-yellow-300">
-          <div class="text-2xl mb-2">⭐</div>
-          <div class="text-lg">スタンダード調査</div>
-          <div class="text-sm opacity-75">¥120,000〜（おすすめ）</div>
+        <a href="#sample" class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300">
+          <span class="mr-3">📄</span>
+          サンプルレポートを見る
         </a>
-        <a href="/ja/contact" class="bg-white/20 backdrop-blur-sm text-white font-bold py-6 px-8 rounded-2xl border border-white/30 hover:bg-white/30 transition-all duration-300 transform hover:scale-105">
-          <div class="text-2xl mb-2">👑</div>
-          <div class="text-lg">フル調査</div>
-          <div class="text-sm opacity-75">¥300,000〜</div>
-        </a>
-      </div>
-      
-      <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto text-sm">
-        <div class="flex items-center justify-center space-x-2">
-          <span class="text-2xl">⚡</span>
-          <span>最短7営業日で納品</span>
-        </div>
-        <div class="flex items-center justify-center space-x-2">
-          <span class="text-2xl">🌍</span>
-          <span>日英完全対応</span>
-        </div>
-        <div class="flex items-center justify-center space-x-2">
-          <span class="text-2xl">💯</span>
-          <span>満足保証付き</span>
-        </div>
       </div>
     </div>
   </section>
