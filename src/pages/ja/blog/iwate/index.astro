@@ -206,62 +206,12 @@ const iwateCities = {
           市区町村を選んで<span class="text-green-600">詳しい情報を見る</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          プルダウンから市区町村を選択して、詳細な生活情報をご覧ください
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
         </p>
       </div>
 
-      <!-- Selection Interface -->
-      <div class="max-w-2xl mx-auto mb-12">
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <label for="city-select" class="block text-lg font-semibold text-gray-700 mb-4">
-            📍 岩手県の市区町村を選択
-          </label>
-          <select id="city-select" onchange="displayCityInfo()" 
-                  class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg">
-            <option value="">市区町村を選択してください</option>
-            {Object.entries(iwateCities).map(([key, city]) => (
-              <option value={key}>{city.title}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <!-- City Information Display -->
-      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div class="bg-gradient-to-r from-green-600 to-emerald-800 px-8 py-6 text-white">
-            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
-            <div class="grid md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <p id="population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="foreign-population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="main-features" class="opacity-90"></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="p-8">
-            <p id="city-description" class="text-gray-600 mb-8"></p>
-            
-            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
-            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
-            
-            <div class="mt-8 text-center">
-              <a id="view-city-page" href="#" 
-                 class="inline-flex items-center px-8 py-4 bg-green-600 text-white font-bold text-lg rounded-full hover:bg-green-700 transition-all duration-300">
-                <span class="mr-3">📋</span>
-                詳細ページを見る
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Popular Cities Preview -->
+      <!-- Cities Cards -->
+      <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -345,7 +295,7 @@ const iwateCities = {
 
           <div class="flex gap-3">
             <a id="modal-article-link" href="#" 
-               class="flex-1 text-center bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition-colors">
+               class="flex-1 text-center bg-orange-600 text-white py-3 px-6 rounded-lg hover:bg-orange-700 transition-colors">
               📖 詳しい記事を見る
             </a>
             <button id="close-modal-btn"
@@ -434,7 +384,7 @@ const iwateCities = {
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // 岩手県市区町村データ
     const cityData = {
       morioka: {
@@ -445,7 +395,7 @@ const iwateCities = {
         description: "岩手県の政治・経済・文化の中心都市。南部藩の城下町として発展し、盛岡城跡公園や石川啄木ゆかりの地として知られる。わんこそば、盛岡冷麺、じゃじゃ麺の三大麺が有名。",
         image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["県庁所在地", "盛岡城", "三大麺", "石川啄木"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "◎（いわて花巻空港経由）",
         rent: "中程度",
         recommend: "都市機能と歴史文化を求める外国人",
@@ -467,7 +417,7 @@ const iwateCities = {
         description: "平泉の世界遺産「仏国土（浄土）を表す建築・庭園及び考古学的遺跡群」の玄関口。中尊寺金色堂をはじめとする奥州藤原氏の文化遺産と豊かな自然環境が魅力。",
         image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["世界遺産", "平泉", "中尊寺", "奥州藤原氏"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "○（いわて花巻空港経由）",
         rent: "非常に安い",
         recommend: "歴史文化と自然を愛する外国人",
@@ -489,7 +439,7 @@ const iwateCities = {
         description: "伝統工芸の南部鉄器発祥の地として知られ、えさし藤原の郷では平安時代の文化を体験できる。農業と伝統工芸が息づく歴史ある街。",
         image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["南部鉄器", "えさし藤原の郷", "伝統工芸", "農業"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "○（いわて花巻空港経由）",
         rent: "非常に安い",
         recommend: "伝統工芸と歴史に興味がある外国人",
@@ -511,7 +461,7 @@ const iwateCities = {
         description: "詩人・童話作家宮沢賢治の生誕地。賢治が理想郷として描いた『イーハトーヴ』の世界観を体感できる。温泉地としても有名で、いわて花巻空港の立地により交通アクセスが良好。",
         image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["宮沢賢治", "イーハトーヴ", "温泉", "空港直結"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "◎（いわて花巻空港直結）",
         rent: "非常に安い",
         recommend: "文学・自然・温泉を愛する外国人",
@@ -533,7 +483,7 @@ const iwateCities = {
         description: "岩手県南部の工業都市。工業団地が集中し、製造業が盛ん。春の北上展勝地の桜まつりで有名で、約4万本の桜が市内を彩る。",
         image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["工業都市", "展勝地", "桜まつり", "製造業"],
-        englishHospital: true,
+        englishHospital: "あり",
         airport: "○（いわて花巻空港経由）",
         rent: "安い",
         recommend: "工業系の仕事を求める外国人",
@@ -555,7 +505,7 @@ const iwateCities = {
         description: "三陸復興国立公園の中心部に位置し、美しいリアス式海岸で知られる浜者の町。浄土ヶ浜は本州最東端の絶景スポット。水産業が盛んで、新鮮な海の幸を味わえる。",
         image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
         tags: ["陸中海岸", "浄土ヶ浜", "浜者の町", "水産業"],
-        englishHospital: false,
+        englishHospital: "限定的",
         airport: "△（いわて花巻空港から遠い）",
         rent: "非常に安い",
         recommend: "海と自然を愛する外国人",
@@ -572,64 +522,8 @@ const iwateCities = {
     };
 
     // 市区町村選択時に詳細情報を表示
-    function displayCityInfo() {
-      const citySelect = document.getElementById("city-select");
-      const cityInfo = document.getElementById("city-info");
-      
-      const selectedCity = citySelect.value;
-      
-      if (!selectedCity || !cityData[selectedCity]) {
-        cityInfo.style.display = "none";
-        return;
-      }
-      
-      const city = cityData[selectedCity];
-      
-      // 基本情報を更新
-      document.getElementById("city-title").textContent = city.title;
-      document.getElementById("population").textContent = city.population;
-      document.getElementById("foreign-population").textContent = city.foreignPopulation;
-      document.getElementById("main-features").textContent = city.features;
-      document.getElementById("city-description").textContent = city.description;
-      
-      // 記事リンクを更新
-      const linksContainer = document.getElementById("article-links");
-      linksContainer.innerHTML = "";
-      
-      city.articles.forEach(article => {
-        const linkDiv = document.createElement("div");
-        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
-        
-        const link = document.createElement("a");
-        link.href = article.url;
-        link.className = "flex items-center text-gray-900 hover:text-green-600 transition-colors";
-        link.innerHTML = `
-          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
-          <div>
-            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
-          </div>
-        `;
-        
-        linkDiv.appendChild(link);
-        linksContainer.appendChild(linkDiv);
-      });
-      
-      // 詳細ページリンクを更新
-      document.getElementById("view-city-page").href = city.pageUrl;
-      
-      // 情報ボックスを表示
-      cityInfo.style.display = "block";
-      
-      // スムーズスクロール
-      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
 
     // 人気市区町村カードクリック時
-    function selectCity(cityKey) {
-      const citySelect = document.getElementById("city-select");
-      citySelect.value = cityKey;
-      displayCityInfo();
-    }
 
     // モーダル関連の変数とイベント処理
     let currentCityKey = '';
@@ -651,7 +545,7 @@ const iwateCities = {
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
       document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
-      document.getElementById('modal-english-hospital').textContent = typeof city.englishHospital === 'boolean' ? (city.englishHospital ? 'あり' : 'なし') : city.englishHospital;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
       document.getElementById('modal-airport').textContent = city.airport;
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
@@ -664,7 +558,7 @@ const iwateCities = {
       if (city.tags) {
         city.tags.forEach(tag => {
           const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium';
+          tagElement.className = 'text-xs bg-orange-100 text-orange-800 px-3 py-1 rounded-full font-medium';
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });
@@ -707,6 +601,27 @@ const iwateCities = {
       if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
         closeCityModal();
       }
+    });
+
+    // DOMContentLoaded内でイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+      // イベントリスナー
+      modalClose.addEventListener('click', closeCityModal);
+      closeModalBtn.addEventListener('click', closeCityModal);
+
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeCityModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeCityModal();
+        }
+      });
     });
   </script>
 </BaseLayout>

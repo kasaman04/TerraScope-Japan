@@ -140,62 +140,12 @@ const shizuokaCities = {
           市区町村を選んで<span class="text-cyan-600">詳しい情報を見る</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          プルダウンから市区町村を選択して、詳細な生活情報をご覧ください
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
         </p>
       </div>
 
-      <!-- Selection Interface -->
-      <div class="max-w-2xl mx-auto mb-12">
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <label for="city-select" class="block text-lg font-semibold text-gray-700 mb-4">
-            📍 静岡県の市区町村を選択
-          </label>
-          <select id="city-select" onchange="displayCityInfo()" 
-                  class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-lg">
-            <option value="">市区町村を選択してください</option>
-            {Object.entries(shizuokaCities).map(([key, city]) => (
-              <option value={key}>{city.title}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <!-- City Information Display -->
-      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div class="bg-gradient-to-r from-cyan-600 to-blue-800 px-8 py-6 text-white">
-            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
-            <div class="grid md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <p id="population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="foreign-population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="main-features" class="opacity-90"></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="p-8">
-            <p id="city-description" class="text-gray-600 mb-8"></p>
-            
-            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
-            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
-            
-            <div class="mt-8 text-center">
-              <a id="view-city-page" href="#" 
-                 class="inline-flex items-center px-8 py-4 bg-cyan-600 text-white font-bold text-lg rounded-full hover:bg-cyan-700 transition-all duration-300">
-                <span class="mr-3">📋</span>
-                詳細ページを見る
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Popular Cities Preview -->
+      <!-- Cities Cards -->
+      <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -440,64 +390,8 @@ const shizuokaCities = {
     };
 
     // 市区町村選択時に詳細情報を表示
-    function displayCityInfo() {
-      const citySelect = document.getElementById("city-select");
-      const cityInfo = document.getElementById("city-info");
-      
-      const selectedCity = citySelect.value;
-      
-      if (!selectedCity || !cityData[selectedCity]) {
-        cityInfo.style.display = "none";
-        return;
-      }
-      
-      const city = cityData[selectedCity];
-      
-      // 基本情報を更新
-      document.getElementById("city-title").textContent = city.title;
-      document.getElementById("population").textContent = city.population;
-      document.getElementById("foreign-population").textContent = city.foreignPopulation;
-      document.getElementById("main-features").textContent = city.features;
-      document.getElementById("city-description").textContent = city.description;
-      
-      // 記事リンクを更新
-      const linksContainer = document.getElementById("article-links");
-      linksContainer.innerHTML = "";
-      
-      city.articles.forEach(article => {
-        const linkDiv = document.createElement("div");
-        linkDiv.className = "flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors";
-        
-        const link = document.createElement("a");
-        link.href = article.url;
-        link.className = "flex items-center text-gray-900 hover:text-cyan-600 transition-colors";
-        link.innerHTML = `
-          <span class="text-2xl mr-3">${article.title.split(' ')[0]}</span>
-          <div>
-            <p class="font-semibold">${article.title.substring(article.title.indexOf(' ') + 1)}</p>
-          </div>
-        `;
-        
-        linkDiv.appendChild(link);
-        linksContainer.appendChild(linkDiv);
-      });
-      
-      // 詳細ページリンクを更新
-      document.getElementById("view-city-page").href = city.pageUrl;
-      
-      // 情報ボックスを表示
-      cityInfo.style.display = "block";
-      
-      // スムーズスクロール
-      cityInfo.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
 
     // 人気市区町村カードクリック時
-    function selectCity(cityKey) {
-      const citySelect = document.getElementById("city-select");
-      citySelect.value = cityKey;
-      displayCityInfo();
-    }
 
     // モーダル関連の変数とイベント処理
     let currentCityKey = '';

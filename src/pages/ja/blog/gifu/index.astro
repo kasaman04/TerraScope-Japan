@@ -140,63 +140,12 @@ const gifuCities = {
           市区町村を選んで<span class="text-orange-600">詳しい情報を見る</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          プルダウンから市区町村を選択して、詳細な生活情報をご覧ください
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
         </p>
       </div>
 
-      <!-- Selection Interface -->
-      <div class="max-w-2xl mx-auto mb-12">
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <label for="city-select" class="block text-lg font-semibold text-gray-700 mb-4">
-            📍 岐阜県の市区町村を選択
-          </label>
-          <select id="city-select" onchange="displayCityInfo()" 
-                  class="w-full px-6 py-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-lg">
-            <option value="">市区町村を選択してください</option>
-            {Object.entries(gifuCities).map(([key, city]) => (
-              <option value={key}>{city.title}</option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <!-- City Information Display -->
-      <div id="city-info" class="max-w-4xl mx-auto" style="display: none;">
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-          <div class="bg-gradient-to-r from-orange-600 to-red-800 px-8 py-6 text-white">
-            <h3 id="city-title" class="text-2xl font-bold mb-2"></h3>
-            <div class="grid md:grid-cols-3 gap-4 text-sm">
-              <div>
-                <p id="population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="foreign-population" class="opacity-90"></p>
-              </div>
-              <div>
-                <p id="main-features" class="opacity-90"></p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="p-8">
-            <p id="city-description" class="text-gray-600 mb-8"></p>
-            
-            <h4 class="text-xl font-bold text-gray-900 mb-6">暮らしに役立つ記事一覧</h4>
-            <div id="article-links" class="grid md:grid-cols-2 gap-4"></div>
-            
-            <div class="mt-8 text-center">
-              <a id="view-city-page" href="#" 
-                 class="inline-flex items-center px-8 py-4 bg-orange-600 text-white font-bold text-lg rounded-full hover:bg-orange-700 transition-all duration-300">
-                <span class="mr-3">📋</span>
-                詳細ページを見る
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Popular Cities Preview -->
-      <div class="mt-16">
+      <!-- Cities Cards -->
+      <div>
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(gifuCities).map(([key, city]) => (
