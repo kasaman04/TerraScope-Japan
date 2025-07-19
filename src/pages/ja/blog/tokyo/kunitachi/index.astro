@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import BlogModal from '../../../../../components/BlogModal.astro';
 
 const title = "東京都国立市での暮らし - 外国人向け生活ガイド";
 const description = "一橋大学を中心とした文教都市・国立市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
@@ -228,9 +229,9 @@ const keySpots = [
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article) => (
-          <a 
-            href={`/ja/blog/tokyo/kunitachi/${article.id}/`}
-            class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          <div 
+            class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+            data-article-id={article.id}
           >
             <div class="p-6">
               <div class="flex items-center mb-4">
@@ -250,12 +251,24 @@ const keySpots = [
                 <span class="text-sm text-gray-500">
                   {new Date(article.date).toLocaleDateString('ja-JP')}
                 </span>
-                <span class="text-indigo-600 group-hover:translate-x-2 transition-transform">
-                  →
-                </span>
+                <div class="flex items-center gap-2">
+                  <button class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                    クイックビュー
+                  </button>
+                  <a 
+                    href={`/ja/blog/tokyo/kunitachi/${article.id}/`}
+                    class="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center gap-1"
+                    onclick="event.stopPropagation()"
+                  >
+                    完全版
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>
@@ -384,4 +397,9 @@ const keySpots = [
       </div>
     </div>
   </section>
+
+  <!-- Modals -->
+  {articles.map((article) => (
+    <BlogModal article={article} cityName="国立市" prefectureName="東京都" />
+  ))}
 </BaseLayout>

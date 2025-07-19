@@ -1,9 +1,56 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import BlogModal from '../../../../../components/BlogModal.astro';
 
 const title = "大阪市での暮らし - 外国人向け生活情報";
 const description = "大阪市での外国人向け生活情報。梅田、難波、天王寺から住吉、西成まで、防災、インフラ、生活コストなど詳細情報をお届け。";
 const lang = "ja";
+
+// 記事データ
+const articles = [
+  {
+    id: "article-01",
+    icon: "🛡️",
+    title: "防災：地震・災害対策",
+    description: "大阪市の地震リスク、避難場所、防災対策について詳しく解説します。",
+    date: "2024-01-15"
+  },
+  {
+    id: "article-02", 
+    icon: "🏥",
+    title: "生活インフラ：病院・学校",
+    description: "外国語対応の病院、国際学校、公共施設などの生活インフラ情報。",
+    date: "2024-01-18"
+  },
+  {
+    id: "article-03",
+    icon: "💰",
+    title: "生活コスト：家賃・光熱費",
+    description: "大阪市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。",
+    date: "2024-01-22"
+  },
+  {
+    id: "article-04",
+    icon: "🏗️",
+    title: "再開発・都市計画",
+    description: "大阪市の再開発プロジェクトや都市計画、今後の発展予定について。",
+    date: "2024-01-25"
+  },
+  {
+    id: "article-05",
+    icon: "📜",
+    title: "法制度：外国人の権利",
+    description: "外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。",
+    date: "2024-01-28"
+  },
+  {
+    id: "article-06",
+    icon: "📷",
+    title: "現地調査レポート",
+    description: "実際に大阪市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。",
+    date: "2024-02-01"
+  }
+];
 ---
 
 <BaseLayout {title} {description} {lang}>
@@ -310,71 +357,42 @@ const lang = "ja";
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">
-        <a href="/ja/blog/osaka/osaka/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🛡️</span>
-            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+        {articles.map((article) => (
+          <div 
+            class="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-200 cursor-pointer"
+            data-article-id={article.id}
+          >
+            <div class="flex items-center mb-4">
+              <span class="text-3xl mr-4">{article.icon}</span>
+              <h3 class="text-xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
+                {article.title}
+              </h3>
+            </div>
+            <p class="text-gray-600 mb-4">
+              {article.description}
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-500">
+                {new Date(article.date).toLocaleDateString('ja-JP')}
+              </span>
+              <div class="flex items-center gap-2">
+                <button class="text-orange-600 hover:text-orange-800 text-sm font-medium">
+                  クイックビュー
+                </button>
+                <a 
+                  href={`/ja/blog/osaka/osaka/${article.id}/`}
+                  class="text-orange-600 hover:text-orange-800 text-sm font-medium flex items-center gap-1"
+                  onclick="event.stopPropagation()"
+                >
+                  完全版
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-600 mb-4">
-            大阪市の地震リスク、津波対策、避難場所について詳しく解説します。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/osaka/osaka/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏥</span>
-            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/osaka/osaka/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">💰</span>
-            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            大阪市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/osaka/osaka/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏗️</span>
-            <h3 class="text-xl font-bold text-gray-900">再開発・都市計画</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            大阪市の再開発プロジェクトや都市計画、2025年万博に向けた発展について。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/osaka/osaka/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📜</span>
-            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/osaka/osaka/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📷</span>
-            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            実際に大阪市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
+        ))}
       </div>
     </div>
   </section>
@@ -479,4 +497,9 @@ const lang = "ja";
       </div>
     </div>
   </section>
+
+  <!-- Modals -->
+  {articles.map((article) => (
+    <BlogModal article={article} cityName="大阪市" prefectureName="大阪府" />
+  ))}
 </BaseLayout>

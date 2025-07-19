@@ -1,9 +1,27 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import CityModal from '../../../../../components/CityModal.astro';
 
 const title = "東京都武蔵野市での暮らし - 外国人向け生活ガイド";
 const description = "吉祥寺を中心とした武蔵野市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
 const lang = "ja";
+
+// 市区町村データ
+const cityData = {
+  slug: "musashino",
+  title: "武蔵野市",
+  features: "井の頭公園で有名な閑静エリア",
+  population: "約14万7千人",
+  foreignPopulation: "約3,200人（2.2%）",
+  englishHospital: "あり",
+  airportAccess: "◎（新宿経由で30分）",
+  rentLevel: "中程度",
+  recommend: "都心アクセスと住環境を両立したい外国人",
+  description: "吉祥寺を中心とした人気エリア。都心へのアクセスと住環境のバランスが魅力の武蔵野市は、外国人にも住みやすい環境が整っています。",
+  image: "https://images.unsplash.com/photo-1555400038-63f5ba517a47?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  tags: ["交通便利", "自然豊か", "ファミリー向け"],
+  prefectureSlug: "tokyo"
+};
 
 // 記事データ
 const articles = [
@@ -182,9 +200,9 @@ const keySpots = [
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {articles.map((article) => (
-          <a 
-            href={`/ja/blog/tokyo/musashino/${article.id}/`}
-            class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+          <div 
+            class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+            onclick="openCityModal('musashino')"
           >
             <div class="p-6">
               <div class="flex items-center mb-4">
@@ -204,12 +222,24 @@ const keySpots = [
                 <span class="text-sm text-gray-500">
                   {new Date(article.date).toLocaleDateString('ja-JP')}
                 </span>
-                <span class="text-green-600 group-hover:translate-x-2 transition-transform">
-                  →
-                </span>
+                <div class="flex items-center gap-2">
+                  <button class="text-green-600 hover:text-green-800 text-sm font-medium">
+                    詳細情報を見る
+                  </button>
+                  <a 
+                    href={`/ja/blog/tokyo/musashino/${article.id}/`}
+                    class="text-green-600 hover:text-green-800 text-sm font-medium flex items-center gap-1"
+                    onclick="event.stopPropagation()"
+                  >
+                    記事
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>
@@ -317,4 +347,7 @@ const keySpots = [
       </div>
     </div>
   </section>
+
+  <!-- City Modal -->
+  <CityModal city={cityData} />
 </BaseLayout>
