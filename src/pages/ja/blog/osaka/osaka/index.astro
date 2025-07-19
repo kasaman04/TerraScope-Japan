@@ -6,49 +6,74 @@ const title = "大阪市での暮らし - 外国人向け生活情報";
 const description = "大阪市での外国人向け生活情報。梅田、難波、天王寺から住吉、西成まで、防災、インフラ、生活コストなど詳細情報をお届け。";
 const lang = "ja";
 
-// 記事データ
+// タブカテゴリーの定義
+const tabCategories = {
+  "all": { name: "すべて", icon: "📋", color: "gray" },
+  "location": { name: "地域情報", icon: "🗺️", color: "blue" },
+  "access": { name: "アクセス", icon: "🚇", color: "green" },
+  "international": { name: "国際対応", icon: "🌍", color: "purple" },
+  "family": { name: "子育て・教育", icon: "👨‍👩‍👧‍👦", color: "pink" },
+  "convenience": { name: "生活利便性", icon: "🏪", color: "indigo" },
+  "cost": { name: "コスト", icon: "💰", color: "yellow" },
+  "safety": { name: "安全性", icon: "🛡️", color: "red" },
+  "future": { name: "将来性", icon: "🏗️", color: "teal" }
+};
+
+// 記事データ（カテゴリー情報付き）
 const articles = [
   {
     id: "article-01",
     icon: "🛡️",
     title: "防災：地震・災害対策",
     description: "大阪市の地震リスク、避難場所、防災対策について詳しく解説します。",
-    date: "2024-01-15"
+    date: "2024-01-15",
+    categories: ["safety"],
+    readTime: "8分"
   },
   {
     id: "article-02", 
     icon: "🏥",
     title: "生活インフラ：病院・学校",
     description: "外国語対応の病院、国際学校、公共施設などの生活インフラ情報。",
-    date: "2024-01-18"
+    date: "2024-01-18",
+    categories: ["convenience", "international"],
+    readTime: "6分"
   },
   {
     id: "article-03",
     icon: "💰",
     title: "生活コスト：家賃・光熱費",
     description: "大阪市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。",
-    date: "2024-01-22"
+    date: "2024-01-22",
+    categories: ["cost"],
+    readTime: "10分"
   },
   {
     id: "article-04",
     icon: "🏗️",
     title: "再開発・都市計画",
     description: "大阪市の再開発プロジェクトや都市計画、今後の発展予定について。",
-    date: "2024-01-25"
+    date: "2024-01-25",
+    categories: ["future"],
+    readTime: "7分"
   },
   {
     id: "article-05",
     icon: "📜",
     title: "法制度：外国人の権利",
     description: "外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。",
-    date: "2024-01-28"
+    date: "2024-01-28",
+    categories: ["cost", "international"],
+    readTime: "12分"
   },
   {
     id: "article-06",
     icon: "📷",
     title: "現地調査レポート",
     description: "実際に大阪市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。",
-    date: "2024-02-01"
+    date: "2024-02-01",
+    categories: ["location"],
+    readTime: "15分"
   }
 ];
 ---
@@ -344,7 +369,7 @@ const articles = [
     </div>
   </section>
 
-  <!-- Articles Section -->
+  <!-- Articles Section with Tabs -->
   <section class="py-16 lg:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
@@ -352,40 +377,66 @@ const articles = [
           大阪市の<span class="text-orange-600">生活情報</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          大阪市での生活に必要な詳細情報をまとめました
+          カテゴリー別に整理された詳細な生活情報
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <!-- Tab Navigation -->
+      <div class="mb-8">
+        <div class="flex flex-wrap justify-center gap-2 mb-6">
+          {Object.entries(tabCategories).map(([key, category]) => (
+            <button 
+              class={`tab-button px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${key === 'all' ? 'bg-red-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'}`}
+              data-category={key}
+            >
+              <span class="mr-2">{category.icon}</span>
+              {category.name}
+              <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full" id={`count-${key}`}>
+                {key === 'all' ? articles.length : articles.filter(article => article.categories.includes(key)).length}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="grid md:grid-cols-2 gap-8" id="articles-container">
         {articles.map((article) => (
           <div 
-            class="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-200 cursor-pointer"
+            class="article-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 p-6 border border-gray-200"
             data-article-id={article.id}
+            data-categories={article.categories.join(',')}
           >
             <div class="flex items-center mb-4">
               <span class="text-3xl mr-4">{article.icon}</span>
-              <h3 class="text-xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors">
-                {article.title}
-              </h3>
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                  {article.title}
+                </h3>
+                <div class="flex flex-wrap gap-1">
+                  {article.categories.map((cat) => (
+                    <span class={`text-xs px-2 py-1 rounded-full bg-${tabCategories[cat]?.color || 'gray'}-100 text-${tabCategories[cat]?.color || 'gray'}-800`}>
+                      {tabCategories[cat]?.icon} {tabCategories[cat]?.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
             <p class="text-gray-600 mb-4">
               {article.description}
             </p>
             <div class="flex items-center justify-between">
-              <span class="text-sm text-gray-500">
-                {new Date(article.date).toLocaleDateString('ja-JP')}
-              </span>
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>{new Date(article.date).toLocaleDateString('ja-JP')}</span>
+                <span>📖 {article.readTime}</span>
+              </div>
               <div class="flex items-center gap-2">
-                <button class="text-orange-600 hover:text-orange-800 text-sm font-medium">
-                  クイックビュー
-                </button>
                 <a 
                   href={`/ja/blog/osaka/osaka/${article.id}/`}
-                  class="text-orange-600 hover:text-orange-800 text-sm font-medium flex items-center gap-1"
-                  onclick="event.stopPropagation()"
+                  class="inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors"
                 >
-                  完全版
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  記事を読む
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                   </svg>
                 </a>
@@ -393,6 +444,13 @@ const articles = [
             </div>
           </div>
         ))}
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-results" class="text-center py-12 hidden">
+        <div class="text-gray-400 text-6xl mb-4">📝</div>
+        <h3 class="text-xl font-semibold text-gray-600 mb-2">該当する記事がありません</h3>
+        <p class="text-gray-500">他のカテゴリーをお試しください</p>
       </div>
     </div>
   </section>
@@ -502,4 +560,146 @@ const articles = [
   {articles.map((article) => (
     <BlogModal article={article} cityName="大阪市" prefectureName="大阪府" />
   ))}
+
+  <!-- Tab Functionality Script -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      // タブボタンとコンテンツを取得
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const articleCards = document.querySelectorAll('.article-card');
+      const noResultsDiv = document.getElementById('no-results');
+
+      // タブフィルタリング機能
+      function filterArticles(selectedCategory) {
+        let visibleCount = 0;
+
+        articleCards.forEach(card => {
+          const categories = card.getAttribute('data-categories').split(',');
+          const shouldShow = selectedCategory === 'all' || categories.includes(selectedCategory);
+
+          if (shouldShow) {
+            card.style.display = 'block';
+            card.style.opacity = '0';
+            setTimeout(() => {
+              card.style.opacity = '1';
+            }, 50);
+            visibleCount++;
+          } else {
+            card.style.opacity = '0';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 200);
+          }
+        });
+
+        // 結果なしメッセージの表示/非表示
+        if (visibleCount === 0) {
+          noResultsDiv.classList.remove('hidden');
+        } else {
+          noResultsDiv.classList.add('hidden');
+        }
+
+        // グリッドレイアウトの調整
+        const container = document.getElementById('articles-container');
+        if (visibleCount === 1) {
+          container.style.gridTemplateColumns = '1fr';
+          container.style.maxWidth = '600px';
+          container.style.margin = '0 auto';
+        } else {
+          container.style.gridTemplateColumns = '';
+          container.style.maxWidth = '';
+          container.style.margin = '';
+        }
+      }
+
+      // タブボタンのアクティブ状態を更新
+      function updateActiveTab(selectedCategory) {
+        tabButtons.forEach(button => {
+          const category = button.getAttribute('data-category');
+          if (category === selectedCategory) {
+            button.classList.remove('bg-white', 'text-gray-600');
+            button.classList.add('bg-red-600', 'text-white');
+          } else {
+            button.classList.remove('bg-red-600', 'text-white');
+            button.classList.add('bg-white', 'text-gray-600');
+          }
+        });
+      }
+
+      // タブクリックイベント
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const selectedCategory = this.getAttribute('data-category');
+          
+          // アクティブタブを更新
+          updateActiveTab(selectedCategory);
+          
+          // 記事をフィルタリング
+          filterArticles(selectedCategory);
+
+          // アニメーション効果
+          this.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            this.style.transform = 'scale(1)';
+          }, 100);
+        });
+      });
+
+      // キーボードナビゲーション
+      document.addEventListener('keydown', function(e) {
+        if (e.key >= '1' && e.key <= '9') {
+          const index = parseInt(e.key) - 1;
+          if (tabButtons[index]) {
+            tabButtons[index].click();
+          }
+        }
+      });
+
+      // 初期状態：「すべて」を選択
+      filterArticles('all');
+      updateActiveTab('all');
+
+      // スムーズスクロール効果
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      articleCards.forEach(card => {
+        observer.observe(card);
+      });
+    });
+
+    // CSS アニメーション
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .article-card {
+        transition: all 0.3s ease;
+      }
+      
+      .tab-button {
+        transition: all 0.2s ease;
+      }
+      
+      .tab-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 </BaseLayout>
