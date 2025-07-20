@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "大阪市の生活情報 - 外国人向け記事一覧";
+const description = "大阪市での外国人向け生活情報記事一覧。地震対策、住居、学費、生活費など、安心して暮らすための情報をまとめています。";
+const lang = "ja";
+
+// 記事データ（カテゴリ別）
+const articleCategories = [
+  {
+    id: "disaster-prevention",
+    title: "地震対策",
+    icon: "🛡️",
+    color: "red",
+    articles: [
+      {
+        id: "earthquake-guide",
+        title: "地震・避難対策",
+        description: "大阪市の地震リスクと外国人向け防災情報を詳しく解説。避難場所や緊急時の連絡先も紹介。",
+        image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-01-15",
+        readTime: "8分"
+      },
+      {
+        id: "emergency-kit",
+        title: "非常持出袋の準備",
+        description: "災害時に必要な持出袋の内容と準備方法。外国人特有の必需品も含めて解説。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-01-18",
+        readTime: "5分"
+      }
+    ]
+  },
+  {
+    id: "housing",
+    title: "アパート",
+    icon: "🏠",
+    color: "blue", 
+    articles: [
+      {
+        id: "apartment-search",
+        title: "賃貸物件の探し方",
+        description: "外国人が大阪市で賃貸物件を探す際の注意点、必要書類、契約手続きを詳しく説明。",
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-01-20",
+        readTime: "12分"
+      },
+      {
+        id: "rental-costs",
+        title: "家賃・初期費用の相場",
+        description: "大阪市の家賃相場、敷金礼金、初期費用の目安。エリア別の価格比較も掲載。",
+        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-01-22",
+        readTime: "6分"
+      },
+      {
+        id: "housing-support",
+        title: "住居支援制度",
+        description: "外国人向けの住居支援制度、保証人制度、住宅補助について詳しく解説。",
+        image: "https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-01-25",
+        readTime: "7分"
+      }
+    ]
+  },
+  {
+    id: "education",
+    title: "学費・奨学金",
+    icon: "💰",
+    color: "green",
+    articles: [
+      {
+        id: "tuition-fees",
+        title: "大学・大学院の学費",
+        description: "大阪市内の大学の学費相場、入学金、年間授業料の詳細情報。国公立と私立の比較も掲載。",
+        image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-01-28",
+        readTime: "9分"
+      },
+      {
+        id: "scholarships",
+        title: "外国人向け奨学金",
+        description: "外国人留学生が利用できる奨学金制度の一覧と申請方法。JASSO、民間財団の情報も網羅。",
+        image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-02-01",
+        readTime: "11分"
+      },
+      {
+        id: "education-loans",
+        title: "教育ローン・学費ローン",
+        description: "外国人でも利用可能な教育ローンの種類と申請条件。銀行や信用金庫の商品比較。",
+        image: "https://images.unsplash.com/photo-1554224154-26032fced8bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-02-03",
+        readTime: "8分"
+      }
+    ]
+  },
+  {
+    id: "living-costs",
+    title: "生活費",
+    icon: "💴",
+    color: "purple",
+    articles: [
+      {
+        id: "monthly-expenses",
+        title: "月額・生活費目安",
+        description: "大阪市での一人暮らし、家族向けの月額生活費を詳しく算出。食費、光熱費、交通費の内訳も紹介。",
+        image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-02-05",
+        readTime: "10分"
+      },
+      {
+        id: "grocery-costs",
+        title: "食費・食材費",
+        description: "スーパーでの食材価格、外食費用、自炊のコストパフォーマンスを詳しく分析。",
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-02-07",
+        readTime: "7分"
+      }
+    ]
+  },
+  {
+    id: "services",
+    title: "サービス",
+    icon: "🔧",
+    color: "orange",
+    articles: [
+      {
+        id: "city-services",
+        title: "大阪市サービス一覧",
+        description: "大阪市が提供する外国人向けサービスの全一覧。多言語対応窓口、生活相談の詳細情報。",
+        image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=100&q=80",
+        date: "2024-02-10",
+        readTime: "6分"
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/osaka/" class="hover:text-blue-600">大阪府</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">大阪市の生活情報</li>
+    </ol>
+  </nav>
+
+  <!-- Header -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        大阪市の生活情報
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        外国人が大阪市で安心して暮らすための情報をカテゴリ別にまとめました
+      </p>
+    </div>
+
+    <!-- Article Categories -->
+    <div class="space-y-12">
+      {articleCategories.map((category) => (
+        <section class="bg-white">
+          <!-- Category Header -->
+          <div class="mb-6">
+            <div class="flex items-center mb-2">
+              <span class="text-2xl mr-3">{category.icon}</span>
+              <h2 class="text-2xl font-bold text-gray-900">{category.title}</h2>
+              <span class={`ml-auto text-sm px-3 py-1 rounded-full bg-${category.color}-100 text-${category.color}-800 font-medium`}>
+                {category.articles.length}記事
+              </span>
+            </div>
+            <div class={`h-1 bg-${category.color}-200 rounded-full w-full`}></div>
+          </div>
+
+          <!-- Articles List -->
+          <div class="space-y-4">
+            {category.articles.map((article) => (
+              <article class="flex bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors border border-gray-200">
+                <!-- Article Image -->
+                <div class="flex-shrink-0 mr-4">
+                  <img 
+                    src={article.image}
+                    alt={article.title}
+                    class="w-24 h-16 object-cover rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+
+                <!-- Article Content -->
+                <div class="flex-1">
+                  <div class="flex items-start justify-between mb-2">
+                    <h3 class="text-lg font-semibold text-gray-900 hover:text-blue-600 cursor-pointer">
+                      {article.title}
+                    </h3>
+                    <div class="flex items-center text-sm text-gray-500 ml-4">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      {article.readTime}
+                    </div>
+                  </div>
+                  
+                  <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                    {article.description}
+                  </p>
+                  
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center text-sm text-gray-500">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      {new Date(article.date).toLocaleDateString('ja-JP')}
+                    </div>
+                    
+                    <button class={`text-${category.color}-600 hover:text-${category.color}-800 font-medium text-sm flex items-center`}>
+                      続きを読む
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 pt-8 border-t border-gray-200">
+      <div class="text-center">
+        <p class="text-gray-600 mb-4">
+          より詳しい情報が必要な場合は、専門スタッフによる現地調査をご依頼いただけます
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/ja/services/" 
+            class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            📋 調査サービスを見る
+          </a>
+          <a 
+            href="/ja/contact/" 
+            class="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 font-semibold rounded-lg hover:bg-gray-200 transition-colors"
+          >
+            💬 無料相談する
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Custom colors for dynamic classes */
+  .bg-red-100 { background-color: #fee2e2; }
+  .text-red-800 { color: #991b1b; }
+  .bg-red-200 { background-color: #fecaca; }
+  .text-red-600 { color: #dc2626; }
+  .hover\:text-red-800:hover { color: #991b1b; }
+  
+  .bg-blue-100 { background-color: #dbeafe; }
+  .text-blue-800 { color: #1e40af; }
+  .bg-blue-200 { background-color: #bfdbfe; }
+  .text-blue-600 { color: #2563eb; }
+  .hover\:text-blue-800:hover { color: #1e40af; }
+  
+  .bg-green-100 { background-color: #dcfce7; }
+  .text-green-800 { color: #166534; }
+  .bg-green-200 { background-color: #bbf7d0; }
+  .text-green-600 { color: #16a34a; }
+  .hover\:text-green-800:hover { color: #166534; }
+  
+  .bg-purple-100 { background-color: #f3e8ff; }
+  .text-purple-800 { color: #6b21a8; }
+  .bg-purple-200 { background-color: #e9d5ff; }
+  .text-purple-600 { color: #9333ea; }
+  .hover\:text-purple-800:hover { color: #6b21a8; }
+  
+  .bg-orange-100 { background-color: #fed7aa; }
+  .text-orange-800 { color: #9a3412; }
+  .bg-orange-200 { background-color: #fdc68a; }
+  .text-orange-600 { color: #ea580c; }
+  .hover\:text-orange-800:hover { color: #9a3412; }
+</style>
