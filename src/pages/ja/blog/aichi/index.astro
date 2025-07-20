@@ -2,7 +2,7 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 
 const title = "愛知県での暮らし - 市区町村別生活情報";
-const description = "愛知県の各市区町村での外国人向け生活情報。名古屋市・豊田市・岡崎市など自動車産業の中心地愛知県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const description = "愛知県の各市区町村での外国人向け生活情報。名古屋・豊田など自動車産業の愛知県の防災、インフラ、生活コストなど詳細情報をお届け。";
 const lang = "ja";
 
 // 愛知県の市区町村データ
@@ -67,7 +67,7 @@ const aichiCities = {
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-rose-800 to-pink-900 overflow-hidden">
+  <section class="relative bg-gradient-to-br from-red-800 to-red-900 overflow-hidden">
     <div class="absolute inset-0 opacity-20">
       <img 
         src="https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
@@ -89,7 +89,7 @@ const aichiCities = {
         </h1>
         
         <p class="text-xl md:text-2xl mb-8 opacity-95">
-          自動車産業の中心地として発展する愛知県での国際的な生活
+          自動車産業の中心地として発展する愛知県の市区町村情報
         </p>
         
         <div class="grid md:grid-cols-3 gap-6 text-sm">
@@ -99,7 +99,7 @@ const aichiCities = {
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">外国人人口</p>
-            <p class="text-lg">約28万人（3.7%）</p>
+            <p class="text-lg">約27万人（3.6%）</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">市町村</p>
@@ -115,7 +115,7 @@ const aichiCities = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          市区町村を選んで<span class="text-rose-600">詳しい情報を見る</span>
+          市区町村を選んで<span class="text-red-600">詳しい情報を見る</span>
         </h2>
         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
           下記の市区町村をクリックして、詳細な生活情報をご覧ください
@@ -127,17 +127,18 @@ const aichiCities = {
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
           {Object.entries(aichiCities).map(([key, city]) => (
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer block" onclick={`openCityModal('${key}')`}>
-              <div class="relative h-48 overflow-hidden">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-32 overflow-hidden">
                 <img 
                   src={city.image}
                   alt={city.title}
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  class="w-full h-full object-cover"
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-3 left-3 text-white">
-                  <h4 class="font-bold text-lg">{city.title}</h4>
+                  <h4 class="font-bold">{city.title}</h4>
                 </div>
                 <!-- 右上の詳細アイコン -->
                 <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
@@ -148,13 +149,7 @@ const aichiCities = {
                 </div>
               </div>
               <div class="p-4">
-                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
-                <!-- タグ表示 -->
-                <div class="flex gap-2 mb-3">
-                  {city.tags && city.tags.slice(0, 2).map(tag => (
-                    <span class="text-xs bg-rose-100 text-rose-800 px-2 py-1 rounded-full font-medium">{tag}</span>
-                  ))}
-                </div>
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
                 <p class="text-xs text-gray-500">{city.population}</p>
               </div>
             </div>
@@ -163,84 +158,6 @@ const aichiCities = {
       </div>
     </div>
   </section>
-
-  <!-- Aichi Features -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          愛知県で暮らす<span class="text-rose-600">メリット</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          外国人にとって愛知県が魅力的な理由
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🚗</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">製造業の中心地</h3>
-          <p class="text-gray-600">
-            自動車産業をはじめとする製造業が発達。技術系の就労機会が豊富です。
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🌏</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">国際的な職場環境</h3>
-          <p class="text-gray-600">
-            多国籍企業が多く、外国人労働者への理解とサポート体制が整っています。
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🏭</span>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">経済の安定性</h3>
-          <p class="text-gray-600">
-            堅実な製造業基盤により経済が安定。長期的な居住に適した環境です。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-rose-600 to-pink-800 text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        愛知県での住居選びを<span class="text-yellow-300">プロがサポート</span>
-      </h2>
-      
-      <p class="text-xl mb-8 opacity-95">
-        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href="/ja/services/" 
-          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-rose-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
-        >
-          <span class="mr-3">🔍</span>
-          調査サービスを見る
-        </div>
-        <a 
-          href="/ja/contact/" 
-          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
-        >
-          <span class="mr-3">💬</span>
-          無料相談する
-        </div>
-      </div>
-    </div>
-  </section>
-
-</BaseLayout>
 
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -297,7 +214,6 @@ const aichiCities = {
   </div>
 
   <script is:inline>
-    // モーダル関連の関数（汎用版）
     // 愛知県市区町村データ
     const cityData = {
       nagoya: {
@@ -330,14 +246,7 @@ const aichiCities = {
       }
     };
 
-
     function openCityModal(cityKey) {
-      // cityDataが定義されていない場合は何もしない
-      if (typeof cityData === 'undefined') {
-        console.warn('cityData is not defined');
-        return;
-      }
-      
       const city = cityData[cityKey];
       if (!city) return;
 
@@ -367,7 +276,7 @@ const aichiCities = {
         });
       }
 
-      // モーダルを表示（アニメーション付き）
+      // モーダルを表示
       const modal = document.getElementById('city-modal');
       modal.classList.remove('invisible', 'opacity-0');
       modal.classList.add('opacity-100');
