@@ -1,20 +1,104 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import CityModal from '../../../../../components/CityModal.astro';
 
-const title = "新潟市での暮らし - 外国人向け生活情報";
-const description = "新潟市での外国人向け生活情報。中央区、東区、西区から江南区まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const title = "新潟県新潟市での暮らし - 外国人向け生活ガイド";
+const description = "米どころ新潟の中心地、新潟市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
 const lang = "ja";
+
+// 市区町村データ
+const cityData = {
+  slug: "niigata",
+  title: "新潟市",
+  features: "米どころ・日本海側拠点・港湾都市・豪雪地帯",
+  population: "約80万人",
+  foreignPopulation: "約9,000人（1.1%）",
+  englishHospital: "あり",
+  airportAccess: "○（新潟空港まで30分）",
+  rentLevel: "普通",
+  recommend: "農業関係者・貿易関係者・雪国体験希望者・コシヒカリ愛好者",
+  description: "コシヒカリ発祥の地として有名な米どころ。本州日本海側最大の都市として、ロシアや中国との貿易拠点としても発展しています。",
+  image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  tags: ["米どころ", "港湾都市", "豪雪"],
+  prefectureSlug: "niigata"
+};
+
+// 記事データ
+const articles = [
+  {
+    id: "article-01",
+    icon: "🛡️",
+    title: "防災：地震・災害対策",
+    description: "新潟県中越地震の教訓を活かした防災対策、豪雪対策について詳しく解説",
+    date: "2024-01-15"
+  },
+  {
+    id: "article-02", 
+    icon: "🏥",
+    title: "生活インフラ：病院・学校",
+    description: "外国語対応の病院、国際学校、公共施設などの生活インフラ情報",
+    date: "2024-01-18"
+  },
+  {
+    id: "article-03",
+    icon: "💰",
+    title: "生活コスト：家賃・光熱費",
+    description: "新潟市の家賃相場、暖房費、日用品の価格など、生活コストを詳しく分析",
+    date: "2024-01-22"
+  },
+  {
+    id: "article-04",
+    icon: "🏗️",
+    title: "農業・食品産業",
+    description: "米作り、日本酒製造、食品加工業など新潟の農業・食品産業について解説",
+    date: "2024-01-25"
+  },
+  {
+    id: "article-05",
+    icon: "📜",
+    title: "法制度：外国人の権利",
+    description: "外国人の不動産購入、賃貸契約、各種手続きに関する法的情報",
+    date: "2024-01-28"
+  },
+  {
+    id: "article-06",
+    icon: "📷",
+    title: "現地調査レポート",
+    description: "実際に新潟市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介",
+    date: "2024-02-01"
+  }
+];
+
+// エリア情報
+const areaInfo = {
+  population: "約80万人",
+  foreignPopulation: "約9,000人（1.1%）",
+  mainNationalities: "中国、フィリピン、韓国、ロシア",
+  averageAge: "48.5歳",
+  households: "約34万世帯",
+  area: "726.45km²"
+};
+
+// 主要スポット
+const keySpots = [
+  { name: "新潟駅", type: "交通", description: "JR東日本・上越新幹線の主要駅" },
+  { name: "新潟港", type: "交通", description: "本州日本海側最大の港湾、国際貿易拠点" },
+  { name: "新潟大学病院", type: "医療", description: "特定機能病院、高度医療対応" },
+  { name: "新潟大学", type: "教育", description: "国立大学、留学生受け入れ" },
+  { name: "朱鷺メッセ", type: "観光", description: "コンベンション施設、展望室" },
+  { name: "白山神社", type: "文化", description: "越後国一宮、歴史ある神社" }
+];
 ---
 
 <BaseLayout {title} {description} {lang}>
   <!-- Breadcrumb -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <ol class="flex items-center space-x-2 text-sm text-gray-600">
-      <li><a href="/ja/" class="hover:text-emerald-600">ホーム</a></li>
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/" class="hover:text-emerald-600">地域別生活情報</a></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/niigata/" class="hover:text-emerald-600">新潟県</a></li>
+      <li><a href="/ja/blog/niigata/" class="hover:text-blue-600">新潟県</a></li>
       <li><span class="mx-2">/</span></li>
       <li class="text-gray-900 font-medium">新潟市</li>
     </ol>
@@ -34,7 +118,7 @@ const lang = "ja";
       <div class="max-w-3xl">
         <div class="mb-6">
           <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
-            🌾 新潟市
+            📍 新潟県新潟市
           </span>
         </div>
         
@@ -49,434 +133,142 @@ const lang = "ja";
         <div class="grid md:grid-cols-3 gap-6 text-sm">
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">人口</p>
-            <p class="text-lg">約80万人</p>
+            <p class="text-lg">{areaInfo.population}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">外国人人口</p>
-            <p class="text-lg">約9,000人（1.1%）</p>
+            <p class="text-lg">{areaInfo.foreignPopulation}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <p class="font-semibold mb-1">面積</p>
-            <p class="text-lg">726.45 km²</p>
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">{areaInfo.averageAge}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Overview Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          新潟市の<span class="text-emerald-600">概要</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          本州日本海側最大の都市、米と酒の産地として知られる港湾都市
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">新潟市の特徴</h3>
-          <div class="space-y-4">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-emerald-600 font-bold">1</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">米どころ</h4>
-                <p class="text-gray-600">日本有数の米産地として知られ、コシヒカリの発祥地でもあります。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-emerald-600 font-bold">2</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">日本海側の拠点</h4>
-                <p class="text-gray-600">本州日本海側最大の都市として、ロシアや中国との貿易拠点の役割を果たしています。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-emerald-600 font-bold">3</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">食文化の豊かさ</h4>
-                <p class="text-gray-600">新鮮な海産物、日本酒、そして美味しい米を基とした豊かな食文化があります。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gray-50 rounded-xl p-8">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
-          <div class="space-y-4">
-            <div class="flex justify-between">
-              <span class="text-gray-600">主要駅</span>
-              <span class="font-semibold">新潟駅、亀田駅、新津駅</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">平均家賃（1K）</span>
-              <span class="font-semibold">約4.2万円</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">東京駅までの時間</span>
-              <span class="font-semibold">約2時間</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">年間降雪量</span>
-              <span class="font-semibold">約280cm</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Living Areas Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          主要な<span class="text-emerald-600">居住エリア</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          新潟市内の外国人に人気のエリアをご紹介
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">中央区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium mr-2">中心街</span>
-            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">商業地区</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            新潟市の中心部で、新潟駅や古町などの繁華街がある。行政・商業の中心地です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：高い</p>
-            <p>外国人向け：★★★★★</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">東区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">交通便利</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地が中心で、新潟空港もある。交通の便が良く、ファミリー層に人気です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">西区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">新興住宅地</span>
-            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">大学</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            新興住宅地で、新潟大学もある。学生や若い世代に人気のエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">北区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">農業地域</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地と農業地域が混在。静かな環境で、家賃も比較的安いエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：安い</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">江南区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">自然豊か</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地が中心で、自然環境が豊か。亀田駅を中心としたベッドタウンです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">南区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2">農業地域</span>
-            <span class="inline-block bg-lime-100 text-lime-800 px-3 py-1 rounded-full text-sm font-medium">田園地帯</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            農業地域が中心の田園地帯。静かな環境で、農業に従事する外国人に人気です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：安い</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rice Culture Section -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          新潟の<span class="text-emerald-600">米文化</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          コシヒカリ発祥の地で体験する豊かな米文化
-        </p>
-      </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🌾</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">コシヒカリ</h3>
-          <p class="text-gray-600 text-sm">
-            日本一のお米コシヒカリの発祥地
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.area}</div>
+          <div class="text-gray-600">面積</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🍶</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">日本酒</h3>
-          <p class="text-gray-600 text-sm">
-            良質な米と水を活かした日本酒の名産地
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.households}</div>
+          <div class="text-gray-600">世帯数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🚜</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">農業技術</h3>
-          <p class="text-gray-600 text-sm">
-            先進的な農業技術と大規模米作経営
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">8区</div>
+          <div class="text-gray-600">行政区数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🎎</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">食文化</h3>
-          <p class="text-gray-600 text-sm">
-            米を中心とした豊かな郷土料理文化
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">55駅</div>
+          <div class="text-gray-600">鉄道駅数</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Articles Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
+  <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          新潟市の<span class="text-emerald-600">生活情報</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          新潟市での生活に必要な詳細情報をまとめました
-        </p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
+        <p class="text-xl text-gray-600">新潟市で安心して暮らすための重要な情報をまとめました</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="/ja/blog/niigata/niigata/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🛡️</span>
-            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" data-city-modal-trigger={article.id}>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-3">{article.icon}</span>
+                <h3 class="text-lg font-semibold text-gray-900">{article.title}</h3>
+              </div>
+              <p class="text-gray-600 mb-4">{article.description}</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">{new Date(article.date).toLocaleDateString('ja-JP')}</span>
+                <button class="text-blue-600 hover:text-blue-800 font-medium">詳しく見る →</button>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-600 mb-4">
-            新潟県中越地震の教訓を活かした防災対策、豪雪対策について詳しく解説。
-          </p>
-          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/niigata/niigata/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏥</span>
-            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
-          </p>
-          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/niigata/niigata/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">💰</span>
-            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            新潟市の家賃相場、暖房費、日用品の価格など、生活コストを詳しく分析。
-          </p>
-          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/niigata/niigata/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏗️</span>
-            <h3 class="text-xl font-bold text-gray-900">農業・食品産業</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            米作り、日本酒製造、食品加工業など新潟の農業・食品産業について解説。
-          </p>
-          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/niigata/niigata/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📜</span>
-            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
-          </p>
-          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/niigata/niigata/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📷</span>
-            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            実際に新潟市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
-          </p>
-          <div class="text-emerald-600 font-semibold">詳細を見る →</div>
-        </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Pros and Cons Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Key Spots -->
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          新潟市に住む<span class="text-emerald-600">メリット・デメリット</span>
-        </h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">主要スポット</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {keySpots.map((spot) => (
+          <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-900 mb-2">{spot.name}</h3>
+            <div class="text-sm text-blue-600 mb-2">{spot.type}</div>
+            <p class="text-gray-600 text-sm">{spot.description}</p>
+          </div>
+        ))}
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-green-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👍</span>
-            メリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>生活コストが安い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>美味しい米と日本酒</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>東京へのアクセスが良い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>豊かな自然環境</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>農業関連の雇用機会</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-red-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👎</span>
-            デメリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>雪が多く、冬の生活が大変</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>日照時間が短い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>暖房費が高い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>就職機会が限定的</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>エンターテインメントが少ない</span>
-            </li>
-          </ul>
+  <!-- Foreign Resident Info -->
+  <section class="py-16 bg-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">外国人居住者向け情報</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">多言語サービス</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li>• 新潟市役所：英語・中国語・韓国語・ロシア語対応</li>
+              <li>• 新潟市国際交流協会：多言語相談窓口</li>
+              <li>• 外国人向け生活相談：生活相談全般、国際交流支援</li>
+              <li>• 日本語教室：市内各所で開催、農業従事者向けクラスあり</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">コミュニティ情報</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>主な国籍：</strong> {areaInfo.mainNationalities}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>外国人人口：</strong> {areaInfo.foreignPopulation}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>特徴：</strong> 米文化・国際貿易・豪雪対策・港湾都市
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-emerald-600 to-teal-800 text-white">
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        新潟市での住居選びを<span class="text-yellow-300">プロがサポート</span>
-      </h2>
-      
-      <p class="text-xl mb-8 opacity-95">
-        新潟市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
+      <p class="text-xl mb-8 opacity-90">
+        新潟市での生活をより具体的に知りたい方は、<br>
+        専門スタッフによる詳細な現地調査をご依頼いただけます
       </p>
-      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href="/ja/services/" 
-          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-emerald-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
-        >
-          <span class="mr-3">🔍</span>
-          調査サービスを見る
+        <a href="/ja/services/" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+          📋 調査サービスを見る
         </a>
-        <a 
-          href="/ja/contact/" 
-          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
-        >
-          <span class="mr-3">💬</span>
-          無料相談する
+        <a href="/ja/contact/" class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          💬 無料相談する
         </a>
       </div>
     </div>
   </section>
+
+  <!-- City Modal -->
+  <CityModal {cityData} prefecture="新潟県" {articles} />
 </BaseLayout>

@@ -1,30 +1,114 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import CityModal from '../../../../../components/CityModal.astro';
 
-const title = "静岡市での暮らし - 外国人向け生活情報";
-const description = "静岡市での外国人向け生活情報。葵区、駿河区、清水区から富士山まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const title = "静岡県静岡市での暮らし - 外国人向け生活ガイド";
+const description = "静岡県の県庁所在地、静岡市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
 const lang = "ja";
+
+// 市区町村データ
+const cityData = {
+  slug: "shizuoka",
+  title: "静岡市",
+  features: "県庁所在地・お茶の産地・富士山近接・温暖な気候",
+  population: "約69万人",
+  foreignPopulation: "約18,000人（2.6%）",
+  englishHospital: "あり",
+  airportAccess: "○（富士山静岡空港まで1時間）",
+  rentLevel: "やや低め",
+  recommend: "お茶関係者・観光業従事者・自然愛好者・退職世代",
+  description: "静岡県の県庁所在地として発展。お茶の産地として有名で、富士山に近く温暖な気候に恵まれた、自然豊かで住みやすい都市です。",
+  image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  tags: ["県庁所在地", "お茶の産地", "富士山"],
+  prefectureSlug: "shizuoka"
+};
+
+// 記事データ
+const articles = [
+  {
+    id: "article-01",
+    icon: "🛡️",
+    title: "防災：地震・災害対策",
+    description: "静岡市の災害リスクと外国人向け防災情報を詳しく解説",
+    date: "2024-01-15"
+  },
+  {
+    id: "article-02", 
+    icon: "🏥",
+    title: "生活インフラ：スーパー・病院・学校",
+    description: "日常生活に必要な施設の場所と利用方法を紹介",
+    date: "2024-01-18"
+  },
+  {
+    id: "article-03",
+    icon: "💰",
+    title: "生活コスト：家賃・光熱費・交通費など",
+    description: "静岡市での実際の生活費用を具体的に算出",
+    date: "2024-01-22"
+  },
+  {
+    id: "article-04",
+    icon: "🏗️",
+    title: "再開発・公共整備：今後の暮らしやすさ",
+    description: "静岡市の再開発計画と将来の街の変化",
+    date: "2024-01-25"
+  },
+  {
+    id: "article-05",
+    icon: "📜",
+    title: "法制度：外国人の購入制限・手続き",
+    description: "不動産購入や賃貸契約時の注意点と必要書類",
+    date: "2024-01-28"
+  },
+  {
+    id: "article-06",
+    icon: "📷",
+    title: "現地調査レポート：映像と写真で見る街",
+    description: "実際に歩いて撮影した静岡市の街並みと雰囲気",
+    date: "2024-02-01"
+  }
+];
+
+// エリア情報
+const areaInfo = {
+  population: "約69万人",
+  foreignPopulation: "約18,000人（2.6%）",
+  mainNationalities: "ブラジル、フィリピン、中国、ペルー",
+  averageAge: "49.1歳",
+  households: "約31万世帯",
+  area: "1,411.83km²"
+};
+
+// 主要スポット
+const keySpots = [
+  { name: "静岡駅", type: "交通", description: "JR東海道新幹線・東海道本線の主要駅" },
+  { name: "久能山東照宮", type: "観光", description: "徳川家康が眠る霊廟" },
+  { name: "静岡県立総合病院", type: "医療", description: "県内最大級の総合病院" },
+  { name: "静岡大学", type: "教育", description: "国立大学、留学生受け入れ" },
+  { name: "日本平", type: "観光", description: "富士山と駿河湾を一望できる観光地" },
+  { name: "静岡浅間神社", type: "文化", description: "駿河国総社、歴史ある神社" }
+];
 ---
 
 <BaseLayout {title} {description} {lang}>
   <!-- Breadcrumb -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <ol class="flex items-center space-x-2 text-sm text-gray-600">
-      <li><a href="/ja/" class="hover:text-orange-600">ホーム</a></li>
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/" class="hover:text-orange-600">地域別生活情報</a></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/shizuoka/" class="hover:text-orange-600">静岡県</a></li>
+      <li><a href="/ja/blog/shizuoka/" class="hover:text-blue-600">静岡県</a></li>
       <li><span class="mx-2">/</span></li>
       <li class="text-gray-900 font-medium">静岡市</li>
     </ol>
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-orange-700 to-red-900 overflow-hidden">
+  <section class="relative bg-gradient-to-br from-green-800 to-teal-900 overflow-hidden">
     <div class="absolute inset-0 opacity-20">
       <img 
-        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        src="https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
         alt="静岡市の街並み"
         class="w-full h-full object-cover"
       />
@@ -34,7 +118,7 @@ const lang = "ja";
       <div class="max-w-3xl">
         <div class="mb-6">
           <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
-            🗻 静岡市
+            📍 静岡県静岡市
           </span>
         </div>
         
@@ -43,395 +127,148 @@ const lang = "ja";
         </h1>
         
         <p class="text-xl md:text-2xl mb-8 opacity-95">
-          富士山を望む静岡県の県庁所在地、お茶と港の街
+          お茶の都、富士山を望む温暖な県庁所在地
         </p>
         
         <div class="grid md:grid-cols-3 gap-6 text-sm">
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">人口</p>
-            <p class="text-lg">約69万人</p>
+            <p class="text-lg">{areaInfo.population}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">外国人人口</p>
-            <p class="text-lg">約17,000人（2.5%）</p>
+            <p class="text-lg">{areaInfo.foreignPopulation}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <p class="font-semibold mb-1">面積</p>
-            <p class="text-lg">1,411.90 km²</p>
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">{areaInfo.averageAge}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Overview Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          静岡市の<span class="text-orange-600">概要</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          富士山を望む静岡県の県庁所在地、お茶と港湾都市
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">静岡市の特徴</h3>
-          <div class="space-y-4">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-orange-600 font-bold">1</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">富士山の眺望</h4>
-                <p class="text-gray-600">世界遺産の富士山を間近に望むことができる立地で、美しい自然環境に恵まれています。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-orange-600 font-bold">2</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">お茶の産地</h4>
-                <p class="text-gray-600">日本有数の茶産地で、お茶文化が根付いています。静岡茶は全国的に有名です。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-orange-600 font-bold">3</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">清水港</h4>
-                <p class="text-gray-600">重要な港湾都市として発展し、国際貿易の拠点として機能しています。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gray-50 rounded-xl p-8">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
-          <div class="space-y-4">
-            <div class="flex justify-between">
-              <span class="text-gray-600">主要駅</span>
-              <span class="font-semibold">静岡駅、清水駅、東静岡駅</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">平均家賃（1K）</span>
-              <span class="font-semibold">約4.8万円</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">東京駅までの時間</span>
-              <span class="font-semibold">約1時間</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">年間平均気温</span>
-              <span class="font-semibold">16.5℃</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Living Areas Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          主要な<span class="text-orange-600">居住エリア</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          静岡市内の外国人に人気のエリアをご紹介
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">葵区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium mr-2">中心街</span>
-            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">県庁所在</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            静岡市の中心部で、県庁や市役所がある行政の中心地。商業施設も充実しています。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">駿河区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">大学</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地が中心で、静岡大学もあるエリア。学生や若い世代に人気です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">清水区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">港湾</span>
-            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">工業地域</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            清水港を中心とした港湾都市。工業地域もあり、外国人労働者が多く住んでいます。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：安い</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tea Culture Section -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          静岡の<span class="text-orange-600">お茶文化</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          日本有数の茶産地で体験する豊かな茶文化
-        </p>
-      </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🍵</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">静岡茶</h3>
-          <p class="text-gray-600 text-sm">
-            全国シェア約40%を誇る日本最大の茶産地
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.area}</div>
+          <div class="text-gray-600">面積</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🌿</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">茶畑</h3>
-          <p class="text-gray-600 text-sm">
-            美しい茶畑が市内各所に広がる
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.households}</div>
+          <div class="text-gray-600">世帯数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🏭</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">茶産業</h3>
-          <p class="text-gray-600 text-sm">
-            茶の製造・加工業が盛んで雇用も創出
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">3区</div>
+          <div class="text-gray-600">行政区数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🎌</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">茶文化</h3>
-          <p class="text-gray-600 text-sm">
-            茶道体験や茶まつりなど文化体験が豊富
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">40駅</div>
+          <div class="text-gray-600">鉄道駅数</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Articles Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
+  <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          静岡市の<span class="text-orange-600">生活情報</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          静岡市での生活に必要な詳細情報をまとめました
-        </p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
+        <p class="text-xl text-gray-600">静岡市で安心して暮らすための重要な情報をまとめました</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="/ja/blog/shizuoka/shizuoka/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🛡️</span>
-            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" data-city-modal-trigger={article.id}>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-3">{article.icon}</span>
+                <h3 class="text-lg font-semibold text-gray-900">{article.title}</h3>
+              </div>
+              <p class="text-gray-600 mb-4">{article.description}</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">{new Date(article.date).toLocaleDateString('ja-JP')}</span>
+                <button class="text-blue-600 hover:text-blue-800 font-medium">詳しく見る →</button>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-600 mb-4">
-            東海地震への備え、津波対策、富士山噴火対策について詳しく解説します。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/shizuoka/shizuoka/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏥</span>
-            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/shizuoka/shizuoka/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">💰</span>
-            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            静岡市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/shizuoka/shizuoka/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏗️</span>
-            <h3 class="text-xl font-bold text-gray-900">富士山・自然環境</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            富士山の眺望、自然環境、アウトドア活動について詳しく解説。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/shizuoka/shizuoka/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📜</span>
-            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/shizuoka/shizuoka/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📷</span>
-            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            実際に静岡市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
-          </p>
-          <div class="text-orange-600 font-semibold">詳細を見る →</div>
-        </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Pros and Cons Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Key Spots -->
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          静岡市に住む<span class="text-orange-600">メリット・デメリット</span>
-        </h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">主要スポット</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {keySpots.map((spot) => (
+          <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-900 mb-2">{spot.name}</h3>
+            <div class="text-sm text-blue-600 mb-2">{spot.type}</div>
+            <p class="text-gray-600 text-sm">{spot.description}</p>
+          </div>
+        ))}
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-green-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👍</span>
-            メリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>富士山の美しい景色を毎日楽しめる</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>東京へのアクセスが良い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>温暖な気候で住みやすい</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>生活コストが安い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>お茶文化を体験できる</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-red-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👎</span>
-            デメリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>東海地震のリスクが高い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>富士山噴火のリスクがある</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>就職機会が限定的</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>エンターテインメントが少ない</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>車がないと不便</span>
-            </li>
-          </ul>
+  <!-- Foreign Resident Info -->
+  <section class="py-16 bg-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">外国人居住者向け情報</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">多言語サービス</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li>• 静岡市役所：英語・中国語・ポルトガル語・スペイン語対応</li>
+              <li>• 静岡市国際交流協会：多言語相談窓口</li>
+              <li>• 外国人向け生活相談：生活相談全般、就労支援</li>
+              <li>• 日本語教室：市内各所で開催、南米系向けクラスあり</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">コミュニティ情報</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>主な国籍：</strong> {areaInfo.mainNationalities}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>外国人人口：</strong> {areaInfo.foreignPopulation}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>特徴：</strong> 南米系コミュニティ・農業関係者・温暖な気候
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-orange-600 to-red-800 text-white">
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        静岡市での住居選びを<span class="text-yellow-300">プロがサポート</span>
-      </h2>
-      
-      <p class="text-xl mb-8 opacity-95">
-        静岡市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
+      <p class="text-xl mb-8 opacity-90">
+        静岡市での生活をより具体的に知りたい方は、<br>
+        専門スタッフによる詳細な現地調査をご依頼いただけます
       </p>
-      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href="/ja/services/" 
-          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-orange-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
-        >
-          <span class="mr-3">🔍</span>
-          調査サービスを見る
+        <a href="/ja/services/" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+          📋 調査サービスを見る
         </a>
-        <a 
-          href="/ja/contact/" 
-          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
-        >
-          <span class="mr-3">💬</span>
-          無料相談する
+        <a href="/ja/contact/" class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          💬 無料相談する
         </a>
       </div>
     </div>
   </section>
+
+  <!-- City Modal -->
+  <CityModal {cityData} prefecture="静岡県" {articles} />
 </BaseLayout>

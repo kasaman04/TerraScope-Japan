@@ -2,24 +2,24 @@
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
 import CityModal from '../../../../../components/CityModal.astro';
 
-const title = "愛知県豊田市での暮らし - 外国人向け生活ガイド";
-const description = "トヨタ自動車本社所在地、豊田市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
+const title = "愛知県岡崎市での暮らし - 外国人向け生活ガイド";
+const description = "徳川家康生誕の地として知られる岡崎市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
 const lang = "ja";
 
 // 市区町村データ
 const cityData = {
-  slug: "toyota",
-  title: "豊田市",
-  features: "自動車産業の中心・外国人就労者多数",
-  population: "約42万人",
-  foreignPopulation: "約19,000人（4.5%）",
+  slug: "okazaki",
+  title: "岡崎市",
+  features: "歴史都市・徳川家康・製造業",
+  population: "約38万人",
+  foreignPopulation: "約14,500人（3.8%）",
   englishHospital: "あり",
   airportAccess: "○（中部国際空港まで1時間）",
-  rentLevel: "中程度",
-  recommend: "自動車関連企業で働く外国人・製造業従事者",
-  description: "トヨタ自動車本社を擁する自動車産業の中心都市。多国籍な外国人コミュニティが形成されており、外国人向けサービスが充実しています。",
+  rentLevel: "やや低め",
+  recommend: "製造業関係者・歴史愛好者・ファミリー層",
+  description: "徳川家康生誕の地として知られる歴史都市。自動車関連産業が盛んで、多くの外国人労働者が住む国際色豊かな地域です。",
   image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
-  tags: ["自動車産業", "外国人多数", "製造業"],
+  tags: ["歴史都市", "製造業", "徳川家康"],
   prefectureSlug: "aichi"
 };
 
@@ -29,7 +29,7 @@ const articles = [
     id: "article-01",
     icon: "🛡️",
     title: "防災：地震・災害対策",
-    description: "豊田市の災害リスクと外国人向け防災情報を詳しく解説",
+    description: "岡崎市の災害リスクと外国人向け防災情報を詳しく解説",
     date: "2024-01-15"
   },
   {
@@ -43,14 +43,14 @@ const articles = [
     id: "article-03",
     icon: "💰",
     title: "生活コスト：家賃・光熱費・交通費など",
-    description: "豊田市での実際の生活費用を具体的に算出",
+    description: "岡崎市での実際の生活費用を具体的に算出",
     date: "2024-01-22"
   },
   {
     id: "article-04",
     icon: "🏗️",
     title: "再開発・公共整備：今後の暮らしやすさ",
-    description: "豊田市の再開発計画と将来の街の変化",
+    description: "岡崎市の再開発計画と将来の街の変化",
     date: "2024-01-25"
   },
   {
@@ -64,29 +64,29 @@ const articles = [
     id: "article-06",
     icon: "📷",
     title: "現地調査レポート：映像と写真で見る街",
-    description: "実際に歩いて撮影した豊田市の街並みと雰囲気",
+    description: "実際に歩いて撮影した岡崎市の街並みと雰囲気",
     date: "2024-02-01"
   }
 ];
 
 // エリア情報
 const areaInfo = {
-  population: "約42万人",
-  foreignPopulation: "約19,000人（4.5%）",
+  population: "約38万人",
+  foreignPopulation: "約14,500人（3.8%）",
   mainNationalities: "ブラジル、中国、フィリピン、ペルー",
-  averageAge: "42.8歳",
-  households: "約17万世帯",
-  area: "918.32km²"
+  averageAge: "45.1歳",
+  households: "約15万世帯",
+  area: "387.20km²"
 };
 
 // 主要スポット
 const keySpots = [
-  { name: "豊田市駅", type: "交通", description: "名鉄三河線の主要駅、市の中心部" },
-  { name: "トヨタ自動車本社", type: "企業", description: "世界最大の自動車メーカー本社" },
-  { name: "豊田厚生病院", type: "医療", description: "総合病院、外国語対応可" },
-  { name: "豊田工業大学", type: "教育", description: "私立工科大学、国際プログラムあり" },
-  { name: "T-FACE", type: "商業", description: "豊田市駅直結の大型商業施設" },
-  { name: "豊田スタジアム", type: "スポーツ", description: "名古屋グランパスのホームスタジアム" }
+  { name: "岡崎駅", type: "交通", description: "JR東海道本線の主要駅" },
+  { name: "岡崎城", type: "文化", description: "徳川家康生誕の城、復元天守" },
+  { name: "岡崎市民病院", type: "医療", description: "総合病院、多言語対応" },
+  { name: "愛知学泉大学", type: "教育", description: "私立大学、国際交流活動" },
+  { name: "イオンモール岡崎", type: "商業", description: "大型ショッピングモール" },
+  { name: "岡崎公園", type: "公園", description: "岡崎城を中心とした歴史公園" }
 ];
 ---
 
@@ -100,16 +100,16 @@ const keySpots = [
       <li><span class="mx-2">/</span></li>
       <li><a href="/ja/blog/aichi/" class="hover:text-blue-600">愛知県</a></li>
       <li><span class="mx-2">/</span></li>
-      <li class="text-gray-900 font-medium">豊田市</li>
+      <li class="text-gray-900 font-medium">岡崎市</li>
     </ol>
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-red-800 to-red-900 overflow-hidden">
+  <section class="relative bg-gradient-to-br from-yellow-800 to-orange-900 overflow-hidden">
     <div class="absolute inset-0 opacity-20">
       <img 
         src="https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-        alt="豊田市の街並み"
+        alt="岡崎市の街並み"
         class="w-full h-full object-cover"
       />
     </div>
@@ -118,16 +118,16 @@ const keySpots = [
       <div class="max-w-3xl">
         <div class="mb-6">
           <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
-            📍 愛知県豊田市
+            📍 愛知県岡崎市
           </span>
         </div>
         
         <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          豊田市での暮らし
+          岡崎市での暮らし
         </h1>
         
         <p class="text-xl md:text-2xl mb-8 opacity-95">
-          トヨタ自動車本社を擁する自動車産業の中心都市
+          徳川家康生誕の地として知られる歴史都市、製造業も盛ん
         </p>
         
         <div class="grid md:grid-cols-3 gap-6 text-sm">
@@ -161,11 +161,11 @@ const keySpots = [
           <div class="text-gray-600">世帯数</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl font-bold text-blue-600 mb-2">20駅</div>
+          <div class="text-3xl font-bold text-blue-600 mb-2">8駅</div>
           <div class="text-gray-600">鉄道駅数</div>
         </div>
         <div class="text-center">
-          <div class="text-3xl font-bold text-blue-600 mb-2">15病院</div>
+          <div class="text-3xl font-bold text-blue-600 mb-2">5病院</div>
           <div class="text-gray-600">主要病院</div>
         </div>
       </div>
@@ -177,7 +177,7 @@ const keySpots = [
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
-        <p class="text-xl text-gray-600">豊田市で安心して暮らすための重要な情報をまとめました</p>
+        <p class="text-xl text-gray-600">岡崎市で安心して暮らすための重要な情報をまとめました</p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -225,10 +225,10 @@ const keySpots = [
           <div>
             <h3 class="text-lg font-semibold text-gray-900 mb-4">多言語サービス</h3>
             <ul class="space-y-2 text-gray-600">
-              <li>• 豊田市役所：ポルトガル語・英語・中国語・スペイン語対応</li>
-              <li>• 豊田市多文化共生センター：11言語対応</li>
+              <li>• 岡崎市役所：ポルトガル語・英語・中国語対応</li>
+              <li>• 岡崎市国際交流協会：多言語相談窓口</li>
               <li>• 外国人向け生活相談：労働・生活相談全般</li>
-              <li>• 日本語教室：市内各所で開催、企業連携プログラムあり</li>
+              <li>• 日本語教室：市内各所で開催、ポルトガル語話者向けクラスあり</li>
             </ul>
           </div>
           <div>
@@ -241,7 +241,7 @@ const keySpots = [
                 <strong>外国人人口：</strong> {areaInfo.foreignPopulation}
               </div>
               <div class="bg-gray-50 p-3 rounded">
-                <strong>特徴：</strong> 外国人比率が全国平均の2倍、多文化共生先進地
+                <strong>特徴：</strong> 製造業労働者・ブラジル系コミュニティ充実
               </div>
             </div>
           </div>
@@ -255,7 +255,7 @@ const keySpots = [
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
       <p class="text-xl mb-8 opacity-90">
-        豊田市での生活をより具体的に知りたい方は、<br>
+        岡崎市での生活をより具体的に知りたい方は、<br>
         専門スタッフによる詳細な現地調査をご依頼いただけます
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">

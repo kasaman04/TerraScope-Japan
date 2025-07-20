@@ -1,20 +1,104 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import CityModal from '../../../../../components/CityModal.astro';
 
-const title = "熊本市での暮らし - 外国人向け生活情報";
-const description = "熊本市での外国人向け生活情報。中央区、東区、西区から南区まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const title = "熊本県熊本市での暮らし - 外国人向け生活ガイド";
+const description = "火の国の中心地、熊本市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
 const lang = "ja";
+
+// 市区町村データ
+const cityData = {
+  slug: "kumamoto",
+  title: "熊本市",
+  features: "火の国・熊本城・地下水都市・製造業",
+  population: "約74万人",
+  foreignPopulation: "約8,000人（1.1%）",
+  englishHospital: "あり",
+  airportAccess: "○（熊本空港まで45分）",
+  rentLevel: "安い",
+  recommend: "製造業従事者・九州勤務者・自然愛好者・コスト重視者",
+  description: "日本三大名城の熊本城があり、豊富な地下水で知られる。震災復興とともに発展し続ける九州の中核都市です。",
+  image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  tags: ["熊本城", "地下水", "製造業"],
+  prefectureSlug: "kumamoto"
+};
+
+// 記事データ
+const articles = [
+  {
+    id: "article-01",
+    icon: "🛡️",
+    title: "防災：地震・災害対策",
+    description: "熊本地震の教訓を活かした防災対策、避難場所について詳しく解説",
+    date: "2024-01-15"
+  },
+  {
+    id: "article-02", 
+    icon: "🏥",
+    title: "生活インフラ：病院・学校",
+    description: "外国語対応の病院、国際学校、公共施設などの生活インフラ情報",
+    date: "2024-01-18"
+  },
+  {
+    id: "article-03",
+    icon: "💰",
+    title: "生活コスト：家賃・光熱費",
+    description: "熊本市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析",
+    date: "2024-01-22"
+  },
+  {
+    id: "article-04",
+    icon: "🏗️",
+    title: "産業・就職環境",
+    description: "自動車産業、半導体産業、農業など熊本の産業構造と就職環境について解説",
+    date: "2024-01-25"
+  },
+  {
+    id: "article-05",
+    icon: "📜",
+    title: "法制度：外国人の権利",
+    description: "外国人の不動産購入、賃貸契約、各種手続きに関する法的情報",
+    date: "2024-01-28"
+  },
+  {
+    id: "article-06",
+    icon: "📷",
+    title: "現地調査レポート",
+    description: "実際に熊本市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介",
+    date: "2024-02-01"
+  }
+];
+
+// エリア情報
+const areaInfo = {
+  population: "約74万人",
+  foreignPopulation: "約8,000人（1.1%）",
+  mainNationalities: "中国、フィリピン、韓国、ベトナム",
+  averageAge: "47.2歳",
+  households: "約34万世帯",
+  area: "390.32km²"
+};
+
+// 主要スポット
+const keySpots = [
+  { name: "熊本駅", type: "交通", description: "JR九州新幹線・在来線の主要駅" },
+  { name: "熊本城", type: "観光", description: "日本三大名城の一つ、震災復興のシンボル" },
+  { name: "熊本大学病院", type: "医療", description: "特定機能病院、高度医療対応" },
+  { name: "熊本大学", type: "教育", description: "国立大学、留学生受け入れ" },
+  { name: "水前寺成趣園", type: "観光", description: "桃山式回遊庭園、湧水が美しい" },
+  { name: "阿蘇くまもと空港", type: "交通", description: "九州の空の玄関口" }
+];
 ---
 
 <BaseLayout {title} {description} {lang}>
   <!-- Breadcrumb -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <ol class="flex items-center space-x-2 text-sm text-gray-600">
-      <li><a href="/ja/" class="hover:text-red-600">ホーム</a></li>
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/" class="hover:text-red-600">地域別生活情報</a></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/kumamoto/" class="hover:text-red-600">熊本県</a></li>
+      <li><a href="/ja/blog/kumamoto/" class="hover:text-blue-600">熊本県</a></li>
       <li><span class="mx-2">/</span></li>
       <li class="text-gray-900 font-medium">熊本市</li>
     </ol>
@@ -34,7 +118,7 @@ const lang = "ja";
       <div class="max-w-3xl">
         <div class="mb-6">
           <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
-            🏯 熊本市
+            📍 熊本県熊本市
           </span>
         </div>
         
@@ -49,419 +133,142 @@ const lang = "ja";
         <div class="grid md:grid-cols-3 gap-6 text-sm">
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">人口</p>
-            <p class="text-lg">約74万人</p>
+            <p class="text-lg">{areaInfo.population}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">外国人人口</p>
-            <p class="text-lg">約8,000人（1.1%）</p>
+            <p class="text-lg">{areaInfo.foreignPopulation}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <p class="font-semibold mb-1">面積</p>
-            <p class="text-lg">390.32 km²</p>
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">{areaInfo.averageAge}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Overview Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          熊本市の<span class="text-red-600">概要</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          九州の中央に位置する政令指定都市、歴史と自然が調和する火の国の中心地
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">熊本市の特徴</h3>
-          <div class="space-y-4">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-red-600 font-bold">1</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">熊本城と歴史</h4>
-                <p class="text-gray-600">日本三大名城の一つ熊本城があり、震災復興のシンボルとして注目されています。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-red-600 font-bold">2</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">豊富な地下水</h4>
-                <p class="text-gray-600">日本一の地下水都市として知られ、美味しい水道水が全て地下水という珍しい都市です。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-red-600 font-bold">3</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">製造業の集積</h4>
-                <p class="text-gray-600">自動車産業や半導体産業が盛んで、九州の産業拠点として発展しています。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gray-50 rounded-xl p-8">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
-          <div class="space-y-4">
-            <div class="flex justify-between">
-              <span class="text-gray-600">主要駅</span>
-              <span class="font-semibold">熊本駅、上熊本駅、藤崎宮前駅</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">平均家賃（1K）</span>
-              <span class="font-semibold">約4.0万円</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">東京駅までの時間</span>
-              <span class="font-semibold">約6時間（新幹線）</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">年間平均気温</span>
-              <span class="font-semibold">16.8℃</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Living Areas Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          主要な<span class="text-red-600">居住エリア</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          熊本市内の外国人に人気のエリアをご紹介
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">中央区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium mr-2">中心街</span>
-            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">商業地区</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            熊本市の中心部で、熊本城や繁華街がある。商業施設や行政機関が集中するエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：高い</p>
-            <p>外国人向け：★★★★★</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">東区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">新興地域</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            新興住宅地が多く、熊本空港へのアクセスも良い。ファミリー層に人気のエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">西区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">学生街</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地が中心で、熊本大学もある学生街。比較的家賃が安く、若い世代に人気です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">南区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">郊外</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地が多く、自然環境が良好。静かな住環境を求める人に人気のエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">北区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">工業地域</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地と工業地域が混在。製造業で働く外国人労働者に人気のエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：安い</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ground Water Section -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          熊本の<span class="text-red-600">地下水都市</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          日本一の地下水都市として知られる熊本の水環境
-        </p>
-      </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">💧</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">100%地下水</h3>
-          <p class="text-gray-600 text-sm">
-            水道水が100%地下水という珍しい大都市
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.area}</div>
+          <div class="text-gray-600">面積</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🏔️</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">阿蘇の恵み</h3>
-          <p class="text-gray-600 text-sm">
-            阿蘇山の豊富な降水量が地下水を育む
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.households}</div>
+          <div class="text-gray-600">世帯数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🍺</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">名水産業</h3>
-          <p class="text-gray-600 text-sm">
-            美味しい水を活かした酒造業やビール産業
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">5区</div>
+          <div class="text-gray-600">行政区数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🌱</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">水環境保全</h3>
-          <p class="text-gray-600 text-sm">
-            地下水保全の先進都市としての取り組み
-          </p>
+          <div class="text-3xl font-bold text-blue-600 mb-2">45駅</div>
+          <div class="text-gray-600">鉄道駅数</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Articles Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
+  <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          熊本市の<span class="text-red-600">生活情報</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          熊本市での生活に必要な詳細情報をまとめました
-        </p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
+        <p class="text-xl text-gray-600">熊本市で安心して暮らすための重要な情報をまとめました</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="/ja/blog/kumamoto/kumamoto/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🛡️</span>
-            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" data-city-modal-trigger={article.id}>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-3">{article.icon}</span>
+                <h3 class="text-lg font-semibold text-gray-900">{article.title}</h3>
+              </div>
+              <p class="text-gray-600 mb-4">{article.description}</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">{new Date(article.date).toLocaleDateString('ja-JP')}</span>
+                <button class="text-blue-600 hover:text-blue-800 font-medium">詳しく見る →</button>
+              </div>
+            </div>
           </div>
-          <p class="text-gray-600 mb-4">
-            熊本地震の教訓を活かした防災対策、避難場所について詳しく解説します。
-          </p>
-          <div class="text-red-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/kumamoto/kumamoto/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏥</span>
-            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
-          </p>
-          <div class="text-red-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/kumamoto/kumamoto/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">💰</span>
-            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            熊本市の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
-          </p>
-          <div class="text-red-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/kumamoto/kumamoto/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏗️</span>
-            <h3 class="text-xl font-bold text-gray-900">産業・就職環境</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            自動車産業、半導体産業、農業など熊本の産業構造と就職環境について解説。
-          </p>
-          <div class="text-red-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/kumamoto/kumamoto/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📜</span>
-            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
-          </p>
-          <div class="text-red-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/kumamoto/kumamoto/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📷</span>
-            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            実際に熊本市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
-          </p>
-          <div class="text-red-600 font-semibold">詳細を見る →</div>
-        </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Pros and Cons Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Key Spots -->
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          熊本市に住む<span class="text-red-600">メリット・デメリット</span>
-        </h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">主要スポット</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {keySpots.map((spot) => (
+          <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-900 mb-2">{spot.name}</h3>
+            <div class="text-sm text-blue-600 mb-2">{spot.type}</div>
+            <p class="text-gray-600 text-sm">{spot.description}</p>
+          </div>
+        ))}
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-green-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👍</span>
-            メリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>生活コストが安い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>美味しい地下水と食材が豊富</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>歴史と文化が豊か</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>製造業の雇用機会が多い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>温暖な気候で住みやすい</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-red-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👎</span>
-            デメリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>地震のリスクが高い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>東京・関西との距離が遠い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>公共交通機関が限定的</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>夏の暑さが厳しい</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>エンターテインメントが少ない</span>
-            </li>
-          </ul>
+  <!-- Foreign Resident Info -->
+  <section class="py-16 bg-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">外国人居住者向け情報</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">多言語サービス</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li>• 熊本市役所：英語・中国語・韓国語対応</li>
+              <li>• 熊本市国際交流振興事業団：多言語相談窓口</li>
+              <li>• 外国人向け生活相談：生活相談全般、国際交流支援</li>
+              <li>• 日本語教室：市内各所で開催、アジア系クラスあり</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">コミュニティ情報</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>主な国籍：</strong> {areaInfo.mainNationalities}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>外国人人口：</strong> {areaInfo.foreignPopulation}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>特徴：</strong> 地下水都市・製造業・震災復興・九州拠点
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-red-600 to-amber-800 text-white">
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        熊本市での住居選びを<span class="text-yellow-300">プロがサポート</span>
-      </h2>
-      
-      <p class="text-xl mb-8 opacity-95">
-        熊本市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
+      <p class="text-xl mb-8 opacity-90">
+        熊本市での生活をより具体的に知りたい方は、<br>
+        専門スタッフによる詳細な現地調査をご依頼いただけます
       </p>
-      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href="/ja/services/" 
-          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-red-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
-        >
-          <span class="mr-3">🔍</span>
-          調査サービスを見る
+        <a href="/ja/services/" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+          📋 調査サービスを見る
         </a>
-        <a 
-          href="/ja/contact/" 
-          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
-        >
-          <span class="mr-3">💬</span>
-          無料相談する
+        <a href="/ja/contact/" class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          💬 無料相談する
         </a>
       </div>
     </div>
   </section>
+
+  <!-- City Modal -->
+  <CityModal {cityData} prefecture="熊本県" {articles} />
 </BaseLayout>
