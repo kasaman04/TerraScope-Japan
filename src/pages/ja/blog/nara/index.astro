@@ -245,7 +245,50 @@ const naraCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // nara市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      nara: {
+        title: "奈良市",
+        population: "約35万人",
+        foreignPopulation: "約5,400人（1.5%）",
+        features: "県庁所在地・東大寺",
+        description: "奈良県の県庁所在地。東大寺、春日大社など日本の歴史文化の中心地で、奈良公園の鹿でも有名な古都です。",
+        image: "https://images.unsplash.com/photo-1570977820461-9ffed7bc3a83?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "東大寺", "古都"],
+        englishHospital: "あり",
+        airport: "○（関西国際空港経由）",
+        rent: "普通",
+        recommend: "歴史文化に興味のある外国人",
+        pageUrl: "/ja/blog/nara/nara/"
+      },
+      kashihara: {
+        title: "橿原市",
+        population: "約12万人",
+        foreignPopulation: "約2,100人（1.7%）",
+        features: "神武天皇・橿原神宮",
+        description: "神武天皇ゆかりの地として有名な歴史ある都市。橿原神宮を中心とした静かな住環境が魅力です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["神武天皇", "橿原神宮", "歴史"],
+        englishHospital: "あり",
+        airport: "○（関西国際空港経由）",
+        rent: "安い",
+        recommend: "静かな環境を求める外国人",
+        pageUrl: "/ja/blog/nara/kashihara/"
+      },
+      ikoma: {
+        title: "生駒市",
+        population: "約12万人",
+        foreignPopulation: "約1,800人（1.5%）",
+        features: "関西近郊・住宅都市",
+        description: "大阪のベッドタウンとして発展した住宅都市。関西圏への通勤に便利で、住環境の良い人気エリアです。",
+        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["住宅都市", "大阪近郊", "通勤便利"],
+        englishHospital: "あり",
+        airport: "○（関西国際空港経由）",
+        rent: "普通",
+        recommend: "大阪通勤を考える外国人",
+        pageUrl: "/ja/blog/nara/ikoma/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

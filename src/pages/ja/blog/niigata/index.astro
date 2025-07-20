@@ -245,7 +245,50 @@ const niigataCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // niigata市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      niigata: {
+        title: "新潟市",
+        population: "約79万人",
+        foreignPopulation: "約12,500人（1.6%）",
+        features: "政令指定都市・港町",
+        description: "新潟県の県庁所在地で政令指定都市。日本海側最大の都市として発展し、国際港湾都市として栄えています。",
+        image: "https://images.unsplash.com/photo-1519817914152-22d216bb9170?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["政令指定都市", "港町", "県庁所在地"],
+        englishHospital: "あり",
+        airport: "◎（新潟空港直結）",
+        rent: "普通",
+        recommend: "日本海側の主要都市で働く外国人",
+        pageUrl: "/ja/blog/niigata/niigata/"
+      },
+      nagaoka: {
+        title: "長岡市",
+        population: "約26万人",
+        foreignPopulation: "約4,200人（1.6%）",
+        features: "花火大会・技術都市",
+        description: "長岡花火大会で全国的に有名。技術系企業が多く、外国人研究者や技術者にも人気の都市です。",
+        image: "https://images.unsplash.com/photo-1578228055036-1b30b0bb5043?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["花火大会", "技術都市", "企業集積"],
+        englishHospital: "あり",
+        airport: "△（新潟空港経由）",
+        rent: "安い",
+        recommend: "技術・研究関係で働く外国人",
+        pageUrl: "/ja/blog/niigata/nagaoka/"
+      },
+      joetsu: {
+        title: "上越市",
+        population: "約19万人",
+        foreignPopulation: "約2,800人（1.5%）",
+        features: "上杉謙信の城下町・スキー場",
+        description: "戦国武将上杉謙信で有名な歴史ある城下町。スキー場も多く、雪国文化を体験できる都市です。",
+        image: "https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["城下町", "スキー場", "歴史文化"],
+        englishHospital: "なし",
+        airport: "△（新潟空港経由）",
+        rent: "安い",
+        recommend: "歴史や雪国文化に興味のある外国人",
+        pageUrl: "/ja/blog/niigata/joetsu/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
