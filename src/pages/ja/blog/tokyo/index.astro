@@ -216,7 +216,7 @@ const tokyoCities = {
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(tokyoCities).slice(0, 6).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
-                 >
+                 onclick={`openCityModal('${key}')`}>
               <div class="relative h-48 overflow-hidden">
                 <img 
                   src={city.image}
