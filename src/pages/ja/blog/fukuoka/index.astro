@@ -94,6 +94,50 @@ const fukuokaCities = {
       { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukuoka/kasuga/article-06/" }
     ],
     pageUrl: "/ja/blog/fukuoka/kasuga/"
+  },
+  onojo: {
+    title: "大野城市",
+    population: "約10万人",
+    foreignPopulation: "約2,800人（2.8%）",
+    features: "学研都市・福岡近郊",
+    description: "九州大学や筑紫女学園大学などがある学研都市。福岡市に隣接しアクセス良好で、留学生や研究者に人気です。",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["学研都市", "九州大学", "留学生", "福岡近郊"],
+    englishHospital: "限定的",
+    airport: "○（福岡空港へ電車で20分）",
+    rent: "中程度",
+    recommend: "留学生・研究者・大学関係者",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukuoka/onojo/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukuoka/onojo/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukuoka/onojo/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukuoka/onojo/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukuoka/onojo/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukuoka/onojo/article-06/" }
+    ],
+    pageUrl: "/ja/blog/fukuoka/onojo/"
+  },
+  itoshima: {
+    title: "糸島市",
+    population: "約10万人",
+    foreignPopulation: "約1,200人（1.2%）",
+    features: "サーフィン・リゾート地",
+    description: "美しい海岸線とサーフィンスポットで有名なリゾート都市。福岡市から車で約30分のアクセスで、リモートワークやライフスタイル重視の外国人に人気です。",
+    image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["サーフィン", "リゾート", "海岸都市", "ライフスタイル"],
+    englishHospital: "限定的",
+    airport: "○（福岡空港へ車で30分）",
+    rent: "中程度",
+    recommend: "サーフィン・リモートワーク好きの外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukuoka/itoshima/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukuoka/itoshima/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukuoka/itoshima/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukuoka/itoshima/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukuoka/itoshima/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukuoka/itoshima/article-06/" }
+    ],
+    pageUrl: "/ja/blog/fukuoka/itoshima/"
   }
 };
 ---
@@ -169,7 +213,7 @@ const fukuokaCities = {
       <!-- Cities Cards -->
       <div>
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(fukuokaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
                  onclick={`openCityModal('${key}')`}>
@@ -322,6 +366,34 @@ const fukuokaCities = {
         rent: "中程度",
         recommend: "福岡勤務の外国人ファミリー",
         pageUrl: "/ja/blog/fukuoka/kasuga/"
+      },
+      onojo: {
+        title: "大野城市",
+        population: "約10万人",
+        foreignPopulation: "約2,800人（2.8%）",
+        features: "学研都市・福岡近郊",
+        description: "九州大学や筑紫女学園大学などがある学研都市。福岡市に隣接しアクセス良好で、留学生や研究者に人気です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["学研都市", "九州大学", "留学生", "福岡近郊"],
+        englishHospital: "限定的",
+        airport: "○（福岡空港へ電車で20分）",
+        rent: "中程度",
+        recommend: "留学生・研究者・大学関係者",
+        pageUrl: "/ja/blog/fukuoka/onojo/"
+      },
+      itoshima: {
+        title: "糸島市",
+        population: "約10万人",
+        foreignPopulation: "約1,200人（1.2%）",
+        features: "サーフィン・リゾート地",
+        description: "美しい海岸線とサーフィンスポットで有名なリゾート都市。福岡市から車で約30分のアクセスで、リモートワークやライフスタイル重視の外国人に人気です。",
+        image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["サーフィン", "リゾート", "海岸都市", "ライフスタイル"],
+        englishHospital: "限定的",
+        airport: "○（福岡空港へ車で30分）",
+        rent: "中程度",
+        recommend: "サーフィン・リモートワーク好きの外国人",
+        pageUrl: "/ja/blog/fukuoka/itoshima/"
       }
     };
 
