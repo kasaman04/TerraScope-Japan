@@ -207,8 +207,84 @@ const yamagataCities = {
           ))}
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Yamagata Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          山形県で暮らす<span class="text-indigo-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって山形県が魅力的な理由
+        </p>
+      </div>
 
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍇</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな農産物</h3>
+          <p class="text-gray-600">
+            さくらんぼやぶどうなど全国有数の農産物。美味しい食材に恵まれた地域です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">♨️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">温泉天国</h3>
+          <p class="text-gray-600">
+            蔵王温泉をはじめ多くの温泉地。日本の温泉文化を身近に体験できます。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">❄️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">四季の美しさ</h3>
+          <p class="text-gray-600">
+            美しい雪景色から新緑まで、日本の四季を存分に楽しめる自然環境です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-indigo-600 to-purple-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        山形県での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-indigo-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -267,7 +343,64 @@ const yamagataCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // yamagata市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      yamagata: {
+        title: "山形市",
+        population: "約25万人",
+        foreignPopulation: "約2,000人（0.8%）",
+        features: "県庁所在地・蔵王温泉",
+        description: "山形県の中心都市。蔵王温泉で有名、四季を通じて美しい自然を楽しめる県庁所在地。",
+        image: "https://images.unsplash.com/photo-1602847844706-2b0b4f04b88e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "蔵王温泉", "四季"],
+        englishHospital: "あり",
+        airport: "◎（山形空港直結）",
+        rent: "安い",
+        recommend: "自然豊かな県庁所在地での生活を求める外国人",
+        pageUrl: "/ja/blog/yamagata/yamagata/"
+      },
+      sakata: {
+        title: "酒田市",
+        population: "約10万人",
+        foreignPopulation: "約800人（0.8%）",
+        features: "港町・庄内平野",
+        description: "日本海に面した港町。庄内平野の豊かな農業地帯の中心都市。",
+        image: "https://images.unsplash.com/photo-1574821857680-d7e6d53c6c50?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["港町", "庄内平野", "農業"],
+        englishHospital: "限定的",
+        airport: "○（庄内空港経由）",
+        rent: "非常に安い",
+        recommend: "農業や港湾関係で働く外国人",
+        pageUrl: "/ja/blog/yamagata/sakata/"
+      },
+      tsuruoka: {
+        title: "鶴岡市",
+        population: "約12万人",
+        foreignPopulation: "約900人（0.8%）",
+        features: "城下町・食文化",
+        description: "庄内藩の城下町。ユネスコ創造都市として食文化が豊か。",
+        image: "https://images.unsplash.com/photo-1582640298872-a5e9a5b2b1f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["城下町", "食文化", "ユネスコ"],
+        englishHospital: "限定的",
+        airport: "○（庄内空港経由）",
+        rent: "非常に安い",
+        recommend: "食文化と歴史に興味のある外国人",
+        pageUrl: "/ja/blog/yamagata/tsuruoka/"
+      },
+      yonezawa: {
+        title: "米沢市",
+        population: "約8万人",
+        foreignPopulation: "約600人（0.8%）",
+        features: "上杉氏・織物",
+        description: "上杉氏ゆかりの城下町。伝統的な織物産業で知られ、歴史と文化が息づく街。",
+        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["上杉氏", "織物", "城下町"],
+        englishHospital: "限定的",
+        airport: "△（山形空港経由）",
+        rent: "非常に安い",
+        recommend: "歴史と伝統文化に興味のある外国人",
+        pageUrl: "/ja/blog/yamagata/yonezawa/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

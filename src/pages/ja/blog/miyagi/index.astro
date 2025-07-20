@@ -251,8 +251,84 @@ const miyagiCities = {
           ))}
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Miyagi Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          宮城県で暮らす<span class="text-purple-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって宮城県が魅力的な理由
+        </p>
+      </div>
 
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🌲</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">杜の都</h3>
+          <p class="text-gray-600">
+            仙台を中心とした緑豊かな環境。自然と都市機能が調和した住みやすい地域です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🎓</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">学都</h3>
+          <p class="text-gray-600">
+            多くの大学があり、学術・研究環境が充実。国際的な教育交流も盛んです。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🐟</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">海の幸</h3>
+          <p class="text-gray-600">
+            三陸海岸の豊富な海産物。新鮮な魚介類と豊かな食文化を楽しめます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-purple-600 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        宮城県での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-purple-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -311,7 +387,92 @@ const miyagiCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // miyagi市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      sendai: {
+        title: "仙台市",
+        population: "約106.6万人",
+        foreignPopulation: "約15,781人（1.5%）",
+        features: "東北最大都市・学都・杜の都",
+        description: "東北地方の中心都市。杜の都として知られる緑豊かな都市で、大学が多く学術都市としても発展している。牛タンや楽天イーグルスでも有名。",
+        image: "https://images.unsplash.com/photo-1589049197328-05da2a2e1620?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["東北最大都市", "学都", "杜の都", "牛タン", "楽天イーグルス"],
+        englishHospital: "あり",
+        airport: "◎（仙台空港直結）",
+        rent: "普通",
+        recommend: "東北地方で都市生活を求める外国人",
+        pageUrl: "/ja/blog/miyagi/sendai/"
+      },
+      ishinomaki: {
+        title: "石巻市",
+        population: "約13.5万人",
+        foreignPopulation: "約1,200人（0.9%）",
+        features: "漁業・水産業の中心",
+        description: "三陸海岸の水産業基地。日本有数の漁港都市として発展している。震災復興のシンボル的な街。",
+        image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["漁業", "水産業", "三陸海岸", "復興"],
+        englishHospital: "限定的",
+        airport: "○（仙台空港経由）",
+        rent: "安い",
+        recommend: "水産業に従事する外国人",
+        pageUrl: "/ja/blog/miyagi/ishinomaki/"
+      },
+      osaki: {
+        title: "大崎市",
+        population: "約12.4万人",
+        foreignPopulation: "約800人（0.6%）",
+        features: "鳴子温泉・ササニシキ・古川",
+        description: "鳴子温泉郷で有名な宮城県内陸部の中核都市。ササニシキの産地としても知られ、温泉と農業が盛んな地域。",
+        image: "https://images.unsplash.com/photo-1595437193398-f24279553d1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["鳴子温泉", "ササニシキ", "農業", "温泉"],
+        englishHospital: "限定的",
+        airport: "○（仙台空港経由）",
+        rent: "安い",
+        recommend: "温泉や農業に興味がある外国人",
+        pageUrl: "/ja/blog/miyagi/osaki/"
+      },
+      tome: {
+        title: "登米市",
+        population: "約7.6万人",
+        foreignPopulation: "約400人（0.5%）",
+        features: "明治村・ひとめぼれ・伊達政宗",
+        description: "教育の街として栄えた歴史ある街。明治時代の建物が残る「みやぎの明治村」として親しまれ、伊達政宗ゆかりの地。",
+        image: "https://images.unsplash.com/photo-1578316143404-99e8ac2393b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["明治村", "ひとめぼれ", "教育の街", "伊達政宗"],
+        englishHospital: "なし",
+        airport: "○（仙台空港経由）",
+        rent: "安い",
+        recommend: "歴史と文化に興味がある外国人",
+        pageUrl: "/ja/blog/miyagi/tome/"
+      },
+      shiogama: {
+        title: "塩釜市",
+        population: "約5.1万人",
+        foreignPopulation: "約400人（0.8%）",
+        features: "塩釜神社・マグロ・松島",
+        description: "塩釜神社の門前町として栄えた港町。新鮮なマグロの水揚げで有名で、日本三景松島への玄関口。",
+        image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["塩釜神社", "マグロ", "松島", "港町"],
+        englishHospital: "なし",
+        airport: "○（仙台空港経由）",
+        rent: "安い",
+        recommend: "歴史と海の幸に興味がある外国人",
+        pageUrl: "/ja/blog/miyagi/shiogama/"
+      },
+      kesennuma: {
+        title: "気仙沼市",
+        population: "約5.8万人",
+        foreignPopulation: "約300人（0.5%）",
+        features: "遠洋漁業・マグロ・フカヒレ",
+        description: "遠洋漁業の基地として発展した港町。マグロとフカヒレの水揚げで全国的に有名。震災からの復興を遂げた街。",
+        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["遠洋漁業", "マグロ", "フカヒレ", "復興"],
+        englishHospital: "なし",
+        airport: "△（仙台空港経由）",
+        rent: "非常に安い",
+        recommend: "漁業関係で働く外国人",
+        pageUrl: "/ja/blog/miyagi/kesennuma/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

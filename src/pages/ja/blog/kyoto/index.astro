@@ -140,6 +140,84 @@ const kyotoCities = {
           ))}
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Kyoto Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          京都府で暮らす<span class="text-amber-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって京都府が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏛️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">文化遺産</h3>
+          <p class="text-gray-600">
+            数多くの世界遺産と伝統文化。日本の歴史と文化を身近に感じられる環境です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🎓</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">学術都市</h3>
+          <p class="text-gray-600">
+            京都大学をはじめ多くの大学があり、国際的な研究交流が活発です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🌸</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">四季の美しさ</h3>
+          <p class="text-gray-600">
+            桜、紅葉など四季折々の美しい景色を楽しめ、季節感豊かな生活ができます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-amber-600 to-orange-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        京都府での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-amber-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
 
       <!-- Modal -->
       <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -275,9 +353,6 @@ const kyotoCities = {
 
   <script is:inline>
     // 京都府市区町村データ
-    // kyoto市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
-
     const cityData = {
       kyoto: {
         title: "京都市",

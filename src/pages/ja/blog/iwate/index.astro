@@ -251,8 +251,84 @@ const iwateCities = {
           ))}
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Iwate Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          岩手県で暮らす<span class="text-green-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって岩手県が魅力的な理由
+        </p>
+      </div>
 
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏛️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">世界遺産</h3>
+          <p class="text-gray-600">
+            平泉の文化遺産など豊かな歴史文化。日本の伝統を身近に感じられる環境です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍜</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな食文化</h3>
+          <p class="text-gray-600">
+            わんこそば、盛岡冷麺、南部鉄器など、独特の文化と美食を楽しめます。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏔️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな自然</h3>
+          <p class="text-gray-600">
+            岩手山をはじめとする雄大な自然環境。四季折々の美しい景観が魅力です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-green-600 to-emerald-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        岩手県での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-green-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -311,7 +387,92 @@ const iwateCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // iwate市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      morioka: {
+        title: "盛岡市",
+        population: "約28.3万人",
+        foreignPopulation: "約2,100人（0.7%）",
+        features: "県庁所在地・盛岡城・三大麺",
+        description: "岩手県の政治・経済・文化の中心都市。南部藩の城下町として発展し、盛岡城跡公園や石川啄木ゆかりの地として知られる。わんこそば、盛岡冷麺、じゃじゃ麺の三大麺が有名。",
+        image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "盛岡城", "三大麺", "石川啄木"],
+        englishHospital: "あり",
+        airport: "◎（いわて花巻空港経由）",
+        rent: "中程度",
+        recommend: "都市機能と歴史文化を求める外国人",
+        pageUrl: "/ja/blog/iwate/morioka/"
+      },
+      ichinoseki: {
+        title: "一関市",
+        population: "約10.6万人",
+        foreignPopulation: "約900人（0.8%）",
+        features: "平泉世界遺産・中尊寺",
+        description: "平泉の世界遺産「仏国土（浄土）を表す建築・庭園及び考古学的遺跡群」の玄関口。中尊寺金色堂をはじめとする奥州藤原氏の文化遺産と豊かな自然環境が魅力。",
+        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["世界遺産", "平泉", "中尊寺", "奥州藤原氏"],
+        englishHospital: "限定的",
+        airport: "○（いわて花巻空港経由）",
+        rent: "非常に安い",
+        recommend: "歴史文化と自然を愛する外国人",
+        pageUrl: "/ja/blog/iwate/ichinoseki/"
+      },
+      oshu: {
+        title: "奥州市",
+        population: "約10.8万人",
+        foreignPopulation: "約1,100人（1.0%）",
+        features: "南部鉄器・えさし藤原の郷",
+        description: "伝統工芸の南部鉄器発祥の地として知られ、えさし藤原の郷では平安時代の文化を体験できる。農業と伝統工芸が息づく歴史ある街。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["南部鉄器", "えさし藤原の郷", "伝統工芸", "農業"],
+        englishHospital: "限定的",
+        airport: "○（いわて花巻空港経由）",
+        rent: "非常に安い",
+        recommend: "伝統工芸と歴史に興味がある外国人",
+        pageUrl: "/ja/blog/iwate/oshu/"
+      },
+      hanamaki: {
+        title: "花巻市",
+        population: "約8.9万人",
+        foreignPopulation: "約800人（0.9%）",
+        features: "宮沢賢治記念館・イーハトーヴ",
+        description: "詩人・童話作家宮沢賢治の生誕地。賢治が理想郷として描いた『イーハトーヴ』の世界観を体感できる。温泉地としても有名で、いわて花巻空港の立地により交通アクセスが良好。",
+        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["宮沢賢治", "イーハトーヴ", "温泉", "空港直結"],
+        englishHospital: "限定的",
+        airport: "◎（いわて花巻空港直結）",
+        rent: "非常に安い",
+        recommend: "文学・自然・温泉を愛する外国人",
+        pageUrl: "/ja/blog/iwate/hanamaki/"
+      },
+      kitakami: {
+        title: "北上市",
+        population: "約9.2万人",
+        foreignPopulation: "約1,200人（1.3%）",
+        features: "工業都市・展勝地",
+        description: "岩手県南部の工業都市。工業団地が集中し、製造業が盛ん。春の北上展勝地の桜まつりで有名で、約4万本の桜が市内を彩る。",
+        image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "展勝地", "桜まつり", "製造業"],
+        englishHospital: "あり",
+        airport: "○（いわて花巻空港経由）",
+        rent: "安い",
+        recommend: "工業系の仕事を求める外国人",
+        pageUrl: "/ja/blog/iwate/kitakami/"
+      },
+      miyako: {
+        title: "宮古市",
+        population: "約5.1万人",
+        foreignPopulation: "約350人（0.7%）",
+        features: "陸中海岸・浜者の町",
+        description: "三陸復興国立公園の中心部に位置し、美しいリアス式海岸で知られる浜者の町。浄土ヶ浜は本州最東端の絶景スポット。水産業が盛んで、新鮮な海の幸を味わえる。",
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["陸中海岸", "浄土ヶ浜", "浜者の町", "水産業"],
+        englishHospital: "限定的",
+        airport: "△（いわて花巻空港から遠い）",
+        rent: "非常に安い",
+        recommend: "海と自然を愛する外国人",
+        pageUrl: "/ja/blog/iwate/miyako/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

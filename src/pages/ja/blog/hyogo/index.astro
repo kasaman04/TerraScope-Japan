@@ -288,7 +288,36 @@ const hyogoCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // hyogo市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      kobe: {
+        title: "神戸市",
+        population: "約153万人",
+        foreignPopulation: "約4.6万人（3.0%）",
+        features: "国際港湾都市",
+        description: "美しい港町として知られる国際都市。外国文化が根付き、多様な国際コミュニティが形成されています。",
+        image: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["国際港湾都市", "外国文化", "港町", "多国籍"],
+        englishHospital: "あり",
+        airport: "◎（神戸空港・関西空港）",
+        rent: "中程度",
+        recommend: "国際的な環境を求める外国人",
+        pageUrl: "/ja/blog/hyogo/kobe/"
+      },
+      himeji: {
+        title: "姫路市",
+        population: "約53万人",
+        foreignPopulation: "約8,900人（1.7%）",
+        features: "世界遺産・姫路城",
+        description: "世界遺産姫路城で有名な歴史都市。工業も発達し、住環境と文化のバランスが良い地域です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["世界遺産", "姫路城", "歴史都市", "工業"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "安い",
+        recommend: "歴史と文化に興味がある外国人",
+        pageUrl: "/ja/blog/hyogo/himeji/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
