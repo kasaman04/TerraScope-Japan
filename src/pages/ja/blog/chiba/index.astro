@@ -232,7 +232,51 @@ const chibaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // chiba市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    // 千葉県市区町村データ
+    const cityData = {
+      chiba: {
+        title: "千葉市",
+        population: "約98万人",
+        foreignPopulation: "約2.8万人（2.9%）",
+        features: "県庁所在地・政令指定都市",
+        description: "千葉県の県庁所在地。東京へのアクセスが良く、国際的な住環境が整っています。",
+        image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "政令指定都市", "東京近郊"],
+        englishHospital: "あり",
+        airport: "◎（成田空港近接）",
+        rent: "中程度",
+        recommend: "東京近郊に住みたい外国人",
+        pageUrl: "/ja/blog/chiba/chiba/"
+      },
+      funabashi: {
+        title: "船橋市",
+        population: "約64万人",
+        foreignPopulation: "約1.8万人（2.8%）",
+        features: "人口県内2位・商業都市",
+        description: "千葉県で人口第2位の都市。商業施設が充実し、東京への通勤にも便利な立地です。",
+        image: "https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["商業都市", "東京通勤", "人口多い"],
+        englishHospital: "あり",
+        airport: "○（成田空港へ電車で）",
+        rent: "中程度",
+        recommend: "東京勤務の外国人",
+        pageUrl: "/ja/blog/chiba/funabashi/"
+      },
+      kashiwa: {
+        title: "柏市",
+        population: "約43万人",
+        foreignPopulation: "約1.2万人（2.8%）",
+        features: "学園都市・商業地",
+        description: "東京大学柏キャンパスがある学園都市。商業地としても発展しています。",
+        image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["学園都市", "東大", "商業地"],
+        englishHospital: "あり",
+        airport: "○（成田空港へ電車で）",
+        rent: "中程度",
+        recommend: "学術関係の外国人",
+        pageUrl: "/ja/blog/chiba/kashiwa/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

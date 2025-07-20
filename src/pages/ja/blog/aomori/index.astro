@@ -237,7 +237,51 @@ const aomoriCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // aomori市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    // 青森県市区町村データ
+    const cityData = {
+      aomori: {
+        title: "青森市",
+        population: "約28万人",
+        foreignPopulation: "約1,200人（0.4%）",
+        features: "県庁所在地・ねぶた祭り",
+        description: "青森県の県庁所在地。有名なねぶた祭りと豊かな自然環境が魅力の都市です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "ねぶた祭り", "自然豊か"],
+        englishHospital: "限定的",
+        airport: "◎（青森空港）",
+        rent: "安い",
+        recommend: "自然環境を重視する外国人",
+        pageUrl: "/ja/blog/aomori/aomori/"
+      },
+      hirosaki: {
+        title: "弘前市",
+        population: "約17万人",
+        foreignPopulation: "約800人（0.5%）",
+        features: "桜の名所・城下町",
+        description: "弘前城で有名な城下町。桜の名所として知られ、歴史と文化が息づく街です。",
+        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["城下町", "桜の名所", "歴史文化"],
+        englishHospital: "限定的",
+        airport: "○（青森空港へバスで）",
+        rent: "安い",
+        recommend: "歴史と自然を愛する外国人",
+        pageUrl: "/ja/blog/aomori/hirosaki/"
+      },
+      hachinohe: {
+        title: "八戸市",
+        population: "約22万人",
+        foreignPopulation: "約1,000人（0.5%）",
+        features: "港町・工業都市",
+        description: "太平洋に面した港町。工業都市として発展し、新鮮な海産物も豊富です。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["港町", "工業都市", "海産物"],
+        englishHospital: "限定的",
+        airport: "△（青森空港まで2時間）",
+        rent: "安い",
+        recommend: "工業関係で働く外国人",
+        pageUrl: "/ja/blog/aomori/hachinohe/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
