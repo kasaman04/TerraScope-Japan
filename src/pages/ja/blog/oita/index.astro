@@ -245,7 +245,50 @@ const oitaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // oita市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      oita: {
+        title: "大分市",
+        population: "約48万人",
+        foreignPopulation: "約6,800人（1.4%）",
+        features: "県庁所在地・中核市",
+        description: "大分県の県庁所在地。九州の中核都市として発展し、工業と農業がバランス良く発達した住みやすい都市です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "中核市", "工業都市"],
+        englishHospital: "あり",
+        airport: "○（大分空港）",
+        rent: "普通",
+        recommend: "安定した生活環境を求める外国人",
+        pageUrl: "/ja/blog/oita/oita/"
+      },
+      beppu: {
+        title: "別府市",
+        population: "約11万人",
+        foreignPopulation: "約2,800人（2.5%）",
+        features: "温泉・観光・国際色豊か",
+        description: "日本有数の温泉地として世界的に有名。立命館アジア太平洋大学があり、多くの外国人が住む国際色豊かな都市です。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["温泉", "APU", "国際都市"],
+        englishHospital: "あり",
+        airport: "○（大分空港経由）",
+        rent: "普通",
+        recommend: "温泉と国際的な環境を求める外国人",
+        pageUrl: "/ja/blog/oita/beppu/"
+      },
+      nakatsu: {
+        title: "中津市",
+        population: "約8万人",
+        foreignPopulation: "約1,200人（1.5%）",
+        features: "中津城・からあげ・歴史",
+        description: "黒田如水ゆかりの中津城で有名な歴史ある城下町。中津からあげ発祥の地としても知られ、福澤諭吉の出身地でもあります。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["中津城", "からあげ", "福澤諭吉"],
+        englishHospital: "あり",
+        airport: "○（大分空港経由）",
+        rent: "安い",
+        recommend: "歴史と文化を重視する外国人",
+        pageUrl: "/ja/blog/oita/nakatsu/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
