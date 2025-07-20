@@ -309,6 +309,8 @@ const tokyoCities = {
 
   <script is:inline>
     // モーダル関連の関数（汎用版）
+    const cityData = tokyoCities;
+
     function openCityModal(cityKey) {
       // cityDataが定義されていない場合は何もしない
       if (typeof cityData === 'undefined') {

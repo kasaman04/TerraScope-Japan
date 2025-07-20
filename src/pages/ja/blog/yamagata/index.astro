@@ -102,9 +102,9 @@ const yamagataCities = {
   <!-- Breadcrumb -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <ol class="flex items-center space-x-2 text-sm text-gray-600">
-      <li><a href="/ja/" class="hover:text-pink-600">ホーム</a></li>
+      <li><a href="/ja/" class="hover:text-pink-600">ホーム</div></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/" class="hover:text-pink-600">地域別生活情報</a></li>
+      <li><a href="/ja/blog/" class="hover:text-pink-600">地域別生活情報</div></li>
       <li><span class="mx-2">/</span></li>
       <li class="text-gray-900 font-medium">山形県</li>
     </ol>
@@ -172,7 +172,7 @@ const yamagataCities = {
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {Object.entries(yamagataCities).map(([key, city]) => (
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
               <div class="relative h-48 overflow-hidden">
                 <img 
@@ -255,7 +255,7 @@ const yamagataCities = {
         <a id="modal-article-link" href="#" 
            class="flex-1 text-center bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
           📖 詳しい記事を読む
-        </a>
+        </div>
         <button id="close-modal-btn"
                 class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
           閉じる
@@ -266,6 +266,8 @@ const yamagataCities = {
 
   <script is:inline>
     // モーダル関連の関数（汎用版）
+    const cityData = yamagataCities;
+
     function openCityModal(cityKey) {
       // cityDataが定義されていない場合は何もしない
       if (typeof cityData === 'undefined') {

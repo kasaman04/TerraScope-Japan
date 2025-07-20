@@ -58,9 +58,9 @@ const hyogoCities = {
   <!-- Breadcrumb -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <ol class="flex items-center space-x-2 text-sm text-gray-600">
-      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</div></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</div></li>
       <li><span class="mx-2">/</span></li>
       <li class="text-gray-900 font-medium">兵庫県</li>
     </ol>
@@ -128,7 +128,7 @@ const hyogoCities = {
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
           {Object.entries(hyogoCities).map(([key, city]) => (
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
               <div class="relative h-32 overflow-hidden">
                 <img 
@@ -217,14 +217,14 @@ const hyogoCities = {
         >
           <span class="mr-3">🔍</span>
           調査サービスを見る
-        </a>
+        </div>
         <a 
           href="/ja/contact/" 
           class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
         >
           <span class="mr-3">💬</span>
           無料相談する
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -276,7 +276,7 @@ const hyogoCities = {
         <a id="modal-article-link" href="#" 
            class="flex-1 text-center bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
           📖 詳しい記事を読む
-        </a>
+        </div>
         <button id="close-modal-btn"
                 class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
           閉じる
@@ -287,6 +287,8 @@ const hyogoCities = {
 
   <script is:inline>
     // モーダル関連の関数（汎用版）
+    const cityData = hyogoCities;
+
     function openCityModal(cityKey) {
       // cityDataが定義されていない場合は何もしない
       if (typeof cityData === 'undefined') {
