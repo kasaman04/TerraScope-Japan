@@ -1,0 +1,560 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "鹿児島県鹿児島市での暮らし - 外国人向け生活ガイド";
+const description = "桜島のある活火山都市、鹿児島市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/kagoshima/" class="hover:text-blue-600">鹿児島県</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">鹿児島市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-red-800 to-orange-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="鹿児島市の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🌋 鹿児島県鹿児島市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          鹿児島市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          桜島のある活火山都市で、南九州の中心地
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約59万5千人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約8,400人（1.4%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">46.8歳</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-red-600 mb-2">547.58km²</div>
+          <div class="text-gray-600">面積</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-red-600 mb-2">約28万世帯</div>
+          <div class="text-gray-600">世帯数</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-red-600 mb-2">25駅</div>
+          <div class="text-gray-600">鉄道駅数</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-red-600 mb-2">15病院</div>
+          <div class="text-gray-600">主要病院</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
+        <p class="text-xl text-gray-600">鹿児島市で安心して暮らすための重要な情報をまとめました</p>
+      </div>
+
+      <!-- 地域情報セクション -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-4">🌍</span>
+          <h3 class="text-2xl font-bold text-gray-900">地域情報</h3>
+          <span class="ml-4 bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded">4記事</span>
+        </div>
+        
+        <div class="space-y-6">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1564072225530-7e5edaf3e7a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="鹿児島市の防災情報"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-red-600 bg-red-100 px-2 py-1 rounded">
+                    安全・防災
+                  </span>
+                  <span class="text-sm text-gray-500">約10分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  防災情報：桜島・台風対策と外国人向け避難体制
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  鹿児島市の災害リスク評価と防災対策。桜島の火山活動、台風対策、外国人居住者向けの避難所情報、多言語防災アプリ、緊急時の連絡先など詳しく解説。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年1月15日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1618022325802-7e5e732d97a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="桜島との共生"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-orange-600 bg-orange-100 px-2 py-1 rounded">
+                    火山対策
+                  </span>
+                  <span class="text-sm text-gray-500">約11分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  桜島との共生：火山灰対策と日常生活への影響
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  桜島の火山活動が日常生活に与える影響と対策。降灰予報の見方、住宅の火山灰対策、車や家電への影響、健康管理について詳しく解説。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年2月5日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="南九州の気候特性"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">
+                    気候・環境
+                  </span>
+                  <span class="text-sm text-gray-500">約7分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  気候・環境：南九州の気候特性と住環境
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  鹿児島市の気候特性と住環境への影響。温暖な気候、台風シーズン、湿度対策、エアコン使用量、服装の選び方など外国人が知っておくべき情報。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年2月15日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="薩摩の歴史と文化"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-purple-600 bg-purple-100 px-2 py-1 rounded">
+                    文化・観光
+                  </span>
+                  <span class="text-sm text-gray-500">約9分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  地域文化：薩摩の歴史と外国人向け文化体験
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  鹿児島の歴史・文化と外国人向け体験プログラム。薩摩の歴史、焼酎文化、黒豚グルメ、温泉文化など地域の魅力を詳しく紹介。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年2月8日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- 生活基盤セクション -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-4">🏥</span>
+          <h3 class="text-2xl font-bold text-gray-900">生活基盤</h3>
+          <span class="ml-4 bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-0.5 rounded">3記事</span>
+        </div>
+        
+        <div class="space-y-6">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1516974080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="生活インフラ情報"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-blue-600 bg-blue-100 px-2 py-1 rounded">
+                    生活基盤
+                  </span>
+                  <span class="text-sm text-gray-500">約8分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  生活インフラ：スーパー・病院・学校・公共施設
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  日常生活に必要な施設の場所と利用方法。多言語対応病院、国際学校、外国人向けスーパー、公共施設での手続き方法など詳しく紹介。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年1月18日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="交通アクセス"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-indigo-600 bg-indigo-100 px-2 py-1 rounded">
+                    交通・アクセス
+                  </span>
+                  <span class="text-sm text-gray-500">約9分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  交通アクセス：市内交通・空港・新幹線・離島航路
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  鹿児島市の交通網と利便性。市電・バス、鹿児島空港、九州新幹線、離島航路、レンタカー情報など交通手段を詳しく解説。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年2月22日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="教育環境"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-teal-600 bg-teal-100 px-2 py-1 rounded">
+                    教育・子育て
+                  </span>
+                  <span class="text-sm text-gray-500">約10分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  教育環境：国際学校・日本語学習・子育て支援
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  外国人家族向けの教育環境。国際学校、バイリンガル教育、日本語学習支援、保育園・幼稚園、学習塾の情報を詳しく解説。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年2月18日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- コストセクション -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-4">💰</span>
+          <h3 class="text-2xl font-bold text-gray-900">コスト</h3>
+          <span class="ml-4 bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded">2記事</span>
+        </div>
+        
+        <div class="space-y-6">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="生活コスト詳細"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-green-600 bg-green-100 px-2 py-1 rounded">
+                    家計管理
+                  </span>
+                  <span class="text-sm text-gray-500">約7分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  生活コスト：家賃・光熱費・交通費・食費の詳細
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  鹿児島市での実際の生活費用を具体的に算出。家賃相場、光熱費、交通費、食費など外国人が知っておくべき生活コスト情報。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年1月22日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="再開発と投資価値"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-cyan-600 bg-cyan-100 px-2 py-1 rounded">
+                    都市開発
+                  </span>
+                  <span class="text-sm text-gray-500">約9分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  再開発・公共整備：今後の暮らしやすさと投資価値
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  鹿児島中央駅周辺の再開発計画と将来の街の変化。新幹線延伸、観光振興、住環境改善などの最新情報を解説。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年1月25日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- その他セクション -->
+      <div class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-4">📋</span>
+          <h3 class="text-2xl font-bold text-gray-900">その他</h3>
+          <span class="ml-4 bg-gray-100 text-gray-800 text-sm font-medium px-2.5 py-0.5 rounded">3記事</span>
+        </div>
+        
+        <div class="space-y-6">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="法制度・手続き"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                    法制度
+                  </span>
+                  <span class="text-sm text-gray-500">約12分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  法制度：外国人の不動産購入制限・手続き・税制
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  不動産購入や賃貸契約時の注意点と必要書類。外国人特有の手続き、税制優遇、ローン審査のポイントなど法的側面を解説。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年1月28日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="外国人コミュニティ"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-pink-600 bg-pink-100 px-2 py-1 rounded">
+                    コミュニティ
+                  </span>
+                  <span class="text-sm text-gray-500">約8分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  外国人コミュニティ：国際交流と多言語サポート
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  鹿児島市の外国人コミュニティと支援体制。国際交流協会、多言語相談窓口、日本語教室、文化交流イベントなどの情報。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年2月12日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+                  alt="現地調査レポート"
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-yellow-600 bg-yellow-100 px-2 py-1 rounded">
+                    現地調査
+                  </span>
+                  <span class="text-sm text-gray-500">約15分</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors">
+                  現地調査レポート：映像と写真で見る鹿児島市の実態
+                </h4>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  実際に歩いて撮影した鹿児島市の街並みと雰囲気。住宅地、商業地、交通状況、自然環境など写真と動画で詳しく紹介。
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">2024年2月1日更新</span>
+                  <div class="flex space-x-3">
+                    <a href="#" class="text-red-600 hover:text-red-800 font-medium text-sm">完全版記事を読む</a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-medium text-sm">詳細調査を依頼</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
+      <p class="text-xl mb-8 opacity-90">
+        鹿児島市での生活をより具体的に知りたい方は、<br>
+        専門スタッフによる詳細な現地調査をご依頼いただけます
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/ja/services/" class="inline-flex items-center px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors">
+          📋 調査サービスを見る
+        </a>
+        <a href="/ja/contact/" class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          💬 無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
