@@ -116,6 +116,72 @@ const hyogoCities = {
       { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hyogo/akashi/article-06/" }
     ],
     pageUrl: "/ja/blog/hyogo/akashi/"
+  },
+  kakogawa: {
+    title: "加古川市",
+    population: "約27万人",
+    foreignPopulation: "約3,800人（1.4%）",
+    features: "加古川バイパス・工業都市",
+    description: "加古川バイパスで有名な交通の要街。製鉄業を中心とした工業都市で、技術系外国人も多く在住しています。",
+    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["バイパス", "工業都市", "製鉄業", "技術系"],
+    englishHospital: "限定的",
+    airport: "○（関西空港経由）",
+    rent: "安い",
+    recommend: "製造業・技術系の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hyogo/kakogawa/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hyogo/kakogawa/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hyogo/kakogawa/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hyogo/kakogawa/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hyogo/kakogawa/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hyogo/kakogawa/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hyogo/kakogawa/"
+  },
+  takarazuka: {
+    title: "宝塚市",
+    population: "約23万人",
+    foreignPopulation: "約3,200人（1.4%）",
+    features: "宝塚歌劇団・温泉地",
+    description: "宝塚歌劇団で世界的に有名な文化都市。有馬温泉もあり、住環境が良く文化水準の高い地域です。",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["宝塚歌劇", "温泉地", "文化都市", "住環境良好"],
+    englishHospital: "限定的",
+    airport: "○（伊丹空港・関西空港）",
+    rent: "やや高い",
+    recommend: "文化・芸術好きの外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hyogo/takarazuka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hyogo/takarazuka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hyogo/takarazuka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hyogo/takarazuka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hyogo/takarazuka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hyogo/takarazuka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hyogo/takarazuka/"
+  },
+  itami: {
+    title: "伊丹市",
+    population: "約20万人",
+    foreignPopulation: "約3,500人（1.8%）",
+    features: "伊丹空港・清酒の街",
+    description: "関西の空の玄関口伊丹空港を擁する都市。清酒造りでも有名で、伝統とアクセスの良さを兼ね備えます。",
+    image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["伊丹空港", "清酒の街", "空の玄関", "伝統"],
+    englishHospital: "あり",
+    airport: "◎（伊丹空港直結）",
+    rent: "中程度",
+    recommend: "空港アクセスを重視する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hyogo/itami/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hyogo/itami/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hyogo/itami/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hyogo/itami/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hyogo/itami/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hyogo/itami/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hyogo/itami/"
   }
 };
 ---
@@ -191,7 +257,7 @@ const hyogoCities = {
       <!-- Cities Cards -->
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-6">
           {Object.entries(hyogoCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -423,6 +489,48 @@ const hyogoCities = {
         rent: "中程度",
         recommend: "歴史と住環境を重視する外国人",
         pageUrl: "/ja/blog/hyogo/akashi/"
+      },
+      kakogawa: {
+        title: "加古川市",
+        population: "約27万人",
+        foreignPopulation: "約3,800人（1.4%）",
+        features: "加古川バイパス・工業都市",
+        description: "加古川バイパスで有名な交通の要街。製鉄業を中心とした工業都市で、技術系外国人も多く在住しています。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["バイパス", "工業都市", "製鉄業", "技術系"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "安い",
+        recommend: "製造業・技術系の外国人",
+        pageUrl: "/ja/blog/hyogo/kakogawa/"
+      },
+      takarazuka: {
+        title: "宝塚市",
+        population: "約23万人",
+        foreignPopulation: "約3,200人（1.4%）",
+        features: "宝塚歌劇団・温泉地",
+        description: "宝塚歌劇団で世界的に有名な文化都市。有馬温泉もあり、住環境が良く文化水準の高い地域です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["宝塚歌劇", "温泉地", "文化都市", "住環境良好"],
+        englishHospital: "限定的",
+        airport: "○（伊丹空港・関西空港）",
+        rent: "やや高い",
+        recommend: "文化・芸術好きの外国人",
+        pageUrl: "/ja/blog/hyogo/takarazuka/"
+      },
+      itami: {
+        title: "伊丹市",
+        population: "約20万人",
+        foreignPopulation: "約3,500人（1.8%）",
+        features: "伊丹空港・清酒の街",
+        description: "関西の空の玄関口伊丹空港を擁する都市。清酒造りでも有名で、伝統とアクセスの良さを兼ね備えます。",
+        image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["伊丹空港", "清酒の街", "空の玄関", "伝統"],
+        englishHospital: "あり",
+        airport: "◎（伊丹空港直結）",
+        rent: "中程度",
+        recommend: "空港アクセスを重視する外国人",
+        pageUrl: "/ja/blog/hyogo/itami/"
       }
     };
 
