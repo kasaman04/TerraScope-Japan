@@ -1,0 +1,444 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "埼玉県での暮らし - 市区町村別生活情報";
+const description = "埼玉県の各市区町村での外国人向け生活情報。さいたま市・川口市・所沢市など東京近郊の埼玉県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 埼玉県の市区町村データ
+const saitamaCities = {
+  saitama: {
+    title: "さいたま市",
+    population: "約133万人",
+    foreignPopulation: "約3.2万人（2.4%）",
+    features: "県庁所在地・新幹線拠点",
+    description: "埼玉県の県庁所在地。新幹線の大宮駅があり、東京・関西方面へのアクセスが良好です。",
+    image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/saitama/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/saitama/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/saitama/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/saitama/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/saitama/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/saitama/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/saitama/"
+  },
+  kawaguchi: {
+    title: "川口市",
+    population: "約61万人",
+    foreignPopulation: "約3.5万人（5.7%）",
+    features: "多文化共生都市",
+    description: "外国人人口比率が高く、多様な国籍の住民が共生する国際色豊かな都市です。",
+    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/kawaguchi/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/kawaguchi/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/kawaguchi/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/kawaguchi/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/kawaguchi/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/kawaguchi/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/kawaguchi/"
+  },
+  tokorozawa: {
+    title: "所沢市",
+    population: "約34万人",
+    foreignPopulation: "約6,200人（1.8%）",
+    features: "航空発祥の地・住宅地",
+    description: "日本の航空発祥の地として有名。西武線で都心アクセス良好な住宅地です。",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/tokorozawa/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/tokorozawa/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/tokorozawa/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/tokorozawa/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/tokorozawa/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/tokorozawa/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/tokorozawa/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">埼玉県</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-purple-800 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="埼玉県の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 埼玉県
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          埼玉県での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          東京へのアクセス良好な住宅地として人気の埼玉県
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約734万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約19万人（2.6%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">63自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-purple-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          {Object.entries(saitamaCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-32 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+          <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+
+          <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
+          
+          <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+          <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+          <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">人口:</strong> 
+              <span id="modal-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">外国人人口:</strong> 
+              <span id="modal-foreign-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">英語対応病院:</strong> 
+              <span id="modal-english-hospital" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">空港アクセス:</strong> 
+              <span id="modal-airport" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">家賃相場:</strong> 
+              <span id="modal-rent" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+              <strong class="text-gray-700">おすすめ:</strong> 
+              <span id="modal-recommend" class="text-gray-900"></span>
+            </div>
+          </div>
+
+          <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+          <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+          <div class="flex gap-3">
+            <a id="modal-article-link" href="#" 
+               class="flex-1 text-center bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition-colors">
+              📖 詳しい記事を見る
+            </a>
+            <button id="close-modal-btn"
+                    class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
+              閉じる
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Saitama Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          埼玉県で暮らす<span class="text-purple-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって埼玉県が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🚇</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">東京アクセス</h3>
+          <p class="text-gray-600">
+            都心まで1時間圏内でありながら、住宅コストを抑えることができます。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🌍</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">多文化共生</h3>
+          <p class="text-gray-600">
+            外国人住民が多く、国際的なコミュニティが形成されています。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏘️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">住環境</h3>
+          <p class="text-gray-600">
+            新興住宅地が多く、ファミリー向けの住環境が充実しています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-purple-600 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        埼玉県での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-purple-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // 埼玉県市区町村データ
+    const cityData = {
+      saitama: {
+        title: "さいたま市",
+        population: "約133万人",
+        foreignPopulation: "約3.2万人（2.4%）",
+        features: "県庁所在地・新幹線拠点",
+        description: "埼玉県の県庁所在地。新幹線の大宮駅があり、東京・関西方面へのアクセスが良好です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "新幹線", "アクセス良好"],
+        englishHospital: "あり",
+        airport: "○（羽田空港）",
+        rent: "普通",
+        recommend: "都心アクセスを重視する外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/saitama/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/saitama/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/saitama/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/saitama/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/saitama/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/saitama/article-06/" }
+        ],
+        pageUrl: "/ja/blog/saitama/saitama/"
+      },
+      kawaguchi: {
+        title: "川口市",
+        population: "約61万人",
+        foreignPopulation: "約3.5万人（5.7%）",
+        features: "多文化共生都市",
+        description: "外国人人口比率が高く、多様な国籍の住民が共生する国際色豊かな都市です。",
+        image: "https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["多文化共生", "国際色豊か", "外国人多数"],
+        englishHospital: "あり",
+        airport: "○（羽田空港）",
+        rent: "普通",
+        recommend: "多文化環境を求める外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/kawaguchi/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/kawaguchi/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/kawaguchi/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/kawaguchi/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/kawaguchi/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/kawaguchi/article-06/" }
+        ],
+        pageUrl: "/ja/blog/saitama/kawaguchi/"
+      },
+      tokorozawa: {
+        title: "所沢市",
+        population: "約34万人",
+        foreignPopulation: "約6,200人（1.8%）",
+        features: "航空発祥の地・住宅地",
+        description: "日本の航空発祥の地として有名。西武線で都心アクセス良好な住宅地です。",
+        image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["航空発祥", "住宅地", "西武線"],
+        englishHospital: "限定的",
+        airport: "○（羽田空港経由）",
+        rent: "普通",
+        recommend: "静かな住環境を求める外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/tokorozawa/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/tokorozawa/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/tokorozawa/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/tokorozawa/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/tokorozawa/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/tokorozawa/article-06/" }
+        ],
+        pageUrl: "/ja/blog/saitama/tokorozawa/"
+      }
+    };
+
+    // モーダル関連の変数とイベント処理
+    let currentCityKey = '';
+    const modal = document.getElementById('city-modal');
+    const modalClose = document.getElementById('modal-close');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    // モーダルを開く
+    function openCityModal(cityKey) {
+      currentCityKey = cityKey;
+      const city = cityData[cityKey];
+      
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-image').src = city.image;
+      document.getElementById('modal-image').alt = city.title;
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+      document.getElementById('modal-article-link').href = city.pageUrl;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // モーダルを表示（アニメーション付き）
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+      currentCityKey = '';
+    }
+
+    // DOMContentLoaded後にイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+      modalClose.addEventListener('click', closeModal);
+      closeModalBtn.addEventListener('click', closeModal);
+
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+</BaseLayout>
