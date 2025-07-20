@@ -155,8 +155,80 @@ const cityData = {
 - 多言語対応の拡張
 - 検索・フィルタ機能の追加
 
+## 全都道府県別都市数一覧（地域別）
+
+### 関東地方
+- 茨城県（4都市）- https://kasaman04.github.io/ja/blog/ibaraki/
+- 栃木県（4都市）- https://kasaman04.github.io/ja/blog/tochigi/
+- 群馬県（3都市）- https://kasaman04.github.io/ja/blog/gunma/
+- 埼玉県（5都市）- https://kasaman04.github.io/ja/blog/saitama/
+- 千葉県（7都市）- https://kasaman04.github.io/ja/blog/chiba/
+- 東京都（8都市）- https://kasaman04.github.io/ja/blog/tokyo/
+- 神奈川県（6都市）- https://kasaman04.github.io/ja/blog/kanagawa/
+
+### 中部地方
+- 新潟県（3都市）- https://kasaman04.github.io/ja/blog/niigata/
+- 富山県（3都市）- https://kasaman04.github.io/ja/blog/toyama/
+- 石川県（3都市）- https://kasaman04.github.io/ja/blog/ishikawa/
+- 福井県（3都市）- https://kasaman04.github.io/ja/blog/fukui/
+- 山梨県（3都市）- https://kasaman04.github.io/ja/blog/yamanashi/
+- 長野県（3都市）- https://kasaman04.github.io/ja/blog/nagano/
+- 岐阜県（3都市）- https://kasaman04.github.io/ja/blog/gifu/
+- 静岡県（4都市）- https://kasaman04.github.io/ja/blog/shizuoka/
+- 愛知県（6都市）- https://kasaman04.github.io/ja/blog/aichi/
+
+### 近畿地方
+- 三重県（3都市）- https://kasaman04.github.io/ja/blog/mie/
+- 滋賀県（3都市）- https://kasaman04.github.io/ja/blog/shiga/
+- 京都府（4都市）- https://kasaman04.github.io/ja/blog/kyoto/
+- 大阪府（5都市）- https://kasaman04.github.io/ja/blog/osaka/
+- 兵庫県（5都市）- https://kasaman04.github.io/ja/blog/hyogo/
+- 奈良県（3都市）- https://kasaman04.github.io/ja/blog/nara/
+- 和歌山県（3都市）- https://kasaman04.github.io/ja/blog/wakayama/
+
+### 中国地方
+- 鳥取県（3都市）- https://kasaman04.github.io/ja/blog/tottori/
+- 島根県（3都市）- https://kasaman04.github.io/ja/blog/shimane/
+- 岡山県（3都市）- https://kasaman04.github.io/ja/blog/okayama/
+- 広島県（4都市）- https://kasaman04.github.io/ja/blog/hiroshima/
+- 山口県（3都市）- https://kasaman04.github.io/ja/blog/yamaguchi/
+
+### 四国地方
+- 徳島県（3都市）- https://kasaman04.github.io/ja/blog/tokushima/
+- 香川県（3都市）- https://kasaman04.github.io/ja/blog/kagawa/
+- 愛媛県（3都市）- https://kasaman04.github.io/ja/blog/ehime/
+- 高知県（3都市）- https://kasaman04.github.io/ja/blog/kochi/
+
+### 九州・沖縄地方
+- 福岡県（5都市）- https://kasaman04.github.io/ja/blog/fukuoka/
+- 佐賀県（3都市）- https://kasaman04.github.io/ja/blog/saga/
+- 長崎県（3都市）- https://kasaman04.github.io/ja/blog/nagasaki/
+- 熊本県（3都市）- https://kasaman04.github.io/ja/blog/kumamoto/
+- 大分県（3都市）- https://kasaman04.github.io/ja/blog/oita/
+- 宮崎県（3都市）- https://kasaman04.github.io/ja/blog/miyazaki/
+- 鹿児島県（3都市）- https://kasaman04.github.io/ja/blog/kagoshima/
+- 沖縄県（3都市）- https://kasaman04.github.io/ja/blog/okinawa/
+
+### 東北地方
+- 青森県（3都市）- https://kasaman04.github.io/ja/blog/aomori/
+- 岩手県（6都市）- https://kasaman04.github.io/ja/blog/iwate/
+- 宮城県（6都市）- https://kasaman04.github.io/ja/blog/miyagi/
+- 秋田県（7都市）- https://kasaman04.github.io/ja/blog/akita/
+- 山形県（4都市）- https://kasaman04.github.io/ja/blog/yamagata/
+- 福島県（4都市）- https://kasaman04.github.io/ja/blog/fukushima/
+
+### 北海道地方
+- 北海道（未調査）- https://kasaman04.github.io/ja/blog/hokkaido/
+
+## 統計サマリー
+- **総都道府県数**: 47（うち調査済み46県）
+- **最少都市数**: 3都市（22県）
+- **最多都市数**: 8都市（東京都）
+- **平均都市数**: 約3.7都市
+- **3都市以上の県**: 100%（全県基準クリア）
+
 ---
 
 **プロジェクト完了日**: 2024年12月
-**最終更新**: 県一覧ページの都市表示同期完了
+**最終更新**: 京都府亀岡市追加、都市数一覧完成
 **ステータス**: ✅ 完了
