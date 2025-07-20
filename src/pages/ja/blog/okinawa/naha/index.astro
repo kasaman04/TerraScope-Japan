@@ -1,9 +1,141 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
 
-const title = "那覇市での暮らし - 外国人向け生活情報";
-const description = "那覇市での外国人向け生活情報。那覇、首里、小禄から泊まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const title = "沖縄県那覇市での暮らし - 外国人向け生活ガイド";
+const description = "琉球文化と美しい海に囲まれた那覇市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
 const lang = "ja";
+
+// エリア情報
+const areaInfo = {
+  population: "約32万人",
+  foreignPopulation: "約3,200人（1.0%）",
+  mainNationalities: "アメリカ、中国、韓国、フィリピン",
+  averageAge: "43.6歳",
+  households: "約16万世帯",
+  area: "39.98km²"
+};
+
+// 主要スポット
+const keySpots = [
+  { name: "那覇空港", type: "交通", description: "沖縄の空の玄関口、アジアのハブ空港" },
+  { name: "首里城", type: "観光", description: "琉球王国の象徴、世界遺産" },
+  { name: "沖縄県立中部病院", type: "医療", description: "県内最大級の総合病院" },
+  { name: "琉球大学", type: "教育", description: "国立大学、留学生受け入れ" },
+  { name: "国際通り", type: "観光", description: "沖縄のメインストリート、観光の中心地" },
+  { name: "波の上ビーチ", type: "観光", description: "那覇市内唯一のビーチ" }
+];
+
+// 記事データ
+const articles = [
+  {
+    id: "bousai",
+    title: "防災情報：台風対策と外国人向け避難体制",
+    description: "沖縄特有の台風対策と防災情報。強烈な台風に備えた住宅対策、外国人向け避難所情報、多言語防災アプリ、緊急時の連絡先など詳しく解説。",
+    image: "https://images.unsplash.com/photo-1548691905-57c36cc8e3eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "安全・防災",
+    date: "2024-01-15",
+    readTime: "約9分"
+  },
+  {
+    id: "infra",
+    title: "生活インフラ：スーパー・病院・学校・公共施設",
+    description: "日常生活に必要な施設の場所と利用方法。多言語対応病院、国際学校、米軍基地近郊のスーパー、公共施設での手続き方法など詳しく紹介。",
+    image: "https://images.unsplash.com/photo-1516974080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "生活基盤",
+    date: "2024-01-18",
+    readTime: "約8分"
+  },
+  {
+    id: "cost",
+    title: "生活コスト：家賃・光熱費・交通費・食費の詳細",
+    description: "那覇市での実際の生活費用を具体的に算出。本土との物価差、家賃相場、光熱費、交通費、食費など外国人が知っておくべき生活コスト情報。",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "家計管理",
+    date: "2024-01-22",
+    readTime: "約7分"
+  },
+  {
+    id: "development",
+    title: "再開発・公共整備：今後の暮らしやすさと投資価値",
+    description: "那覇市の都市開発計画と将来性。那覇空港拡張、新都心開発、モノレール延伸、観光振興などの最新情報を解説。",
+    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "都市開発",
+    date: "2024-01-25",
+    readTime: "約8分"
+  },
+  {
+    id: "legal",
+    title: "法制度：外国人の不動産購入制限・手続き・税制",
+    description: "不動産購入や賃貸契約時の注意点と必要書類。沖縄特有の法制度、外国人特有の手続き、税制優遇、ローン審査のポイントなど法的側面を解説。",
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "法制度",
+    date: "2024-01-28",
+    readTime: "約10分"
+  },
+  {
+    id: "survey",
+    title: "現地調査レポート：映像と写真で見る那覇市の実態",
+    description: "実際に歩いて撮影した那覇市の街並みと雰囲気。住宅地、商業地、観光地、交通状況、海岸線など写真と動画で詳しく紹介。",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "現地調査",
+    date: "2024-02-01",
+    readTime: "約12分"
+  },
+  {
+    id: "culture",
+    title: "琉球文化：歴史と外国人向け文化体験",
+    description: "沖縄独特の琉球文化と外国人向け体験プログラム。琉球王国の歴史、泡盛文化、沖縄料理、伝統芸能、方言文化など地域の魅力を紹介。",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "文化・観光",
+    date: "2024-02-05",
+    readTime: "約10分"
+  },
+  {
+    id: "community",
+    title: "外国人コミュニティ：国際交流と多言語サポート",
+    description: "那覇市の外国人コミュニティと支援体制。国際交流協会、米軍関係者コミュニティ、多言語相談窓口、日本語教室、文化交流イベントなどの情報。",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "コミュニティ",
+    date: "2024-02-08",
+    readTime: "約8分"
+  },
+  {
+    id: "climate",
+    title: "気候・環境：亜熱帯気候と住環境への影響",
+    description: "那覇市の亜熱帯気候特性と住環境への影響。年中温暖な気候、台風シーズン、湿度対策、紫外線対策、服装の選び方など。",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "気候・環境",
+    date: "2024-02-12",
+    readTime: "約7分"
+  },
+  {
+    id: "tourism",
+    title: "観光産業：就職・起業・ビジネス機会",
+    description: "沖縄の観光産業における外国人の就職・起業機会。ホテル業界、旅行業界、飲食業、IT関連、語学教師などの職種情報。",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "就職・起業",
+    date: "2024-02-15",
+    readTime: "約9分"
+  },
+  {
+    id: "education",
+    title: "教育環境：国際学校・日本語学習・子育て支援",
+    description: "外国人家族向けの教育環境。国際学校、アメリカンスクール、バイリンガル教育、日本語学習支援、保育園・幼稚園の情報。",
+    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "教育・子育て",
+    date: "2024-02-18",
+    readTime: "約10分"
+  },
+  {
+    id: "transport",
+    title: "交通アクセス：モノレール・バス・空港・離島航路",
+    description: "那覇市の交通網と利便性。ゆいレール（モノレール）、バス網、那覇空港、離島航路、レンタカー情報など交通手段を詳しく解説。",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    category: "交通・アクセス",
+    date: "2024-02-22",
+    readTime: "約8分"
+  }
+];
 ---
 
 <BaseLayout {title} {description} {lang}>
@@ -21,7 +153,7 @@ const lang = "ja";
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-blue-700 to-cyan-900 overflow-hidden">
+  <section class="relative bg-gradient-to-br from-cyan-600 to-blue-800 overflow-hidden">
     <div class="absolute inset-0 opacity-20">
       <img 
         src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
@@ -34,7 +166,7 @@ const lang = "ja";
       <div class="max-w-3xl">
         <div class="mb-6">
           <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
-            🏝️ 那覇市
+            🏝️ 沖縄県那覇市
           </span>
         </div>
         
@@ -43,438 +175,169 @@ const lang = "ja";
         </h1>
         
         <p class="text-xl md:text-2xl mb-8 opacity-95">
-          南国の楽園、沖縄県の県庁所在地で独特の文化が息づく国際都市
+          琉球文化が息づく沖縄の中心地、美しい海と温暖な気候の楽園
         </p>
         
         <div class="grid md:grid-cols-3 gap-6 text-sm">
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">人口</p>
-            <p class="text-lg">約32万人</p>
+            <p class="text-lg">{areaInfo.population}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
             <p class="font-semibold mb-1">外国人人口</p>
-            <p class="text-lg">約4,500人（1.4%）</p>
+            <p class="text-lg">{areaInfo.foreignPopulation}</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <p class="font-semibold mb-1">面積</p>
-            <p class="text-lg">39.98 km²</p>
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">{areaInfo.averageAge}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Overview Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          那覇市の<span class="text-blue-600">概要</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          沖縄県の県庁所在地、亜熱帯の気候と独特の文化が魅力の南国都市
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">那覇市の特徴</h3>
-          <div class="space-y-4">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-blue-600 font-bold">1</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">琉球王国の歴史</h4>
-                <p class="text-gray-600">首里城を中心とした琉球王国の歴史と文化が残る、独特の文化的背景を持つ都市です。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-blue-600 font-bold">2</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">亜熱帯気候</h4>
-                <p class="text-gray-600">年中温暖な亜熱帯気候で、美しい海と自然に囲まれた南国のライフスタイルが楽しめます。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-blue-600 font-bold">3</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">国際交流の拠点</h4>
-                <p class="text-gray-600">アジア太平洋地域との交流拠点として、多様な文化が共存する国際都市です。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gray-50 rounded-xl p-8">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
-          <div class="space-y-4">
-            <div class="flex justify-between">
-              <span class="text-gray-600">主要駅</span>
-              <span class="font-semibold">那覇空港駅、旭橋駅、県庁前駅</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">平均家賃（1K）</span>
-              <span class="font-semibold">約4.5万円</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">東京駅までの時間</span>
-              <span class="font-semibold">約2時間30分（飛行機）</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">年間平均気温</span>
-              <span class="font-semibold">23.1℃</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Living Areas Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          主要な<span class="text-blue-600">居住エリア</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          那覇市内の外国人に人気のエリアをご紹介
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">那覇中心部</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-2">中心街</span>
-            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">国際通り</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            国際通りを中心とする観光・商業の中心地。アクセスが良く、生活に便利なエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：高い</p>
-            <p>外国人向け：★★★★★</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">首里</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium mr-2">歴史地区</span>
-            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">文化遺産</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            首里城がある歴史地区。琉球文化を身近に感じられる、文化的価値の高いエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">小禄</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">空港近く</span>
-            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">住宅地</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            那覇空港に近く、交通の便が良い住宅地。出張の多い外国人に人気のエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">泊</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">港湾</span>
-            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">住宅地</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            泊港に近い住宅地。離島への玄関口でもあり、海が身近に感じられるエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">安里</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-lime-100 text-lime-800 px-3 py-1 rounded-full text-sm font-medium">商業地区</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地と商業地区が混在するエリア。生活しやすく、比較的家賃も手頃です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">古島</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium">静か</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            静かな住宅地で、ファミリー層に人気。自然が多く、落ち着いた住環境です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ryukyu Culture Section -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          那覇の<span class="text-blue-600">琉球文化</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          独特の歴史と文化が息づく琉球王国の都
-        </p>
-      </div>
-
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🏯</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">首里城</h3>
-          <p class="text-gray-600 text-sm">
-            琉球王国の象徴的な建造物と世界遺産
-          </p>
+          <div class="text-3xl font-bold text-cyan-600 mb-2">{areaInfo.area}</div>
+          <div class="text-gray-600">面積</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🎭</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">伝統芸能</h3>
-          <p class="text-gray-600 text-sm">
-            琉球舞踊、三線音楽など独特の芸能文化
-          </p>
+          <div class="text-3xl font-bold text-cyan-600 mb-2">{areaInfo.households}</div>
+          <div class="text-gray-600">世帯数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🍽️</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">琉球料理</h3>
-          <p class="text-gray-600 text-sm">
-            ゴーヤチャンプルー、ソーキそばなど独特の食文化
-          </p>
+          <div class="text-3xl font-bold text-cyan-600 mb-2">15駅</div>
+          <div class="text-gray-600">モノレール駅数</div>
         </div>
-
         <div class="text-center">
-          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🎨</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">伝統工芸</h3>
-          <p class="text-gray-600 text-sm">
-            紅型染め、やちむん陶器など独特の工芸品
-          </p>
+          <div class="text-3xl font-bold text-cyan-600 mb-2">8病院</div>
+          <div class="text-gray-600">主要病院</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Articles Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
+  <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          那覇市の<span class="text-blue-600">生活情報</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          那覇市での生活に必要な詳細情報をまとめました
-        </p>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
+        <p class="text-xl text-gray-600">那覇市で安心して暮らすための重要な情報をまとめました</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="/ja/blog/okinawa/naha/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🛡️</span>
-            <h3 class="text-xl font-bold text-gray-900">防災：台風・災害対策</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            台風対策、地震リスク、避難場所について、沖縄特有の災害対策を詳しく解説。
-          </p>
-          <div class="text-blue-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/okinawa/naha/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏥</span>
-            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
-          </p>
-          <div class="text-blue-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/okinawa/naha/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">💰</span>
-            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            那覇市の家賃相場、電気代、物価など、島嶼部特有の生活コストを分析。
-          </p>
-          <div class="text-blue-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/okinawa/naha/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏗️</span>
-            <h3 class="text-xl font-bold text-gray-900">文化・観光産業</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            琉球文化、観光業、海洋リゾート産業など那覇の産業構造について解説。
-          </p>
-          <div class="text-blue-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/okinawa/naha/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📜</span>
-            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
-          </p>
-          <div class="text-blue-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/okinawa/naha/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📷</span>
-            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            実際に那覇市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
-          </p>
-          <div class="text-blue-600 font-semibold">詳細を見る →</div>
-        </a>
+      <div class="space-y-6">
+        {articles.map((article) => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="md:flex">
+              <div class="md:w-1/3">
+                <img 
+                  src={article.image} 
+                  alt={article.title}
+                  class="w-full h-48 md:h-full object-cover"
+                />
+              </div>
+              <div class="md:w-2/3 p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-cyan-600 bg-cyan-100 px-2 py-1 rounded">
+                    {article.category}
+                  </span>
+                  <span class="text-sm text-gray-500">{article.readTime}</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 hover:text-cyan-600 transition-colors">
+                  {article.title}
+                </h3>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  {article.description}
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500">
+                    {new Date(article.date).toLocaleDateString('ja-JP')}更新
+                  </span>
+                  <a 
+                    href="#" 
+                    class="text-cyan-600 hover:text-cyan-800 font-medium flex items-center"
+                  >
+                    詳しく読む
+                    <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Pros and Cons Section -->
-  <section class="py-16 lg:py-24 bg-white">
+  <!-- Key Spots -->
+  <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          那覇市に住む<span class="text-blue-600">メリット・デメリット</span>
-        </h2>
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">主要スポット</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {keySpots.map((spot) => (
+          <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-900 mb-2">{spot.name}</h3>
+            <div class="text-sm text-cyan-600 mb-2">{spot.type}</div>
+            <p class="text-gray-600 text-sm">{spot.description}</p>
+          </div>
+        ))}
       </div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-green-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👍</span>
-            メリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>年中温暖な気候で過ごしやすい</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>美しい海と自然環境</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>独特の文化と歴史を体験できる</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>ゆったりとした時間の流れ</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>観光業の雇用機会が豊富</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-red-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👎</span>
-            デメリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>本土との距離が遠く、移動費が高い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>台風の影響を受けやすい</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>物価が高い（輸送費のため）</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>車がないと不便</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>就職機会が限定的</span>
-            </li>
-          </ul>
+  <!-- Foreign Resident Info -->
+  <section class="py-16 bg-cyan-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">外国人居住者向け情報</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">多言語サービス</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li>• 那覇市役所：英語・中国語・韓国語対応</li>
+              <li>• 沖縄県国際交流・人材育成財団：多言語相談窓口</li>
+              <li>• 外国人総合相談窓口：生活相談全般</li>
+              <li>• 日本語教室：市内各所で開催</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">コミュニティ情報</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>主な国籍：</strong> {areaInfo.mainNationalities}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>外国人人口：</strong> {areaInfo.foreignPopulation}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>特徴：</strong> 琉球文化と亜熱帯気候の観光都市
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 to-cyan-800 text-white">
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        那覇市での住居選びを<span class="text-yellow-300">プロがサポート</span>
-      </h2>
-      
-      <p class="text-xl mb-8 opacity-95">
-        那覇市の詳細な調査レポートで、最適な住居選択をお手伝いします
+      <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
+      <p class="text-xl mb-8 opacity-90">
+        那覇市での生活をより具体的に知りたい方は、<br>
+        専門スタッフによる詳細な現地調査をご依頼いただけます
       </p>
-      
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href="/ja/services/" 
-          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
-        >
-          <span class="mr-3">🔍</span>
-          調査サービスを見る
+        <a href="/ja/services/" class="inline-flex items-center px-8 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors">
+          📋 調査サービスを見る
         </a>
-        <a 
-          href="/ja/contact/" 
-          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
-        >
-          <span class="mr-3">💬</span>
-          無料相談する
+        <a href="/ja/contact/" class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          💬 無料相談する
         </a>
       </div>
     </div>
