@@ -261,7 +261,7 @@ const articleCategories = [
 
           <!-- Articles List -->
           <div class="space-y-4">
-            {category.articles.map((article) => (
+            {category.articles.map((article, index) => (
               <article class="flex bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors border border-gray-200">
                 <!-- Article Image -->
                 <div class="flex-shrink-0 mr-4">
@@ -310,6 +310,18 @@ const articleCategories = [
               </article>
             ))}
           </div>
+          
+          <!-- もっと見るボタン -->
+          {category.articles.length > 0 && (
+            <div class="mt-6 text-center">
+              <button class={`inline-flex items-center px-6 py-3 bg-${category.color}-100 text-${category.color}-800 font-medium rounded-lg hover:bg-${category.color}-200 transition-colors`}>
+                もっと見る
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </div>
+          )}
         </section>
       ))}
     </div>
