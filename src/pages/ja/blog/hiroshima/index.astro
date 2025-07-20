@@ -245,7 +245,36 @@ const hiroshimaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // hiroshima市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      hiroshima: {
+        title: "広島市",
+        population: "約119万人",
+        foreignPopulation: "約3.5万人（2.9%）",
+        features: "県庁所在地・平和記念都市",
+        description: "中国地方最大の都市。平和記念公園で有名で、国際的な平和都市として発展しています。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "平和記念都市", "中国地方最大"],
+        englishHospital: "あり",
+        airport: "◎（広島空港）",
+        rent: "中程度",
+        recommend: "平和と国際交流に関心のある外国人",
+        pageUrl: "/ja/blog/hiroshima/hiroshima/"
+      },
+      fukuyama: {
+        title: "福山市",
+        population: "約46万人",
+        foreignPopulation: "約1.5万人（3.3%）",
+        features: "工業都市・製造業",
+        description: "広島県東部の中心都市。製造業が盛んで多くの外国人労働者が住んでいます。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "製造業", "外国人労働者"],
+        englishHospital: "限定的",
+        airport: "○（広島空港経由）",
+        rent: "安い",
+        recommend: "製造業で働く外国人",
+        pageUrl: "/ja/blog/hiroshima/fukuyama/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

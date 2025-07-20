@@ -266,7 +266,36 @@ const fukushimaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // fukushima市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      fukushima: {
+        title: "福島市",
+        population: "約28万人",
+        foreignPopulation: "約2,500人（0.9%）",
+        features: "県庁所在地・桃の里",
+        description: "福島県の中心都市。桃やりんごなどの果物の産地として有名な県庁所在地。",
+        image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "桃の里", "果物産地"],
+        englishHospital: "あり",
+        airport: "○（福島空港経由）",
+        rent: "安い",
+        recommend: "果物と自然を愛する外国人",
+        pageUrl: "/ja/blog/fukushima/fukushima/"
+      },
+      iwaki: {
+        title: "いわき市",
+        population: "約33万人",
+        foreignPopulation: "約3,200人（1.0%）",
+        features: "炭鉱・ハワイアンズ",
+        description: "福島県最大の市。スパリゾートハワイアンズで有名な太平洋岸の都市。",
+        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["最大都市", "ハワイアンズ", "太平洋岸"],
+        englishHospital: "あり",
+        airport: "△（福島空港経由）",
+        rent: "安い",
+        recommend: "海とレジャーを愛する外国人",
+        pageUrl: "/ja/blog/fukushima/iwaki/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

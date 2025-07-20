@@ -245,7 +245,36 @@ const shizuokaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // shizuoka市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      shizuoka: {
+        title: "静岡市",
+        population: "約69万人",
+        foreignPopulation: "約2.1万人（3.0%）",
+        features: "県庁所在地・お茶の産地",
+        description: "静岡県の県庁所在地。お茶の産地として有名で、富士山を望む美しい都市です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "お茶の産地", "富士山"],
+        englishHospital: "あり",
+        airport: "○（富士山静岡空港）",
+        rent: "中程度",
+        recommend: "お茶文化と自然を愛する外国人",
+        pageUrl: "/ja/blog/shizuoka/shizuoka/"
+      },
+      hamamatsu: {
+        title: "浜松市",
+        population: "約79万人",
+        foreignPopulation: "約2.8万人（3.5%）",
+        features: "工業都市・楽器の街",
+        description: "ヤマハ、ホンダ、スズキなど有名企業の発祥地。外国人労働者も多く住む工業都市です。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "楽器の街", "企業城下町"],
+        englishHospital: "あり",
+        airport: "○（富士山静岡空港経由）",
+        rent: "中程度",
+        recommend: "製造業・音楽関係で働く外国人",
+        pageUrl: "/ja/blog/shizuoka/hamamatsu/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
