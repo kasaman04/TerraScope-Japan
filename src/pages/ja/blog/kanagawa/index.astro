@@ -242,8 +242,51 @@ const kanagawaCities = {
   </div>
 
   <script is:inline>
-    // モーダル関連の関数（汎用版）
-    const cityData = kanagawaCities;
+    // 神奈川県市区町村データ
+    const cityData = {
+      yokohama: {
+        title: "横浜市",
+        population: "約377万人",
+        foreignPopulation: "約10万人（2.7%）",
+        features: "国際港湾都市",
+        description: "日本最大の港湾都市として発展。中華街やみなとみらいなど、国際色豊かな環境が魅力です。",
+        image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["国際港湾都市", "中華街", "みなとみらい", "多文化共生"],
+        englishHospital: "あり",
+        airport: "◎（羽田空港近接）",
+        rent: "やや高い",
+        recommend: "国際的な環境を求める外国人",
+        pageUrl: "/ja/blog/kanagawa/yokohama/"
+      },
+      kawasaki: {
+        title: "川崎市",
+        population: "約154万人",
+        foreignPopulation: "約4万人（2.6%）",
+        features: "工業都市・多文化共生",
+        description: "東京と横浜の間に位置し、多様な文化が共存する都市。外国人コミュニティも活発です。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "多文化共生", "外国人コミュニティ", "東京隣接"],
+        englishHospital: "あり",
+        airport: "○（羽田空港経由）",
+        rent: "中程度",
+        recommend: "多文化環境を求める外国人",
+        pageUrl: "/ja/blog/kanagawa/kawasaki/"
+      },
+      kamakura: {
+        title: "鎌倉市",
+        population: "約17万人",
+        foreignPopulation: "約2,500人（1.5%）",
+        features: "歴史文化都市・観光地",
+        description: "古都鎌倉として知られる歴史ある街。自然豊かで落ち着いた住環境が魅力です。",
+        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["古都", "歴史文化", "自然豊か", "落ち着いた環境"],
+        englishHospital: "限定的",
+        airport: "△（羽田空港まで1時間）",
+        rent: "やや高い",
+        recommend: "歴史と自然を重視する外国人",
+        pageUrl: "/ja/blog/kanagawa/kamakura/"
+      }
+    };
 
     function openCityModal(cityKey) {
       // cityDataが定義されていない場合は何もしない

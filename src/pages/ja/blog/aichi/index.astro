@@ -298,7 +298,38 @@ const aichiCities = {
 
   <script is:inline>
     // モーダル関連の関数（汎用版）
-    const cityData = aichiCities;
+    // 愛知県市区町村データ
+    const cityData = {
+      nagoya: {
+        title: "名古屋市",
+        population: "約233万人",
+        foreignPopulation: "約8.5万人（3.6%）",
+        features: "中部地方の中心都市",
+        description: "中部地方最大の都市。製造業が盛んで、多くの外国人研修生や技能実習生が住んでいます。",
+        image: "https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["中部中心都市", "製造業", "技能実習"],
+        englishHospital: "あり",
+        airport: "◎（中部国際空港直結）",
+        rent: "中程度",
+        recommend: "製造業で働く外国人・研修生",
+        pageUrl: "/ja/blog/aichi/nagoya/"
+      },
+      toyota: {
+        title: "豊田市",
+        population: "約42万人",
+        foreignPopulation: "約1.8万人（4.3%）",
+        features: "自動車産業の中心地",
+        description: "トヨタ自動車の本社所在地。自動車関連企業が多く、国際的な製造業の街として発展しています。",
+        image: "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["自動車産業", "トヨタ", "国際企業"],
+        englishHospital: "あり",
+        airport: "○（中部国際空港へ電車で）",
+        rent: "中程度",
+        recommend: "自動車業界で働く外国人",
+        pageUrl: "/ja/blog/aichi/toyota/"
+      }
+    };
+
 
     function openCityModal(cityKey) {
       // cityDataが定義されていない場合は何もしない

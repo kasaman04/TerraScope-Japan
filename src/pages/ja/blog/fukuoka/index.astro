@@ -221,7 +221,38 @@ const fukuokaCities = {
 
   <script is:inline>
     // モーダル関連の関数（汎用版）
-    const cityData = fukuokaCities;
+    // 福岡県市区町村データ
+    const cityData = {
+      fukuoka: {
+        title: "福岡市",
+        population: "約161万人",
+        foreignPopulation: "約3.7万人（2.3%）",
+        features: "九州の中心都市",
+        description: "九州最大の都市でアジアとの玄関口。IT産業や国際ビジネスが発達し、外国人にも住みやすい環境が整っています。",
+        image: "https://images.unsplash.com/photo-1586551292408-e03ccbcbd4b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["国際都市", "IT産業", "アジア玄関口"],
+        englishHospital: "あり",
+        airport: "◎（福岡空港直結）",
+        rent: "中程度",
+        recommend: "国際的なビジネス環境を求める外国人",
+        pageUrl: "/ja/blog/fukuoka/fukuoka/"
+      },
+      kitakyushu: {
+        title: "北九州市",
+        population: "約93万人",
+        foreignPopulation: "約1.8万人（1.9%）",
+        features: "工業都市・環境都市",
+        description: "重工業で発展した都市で、現在は環境技術に力を入れています。アジア各国との交流も活発です。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "環境技術", "製造業"],
+        englishHospital: "あり",
+        airport: "○（小倉駅経由で福岡空港へ）",
+        rent: "比較的安い",
+        recommend: "製造業・環境分野で働く外国人",
+        pageUrl: "/ja/blog/fukuoka/kitakyushu/"
+      }
+    };
+
 
     function openCityModal(cityKey) {
       // cityDataが定義されていない場合は何もしない
