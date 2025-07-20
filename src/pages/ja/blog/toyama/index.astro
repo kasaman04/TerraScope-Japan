@@ -245,7 +245,50 @@ const toyamaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // toyama市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      toyama: {
+        title: "富山市",
+        population: "約41万人",
+        foreignPopulation: "約8,500人（2.1%）",
+        features: "県庁所在地・薬業の街",
+        description: "富山県の県庁所在地。薬業で有名で、「薬の富山」として全国に知られる。立山連峰を望む美しい自然環境が魅力。",
+        image: "https://images.unsplash.com/photo-1520637836862-4d197d17c93a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "薬業", "富山駅"],
+        englishHospital: "あり",
+        airport: "◎（富山空港直結）",
+        rent: "安い",
+        recommend: "薬業・医療関係で働く外国人",
+        pageUrl: "/ja/blog/toyama/toyama/"
+      },
+      takaoka: {
+        title: "高岡市",
+        population: "約17万人",
+        foreignPopulation: "約3,200人（1.9%）",
+        features: "銅器工芸・前田利長",
+        description: "高岡銅器で有名な工芸の街。前田利長が築いた歴史ある都市で、伝統工芸が息づいている。職人技術の継承地。",
+        image: "https://images.unsplash.com/photo-1580500669373-da2121b36b72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["銅器工芸", "歴史文化", "工芸の街"],
+        englishHospital: "あり",
+        airport: "○（富山空港経由）",
+        rent: "安い",
+        recommend: "伝統工芸に興味のある外国人",
+        pageUrl: "/ja/blog/toyama/takaoka/"
+      },
+      uozu: {
+        title: "魚津市",
+        population: "約4万人",
+        foreignPopulation: "約680人（1.7%）",
+        features: "蜃気楼・海の幸",
+        description: "蜃気楼で有名な富山湾に面した都市。新鮮な海の幸と美しい自然環境が魅力。立山連峰の絶景も楽しめる。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["蜃気楼", "海の幸", "富山湾"],
+        englishHospital: "なし",
+        airport: "○（富山空港経由）",
+        rent: "非常に安い",
+        recommend: "自然環境を重視する外国人",
+        pageUrl: "/ja/blog/toyama/uozu/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

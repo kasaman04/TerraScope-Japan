@@ -245,7 +245,50 @@ const tokushimaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // tokushima市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      tokushima: {
+        title: "徳島市",
+        population: "約26万人",
+        foreignPopulation: "約4,200人（1.6%）",
+        features: "県庁所在地・阿波踊り",
+        description: "徳島県の県庁所在地。阿波踊りで全国的に有名で、四国の玄関口として発展している。伝統文化が息づく街。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "阿波踊り", "四国の玄関"],
+        englishHospital: "あり",
+        airport: "○（徳島阿波おどり空港）",
+        rent: "普通",
+        recommend: "日本文化に興味のある外国人",
+        pageUrl: "/ja/blog/tokushima/tokushima/"
+      },
+      naruto: {
+        title: "鳴門市",
+        population: "約6万人",
+        foreignPopulation: "約800人（1.3%）",
+        features: "渦潮・大塚国際美術館",
+        description: "鳴門海峡の渦潮で有名な観光都市。大塚国際美術館などの文化施設もあり、自然と芸術を楽しめる街。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["渦潮", "美術館", "観光"],
+        englishHospital: "あり",
+        airport: "○（徳島阿波おどり空港経由）",
+        rent: "安い",
+        recommend: "自然・芸術を愛する外国人",
+        pageUrl: "/ja/blog/tokushima/naruto/"
+      },
+      anan: {
+        title: "阿南市",
+        population: "約7万人",
+        foreignPopulation: "約1,100人（1.6%）",
+        features: "LED・光産業",
+        description: "LED発祥の地として知られる光産業の中心都市。日亜化学工業の本社があり、技術系の外国人も多く働いている。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["LED", "光産業", "技術"],
+        englishHospital: "あり",
+        airport: "○（徳島阿波おどり空港経由）",
+        rent: "安い",
+        recommend: "技術・研究関係で働く外国人",
+        pageUrl: "/ja/blog/tokushima/anan/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

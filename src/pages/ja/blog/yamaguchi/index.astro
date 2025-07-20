@@ -245,7 +245,50 @@ const yamaguchiCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // yamaguchi市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      yamaguchi: {
+        title: "山口市",
+        population: "約19万人",
+        foreignPopulation: "約3,200人（1.7%）",
+        features: "県庁所在地・山口大学",
+        description: "山口県の県庁所在地。山口大学があり学術都市として発展し、温暖で住みやすい環境の都市。教育機関が充実している。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "山口大学", "学術都市"],
+        englishHospital: "あり",
+        airport: "○（山口宇部空港経由）",
+        rent: "普通",
+        recommend: "学術関係で働く外国人",
+        pageUrl: "/ja/blog/yamaguchi/yamaguchi/"
+      },
+      shimonoseki: {
+        title: "下関市",
+        population: "約26万人",
+        foreignPopulation: "約4,800人（1.8%）",
+        features: "本州最西端・ふぐ",
+        description: "本州最西端の都市。関門海峡に面し、ふぐで有名な港町。九州への玄関口として発展している。海の幸が豊富。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["本州最西端", "ふぐ", "関門海峡"],
+        englishHospital: "あり",
+        airport: "○（山口宇部空港経由）",
+        rent: "普通",
+        recommend: "九州との往来が多い外国人",
+        pageUrl: "/ja/blog/yamaguchi/shimonoseki/"
+      },
+      ube: {
+        title: "宇部市",
+        population: "約16万人",
+        foreignPopulation: "約2,400人（1.5%）",
+        features: "工業都市・空港",
+        description: "化学工業で発展した工業都市。山口宇部空港があり、アクセスが良好な都市。製造業が盛んで雇用機会が豊富。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "空港", "化学工業"],
+        englishHospital: "あり",
+        airport: "○（山口宇部空港）",
+        rent: "普通",
+        recommend: "化学・製造業で働く外国人",
+        pageUrl: "/ja/blog/yamaguchi/ube/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

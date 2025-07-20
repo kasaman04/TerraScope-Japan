@@ -245,7 +245,50 @@ const ishikawaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // ishikawa市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      kanazawa: {
+        title: "金沢市",
+        population: "約46万人",
+        foreignPopulation: "約10,500人（2.3%）",
+        features: "県庁所在地・兼六園",
+        description: "石川県の県庁所在地。兼六園や金沢城公園など加賀百万石の歴史と文化が息づく美しい街です。",
+        image: "https://images.unsplash.com/photo-1602081292144-fce3dac15a4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "兼六園", "加賀百万石"],
+        englishHospital: "あり",
+        airport: "◎（小松空港経由）",
+        rent: "普通",
+        recommend: "伝統文化に興味のある外国人",
+        pageUrl: "/ja/blog/ishikawa/kanazawa/"
+      },
+      komatsu: {
+        title: "小松市",
+        population: "約11万人",
+        foreignPopulation: "約3,800人（3.5%）",
+        features: "空港都市・コマツ本社",
+        description: "小松空港がある空港都市。建設機械メーカーのコマツ本社があり、国際的な企業都市として発展しています。",
+        image: "https://images.unsplash.com/photo-1543946207-39bd91e70ca7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["空港都市", "コマツ", "企業城下町"],
+        englishHospital: "あり",
+        airport: "◎（小松空港直結）",
+        rent: "安い",
+        recommend: "製造業・航空関係で働く外国人",
+        pageUrl: "/ja/blog/ishikawa/komatsu/"
+      },
+      hakusan: {
+        title: "白山市",
+        population: "約11万人",
+        foreignPopulation: "約2,200人（2.0%）",
+        features: "白山・温泉の街",
+        description: "霊峰白山の麓に位置する自然豊かな都市。温泉地としても有名で、美しい自然環境に恵まれています。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["白山", "温泉", "自然豊か"],
+        englishHospital: "なし",
+        airport: "○（小松空港経由）",
+        rent: "安い",
+        recommend: "自然環境を重視する外国人",
+        pageUrl: "/ja/blog/ishikawa/hakusan/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

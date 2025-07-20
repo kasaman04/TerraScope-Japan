@@ -245,7 +245,50 @@ const sagaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // saga市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      saga: {
+        title: "佐賀市",
+        population: "約23万人",
+        foreignPopulation: "約3,200人（1.4%）",
+        features: "県庁所在地・バルーンフェスタ",
+        description: "佐賀県の県庁所在地。佐賀インターナショナルバルーンフェスタで有名で、歴史ある城下町として発展しています。有田焼の伝統工芸も身近に感じられる文化的な都市です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "バルーン", "城下町", "有田焼"],
+        englishHospital: "あり",
+        airport: "○（佐賀空港）",
+        rent: "普通",
+        recommend: "福岡へのアクセスを重視する外国人",
+        pageUrl: "/ja/blog/saga/saga/"
+      },
+      karatsu: {
+        title: "唐津市",
+        population: "約12万人",
+        foreignPopulation: "約1,800人（1.5%）",
+        features: "唐津くんち・虹の松原",
+        description: "唐津くんちで有名な歴史ある港町。虹の松原や唐津城などの観光地があり、海の幸に恵まれた風光明媚な都市です。有田焼の発祥地としても知られています。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["唐津くんち", "虹の松原", "港町", "陶磁器"],
+        englishHospital: "あり",
+        airport: "○（佐賀空港経由）",
+        rent: "安い",
+        recommend: "海辺の生活と伝統工芸を楽しみたい外国人",
+        pageUrl: "/ja/blog/saga/karatsu/"
+      },
+      tosu: {
+        title: "鳥栖市",
+        population: "約7万人",
+        foreignPopulation: "約1,500人（2.1%）",
+        features: "交通の要衝・物流拠点",
+        description: "九州の交通の要衝として発展。鳥栖ジャンクションがあり、物流拠点として多くの企業が進出している産業都市です。福岡市へのアクセスも良好で通勤圏内です。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["交通要衝", "物流", "産業都市", "福岡近郊"],
+        englishHospital: "あり",
+        airport: "○（佐賀空港経由）",
+        rent: "普通",
+        recommend: "物流・製造業で働く外国人",
+        pageUrl: "/ja/blog/saga/tosu/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

@@ -245,7 +245,50 @@ const shimaneCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // shimane市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      matsue: {
+        title: "松江市",
+        population: "約20万人",
+        foreignPopulation: "約2,800人（1.4%）",
+        features: "県庁所在地・松江城",
+        description: "島根県の県庁所在地。国宝松江城を中心とした水の都で、宍道湖の美しい景観に恵まれた歴史ある都市です。神話の国の玄関口として古代から栄えた文化都市です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "松江城", "宍道湖", "神話"],
+        englishHospital: "あり",
+        airport: "○（出雲縁結び空港経由）",
+        rent: "安い",
+        recommend: "歴史文化と自然を愛する外国人",
+        pageUrl: "/ja/blog/shimane/matsue/"
+      },
+      izumo: {
+        title: "出雲市",
+        population: "約17万人",
+        foreignPopulation: "約2,400人（1.4%）",
+        features: "出雲大社・神話",
+        description: "出雲大社で有名な神話の里。縁結びの神様として親しまれ、日本の古代文化を深く体験できる都市です。神在月には全国の神々が集まる聖地として知られています。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["出雲大社", "神話", "縁結び", "聖地"],
+        englishHospital: "あり",
+        airport: "○（出雲縁結び空港）",
+        rent: "安い",
+        recommend: "日本文化と神話に興味のある外国人",
+        pageUrl: "/ja/blog/shimane/izumo/"
+      },
+      hamada: {
+        title: "浜田市",
+        population: "約5万人",
+        foreignPopulation: "約900人（1.8%）",
+        features: "日本海・水産業",
+        description: "日本海に面した港町。新鮮な海の幸で有名で、のどぐろなどの高級魚の産地としても知られています。美しい海岸線と豊かな漁業文化が特徴の静かな街です。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["日本海", "水産業", "のどぐろ", "港町"],
+        englishHospital: "あり",
+        airport: "○（萩・石見空港）",
+        rent: "安い",
+        recommend: "海の幸と自然を愛する外国人",
+        pageUrl: "/ja/blog/shimane/hamada/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

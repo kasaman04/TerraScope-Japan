@@ -245,7 +245,50 @@ const miyazakiCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // miyazaki市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      miyazaki: {
+        title: "宮崎市",
+        population: "約40万人",
+        foreignPopulation: "約5,200人（1.3%）",
+        features: "県庁所在地・青島・シーガイア",
+        description: "宮崎県の県庁所在地。青島やシーガイアなどの観光地があり、南国情緒豊かな都市です。温暖な気候で住みやすい環境が特徴で、南国リゾートの雰囲気を年中楽しめます。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "青島", "シーガイア", "南国リゾート"],
+        englishHospital: "あり",
+        airport: "○（宮崎空港）",
+        rent: "普通",
+        recommend: "温暖な気候を好む外国人",
+        pageUrl: "/ja/blog/miyazaki/miyazaki/"
+      },
+      miyakonojo: {
+        title: "都城市",
+        population: "約16万人",
+        foreignPopulation: "約2,800人（1.8%）",
+        features: "畜産・焼酎・霧島連山",
+        description: "宮崎県西部の中心都市。畜産業が盛んで、焼酎の産地としても有名。霧島連山の麓に位置し、自然環境に恵まれています。南国の豊かな自然と農業文化を体験できます。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["畜産", "焼酎", "霧島", "南国農業"],
+        englishHospital: "あり",
+        airport: "○（宮崎空港経由）",
+        rent: "普通",
+        recommend: "農業・畜産業に興味のある外国人",
+        pageUrl: "/ja/blog/miyazaki/miyakonojo/"
+      },
+      nobeoka: {
+        title: "延岡市",
+        population: "約12万人",
+        foreignPopulation: "約1,600人（1.3%）",
+        features: "化学工業・延岡城・五ヶ瀬川",
+        description: "宮崎県北部の中心都市。旭化成発祥の地として化学工業が発達。延岡城跡や五ヶ瀬川など、歴史と自然が調和した都市です。南国の工業都市として独特の魅力があります。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["化学工業", "延岡城", "五ヶ瀬川", "南国工業"],
+        englishHospital: "あり",
+        airport: "○（宮崎空港経由）",
+        rent: "普通",
+        recommend: "化学・製造業で働く外国人",
+        pageUrl: "/ja/blog/miyazaki/nobeoka/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
@@ -278,7 +321,7 @@ const miyazakiCities = {
       if (city.tags) {
         city.tags.forEach(tag => {
           const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
+          tagElement.className = 'text-xs bg-orange-100 text-orange-800 px-3 py-1 rounded-full font-medium';
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });

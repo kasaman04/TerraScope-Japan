@@ -245,7 +245,50 @@ const wakayamaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // wakayama市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      wakayama: {
+        title: "和歌山市",
+        population: "約35万人",
+        foreignPopulation: "約5,800人（1.7%）",
+        features: "県庁所在地・和歌山城",
+        description: "和歌山県の県庁所在地。和歌山城を中心とした城下町で、紀伊水道に面し温暖な気候に恵まれた都市。紀州の中心地。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "和歌山城", "城下町"],
+        englishHospital: "あり",
+        airport: "○（関西国際空港経由）",
+        rent: "安い",
+        recommend: "温暖な気候を求める外国人",
+        pageUrl: "/ja/blog/wakayama/wakayama/"
+      },
+      tanabe: {
+        title: "田辺市",
+        population: "約7万人",
+        foreignPopulation: "約1,200人（1.7%）",
+        features: "熊野古道・世界遺産",
+        description: "熊野古道の玄関口として有名な世界遺産の街。豊かな自然と歴史文化が残る魅力的な地域。スピリチュアルな体験ができる。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["熊野古道", "世界遺産", "自然"],
+        englishHospital: "あり",
+        airport: "○（関西国際空港経由）",
+        rent: "安い",
+        recommend: "自然・歴史に興味のある外国人",
+        pageUrl: "/ja/blog/wakayama/tanabe/"
+      },
+      hashimoto: {
+        title: "橋本市",
+        population: "約6万人",
+        foreignPopulation: "約1,100人（1.8%）",
+        features: "高野山麓・大阪近郊",
+        description: "高野山の麓に位置し、大阪へのアクセスも良好。自然豊かな環境と都市部への利便性を兼ね備えた住みやすい都市。",
+        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["高野山麓", "大阪近郊", "自然"],
+        englishHospital: "あり",
+        airport: "○（関西国際空港経由）",
+        rent: "安い",
+        recommend: "自然と利便性を求める外国人",
+        pageUrl: "/ja/blog/wakayama/hashimoto/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

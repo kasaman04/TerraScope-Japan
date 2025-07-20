@@ -245,7 +245,50 @@ const gunmaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // gunma市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      maebashi: {
+        title: "前橋市",
+        population: "約33万人",
+        foreignPopulation: "約10,500人（3.2%）",
+        features: "県庁所在地・赤城山",
+        description: "群馬県の県庁所在地。赤城山の麓に位置し、自然豊かで住みやすい環境が整っています。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "赤城山", "自然豊か"],
+        englishHospital: "あり",
+        airport: "△（羽田空港経由）",
+        rent: "安い",
+        recommend: "県庁所在地の安定した環境を求める外国人",
+        pageUrl: "/ja/blog/gunma/maebashi/"
+      },
+      takasaki: {
+        title: "高崎市",
+        population: "約37万人",
+        foreignPopulation: "約12,000人（3.3%）",
+        features: "商業都市・だるまの街",
+        description: "群馬県最大の都市。だるまで有名な商業都市で、県内の経済の中心地として栄えています。",
+        image: "https://images.unsplash.com/photo-1547634415-1b6db8b16fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["商業都市", "だるま", "経済中心"],
+        englishHospital: "あり",
+        airport: "△（羽田空港経由）",
+        rent: "安い",
+        recommend: "商業・ビジネス関係で働く外国人",
+        pageUrl: "/ja/blog/gunma/takasaki/"
+      },
+      ota: {
+        title: "太田市",
+        population: "約22万人",
+        foreignPopulation: "約9,800人（4.5%）",
+        features: "工業都市・SUBARU本社",
+        description: "SUBARUの本社がある工業都市。多くの外国人が製造業に従事し、国際色豊かな街となっています。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "SUBARU", "国際色豊か"],
+        englishHospital: "あり",
+        airport: "△（羽田空港経由）",
+        rent: "安い",
+        recommend: "製造業で働く外国人",
+        pageUrl: "/ja/blog/gunma/ota/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

@@ -245,7 +245,50 @@ const yamanashiCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // yamanashi市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      kofu: {
+        title: "甲府市",
+        population: "約19万人",
+        foreignPopulation: "約4,200人（2.2%）",
+        features: "県庁所在地・武田信玄",
+        description: "山梨県の県庁所在地。武田信玄ゆかりの城下町として栄え、盆地に位置する歴史ある都市。富士山を間近に望める。",
+        image: "https://images.unsplash.com/photo-1576635566830-607e89fd3c12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "武田信玄", "城下町"],
+        englishHospital: "あり",
+        airport: "△（羽田空港経由）",
+        rent: "普通",
+        recommend: "歴史文化に興味のある外国人",
+        pageUrl: "/ja/blog/yamanashi/kofu/"
+      },
+      fujiyoshida: {
+        title: "富士吉田市",
+        population: "約5万人",
+        foreignPopulation: "約1,800人（3.6%）",
+        features: "富士山観光・織物業",
+        description: "富士山の麓に位置する観光都市。富士山観光の拠点として多くの外国人観光客が訪れ、国際色豊かな街。登山やハイキングの基地。",
+        image: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["富士山", "観光都市", "国際色豊か"],
+        englishHospital: "あり",
+        airport: "○（羽田空港経由）",
+        rent: "安い",
+        recommend: "観光・サービス業で働く外国人",
+        pageUrl: "/ja/blog/yamanashi/fujiyoshida/"
+      },
+      minamialps: {
+        title: "南アルプス市",
+        population: "約7万人",
+        foreignPopulation: "約1,950人（2.8%）",
+        features: "南アルプス・果樹栽培",
+        description: "南アルプスに囲まれた自然豊かな都市。桃やブドウなどの果樹栽培が盛んで、農業体験も人気。ワイン産業も発達している。",
+        image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["南アルプス", "果樹栽培", "自然豊か"],
+        englishHospital: "なし",
+        airport: "△（羽田空港経由）",
+        rent: "安い",
+        recommend: "農業・自然体験に興味のある外国人",
+        pageUrl: "/ja/blog/yamanashi/minamialps/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

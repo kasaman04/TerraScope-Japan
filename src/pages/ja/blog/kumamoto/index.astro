@@ -245,7 +245,50 @@ const kumamotoCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // kumamoto市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      kumamoto: {
+        title: "熊本市",
+        population: "約74万人",
+        foreignPopulation: "約12,000人（1.6%）",
+        features: "県庁所在地・熊本城・政令指定都市",
+        description: "熊本県の県庁所在地で政令指定都市。熊本城とくまモンで有名で、九州中央部の中核都市として発展しています。熊本ラーメンや馬刺しなど独自のグルメ文化も魅力です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "熊本城", "くまモン", "政令指定都市"],
+        englishHospital: "あり",
+        airport: "○（熊本空港）",
+        rent: "普通",
+        recommend: "都市機能と伝統文化を求める外国人",
+        pageUrl: "/ja/blog/kumamoto/kumamoto/"
+      },
+      yatsushiro: {
+        title: "八代市",
+        population: "約12万人",
+        foreignPopulation: "約2,400人（2.0%）",
+        features: "八代海・い草・港湾都市",
+        description: "八代海に面した港湾都市。い草や畳表の産地として有名で、熊本県南部の中心的な都市です。熊本城の歴史文化圏内で、伝統的な日本文化を体験できます。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["八代海", "い草", "港湾都市", "畳文化"],
+        englishHospital: "あり",
+        airport: "○（熊本空港経由）",
+        rent: "普通",
+        recommend: "自然環境と伝統工業に興味のある外国人",
+        pageUrl: "/ja/blog/kumamoto/yatsushiro/"
+      },
+      arao: {
+        title: "荒尾市",
+        population: "約5万人",
+        foreignPopulation: "約800人（1.6%）",
+        features: "グリーンランド・競馬場・石炭",
+        description: "遊園地グリーンランドで有名な都市。かつて石炭で栄えた歴史があり、現在は観光業が盛んです。熊本城から程近く、くまモンの故郷としても親しまれています。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["グリーンランド", "競馬場", "観光", "くまモン"],
+        englishHospital: "あり",
+        airport: "○（熊本空港経由）",
+        rent: "安い",
+        recommend: "レジャー・観光業に興味のある外国人",
+        pageUrl: "/ja/blog/kumamoto/arao/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
@@ -278,7 +321,7 @@ const kumamotoCities = {
       if (city.tags) {
         city.tags.forEach(tag => {
           const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
+          tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium';
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });

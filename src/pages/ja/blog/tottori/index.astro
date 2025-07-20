@@ -245,7 +245,50 @@ const tottoriCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // tottori市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      tottori: {
+        title: "鳥取市",
+        population: "約19万人",
+        foreignPopulation: "約2,900人（1.5%）",
+        features: "県庁所在地・鳥取砂丘",
+        description: "鳥取県の県庁所在地。日本最大級の鳥取砂丘で有名で、日本海に面した自然豊かな都市。砂丘で有名な観光地。",
+        image: "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "鳥取砂丘", "日本海"],
+        englishHospital: "あり",
+        airport: "○（鳥取砂丘コナン空港）",
+        rent: "安い",
+        recommend: "自然環境を重視する外国人",
+        pageUrl: "/ja/blog/tottori/tottori/"
+      },
+      yonago: {
+        title: "米子市",
+        population: "約15万人",
+        foreignPopulation: "約2,200人（1.5%）",
+        features: "商業都市・大山",
+        description: "鳥取県西部の中心都市。商業が発達し、大山の美しい景観を望む住みやすい都市。山陰地方の交通要衝。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["商業都市", "大山", "西部中心"],
+        englishHospital: "あり",
+        airport: "○（米子鬼太郎空港）",
+        rent: "安い",
+        recommend: "商業地域で働く外国人",
+        pageUrl: "/ja/blog/tottori/yonago/"
+      },
+      kurayoshi: {
+        title: "倉吉市",
+        population: "約5万人",
+        foreignPopulation: "約700人（1.4%）",
+        features: "白壁土蔵群・温泉",
+        description: "白壁土蔵群で有名な歴史ある街並みが残る都市。関金温泉などの温泉地もあり、のんびりとした環境が魅力。",
+        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["白壁土蔵群", "温泉", "歴史"],
+        englishHospital: "あり",
+        airport: "○（鳥取砂丘コナン空港経由）",
+        rent: "安い",
+        recommend: "静かな環境を求める外国人",
+        pageUrl: "/ja/blog/tottori/kurayoshi/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

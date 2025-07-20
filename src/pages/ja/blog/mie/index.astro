@@ -245,7 +245,50 @@ const mieCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // mie市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      tsu: {
+        title: "津市",
+        population: "約27万人",
+        foreignPopulation: "約7,200人（2.7%）",
+        features: "県庁所在地・歴史の街",
+        description: "三重県の県庁所在地。歴史ある城下町として発展し、温暖な気候と豊かな自然に恵まれた住みやすい都市です。伊勢神宮への玄関口として、神聖な文化を感じられます。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "城下町", "温暖な気候", "伊勢神宮近い"],
+        englishHospital: "あり",
+        airport: "○（中部国際空港経由）",
+        rent: "普通",
+        recommend: "県庁所在地の安定した環境を求める外国人",
+        pageUrl: "/ja/blog/mie/tsu/"
+      },
+      yokkaichi: {
+        title: "四日市市",
+        population: "約31万人",
+        foreignPopulation: "約13,800人（4.4%）",
+        features: "工業都市・外国人多い",
+        description: "三重県最大の工業都市。多くの製造業が集積し、外国人労働者が多く住む国際色豊かな都市です。伊勢神宮の文化圏内で、日本の伝統と現代産業を両方体験できます。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["工業都市", "外国人多い", "製造業", "国際的"],
+        englishHospital: "あり",
+        airport: "○（中部国際空港経由）",
+        rent: "普通",
+        recommend: "製造業で働く外国人",
+        pageUrl: "/ja/blog/mie/yokkaichi/"
+      },
+      ise: {
+        title: "伊勢市",
+        population: "約12万人",
+        foreignPopulation: "約2,400人（2.0%）",
+        features: "伊勢神宮・観光都市",
+        description: "伊勢神宮で有名な日本有数の聖地。多くの外国人観光客が訪れ、伝統文化を体験できる歴史ある都市です。神聖な雰囲気と真珠の美しさで知られる特別な場所です。",
+        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["伊勢神宮", "観光都市", "伝統文化", "聖地"],
+        englishHospital: "あり",
+        airport: "○（中部国際空港経由）",
+        rent: "普通",
+        recommend: "伝統文化に興味のある外国人",
+        pageUrl: "/ja/blog/mie/ise/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
@@ -278,7 +321,7 @@ const mieCities = {
       if (city.tags) {
         city.tags.forEach(tag => {
           const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
+          tagElement.className = 'text-xs bg-teal-100 text-teal-800 px-3 py-1 rounded-full font-medium';
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });

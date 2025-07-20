@@ -245,7 +245,50 @@ const okayamaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // okayama市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      okayama: {
+        title: "岡山市",
+        population: "約72万人",
+        foreignPopulation: "約16,800人（2.3%）",
+        features: "県庁所在地・岡山城",
+        description: "岡山県の県庁所在地。岡山城と後楽園で有名で、「晴れの国」として温暖な気候に恵まれた住みやすい都市です。白桃の産地としても知られ、フルーツ王国岡山の中心地です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "岡山城", "後楽園", "白桃"],
+        englishHospital: "あり",
+        airport: "○（岡山桃太郎空港）",
+        rent: "普通",
+        recommend: "温暖な気候と都市機能を求める外国人",
+        pageUrl: "/ja/blog/okayama/okayama/"
+      },
+      kurashiki: {
+        title: "倉敷市",
+        population: "約48万人",
+        foreignPopulation: "約10,200人（2.1%）",
+        features: "美観地区・工業都市",
+        description: "倉敷美観地区で有名な歴史ある都市。水島コンビナートを擁する工業都市でもあり、多くの外国人が働いています。江戸時代の町並みが保存され、観光と産業が調和した街です。",
+        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["美観地区", "工業都市", "水島", "歴史"],
+        englishHospital: "あり",
+        airport: "○（岡山桃太郎空港経由）",
+        rent: "普通",
+        recommend: "製造業で働く外国人",
+        pageUrl: "/ja/blog/okayama/kurashiki/"
+      },
+      tsuyama: {
+        title: "津山市",
+        population: "約10万人",
+        foreignPopulation: "約1,800人（1.8%）",
+        features: "津山城・自然豊か",
+        description: "津山城跡で有名な歴史ある城下町。豊かな自然に囲まれ、落ち着いた環境で生活できる都市です。桜の名所としても知られ、四季の美しさを満喫できます。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["津山城", "城下町", "自然", "桜"],
+        englishHospital: "あり",
+        airport: "○（岡山桃太郎空港経由）",
+        rent: "安い",
+        recommend: "自然環境を重視する外国人",
+        pageUrl: "/ja/blog/okayama/tsuyama/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

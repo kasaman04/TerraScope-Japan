@@ -245,7 +245,50 @@ const kagawaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // kagawa市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      takamatsu: {
+        title: "高松市",
+        population: "約42万人",
+        foreignPopulation: "約6,800人（1.6%）",
+        features: "県庁所在地・栗林公園",
+        description: "香川県の県庁所在地。栗林公園などの名勝地があり、四国の政治・経済の中心都市として発展しています。うどん県として有名で、讃岐うどんの本場として多くの外国人観光客が訪れます。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "栗林公園", "四国の中心", "うどん県"],
+        englishHospital: "あり",
+        airport: "○（高松空港）",
+        rent: "普通",
+        recommend: "四国での生活を希望する外国人",
+        pageUrl: "/ja/blog/kagawa/takamatsu/"
+      },
+      marugame: {
+        title: "丸亀市",
+        population: "約11万人",
+        foreignPopulation: "約2,100人（1.9%）",
+        features: "丸亀城・団扇",
+        description: "現存天守の丸亀城で有名な城下町。丸亀うちわの産地としても知られ、伝統工芸が息づく都市です。讃岐うどんの名店も多く、うどん文化を深く体験できます。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["丸亀城", "団扇", "城下町", "うどん文化"],
+        englishHospital: "あり",
+        airport: "○（高松空港経由）",
+        rent: "普通",
+        recommend: "伝統文化に興味のある外国人",
+        pageUrl: "/ja/blog/kagawa/marugame/"
+      },
+      sakaide: {
+        title: "坂出市",
+        population: "約5万人",
+        foreignPopulation: "約900人（1.8%）",
+        features: "瀬戸大橋・工業",
+        description: "瀬戸大橋の四国側玄関口。塩田跡地を利用した工業都市として発展し、本州とのアクセスが良好な都市です。瀬戸内海の美しい景色と讃岐うどんを楽しめます。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["瀬戸大橋", "工業", "本州近い", "瀬戸内海"],
+        englishHospital: "あり",
+        airport: "○（高松空港経由）",
+        rent: "普通",
+        recommend: "本州との往来が多い外国人",
+        pageUrl: "/ja/blog/kagawa/sakaide/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
@@ -278,7 +321,7 @@ const kagawaCities = {
       if (city.tags) {
         city.tags.forEach(tag => {
           const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
+          tagElement.className = 'text-xs bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full font-medium';
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });

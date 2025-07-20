@@ -245,7 +245,50 @@ const okinawaCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // okinawa市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      naha: {
+        title: "那覇市",
+        population: "約32万人",
+        foreignPopulation: "約7,500人（2.3%）",
+        features: "県庁所在地・首里城・国際通り",
+        description: "沖縄県の県庁所在地で、首里城や国際通りで有名。琉球王国の歴史と現代文化が融合した沖縄の中心都市です。美しい海とリゾート文化が楽しめる国際的な街です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "首里城", "国際通り", "琉球文化"],
+        englishHospital: "あり",
+        airport: "○（那覇空港）",
+        rent: "普通",
+        recommend: "琉球文化と都市生活を求める外国人",
+        pageUrl: "/ja/blog/okinawa/naha/"
+      },
+      okinawacity: {
+        title: "沖縄市",
+        population: "約14万人",
+        foreignPopulation: "約2,800人（2.0%）",
+        features: "米軍基地・音楽のまち",
+        description: "米軍基地が多く、アメリカ文化の影響が強い都市。音楽文化が発達し、多文化共生の街として知られています。エイサーなどの伝統文化も盛んです。",
+        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["米軍基地", "音楽", "多文化", "エイサー"],
+        englishHospital: "あり",
+        airport: "○（那覇空港経由）",
+        rent: "普通",
+        recommend: "アメリカ文化に慣れ親しんだ外国人",
+        pageUrl: "/ja/blog/okinawa/okinawacity/"
+      },
+      uruma: {
+        title: "うるま市",
+        population: "約12万人",
+        foreignPopulation: "約1,400人（1.2%）",
+        features: "海中道路・伊計島",
+        description: "海中道路で結ばれた美しい島々を有し、リゾート地として人気。自然豊かで住みやすい環境が特徴です。透明度の高い海と白い砂浜が魅力的な地域です。",
+        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["海中道路", "伊計島", "リゾート", "離島"],
+        englishHospital: "あり",
+        airport: "○（那覇空港経由）",
+        rent: "普通",
+        recommend: "海辺の静かな生活を求める外国人",
+        pageUrl: "/ja/blog/okinawa/uruma/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
