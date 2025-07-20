@@ -244,7 +244,50 @@ const gifuCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // gifu市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      gifu: {
+        title: "岐阜市",
+        population: "約40万人",
+        foreignPopulation: "約9,800人（2.4%）",
+        features: "県庁所在地・織田信長",
+        description: "岐阜県の県庁所在地。織田信長ゆかりの城下町として栄え、岐阜城や長良川鵜飼いで有名な歴史ある都市です。",
+        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "織田信長", "鵜飼い"],
+        englishHospital: "あり",
+        airport: "○（中部国際空港経由）",
+        rent: "普通",
+        recommend: "歴史文化に興味のある外国人",
+        pageUrl: "/ja/blog/gifu/gifu/"
+      },
+      ogaki: {
+        title: "大垣市",
+        population: "約16万人",
+        foreignPopulation: "約4,500人（2.8%）",
+        features: "水の都・製造業",
+        description: "豊富な地下水で「水の都」と呼ばれる工業都市。多くの製造業が集積し、外国人労働者も多く住んでいます。",
+        image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["水の都", "製造業", "工業都市"],
+        englishHospital: "あり",
+        airport: "○（中部国際空港経由）",
+        rent: "安い",
+        recommend: "製造業で働く外国人",
+        pageUrl: "/ja/blog/gifu/ogaki/"
+      },
+      kakamigahara: {
+        title: "各務原市",
+        population: "約15万人",
+        foreignPopulation: "約4,800人（3.2%）",
+        features: "航空産業・川崎重工",
+        description: "航空産業が盛んな都市。川崎重工の工場があり、航空機関連産業で働く外国人エンジニアが多く住んでいます。",
+        image: "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["航空産業", "川崎重工", "エンジニア"],
+        englishHospital: "あり",
+        airport: "◎（中部国際空港経由）",
+        rent: "普通",
+        recommend: "航空・エンジニア関係で働く外国人",
+        pageUrl: "/ja/blog/gifu/kakamigahara/"
+      }
+    };
 
 
     function openCityModal(cityKey) {

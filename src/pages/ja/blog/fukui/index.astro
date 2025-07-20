@@ -244,7 +244,50 @@ const fukuiCities = {
   <script is:inline>
     // モーダル関連の関数（汎用版）
     // fukui市区町村データ
-    const cityData = { dummy: { title: "準備中", features: "準備中" } };
+    const cityData = {
+      fukui: {
+        title: "福井市",
+        population: "約26万人",
+        foreignPopulation: "約4,500人（1.7%）",
+        features: "県庁所在地・恐竜博物館",
+        description: "福井県の県庁所在地。恐竜化石の発掘地として有名で、福井県立恐竜博物館は世界的に注目されています。",
+        image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "恐竜", "化石発掘"],
+        englishHospital: "あり",
+        airport: "△（小松空港経由）",
+        rent: "安い",
+        recommend: "研究・教育関係で働く外国人",
+        pageUrl: "/ja/blog/fukui/fukui/"
+      },
+      tsuruga: {
+        title: "敦賀市",
+        population: "約6万人",
+        foreignPopulation: "約1,200人（2.0%）",
+        features: "港町・原子力発電所",
+        description: "若狭湾に面した港町。原子力発電所が立地し、エネルギー関連の産業が盛んです。",
+        image: "https://images.unsplash.com/photo-1566139206817-2177767c3df3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["港町", "原子力", "エネルギー"],
+        englishHospital: "なし",
+        airport: "△（小松空港経由）",
+        rent: "安い",
+        recommend: "エネルギー関係で働く外国人",
+        pageUrl: "/ja/blog/fukui/tsuruga/"
+      },
+      echizen: {
+        title: "越前市",
+        population: "約8万人",
+        foreignPopulation: "約3,800人（4.8%）",
+        features: "伝統工芸・越前和紙",
+        description: "越前和紙で有名な伝統工芸の街。多くの外国人技能実習生が住み、国際色豊かな地域となっています。",
+        image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["伝統工芸", "越前和紙", "国際色豊か"],
+        englishHospital: "あり",
+        airport: "△（小松空港経由）",
+        rent: "非常に安い",
+        recommend: "伝統工芸に興味のある外国人",
+        pageUrl: "/ja/blog/fukui/echizen/"
+      }
+    };
 
 
     function openCityModal(cityKey) {
