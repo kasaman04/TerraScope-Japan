@@ -1,0 +1,362 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "記事カテゴリー一覧";
+const description = "大阪府の外国人向け生活情報カテゴリー一覧";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">記事カテゴリー一覧</h1>
+        <p class="text-sm text-gray-600">大阪府で暮らす外国人のための生活情報</p>
+      </div>
+
+      <!-- Categories List -->
+      <div class="space-y-12">
+        
+        <!-- 地域情報 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🗾</span>
+              <h2 class="text-xl font-bold text-gray-900">地域情報</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/regional-info/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/regional-info-article-1/" title="大阪の地域特性と外国人コミュニティ" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="大阪の地域特性と外国人コミュニティ"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      大阪の地域特性と外国人コミュニティ
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                        地域情報
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      大阪府の各エリアの特徴と外国人が住みやすい地域を詳しく紹介。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- アクセス -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🚃</span>
+              <h2 class="text-xl font-bold text-gray-900">アクセス</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/access/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/access-article-1/" title="大阪の交通システム完全ガイド" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="大阪の交通システム完全ガイド"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      大阪の交通システム完全ガイド
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">
+                        アクセス
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      JR・私鉄・地下鉄の路線図と外国人向け利用ガイド。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- 国際対応 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🌏</span>
+              <h2 class="text-xl font-bold text-gray-900">国際対応</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/international-support/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/international-support-article-1/" title="外国語対応の医療機関リスト" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="外国語対応の医療機関リスト"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      外国語対応の医療機関リスト
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
+                        国際対応
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      英語・中国語・韓国語対応可能な病院・クリニックの詳細情報。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- 子育て・教育 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">👨‍👩‍👧‍👦</span>
+              <h2 class="text-xl font-bold text-gray-900">子育て・教育</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/childcare-education/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/childcare-education-article-1/" title="大阪のインターナショナルスクール" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="大阪のインターナショナルスクール"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      大阪のインターナショナルスクール
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">
+                        子育て・教育
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      大阪府内のインターナショナルスクールの比較と入学ガイド。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- 生活利便性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🏪</span>
+              <h2 class="text-xl font-bold text-gray-900">生活利便性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/living-convenience/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/living-convenience-article-1/" title="買い物施設とスーパーマーケット" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="買い物施設とスーパーマーケット"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      買い物施設とスーパーマーケット
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">
+                        生活利便性
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      外国人向けの食材が手に入るスーパーや輸入食品店の情報。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- コスト -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">💰</span>
+              <h2 class="text-xl font-bold text-gray-900">コスト</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/cost-japan-style/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/cost-article-1/" title="生活コスト：家賃・光熱費" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="生活コスト：家賃・光熱費"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      生活コスト：家賃・光熱費
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
+                        コスト
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      大阪府の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- 安全性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🛡️</span>
+              <h2 class="text-xl font-bold text-gray-900">安全性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/safety/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/safety-article-1/" title="大阪の治安情報と安全な地域" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="大阪の治安情報と安全な地域"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      大阪の治安情報と安全な地域
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">
+                        安全性
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      大阪府内の治安状況と外国人にとって安全な居住エリアの紹介。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- 将来性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🚀</span>
+              <h2 class="text-xl font-bold text-gray-900">将来性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/future-potential/" class="text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="space-y-6">
+            <a href="/future-potential-article-1/" title="大阪・関西万博と地域発展" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+                <div class="flex h-28 sm:h-28 md:h-32">
+                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
+                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                         alt="大阪・関西万博と地域発展"
+                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
+                         loading="lazy" />
+                  </div>
+                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
+                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                      大阪・関西万博と地域発展
+                    </h4>
+                    <div class="flex gap-2 mb-2">
+                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full">
+                        将来性
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      2025年万博による地域経済への影響と今後の発展見通し。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
