@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "札幌市テストページ";
+const description = "札幌市のテストページです";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold mb-8">札幌市での暮らし - テストページ</h1>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 地域情報 -->
+      <section class="mb-8">
+        <div class="flex items-center mb-4">
+          <span class="text-3xl mr-3">🏘️</span>
+          <h2 class="text-2xl font-bold">地域情報</h2>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-2">札幌市中央区の住環境</h3>
+          <p class="text-sm text-gray-600 mb-2">読了時間: 8分 • 2024年1月15日</p>
+          <p class="text-gray-700">大通公園やすすきの周辺の住環境について</p>
+        </div>
+      </section>
+
+      <!-- アクセス -->
+      <section class="mb-8">
+        <div class="flex items-center mb-4">
+          <span class="text-3xl mr-3">🚇</span>
+          <h2 class="text-2xl font-bold">アクセス</h2>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-2">札幌市内交通システム</h3>
+          <p class="text-sm text-gray-600 mb-2">読了時間: 12分 • 2024年1月18日</p>
+          <p class="text-gray-700">地下鉄、市電、バスの路線について</p>
+        </div>
+      </section>
+
+      <!-- 国際対応 -->
+      <section class="mb-8">
+        <div class="flex items-center mb-4">
+          <span class="text-3xl mr-3">🌍</span>
+          <h2 class="text-2xl font-bold">国際対応</h2>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h3 class="text-lg font-semibold mb-2">外国語対応医療機関</h3>
+          <p class="text-sm text-gray-600 mb-2">読了時間: 11分 • 2024年1月20日</p>
+          <p class="text-gray-700">英語・中国語・韓国語対応可能な病院</p>
+        </div>
+      </section>
+    </div>
+    
+    <div class="text-center mt-12">
+      <p class="text-lg">このテストページが表示されれば、ビルドは正常に動作しています。</p>
+    </div>
+  </div>
+</BaseLayout>
