@@ -313,35 +313,37 @@ const articleCategories = [
             <!-- Articles List -->
             <div class="space-y-4">
               {category.articles.map((article) => (
-                <div class="flex items-start space-x-4 p-4 hover:bg-gray-50 rounded-lg transition-colors cursor-pointer">
-                  <!-- Article Image -->
-                  <div class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden">
-                    <img 
-                      src={article.image}
-                      alt={article.title}
-                      class="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  
-                  <!-- Article Content -->
-                  <div class="flex-1 min-w-0">
-                    <h4 class="text-lg font-semibold text-gray-900 mb-2 hover:text-blue-600">
-                      {article.title}
-                    </h4>
-                    
-                    <!-- Tags -->
-                    <div class="flex flex-wrap gap-2 mb-2">
-                      {article.tags.map(tag => (
-                        <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <div class="flex">
+                    <!-- Article Image -->
+                    <div class="w-32 h-24 flex-shrink-0">
+                      <img 
+                        src={article.image}
+                        alt={article.title}
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     </div>
                     
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                      {article.description}
-                    </p>
+                    <!-- Article Content -->
+                    <div class="flex-1 p-4">
+                      <h4 class="text-lg font-semibold text-gray-900 mb-2">
+                        {article.title}
+                      </h4>
+                      
+                      <!-- Tags -->
+                      <div class="flex gap-2 mb-2">
+                        {article.tags.map(tag => (
+                          <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-orange-600 rounded">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <p class="text-sm text-gray-600">
+                        {article.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
