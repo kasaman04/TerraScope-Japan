@@ -1,0 +1,352 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import ServiceRecommendation from '../../../../../components/ServiceRecommendation.astro';
+
+const title = "武蔵野市の防災情報：地震・水害リスクと外国人向け避難体制";
+const description = "武蔵野市の災害リスク評価と防災対策。外国人居住者向けの避難所情報、多言語防災アプリ、緊急時の連絡先など詳しく解説。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/tokyo/" class="hover:text-blue-600">東京都</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/tokyo/musashino/" class="hover:text-blue-600">武蔵野市</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">防災情報</li>
+    </ol>
+  </nav>
+
+  <!-- Article Header -->
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <header class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-5xl mr-4">🛡️</span>
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            武蔵野市の防災情報
+          </h1>
+          <p class="text-xl text-gray-600">
+            地震・水害リスクと外国人向け避難体制
+          </p>
+        </div>
+      </div>
+      
+      <div class="flex items-center text-sm text-gray-500 space-x-4">
+        <time datetime="2024-01-15">2024年1月15日更新</time>
+        <span>•</span>
+        <span>読了時間：約8分</span>
+      </div>
+    </header>
+
+    <!-- Quick Overview -->
+    <section class="bg-red-50 border border-red-200 rounded-lg p-6 mb-12">
+      <h2 class="text-xl font-bold text-red-900 mb-4 flex items-center">
+        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>
+        重要：武蔵野市の災害リスク概要
+      </h2>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-white rounded p-4">
+          <p class="font-semibold text-red-700 mb-1">地震リスク</p>
+          <p class="text-gray-700">震度6弱の可能性：30年以内に70%</p>
+        </div>
+        <div class="bg-white rounded p-4">
+          <p class="font-semibold text-blue-700 mb-1">水害リスク</p>
+          <p class="text-gray-700">神田川・玉川上水周辺に注意</p>
+        </div>
+        <div class="bg-white rounded p-4">
+          <p class="font-semibold text-green-700 mb-1">避難所</p>
+          <p class="text-gray-700">指定避難所：18箇所（多言語対応）</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="prose prose-lg max-w-none">
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">1. 地震リスクと対策</h2>
+        
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">武蔵野市の地震リスク評価</h3>
+        <p class="text-gray-700 mb-4">
+          東京都の地震被害想定によると、武蔵野市は首都直下地震発生時に震度6弱〜6強の揺れが予想されています。
+          特に吉祥寺駅周辺の商業地域では、古い建物の倒壊リスクがあるため注意が必要です。
+        </p>
+
+        <div class="bg-gray-50 rounded-lg p-6 mb-6">
+          <h4 class="font-semibold text-gray-900 mb-3">予想される被害状況</h4>
+          <ul class="space-y-2 text-gray-700">
+            <li>• 建物被害：全壊約300棟、半壊約2,000棟</li>
+            <li>• 火災：出火件数10〜20件（初期消火の重要性）</li>
+            <li>• ライフライン：電気3〜7日、水道30日、ガス60日の復旧見込み</li>
+            <li>• 避難者数：最大約2万人（発災3日後）</li>
+          </ul>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">外国人向け地震対策</h3>
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-blue-50 rounded-lg p-6">
+            <h4 class="font-semibold text-blue-900 mb-3">事前準備</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li>✓ 防災バッグの準備（3日分の水・食料）</li>
+              <li>✓ パスポート・在留カードのコピー</li>
+              <li>✓ 母国大使館の連絡先メモ</li>
+              <li>✓ 家具の固定（転倒防止器具）</li>
+              <li>✓ 避難場所の確認（最寄り2箇所）</li>
+            </ul>
+          </div>
+          <div class="bg-green-50 rounded-lg p-6">
+            <h4 class="font-semibold text-green-900 mb-3">地震発生時の行動</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li>1. DROP（姿勢を低く）</li>
+              <li>2. COVER（頭を守る）</li>
+              <li>3. HOLD ON（揺れが収まるまで待つ）</li>
+              <li>4. 火の元確認</li>
+              <li>5. 避難路の確保（ドアを開ける）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">2. 水害リスクと対策</h2>
+        
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">武蔵野市の水害危険エリア</h3>
+        <p class="text-gray-700 mb-4">
+          武蔵野市は比較的高台に位置していますが、神田川と玉川上水周辺では大雨時の浸水リスクがあります。
+        </p>
+
+        <div class="bg-blue-50 rounded-lg p-6 mb-6">
+          <h4 class="font-semibold text-blue-900 mb-3">浸水想定区域</h4>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-blue-200">
+                <th class="text-left py-2">地域</th>
+                <th class="text-left py-2">想定浸水深</th>
+                <th class="text-left py-2">リスクレベル</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-b border-blue-100">
+                <td class="py-2">吉祥寺南町（神田川沿い）</td>
+                <td class="py-2">0.5〜1.0m</td>
+                <td class="py-2"><span class="text-orange-600">中</span></td>
+              </tr>
+              <tr class="border-b border-blue-100">
+                <td class="py-2">御殿山（玉川上水沿い）</td>
+                <td class="py-2">0.2〜0.5m</td>
+                <td class="py-2"><span class="text-yellow-600">低</span></td>
+              </tr>
+              <tr>
+                <td class="py-2">吉祥寺本町（高台）</td>
+                <td class="py-2">浸水想定なし</td>
+                <td class="py-2"><span class="text-green-600">極低</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">3. 避難所情報（多言語対応）</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-yellow-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">主要避難所（外国人対応可）</h3>
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li>
+                <strong>武蔵野市立第一中学校</strong><br>
+                住所：中町3-9-5<br>
+                <span class="text-blue-600">英語・中国語対応スタッフ配置予定</span>
+              </li>
+              <li>
+                <strong>武蔵野市民文化会館</strong><br>
+                住所：境2-3-7<br>
+                <span class="text-blue-600">多言語案内板設置</span>
+              </li>
+              <li>
+                <strong>武蔵野総合体育館</strong><br>
+                住所：吉祥寺北町5-11-20<br>
+                <span class="text-blue-600">国際交流協会ボランティア常駐</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-purple-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">広域避難場所</h3>
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li>
+                <strong>井の頭恩賜公園</strong><br>
+                収容人数：約10万人<br>
+                <span class="text-green-600">大規模火災時の避難場所</span>
+              </li>
+              <li>
+                <strong>成蹊大学</strong><br>
+                収容人数：約3万人<br>
+                <span class="text-green-600">帰宅困難者受入施設</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">4. 多言語防災情報・アプリ</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">📱 必須防災アプリ</h3>
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li>
+                <strong>Safety tips</strong><br>
+                観光庁提供、14言語対応<br>
+                地震・津波速報、避難行動ガイド
+              </li>
+              <li>
+                <strong>NHK WORLD-JAPAN</strong><br>
+                19言語でニュース配信<br>
+                災害時の緊急放送対応
+              </li>
+              <li>
+                <strong>東京都防災アプリ</strong><br>
+                英語・中国語・韓国語対応<br>
+                オフライン地図機能あり
+              </li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">🌐 多言語情報サイト</h3>
+            <ul class="space-y-3 text-sm text-gray-700">
+              <li>
+                <strong>武蔵野市国際交流協会（MIA）</strong><br>
+                <a href="https://mia.gr.jp" class="text-blue-600 hover:underline">https://mia.gr.jp</a><br>
+                防災ガイドブック（10言語）
+              </li>
+              <li>
+                <strong>東京都外国人災害時情報センター</strong><br>
+                災害時ホットライン：03-5320-7744<br>
+                英語・中国語・韓国語・スペイン語
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">5. 緊急連絡先一覧</h2>
+        
+        <div class="bg-red-50 rounded-lg p-6">
+          <h3 class="text-lg font-semibold text-red-900 mb-4">🚨 緊急時の連絡先（24時間対応）</h3>
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">基本緊急番号</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li>警察：<strong class="text-red-600">110</strong></li>
+                <li>消防・救急：<strong class="text-red-600">119</strong></li>
+                <li>災害用伝言ダイヤル：<strong class="text-red-600">171</strong></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2">外国人向け相談</h4>
+              <ul class="space-y-2 text-gray-700">
+                <li>AMDA国際医療情報センター：<br>03-6233-9266（多言語医療相談）</li>
+                <li>Japan Helpline：<br>050-5541-1311（24時間英語対応）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">まとめ：武蔵野市で安全に暮らすために</h2>
+        
+        <div class="bg-green-50 rounded-lg p-6">
+          <p class="text-gray-700 mb-4">
+            武蔵野市は東京23区と比較して災害リスクは相対的に低い地域ですが、首都直下地震への備えは必須です。
+            外国人居住者の方は、以下の3点を特に心がけてください：
+          </p>
+          <ol class="list-decimal list-inside space-y-2 text-gray-700">
+            <li>多言語防災アプリをインストールし、定期的に情報を確認</li>
+            <li>最寄りの避難所を2箇所以上把握し、実際に歩いて確認</li>
+            <li>武蔵野市国際交流協会（MIA）の防災訓練に参加</li>
+          </ol>
+        </div>
+      </section>
+    </div>
+
+    <!-- Article Footer -->
+    <footer class="mt-12 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <a 
+          href="/ja/blog/tokyo/musashino/" 
+          class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+        >
+          ← 武蔵野市の記事一覧へ
+        </a>
+        
+        <div class="flex space-x-4">
+          <button class="text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </button>
+          <button class="text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+        <p class="text-sm text-gray-600 mb-2">この記事の情報は2024年1月時点のものです。最新情報は武蔵野市公式サイトをご確認ください。</p>
+        <p class="text-sm text-gray-600">
+          参考：武蔵野市防災課、東京都総務局総合防災部、国土交通省ハザードマップポータルサイト
+        </p>
+      </div>
+    </footer>
+  </article>
+
+  <!-- Service Recommendation Section -->
+  <ServiceRecommendation articleCategory="safety" />
+
+  <!-- Related Articles -->
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">関連記事</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/ja/blog/tokyo/musashino/article-02/" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">🏥</span>
+            <h3 class="font-semibold text-gray-900">生活インフラ</h3>
+          </div>
+          <p class="text-sm text-gray-600">病院・スーパー・学校など日常生活に必要な施設情報</p>
+        </a>
+        
+        <a href="/ja/blog/tokyo/musashino/article-03/" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">💰</span>
+            <h3 class="font-semibold text-gray-900">生活コスト</h3>
+          </div>
+          <p class="text-sm text-gray-600">武蔵野市での実際の生活費用を詳しく解説</p>
+        </a>
+        
+        <a href="/ja/blog/tokyo/musashino/article-06/" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">📷</span>
+            <h3 class="font-semibold text-gray-900">現地調査レポート</h3>
+          </div>
+          <p class="text-sm text-gray-600">実際の街の様子を写真と動画でご紹介</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

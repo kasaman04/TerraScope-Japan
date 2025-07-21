@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "新潟県新潟市での暮らし - 外国人向け生活ガイド";
+const description = "米どころ新潟の中心地、新潟市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
+const lang = "ja";
+
+// 市区町村データ
+const cityData = {
+  slug: "niigata",
+  title: "新潟市",
+  features: "米どころ・日本海側拠点・港湾都市・豪雪地帯",
+  population: "約80万人",
+  foreignPopulation: "約9,000人（1.1%）",
+  englishHospital: "あり",
+  airportAccess: "○（新潟空港まで30分）",
+  rentLevel: "普通",
+  recommend: "農業関係者・貿易関係者・雪国体験希望者・コシヒカリ愛好者",
+  description: "コシヒカリ発祥の地として有名な米どころ。本州日本海側最大の都市として、ロシアや中国との貿易拠点としても発展しています。",
+  image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+  tags: ["米どころ", "港湾都市", "豪雪"],
+  prefectureSlug: "niigata"
+};
+
+// 記事データ
+const articles = [
+  {
+    id: "article-01",
+    icon: "🛡️",
+    title: "防災：地震・災害対策",
+    description: "新潟県中越地震の教訓を活かした防災対策、豪雪対策について詳しく解説",
+    date: "2024-01-15"
+  },
+  {
+    id: "article-02", 
+    icon: "🏥",
+    title: "生活インフラ：病院・学校",
+    description: "外国語対応の病院、国際学校、公共施設などの生活インフラ情報",
+    date: "2024-01-18"
+  },
+  {
+    id: "article-03",
+    icon: "💰",
+    title: "生活コスト：家賃・光熱費",
+    description: "新潟市の家賃相場、暖房費、日用品の価格など、生活コストを詳しく分析",
+    date: "2024-01-22"
+  },
+  {
+    id: "article-04",
+    icon: "🏗️",
+    title: "農業・食品産業",
+    description: "米作り、日本酒製造、食品加工業など新潟の農業・食品産業について解説",
+    date: "2024-01-25"
+  },
+  {
+    id: "article-05",
+    icon: "📜",
+    title: "法制度：外国人の権利",
+    description: "外国人の不動産購入、賃貸契約、各種手続きに関する法的情報",
+    date: "2024-01-28"
+  },
+  {
+    id: "article-06",
+    icon: "📷",
+    title: "現地調査レポート",
+    description: "実際に新潟市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介",
+    date: "2024-02-01"
+  }
+];
+
+// エリア情報
+const areaInfo = {
+  population: "約80万人",
+  foreignPopulation: "約9,000人（1.1%）",
+  mainNationalities: "中国、フィリピン、韓国、ロシア",
+  averageAge: "48.5歳",
+  households: "約34万世帯",
+  area: "726.45km²"
+};
+
+// 主要スポット
+const keySpots = [
+  { name: "新潟駅", type: "交通", description: "JR東日本・上越新幹線の主要駅" },
+  { name: "新潟港", type: "交通", description: "本州日本海側最大の港湾、国際貿易拠点" },
+  { name: "新潟大学病院", type: "医療", description: "特定機能病院、高度医療対応" },
+  { name: "新潟大学", type: "教育", description: "国立大学、留学生受け入れ" },
+  { name: "朱鷺メッセ", type: "観光", description: "コンベンション施設、展望室" },
+  { name: "白山神社", type: "文化", description: "越後国一宮、歴史ある神社" }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/niigata/" class="hover:text-blue-600">新潟県</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">新潟市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-emerald-700 to-teal-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="新潟市の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            📍 新潟県新潟市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          新潟市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          米どころ新潟の中心地、信濃川と日本海に囲まれた本州日本海側最大の都市
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">{areaInfo.population}</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">{areaInfo.foreignPopulation}</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">{areaInfo.averageAge}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.area}</div>
+          <div class="text-gray-600">面積</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.households}</div>
+          <div class="text-gray-600">世帯数</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">8区</div>
+          <div class="text-gray-600">行政区数</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">55駅</div>
+          <div class="text-gray-600">鉄道駅数</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
+        <p class="text-xl text-gray-600">新潟市で安心して暮らすための重要な情報をまとめました</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" data-city-modal-trigger={article.id}>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-3">{article.icon}</span>
+                <h3 class="text-lg font-semibold text-gray-900">{article.title}</h3>
+              </div>
+              <p class="text-gray-600 mb-4">{article.description}</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">{new Date(article.date).toLocaleDateString('ja-JP')}</span>
+                <button class="text-blue-600 hover:text-blue-800 font-medium">詳しく見る →</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Spots -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">主要スポット</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {keySpots.map((spot) => (
+          <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-900 mb-2">{spot.name}</h3>
+            <div class="text-sm text-blue-600 mb-2">{spot.type}</div>
+            <p class="text-gray-600 text-sm">{spot.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Foreign Resident Info -->
+  <section class="py-16 bg-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">外国人居住者向け情報</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">多言語サービス</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li>• 新潟市役所：英語・中国語・韓国語・ロシア語対応</li>
+              <li>• 新潟市国際交流協会：多言語相談窓口</li>
+              <li>• 外国人向け生活相談：生活相談全般、国際交流支援</li>
+              <li>• 日本語教室：市内各所で開催、農業従事者向けクラスあり</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">コミュニティ情報</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>主な国籍：</strong> {areaInfo.mainNationalities}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>外国人人口：</strong> {areaInfo.foreignPopulation}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>特徴：</strong> 米文化・国際貿易・豪雪対策・港湾都市
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
+      <p class="text-xl mb-8 opacity-90">
+        新潟市での生活をより具体的に知りたい方は、<br>
+        専門スタッフによる詳細な現地調査をご依頼いただけます
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/ja/services/" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+          📋 調査サービスを見る
+        </a>
+        <a href="/ja/contact/" class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          💬 無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

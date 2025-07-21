@@ -1,0 +1,493 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "札幌市での暮らし - 外国人向け生活情報";
+const description = "外国人が札幌市で安心して暮らすための情報をカテゴリ別にまとめました。地域情報、アクセス、国際対応、子育て・教育、生活利便性、コスト、安全性、将来性について詳しく解説します。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="bg-white">
+    <!-- Breadcrumb Navigation -->
+    <nav class="bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-4">
+          <ol class="flex items-center space-x-2 text-sm text-gray-600">
+            <li><a href="/ja/" class="hover:text-gray-900">ホーム</a></li>
+            <li>/</li>
+            <li><a href="/ja/blog/" class="hover:text-gray-900">ブログ</a></li>
+            <li>/</li>
+            <li><a href="/ja/blog/hokkaido/" class="hover:text-gray-900">北海道</a></li>
+            <li>/</li>
+            <li class="text-gray-900">札幌市</li>
+          </ol>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="bg-gray-900 text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl font-bold mb-4">札幌市での暮らし</h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          外国人の方に向けた札幌市での生活情報をカテゴリー別に詳しくご紹介します
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+      <!-- 地域情報 -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">🏘️</span>
+          <h2 class="text-2xl font-bold text-gray-900">地域情報</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="札幌市中央区"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市中央区の住環境完全ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 8分 • 2024年1月15日</p>
+              <p class="text-gray-700">大通公園やすすきの周辺の住環境、家賃相場、生活施設について詳しく解説します。外国人に人気のエリアの特徴をご紹介。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1606041008023-472dfb5e530a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="札幌市北区"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市北区：学生街の魅力と住みやすさ</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 6分 • 2024年1月12日</p>
+              <p class="text-gray-700">北海道大学周辺の学生向け住環境、国際的なコミュニティ、家賃相場について詳しく紹介します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1605902711834-8b9a2be7606c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="札幌市住宅地"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市東区・白石区・豊平区住宅地比較</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 10分 • 2024年1月10日</p>
+              <p class="text-gray-700">各区の特徴、家賃相場、外国人向けの住みやすさを詳しく比較。ファミリー層におすすめのエリアもご紹介。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/regional/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+      <!-- アクセス -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">🚇</span>
+          <h2 class="text-2xl font-bold text-gray-900">アクセス</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="札幌駅"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市内交通システム完全ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 12分 • 2024年1月18日</p>
+              <p class="text-gray-700">地下鉄、市電、バスの路線図、料金体系、お得な乗車券について外国人向けに詳しく解説します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1570125909517-53cb21c89ff2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="新千歳空港"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">新千歳空港⇔札幌市内アクセス攻略法</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 7分 • 2024年1月16日</p>
+              <p class="text-gray-700">空港から市内各エリアへの最適なアクセス方法、所要時間、料金を詳しく比較紹介します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="札幌市内道路"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌での車生活：駐車場確保と冬道運転</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 9分 • 2024年1月13日</p>
+              <p class="text-gray-700">月極駐車場の探し方、冬道運転の注意点、スタッドレスタイヤの選び方を詳しく解説します。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/access/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+      <!-- 国際対応 -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">🌍</span>
+          <h2 class="text-2xl font-bold text-gray-900">国際対応</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="病院"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市外国語対応医療機関完全リスト</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 11分 • 2024年1月20日</p>
+              <p class="text-gray-700">英語・中国語・韓国語対応可能な病院、クリニック、歯科医院の詳細情報と受診方法をご紹介。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="市役所"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市多言語行政サービス活用ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 8分 • 2024年1月17日</p>
+              <p class="text-gray-700">住民登録、健康保険、子育て支援など外国人向け行政サービスの利用方法を詳しく説明します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="国際食材店"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市国際食材店・ハラール対応店舗ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 9分 • 2024年1月14日</p>
+              <p class="text-gray-700">アジア系食材、ハラール食品、欧米系食材が購入できる店舗をエリア別に詳しく紹介します。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/international/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+      <!-- 子育て・教育 -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">🎓</span>
+          <h2 class="text-2xl font-bold text-gray-900">子育て・教育</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="学校"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市インターナショナルスクール完全ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 13分 • 2024年1月19日</p>
+              <p class="text-gray-700">授業料、カリキュラム、入学条件、卒業後の進路など詳細な学校情報と選び方のポイント。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="保育園"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市保育園・幼稚園入園完全ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 10分 • 2024年1月16日</p>
+              <p class="text-gray-700">申込み手続き、選考基準、外国人家庭への対応について詳しく解説します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="日本語学校"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市日本語学校・語学教室選び方ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 8分 • 2024年1月12日</p>
+              <p class="text-gray-700">大人向け・子ども向け日本語教育機関の比較と選び方のポイントを詳しく説明します。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/education/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+      <!-- 生活利便性 -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">🏪</span>
+          <h2 class="text-2xl font-bold text-gray-900">生活利便性</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="ショッピングモール"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市大型商業施設・ショッピングガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 9分 • 2024年1月18日</p>
+              <p class="text-gray-700">大通・札幌駅・すすきの周辺の主要商業施設とおすすめ店舗を外国人向けに紹介します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="銀行"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市銀行・ATM・送金サービス活用法</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 7分 • 2024年1月15日</p>
+              <p class="text-gray-700">外国人向け銀行口座開設、国際送金、キャッシュレス決済について詳しく解説します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="宅配サービス"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市宅配・配送サービス完全活用ガイド</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 6分 • 2024年1月11日</p>
+              <p class="text-gray-700">ヤマト運輸、佐川急便、日本郵便の使い分けと冬季配送の注意点を詳しく説明します。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/convenience/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+      <!-- コスト -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">💰</span>
+          <h2 class="text-2xl font-bold text-gray-900">コスト</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="アパート"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市家賃相場2024：エリア別詳細分析</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 12分 • 2024年1月20日</p>
+              <p class="text-gray-700">間取り別・エリア別の家賃相場、初期費用、外国人向け物件探しのコツを詳しく解説します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="光熱費"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市光熱費実態：冬の暖房費対策</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 10分 • 2024年1月17日</p>
+              <p class="text-gray-700">電気・ガス・水道料金の目安と節約方法、暖房費を抑える住まい選びを詳しく紹介します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="食費"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市生活費シミュレーション：食費・日用品</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 8分 • 2024年1月13日</p>
+              <p class="text-gray-700">月間食費、日用品費の目安と節約できるスーパー・ドラッグストア情報を詳しく解説します。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/cost/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+      <!-- 安全性 -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">🛡️</span>
+          <h2 class="text-2xl font-bold text-gray-900">安全性</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="防災"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市災害対策：地震・豪雪への備え</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 11分 • 2024年1月19日</p>
+              <p class="text-gray-700">地震リスク、避難場所、防災グッズ、豪雪時の注意点など外国人向け安全対策の全てを解説します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="治安"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市治安情報：エリア別安全度マップ</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 9分 • 2024年1月16日</p>
+              <p class="text-gray-700">犯罪統計データ、夜間の安全性、女性・子連れにおすすめの安全なエリアを詳しく紹介します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="緊急連絡"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市緊急時対応：外国人向け連絡先一覧</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 6分 • 2024年1月14日</p>
+              <p class="text-gray-700">警察・消防・医療機関への連絡方法、多言語対応ホットラインの活用法を詳しく説明します。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/safety/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+      <!-- 将来性 -->
+      <section class="mb-16">
+        <div class="flex items-center mb-8">
+          <span class="text-3xl mr-3">🏗️</span>
+          <h2 class="text-2xl font-bold text-gray-900">将来性</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="都市開発"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌駅前再開発プロジェクト2024-2030</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 13分 • 2024年1月20日</p>
+              <p class="text-gray-700">北海道新幹線延伸に伴う大規模再開発計画と地価への影響を詳しく解説します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="オリンピック"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">2030年札幌オリンピック：街づくりへの影響</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 10分 • 2024年1月18日</p>
+              <p class="text-gray-700">オリンピック開催に向けたインフラ整備、観光業への影響、投資機会について詳しく解説します。</p>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+              alt="人口推移"
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">札幌市人口動態と不動産市場予測</h3>
+              <p class="text-sm text-gray-600 mb-3">読了時間: 8分 • 2024年1月15日</p>
+              <p class="text-gray-700">人口減少社会における札幌市の優位性と長期的な不動産投資の観点を詳しく分析します。</p>
+            </div>
+          </article>
+        </div>
+        <div class="text-center">
+          <a href="/ja/blog/hokkaido/sapporo/future/" class="text-blue-600 hover:text-blue-800 font-semibold">
+            もっと見る →
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-blue-600 text-white py-16">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-6">
+          札幌市での住居選びを<span class="text-yellow-300">プロがサポート</span>
+        </h2>
+        <p class="text-xl mb-8 opacity-90">
+          詳細な現地調査レポートで、最適な住居選択をお手伝いします
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/ja/services/" 
+            class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 transition-colors duration-300"
+          >
+            調査サービスを見る
+          </a>
+          <a 
+            href="/ja/contact/" 
+            class="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-md text-white bg-transparent hover:bg-white hover:text-blue-600 transition-colors duration-300"
+          >
+            無料相談する
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,534 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import ServiceRecommendation from '../../../../../components/ServiceRecommendation.astro';
+
+const title = "武蔵野市の生活コスト完全ガイド：家賃・光熱費・交通費を徹底解説";
+const description = "武蔵野市（吉祥寺エリア）での実際の生活費用を詳しく分析。外国人向けに家賃相場、食費、光熱費、交通費などを具体的な金額で解説。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/tokyo/" class="hover:text-blue-600">東京都</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/tokyo/musashino/" class="hover:text-blue-600">武蔵野市</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">生活コスト</li>
+    </ol>
+  </nav>
+
+  <!-- Article Header -->
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <header class="mb-12">
+      <div class="flex items-center mb-6">
+        <span class="text-5xl mr-4">💰</span>
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+            武蔵野市の生活コスト完全ガイド
+          </h1>
+          <p class="text-xl text-gray-600">
+            家賃・光熱費・交通費を徹底解説
+          </p>
+        </div>
+      </div>
+      
+      <div class="flex items-center text-sm text-gray-500 space-x-4">
+        <time datetime="2024-01-22">2024年1月22日更新</time>
+        <span>•</span>
+        <span>読了時間：約10分</span>
+      </div>
+    </header>
+
+    <!-- Monthly Cost Overview -->
+    <section class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-12">
+      <h2 class="text-xl font-bold text-blue-900 mb-4">
+        💡 武蔵野市での月間生活費目安（単身者）
+      </h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg p-4">
+          <h3 class="font-semibold text-gray-900 mb-3">基本的な生活</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex justify-between">
+              <span>家賃（1K）</span>
+              <span class="font-semibold">¥80,000</span>
+            </li>
+            <li class="flex justify-between">
+              <span>光熱費</span>
+              <span class="font-semibold">¥12,000</span>
+            </li>
+            <li class="flex justify-between">
+              <span>食費</span>
+              <span class="font-semibold">¥40,000</span>
+            </li>
+            <li class="flex justify-between">
+              <span>交通費</span>
+              <span class="font-semibold">¥10,000</span>
+            </li>
+            <li class="flex justify-between border-t pt-2">
+              <span class="font-semibold">合計</span>
+              <span class="font-bold text-blue-600">¥142,000</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white rounded-lg p-4">
+          <h3 class="font-semibold text-gray-900 mb-3">快適な生活</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex justify-between">
+              <span>家賃（1LDK）</span>
+              <span class="font-semibold">¥120,000</span>
+            </li>
+            <li class="flex justify-between">
+              <span>光熱費</span>
+              <span class="font-semibold">¥15,000</span>
+            </li>
+            <li class="flex justify-between">
+              <span>食費</span>
+              <span class="font-semibold">¥60,000</span>
+            </li>
+            <li class="flex justify-between">
+              <span>交通費</span>
+              <span class="font-semibold">¥15,000</span>
+            </li>
+            <li class="flex justify-between border-t pt-2">
+              <span class="font-semibold">合計</span>
+              <span class="font-bold text-blue-600">¥210,000</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="prose prose-lg max-w-none">
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">1. 家賃相場と住宅事情</h2>
+        
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">エリア別家賃相場（2024年1月現在）</h3>
+        
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full border-collapse bg-white rounded-lg shadow-sm">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="border border-gray-200 px-4 py-3 text-left">エリア</th>
+                <th class="border border-gray-200 px-4 py-3 text-center">1R/1K</th>
+                <th class="border border-gray-200 px-4 py-3 text-center">1LDK</th>
+                <th class="border border-gray-200 px-4 py-3 text-center">2LDK</th>
+                <th class="border border-gray-200 px-4 py-3 text-center">特徴</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-200 px-4 py-3 font-medium">吉祥寺駅周辺</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥85,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥130,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥180,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-sm">最も人気・便利</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border border-gray-200 px-4 py-3 font-medium">三鷹駅周辺</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥75,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥115,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥160,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-sm">やや安め</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-4 py-3 font-medium">武蔵境駅周辺</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥70,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥105,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥150,000〜</td>
+                <td class="border border-gray-200 px-4 py-3 text-sm">静かで割安</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-yellow-50 rounded-lg p-6 mb-6">
+          <h4 class="font-semibold text-yellow-900 mb-3">💡 外国人の賃貸契約時の注意点</h4>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>• 初期費用：家賃の4〜6ヶ月分（敷金2ヶ月、礼金1〜2ヶ月、仲介手数料1ヶ月、前家賃1ヶ月）</li>
+            <li>• 保証人：日本人の連帯保証人または保証会社利用（年間家賃の0.5〜1ヶ月分）</li>
+            <li>• 在留カード・就労証明書が必要</li>
+            <li>• 外国人対応の不動産会社：吉祥寺に3社以上あり</li>
+          </ul>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">住宅タイプ別の特徴</h3>
+        <div class="grid md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h4 class="font-semibold text-gray-900 mb-3">アパート・マンション</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li>✓ 築10年以内：オートロック、宅配ボックス付き</li>
+              <li>✓ 築20年以上：家賃が20〜30%安い</li>
+              <li>✓ ペット可物件：全体の約15%（家賃+5,000円程度）</li>
+              <li>✓ 駐車場：月額¥15,000〜25,000</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h4 class="font-semibold text-gray-900 mb-3">シェアハウス</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li>✓ 個室：¥45,000〜70,000/月</li>
+              <li>✓ 初期費用が安い（敷金・礼金なし）</li>
+              <li>✓ 外国人比率が高い（30〜50%）</li>
+              <li>✓ 吉祥寺周辺に10軒以上</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">2. 食費・日用品費</h2>
+        
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">スーパーマーケット価格比較</h3>
+        
+        <div class="bg-blue-50 rounded-lg p-6 mb-6">
+          <h4 class="font-semibold text-blue-900 mb-4">主要スーパーと特徴</h4>
+          <div class="grid md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <p class="font-semibold text-gray-900 mb-2">🛒 安さ重視</p>
+              <ul class="space-y-1 text-gray-700">
+                <li>• 西友（24時間営業）：全般的に安い</li>
+                <li>• オーケーストア：最安値クラス</li>
+                <li>• 業務スーパー：大量買いでお得</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 mb-2">🥬 品質重視</p>
+              <ul class="space-y-1 text-gray-700">
+                <li>• 東急ストア：品揃え豊富</li>
+                <li>• 成城石井：輸入品多数</li>
+                <li>• 紀ノ国屋：高級スーパー</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h4 class="font-semibold text-gray-800 mb-3">基本的な食材の価格目安</h4>
+        <div class="grid md:grid-cols-3 gap-4 mb-6 text-sm">
+          <div class="bg-white rounded border border-gray-200 p-4">
+            <p class="font-semibold text-gray-900 mb-2">主食</p>
+            <ul class="space-y-1 text-gray-700">
+              <li>米（5kg）：¥1,500〜2,500</li>
+              <li>食パン（6枚）：¥100〜200</li>
+              <li>パスタ（500g）：¥150〜300</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded border border-gray-200 p-4">
+            <p class="font-semibold text-gray-900 mb-2">野菜・果物</p>
+            <ul class="space-y-1 text-gray-700">
+              <li>キャベツ（1個）：¥150〜250</li>
+              <li>トマト（3個）：¥200〜400</li>
+              <li>バナナ（1房）：¥100〜200</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded border border-gray-200 p-4">
+            <p class="font-semibold text-gray-900 mb-2">肉・魚</p>
+            <ul class="space-y-1 text-gray-700">
+              <li>鶏むね肉（100g）：¥50〜80</li>
+              <li>豚肉（100g）：¥100〜150</li>
+              <li>サーモン（100g）：¥200〜300</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">外食費用の目安</h3>
+        <div class="bg-green-50 rounded-lg p-6">
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <p class="font-semibold text-gray-900 mb-3">🍜 リーズナブル（〜¥1,000）</p>
+              <ul class="space-y-2 text-gray-700">
+                <li>• 牛丼チェーン：¥400〜600</li>
+                <li>• ラーメン：¥800〜1,200</li>
+                <li>• 定食屋：¥700〜1,000</li>
+                <li>• ファストフード：¥500〜800</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 mb-3">🍱 ミドルレンジ（¥1,000〜3,000）</p>
+              <ul class="space-y-2 text-gray-700">
+                <li>• ファミレス：¥1,000〜1,500</li>
+                <li>• 居酒屋：¥2,000〜3,000</li>
+                <li>• カフェランチ：¥1,200〜1,800</li>
+                <li>• 回転寿司：¥1,500〜2,500</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">3. 光熱費・通信費</h2>
+        
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">月額光熱費の目安</h3>
+        
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full bg-white rounded-lg shadow-sm">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="border border-gray-200 px-4 py-3 text-left">項目</th>
+                <th class="border border-gray-200 px-4 py-3 text-center">単身者</th>
+                <th class="border border-gray-200 px-4 py-3 text-center">2人世帯</th>
+                <th class="border border-gray-200 px-4 py-3 text-center">4人家族</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm">
+              <tr>
+                <td class="border border-gray-200 px-4 py-3 font-medium">電気代</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥4,000〜6,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥7,000〜10,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥12,000〜15,000</td>
+              </tr>
+              <tr class="bg-gray-50">
+                <td class="border border-gray-200 px-4 py-3 font-medium">ガス代</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥3,000〜4,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥5,000〜7,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥8,000〜10,000</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-200 px-4 py-3 font-medium">水道代</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥2,000〜3,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥4,000〜5,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center">¥6,000〜8,000</td>
+              </tr>
+              <tr class="font-semibold bg-blue-50">
+                <td class="border border-gray-200 px-4 py-3">合計</td>
+                <td class="border border-gray-200 px-4 py-3 text-center text-blue-600">¥9,000〜13,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center text-blue-600">¥16,000〜22,000</td>
+                <td class="border border-gray-200 px-4 py-3 text-center text-blue-600">¥26,000〜33,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-yellow-50 rounded-lg p-6 mb-6">
+          <h4 class="font-semibold text-yellow-900 mb-3">💡 光熱費節約のコツ</h4>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>• 電力会社の切り替えで年間¥5,000〜10,000節約可能</li>
+            <li>• エアコンの設定温度：夏28℃、冬20℃で約20%節約</li>
+            <li>• LED電球への交換で電気代約10%削減</li>
+            <li>• 節水シャワーヘッドで水道・ガス代約15%削減</li>
+          </ul>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">通信費</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h4 class="font-semibold text-gray-900 mb-3">📱 携帯電話</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li><strong>大手キャリア</strong>：¥7,000〜10,000/月</li>
+              <li><strong>格安SIM</strong>：¥2,000〜4,000/月</li>
+              <li><strong>プリペイド</strong>：¥3,000〜5,000/月</li>
+              <li class="text-blue-600">※外国人OK：楽天モバイル、IIJmio等</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h4 class="font-semibold text-gray-900 mb-3">🌐 インターネット</h4>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li><strong>光回線</strong>：¥4,000〜6,000/月</li>
+              <li><strong>ポケットWiFi</strong>：¥3,000〜4,500/月</li>
+              <li><strong>ホームルーター</strong>：¥4,000〜5,000/月</li>
+              <li class="text-blue-600">※工事不要：ポケットWiFiがおすすめ</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">4. 交通費</h2>
+        
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">主要駅への定期代（1ヶ月）</h3>
+        
+        <div class="bg-blue-50 rounded-lg p-6 mb-6">
+          <p class="text-sm text-gray-700 mb-4">※吉祥寺駅起点の定期券料金</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <p class="font-semibold text-gray-900 mb-2">🚃 JR中央線・総武線</p>
+              <ul class="space-y-1 text-sm text-gray-700">
+                <li>• 新宿駅：¥5,480</li>
+                <li>• 東京駅：¥7,640</li>
+                <li>• 渋谷駅：¥5,480（明大前経由）</li>
+                <li>• 立川駅：¥5,000</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 mb-2">🚇 その他路線</p>
+              <ul class="space-y-1 text-sm text-gray-700">
+                <li>• 池袋駅：¥7,940（丸ノ内線経由）</li>
+                <li>• 品川駅：¥9,170</li>
+                <li>• 横浜駅：¥11,340</li>
+                <li>• 羽田空港：約¥15,000（リムジンバス利用）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">市内移動手段</h3>
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+          <div class="bg-white rounded border border-gray-200 p-4">
+            <p class="font-semibold text-gray-900 mb-2">🚌 ムーバス（市内バス）</p>
+            <ul class="space-y-1 text-gray-700">
+              <li>• 運賃：¥100（均一）</li>
+              <li>• 1日券：¥300</li>
+              <li>• 7路線で市内網羅</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded border border-gray-200 p-4">
+            <p class="font-semibold text-gray-900 mb-2">🚲 レンタサイクル</p>
+            <ul class="space-y-1 text-gray-700">
+              <li>• HELLO CYCLING</li>
+              <li>• 30分：¥130</li>
+              <li>• 月額：¥2,000（乗り放題）</li>
+            </ul>
+          </div>
+          <div class="bg-white rounded border border-gray-200 p-4">
+            <p class="font-semibold text-gray-900 mb-2">🚕 タクシー</p>
+            <ul class="space-y-1 text-gray-700">
+              <li>• 初乗り：¥500（1km）</li>
+              <li>• 吉祥寺→三鷹：約¥1,500</li>
+              <li>• 配車アプリ対応</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">5. その他の生活費</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-purple-50 rounded-lg p-6">
+            <h3 class="font-semibold text-purple-900 mb-4">🏥 医療費</h3>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li><strong>国民健康保険料</strong>：¥3,000〜5,000/月（収入による）</li>
+              <li><strong>診察料（保険適用）</strong>：¥1,000〜3,000</li>
+              <li><strong>歯科治療</strong>：¥2,000〜5,000（虫歯1本）</li>
+              <li><strong>市販薬</strong>：¥500〜2,000</li>
+            </ul>
+          </div>
+          
+          <div class="bg-orange-50 rounded-lg p-6">
+            <h3 class="font-semibold text-orange-900 mb-4">🎯 娯楽・その他</h3>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li><strong>ジム会員</strong>：¥6,000〜10,000/月</li>
+              <li><strong>映画</strong>：¥1,900（一般）、¥1,200（レイトショー）</li>
+              <li><strong>美容院</strong>：¥3,000〜8,000（カット）</li>
+              <li><strong>クリーニング</strong>：¥400〜800（シャツ1枚）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">まとめ：武蔵野市での生活費シミュレーション</h2>
+        
+        <div class="bg-green-50 rounded-lg p-6">
+          <h3 class="font-semibold text-green-900 mb-4">👨‍👩‍👧‍👦 世帯タイプ別・月間生活費の目安</h3>
+          
+          <div class="space-y-4">
+            <div class="bg-white rounded p-4">
+              <h4 class="font-semibold text-gray-900 mb-2">単身者（節約型）</h4>
+              <p class="text-gray-700 text-sm mb-2">総額：<span class="text-2xl font-bold text-green-600">¥130,000〜150,000</span></p>
+              <p class="text-xs text-gray-600">1K賃貸、自炊中心、格安SIM利用</p>
+            </div>
+            
+            <div class="bg-white rounded p-4">
+              <h4 class="font-semibold text-gray-900 mb-2">単身者（標準型）</h4>
+              <p class="text-gray-700 text-sm mb-2">総額：<span class="text-2xl font-bold text-blue-600">¥180,000〜220,000</span></p>
+              <p class="text-xs text-gray-600">1LDK賃貸、外食週2-3回、趣味も楽しむ</p>
+            </div>
+            
+            <div class="bg-white rounded p-4">
+              <h4 class="font-semibold text-gray-900 mb-2">夫婦2人</h4>
+              <p class="text-gray-700 text-sm mb-2">総額：<span class="text-2xl font-bold text-purple-600">¥250,000〜300,000</span></p>
+              <p class="text-xs text-gray-600">2LDK賃貸、共働き想定</p>
+            </div>
+            
+            <div class="bg-white rounded p-4">
+              <h4 class="font-semibold text-gray-900 mb-2">4人家族（子供2人）</h4>
+              <p class="text-gray-700 text-sm mb-2">総額：<span class="text-2xl font-bold text-red-600">¥350,000〜450,000</span></p>
+              <p class="text-xs text-gray-600">3LDK賃貸、教育費含む</p>
+            </div>
+          </div>
+          
+          <p class="text-sm text-gray-700 mt-4">
+            ※ボーナス時の大きな支出（旅行、家電購入等）は含まれていません
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Article Footer -->
+    <footer class="mt-12 pt-8 border-t border-gray-200">
+      <div class="flex items-center justify-between">
+        <a 
+          href="/ja/blog/tokyo/musashino/" 
+          class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+        >
+          ← 武蔵野市の記事一覧へ
+        </a>
+        
+        <div class="flex space-x-4">
+          <button class="text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </button>
+          <button class="text-gray-500 hover:text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+        <p class="text-sm text-gray-600 mb-2">この記事の情報は2024年1月時点のものです。価格は変動する可能性があります。</p>
+        <p class="text-sm text-gray-600">
+          参考：総務省統計局、武蔵野市統計データ、各種不動産サイト、スーパーマーケット価格調査
+        </p>
+      </div>
+    </footer>
+  </article>
+
+  <!-- Service Recommendation Section -->
+  <ServiceRecommendation articleCategory="cost" />
+
+  <!-- Related Articles -->
+  <section class="bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">関連記事</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <a href="/ja/blog/tokyo/musashino/article-01/" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">🛡️</span>
+            <h3 class="font-semibold text-gray-900">防災情報</h3>
+          </div>
+          <p class="text-sm text-gray-600">地震・水害リスクと外国人向け避難体制</p>
+        </a>
+        
+        <a href="/ja/blog/tokyo/musashino/article-02/" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">🏥</span>
+            <h3 class="font-semibold text-gray-900">生活インフラ</h3>
+          </div>
+          <p class="text-sm text-gray-600">病院・スーパー・学校など日常生活に必要な施設情報</p>
+        </a>
+        
+        <a href="/ja/blog/tokyo/musashino/article-05/" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-3">
+            <span class="text-3xl mr-3">📜</span>
+            <h3 class="font-semibold text-gray-900">法制度</h3>
+          </div>
+          <p class="text-sm text-gray-600">外国人の賃貸契約・購入時の注意点</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

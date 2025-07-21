@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "京都府京都市での暮らし - 外国人向け生活ガイド";
+const description = "千年の都、京都市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
+const lang = "ja";
+
+// 市区町村データ
+const cityData = {
+  slug: "kyoto",
+  title: "京都市",
+  features: "千年の都・世界遺産17か所・学術都市・伝統文化",
+  population: "約146万人",
+  foreignPopulation: "約45,000人（3.1%）",
+  englishHospital: "あり",
+  airportAccess: "○（関西国際空港まで1時間）",
+  rentLevel: "やや高め",
+  recommend: "学生・研究者・文化愛好者・歴史好き",
+  description: "1000年以上の歴史を持つ古都として発展。17の世界遺産を持ち、伝統文化と現代が調和する国際的な学術都市です。",
+  image: "/assets/images/prefectures/kyoto.png",
+  tags: ["古都", "世界遺産", "学術都市"],
+  prefectureSlug: "kyoto"
+};
+
+// 記事データ
+const articles = [
+  {
+    id: "article-01",
+    icon: "🛡️",
+    title: "防災：地震・災害対策",
+    description: "京都市の災害リスクと外国人向け防災情報を詳しく解説",
+    date: "2024-01-15"
+  },
+  {
+    id: "article-02", 
+    icon: "🏥",
+    title: "生活インフラ：スーパー・病院・学校",
+    description: "日常生活に必要な施設の場所と利用方法を紹介",
+    date: "2024-01-18"
+  },
+  {
+    id: "article-03",
+    icon: "💰",
+    title: "生活コスト：家賃・光熱費・交通費など",
+    description: "京都市での実際の生活費用を具体的に算出",
+    date: "2024-01-22"
+  },
+  {
+    id: "article-04",
+    icon: "🏗️",
+    title: "再開発・公共整備：今後の暮らしやすさ",
+    description: "京都市の再開発計画と将来の街の変化",
+    date: "2024-01-25"
+  },
+  {
+    id: "article-05",
+    icon: "📜",
+    title: "法制度：外国人の購入制限・手続き",
+    description: "不動産購入や賃貸契約時の注意点と必要書類",
+    date: "2024-01-28"
+  },
+  {
+    id: "article-06",
+    icon: "📷",
+    title: "現地調査レポート：映像と写真で見る街",
+    description: "実際に歩いて撮影した京都市の街並みと雰囲気",
+    date: "2024-02-01"
+  }
+];
+
+// エリア情報
+const areaInfo = {
+  population: "約146万人",
+  foreignPopulation: "約45,000人（3.1%）",
+  mainNationalities: "中国、韓国、アメリカ、ヨーロッパ各国",
+  averageAge: "47.5歳",
+  households: "約71万世帯",
+  area: "827.83km²"
+};
+
+// 主要スポット
+const keySpots = [
+  { name: "京都駅", type: "交通", description: "JR西日本・新幹線の中心駅" },
+  { name: "清水寺", type: "観光", description: "世界遺産、京都を代表する寺院" },
+  { name: "京都大学病院", type: "医療", description: "特定機能病院、高度医療対応" },
+  { name: "京都大学", type: "教育", description: "国立大学、ノーベル賞受賞者多数" },
+  { name: "四条河原町", type: "商業", description: "京都の中心繁華街・商業地区" },
+  { name: "金閣寺", type: "観光", description: "世界遺産、京都の象徴的な寺院" }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/kyoto/" class="hover:text-blue-600">京都府</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">京都市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-indigo-800 to-purple-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="/assets/images/prefectures/kyoto.png"
+        alt="京都市の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            📍 京都府京都市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          京都市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          千年の都として栄えた古都、世界遺産と伝統文化の街
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">{areaInfo.population}</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">{areaInfo.foreignPopulation}</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">{areaInfo.averageAge}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.area}</div>
+          <div class="text-gray-600">面積</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">{areaInfo.households}</div>
+          <div class="text-gray-600">世帯数</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">17か所</div>
+          <div class="text-gray-600">世界遺産</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-blue-600 mb-2">35大学</div>
+          <div class="text-gray-600">大学数</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">外国人向け生活情報</h2>
+        <p class="text-xl text-gray-600">京都市で安心して暮らすための重要な情報をまとめました</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" data-city-modal-trigger={article.id}>
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-3xl mr-3">{article.icon}</span>
+                <h3 class="text-lg font-semibold text-gray-900">{article.title}</h3>
+              </div>
+              <p class="text-gray-600 mb-4">{article.description}</p>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-500">{new Date(article.date).toLocaleDateString('ja-JP')}</span>
+                <button class="text-blue-600 hover:text-blue-800 font-medium">詳しく見る →</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Spots -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">主要スポット</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {keySpots.map((spot) => (
+          <div class="border rounded-lg p-6 hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-900 mb-2">{spot.name}</h3>
+            <div class="text-sm text-blue-600 mb-2">{spot.type}</div>
+            <p class="text-gray-600 text-sm">{spot.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Foreign Resident Info -->
+  <section class="py-16 bg-blue-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">外国人居住者向け情報</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">多言語サービス</h3>
+            <ul class="space-y-2 text-gray-600">
+              <li>• 京都市役所：英語・中国語・韓国語対応</li>
+              <li>• 京都市国際交流協会：多言語相談窓口</li>
+              <li>• 外国人向け生活相談：生活相談全般、文化体験支援</li>
+              <li>• 日本語教室：市内各所で開催、大学連携プログラムあり</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">コミュニティ情報</h3>
+            <div class="space-y-3 text-sm">
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>主な国籍：</strong> {areaInfo.mainNationalities}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>外国人人口：</strong> {areaInfo.foreignPopulation}
+              </div>
+              <div class="bg-gray-50 p-3 rounded">
+                <strong>特徴：</strong> 学生・研究者・伝統文化愛好者・国際的学術環境
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-8">より詳しい情報が必要ですか？</h2>
+      <p class="text-xl mb-8 opacity-90">
+        京都市での生活をより具体的に知りたい方は、<br>
+        専門スタッフによる詳細な現地調査をご依頼いただけます
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/ja/services/" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors">
+          📋 調査サービスを見る
+        </a>
+        <a href="/ja/contact/" class="inline-flex items-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          💬 無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

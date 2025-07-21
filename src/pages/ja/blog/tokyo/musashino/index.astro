@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import CityModal from '../../../../../components/CityModal.astro';
+
+const title = "東京都武蔵野市での暮らし - 外国人向け生活ガイド";
+const description = "吉祥寺を中心とした武蔵野市の生活情報。防災、生活インフラ、コスト、法制度など外国人が安心して暮らすための詳細ガイド。";
+const lang = "ja";
+
+// 市区町村データ
+const cityData = {
+  slug: "musashino",
+  title: "武蔵野市",
+  features: "井の頭公園で有名な閑静エリア",
+  population: "約14万7千人",
+  foreignPopulation: "約3,200人（2.2%）",
+  englishHospital: "あり",
+  airportAccess: "◎（新宿経由で30分）",
+  rentLevel: "中程度",
+  recommend: "都心アクセスと住環境を両立したい外国人",
+  description: "吉祥寺を中心とした人気エリア。都心へのアクセスと住環境のバランスが魅力の武蔵野市は、外国人にも住みやすい環境が整っています。",
+  image: "/assets/images/prefectures/tokyo.png",
+  tags: ["交通便利", "自然豊か", "ファミリー向け"],
+  prefectureSlug: "tokyo"
+};
+
+// 記事データ
+const articles = [
+  {
+    id: "article-01",
+    icon: "🛡️",
+    title: "防災：地震・水害リスクと避難体制",
+    description: "武蔵野市の災害リスクと外国人向け防災情報を詳しく解説",
+    date: "2024-01-15"
+  },
+  {
+    id: "article-02", 
+    icon: "🏥",
+    title: "生活インフラ：スーパー・病院・学校",
+    description: "日常生活に必要な施設の場所と利用方法を紹介",
+    date: "2024-01-18"
+  },
+  {
+    id: "article-03",
+    icon: "💰",
+    title: "生活コスト：家賃・光熱費・交通費など",
+    description: "武蔵野市での実際の生活費用を具体的に算出",
+    date: "2024-01-22"
+  },
+  {
+    id: "article-04",
+    icon: "🏗️",
+    title: "再開発・公共整備：今後の暮らしやすさ",
+    description: "吉祥寺駅周辺の開発計画と将来の街の変化",
+    date: "2024-01-25"
+  },
+  {
+    id: "article-05",
+    icon: "📜",
+    title: "法制度：外国人の購入制限・手続き",
+    description: "不動産購入や賃貸契約時の注意点と必要書類",
+    date: "2024-01-28"
+  },
+  {
+    id: "article-06",
+    icon: "📷",
+    title: "現地調査レポート：映像と写真で見る街",
+    description: "実際に歩いて撮影した武蔵野市の街並みと雰囲気",
+    date: "2024-02-01"
+  }
+];
+
+// エリア情報
+const areaInfo = {
+  population: "約14万7千人",
+  foreignPopulation: "約3,200人（2.2%）",
+  mainNationalities: "中国、韓国、アメリカ、ベトナム",
+  averageAge: "44.3歳",
+  households: "約7万8千世帯",
+  area: "10.98km²"
+};
+
+// 主要スポット
+const keySpots = [
+  { name: "吉祥寺駅", type: "交通", description: "JR中央線・総武線、京王井の頭線" },
+  { name: "井の頭恩賜公園", type: "公園", description: "都内有数の人気公園、桜の名所" },
+  { name: "武蔵野赤十字病院", type: "医療", description: "総合病院、英語対応可" },
+  { name: "成蹊大学", type: "教育", description: "私立総合大学、国際交流活発" },
+  { name: "アトレ吉祥寺", type: "商業", description: "駅直結の大型商業施設" },
+  { name: "ハーモニカ横丁", type: "飲食", description: "昭和レトロな飲み屋街" }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/tokyo/" class="hover:text-blue-600">東京都</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">武蔵野市</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-green-800 to-green-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="/assets/images/prefectures/tokyo.png"
+        alt="吉祥寺の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            📍 東京都武蔵野市
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          武蔵野市での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          吉祥寺を中心とした人気エリア。都心へのアクセスと住環境のバランスが魅力
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">{areaInfo.population}</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">{areaInfo.foreignPopulation}</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">平均年齢</p>
+            <p class="text-lg">{areaInfo.averageAge}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-6 gap-4 text-center">
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+          <div class="text-2xl mb-1">🏠</div>
+          <p class="text-xs text-gray-600">世帯数</p>
+          <p class="font-semibold">{areaInfo.households}</p>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+          <div class="text-2xl mb-1">🌍</div>
+          <p class="text-xs text-gray-600">面積</p>
+          <p class="font-semibold">{areaInfo.area}</p>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+          <div class="text-2xl mb-1">🚃</div>
+          <p class="text-xs text-gray-600">主要駅</p>
+          <p class="font-semibold">吉祥寺駅</p>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+          <div class="text-2xl mb-1">🏥</div>
+          <p class="text-xs text-gray-600">総合病院</p>
+          <p class="font-semibold">3施設</p>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+          <div class="text-2xl mb-1">🎓</div>
+          <p class="text-xs text-gray-600">大学</p>
+          <p class="font-semibold">5校</p>
+        </div>
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+          <div class="text-2xl mb-1">🌸</div>
+          <p class="text-xs text-gray-600">公園</p>
+          <p class="font-semibold">井の頭公園</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          暮らしに役立つ<span class="text-green-600">6つの情報</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人の視点で、武蔵野市での生活に必要な情報をまとめました
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map((article) => (
+          <div 
+            class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+            onclick="openCityModal('musashino')"
+          >
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <span class="text-4xl mr-4">{article.icon}</span>
+                <div>
+                  <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-600 transition-colors">
+                    {article.title}
+                  </h3>
+                </div>
+              </div>
+              
+              <p class="text-gray-600 mb-4 line-clamp-2">
+                {article.description}
+              </p>
+              
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-500">
+                  {new Date(article.date).toLocaleDateString('ja-JP')}
+                </span>
+                <div class="flex items-center gap-2">
+                  <button class="text-green-600 hover:text-green-800 text-sm font-medium">
+                    詳細情報を見る
+                  </button>
+                  <a 
+                    href={`/ja/blog/tokyo/musashino/${article.id}/`}
+                    class="text-green-600 hover:text-green-800 text-sm font-medium flex items-center gap-1"
+                    onclick="event.stopPropagation()"
+                  >
+                    記事
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Spots -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          武蔵野市の<span class="text-green-600">主要スポット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          生活に便利な施設や人気の場所をピックアップ
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {keySpots.map((spot) => (
+          <div class="bg-white rounded-lg p-6 shadow-md">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="text-lg font-semibold text-gray-900">{spot.name}</h3>
+              <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                {spot.type}
+              </span>
+            </div>
+            <p class="text-gray-600 text-sm">{spot.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Foreign Resident Info -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 lg:p-12">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            外国人居住者向け<span class="text-blue-600">特別情報</span>
+          </h2>
+          
+          <div class="grid md:grid-cols-2 gap-8 text-left">
+            <div class="bg-white rounded-lg p-6">
+              <h3 class="font-semibold text-gray-900 mb-3 flex items-center">
+                <span class="text-2xl mr-2">🌐</span>
+                多言語対応施設
+              </h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li>• 武蔵野市役所：英語・中国語・韓国語対応</li>
+                <li>• 武蔵野赤十字病院：英語対応可</li>
+                <li>• 吉祥寺図書館：外国語書籍コーナーあり</li>
+                <li>• MIA（武蔵野市国際交流協会）：各種相談受付</li>
+              </ul>
+            </div>
+            
+            <div class="bg-white rounded-lg p-6">
+              <h3 class="font-semibold text-gray-900 mb-3 flex items-center">
+                <span class="text-2xl mr-2">👥</span>
+                外国人コミュニティ
+              </h3>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li>• 国際交流パーティー（月1回）</li>
+                <li>• 日本語教室（週2回、無料）</li>
+                <li>• 各国料理レストラン多数</li>
+                <li>• 外国人向けシェアハウスあり</li>
+              </ul>
+            </div>
+          </div>
+          
+          <p class="mt-8 text-gray-700">
+            主要国籍：{areaInfo.mainNationalities}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-green-600 to-green-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        武蔵野市について<span class="text-yellow-300">もっと詳しく知りたい</span>ですか？
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        プロによる詳細な現地調査レポートで、安心して住居選びができます
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-green-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
