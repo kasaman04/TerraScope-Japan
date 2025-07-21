@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import ServiceRecommendation from '../../../../../components/ServiceRecommendation.astro';
 
-const title = "札幌市での暮らし - 外国人向け生活情報";
-const description = "札幌市での外国人向け生活情報。中央区、北区、東区から豊平区まで、防災、インフラ、生活コストなど詳細情報をお届け。";
+const title = "札幌市 - 詳細記事一覧 | 外国人向け生活情報";
+const description = "札幌市での生活に役立つ詳細記事一覧。防災、生活インフラ、生活コスト、再開発、法制度、現地調査レポートなど、外国人の方に必要な実用情報を6つのカテゴリーでお届けします。";
 const lang = "ja";
 ---
 
@@ -21,17 +22,9 @@ const lang = "ja";
   </nav>
 
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-slate-700 to-gray-900 overflow-hidden">
-    <div class="absolute inset-0 opacity-20">
-      <img 
-        src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-        alt="札幌市の街並み"
-        class="w-full h-full object-cover"
-      />
-    </div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
-      <div class="max-w-3xl">
+  <section class="bg-gradient-to-br from-slate-700 to-gray-900 py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+      <div class="max-w-4xl mx-auto text-center">
         <div class="mb-6">
           <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
             ❄️ 札幌市
@@ -39,11 +32,11 @@ const lang = "ja";
         </div>
         
         <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          札幌市での暮らし
+          札幌市 - 詳細記事一覧
         </h1>
         
         <p class="text-xl md:text-2xl mb-8 opacity-95">
-          北海道の中心都市、雪と自然の美しい街
+          外国人の方に必要な生活情報を6つのカテゴリーでお届け
         </p>
         
         <div class="grid md:grid-cols-3 gap-6 text-sm">
@@ -56,427 +49,237 @@ const lang = "ja";
             <p class="text-lg">約23,000人（1.2%）</p>
           </div>
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <p class="font-semibold mb-1">面積</p>
-            <p class="text-lg">1,121.26 km²</p>
+            <p class="font-semibold mb-1">記事カテゴリー</p>
+            <p class="text-lg">6カテゴリー</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Overview Section -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          札幌市の<span class="text-slate-600">概要</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          北海道の政治・経済・文化の中心地、冬の祭典で世界的に有名な都市
+  <!-- Introduction Section -->
+  <section class="py-12 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        札幌市での生活に必要な情報を<span class="text-slate-600">カテゴリー別</span>にご紹介
+      </h2>
+      <p class="text-lg text-gray-600 mb-8">
+        北海道最大の都市・札幌市で安心して暮らすために必要な実用情報を、防災・インフラ・コスト・再開発・法制度・現地調査の6つのカテゴリーに整理してお届けします。
+      </p>
+      <div class="bg-blue-50 border-l-4 border-blue-400 p-4 text-left">
+        <p class="text-sm text-blue-800">
+          <strong>💡 ご利用方法：</strong> 各カテゴリーをクリックすると、詳細な記事をご覧いただけます。札幌市での生活に必要な情報を効率よく収集できるよう設計されています。
         </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-6">札幌市の特徴</h3>
-          <div class="space-y-4">
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-slate-600 font-bold">1</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">雪まつりの街</h4>
-                <p class="text-gray-600">さっぽろ雪まつりで世界的に有名。冬の観光都市として国際的な知名度があります。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-slate-600 font-bold">2</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">豊かな自然環境</h4>
-                <p class="text-gray-600">大都市でありながら豊かな自然に囲まれ、四季の変化を楽しめる環境が整っています。</p>
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center mr-4 mt-1">
-                <span class="text-slate-600 font-bold">3</span>
-              </div>
-              <div>
-                <h4 class="font-semibold text-gray-900 mb-1">食文化の豊かさ</h4>
-                <p class="text-gray-600">新鮮な海産物、乳製品、ラーメンなど、北海道ならではの食文化が楽しめます。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-gray-50 rounded-xl p-8">
-          <h3 class="text-xl font-bold text-gray-900 mb-6">基本情報</h3>
-          <div class="space-y-4">
-            <div class="flex justify-between">
-              <span class="text-gray-600">主要駅</span>
-              <span class="font-semibold">札幌駅、大通駅、すすきの駅</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">平均家賃（1K）</span>
-              <span class="font-semibold">約4.5万円</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">東京駅までの時間</span>
-              <span class="font-semibold">約1時間30分（飛行機）</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-600">年間降雪量</span>
-              <span class="font-semibold">約597cm</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Living Areas Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          主要な<span class="text-slate-600">居住エリア</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          札幌市内の外国人に人気のエリアをご紹介
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">中央区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-slate-100 text-slate-800 px-3 py-1 rounded-full text-sm font-medium mr-2">中心街</span>
-            <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">観光地</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            札幌の中心部で、大通公園やすすきのがある。観光・商業・行政の中心地です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：高い</p>
-            <p>外国人向け：★★★★★</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">北区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mr-2">学生街</span>
-            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">大学</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            北海道大学がある学生街。留学生が多く、国際的な雰囲気があります。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★★★</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">東区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">交通便利</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地が中心で、地下鉄や市電のアクセスが良い。比較的家賃が安いエリアです。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">豊平区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">ファミリー</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地が多く、ファミリー層に人気。豊平川沿いの自然環境が良好です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">白石区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium mr-2">住宅地</span>
-            <span class="inline-block bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium">工業地域</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            住宅地と工業地域が混在。比較的家賃が安く、外国人労働者に人気です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：安い</p>
-            <p>外国人向け：★★★★☆</p>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-4">西区</h3>
-          <div class="mb-4">
-            <span class="inline-block bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium mr-2">郊外</span>
-            <span class="inline-block bg-lime-100 text-lime-800 px-3 py-1 rounded-full text-sm font-medium">自然豊か</span>
-          </div>
-          <p class="text-gray-600 mb-4">
-            郊外に位置し、自然環境が豊か。静かな住環境を求める人に人気です。
-          </p>
-          <div class="text-sm text-gray-500">
-            <p>家賃相場：普通</p>
-            <p>外国人向け：★★★☆☆</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Winter Life Section -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          札幌の<span class="text-slate-600">冬の生活</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          長い冬を快適に過ごすための札幌の都市機能
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🚇</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">地下街</h3>
-          <p class="text-gray-600 text-sm">
-            札幌駅から大通まで地下街で移動可能
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🔥</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">暖房システム</h3>
-          <p class="text-gray-600 text-sm">
-            セントラルヒーティングで室内は快適
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">🚗</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">除雪システム</h3>
-          <p class="text-gray-600 text-sm">
-            充実した除雪システムで道路は常に確保
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span class="text-3xl">⛷️</span>
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">ウィンタースポーツ</h3>
-          <p class="text-gray-600 text-sm">
-            スキー場やスケートリンクが身近にある
-          </p>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- Articles Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          札幌市の<span class="text-slate-600">生活情報</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          札幌市での生活に必要な詳細情報をまとめました
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="/ja/blog/hokkaido/sapporo/article-01/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🛡️</span>
-            <h3 class="text-xl font-bold text-gray-900">防災：地震・災害対策</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            札幌市の地震リスク、豪雪対策、寒波対策について詳しく解説します。
-          </p>
-          <div class="text-slate-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/hokkaido/sapporo/article-02/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏥</span>
-            <h3 class="text-xl font-bold text-gray-900">生活インフラ：病院・学校</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国語対応の病院、国際学校、公共施設などの生活インフラ情報。
-          </p>
-          <div class="text-slate-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/hokkaido/sapporo/article-03/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">💰</span>
-            <h3 class="text-xl font-bold text-gray-900">生活コスト：家賃・光熱費</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            札幌市の家賃相場、暖房費、日用品の価格など、生活コストを詳しく分析。
-          </p>
-          <div class="text-slate-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/hokkaido/sapporo/article-04/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">🏗️</span>
-            <h3 class="text-xl font-bold text-gray-900">冬の生活・準備</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            札幌の長い冬を快適に過ごすための準備や生活のコツについて詳しく解説。
-          </p>
-          <div class="text-slate-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/hokkaido/sapporo/article-05/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📜</span>
-            <h3 class="text-xl font-bold text-gray-900">法制度：外国人の権利</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            外国人の不動産購入、賃貸契約、各種手続きに関する法的情報。
-          </p>
-          <div class="text-slate-600 font-semibold">詳細を見る →</div>
-        </a>
-
-        <a href="/ja/blog/hokkaido/sapporo/article-06/" class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-200">
-          <div class="flex items-center mb-4">
-            <span class="text-3xl mr-4">📷</span>
-            <h3 class="text-xl font-bold text-gray-900">現地調査レポート</h3>
-          </div>
-          <p class="text-gray-600 mb-4">
-            実際に札幌市を歩いて調査した現地レポート。写真と動画で街の様子をご紹介。
-          </p>
-          <div class="text-slate-600 font-semibold">詳細を見る →</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pros and Cons Section -->
-  <section class="py-16 lg:py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          札幌市に住む<span class="text-slate-600">メリット・デメリット</span>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">
+          札幌市 - <span class="text-slate-600">6つの記事カテゴリー</span>
         </h2>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-green-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👍</span>
-            メリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>本州の主要都市より家賃が安い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>豊かな自然環境と美味しい食べ物</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>夏は涼しく過ごしやすい</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>雪まつりなど国際的なイベントが豊富</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-600 mr-3">✓</span>
-              <span>ウィンタースポーツが身近に楽しめる</span>
-            </li>
-          </ul>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- 防災 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <div class="bg-red-500 p-6 text-center">
+            <div class="text-5xl mb-4">🛡️</div>
+            <h3 class="text-xl font-bold text-white">防災</h3>
+            <p class="text-red-100 text-sm mt-2">災害対策・緊急時情報</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 text-sm mb-4">
+              札幌市の地震リスク、豪雪対策、寒波・停電時の対応、避難場所情報など、外国人の方が知っておくべき防災情報を詳しく解説。
+            </p>
+            <div class="space-y-2 mb-4">
+              <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded text-xs">地震対策</span>
+              <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded text-xs">豪雪対応</span>
+              <span class="inline-block bg-red-100 text-red-800 px-2 py-1 rounded text-xs">避難情報</span>
+            </div>
+            <a href="/ja/blog/hokkaido/sapporo/article-01/" class="block w-full bg-red-500 text-white text-center py-2 rounded-lg hover:bg-red-600 transition-colors duration-300 font-semibold">
+              記事を読む
+            </a>
+          </div>
         </div>
 
-        <div class="bg-red-50 rounded-xl p-8">
-          <h3 class="text-2xl font-bold text-red-800 mb-6 flex items-center">
-            <span class="text-3xl mr-3">👎</span>
-            デメリット
-          </h3>
-          <ul class="space-y-4">
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>冬が長く、雪が多い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>暖房費が高い</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>本州との移動に時間とコストがかかる</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>就職機会が本州より限定的</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-red-600 mr-3">✗</span>
-              <span>冬の運転や外出が困難</span>
-            </li>
-          </ul>
+        <!-- 生活インフラ -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <div class="bg-blue-500 p-6 text-center">
+            <div class="text-5xl mb-4">🏥</div>
+            <h3 class="text-xl font-bold text-white">生活インフラ</h3>
+            <p class="text-blue-100 text-sm mt-2">病院・学校・公共施設</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 text-sm mb-4">
+              外国語対応の病院、国際学校、日本語学校、役所手続き、買い物施設など、日常生活に欠かせないインフラ情報を総合的に紹介。
+            </p>
+            <div class="space-y-2 mb-4">
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">医療機関</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">教育施設</span>
+              <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">行政サービス</span>
+            </div>
+            <a href="/ja/blog/hokkaido/sapporo/article-02/" class="block w-full bg-blue-500 text-white text-center py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300 font-semibold">
+              記事を読む
+            </a>
+          </div>
+        </div>
+
+        <!-- 生活コスト -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <div class="bg-green-500 p-6 text-center">
+            <div class="text-5xl mb-4">💰</div>
+            <h3 class="text-xl font-bold text-white">生活コスト</h3>
+            <p class="text-green-100 text-sm mt-2">家賃・光熱費・生活費</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 text-sm mb-4">
+              札幌市の家賃相場、冬の暖房費、食費、交通費、その他生活必需品の価格など、実際の生活コストを地域別・世帯タイプ別に詳しく分析。
+            </p>
+            <div class="space-y-2 mb-4">
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-xs">家賃相場</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-xs">光熱費</span>
+              <span class="inline-block bg-green-100 text-green-800 px-2 py-1 rounded text-xs">物価情報</span>
+            </div>
+            <a href="/ja/blog/hokkaido/sapporo/article-03/" class="block w-full bg-green-500 text-white text-center py-2 rounded-lg hover:bg-green-600 transition-colors duration-300 font-semibold">
+              記事を読む
+            </a>
+          </div>
+        </div>
+
+        <!-- 再開発 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <div class="bg-purple-500 p-6 text-center">
+            <div class="text-5xl mb-4">🏗️</div>
+            <h3 class="text-xl font-bold text-white">再開発</h3>
+            <p class="text-purple-100 text-sm mt-2">都市開発・今後の展望</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 text-sm mb-4">
+              札幌駅周辺の再開発、新幹線延伸計画、2030年札幌オリンピック関連開発など、札幌市の都市開発プロジェクトと今後の発展予測。
+            </p>
+            <div class="space-y-2 mb-4">
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">駅周辺開発</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">新幹線</span>
+              <span class="inline-block bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">オリンピック</span>
+            </div>
+            <a href="/ja/blog/hokkaido/sapporo/article-04/" class="block w-full bg-purple-500 text-white text-center py-2 rounded-lg hover:bg-purple-600 transition-colors duration-300 font-semibold">
+              記事を読む
+            </a>
+          </div>
+        </div>
+
+        <!-- 法制度 -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <div class="bg-orange-500 p-6 text-center">
+            <div class="text-5xl mb-4">📜</div>
+            <h3 class="text-xl font-bold text-white">法制度</h3>
+            <p class="text-orange-100 text-sm mt-2">外国人の権利・手続き</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 text-sm mb-4">
+              外国人の不動産購入・賃貸契約、ビザ手続き、税務、労働法、子育て支援制度など、札幌市で生活する外国人が知っておくべき法的情報。
+            </p>
+            <div class="space-y-2 mb-4">
+              <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">不動産</span>
+              <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">ビザ</span>
+              <span class="inline-block bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">労働法</span>
+            </div>
+            <a href="/ja/blog/hokkaido/sapporo/article-05/" class="block w-full bg-orange-500 text-white text-center py-2 rounded-lg hover:bg-orange-600 transition-colors duration-300 font-semibold">
+              記事を読む
+            </a>
+          </div>
+        </div>
+
+        <!-- 現地調査レポート -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-200">
+          <div class="bg-teal-500 p-6 text-center">
+            <div class="text-5xl mb-4">📷</div>
+            <h3 class="text-xl font-bold text-white">現地調査レポート</h3>
+            <p class="text-teal-100 text-sm mt-2">実地調査・写真・動画</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 text-sm mb-4">
+              実際に札幌市内を歩いて調査した現地レポート。各エリアの街の様子、住環境、商業施設などを豊富な写真と動画でご紹介。
+            </p>
+            <div class="space-y-2 mb-4">
+              <span class="inline-block bg-teal-100 text-teal-800 px-2 py-1 rounded text-xs">街歩き</span>
+              <span class="inline-block bg-teal-100 text-teal-800 px-2 py-1 rounded text-xs">写真レポート</span>
+              <span class="inline-block bg-teal-100 text-teal-800 px-2 py-1 rounded text-xs">現地調査</span>
+            </div>
+            <a href="/ja/blog/hokkaido/sapporo/article-06/" class="block w-full bg-teal-500 text-white text-center py-2 rounded-lg hover:bg-teal-600 transition-colors duration-300 font-semibold">
+              記事を読む
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-slate-600 to-gray-800 text-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        札幌市での住居選びを<span class="text-yellow-300">プロがサポート</span>
-      </h2>
-      
-      <p class="text-xl mb-8 opacity-95">
-        札幌市の詳細な調査レポートで、最適な住居選択をお手伝いします
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href="/ja/services/" 
-          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-slate-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
-        >
-          <span class="mr-3">🔍</span>
-          調査サービスを見る
-        </a>
-        <a 
-          href="/ja/contact/" 
-          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
-        >
-          <span class="mr-3">💬</span>
-          無料相談する
-        </a>
+  <!-- Summary Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-slate-50 to-gray-50 rounded-xl p-8 border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">
+          札幌市での<span class="text-slate-600">安心な暮らし</span>をサポート
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8 text-sm">
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <span class="text-2xl mr-2">🌟</span>
+              充実したサポート体制
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-1">•</span>
+                <span>多言語対応の行政サービス</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-1">•</span>
+                <span>外国人向け医療・教育機関</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-1">•</span>
+                <span>国際的な住環境とコミュニティ</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-green-500 mr-2 mt-1">•</span>
+                <span>豊富な文化・レクリエーション施設</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+              <span class="text-2xl mr-2">💡</span>
+              記事活用のポイント
+            </h3>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2 mt-1">•</span>
+                <span>移住前の情報収集にお役立てください</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2 mt-1">•</span>
+                <span>各記事は最新情報で定期更新しています</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2 mt-1">•</span>
+                <span>実際の生活に役立つ実用情報を重視</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-blue-500 mr-2 mt-1">•</span>
+                <span>専門的な相談は各記事の機関へお問い合わせを</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Service Recommendation Component -->
+  <ServiceRecommendation />
 </BaseLayout>
