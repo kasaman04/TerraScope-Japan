@@ -1,15 +1,13 @@
 ---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
 const title = "札幌市の生活情報";
+const description = "外国人が札幌市で安心して暮らすための情報をカテゴリ別にまとめました";
+const lang = "ja";
 ---
 
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50">
+<BaseLayout {title} {description} {lang}>
+  <div class="bg-white">
     <!-- Header -->
     <div class="bg-gray-900 text-white py-16">
         <div class="max-w-6xl mx-auto px-4 text-center">
@@ -264,5 +262,5 @@ const title = "札幌市の生活情報";
             </div>
         </div>
     </div>
-</body>
-</html>
+  </div>
+</BaseLayout>
