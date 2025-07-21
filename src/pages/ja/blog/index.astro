@@ -32,7 +32,7 @@ const regions = [
       { 
         name: "岩手県", 
         slug: "iwate",
-        image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`,
         description: "岩手山と豊かな自然の県",
         cities: ["盛岡市", "一関市", "奥州市", "花巻市"]
       },
@@ -114,7 +114,7 @@ const regions = [
       { 
         name: "神奈川県", 
         slug: "kanagawa",
-        image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kanagawa.png`,
         description: "横浜・鎌倉・湘南エリアを持つ人気の居住地",
         cities: ["横浜市", "川崎市", "鎌倉市", "藤沢市", "相模原市"]
       }
@@ -126,28 +126,28 @@ const regions = [
       { 
         name: "新潟県", 
         slug: "niigata",
-        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/niigata.png`,
         description: "米どころとしても有名な県",
         cities: ["新潟市", "長岡市", "上越市", "三条市"]
       },
       { 
         name: "富山県", 
         slug: "toyama",
-        image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/toyama.png`,
         description: "立山連峰と富山湾の美しい県",
         cities: ["富山市", "高岡市", "射水市", "氷見市"]
       },
       { 
         name: "石川県", 
         slug: "ishikawa",
-        image: "https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/ishikawa.png`,
         description: "金沢の伝統文化と工芸の県",
         cities: ["金沢市", "白山市", "小松市", "野々市市"]
       },
       { 
         name: "福井県", 
         slug: "fukui",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/fukui.png`,
         description: "恐竜の県として知られる福井",
         cities: ["福井市", "敦賀市", "小浜市", "大野市"]
       },
@@ -182,7 +182,7 @@ const regions = [
       { 
         name: "愛知県", 
         slug: "aichi",
-        image: "https://images.unsplash.com/photo-1560347876-cbc37d7be9f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/aichi.png`,
         description: "自動車産業の中心地",
         cities: ["名古屋市", "豊田市", "岡崎市", "一宮市", "豊橋市"]
       }
@@ -208,7 +208,7 @@ const regions = [
       { 
         name: "三重県", 
         slug: "mie",
-        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/mie.png`,
         description: "伊勢神宮と真珠の県",
         cities: ["津市", "四日市市", "伊勢市", "松阪市"]
       },
@@ -248,35 +248,35 @@ const regions = [
       { 
         name: "鳥取県", 
         slug: "tottori",
-        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tottori.png`,
         description: "鳥取砂丘で有名な県",
         cities: ["鳥取市", "米子市", "倉吉市", "境港市"]
       },
       { 
         name: "島根県", 
         slug: "shimane",
-        image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/shimane.png`,
         description: "出雲大社と神話の県",
         cities: ["松江市", "出雲市", "益田市", "大田市"]
       },
       { 
         name: "岡山県", 
         slug: "okayama",
-        image: "https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/okayama.png`,
         description: "桃太郎伝説と晴れの国",
         cities: ["岡山市", "倉敷市", "津山市", "玉野市"]
       },
       { 
         name: "広島県", 
         slug: "hiroshima",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/hiroshima.png`,
         description: "平和記念公園と宮島の県",
         cities: ["広島市", "福山市", "呉市", "東広島市"]
       },
       { 
         name: "山口県", 
         slug: "yamaguchi",
-        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/yamaguchi.png`,
         description: "秋吉台と関門海峡の県",
         cities: ["山口市", "下関市", "宇部市", "周南市"]
       }
