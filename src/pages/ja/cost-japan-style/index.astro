@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "コスト - 4件の記事";
+const description = "コスト関連の記事一覧";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      
+      <!-- Category Header -->
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center space-x-3">
+          <span class="text-2xl">💰</span>
+          <h1 class="text-xl font-bold text-gray-900">コスト</h1>
+          <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+        </div>
+        <a href="#" class="text-sm text-red-500 hover:text-red-600 font-medium">
+          もっと見る <span class="ml-1">></span>
+        </a>
+      </div>
+
+      <!-- Articles List -->
+      <div class="space-y-6">
+        
+        <!-- Article 1 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div class="flex">
+            <!-- Image Section - No padding, full left edge -->
+            <div class="w-28 h-32 flex-shrink-0">
+              <figure class="h-full w-full">
+                <a href="#" title="生活コスト：家賃・光熱費">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                    alt="生活コスト：家賃・光熱費"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </a>
+              </figure>
+            </div>
+            
+            <!-- Content Section -->
+            <div class="flex-1 p-4">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                <a href="#" title="生活コスト：家賃・光熱費" class="hover:text-blue-600 transition-colors">
+                  生活コスト：家賃・光熱費
+                </a>
+              </h4>
+              
+              <div class="flex gap-2 mb-3">
+                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full hover:bg-orange-200 transition-colors">
+                  コスト
+                </a>
+              </div>
+              
+              <p class="text-sm text-gray-600 leading-relaxed">
+                大阪府の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div class="flex">
+            <!-- Image Section - No padding, full left edge -->
+            <div class="w-28 h-32 flex-shrink-0">
+              <figure class="h-full w-full">
+                <a href="#" title="住居探しのコツと費用">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                    alt="住居探しのコツと費用"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </a>
+              </figure>
+            </div>
+            
+            <!-- Content Section -->
+            <div class="flex-1 p-4">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                <a href="#" title="住居探しのコツと費用" class="hover:text-blue-600 transition-colors">
+                  住居探しのコツと費用
+                </a>
+              </h4>
+              
+              <div class="flex gap-2 mb-3">
+                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full hover:bg-orange-200 transition-colors">
+                  コスト
+                </a>
+              </div>
+              
+              <p class="text-sm text-gray-600 leading-relaxed">
+                外国人向け賃貸物件の探し方と初期費用の詳細解説。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+          <div class="flex">
+            <!-- Image Section - No padding, full left edge -->
+            <div class="w-28 h-32 flex-shrink-0">
+              <figure class="h-full w-full">
+                <a href="#" title="銀行口座・金融サービス">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                    alt="銀行口座・金融サービス"
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </a>
+              </figure>
+            </div>
+            
+            <!-- Content Section -->
+            <div class="flex-1 p-4">
+              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                <a href="#" title="銀行口座・金融サービス" class="hover:text-blue-600 transition-colors">
+                  銀行口座・金融サービス
+                </a>
+              </h4>
+              
+              <div class="flex gap-2 mb-3">
+                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full hover:bg-orange-200 transition-colors">
+                  コスト
+                </a>
+                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors">
+                  国際対応
+                </a>
+              </div>
+              
+              <p class="text-sm text-gray-600 leading-relaxed">
+                外国人が利用可能な銀行口座・金融サービスの比較。
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
