@@ -266,6 +266,21 @@ const currentPath = getCurrentPath();
         // Get current path and clean it
         let currentPath = window.location.pathname;
         
+        // Get base URL from meta tag
+        const baseUrlMeta = document.querySelector('meta[name="astro-base-url"]');
+        const baseUrl = baseUrlMeta ? baseUrlMeta.getAttribute('content') || '/' : '/';
+        const basePath = baseUrl.replace(/\/$/, '');
+        
+        // Remove base path first
+        if (basePath && currentPath.startsWith(basePath)) {
+          currentPath = currentPath.substring(basePath.length);
+        }
+        
+        // Ensure currentPath starts with /
+        if (!currentPath.startsWith('/')) {
+          currentPath = '/' + currentPath;
+        }
+        
         // Remove language prefix
         if (currentPath.match(/^\/(ja|zh|zh-TW|ko)\//)) {
           currentPath = currentPath.replace(/^\/(ja|zh|zh-TW|ko)/, '');
@@ -298,16 +313,16 @@ const currentPath = getCurrentPath();
         
         if (pages.includes(currentPath)) {
           if (targetLang === 'en') {
-            targetUrl = currentPath;
+            targetUrl = basePath + currentPath;
           } else {
-            targetUrl = `/${targetLang}${currentPath}`;
+            targetUrl = basePath + `/${targetLang}${currentPath}`;
           }
         } else {
           console.log('⚠️ Page not available, redirecting to home');
           if (targetLang === 'en') {
-            targetUrl = '/';
+            targetUrl = basePath + '/';
           } else {
-            targetUrl = `/${targetLang}/`;
+            targetUrl = basePath + `/${targetLang}/`;
           }
         }
         

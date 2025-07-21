@@ -33,10 +33,23 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-XXXXXXXXXX'; // プレースホ
     )}
     
     <!-- Auto language redirect -->
-    <script>
+    <script is:inline define:vars={{ baseUrl: import.meta.env.BASE_URL }}>
       // Only run on the default language pages (no language prefix)
       // and only if user hasn't explicitly chosen a language
-      if (!window.location.pathname.match(/^\/(ja|zh|zh-TW|ko)/) && 
+      let currentPath = window.location.pathname;
+      
+      // Remove base path to check language prefix properly
+      const basePath = baseUrl.replace(/\/$/, '');
+      if (basePath && currentPath.startsWith(basePath)) {
+        currentPath = currentPath.substring(basePath.length);
+      }
+      
+      // Ensure currentPath starts with /
+      if (!currentPath.startsWith('/')) {
+        currentPath = '/' + currentPath;
+      }
+      
+      if (!currentPath.match(/^\/(ja|zh|zh-TW|ko)/) && 
           !sessionStorage.getItem('userChosenLanguage')) {
         const languageMap = { 
           "ja": "ja", 
@@ -61,7 +74,8 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-XXXXXXXXXX'; // プレースホ
         
         // Redirect if target language is found and not English
         if (targetLang && targetLang !== "en") {
-          window.location.pathname = "/" + targetLang + window.location.pathname;
+          const targetUrl = basePath + "/" + targetLang + currentPath;
+          window.location.href = targetUrl;
         }
       }
     </script>

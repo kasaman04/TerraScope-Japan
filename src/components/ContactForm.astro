@@ -6,6 +6,8 @@ export interface Props {
 const { action = "https://land-vista-form.pages.dev" } = Astro.props;
 // Cloudflare Worker URL (to be updated after deployment)
 const workerUrl = "https://land-vista-form.pages.dev";
+// Get base URL for proper routing
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <form
@@ -62,7 +64,7 @@ const workerUrl = "https://land-vista-form.pages.dev";
   </button>
 </form>
 
-<script is:inline define:vars={{ workerUrl }}>
+<script is:inline define:vars={{ workerUrl, baseUrl }}>
   document.getElementById('contact-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     
@@ -85,7 +87,7 @@ const workerUrl = "https://land-vista-form.pages.dev";
         window.location.href = response.url;
       } else if (response.ok) {
         // Fallback: redirect to thank you page
-        window.location.href = '/contact/thank-you';
+        window.location.href = baseUrl + 'contact/thank-you';
       } else {
         throw new Error('Form submission failed');
       }
