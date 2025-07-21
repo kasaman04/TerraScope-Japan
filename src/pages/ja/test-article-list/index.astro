@@ -1,0 +1,377 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "大阪府の生活情報 - 外国人向け総合ガイド";
+const description = "大阪府での生活に必要な情報を8つのカテゴリーで詳しく解説。地域情報、アクセス、国際対応、子育て・教育、生活利便性、コスト、安全性、将来性について外国人向けに分かりやすく説明します。";
+const lang = "ja";
+
+// 8カテゴリーの記事データ
+const articleCategories = [
+  {
+    id: "regional-info",
+    title: "地域情報",
+    icon: "🗾",
+    color: "blue",
+    description: "大阪府の基本情報、地理、人口統計、文化的特徴",
+    articles: [
+      {
+        title: "大阪府の概要と特徴",
+        description: "関西経済の中心地として発展した大阪府の基本情報",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["概要", "歴史", "文化"]
+      },
+      {
+        title: "人口統計と外国人コミュニティ",
+        description: "大阪府の人口構成と外国人居住者の状況",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["人口", "統計", "外国人"]
+      },
+      {
+        title: "気候と季節の特徴",
+        description: "大阪府の四季の気候変化と生活への影響",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["気候", "季節", "天気"]
+      }
+    ]
+  },
+  {
+    id: "access",
+    title: "アクセス",
+    icon: "🚇",
+    color: "green",
+    description: "交通機関、主要駅、空港アクセス情報",
+    articles: [
+      {
+        title: "主要駅と電車アクセス",
+        description: "大阪駅、梅田駅、難波駅など主要駅からの交通網",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["電車", "駅", "交通"]
+      },
+      {
+        title: "関西空港・伊丹空港アクセス",
+        description: "国際線・国内線空港への移動方法と所要時間",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["空港", "国際線", "アクセス"]
+      },
+      {
+        title: "バス・地下鉄ネットワーク",
+        description: "市内バス、地下鉄の路線図と利用方法",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["バス", "地下鉄", "路線"]
+      }
+    ]
+  },
+  {
+    id: "international",
+    title: "国際対応",
+    icon: "🌍",
+    color: "purple",
+    description: "英語対応、外国人サポート、多言語サービス",
+    articles: [
+      {
+        title: "英語対応病院・医療機関",
+        description: "外国人が安心して利用できる医療施設一覧",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["医療", "英語", "病院"]
+      },
+      {
+        title: "外国人向け行政サービス",
+        description: "市役所、区役所での多言語対応サービス",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["行政", "手続き", "多言語"]
+      },
+      {
+        title: "国際交流センター・コミュニティ",
+        description: "外国人同士の交流や日本人との文化交流施設",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["交流", "コミュニティ", "文化"]
+      }
+    ]
+  },
+  {
+    id: "childcare-education",
+    title: "子育て・教育",
+    icon: "👶",
+    color: "yellow",
+    description: "学校、保育園、教育機関、子育て支援",
+    articles: [
+      {
+        title: "インターナショナルスクール",
+        description: "外国人の子どもが通える国際的な教育機関",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["学校", "国際", "教育"]
+      },
+      {
+        title: "保育園・幼稚園情報",
+        description: "外国人も利用可能な保育施設と入園手続き",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["保育園", "幼稚園", "子育て"]
+      },
+      {
+        title: "子育て支援制度",
+        description: "大阪府・市の外国人向け子育て支援サービス",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["支援", "制度", "補助"]
+      }
+    ]
+  },
+  {
+    id: "convenience",
+    title: "生活利便性",
+    icon: "🏪",
+    color: "teal",
+    description: "スーパー、病院、生活インフラ、買い物環境",
+    articles: [
+      {
+        title: "スーパーマーケット・食材調達",
+        description: "外国食材も扱う大型スーパーと専門店",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["スーパー", "食材", "買い物"]
+      },
+      {
+        title: "銀行・郵便局・行政手続き",
+        description: "口座開設、送金、各種証明書発行の方法",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["銀行", "郵便", "手続き"]
+      },
+      {
+        title: "通信・インターネット環境",
+        description: "携帯電話、インターネット契約の選択肢",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["通信", "インターネット", "携帯"]
+      }
+    ]
+  },
+  {
+    id: "cost",
+    title: "コスト",
+    icon: "💰",
+    color: "red",
+    description: "家賃、光熱費、生活費、各種料金",
+    articles: [
+      {
+        title: "家賃相場と住宅情報",
+        description: "エリア別の家賃相場と外国人向け賃貸物件",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["家賃", "住宅", "賃貸"]
+      },
+      {
+        title: "光熱費・通信費・生活費",
+        description: "月々の固定費と変動費の目安金額",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["光熱費", "通信費", "生活費"]
+      },
+      {
+        title: "食費・交通費・娯楽費",
+        description: "日常生活でかかる各種費用の実例",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["食費", "交通費", "娯楽"]
+      }
+    ]
+  },
+  {
+    id: "safety",
+    title: "安全性",
+    icon: "🛡️",
+    color: "orange",
+    description: "防災、治安、避難所、リスク情報",
+    articles: [
+      {
+        title: "地震・台風などの自然災害対策",
+        description: "大阪府の災害リスクと準備すべき防災グッズ",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["地震", "台風", "防災"]
+      },
+      {
+        title: "避難所・緊急時連絡先",
+        description: "災害時の避難場所と外国人向け緊急連絡先",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["避難所", "緊急", "連絡先"]
+      },
+      {
+        title: "治安状況と注意点",
+        description: "大阪府内の治安状況と外国人が注意すべき点",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["治安", "安全", "注意点"]
+      }
+    ]
+  },
+  {
+    id: "future",
+    title: "将来性",
+    icon: "🏗️",
+    color: "indigo",
+    description: "再開発、公共整備、今後の発展計画",
+    articles: [
+      {
+        title: "大阪万博2025関連開発",
+        description: "万博開催に向けたインフラ整備と地域への影響",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["万博", "開発", "インフラ"]
+      },
+      {
+        title: "都市再開発プロジェクト",
+        description: "梅田、難波、天王寺エリアの大規模再開発計画",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["再開発", "都市計画", "プロジェクト"]
+      },
+      {
+        title: "交通インフラの将来計画",
+        description: "新路線開通予定と交通利便性の向上計画",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        tags: ["交通", "新路線", "将来"]
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">大阪府テスト記事</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-blue-800 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+        alt="大阪府の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 大阪府・生活情報ガイド
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          大阪府での暮らし
+          <br><span class="text-yellow-300">完全ガイド</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          外国人が大阪府で安心して暮らすための8つのカテゴリー別詳細情報
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約883万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約25万人（2.8%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">記事カテゴリー</p>
+            <p class="text-lg">8分野24記事</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Categories -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          8つのカテゴリーで<span class="text-blue-600">詳しく解説</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          大阪府での生活に必要な情報を、分野別に整理してお届けします
+        </p>
+      </div>
+
+      <div class="space-y-16">
+        {articleCategories.map((category) => (
+          <div class="mb-16">
+            <div class="text-center mb-8">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                <span class="text-3xl">{category.icon}</span>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">{category.title}</h3>
+              <p class="text-lg text-gray-600 max-w-2xl mx-auto">{category.description}</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {category.articles.map((article) => (
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  <div class="relative h-48 overflow-hidden">
+                    <img 
+                      src={article.image}
+                      alt={article.title}
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-3 left-3 text-white">
+                      <h4 class="font-bold text-lg mb-1">{article.title}</h4>
+                    </div>
+                  </div>
+                  
+                  <div class="p-4">
+                    <p class="text-gray-600 mb-4 text-sm leading-relaxed">{article.description}</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {article.tags.map(tag => (
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                      ))}
+                    </div>
+                    
+                    <button class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                      記事を読む
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Summary Section -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        大阪府での<span class="text-yellow-300">新しい生活</span>を始めよう
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        外国人が大阪府で快適に暮らすための情報をすべて網羅。あなたの新生活をサポートします。
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href={`${import.meta.env.BASE_URL}ja/blog/osaka/`} 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🏢</span>
+          大阪府のページへ
+        </a>
+        <a 
+          href={`${import.meta.env.BASE_URL}ja/blog/`} 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">🗾</span>
+          他の都道府県を見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
