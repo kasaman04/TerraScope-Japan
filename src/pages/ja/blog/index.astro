@@ -470,7 +470,7 @@ const articleThemes = [
               'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
             }`}>
               {region.prefectures.map((prefecture) => (
-                <a href={`/ja/blog/${prefecture.slug}/`} class="group">
+                <a href={`${import.meta.env.BASE_URL}ja/blog/${prefecture.slug}/`} class="group">
                   <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                     <div class="relative h-48 overflow-hidden">
                       <img 
@@ -545,7 +545,7 @@ const articleThemes = [
           <div class="grid md:grid-cols-2 gap-4">
             {articleThemes.map((theme) => (
               <a 
-                href="/ja/blog/tokyo/musashino/article-01/" 
+                href={`${import.meta.env.BASE_URL}ja/blog/tokyo/musashino/article-01/`} 
                 class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <span class="text-2xl mr-3">{theme.icon}</span>
@@ -574,14 +574,14 @@ const articleThemes = [
       
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a 
-          href="/ja/services/" 
+          href={`${import.meta.env.BASE_URL}ja/services/`} 
           class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
         >
           <span class="mr-3">🔍</span>
           調査サービスを見る
         </a>
         <a 
-          href="/ja/contact/" 
+          href={`${import.meta.env.BASE_URL}ja/contact/`} 
           class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
         >
           <span class="mr-3">💬</span>
