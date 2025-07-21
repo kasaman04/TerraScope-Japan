@@ -17,7 +17,7 @@ const lang = "ja";
           <h1 class="text-xl font-bold text-gray-900">コスト</h1>
           <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
         </div>
-        <a href="#" class="text-sm text-red-500 hover:text-red-600 font-medium">
+        <a href="#" class="text-sm text-red-500 hover:text-red-600 font-extrabold">
           もっと見る <span class="ml-1">></span>
         </a>
       </div>
@@ -26,121 +26,115 @@ const lang = "ja";
       <div class="space-y-6">
         
         <!-- Article 1 -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div class="flex">
+        <a href="/cost-article-1/" title="生活コスト：家賃・光熱費" class="block">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+            <div class="flex">
             <!-- Image Section - No padding, full left edge -->
-            <div class="w-28 h-32 flex-shrink-0">
+            <div class="h-32 flex-shrink-0" style="width: 152px;">
               <figure class="h-full w-full">
-                <a href="#" title="生活コスト：家賃・光熱費">
-                  <img 
-                    src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                    alt="生活コスト：家賃・光熱費"
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </a>
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                  alt="生活コスト：家賃・光熱費"
+                  class="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                  loading="lazy"
+                />
               </figure>
             </div>
             
             <!-- Content Section -->
             <div class="flex-1 p-4">
-              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">
-                <a href="#" title="生活コスト：家賃・光熱費" class="hover:text-blue-600 transition-colors">
-                  生活コスト：家賃・光熱費
-                </a>
+              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
+                生活コスト：家賃・光熱費
               </h4>
               
               <div class="flex gap-2 mb-3">
-                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full hover:bg-orange-200 transition-colors">
+                <span class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
                   コスト
-                </a>
+                </span>
               </div>
               
               <p class="text-sm text-gray-600 leading-relaxed">
                 大阪府の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
               </p>
             </div>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Article 2 -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div class="flex">
+        <a href="/cost-article-2/" title="住居探しのコツと費用" class="block">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+            <div class="flex">
             <!-- Image Section - No padding, full left edge -->
-            <div class="w-28 h-32 flex-shrink-0">
+            <div class="h-32 flex-shrink-0" style="width: 152px;">
               <figure class="h-full w-full">
-                <a href="#" title="住居探しのコツと費用">
-                  <img 
-                    src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                    alt="住居探しのコツと費用"
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </a>
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                  alt="住居探しのコツと費用"
+                  class="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                  loading="lazy"
+                />
               </figure>
             </div>
             
             <!-- Content Section -->
             <div class="flex-1 p-4">
-              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">
-                <a href="#" title="住居探しのコツと費用" class="hover:text-blue-600 transition-colors">
-                  住居探しのコツと費用
-                </a>
+              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
+                住居探しのコツと費用
               </h4>
               
               <div class="flex gap-2 mb-3">
-                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full hover:bg-orange-200 transition-colors">
+                <span class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
                   コスト
-                </a>
+                </span>
               </div>
               
               <p class="text-sm text-gray-600 leading-relaxed">
                 外国人向け賃貸物件の探し方と初期費用の詳細解説。
               </p>
             </div>
+            </div>
           </div>
-        </div>
+        </a>
 
         <!-- Article 3 -->
-        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div class="flex">
+        <a href="/cost-article-3/" title="銀行口座・金融サービス" class="block">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
+            <div class="flex">
             <!-- Image Section - No padding, full left edge -->
-            <div class="w-28 h-32 flex-shrink-0">
+            <div class="h-32 flex-shrink-0" style="width: 152px;">
               <figure class="h-full w-full">
-                <a href="#" title="銀行口座・金融サービス">
-                  <img 
-                    src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                    alt="銀行口座・金融サービス"
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </a>
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                  alt="銀行口座・金融サービス"
+                  class="w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                  loading="lazy"
+                />
               </figure>
             </div>
             
             <!-- Content Section -->
             <div class="flex-1 p-4">
-              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">
-                <a href="#" title="銀行口座・金融サービス" class="hover:text-blue-600 transition-colors">
-                  銀行口座・金融サービス
-                </a>
+              <h4 class="text-lg font-semibold text-gray-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors">
+                銀行口座・金融サービス
               </h4>
               
               <div class="flex gap-2 mb-3">
-                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full hover:bg-orange-200 transition-colors">
+                <span class="inline-flex items-center px-3 py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
                   コスト
-                </a>
-                <a href="#" class="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors">
+                </span>
+                <span class="inline-flex items-center px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
                   国際対応
-                </a>
+                </span>
               </div>
               
               <p class="text-sm text-gray-600 leading-relaxed">
                 外国人が利用可能な銀行口座・金融サービスの比較。
               </p>
             </div>
+            </div>
           </div>
-        </div>
+        </a>
 
       </div>
 
