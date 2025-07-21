@@ -13,7 +13,7 @@ const regions = [
       { 
         name: "北海道", 
         slug: "hokkaido",
-        image: "/assets/images/prefectures/hokkaido.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`,
         description: "広大な自然と冬のリゾート地",
         cities: ["札幌市", "旭川市", "函館市", "小樽市", "帯広市"]
       }
@@ -25,7 +25,7 @@ const regions = [
       { 
         name: "青森県", 
         slug: "aomori",
-        image: "/assets/images/prefectures/aomori.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/aomori.png`,
         description: "りんごと青い海の美しい県",
         cities: ["青森市", "弘前市", "八戸市", "五所川原市"]
       },
@@ -39,28 +39,28 @@ const regions = [
       { 
         name: "宮城県", 
         slug: "miyagi",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/miyagi.png`,
         description: "仙台を中心とした東北の中核都市",
         cities: ["仙台市", "石巻市", "塩竈市", "気仙沼市"]
       },
       { 
         name: "秋田県", 
         slug: "akita",
-        image: "/assets/images/prefectures/akita.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/akita.png`,
         description: "美しい自然と文化の県",
         cities: ["秋田市", "横手市", "大仙市", "能代市"]
       },
       { 
         name: "山形県", 
         slug: "yamagata",
-        image: "/assets/images/prefectures/yamagata.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/yamagata.png`,
         description: "山形県の美しい自然環境",
         cities: ["山形市", "酒田市", "鶴岡市", "米沢市"]
       },
       { 
         name: "福島県", 
         slug: "fukushima",
-        image: "/assets/images/prefectures/fukushima.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/fukushima.png`,
         description: "桃の産地として有名な県",
         cities: ["福島市", "いわき市", "郡山市", "会津若松市"]
       }
@@ -72,42 +72,42 @@ const regions = [
       { 
         name: "東京都", 
         slug: "tokyo",
-        image: "/assets/images/prefectures/tokyo.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tokyo.png`,
         description: "日本の首都。ビジネスと文化の中心地",
         cities: ["武蔵野市", "国立市", "渋谷区", "港区", "世田谷区", "新宿区", "練馬区", "大田区"]
       },
       { 
         name: "茨城県", 
         slug: "ibaraki",
-        image: "/assets/images/prefectures/ibaraki.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/ibaraki.png`,
         description: "つくばと袋田の滝で有名",
         cities: ["水戸市", "つくば市", "日立市", "ひたちなか市"]
       },
       { 
         name: "栃木県", 
         slug: "tochigi",
-        image: "/assets/images/prefectures/tochigi.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tochigi.png`,
         description: "日光東照宮と温泉の県",
         cities: ["宇都宮市", "小山市", "栃木市", "佐野市"]
       },
       { 
         name: "群馬県", 
         slug: "gunma",
-        image: "/assets/images/prefectures/gunma.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/gunma.png`,
         description: "温泉と上毛三山の県",
         cities: ["前橋市", "高崎市", "桐生市", "伊勢崎市"]
       },
       { 
         name: "埼玉県", 
         slug: "saitama",
-        image: "/assets/images/prefectures/saitama.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/saitama.png`,
         description: "東京へのアクセス良好な住宅地",
         cities: ["さいたま市", "川口市", "所沢市", "越谷市", "川越市"]
       },
       { 
         name: "千葉県", 
         slug: "chiba",
-        image: "/assets/images/prefectures/chiba.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/chiba.png`,
         description: "成田空港と東京ディズニーリゾートの所在地",
         cities: ["千葉市", "船橋市", "柏市", "浦安市", "成田市"]
       },
@@ -154,28 +154,28 @@ const regions = [
       { 
         name: "山梨県", 
         slug: "yamanashi",
-        image: "/assets/images/prefectures/yamanashi.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/yamanashi.png`,
         description: "富士山と美しい山々の県",
         cities: ["甲府市", "富士吉田市", "甲斐市", "南アルプス市"]
       },
       { 
         name: "長野県", 
         slug: "nagano",
-        image: "/assets/images/prefectures/nagano.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/nagano.png`,
         description: "アルプスの美しい自然環境",
         cities: ["長野市", "松本市", "上田市", "飯田市"]
       },
       { 
         name: "岐阜県", 
         slug: "gifu",
-        image: "/assets/images/prefectures/gifu.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/gifu.png`,
         description: "白川郷と飛騨高山の県",
         cities: ["岐阜市", "大垣市", "高山市", "多治見市"]
       },
       { 
         name: "静岡県", 
         slug: "shizuoka",
-        image: "/assets/images/prefectures/shizuoka.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/shizuoka.png`,
         description: "富士山と温暖な気候の県",
         cities: ["静岡市", "浜松市", "沼津市", "富士市"]
       },
@@ -194,14 +194,14 @@ const regions = [
       { 
         name: "京都府", 
         slug: "kyoto",
-        image: "/assets/images/prefectures/kyoto.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kyoto.png`,
         description: "伝統文化と現代が調和する古都",
         cities: ["京都市", "宇治市", "長岡京市", "亀岡市"]
       },
       { 
         name: "大阪府", 
         slug: "osaka",
-        image: "/assets/images/prefectures/osaka.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
         description: "西日本の経済中心地。食文化が豊か",
         cities: ["大阪市", "堺市", "豊中市", "吹田市", "枚方市"]
       },
@@ -215,28 +215,28 @@ const regions = [
       { 
         name: "滋賀県", 
         slug: "shiga",
-        image: "/assets/images/prefectures/shiga.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/shiga.png`,
         description: "琵琶湖の美しい自然環境",
         cities: ["大津市", "彦根市", "長浜市", "近江八幡市"]
       },
       { 
         name: "兵庫県", 
         slug: "hyogo",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/hyogo.png`,
         description: "神戸港を中心とした国際都市",
         cities: ["神戸市", "姫路市", "西宮市", "尼崎市", "明石市"]
       },
       { 
         name: "奈良県", 
         slug: "nara",
-        image: "/assets/images/prefectures/nara.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/nara.png`,
         description: "古都奈良の歴史と文化",
         cities: ["奈良市", "橿原市", "生駒市", "大和郡山市"]
       },
       { 
         name: "和歌山県", 
         slug: "wakayama",
-        image: "/assets/images/prefectures/wakayama.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/wakayama.png`,
         description: "熊野古道と温泉の県",
         cities: ["和歌山市", "田辺市", "橋本市", "紀の川市"]
       }
@@ -288,28 +288,28 @@ const regions = [
       { 
         name: "徳島県", 
         slug: "tokushima",
-        image: "/assets/images/prefectures/tokushima.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tokushima.png`,
         description: "阿波踊りと渦潮の県",
         cities: ["徳島市", "阿南市", "鳴門市", "吉野川市"]
       },
       { 
         name: "香川県", 
         slug: "kagawa",
-        image: "/assets/images/prefectures/kagawa.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kagawa.png`,
         description: "うどん県として有名",
         cities: ["高松市", "丸亀市", "坂出市", "善通寺市"]
       },
       { 
         name: "愛媛県", 
         slug: "ehime",
-        image: "/assets/images/prefectures/ehime.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/ehime.png`,
         description: "みかんと道後温泉の県",
         cities: ["松山市", "今治市", "宇和島市", "八幡浜市"]
       },
       { 
         name: "高知県", 
         slug: "kochi",
-        image: "/assets/images/prefectures/kochi.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kochi.png`,
         description: "坂本龍馬と桂浜の県",
         cities: ["高知市", "南国市", "四万十市", "香南市"]
       }
@@ -321,56 +321,56 @@ const regions = [
       { 
         name: "福岡県", 
         slug: "fukuoka",
-        image: "/assets/images/prefectures/fukuoka.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/fukuoka.png`,
         description: "九州の玄関口。アジアへのアクセス良好",
         cities: ["福岡市", "北九州市", "久留米市", "春日市", "大野城市"]
       },
       { 
         name: "佐賀県", 
         slug: "saga",
-        image: "/assets/images/prefectures/saga.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/saga.png`,
         description: "有田焼と美しい自然の県",
         cities: ["佐賀市", "唐津市", "鳥栖市", "伊万里市"]
       },
       { 
         name: "長崎県", 
         slug: "nagasaki",
-        image: "/assets/images/prefectures/nagasaki.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/nagasaki.png`,
         description: "平和公園と歴史の県",
         cities: ["長崎市", "佐世保市", "諫早市", "大村市"]
       },
       { 
         name: "大分県", 
         slug: "oita",
-        image: "/assets/images/prefectures/oita.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/oita.png`,
         description: "温泉県として有名",
         cities: ["大分市", "別府市", "中津市", "日田市"]
       },
       { 
         name: "熊本県", 
         slug: "kumamoto",
-        image: "/assets/images/prefectures/kumamoto.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kumamoto.png`,
         description: "熊本城と阿蘇山の県",
         cities: ["熊本市", "八代市", "天草市", "玉名市"]
       },
       { 
         name: "宮崎県", 
         slug: "miyazaki",
-        image: "/assets/images/prefectures/miyazaki.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/miyazaki.png`,
         description: "南国の太陽と美しい海岸線",
         cities: ["宮崎市", "都城市", "延岡市", "日向市"]
       },
       { 
         name: "鹿児島県", 
         slug: "kagoshima",
-        image: "/assets/images/prefectures/kagoshima.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kagoshima.png`,
         description: "桜島と黒豚の県",
         cities: ["鹿児島市", "鹿屋市", "薩摩川内市", "霧島市"]
       },
       { 
         name: "沖縄県", 
         slug: "okinawa",
-        image: "/assets/images/prefectures/okinawa.png",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/okinawa.png`,
         description: "美しい海と独特の文化",
         cities: ["那覇市", "沖縄市", "うるま市", "宜野湾市"]
       }
