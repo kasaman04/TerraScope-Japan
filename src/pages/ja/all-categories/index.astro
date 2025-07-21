@@ -50,45 +50,6 @@ const popularArticles = [
         <p class="text-sm text-gray-600">外国人向けの生活情報をカテゴリー別にまとめました</p>
       </div>
 
-      <!-- Popular Articles Ranking (Mobile) -->
-      <div class="lg:hidden mb-12">
-        <div class="bg-white rounded-lg shadow-sm p-6">
-          <div class="flex items-center space-x-2 mb-4">
-            <span class="text-xl">📊</span>
-            <h2 class="text-lg font-bold text-gray-900">大阪市でよく読まれてる記事</h2>
-          </div>
-          <div class="space-y-4">
-            {popularArticles.map((article) => (
-              <a href={article.url} class="block">
-                <div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
-                  <div class="flex-shrink-0">
-                    {article.rank === 1 && <span class="text-xl">🥇</span>}
-                    {article.rank === 2 && <span class="text-xl">🥈</span>}
-                    {article.rank === 3 && <span class="text-xl">🥉</span>}
-                  </div>
-                  <div class="flex-1 min-w-0">
-                    <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
-                      {article.title}
-                    </h3>
-                    <div class="flex items-center space-x-2 mt-1 mb-2">
-                      <span class="text-xs">{article.categoryIcon}</span>
-                      <span class={
-                        article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800" :
-                        article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-purple-100 text-purple-800" :
-                        "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-orange-100 text-orange-800"
-                      }>
-                        {article.category}
-                      </span>
-                      <span class="text-xs text-gray-500">👁️ {article.views.toLocaleString()}回</span>
-                    </div>
-                    <p class="text-xs text-gray-600 line-clamp-2">{article.description}</p>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
 
       <!-- Main Content Layout -->
       <div class="lg:grid lg:grid-cols-4 lg:gap-8">
@@ -431,6 +392,46 @@ const popularArticles = [
             </a>
           </div>
         </section>
+
+        <!-- Popular Articles Ranking (Mobile) -->
+        <div class="lg:hidden mt-12">
+          <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex items-center space-x-2 mb-4">
+              <span class="text-xl">📊</span>
+              <h2 class="text-lg font-bold text-gray-900">大阪市でよく読まれてる記事</h2>
+            </div>
+            <div class="space-y-4">
+              {popularArticles.map((article) => (
+                <a href={article.url} class="block">
+                  <div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
+                    <div class="flex-shrink-0">
+                      {article.rank === 1 && <span class="text-xl">🥇</span>}
+                      {article.rank === 2 && <span class="text-xl">🥈</span>}
+                      {article.rank === 3 && <span class="text-xl">🥉</span>}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                        {article.title}
+                      </h3>
+                      <div class="flex items-center space-x-2 mt-1 mb-2">
+                        <span class="text-xs">{article.categoryIcon}</span>
+                        <span class={
+                          article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800" :
+                          article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-purple-100 text-purple-800" :
+                          "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-orange-100 text-orange-800"
+                        }>
+                          {article.category}
+                        </span>
+                        <span class="text-xs text-gray-500">👁️ {article.views.toLocaleString()}回</span>
+                      </div>
+                      <p class="text-xs text-gray-600 line-clamp-2">{article.description}</p>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
 
         </div>
 
