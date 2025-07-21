@@ -311,11 +311,11 @@ const articleCategories = [
             </div>
             
             <!-- Articles List -->
-            <div class="space-y-6">
+            <div class="space-y-4">
               {category.articles.map((article) => (
-                <div class="flex items-start space-x-4">
+                <div class="flex border-b border-gray-200 pb-4">
                   <!-- Article Image -->
-                  <div class="w-20 h-20 flex-shrink-0">
+                  <div class="w-32 h-24 flex-shrink-0 mr-4">
                     <img 
                       src={article.image}
                       alt={article.title}
@@ -326,20 +326,20 @@ const articleCategories = [
                   
                   <!-- Article Content -->
                   <div class="flex-1">
-                    <h4 class="text-base font-semibold text-gray-900 mb-2 leading-tight">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">
                       {article.title}
                     </h4>
                     
                     <!-- Tags -->
-                    <div class="flex gap-1 mb-2">
-                      {article.tags.slice(0, 2).map(tag => (
-                        <span class="px-2 py-1 text-xs font-medium bg-yellow-200 text-orange-700 rounded-sm">
+                    <div class="flex gap-2 mb-2">
+                      {article.tags.map(tag => (
+                        <span class="px-2 py-1 text-xs font-medium bg-yellow-100 text-orange-600 rounded">
                           {tag}
                         </span>
                       ))}
                     </div>
                     
-                    <p class="text-sm text-gray-600 leading-relaxed">
+                    <p class="text-sm text-gray-600">
                       {article.description}
                     </p>
                   </div>
