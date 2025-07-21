@@ -4,11 +4,45 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 const title = "記事カテゴリー一覧";
 const description = "大阪府の外国人向け生活情報カテゴリー一覧";
 const lang = "ja";
+
+// 大阪市で人気の記事ランキング
+const popularArticles = [
+  {
+    rank: 1,
+    title: "大阪の治安情報と安全な地域",
+    category: "安全性",
+    categoryIcon: "🛡️",
+    categoryColor: "red",
+    views: 2145,
+    description: "外国人にとって安全な居住エリアの詳細情報",
+    url: "/safety-article-1/"
+  },
+  {
+    rank: 2,
+    title: "関西国際空港からのアクセス",
+    category: "アクセス", 
+    categoryIcon: "🚃",
+    categoryColor: "purple",
+    views: 1892,
+    description: "空港から市内各エリアへの最適ルート",
+    url: "/access-article-2/"
+  },
+  {
+    rank: 3,
+    title: "生活コスト：家賃・光熱費",
+    category: "コスト",
+    categoryIcon: "💰", 
+    categoryColor: "orange",
+    views: 1634,
+    description: "大阪府の生活費を詳しく分析",
+    url: "/cost-article-1/"
+  }
+];
 ---
 
 <BaseLayout {title} {description} {lang}>
   <div class="min-h-screen bg-gray-50 py-8">
-    <div class="max-w-4xl mx-auto px-4">
+    <div class="max-w-6xl mx-auto px-4">
       
       <!-- Page Header -->
       <div class="text-center mb-12">
@@ -16,8 +50,51 @@ const lang = "ja";
         <p class="text-sm text-gray-600">外国人向けの生活情報をカテゴリー別にまとめました</p>
       </div>
 
-      <!-- Categories List -->
-      <div class="space-y-12">
+      <!-- Popular Articles Ranking (Mobile) -->
+      <div class="lg:hidden mb-12">
+        <div class="bg-white rounded-lg shadow-sm p-6">
+          <div class="flex items-center space-x-2 mb-4">
+            <span class="text-xl">📊</span>
+            <h2 class="text-lg font-bold text-gray-900">大阪市でよく読まれてる記事</h2>
+          </div>
+          <div class="space-y-4">
+            {popularArticles.map((article) => (
+              <a href={article.url} class="block">
+                <div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
+                  <div class="flex-shrink-0">
+                    {article.rank === 1 && <span class="text-xl">🥇</span>}
+                    {article.rank === 2 && <span class="text-xl">🥈</span>}
+                    {article.rank === 3 && <span class="text-xl">🥉</span>}
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <div class="flex items-center space-x-2 mt-1 mb-2">
+                      <span class="text-xs">{article.categoryIcon}</span>
+                      <span class={
+                        article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800" :
+                        article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-purple-100 text-purple-800" :
+                        "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-orange-100 text-orange-800"
+                      }>
+                        {article.category}
+                      </span>
+                      <span class="text-xs text-gray-500">👁️ {article.views.toLocaleString()}回</span>
+                    </div>
+                    <p class="text-xs text-gray-600 line-clamp-2">{article.description}</p>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content Layout -->
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        
+        <!-- Categories List (Main Content) -->
+        <div class="lg:col-span-3 space-y-12">
         
         <!-- 地域情報 -->
         <section>
@@ -354,6 +431,52 @@ const lang = "ja";
             </a>
           </div>
         </section>
+
+        </div>
+
+        <!-- Popular Articles Sidebar (Desktop) -->
+        <div class="hidden lg:block lg:col-span-1">
+          <div class="sticky top-8">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <div class="flex items-center space-x-2 mb-6">
+                <span class="text-xl">📊</span>
+                <h2 class="text-lg font-bold text-gray-900">人気記事</h2>
+              </div>
+              <div class="space-y-4">
+                {popularArticles.map((article) => (
+                  <a href={article.url} class="block">
+                    <div class="p-4 rounded-lg hover:bg-gray-50 transition-colors group border border-gray-100">
+                      <div class="flex items-center space-x-2 mb-2">
+                        {article.rank === 1 && <span class="text-lg">🥇</span>}
+                        {article.rank === 2 && <span class="text-lg">🥈</span>}
+                        {article.rank === 3 && <span class="text-lg">🥉</span>}
+                        <span class="text-sm font-medium text-gray-500">第{article.rank}位</span>
+                      </div>
+                      <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
+                        {article.title}
+                      </h3>
+                      <div class="flex items-center space-x-2 mb-2">
+                        <span class="text-xs">{article.categoryIcon}</span>
+                        <span class={
+                          article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800" :
+                          article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-purple-100 text-purple-800" :
+                          "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-orange-100 text-orange-800"
+                        }>
+                          {article.category}
+                        </span>
+                      </div>
+                      <div class="flex items-center space-x-1 text-xs text-gray-500 mb-2">
+                        <span>👁️</span>
+                        <span>{article.views.toLocaleString()}回閲覧</span>
+                      </div>
+                      <p class="text-xs text-gray-600 line-clamp-2">{article.description}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
 
