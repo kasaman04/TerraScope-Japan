@@ -25,67 +25,79 @@ const lang = "ja";
       <!-- Articles List -->
       <div class="space-y-4">
         
-        <!-- Article 1 Card -->
-        <div class="bg-white rounded p-4 shadow-sm">
-          <div class="flex items-start space-x-3">
-            <div class="w-16 h-16 flex-shrink-0">
-              <img 
-                src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                alt="生活コスト：家賃・光熱費"
-                class="w-full h-full object-cover"
-              />
+        <!-- Article 1 -->
+        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+          <div class="flex items-start space-x-4">
+            <div class="w-20 h-24 flex-shrink-0">
+              <figure class="h-full">
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                  alt="生活コスト：家賃・光熱費"
+                  class="w-full h-full object-cover rounded"
+                />
+              </figure>
             </div>
             <div class="flex-1">
-              <h2 class="text-base font-semibold text-gray-900 mb-2">生活コスト：家賃・光熱費</h2>
-              <div class="mb-2">
-                <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded-md">コスト</span>
+              <h4 class="text-base font-semibold text-gray-900 mb-2 hover:text-blue-600 cursor-pointer">
+                <a href="#" title="生活コスト：家賃・光熱費">生活コスト：家賃・光熱費</a>
+              </h4>
+              <div class="flex gap-1 mb-3">
+                <a href="#" class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-700 rounded hover:bg-yellow-200 transition-colors">コスト</a>
               </div>
-              <p class="text-sm text-gray-600">
+              <p class="text-sm text-gray-600 leading-relaxed">
                 大阪府の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Article 2 Card -->
-        <div class="bg-white rounded p-4 shadow-sm">
-          <div class="flex items-start space-x-3">
-            <div class="w-16 h-16 flex-shrink-0">
-              <img 
-                src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                alt="住居探しのコツと費用"
-                class="w-full h-full object-cover"
-              />
+        <!-- Article 2 -->
+        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+          <div class="flex items-start space-x-4">
+            <div class="w-20 h-24 flex-shrink-0">
+              <figure class="h-full">
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                  alt="住居探しのコツと費用"
+                  class="w-full h-full object-cover rounded"
+                />
+              </figure>
             </div>
             <div class="flex-1">
-              <h2 class="text-base font-semibold text-gray-900 mb-2">住居探しのコツと費用</h2>
-              <div class="mb-2">
-                <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded-md">コスト</span>
+              <h4 class="text-base font-semibold text-gray-900 mb-2 hover:text-blue-600 cursor-pointer">
+                <a href="#" title="住居探しのコツと費用">住居探しのコツと費用</a>
+              </h4>
+              <div class="flex gap-1 mb-3">
+                <a href="#" class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-700 rounded hover:bg-yellow-200 transition-colors">コスト</a>
               </div>
-              <p class="text-sm text-gray-600">
+              <p class="text-sm text-gray-600 leading-relaxed">
                 外国人向け賃貸物件の探し方と初期費用の詳細解説。
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Article 3 Card -->
-        <div class="bg-white rounded p-4 shadow-sm">
-          <div class="flex items-start space-x-3">
-            <div class="w-16 h-16 flex-shrink-0">
-              <img 
-                src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                alt="銀行口座・金融サービス"
-                class="w-full h-full object-cover"
-              />
+        <!-- Article 3 -->
+        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+          <div class="flex items-start space-x-4">
+            <div class="w-20 h-24 flex-shrink-0">
+              <figure class="h-full">
+                <img 
+                  src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                  alt="銀行口座・金融サービス"
+                  class="w-full h-full object-cover rounded"
+                />
+              </figure>
             </div>
             <div class="flex-1">
-              <h2 class="text-base font-semibold text-gray-900 mb-2">銀行口座・金融サービス</h2>
-              <div class="mb-2">
-                <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded-md mr-1">コスト</span>
-                <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded-md">国際対応</span>
+              <h4 class="text-base font-semibold text-gray-900 mb-2 hover:text-blue-600 cursor-pointer">
+                <a href="#" title="銀行口座・金融サービス">銀行口座・金融サービス</a>
+              </h4>
+              <div class="flex gap-1 mb-3">
+                <a href="#" class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-700 rounded hover:bg-yellow-200 transition-colors mr-1">コスト</a>
+                <a href="#" class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition-colors">国際対応</a>
               </div>
-              <p class="text-sm text-gray-600">
+              <p class="text-sm text-gray-600 leading-relaxed">
                 外国人が利用可能な銀行口座・金融サービスの比較。
               </p>
             </div>
