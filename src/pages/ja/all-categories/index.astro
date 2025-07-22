@@ -395,19 +395,29 @@ const popularArticles = [
 
         <!-- Popular Articles Ranking (Mobile) -->
         <div class="lg:hidden mt-12">
-          <div class="bg-white rounded-lg shadow-sm p-6">
-            <div class="flex items-center space-x-2 mb-4">
-              <span class="text-xl">📊</span>
-              <h2 class="text-lg font-bold text-gray-900">大阪市でよく読まれてる記事</h2>
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="mb-6 p-6 pb-0">
+              <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">人気記事ランキング</h2>
+              <div class="flex justify-center">
+                <div class="bg-green-500 text-white px-8 py-3 rounded-t-lg font-medium text-sm">
+                  総合
+                </div>
+              </div>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-1 border-t border-gray-200">
               {popularArticles.map((article) => (
                 <a href={article.url} class="block">
-                  <div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors group">
-                    <div class="flex-shrink-0">
-                      {article.rank === 1 && <span class="text-xl">🥇</span>}
-                      {article.rank === 2 && <span class="text-xl">🥈</span>}
-                      {article.rank === 3 && <span class="text-xl">🥉</span>}
+                  <div class="flex items-center p-4 hover:bg-gray-50 transition-colors group border-b border-gray-100">
+                    <div class="flex-shrink-0 w-12 text-center">
+                      <span class="text-2xl font-bold text-gray-700">{article.rank}</span>
+                    </div>
+                    <div class="w-16 h-16 flex-shrink-0 ml-4 mr-4">
+                      <img 
+                        src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                        alt={article.title}
+                        class="w-full h-full object-cover rounded"
+                        loading="lazy"
+                      />
                     </div>
                     <div class="flex-1 min-w-0">
                       <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
@@ -416,9 +426,9 @@ const popularArticles = [
                       <div class="flex items-center space-x-2 mt-1 mb-2">
                         <span class="text-xs">{article.categoryIcon}</span>
                         <span class={
-                          article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800" :
-                          article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-purple-100 text-purple-800" :
-                          "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-orange-100 text-orange-800"
+                          article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
+                          article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
+                          "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700"
                         }>
                           {article.category}
                         </span>
@@ -438,39 +448,44 @@ const popularArticles = [
         <!-- Popular Articles Sidebar (Desktop) -->
         <div class="hidden lg:block lg:col-span-1">
           <div class="sticky top-8">
-            <div class="bg-white rounded-lg shadow-sm p-6">
-              <div class="flex items-center space-x-2 mb-6">
-                <span class="text-xl">📊</span>
-                <h2 class="text-lg font-bold text-gray-900">人気記事</h2>
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+              <div class="p-6 pb-0">
+                <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">人気記事ランキング</h2>
+                <div class="flex justify-center mb-6">
+                  <div class="bg-green-500 text-white px-8 py-3 rounded-t-lg font-medium text-sm">
+                    総合
+                  </div>
+                </div>
               </div>
-              <div class="space-y-4">
+              <div class="space-y-1 border-t border-gray-200">
                 {popularArticles.map((article) => (
                   <a href={article.url} class="block">
-                    <div class="p-4 rounded-lg hover:bg-gray-50 transition-colors group border border-gray-100">
-                      <div class="flex items-center space-x-2 mb-2">
-                        {article.rank === 1 && <span class="text-lg">🥇</span>}
-                        {article.rank === 2 && <span class="text-lg">🥈</span>}
-                        {article.rank === 3 && <span class="text-lg">🥉</span>}
-                        <span class="text-sm font-medium text-gray-500">第{article.rank}位</span>
+                    <div class="flex items-center p-3 hover:bg-gray-50 transition-colors group border-b border-gray-100">
+                      <div class="flex-shrink-0 w-8 text-center">
+                        <span class="text-xl font-bold text-gray-700">{article.rank}</span>
                       </div>
-                      <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
-                        {article.title}
-                      </h3>
-                      <div class="flex items-center space-x-2 mb-2">
-                        <span class="text-xs">{article.categoryIcon}</span>
-                        <span class={
-                          article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-800" :
-                          article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-purple-100 text-purple-800" :
-                          "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-orange-100 text-orange-800"
-                        }>
-                          {article.category}
-                        </span>
+                      <div class="w-12 h-12 flex-shrink-0 ml-3 mr-3">
+                        <img 
+                          src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                          alt={article.title}
+                          class="w-full h-full object-cover rounded"
+                          loading="lazy"
+                        />
                       </div>
-                      <div class="flex items-center space-x-1 text-xs text-gray-500 mb-2">
-                        <span>👁️</span>
-                        <span>{article.views.toLocaleString()}回閲覧</span>
+                      <div class="flex-1 min-w-0">
+                        <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1">
+                          {article.title}
+                        </h3>
+                        <div class="flex items-center space-x-2">
+                          <span class={
+                            article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
+                            article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
+                            "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700"
+                          }>
+                            {article.category}
+                          </span>
+                        </div>
                       </div>
-                      <p class="text-xs text-gray-600 line-clamp-2">{article.description}</p>
                     </div>
                   </a>
                 ))}
