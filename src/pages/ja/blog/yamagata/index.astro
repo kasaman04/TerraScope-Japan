@@ -328,14 +328,20 @@ const yamagataCities = {
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
       <div class="flex gap-3">
-        <a id="modal-article-link" href="#" 
-           class="flex-1 text-center bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">
-          📖 詳しい記事を読む
-        </a>
+
+
         <button id="close-modal-btn"
-                class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
+
+
+                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
+
+
           閉じる
+
+
         </button>
+
+
       </div>
     </div>
   </div>
@@ -425,7 +431,6 @@ const yamagataCities = {
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
       document.getElementById('modal-description').textContent = city.description;
-      document.getElementById('modal-article-link').href = city.pageUrl;
 
       // タグを表示
       const tagsContainer = document.getElementById('modal-tags');
