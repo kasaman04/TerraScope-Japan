@@ -1,0 +1,827 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "小樽市 記事カテゴリー一覧";
+const description = "小樽市の外国人向け生活情報カテゴリー一覧";
+const lang = "ja";
+
+// 小樽市で人気の記事ランキング
+const popularArticles = [
+  {
+    title: "小樽の小樽の特色と魅力",
+    category: "地域情報",
+    url: "/ja/blog/hokkaido/regional-info-article-1/"
+  },
+  {
+    title: "小樽小樽へのアクセス方法",
+    category: "アクセス",
+    url: "/ja/blog/hokkaido/access-article-1/"
+  },
+  {
+    title: "小樽の住宅事情：家賃・光熱費",
+    category: "コスト",
+    url: "/ja/blog/hokkaido/cost-article-1/"
+  }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">小樽市の<span class="text-red-500">生活情報</span></h1>
+        <p class="text-sm text-gray-600">外国人向けの生活情報をカテゴリー別にまとめました</p>
+      </div>
+
+
+      <!-- Main Content Layout -->
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        
+        <!-- Categories List (Main Content) -->
+        <div class="lg:col-span-3 space-y-12">
+        
+        <!-- 地域情報 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🗾</span>
+              <h2 class="text-xl font-bold text-gray-900">地域情報</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/regional-info/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/regional-info-article-1/" title="小樽の地域特性と外国人コミュニティ" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の地域特性と外国人コミュニティ"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の地域特性と外国人コミュニティ
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    地域情報
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.15
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/regional-info-article-2/" title="小樽の歴史的港町エリア比較" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の歴史的港町エリア比較"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の歴史的港町エリア比較
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    地域情報
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.20
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/regional-info-article-3/" title="北海道の文化と小樽の生活習慣" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="北海道の文化と小樽の生活習慣"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    北海道の文化と小樽の生活習慣
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    地域情報
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.28
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/regional-info/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- アクセス -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🚃</span>
+              <h2 class="text-xl font-bold text-gray-900">アクセス</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/access/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/access-article-1/" title="小樽空港からのアクセス方法" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽空港からのアクセス方法"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽空港からのアクセス方法
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    アクセス
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.08
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/access-article-2/" title="小樽市電・バス完全ガイド" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽市電・バス完全ガイド"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽市電・バス完全ガイド
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    アクセス
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.15
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/access-article-3/" title="小樽の冬季交通事情と注意点" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の冬季交通事情と注意点"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の冬季交通事情と注意点
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    アクセス
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.20
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/access/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 生活利便性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🏪</span>
+              <h2 class="text-xl font-bold text-gray-900">生活利便性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/living-convenience/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/living-convenience-article-1/" title="小樽の買い物・商業施設" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の買い物・商業施設"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の買い物・商業施設
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    生活利便性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.12
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/living-convenience-article-2/" title="小樽の医療・病院ガイド" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の医療・病院ガイド"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の医療・病院ガイド
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    生活利便性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.05
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/living-convenience-article-3/" title="小樽の教育機関・学校情報" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の教育機関・学校情報"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の教育機関・学校情報
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    生活利便性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.10
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/living-convenience/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 国際対応 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🌏</span>
+              <h2 class="text-xl font-bold text-gray-900">国際対応</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/international-support/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/international-support-article-1/" title="小樽の多言語対応サービス" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の多言語対応サービス"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の多言語対応サービス
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    国際対応
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.18
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/international-support-article-2/" title="外国人向け行政サービス・手続き" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="外国人向け行政サービス・手続き"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    外国人向け行政サービス・手続き
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    国際対応
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.22
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/international-support-article-3/" title="小樽の国際交流コミュニティ" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の国際交流コミュニティ"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の国際交流コミュニティ
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    国際対応
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.30
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/international-support/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 子育て・教育 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">👨‍👩‍👧‍👦</span>
+              <h2 class="text-xl font-bold text-gray-900">子育て・教育</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/childcare-education/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/childcare-education-article-1/" title="小樽の保育園・幼稚園ガイド" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の保育園・幼稚園ガイド"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の保育園・幼稚園ガイド
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    子育て・教育
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.25
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/childcare-education-article-2/" title="小樽の小中学校・教育制度" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の小中学校・教育制度"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の小中学校・教育制度
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    子育て・教育
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.18
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/childcare-education-article-3/" title="外国人家族向け子育て支援" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="外国人家族向け子育て支援"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    外国人家族向け子育て支援
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    子育て・教育
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.15
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/childcare-education/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- コスト -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">💰</span>
+              <h2 class="text-xl font-bold text-gray-900">コスト</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/cost/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/cost-article-1/" title="小樽の住宅事情：家賃・光熱費" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の住宅事情：家賃・光熱費"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の住宅事情：家賃・光熱費
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    コスト
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.30
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/cost-article-2/" title="小樽の生活費・物価調査" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の生活費・物価調査"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の生活費・物価調査
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    コスト
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.08
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/cost-article-3/" title="小樽の税金・社会保険料" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の税金・社会保険料"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の税金・社会保険料
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    コスト
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.25
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/cost/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 安全性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🛡️</span>
+              <h2 class="text-xl font-bold text-gray-900">安全性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/safety/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/safety-article-1/" title="小樽の治安・犯罪統計" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の治安・犯罪統計"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の治安・犯罪統計
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    安全性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.02.01
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/safety-article-2/" title="小樽の防災・災害リスク" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の防災・災害リスク"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の防災・災害リスク
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    安全性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.12
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/safety-article-3/" title="外国人向け緊急時対応ガイド" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="外国人向け緊急時対応ガイド"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    外国人向け緊急時対応ガイド
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    安全性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.08
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/safety/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 将来性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🚀</span>
+              <h2 class="text-xl font-bold text-gray-900">将来性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/hokkaido/future-prospects/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/hokkaido/future-prospects-article-1/" title="小樽の再開発プロジェクト" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の再開発プロジェクト"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の再開発プロジェクト
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    将来性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.02.05
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/future-prospects-article-2/" title="観光産業の発展と雇用機会" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="観光産業の発展と雇用機会"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    観光産業の発展と雇用機会
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    将来性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.20
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/hokkaido/future-prospects-article-3/" title="小樽の人口動態と長期展望" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+                       alt="小樽の人口動態と長期展望"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    小樽の人口動態と長期展望
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    将来性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.18
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/hokkaido/future-prospects/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="lg:col-span-1 mt-12 lg:mt-0">
+        <div class="sticky top-8 space-y-8">
+          
+          <!-- Popular Articles -->
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">人気記事</h3>
+            <div class="space-y-4">
+              {popularArticles.map(article => (
+                <a href={article.url} class="block group">
+                  <h4 class="text-sm font-medium text-gray-900 group-hover:text-red-600 mb-1 leading-[1.4] line-clamp-2">
+                    {article.title}
+                  </h4>
+                  <p class="text-xs text-gray-500">{article.category}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- Newsletter Signup -->
+          <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-2">最新情報をお届け</h3>
+            <p class="text-sm text-gray-600 mb-4">
+              小樽市の最新生活情報をメールでお知らせします
+            </p>
+            <div class="space-y-3">
+              <input 
+                type="email" 
+                placeholder="メールアドレス"
+                class="w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-red-500 focus:border-transparent"
+              />
+              <button class="w-full bg-red-500 text-white py-2 px-4 rounded text-sm font-medium hover:bg-red-600 transition-colors">
+                購読する
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
