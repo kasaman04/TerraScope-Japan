@@ -55,29 +55,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/regional-info-article-1/" title="大阪の地域特性と外国人コミュニティ" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="大阪の地域特性と外国人コミュニティ"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="大阪の地域特性と外国人コミュニティ"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    大阪の地域特性と外国人コミュニティ
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                      地域情報
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      大阪の地域特性と外国人コミュニティ
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
-                        地域情報
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      大阪府の各エリアの特徴と外国人が住みやすい地域を詳しく紹介。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪府の各エリアの特徴と外国人が住みやすい地域を詳しく紹介。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/regional-info-article-2/" title="外国人に人気のエリア比較" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="外国人に人気のエリア比較"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    外国人に人気のエリア比較
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                      地域情報
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪で外国人に人気のエリアを家賃・利便性・コミュニティの観点から比較分析。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/regional-info-article-3/" title="大阪の文化と生活習慣" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="大阪の文化と生活習慣"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    大阪の文化と生活習慣
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                      地域情報
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪独特の文化や生活習慣を理解して、よりスムーズに地域に溶け込む方法。
+                  </p>
                 </div>
               </div>
             </a>
@@ -97,29 +143,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/access-article-1/" title="大阪の交通システム完全ガイド" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="大阪の交通システム完全ガイド"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="大阪の交通システム完全ガイド"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    大阪の交通システム完全ガイド
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">
+                      アクセス
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      大阪の交通システム完全ガイド
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">
-                        アクセス
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      JR・私鉄・地下鉄の路線図と外国人向け利用ガイド。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    JR・私鉄・地下鉄の路線図と外国人向け利用ガイド。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/access-article-2/" title="関西国際空港からのアクセス方法" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="関西国際空港からのアクセス方法"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    関西国際空港からのアクセス方法
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">
+                      アクセス
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    空港から大阪市内各エリアへの最適なルートと所要時間・料金案内。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/access-article-3/" title="外国人向け交通ICカード活用術" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="外国人向け交通ICカード活用術"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    外国人向け交通ICカード活用術
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-purple-100 text-purple-800 rounded-full">
+                      アクセス
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    ICOCAやPiTaPaの使い方から、お得な定期券の選び方まで詳しく解説。
+                  </p>
                 </div>
               </div>
             </a>
@@ -139,29 +231,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/international-support-article-1/" title="外国語対応の医療機関リスト" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="外国語対応の医療機関リスト"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="外国語対応の医療機関リスト"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    外国語対応の医療機関リスト
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
+                      国際対応
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      外国語対応の医療機関リスト
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
-                        国際対応
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      英語・中国語・韓国語対応可能な病院・クリニックの詳細情報。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    英語・中国語・韓国語対応可能な病院・クリニックの詳細情報。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/international-support-article-2/" title="多言語対応の行政サービス" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="多言語対応の行政サービス"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    多言語対応の行政サービス
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
+                      国際対応
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    外国人向け窓口サービスと各種手続きの多言語サポート情報。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/international-support-article-3/" title="外国人コミュニティとイベント" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="外国人コミュニティとイベント"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    外国人コミュニティとイベント
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 rounded-full">
+                      国際対応
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪の外国人コミュニティと交流イベント・文化活動情報。
+                  </p>
                 </div>
               </div>
             </a>
@@ -181,29 +319,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/childcare-education-article-1/" title="大阪のインターナショナルスクール" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="大阪のインターナショナルスクール"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="大阪のインターナショナルスクール"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    大阪のインターナショナルスクール
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">
+                      子育て・教育
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      大阪のインターナショナルスクール
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">
-                        子育て・教育
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      大阪府内のインターナショナルスクールの比較と入学ガイド。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪府内のインターナショナルスクールの比較と入学ガイド。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/childcare-education-article-2/" title="外国人家庭の保育園・幼稚園選び" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="外国人家庭の保育園・幼稚園選び"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    外国人家庭の保育園・幼稚園選び
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">
+                      子育て・教育
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    外国人家庭に優しい保育園・幼稚園の選び方と入園手続き。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/childcare-education-article-3/" title="日本の教育システムと進路選択" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="日本の教育システムと進路選択"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    日本の教育システムと進路選択
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-indigo-100 text-indigo-800 rounded-full">
+                      子育て・教育
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    日本の小中高教育システムと外国人子女の進路選択について。
+                  </p>
                 </div>
               </div>
             </a>
@@ -223,29 +407,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/living-convenience-article-1/" title="買い物施設とスーパーマーケット" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="買い物施設とスーパーマーケット"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="買い物施設とスーパーマーケット"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    買い物施設とスーパーマーケット
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">
+                      生活利便性
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      買い物施設とスーパーマーケット
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">
-                        生活利便性
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      外国人向けの食材が手に入るスーパーや輸入食品店の情報。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    外国人向けの食材が手に入るスーパーや輸入食品店の情報。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/living-convenience-article-2/" title="銀行・金融サービス利用ガイド" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="銀行・金融サービス利用ガイド"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    銀行・金融サービス利用ガイド
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">
+                      生活利便性
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    外国人が利用しやすい銀行口座開設と金融サービス活用法。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/living-convenience-article-3/" title="通信・インターネット環境" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="通信・インターネット環境"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    通信・インターネット環境
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full">
+                      生活利便性
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    携帯電話・インターネット契約と外国人向けプランの比較。
+                  </p>
                 </div>
               </div>
             </a>
@@ -265,29 +495,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/cost-article-1/" title="生活コスト：家賃・光熱費" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="生活コスト：家賃・光熱費"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="生活コスト：家賃・光熱費"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    生活コスト：家賃・光熱費
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
+                      コスト
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      生活コスト：家賃・光熱費
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
-                        コスト
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      大阪府の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪府の家賃相場、光熱費、日用品の価格など、生活コストを詳しく分析。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/cost-article-2/" title="教育費と子育て支援制度" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="教育費と子育て支援制度"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    教育費と子育て支援制度
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
+                      コスト
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    教育費の目安と外国人家庭が利用できる支援制度について。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/cost-article-3/" title="医療費と保険制度" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="医療費と保険制度"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    医療費と保険制度
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-orange-100 text-orange-800 rounded-full">
+                      コスト
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    医療費の実際のコストと国民健康保険制度の活用方法。
+                  </p>
                 </div>
               </div>
             </a>
@@ -307,29 +583,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/safety-article-1/" title="大阪の治安情報と安全な地域" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="大阪の治安情報と安全な地域"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="大阪の治安情報と安全な地域"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    大阪の治安情報と安全な地域
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-red-100 text-red-800 rounded-full">
+                      安全性
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      大阪の治安情報と安全な地域
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full">
-                        安全性
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      大阪府内の治安状況と外国人にとって安全な居住エリアの紹介。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪府内の治安状況と外国人にとって安全な居住エリアの紹介。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/safety-article-2/" title="災害対策と緊急時の対応" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="災害対策と緊急時の対応"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    災害対策と緊急時の対応
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-red-100 text-red-800 rounded-full">
+                      安全性
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    地震・台風などの自然災害への備えと緊急時連絡先。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/safety-article-3/" title="外国人向け防犯対策ガイド" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="外国人向け防犯対策ガイド"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    外国人向け防犯対策ガイド
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-red-100 text-red-800 rounded-full">
+                      安全性
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    日本の防犯対策の基本と外国人が注意すべきポイント。
+                  </p>
                 </div>
               </div>
             </a>
@@ -349,29 +671,75 @@ const popularArticles = [
             </a>
           </div>
 
-          <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a href="/future-potential-article-1/" title="大阪・関西万博と地域発展" class="block">
-              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group">
-                <div class="flex h-28 sm:h-28 md:h-32">
-                  <div class="w-24 sm:w-28 md:w-36 h-full flex-shrink-0">
-                    <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
-                         alt="大阪・関西万博と地域発展"
-                         class="block w-full h-full object-cover object-left group-hover:opacity-90 transition-opacity"
-                         loading="lazy" />
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="大阪・関西万博と地域発展"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    大阪・関西万博と地域発展
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-teal-100 text-teal-800 rounded-full">
+                      将来性
+                    </span>
                   </div>
-                  <div class="flex-1 p-2 sm:p-4 flex flex-col justify-center">
-                    <h4 class="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
-                      大阪・関西万博と地域発展
-                    </h4>
-                    <div class="flex gap-2 mb-2">
-                      <span class="inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 text-xs font-medium bg-teal-100 text-teal-800 rounded-full">
-                        将来性
-                      </span>
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-2">
-                      2025年万博による地域経済への影響と今後の発展見通し。
-                    </p>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    2025年万博による地域経済への影響と今後の発展見通し。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/future-potential-article-2/" title="外国人向け就職・起業支援" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="外国人向け就職・起業支援"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    外国人向け就職・起業支援
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-teal-100 text-teal-800 rounded-full">
+                      将来性
+                    </span>
                   </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    大阪での外国人向け就職支援制度と起業環境について。
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/future-potential-article-3/" title="不動産投資と長期居住計画" class="block">
+              <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow group h-full">
+                <div class="aspect-[4/3]">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
+                       alt="不動産投資と長期居住計画"
+                       class="block w-full h-full object-cover group-hover:opacity-90 transition-opacity"
+                       loading="lazy" />
+                </div>
+                <div class="p-4">
+                  <h4 class="text-sm md:text-base font-semibold text-gray-900 mb-2 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                    不動産投資と長期居住計画
+                  </h4>
+                  <div class="flex gap-2 mb-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-xs font-medium bg-teal-100 text-teal-800 rounded-full">
+                      将来性
+                    </span>
+                  </div>
+                  <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">
+                    外国人の不動産購入と長期的な居住・投資計画の立て方。
+                  </p>
                 </div>
               </div>
             </a>
