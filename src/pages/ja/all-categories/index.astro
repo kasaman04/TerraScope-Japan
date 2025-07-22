@@ -396,45 +396,38 @@ const popularArticles = [
         <!-- Popular Articles Ranking (Mobile) -->
         <div class="lg:hidden mt-12">
           <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div class="mb-6 p-6 pb-0">
-              <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">人気記事ランキング</h2>
-              <div class="flex justify-center">
-                <div class="bg-green-500 text-white px-8 py-3 rounded-t-lg font-medium text-sm">
-                  総合
-                </div>
+            <div class="p-6 pb-4">
+              <h2 class="text-lg font-bold text-gray-900 mb-6 text-center">人気記事ランキング</h2>
+            </div>
+            <div class="px-6">
+              <div class="bg-green-500 text-white text-center py-3 font-medium text-sm">
+                総合
               </div>
             </div>
-            <div class="space-y-1 border-t border-gray-200">
-              {popularArticles.map((article) => (
+            <div class="bg-white">
+              {popularArticles.map((article, index) => (
                 <a href={article.url} class="block">
-                  <div class="flex items-center p-4 hover:bg-gray-50 transition-colors group border-b border-gray-100">
-                    <div class="flex-shrink-0 w-12 text-center">
-                      <span class="text-2xl font-bold text-gray-700">{article.rank}</span>
+                  <div class="flex items-start p-4 border-b border-gray-200 hover:bg-gray-50 transition-colors group">
+                    <div class="flex-shrink-0 w-8 mr-4">
+                      <span class="text-3xl font-bold text-gray-800 leading-none">{article.rank}</span>
                     </div>
-                    <div class="w-16 h-16 flex-shrink-0 ml-4 mr-4">
+                    <div class="w-20 h-16 flex-shrink-0 mr-4">
                       <img 
                         src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
                         alt={article.title}
-                        class="w-full h-full object-cover rounded"
+                        class="w-full h-full object-cover"
                         loading="lazy"
                       />
                     </div>
                     <div class="flex-1 min-w-0">
-                      <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      <h3 class="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-2 leading-tight">
                         {article.title}
                       </h3>
-                      <div class="flex items-center space-x-2 mt-1 mb-2">
-                        <span class="text-xs">{article.categoryIcon}</span>
-                        <span class={
-                          article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
-                          article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
-                          "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700"
-                        }>
-                          {article.category}
+                      <div class="mb-1">
+                        <span class="inline-block px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded">
+                          {article.categoryIcon} {article.category}
                         </span>
-                        <span class="text-xs text-gray-500">👁️ {article.views.toLocaleString()}回</span>
                       </div>
-                      <p class="text-xs text-gray-600 line-clamp-2">{article.description}</p>
                     </div>
                   </div>
                 </a>
@@ -449,40 +442,36 @@ const popularArticles = [
         <div class="hidden lg:block lg:col-span-1">
           <div class="sticky top-8">
             <div class="bg-white rounded-lg shadow-sm overflow-hidden">
-              <div class="p-6 pb-0">
-                <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">人気記事ランキング</h2>
-                <div class="flex justify-center mb-6">
-                  <div class="bg-green-500 text-white px-8 py-3 rounded-t-lg font-medium text-sm">
-                    総合
-                  </div>
+              <div class="p-4 pb-3">
+                <h2 class="text-base font-bold text-gray-900 mb-4 text-center">人気記事ランキング</h2>
+              </div>
+              <div class="px-4">
+                <div class="bg-green-500 text-white text-center py-2 font-medium text-xs">
+                  総合
                 </div>
               </div>
-              <div class="space-y-1 border-t border-gray-200">
-                {popularArticles.map((article) => (
+              <div class="bg-white">
+                {popularArticles.map((article, index) => (
                   <a href={article.url} class="block">
-                    <div class="flex items-center p-3 hover:bg-gray-50 transition-colors group border-b border-gray-100">
-                      <div class="flex-shrink-0 w-8 text-center">
-                        <span class="text-xl font-bold text-gray-700">{article.rank}</span>
+                    <div class="flex items-start p-3 border-b border-gray-200 hover:bg-gray-50 transition-colors group">
+                      <div class="flex-shrink-0 w-6 mr-3">
+                        <span class="text-2xl font-bold text-gray-800 leading-none">{article.rank}</span>
                       </div>
-                      <div class="w-12 h-12 flex-shrink-0 ml-3 mr-3">
+                      <div class="w-16 h-12 flex-shrink-0 mr-3">
                         <img 
                           src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`}
                           alt={article.title}
-                          class="w-full h-full object-cover rounded"
+                          class="w-full h-full object-cover"
                           loading="lazy"
                         />
                       </div>
                       <div class="flex-1 min-w-0">
-                        <h3 class="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1">
+                        <h3 class="text-xs font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1 leading-tight">
                           {article.title}
                         </h3>
-                        <div class="flex items-center space-x-2">
-                          <span class={
-                            article.categoryColor === "red" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
-                            article.categoryColor === "purple" ? "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700" :
-                            "inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-700"
-                          }>
-                            {article.category}
+                        <div class="mb-1">
+                          <span class="inline-block px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded text-[10px]">
+                            {article.categoryIcon} {article.category}
                           </span>
                         </div>
                       </div>
