@@ -13,7 +13,7 @@ const aomoriCities = {
     foreignPopulation: "約1,377人（0.5%）",
     features: "県庁所在地・ねぶた祭り",
     description: "青森県の中心都市。ねぶた祭りで有名で、本州最北端の県庁所在地として発展している。",
-    image: "/assets/images/prefectures/aomori.png",
+    image: "",
     tags: ["県庁所在地", "ねぶた祭り", "本州最北端"],
     englishHospital: "あり",
     airport: "◎（青森空港直結）",
@@ -35,7 +35,7 @@ const aomoriCities = {
     foreignPopulation: "約1,200人（0.8%）",
     features: "弘前城・桜の名所",
     description: "弘前城と桜で有名な城下町。歴史と文化が息づく美しい街です。",
-    image: "/assets/images/prefectures/aomori.png",
+    image: "",
     tags: ["城下町", "桜の名所", "歴史文化"],
     englishHospital: "限定的",
     airport: "○（青森空港経由）",
@@ -57,7 +57,7 @@ const aomoriCities = {
     foreignPopulation: "約1,760人（0.8%）",
     features: "工業都市・港町",
     description: "青森県第2の都市。工業と漁業が盛んで、太平洋に面した港町として発展。",
-    image: "/assets/images/prefectures/aomori.png",
+    image: "",
     tags: ["工業都市", "港町", "漁業"],
     englishHospital: "あり",
     airport: "△（三沢空港経由）",
@@ -183,9 +183,7 @@ const aomoriCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
@@ -221,13 +219,9 @@ const aomoriCities = {
 
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
-      <div class="space-y-3">
+      <div>
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
-        </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
         </button>
       </div>
     </div>
@@ -244,7 +238,7 @@ const aomoriCities = {
         foreignPopulation: "約1,200人（0.4%）",
         features: "県庁所在地・ねぶた祭り",
         description: "青森県の県庁所在地。有名なねぶた祭りと豊かな自然環境が魅力の都市です。",
-        image: "/assets/images/prefectures/aomori.png",
+        image: "",
         tags: ["県庁所在地", "ねぶた祭り", "自然豊か"],
         englishHospital: "限定的",
         airport: "◎（青森空港）",
@@ -258,7 +252,7 @@ const aomoriCities = {
         foreignPopulation: "約800人（0.5%）",
         features: "桜の名所・城下町",
         description: "弘前城で有名な城下町。桜の名所として知られ、歴史と文化が息づく街です。",
-        image: "/assets/images/prefectures/aomori.png",
+        image: "",
         tags: ["城下町", "桜の名所", "歴史文化"],
         englishHospital: "限定的",
         airport: "○（青森空港へバスで）",
@@ -272,7 +266,7 @@ const aomoriCities = {
         foreignPopulation: "約1,000人（0.5%）",
         features: "港町・工業都市",
         description: "太平洋に面した港町。工業都市として発展し、新鮮な海産物も豊富です。",
-        image: "/assets/images/prefectures/aomori.png",
+        image: "",
         tags: ["港町", "工業都市", "海産物"],
         englishHospital: "限定的",
         airport: "△（青森空港まで2時間）",
@@ -294,8 +288,6 @@ const aomoriCities = {
       if (!city) return;
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title;
       document.getElementById('modal-title').textContent = city.title;
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
@@ -343,12 +335,6 @@ const aomoriCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {
