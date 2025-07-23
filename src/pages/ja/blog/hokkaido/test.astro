@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "【テストページ】北海道での暮らし - 市区町村別生活情報";
+const description = "北海道の各市区町村での外国人向け生活情報。札幌市・旭川市・函館市など広大な自然を持つ北海道の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 北海道の市区町村データ（テスト用）
+const hokkaidoCities = {
+  sapporo: {
+    title: "札幌市",
+    population: "約197万人",
+    foreignPopulation: "約3.2万人（1.6%）",
+    features: "道都・雪まつり",
+    description: "北海道の中心都市。四季がはっきりしており、特に雪景色と食文化で世界的に有名です。",
+    image: "/assets/images/prefectures/hokkaido.png",
+    tags: ["雪まつり", "道都", "外国人多め"],
+    englishHospital: "あり",
+    airport: "◎（新千歳空港直通）",
+    rent: "中程度",
+    recommend: "自然と都市生活を求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/sapporo/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/sapporo/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/sapporo/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/sapporo/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/sapporo/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/sapporo/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/sapporo/"
+  },
+  hakodate: {
+    title: "函館市",
+    population: "約25万人",
+    foreignPopulation: "約1,800人（0.7%）",
+    features: "歴史的港町・夜景",
+    description: "美しい夜景と歴史的な街並みが魅力の港町。国際的な観光地として発展しています。",
+    image: "/assets/images/prefectures/hokkaido.png",
+    tags: ["港町", "夜景", "観光地"],
+    englishHospital: "限定的",
+    airport: "○（函館空港）",
+    rent: "安め",
+    recommend: "歴史と景観を重視する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/hakodate/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/hakodate/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/hakodate/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/hakodate/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/hakodate/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/hakodate/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/hakodate/"
+  },
+  otaru: {
+    title: "小樽市",
+    population: "約11万人",
+    foreignPopulation: "約800人（0.7%）",
+    features: "運河・ガラス工芸",
+    description: "歴史的な運河と石造りの建物が美しい港町。観光業が盛んで、ガラス工芸でも有名です。",
+    image: "/assets/images/prefectures/hokkaido.png",
+    tags: ["運河", "ガラス工芸", "観光"],
+    englishHospital: "限定的",
+    airport: "△（新千歳空港まで車で1時間）",
+    rent: "安め",
+    recommend: "静かな環境を求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/otaru/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/otaru/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/otaru/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/otaru/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/otaru/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/otaru/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/otaru/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- テストページヘッダー -->
+  <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-8">
+    <div class="flex">
+      <div class="py-1">
+        <p class="font-bold">🧪 テストページ</p>
+        <p class="text-sm">これは北海道ページのテスト版です。機能やデザインの確認用として作成されています。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <nav class="mb-8">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/`} class="hover:text-blue-600">北海道</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">テストページ</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 mb-12 text-center">
+    <h1 class="text-4xl font-bold mb-4">
+      🏔️ 北海道での暮らし
+      <span class="block text-2xl font-normal mt-2 opacity-90">【テストページ】</span>
+    </h1>
+    <p class="text-xl opacity-90 mb-6">
+      広大な自然と豊かな食文化を誇る北海道の市区町村別生活情報
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+      <div class="bg-white bg-opacity-20 rounded-lg p-3">
+        <div class="font-semibold">総人口</div>
+        <div>約522万人</div>
+      </div>
+      <div class="bg-white bg-opacity-20 rounded-lg p-3">
+        <div class="font-semibold">外国人人口</div>
+        <div>約6.4万人（1.2%）</div>
+      </div>
+      <div class="bg-white bg-opacity-20 rounded-lg p-3">
+        <div class="font-semibold">市町村数</div>
+        <div>179自治体</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cities Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+    {Object.entries(hokkaidoCities).map(([key, city]) => (
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="relative">
+          <img
+            src={`${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`}
+            alt={city.title}
+            class="w-full h-48 object-cover"
+            loading="lazy"
+          />
+          <div class="absolute top-4 left-4">
+            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+              {city.features}
+            </span>
+          </div>
+        </div>
+        
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{city.title}</h3>
+          <p class="text-gray-600 text-sm mb-4">{city.description}</p>
+          
+          <div class="space-y-2 mb-4 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-500">人口：</span>
+              <span class="font-medium">{city.population}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">外国人人口：</span>
+              <span class="font-medium">{city.foreignPopulation}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">空港アクセス：</span>
+              <span class="font-medium">{city.airport}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">家賃相場：</span>
+              <span class="font-medium">{city.rent}</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1 mb-4">
+            {city.tags.map(tag => (
+              <span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div class="mb-4">
+            <p class="text-xs text-gray-500 mb-2">おすすめ対象：</p>
+            <p class="text-sm text-gray-700">{city.recommend}</p>
+          </div>
+
+          <a
+            href={`${import.meta.env.BASE_URL}${city.pageUrl.slice(1)}`}
+            class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-lg transition-colors duration-200 font-medium"
+          >
+            📖 詳しい記事を見る
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Test Information -->
+  <div class="bg-gray-50 rounded-lg p-6 mb-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">🧪 テスト情報</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">テスト対象</h3>
+        <ul class="text-sm text-gray-600 space-y-1">
+          <li>• パンくずリストの動作確認</li>
+          <li>• 市区町村カードのリンク動作</li>
+          <li>• BASE_URLの正しい適用</li>
+          <li>• レスポンシブデザインの確認</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">アクセス情報</h3>
+        <ul class="text-sm text-gray-600 space-y-1">
+          <li>• URL: /ja/blog/hokkaido/test/</li>
+          <li>• 作成日: 2025年7月23日</li>
+          <li>• ベースページ: 北海道ページ</li>
+          <li>• 目的: 機能テスト・デバッグ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Links -->
+  <div class="text-center">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">🔗 クイックリンク</h2>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/`}
+        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium"
+      >
+        本来の北海道ページ
+      </a>
+      <a
+        href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/`}
+        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium"
+      >
+        札幌市ページ
+      </a>
+      <a
+        href={`${import.meta.env.BASE_URL}ja/blog/`}
+        class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 font-medium"
+      >
+        ブログ一覧
+      </a>
+    </div>
+  </div>
+</BaseLayout>
