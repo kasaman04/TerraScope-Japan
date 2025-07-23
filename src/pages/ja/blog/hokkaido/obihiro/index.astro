@@ -32,11 +32,11 @@ const popularArticles = [
       <!-- Breadcrumb -->
       <nav class="mb-8">
         <ol class="flex items-center space-x-2 text-sm text-gray-600">
-          <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-blue-600">ホーム</a></li>
           <li><span class="mx-2">/</span></li>
-          <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-blue-600">地域別生活情報</a></li>
           <li><span class="mx-2">/</span></li>
-          <li><a href="/ja/blog/hokkaido/" class="hover:text-blue-600">北海道</a></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/`} class="hover:text-blue-600">北海道</a></li>
           <li><span class="mx-2">/</span></li>
           <li class="text-gray-900 font-medium">帯広市</li>
         </ol>
