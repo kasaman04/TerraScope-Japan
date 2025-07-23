@@ -13,7 +13,7 @@ const miyagiCities = {
     foreignPopulation: "約15,781人（1.5%）",
     features: "東北最大都市・学都・杜の都",
     description: "東北地方の中心都市。杜の都として知られる緑豊かな都市で、大学が多く学術都市としても発展している。牛タンや楽天イーグルスでも有名。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["東北最大都市", "学都", "杜の都", "牛タン", "楽天イーグルス"],
     englishHospital: "あり",
     airport: "◎（仙台空港直結）",
@@ -35,7 +35,7 @@ const miyagiCities = {
     foreignPopulation: "約1,200人（0.9%）",
     features: "漁業・水産業の中心",
     description: "三陸海岸の水産業基地。日本有数の漁港都市として発展している。震災復興のシンボル的な街。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["漁業", "水産業", "三陸海岸", "復興"],
     englishHospital: "限定的",
     airport: "○（仙台空港経由）",
@@ -57,7 +57,7 @@ const miyagiCities = {
     foreignPopulation: "約800人（0.6%）",
     features: "鳴子温泉・ササニシキ・古川",
     description: "鳴子温泉郷で有名な宮城県内陸部の中核都市。ササニシキの産地としても知られ、温泉と農業が盛んな地域。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["鳴子温泉", "ササニシキ", "農業", "温泉"],
     englishHospital: "限定的",
     airport: "○（仙台空港経由）",
@@ -79,7 +79,7 @@ const miyagiCities = {
     foreignPopulation: "約400人（0.5%）",
     features: "明治村・ひとめぼれ・伊達政宗",
     description: "教育の街として栄えた歴史ある街。明治時代の建物が残る「みやぎの明治村」として親しまれ、伊達政宗ゆかりの地。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["明治村", "ひとめぼれ", "教育の街", "伊達政宗"],
     englishHospital: "なし",
     airport: "○（仙台空港経由）",
@@ -101,7 +101,7 @@ const miyagiCities = {
     foreignPopulation: "約400人（0.8%）",
     features: "塩釜神社・マグロ・松島",
     description: "塩釜神社の門前町として栄えた港町。新鮮なマグロの水揚げで有名で、日本三景松島への玄関口。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["塩釜神社", "マグロ", "松島", "港町"],
     englishHospital: "なし",
     airport: "○（仙台空港経由）",
@@ -123,7 +123,7 @@ const miyagiCities = {
     foreignPopulation: "約300人（0.5%）",
     features: "遠洋漁業・マグロ・フカヒレ",
     description: "遠洋漁業の基地として発展した港町。マグロとフカヒレの水揚げで全国的に有名。震災からの復興を遂げた街。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["遠洋漁業", "マグロ", "フカヒレ", "復興"],
     englishHospital: "なし",
     airport: "△（仙台空港経由）",
@@ -145,7 +145,7 @@ const miyagiCities = {
     foreignPopulation: "約1,800人（2.3%）",
     features: "仙台空港・ベッドタウン",
     description: "仙台空港がある玄関口都市。仙台市に隣接するベッドタウンとして発展し、アクセス良好で住みやすい環境です。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["仙台空港", "ベッドタウン", "仙台近郊", "アクセス良好"],
     englishHospital: "限定的",
     airport: "◎（仙台空港内）",
@@ -167,7 +167,7 @@ const miyagiCities = {
     foreignPopulation: "約1,100人（1.8%）",
     features: "古代都市・文化財",
     description: "古代東北の政治中心地だった歴史ある都市。多賀城跡や東北歴史博物館があり、仙台市に隣接し通勤にも便利です。",
-    image: "/assets/images/prefectures/miyagi.png",
+    image: "",
     tags: ["古代都市", "多賀城跡", "歴史文化", "仙台近郊"],
     englishHospital: "限定的",
     airport: "○（仙台空港へ電車で30分）",
@@ -377,9 +377,6 @@ const miyagiCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
@@ -415,13 +412,9 @@ const miyagiCities = {
 
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
-      <div class="space-y-3">
+      <div>
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
-        </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
         </button>
       </div>
     </div>
@@ -437,7 +430,7 @@ const miyagiCities = {
         foreignPopulation: "約15,781人（1.5%）",
         features: "東北最大都市・学都・杜の都",
         description: "東北地方の中心都市。杜の都として知られる緑豊かな都市で、大学が多く学術都市としても発展している。牛タンや楽天イーグルスでも有名。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["東北最大都市", "学都", "杜の都", "牛タン", "楽天イーグルス"],
         englishHospital: "あり",
         airport: "◎（仙台空港直結）",
@@ -451,7 +444,7 @@ const miyagiCities = {
         foreignPopulation: "約1,200人（0.9%）",
         features: "漁業・水産業の中心",
         description: "三陸海岸の水産業基地。日本有数の漁港都市として発展している。震災復興のシンボル的な街。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["漁業", "水産業", "三陸海岸", "復興"],
         englishHospital: "限定的",
         airport: "○（仙台空港経由）",
@@ -465,7 +458,7 @@ const miyagiCities = {
         foreignPopulation: "約800人（0.6%）",
         features: "鳴子温泉・ササニシキ・古川",
         description: "鳴子温泉郷で有名な宮城県内陸部の中核都市。ササニシキの産地としても知られ、温泉と農業が盛んな地域。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["鳴子温泉", "ササニシキ", "農業", "温泉"],
         englishHospital: "限定的",
         airport: "○（仙台空港経由）",
@@ -479,7 +472,7 @@ const miyagiCities = {
         foreignPopulation: "約400人（0.5%）",
         features: "明治村・ひとめぼれ・伊達政宗",
         description: "教育の街として栄えた歴史ある街。明治時代の建物が残る「みやぎの明治村」として親しまれ、伊達政宗ゆかりの地。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["明治村", "ひとめぼれ", "教育の街", "伊達政宗"],
         englishHospital: "なし",
         airport: "○（仙台空港経由）",
@@ -493,7 +486,7 @@ const miyagiCities = {
         foreignPopulation: "約400人（0.8%）",
         features: "塩釜神社・マグロ・松島",
         description: "塩釜神社の門前町として栄えた港町。新鮮なマグロの水揚げで有名で、日本三景松島への玄関口。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["塩釜神社", "マグロ", "松島", "港町"],
         englishHospital: "なし",
         airport: "○（仙台空港経由）",
@@ -507,7 +500,7 @@ const miyagiCities = {
         foreignPopulation: "約300人（0.5%）",
         features: "遠洋漁業・マグロ・フカヒレ",
         description: "遠洋漁業の基地として発展した港町。マグロとフカヒレの水揚げで全国的に有名。震災からの復興を遂げた街。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["遠洋漁業", "マグロ", "フカヒレ", "復興"],
         englishHospital: "なし",
         airport: "△（仙台空港経由）",
@@ -521,7 +514,7 @@ const miyagiCities = {
         foreignPopulation: "約1,800人（2.3%）",
         features: "仙台空港・ベッドタウン",
         description: "仙台空港がある玄関口都市。仙台市に隣接するベッドタウンとして発展し、アクセス良好で住みやすい環境です。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["仙台空港", "ベッドタウン", "仙台近郊", "アクセス良好"],
         englishHospital: "限定的",
         airport: "◎（仙台空港内）",
@@ -535,7 +528,7 @@ const miyagiCities = {
         foreignPopulation: "約1,100人（1.8%）",
         features: "古代都市・文化財",
         description: "古代東北の政治中心地だった歴史ある都市。多賀城跡や東北歴史博物館があり、仙台市に隣接し通勤にも便利です。",
-        image: "/assets/images/prefectures/miyagi.png",
+        image: "",
         tags: ["古代都市", "多賀城跡", "歴史文化", "仙台近郊"],
         englishHospital: "限定的",
         airport: "○（仙台空港へ電車で30分）",
@@ -557,8 +550,6 @@ const miyagiCities = {
       if (!city) return;
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title;
       document.getElementById('modal-title').textContent = city.title;
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
@@ -606,12 +597,6 @@ const miyagiCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

@@ -13,7 +13,7 @@ const yamagataCities = {
     foreignPopulation: "約2,000人（0.8%）",
     features: "県庁所在地・蔵王温泉",
     description: "山形県の中心都市。蔵王温泉で有名、四季を通じて美しい自然を楽しめる県庁所在地。",
-    image: "/assets/images/prefectures/yamagata.png",
+    image: "",
     tags: ["県庁所在地", "蔵王温泉", "四季"],
     englishHospital: "あり",
     airport: "◎（山形空港直結）",
@@ -35,7 +35,7 @@ const yamagataCities = {
     foreignPopulation: "約800人（0.8%）",
     features: "港町・庄内平野",
     description: "日本海に面した港町。庄内平野の豊かな農業地帯の中心都市。",
-    image: "/assets/images/prefectures/yamagata.png",
+    image: "",
     tags: ["港町", "庄内平野", "農業"],
     englishHospital: "限定的",
     airport: "○（庄内空港経由）",
@@ -57,7 +57,7 @@ const yamagataCities = {
     foreignPopulation: "約900人（0.8%）",
     features: "城下町・食文化",
     description: "庄内藩の城下町。ユネスコ創造都市として食文化が豊か。",
-    image: "/assets/images/prefectures/yamagata.png",
+    image: "",
     tags: ["城下町", "食文化", "ユネスコ"],
     englishHospital: "限定的",
     airport: "○（庄内空港経由）",
@@ -79,7 +79,7 @@ const yamagataCities = {
     foreignPopulation: "約600人（0.8%）",
     features: "上杉氏・織物",
     description: "上杉氏の城下町として発展。米沢織などの伝統工芸で有名。",
-    image: "/assets/images/prefectures/yamagata.png",
+    image: "",
     tags: ["上杉氏", "織物", "伝統工芸"],
     englishHospital: "なし",
     airport: "△（福島空港経由）",
@@ -289,9 +289,6 @@ const yamagataCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
@@ -327,13 +324,9 @@ const yamagataCities = {
 
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
-      <div class="space-y-3">
+      <div>
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
-        </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
         </button>
       </div>
     </div>
@@ -349,7 +342,7 @@ const yamagataCities = {
         foreignPopulation: "約2,000人（0.8%）",
         features: "県庁所在地・蔵王温泉",
         description: "山形県の中心都市。蔵王温泉で有名、四季を通じて美しい自然を楽しめる県庁所在地。",
-        image: "/assets/images/prefectures/yamagata.png",
+        image: "",
         tags: ["県庁所在地", "蔵王温泉", "四季"],
         englishHospital: "あり",
         airport: "◎（山形空港直結）",
@@ -363,7 +356,7 @@ const yamagataCities = {
         foreignPopulation: "約800人（0.8%）",
         features: "港町・庄内平野",
         description: "日本海に面した港町。庄内平野の豊かな農業地帯の中心都市。",
-        image: "/assets/images/prefectures/yamagata.png",
+        image: "",
         tags: ["港町", "庄内平野", "農業"],
         englishHospital: "限定的",
         airport: "○（庄内空港経由）",
@@ -377,7 +370,7 @@ const yamagataCities = {
         foreignPopulation: "約900人（0.8%）",
         features: "城下町・食文化",
         description: "庄内藩の城下町。ユネスコ創造都市として食文化が豊か。",
-        image: "/assets/images/prefectures/yamagata.png",
+        image: "",
         tags: ["城下町", "食文化", "ユネスコ"],
         englishHospital: "限定的",
         airport: "○（庄内空港経由）",
@@ -391,7 +384,7 @@ const yamagataCities = {
         foreignPopulation: "約600人（0.8%）",
         features: "上杉氏・織物",
         description: "上杉氏ゆかりの城下町。伝統的な織物産業で知られ、歴史と文化が息づく街。",
-        image: "/assets/images/prefectures/yamagata.png",
+        image: "",
         tags: ["上杉氏", "織物", "城下町"],
         englishHospital: "限定的",
         airport: "△（山形空港経由）",
@@ -413,8 +406,6 @@ const yamagataCities = {
       if (!city) return;
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title;
       document.getElementById('modal-title').textContent = city.title;
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
@@ -462,12 +453,6 @@ const yamagataCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

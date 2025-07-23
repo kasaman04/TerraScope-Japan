@@ -13,7 +13,7 @@ const akitaCities = {
     foreignPopulation: "外国人人口：約2,400人（0.8%）",
     features: "県庁所在地・竿燈祭り・なまはげ",
     description: "秋田県の中心都市。東北三大祭りの一つ竿燈祭りで有名。なまはげ文化の発信地で、美人県としても知られる。",
-    image: "/assets/images/prefectures/akita.png",
+    image: "",
     tags: ["県庁所在地", "竿燈祭り", "なまはげ", "美人県"],
     englishHospital: true,
     airport: "◎（秋田空港直結）",
@@ -36,7 +36,7 @@ const akitaCities = {
     foreignPopulation: "外国人人口：約650人（0.8%）",
     features: "かまくら祭り・農業・横手やきそば",
     description: "雪国の文化と農業の街。かまくら祭りで全国的に有名。横手やきそばのB級グルメでも知られる。",
-    image: "/assets/images/prefectures/akita.png",
+    image: "",
     tags: ["かまくら祭り", "農業", "雪国文化", "B級グルメ"],
     englishHospital: false,
     airport: "○（秋田空港経由）",
@@ -59,7 +59,7 @@ const akitaCities = {
     foreignPopulation: "外国人人口：約480人（0.7%）",
     features: "全国花火競技大会・自然・農業",
     description: "全国花火競技大会の開催地として有名。美しい自然環境と豊かな農業が特色の街。",
-    image: "/assets/images/prefectures/akita.png",
+    image: "",
     tags: ["花火大会", "自然環境", "農業", "伝統文化"],
     englishHospital: false,
     airport: "△（秋田空港経由）",
@@ -82,7 +82,7 @@ const akitaCities = {
     foreignPopulation: "外国人人口：約420人（0.6%）",
     features: "鳥海山・由利高原・風力発電",
     description: "鳥海山の麓に位置する自然豊かな街。風力発電の先進地で、由利高原の美しい景観が魅力。",
-    image: "/assets/images/prefectures/akita.png",
+    image: "",
     tags: ["鳥海山", "風力発電", "自然環境", "農業"],
     englishHospital: false,
     airport: "△（秋田空港経由）",
@@ -105,7 +105,7 @@ const akitaCities = {
     foreignPopulation: "外国人人口：約380人（0.6%）",
     features: "秋田犬の故郷・きりたんぽ・ハチ公",
     description: "忠犬ハチ公の故郷として世界的に有名。秋田犬の故郷で、きりたんぽ鍋発祥の地としても知られる。",
-    image: "/assets/images/prefectures/akita.png",
+    image: "",
     tags: ["秋田犬", "ハチ公", "きりたんぽ", "郷土料理"],
     englishHospital: false,
     airport: "△（秋田空港経由）",
@@ -128,7 +128,7 @@ const akitaCities = {
     foreignPopulation: "外国人人口：約240人（0.5%）",
     features: "バスケの街・木材・風の松原",
     description: "バスケットボールの街として有名。木材産業と風の松原の美しい海岸線が特色の街。",
-    image: "/assets/images/prefectures/akita.png",
+    image: "",
     tags: ["バスケの街", "木材産業", "スポーツ", "海岸"],
     englishHospital: false,
     airport: "△（秋田空港経由）",
@@ -261,9 +261,6 @@ const akitaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
@@ -299,13 +296,9 @@ const akitaCities = {
 
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
-      <div class="space-y-3">
+      <div>
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
-        </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
         </button>
       </div>
     </div>
@@ -321,7 +314,7 @@ const akitaCities = {
         foreignPopulation: "約2,400人（0.8%）",
         features: "県庁所在地・竿燈祭り・なまはげ",
         description: "秋田県の中心都市。東北三大祭りの一つ竿燈祭りで有名。なまはげ文化の発信地で、美人県としても知られる。",
-        image: "/assets/images/prefectures/akita.png",
+        image: "",
         tags: ["県庁所在地", "竿燈祭り", "なまはげ", "美人県"],
         englishHospital: "あり",
         airport: "◎（秋田空港直結）",
@@ -335,7 +328,7 @@ const akitaCities = {
         foreignPopulation: "約650人（0.8%）",
         features: "かまくら祭り・農業・横手やきそば",
         description: "雪国の文化と農業の街。かまくら祭りで全国的に有名。横手やきそばのB級グルメでも知られる。",
-        image: "/assets/images/prefectures/akita.png",
+        image: "",
         tags: ["かまくら祭り", "農業", "雪国文化", "B級グルメ"],
         englishHospital: "なし",
         airport: "○（秋田空港経由）",
@@ -349,7 +342,7 @@ const akitaCities = {
         foreignPopulation: "約480人（0.7%）",
         features: "全国花火競技大会・自然・農業",
         description: "全国花火競技大会の開催地として有名。美しい自然環境と豊かな農業が特色の街。",
-        image: "/assets/images/prefectures/akita.png",
+        image: "",
         tags: ["花火大会", "自然環境", "農業", "伝統文化"],
         englishHospital: "なし",
         airport: "△（秋田空港経由）",
@@ -363,7 +356,7 @@ const akitaCities = {
         foreignPopulation: "約420人（0.6%）",
         features: "鳥海山・由利高原・風力発電",
         description: "鳥海山の麓に位置する自然豊かな街。風力発電の先進地で、由利高原の美しい景観が魅力。",
-        image: "/assets/images/prefectures/akita.png",
+        image: "",
         tags: ["鳥海山", "風力発電", "自然環境", "農業"],
         englishHospital: "なし",
         airport: "△（秋田空港経由）",
@@ -377,7 +370,7 @@ const akitaCities = {
         foreignPopulation: "約380人（0.6%）",
         features: "秋田犬の故郷・きりたんぽ・ハチ公",
         description: "忠犬ハチ公の故郷として世界的に有名。秋田犬の故郷で、きりたんぽ鍋発祥の地としても知られる。",
-        image: "/assets/images/prefectures/akita.png",
+        image: "",
         tags: ["秋田犬", "ハチ公", "きりたんぽ", "郷土料理"],
         englishHospital: "なし",
         airport: "△（秋田空港経由）",
@@ -391,7 +384,7 @@ const akitaCities = {
         foreignPopulation: "約240人（0.5%）",
         features: "バスケの街・木材・風の松原",
         description: "バスケットボールの街として有名。木材産業と風の松原の美しい海岸線が特色の街。",
-        image: "/assets/images/prefectures/akita.png",
+        image: "",
         tags: ["バスケの街", "木材産業", "スポーツ", "海岸"],
         englishHospital: "なし",
         airport: "△（秋田空港経由）",
@@ -413,8 +406,6 @@ const akitaCities = {
       if (!city) return;
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title;
       document.getElementById('modal-title').textContent = city.title;
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
@@ -462,12 +453,6 @@ const akitaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

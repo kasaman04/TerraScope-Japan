@@ -13,7 +13,7 @@ const iwateCities = {
     foreignPopulation: "約2,100人（0.7%）",
     features: "県庁所在地・盛岡城・三大麺",
     description: "岩手県の政治・経済・文化の中心都市。南部藩の城下町として発展し、盛岡城跡公園や石川啄木ゆかりの地として知られる。わんこそば、盛岡冷麺、じゃじゃ麺の三大麺が有名。",
-    image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["県庁所在地", "盛岡城", "三大麺", "石川啄木"],
     englishHospital: "あり",
     airport: "◎（いわて花巻空港経由）",
@@ -35,7 +35,7 @@ const iwateCities = {
     foreignPopulation: "約900人（0.8%）",
     features: "平泉世界遺産・中尊寺",
     description: "平泉の世界遺産「仏国土（浄土）を表す建築・庭園及び考古学的遺跡群」の玄関口。中尊寺金色堂をはじめとする奥州藤原氏の文化遺産と豊かな自然環境が魅力。",
-    image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["世界遺産", "平泉", "中尊寺", "奥州藤原氏"],
     englishHospital: "限定的",
     airport: "○（いわて花巻空港経由）",
@@ -57,7 +57,7 @@ const iwateCities = {
     foreignPopulation: "約1,100人（1.0%）",
     features: "南部鉄器・えさし藤原の郷",
     description: "伝統工芸の南部鉄器発祥の地として知られ、えさし藤原の郷では平安時代の文化を体験できる。農業と伝統工芸が息づく歴史ある街。",
-    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["南部鉄器", "えさし藤原の郷", "伝統工芸", "農業"],
     englishHospital: "限定的",
     airport: "○（いわて花巻空港経由）",
@@ -79,7 +79,7 @@ const iwateCities = {
     foreignPopulation: "約800人（0.9%）",
     features: "宮沢賢治記念館・イーハトーヴ",
     description: "詩人・童話作家宮沢賢治の生誕地。賢治が理想郷として描いた『イーハトーヴ』の世界観を体感できる。温泉地としても有名で、いわて花巻空港の立地により交通アクセスが良好。",
-    image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["宮沢賢治", "イーハトーヴ", "温泉", "空港直結"],
     englishHospital: "限定的",
     airport: "◎（いわて花巻空港直結）",
@@ -101,7 +101,7 @@ const iwateCities = {
     foreignPopulation: "約1,200人（1.3%）",
     features: "工業都市・展勝地",
     description: "岩手県南部の工業都市。工業団地が集中し、製造業が盛ん。春の北上展勝地の桜まつりで有名で、約4万本の桜が市内を彩る。",
-    image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["工業都市", "展勝地", "桜まつり", "製造業"],
     englishHospital: "あり",
     airport: "○（いわて花巻空港経由）",
@@ -123,7 +123,7 @@ const iwateCities = {
     foreignPopulation: "約350人（0.7%）",
     features: "陸中海岸・浜者の町",
     description: "三陸復興国立公園の中心部に位置し、美しいリアス式海岸で知られる浜者の町。浄土ヶ浜は本州最東端の絶景スポット。水産業が盛んで、新鮮な海の幸を味わえる。",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["陸中海岸", "浄土ヶ浜", "浜者の町", "水産業"],
     englishHospital: "限定的",
     airport: "△（いわて花巻空港から遠い）",
@@ -333,9 +333,6 @@ const iwateCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
@@ -371,13 +368,9 @@ const iwateCities = {
 
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
-      <div class="space-y-3">
+      <div>
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
-        </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
         </button>
       </div>
     </div>
@@ -393,7 +386,7 @@ const iwateCities = {
         foreignPopulation: "約2,100人（0.7%）",
         features: "県庁所在地・盛岡城・三大麺",
         description: "岩手県の政治・経済・文化の中心都市。南部藩の城下町として発展し、盛岡城跡公園や石川啄木ゆかりの地として知られる。わんこそば、盛岡冷麺、じゃじゃ麺の三大麺が有名。",
-        image: "https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["県庁所在地", "盛岡城", "三大麺", "石川啄木"],
         englishHospital: "あり",
         airport: "◎（いわて花巻空港経由）",
@@ -407,7 +400,7 @@ const iwateCities = {
         foreignPopulation: "約900人（0.8%）",
         features: "平泉世界遺産・中尊寺",
         description: "平泉の世界遺産「仏国土（浄土）を表す建築・庭園及び考古学的遺跡群」の玄関口。中尊寺金色堂をはじめとする奥州藤原氏の文化遺産と豊かな自然環境が魅力。",
-        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["世界遺産", "平泉", "中尊寺", "奥州藤原氏"],
         englishHospital: "限定的",
         airport: "○（いわて花巻空港経由）",
@@ -421,7 +414,7 @@ const iwateCities = {
         foreignPopulation: "約1,100人（1.0%）",
         features: "南部鉄器・えさし藤原の郷",
         description: "伝統工芸の南部鉄器発祥の地として知られ、えさし藤原の郷では平安時代の文化を体験できる。農業と伝統工芸が息づく歴史ある街。",
-        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["南部鉄器", "えさし藤原の郷", "伝統工芸", "農業"],
         englishHospital: "限定的",
         airport: "○（いわて花巻空港経由）",
@@ -435,7 +428,7 @@ const iwateCities = {
         foreignPopulation: "約800人（0.9%）",
         features: "宮沢賢治記念館・イーハトーヴ",
         description: "詩人・童話作家宮沢賢治の生誕地。賢治が理想郷として描いた『イーハトーヴ』の世界観を体感できる。温泉地としても有名で、いわて花巻空港の立地により交通アクセスが良好。",
-        image: "https://images.unsplash.com/photo-1516214104703-d870798883c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["宮沢賢治", "イーハトーヴ", "温泉", "空港直結"],
         englishHospital: "限定的",
         airport: "◎（いわて花巻空港直結）",
@@ -449,7 +442,7 @@ const iwateCities = {
         foreignPopulation: "約1,200人（1.3%）",
         features: "工業都市・展勝地",
         description: "岩手県南部の工業都市。工業団地が集中し、製造業が盛ん。春の北上展勝地の桜まつりで有名で、約4万本の桜が市内を彩る。",
-        image: "https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["工業都市", "展勝地", "桜まつり", "製造業"],
         englishHospital: "あり",
         airport: "○（いわて花巻空港経由）",
@@ -463,7 +456,7 @@ const iwateCities = {
         foreignPopulation: "約350人（0.7%）",
         features: "陸中海岸・浜者の町",
         description: "三陸復興国立公園の中心部に位置し、美しいリアス式海岸で知られる浜者の町。浄土ヶ浜は本州最東端の絶景スポット。水産業が盛んで、新鮮な海の幸を味わえる。",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["陸中海岸", "浄土ヶ浜", "浜者の町", "水産業"],
         englishHospital: "限定的",
         airport: "△（いわて花巻空港から遠い）",
@@ -485,8 +478,6 @@ const iwateCities = {
       if (!city) return;
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title;
       document.getElementById('modal-title').textContent = city.title;
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
@@ -534,12 +525,6 @@ const iwateCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {
