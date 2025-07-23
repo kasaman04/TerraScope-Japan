@@ -13,7 +13,7 @@ const fukuokaCities = {
     foreignPopulation: "約3.7万人（2.3%）",
     features: "九州の中心都市",
     description: "九州最大の都市でアジアとの玄関口。IT産業や国際ビジネスが発達し、外国人にも住みやすい環境が整っています。",
-    image: "/assets/images/prefectures/fukuoka.png",
+    image: "",
     tags: ["国際都市", "IT産業", "アジア玄関口"],
     englishHospital: "あり",
     airport: "◎（福岡空港直結）",
@@ -35,7 +35,7 @@ const fukuokaCities = {
     foreignPopulation: "約1.8万人（1.9%）",
     features: "工業都市・環境都市",
     description: "重工業で発展した都市で、現在は環境技術に力を入れています。アジア各国との交流も活発です。",
-    image: "/assets/images/prefectures/fukuoka.png",
+    image: "",
     tags: ["工業都市", "環境技術", "製造業"],
     englishHospital: "あり",
     airport: "○（小倉駅経由で福岡空港へ）",
@@ -57,7 +57,7 @@ const fukuokaCities = {
     foreignPopulation: "約6,800人（2.3%）",
     features: "筑後地域の中心都市",
     description: "筑後地域の中心都市として発展。医療・教育機関が充実し、外国人留学生や研修生も多く住んでいます。",
-    image: "/assets/images/prefectures/fukuoka.png",
+    image: "",
     tags: ["筑後中心", "医療", "教育", "留学生"],
     englishHospital: "あり",
     airport: "○（福岡空港へ電車で60分）",
@@ -79,7 +79,7 @@ const fukuokaCities = {
     foreignPopulation: "約2,100人（1.9%）",
     features: "福岡市近郊・住宅都市",
     description: "福岡市に隣接するベッドタウン。都市部へのアクセスが良く、住環境も整った人気のエリアです。",
-    image: "/assets/images/prefectures/fukuoka.png",
+    image: "",
     tags: ["ベッドタウン", "福岡近郊", "住宅都市", "アクセス良好"],
     englishHospital: "限定的",
     airport: "○（福岡空港へ30分）",
@@ -101,7 +101,7 @@ const fukuokaCities = {
     foreignPopulation: "約2,800人（2.8%）",
     features: "学研都市・福岡近郊",
     description: "九州大学や筑紫女学園大学などがある学研都市。福岡市に隣接しアクセス良好で、留学生や研究者に人気です。",
-    image: "/assets/images/prefectures/fukuoka.png",
+    image: "",
     tags: ["学研都市", "九州大学", "留学生", "福岡近郊"],
     englishHospital: "限定的",
     airport: "○（福岡空港へ電車で20分）",
@@ -123,7 +123,7 @@ const fukuokaCities = {
     foreignPopulation: "約1,200人（1.2%）",
     features: "サーフィン・リゾート地",
     description: "美しい海岸線とサーフィンスポットで有名なリゾート都市。福岡市から車で約30分のアクセスで、リモートワークやライフスタイル重視の外国人に人気です。",
-    image: "/assets/images/prefectures/fukuoka.png",
+    image: "",
     tags: ["サーフィン", "リゾート", "海岸都市", "ライフスタイル"],
     englishHospital: "限定的",
     airport: "○（福岡空港へ車で30分）",
@@ -213,7 +213,7 @@ const fukuokaCities = {
       <!-- Cities Cards -->
       <div>
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(fukuokaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
                  onclick={`openCityModal('${key}')`}>
@@ -256,7 +256,6 @@ const fukuokaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -298,10 +297,6 @@ const fukuokaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -316,7 +311,7 @@ const fukuokaCities = {
         foreignPopulation: "約3.7万人（2.3%）",
         features: "九州の中心都市",
         description: "九州最大の都市でアジアとの玄関口。IT産業や国際ビジネスが発達し、外国人にも住みやすい環境が整っています。",
-        image: "/assets/images/prefectures/fukuoka.png",
+        image: "",
         tags: ["国際都市", "IT産業", "アジア玄関口"],
         englishHospital: "あり",
         airport: "◎（福岡空港直結）",
@@ -330,7 +325,7 @@ const fukuokaCities = {
         foreignPopulation: "約1.8万人（1.9%）",
         features: "工業都市・環境都市",
         description: "重工業で発展した都市で、現在は環境技術に力を入れています。アジア各国との交流も活発です。",
-        image: "/assets/images/prefectures/fukuoka.png",
+        image: "",
         tags: ["工業都市", "環境技術", "製造業"],
         englishHospital: "あり",
         airport: "○（小倉駅経由で福岡空港へ）",
@@ -344,7 +339,7 @@ const fukuokaCities = {
         foreignPopulation: "約6,800人（2.3%）",
         features: "筑後地域の中心都市",
         description: "筑後地域の中心都市として発展。医療・教育機関が充実し、外国人留学生や研修生も多く住んでいます。",
-        image: "/assets/images/prefectures/fukuoka.png",
+        image: "",
         tags: ["筑後中心", "医療", "教育", "留学生"],
         englishHospital: "あり",
         airport: "○（福岡空港へ電車で60分）",
@@ -358,7 +353,7 @@ const fukuokaCities = {
         foreignPopulation: "約2,100人（1.9%）",
         features: "福岡市近郊・住宅都市",
         description: "福岡市に隣接するベッドタウン。都市部へのアクセスが良く、住環境も整った人気のエリアです。",
-        image: "/assets/images/prefectures/fukuoka.png",
+        image: "",
         tags: ["ベッドタウン", "福岡近郊", "住宅都市", "アクセス良好"],
         englishHospital: "限定的",
         airport: "○（福岡空港へ30分）",
@@ -372,7 +367,7 @@ const fukuokaCities = {
         foreignPopulation: "約2,800人（2.8%）",
         features: "学研都市・福岡近郊",
         description: "九州大学や筑紫女学園大学などがある学研都市。福岡市に隣接しアクセス良好で、留学生や研究者に人気です。",
-        image: "/assets/images/prefectures/fukuoka.png",
+        image: "",
         tags: ["学研都市", "九州大学", "留学生", "福岡近郊"],
         englishHospital: "限定的",
         airport: "○（福岡空港へ電車で20分）",
@@ -386,7 +381,7 @@ const fukuokaCities = {
         foreignPopulation: "約1,200人（1.2%）",
         features: "サーフィン・リゾート地",
         description: "美しい海岸線とサーフィンスポットで有名なリゾート都市。福岡市から車で約30分のアクセスで、リモートワークやライフスタイル重視の外国人に人気です。",
-        image: "/assets/images/prefectures/fukuoka.png",
+        image: "",
         tags: ["サーフィン", "リゾート", "海岸都市", "ライフスタイル"],
         englishHospital: "限定的",
         airport: "○（福岡空港へ車で30分）",
@@ -457,12 +452,6 @@ const fukuokaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

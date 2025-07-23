@@ -13,7 +13,7 @@ const hyogoCities = {
     foreignPopulation: "約4.6万人（3.0%）",
     features: "国際港湾都市",
     description: "美しい港町として知られる国際都市。外国文化が根付き、多様な国際コミュニティが形成されています。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["国際港湾都市", "外国文化", "港町", "多国籍"],
     englishHospital: "あり",
     airport: "◎（神戸空港・関西空港）",
@@ -35,7 +35,7 @@ const hyogoCities = {
     foreignPopulation: "約8,900人（1.7%）",
     features: "世界遺産・姫路城",
     description: "世界遺産姫路城で有名な歴史都市。工業も発達し、住環境と文化のバランスが良い地域です。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["世界遺産", "姫路城", "歴史都市", "工業"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -57,7 +57,7 @@ const hyogoCities = {
     foreignPopulation: "約8,500人（1.8%）",
     features: "阪神間住宅地・甲子園",
     description: "阪神間の高級住宅地として知られ、甲子園球場で有名。大阪・神戸へのアクセスも良好です。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["阪神間", "高級住宅地", "甲子園", "アクセス良好"],
     englishHospital: "あり",
     airport: "○（関西空港・伊丹空港）",
@@ -79,7 +79,7 @@ const hyogoCities = {
     foreignPopulation: "約1.2万人（2.6%）",
     features: "工業都市・大阪隣接",
     description: "大阪府に隣接する工業都市。関西圏の製造業拠点として発展し、外国人労働者も多く住んでいます。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["工業都市", "大阪隣接", "製造業", "外国人労働者"],
     englishHospital: "限定的",
     airport: "○（関西空港・伊丹空港）",
@@ -101,7 +101,7 @@ const hyogoCities = {
     foreignPopulation: "約4,200人（1.4%）",
     features: "明石海峡大橋・子午線",
     description: "明石海峡大橋の兵庫側拠点で、日本標準時子午線が通る歴史ある街。住環境が良く人気です。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["明石海峡大橋", "子午線", "住環境良好", "歴史"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -123,7 +123,7 @@ const hyogoCities = {
     foreignPopulation: "約3,800人（1.4%）",
     features: "加古川バイパス・工業都市",
     description: "加古川バイパスで有名な交通の要街。製鉄業を中心とした工業都市で、技術系外国人も多く在住しています。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["バイパス", "工業都市", "製鉄業", "技術系"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -145,7 +145,7 @@ const hyogoCities = {
     foreignPopulation: "約3,200人（1.4%）",
     features: "宝塚歌劇団・温泉地",
     description: "宝塚歌劇団で世界的に有名な文化都市。有馬温泉もあり、住環境が良く文化水準の高い地域です。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["宝塚歌劇", "温泉地", "文化都市", "住環境良好"],
     englishHospital: "限定的",
     airport: "○（伊丹空港・関西空港）",
@@ -167,7 +167,7 @@ const hyogoCities = {
     foreignPopulation: "約3,500人（1.8%）",
     features: "伊丹空港・清酒の街",
     description: "関西の空の玄関口伊丹空港を擁する都市。清酒造りでも有名で、伝統とアクセスの良さを兼ね備えます。",
-    image: "/assets/images/prefectures/hyogo.png",
+    image: "",
     tags: ["伊丹空港", "清酒の街", "空の玄関", "伝統"],
     englishHospital: "あり",
     airport: "◎（伊丹空港直結）",
@@ -257,7 +257,7 @@ const hyogoCities = {
       <!-- Cities Cards -->
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(hyogoCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -365,7 +365,6 @@ const hyogoCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -407,10 +406,6 @@ const hyogoCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -425,7 +420,7 @@ const hyogoCities = {
         foreignPopulation: "約4.6万人（3.0%）",
         features: "国際港湾都市",
         description: "美しい港町として知られる国際都市。外国文化が根付き、多様な国際コミュニティが形成されています。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["国際港湾都市", "外国文化", "港町", "多国籍"],
         englishHospital: "あり",
         airport: "◎（神戸空港・関西空港）",
@@ -439,7 +434,7 @@ const hyogoCities = {
         foreignPopulation: "約8,900人（1.7%）",
         features: "世界遺産・姫路城",
         description: "世界遺産姫路城で有名な歴史都市。工業も発達し、住環境と文化のバランスが良い地域です。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["世界遺産", "姫路城", "歴史都市", "工業"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -453,7 +448,7 @@ const hyogoCities = {
         foreignPopulation: "約8,500人（1.8%）",
         features: "阪神間住宅地・甲子園",
         description: "阪神間の高級住宅地として知られ、甲子園球場で有名。大阪・神戸へのアクセスも良好です。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["阪神間", "高級住宅地", "甲子園", "アクセス良好"],
         englishHospital: "あり",
         airport: "○（関西空港・伊丹空港）",
@@ -467,7 +462,7 @@ const hyogoCities = {
         foreignPopulation: "約1.2万人（2.6%）",
         features: "工業都市・大阪隣接",
         description: "大阪府に隣接する工業都市。関西圏の製造業拠点として発展し、外国人労働者も多く住んでいます。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["工業都市", "大阪隣接", "製造業", "外国人労働者"],
         englishHospital: "限定的",
         airport: "○（関西空港・伊丹空港）",
@@ -481,7 +476,7 @@ const hyogoCities = {
         foreignPopulation: "約4,200人（1.4%）",
         features: "明石海峡大橋・子午線",
         description: "明石海峡大橋の兵庫側拠点で、日本標準時子午線が通る歴史ある街。住環境が良く人気です。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["明石海峡大橋", "子午線", "住環境良好", "歴史"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -495,7 +490,7 @@ const hyogoCities = {
         foreignPopulation: "約3,800人（1.4%）",
         features: "加古川バイパス・工業都市",
         description: "加古川バイパスで有名な交通の要街。製鉄業を中心とした工業都市で、技術系外国人も多く在住しています。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["バイパス", "工業都市", "製鉄業", "技術系"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -509,7 +504,7 @@ const hyogoCities = {
         foreignPopulation: "約3,200人（1.4%）",
         features: "宝塚歌劇団・温泉地",
         description: "宝塚歌劇団で世界的に有名な文化都市。有馬温泉もあり、住環境が良く文化水準の高い地域です。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["宝塚歌劇", "温泉地", "文化都市", "住環境良好"],
         englishHospital: "限定的",
         airport: "○（伊丹空港・関西空港）",
@@ -523,7 +518,7 @@ const hyogoCities = {
         foreignPopulation: "約3,500人（1.8%）",
         features: "伊丹空港・清酒の街",
         description: "関西の空の玄関口伊丹空港を擁する都市。清酒造りでも有名で、伝統とアクセスの良さを兼ね備えます。",
-        image: "/assets/images/prefectures/hyogo.png",
+        image: "",
         tags: ["伊丹空港", "清酒の街", "空の玄関", "伝統"],
         englishHospital: "あり",
         airport: "◎（伊丹空港直結）",
@@ -594,12 +589,6 @@ const hyogoCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

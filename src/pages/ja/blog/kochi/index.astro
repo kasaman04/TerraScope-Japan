@@ -13,7 +13,7 @@ const kochiCities = {
     foreignPopulation: "約4,200人（1.3%）",
     features: "県庁所在地・よさこい祭り",
     description: "高知県の県庁所在地。よさこい祭りと坂本龍馬で有名で、高知城や日曜市などの観光スポットがある四国南部の中心都市です。",
-    image: "/assets/images/prefectures/kochi.png",
+    image: "",
     tags: ["県庁所在地", "よさこい祭り", "坂本龍馬"],
     englishHospital: "あり",
     airport: "○（高知龍馬空港）",
@@ -35,7 +35,7 @@ const kochiCities = {
     foreignPopulation: "約600人（1.2%）",
     features: "空港・高知大学",
     description: "高知龍馬空港があり、高知大学のキャンパスもある学術都市。高知県の玄関口として発展している都市です。",
-    image: "/assets/images/prefectures/kochi.png",
+    image: "",
     tags: ["空港", "高知大学", "学術都市"],
     englishHospital: "あり",
     airport: "○（高知龍馬空港）",
@@ -57,7 +57,7 @@ const kochiCities = {
     foreignPopulation: "約380人（1.3%）",
     features: "四万十川・自然豊か",
     description: "「日本最後の清流」として知られる四万十川のある自然豊かな都市。観光業や農業が盛んで、豊かな自然環境が魅力です。",
-    image: "/assets/images/prefectures/kochi.png",
+    image: "",
     tags: ["四万十川", "清流", "自然"],
     englishHospital: "あり",
     airport: "○（高知龍馬空港経由）",
@@ -191,7 +191,6 @@ const kochiCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const kochiCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const kochiCities = {
         foreignPopulation: "約4,200人（1.3%）",
         features: "県庁所在地・よさこい祭り",
         description: "高知県の県庁所在地。よさこい祭りと坂本龍馬で有名で、高知城や日曜市などの観光スポットがある四国南部の中心都市です。土佐の豊かな自然と歴史文化を体験できます。",
-        image: "/assets/images/prefectures/kochi.png",
+        image: "",
         tags: ["県庁所在地", "よさこい祭り", "坂本龍馬", "高知城"],
         englishHospital: "あり",
         airport: "○（高知龍馬空港）",
@@ -265,7 +260,7 @@ const kochiCities = {
         foreignPopulation: "約600人（1.2%）",
         features: "空港・高知大学",
         description: "高知龍馬空港があり、高知大学のキャンパスもある学術都市。高知県の玄関口として発展している都市です。坂本龍馬ゆかりの地として歴史的価値も高い地域です。",
-        image: "/assets/images/prefectures/kochi.png",
+        image: "",
         tags: ["空港", "高知大学", "学術都市", "龍馬ゆかり"],
         englishHospital: "あり",
         airport: "○（高知龍馬空港）",
@@ -279,7 +274,7 @@ const kochiCities = {
         foreignPopulation: "約380人（1.3%）",
         features: "四万十川・自然豊か",
         description: "『日本最後の清流』として知られる四万十川のある自然豊かな都市。観光業や農業が盛んで、豊かな自然環境が魅力です。龍馬の故郷らしい雄大な自然を体験できます。",
-        image: "/assets/images/prefectures/kochi.png",
+        image: "",
         tags: ["四万十川", "清流", "自然", "龍馬の故郷"],
         englishHospital: "あり",
         airport: "○（高知龍馬空港経由）",
@@ -350,12 +345,6 @@ const kochiCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

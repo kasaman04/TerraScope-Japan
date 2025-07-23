@@ -13,7 +13,7 @@ const shigaCities = {
     foreignPopulation: "約6,800人（2.0%）",
     features: "県庁所在地・琵琶湖",
     description: "滋賀県の県庁所在地。琵琶湖の美しい景観に恵まれ、京都まで15分という好立地の住みやすい都市です。",
-    image: "/assets/images/prefectures/shiga.png",
+    image: "",
     tags: ["県庁所在地", "琵琶湖", "京都近郊"],
     englishHospital: "あり",
     airport: "○（関西国際空港経由）",
@@ -35,7 +35,7 @@ const shigaCities = {
     foreignPopulation: "約2,800人（2.5%）",
     features: "彦根城・ひこにゃん",
     description: "国宝彦根城で有名な城下町。ひこにゃんでも親しまれ、歴史と現代が調和した魅力的な都市です。",
-    image: "/assets/images/prefectures/shiga.png",
+    image: "",
     tags: ["彦根城", "ひこにゃん", "城下町"],
     englishHospital: "あり",
     airport: "○（関西国際空港経由）",
@@ -57,7 +57,7 @@ const shigaCities = {
     foreignPopulation: "約3,200人（2.3%）",
     features: "学園都市・立命館大学",
     description: "立命館大学があり学園都市として発展。京都・大阪へのアクセスが良く、多くの外国人学生・研究者が住んでいます。",
-    image: "/assets/images/prefectures/shiga.png",
+    image: "",
     tags: ["学園都市", "立命館大学", "京阪神近郊"],
     englishHospital: "あり",
     airport: "○（関西国際空港経由）",
@@ -191,7 +191,6 @@ const shigaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const shigaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const shigaCities = {
         foreignPopulation: "約6,800人（2.0%）",
         features: "県庁所在地・琵琶湖",
         description: "滋賀県の県庁所在地。琵琶湖の美しい景観に恵まれ、京都まで15分という好立地の住みやすい都市です。日本最大の湖である琵琶湖の恵みを受けた水の都です。",
-        image: "/assets/images/prefectures/shiga.png",
+        image: "",
         tags: ["県庁所在地", "琵琶湖", "京都近郊", "水の都"],
         englishHospital: "あり",
         airport: "○（関西国際空港経由）",
@@ -265,7 +260,7 @@ const shigaCities = {
         foreignPopulation: "約2,800人（2.5%）",
         features: "彦根城・ひこにゃん",
         description: "国宝彦根城で有名な城下町。ひこにゃんでも親しまれ、歴史と現代が調和した魅力的な都市です。琵琶湖の東岸に位置し、城下町の風情を残しています。",
-        image: "/assets/images/prefectures/shiga.png",
+        image: "",
         tags: ["彦根城", "ひこにゃん", "城下町", "国宝"],
         englishHospital: "あり",
         airport: "○（関西国際空港経由）",
@@ -279,7 +274,7 @@ const shigaCities = {
         foreignPopulation: "約3,200人（2.3%）",
         features: "学園都市・立命館大学",
         description: "立命館大学があり学園都市として発展。京都・大阪へのアクセスが良く、多くの外国人学生・研究者が住んでいます。琵琶湖博物館などの文化施設も充実しています。",
-        image: "/assets/images/prefectures/shiga.png",
+        image: "",
         tags: ["学園都市", "立命館大学", "京阪神近郊", "研究"],
         englishHospital: "あり",
         airport: "○（関西国際空港経由）",
@@ -350,12 +345,6 @@ const shigaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

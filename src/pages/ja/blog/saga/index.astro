@@ -13,7 +13,7 @@ const sagaCities = {
     foreignPopulation: "約3,200人（1.4%）",
     features: "県庁所在地・バルーンフェスタ",
     description: "佐賀県の県庁所在地。佐賀インターナショナルバルーンフェスタで有名で、歴史ある城下町として発展しています。",
-    image: "/assets/images/prefectures/saga.png",
+    image: "",
     tags: ["県庁所在地", "バルーン", "城下町"],
     englishHospital: "あり",
     airport: "○（佐賀空港）",
@@ -35,7 +35,7 @@ const sagaCities = {
     foreignPopulation: "約1,800人（1.5%）",
     features: "唐津くんち・虹の松原",
     description: "唐津くんちで有名な歴史ある港町。虹の松原や唐津城などの観光地があり、海の幸に恵まれた風光明媚な都市です。",
-    image: "/assets/images/prefectures/saga.png",
+    image: "",
     tags: ["唐津くんち", "虹の松原", "港町"],
     englishHospital: "あり",
     airport: "○（佐賀空港経由）",
@@ -57,7 +57,7 @@ const sagaCities = {
     foreignPopulation: "約1,500人（2.1%）",
     features: "交通の要衝・物流拠点",
     description: "九州の交通の要衝として発展。鳥栖ジャンクションがあり、物流拠点として多くの企業が進出している産業都市です。",
-    image: "/assets/images/prefectures/saga.png",
+    image: "",
     tags: ["交通要衝", "物流", "産業都市"],
     englishHospital: "あり",
     airport: "○（佐賀空港経由）",
@@ -148,7 +148,7 @@ const sagaCities = {
       <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(sagaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -191,7 +191,6 @@ const sagaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const sagaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const sagaCities = {
         foreignPopulation: "約3,200人（1.4%）",
         features: "県庁所在地・バルーンフェスタ",
         description: "佐賀県の県庁所在地。佐賀インターナショナルバルーンフェスタで有名で、歴史ある城下町として発展しています。有田焼の伝統工芸も身近に感じられる文化的な都市です。",
-        image: "/assets/images/prefectures/saga.png",
+        image: "",
         tags: ["県庁所在地", "バルーン", "城下町", "有田焼"],
         englishHospital: "あり",
         airport: "○（佐賀空港）",
@@ -265,7 +260,7 @@ const sagaCities = {
         foreignPopulation: "約1,800人（1.5%）",
         features: "唐津くんち・虹の松原",
         description: "唐津くんちで有名な歴史ある港町。虹の松原や唐津城などの観光地があり、海の幸に恵まれた風光明媚な都市です。有田焼の発祥地としても知られています。",
-        image: "/assets/images/prefectures/saga.png",
+        image: "",
         tags: ["唐津くんち", "虹の松原", "港町", "陶磁器"],
         englishHospital: "あり",
         airport: "○（佐賀空港経由）",
@@ -279,7 +274,7 @@ const sagaCities = {
         foreignPopulation: "約1,500人（2.1%）",
         features: "交通の要衝・物流拠点",
         description: "九州の交通の要衝として発展。鳥栖ジャンクションがあり、物流拠点として多くの企業が進出している産業都市です。福岡市へのアクセスも良好で通勤圏内です。",
-        image: "/assets/images/prefectures/saga.png",
+        image: "",
         tags: ["交通要衝", "物流", "産業都市", "福岡近郊"],
         englishHospital: "あり",
         airport: "○（佐賀空港経由）",
@@ -350,12 +345,6 @@ const sagaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

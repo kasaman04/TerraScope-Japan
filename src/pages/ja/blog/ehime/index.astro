@@ -13,7 +13,7 @@ const ehimeCities = {
     foreignPopulation: "約7,800人（1.5%）",
     features: "県庁所在地・道後温泉",
     description: "愛媛県の県庁所在地。道後温泉や松山城で有名で、夏目漱石「坊っちゃん」の舞台としても知られる四国最大の都市です。",
-    image: "/assets/images/prefectures/ehime.png",
+    image: "",
     tags: ["県庁所在地", "道後温泉", "松山城"],
     englishHospital: "あり",
     airport: "○（松山空港）",
@@ -35,7 +35,7 @@ const ehimeCities = {
     foreignPopulation: "約3,400人（2.3%）",
     features: "造船・タオル産業",
     description: "日本最大の造船業の街として有名。今治タオルの産地としても知られ、しまなみ海道の本州四国連絡橋の四国側起点でもあります。",
-    image: "/assets/images/prefectures/ehime.png",
+    image: "",
     tags: ["造船業", "今治タオル", "しまなみ海道"],
     englishHospital: "あり",
     airport: "○（松山空港経由）",
@@ -57,7 +57,7 @@ const ehimeCities = {
     foreignPopulation: "約2,800人（2.3%）",
     features: "工業都市・太鼓台",
     description: "住友グループ発祥の地として知られる工業都市。新居浜太鼓祭りで有名で、化学工業を中心とした産業が発達しています。",
-    image: "/assets/images/prefectures/ehime.png",
+    image: "",
     tags: ["工業都市", "太鼓台", "住友"],
     englishHospital: "あり",
     airport: "○（松山空港経由）",
@@ -149,7 +149,7 @@ const ehimeCities = {
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(ehimeCities).map(([key, city]) => (
-            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer" onclick={`openCityModal('${key}')`}
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
               <div class="relative h-48 overflow-hidden">
                 <img 
@@ -190,7 +190,6 @@ const ehimeCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -232,10 +231,6 @@ const ehimeCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -250,7 +245,7 @@ const ehimeCities = {
         foreignPopulation: "約7,800人（1.5%）",
         features: "県庁所在地・道後温泉",
         description: "愛媛県の県庁所在地。道後温泉や松山城で有名で、夏目漱石「坊っちゃん」の舞台としても知られる四国最大の都市です。",
-        image: "/assets/images/prefectures/ehime.png",
+        image: "",
         tags: ["県庁所在地", "道後温泉", "松山城"],
         englishHospital: "あり",
         airport: "○（松山空港）",
@@ -264,7 +259,7 @@ const ehimeCities = {
         foreignPopulation: "約3,400人（2.3%）",
         features: "造船・タオル産業",
         description: "日本最大の造船業の街として有名。今治タオルの産地としても知られ、しまなみ海道の本州四国連絡橋の四国側起点でもあります。",
-        image: "/assets/images/prefectures/ehime.png",
+        image: "",
         tags: ["造船業", "今治タオル", "しまなみ海道"],
         englishHospital: "あり",
         airport: "○（松山空港経由）",
@@ -278,7 +273,7 @@ const ehimeCities = {
         foreignPopulation: "約2,800人（2.3%）",
         features: "工業都市・太鼓台",
         description: "住友グループ発祥の地として知られる工業都市。新居浜太鼓祭りで有名で、化学工業を中心とした産業が発達しています。",
-        image: "/assets/images/prefectures/ehime.png",
+        image: "",
         tags: ["工業都市", "太鼓台", "住友"],
         englishHospital: "あり",
         airport: "○（松山空港経由）",
@@ -349,12 +344,6 @@ const ehimeCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

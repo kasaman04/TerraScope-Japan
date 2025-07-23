@@ -13,7 +13,7 @@ const okayamaCities = {
     foreignPopulation: "約16,800人（2.3%）",
     features: "県庁所在地・岡山城",
     description: "岡山県の県庁所在地。岡山城と後楽園で有名で、「晴れの国」として温暖な気候に恵まれた住みやすい都市です。",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["県庁所在地", "岡山城", "後楽園"],
     englishHospital: "あり",
     airport: "○（岡山桃太郎空港）",
@@ -35,7 +35,7 @@ const okayamaCities = {
     foreignPopulation: "約10,200人（2.1%）",
     features: "美観地区・工業都市",
     description: "倉敷美観地区で有名な歴史ある都市。水島コンビナートを擁する工業都市でもあり、多くの外国人が働いています。",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["美観地区", "工業都市", "水島"],
     englishHospital: "あり",
     airport: "○（岡山桃太郎空港経由）",
@@ -57,7 +57,7 @@ const okayamaCities = {
     foreignPopulation: "約1,800人（1.8%）",
     features: "津山城・自然豊か",
     description: "津山城跡で有名な歴史ある城下町。豊かな自然に囲まれ、落ち着いた環境で生活できる都市です。",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["津山城", "城下町", "自然"],
     englishHospital: "あり",
     airport: "○（岡山桃太郎空港経由）",
@@ -148,7 +148,7 @@ const okayamaCities = {
       <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(okayamaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -191,7 +191,6 @@ const okayamaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const okayamaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const okayamaCities = {
         foreignPopulation: "約16,800人（2.3%）",
         features: "県庁所在地・岡山城",
         description: "岡山県の県庁所在地。岡山城と後楽園で有名で、「晴れの国」として温暖な気候に恵まれた住みやすい都市です。白桃の産地としても知られ、フルーツ王国岡山の中心地です。",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["県庁所在地", "岡山城", "後楽園", "白桃"],
         englishHospital: "あり",
         airport: "○（岡山桃太郎空港）",
@@ -265,7 +260,7 @@ const okayamaCities = {
         foreignPopulation: "約10,200人（2.1%）",
         features: "美観地区・工業都市",
         description: "倉敷美観地区で有名な歴史ある都市。水島コンビナートを擁する工業都市でもあり、多くの外国人が働いています。江戸時代の町並みが保存され、観光と産業が調和した街です。",
-        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["美観地区", "工業都市", "水島", "歴史"],
         englishHospital: "あり",
         airport: "○（岡山桃太郎空港経由）",
@@ -279,7 +274,7 @@ const okayamaCities = {
         foreignPopulation: "約1,800人（1.8%）",
         features: "津山城・自然豊か",
         description: "津山城跡で有名な歴史ある城下町。豊かな自然に囲まれ、落ち着いた環境で生活できる都市です。桜の名所としても知られ、四季の美しさを満喫できます。",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["津山城", "城下町", "自然", "桜"],
         englishHospital: "あり",
         airport: "○（岡山桃太郎空港経由）",
@@ -350,12 +345,6 @@ const okayamaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

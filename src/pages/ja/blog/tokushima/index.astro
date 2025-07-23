@@ -13,7 +13,7 @@ const tokushimaCities = {
     foreignPopulation: "約4,200人（1.6%）",
     features: "県庁所在地・阿波踊り",
     description: "徳島県の県庁所在地。阿波踊りで全国的に有名で、四国の玄関口として発展している都市です。",
-    image: "/assets/images/prefectures/tokushima.png",
+    image: "",
     tags: ["県庁所在地", "阿波踊り", "四国の玄関"],
     englishHospital: "あり",
     airport: "○（徳島阿波おどり空港）",
@@ -35,7 +35,7 @@ const tokushimaCities = {
     foreignPopulation: "約800人（1.3%）",
     features: "渦潮・大塚国際美術館",
     description: "鳴門海峡の渦潮で有名な観光都市。大塚国際美術館などの文化施設もあり、自然と芸術を楽しめる街です。",
-    image: "/assets/images/prefectures/tokushima.png",
+    image: "",
     tags: ["渦潮", "美術館", "観光"],
     englishHospital: "あり",
     airport: "○（徳島阿波おどり空港経由）",
@@ -57,7 +57,7 @@ const tokushimaCities = {
     foreignPopulation: "約1,100人（1.6%）",
     features: "LED・光産業",
     description: "LED発祥の地として知られる光産業の中心都市。日亜化学工業の本社があり、技術系の外国人も多く働いています。",
-    image: "/assets/images/prefectures/tokushima.png",
+    image: "",
     tags: ["LED", "光産業", "技術"],
     englishHospital: "あり",
     airport: "○（徳島阿波おどり空港経由）",
@@ -191,7 +191,6 @@ const tokushimaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const tokushimaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const tokushimaCities = {
         foreignPopulation: "約4,200人（1.6%）",
         features: "県庁所在地・阿波踊り",
         description: "徳島県の県庁所在地。阿波踊りで全国的に有名で、四国の玄関口として発展している。伝統文化が息づく街。",
-        image: "/assets/images/prefectures/tokushima.png",
+        image: "",
         tags: ["県庁所在地", "阿波踊り", "四国の玄関"],
         englishHospital: "あり",
         airport: "○（徳島阿波おどり空港）",
@@ -265,7 +260,7 @@ const tokushimaCities = {
         foreignPopulation: "約800人（1.3%）",
         features: "渦潮・大塚国際美術館",
         description: "鳴門海峡の渦潮で有名な観光都市。大塚国際美術館などの文化施設もあり、自然と芸術を楽しめる街。",
-        image: "/assets/images/prefectures/tokushima.png",
+        image: "",
         tags: ["渦潮", "美術館", "観光"],
         englishHospital: "あり",
         airport: "○（徳島阿波おどり空港経由）",
@@ -279,7 +274,7 @@ const tokushimaCities = {
         foreignPopulation: "約1,100人（1.6%）",
         features: "LED・光産業",
         description: "LED発祥の地として知られる光産業の中心都市。日亜化学工業の本社があり、技術系の外国人も多く働いている。",
-        image: "/assets/images/prefectures/tokushima.png",
+        image: "",
         tags: ["LED", "光産業", "技術"],
         englishHospital: "あり",
         airport: "○（徳島阿波おどり空港経由）",
@@ -350,12 +345,6 @@ const tokushimaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

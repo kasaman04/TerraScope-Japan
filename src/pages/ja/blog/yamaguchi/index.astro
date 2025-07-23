@@ -13,7 +13,7 @@ const yamaguchiCities = {
     foreignPopulation: "約3,200人（1.7%）",
     features: "県庁所在地・山口大学",
     description: "山口県の県庁所在地。山口大学があり学術都市として発展し、温暖で住みやすい環境の都市です。",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["県庁所在地", "山口大学", "学術都市"],
     englishHospital: "あり",
     airport: "○（山口宇部空港経由）",
@@ -35,7 +35,7 @@ const yamaguchiCities = {
     foreignPopulation: "約4,800人（1.8%）",
     features: "本州最西端・ふぐ",
     description: "本州最西端の都市。関門海峡に面し、ふぐで有名な港町。九州への玄関口として発展しています。",
-    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["本州最西端", "ふぐ", "関門海峡"],
     englishHospital: "あり",
     airport: "○（山口宇部空港経由）",
@@ -57,7 +57,7 @@ const yamaguchiCities = {
     foreignPopulation: "約2,400人（1.5%）",
     features: "工業都市・空港",
     description: "化学工業で発展した工業都市。山口宇部空港があり、アクセスが良好な都市です。",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["工業都市", "空港", "化学工業"],
     englishHospital: "あり",
     airport: "○（山口宇部空港）",
@@ -148,7 +148,7 @@ const yamaguchiCities = {
       <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(yamaguchiCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -191,7 +191,6 @@ const yamaguchiCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const yamaguchiCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const yamaguchiCities = {
         foreignPopulation: "約3,200人（1.7%）",
         features: "県庁所在地・山口大学",
         description: "山口県の県庁所在地。山口大学があり学術都市として発展し、温暖で住みやすい環境の都市。教育機関が充実している。",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["県庁所在地", "山口大学", "学術都市"],
         englishHospital: "あり",
         airport: "○（山口宇部空港経由）",
@@ -265,7 +260,7 @@ const yamaguchiCities = {
         foreignPopulation: "約4,800人（1.8%）",
         features: "本州最西端・ふぐ",
         description: "本州最西端の都市。関門海峡に面し、ふぐで有名な港町。九州への玄関口として発展している。海の幸が豊富。",
-        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["本州最西端", "ふぐ", "関門海峡"],
         englishHospital: "あり",
         airport: "○（山口宇部空港経由）",
@@ -279,7 +274,7 @@ const yamaguchiCities = {
         foreignPopulation: "約2,400人（1.5%）",
         features: "工業都市・空港",
         description: "化学工業で発展した工業都市。山口宇部空港があり、アクセスが良好な都市。製造業が盛んで雇用機会が豊富。",
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["工業都市", "空港", "化学工業"],
         englishHospital: "あり",
         airport: "○（山口宇部空港）",
@@ -350,12 +345,6 @@ const yamaguchiCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

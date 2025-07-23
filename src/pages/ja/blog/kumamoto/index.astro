@@ -13,7 +13,7 @@ const kumamotoCities = {
     foreignPopulation: "約12,000人（1.6%）",
     features: "県庁所在地・熊本城・政令指定都市",
     description: "熊本県の県庁所在地で政令指定都市。熊本城とくまモンで有名で、九州中央部の中核都市として発展しています。",
-    image: "/assets/images/prefectures/kumamoto.png",
+    image: "",
     tags: ["県庁所在地", "熊本城", "くまモン"],
     englishHospital: "あり",
     airport: "○（熊本空港）",
@@ -35,7 +35,7 @@ const kumamotoCities = {
     foreignPopulation: "約2,400人（2.0%）",
     features: "八代海・い草・港湾都市",
     description: "八代海に面した港湾都市。い草や畳表の産地として有名で、熊本県南部の中心的な都市です。",
-    image: "/assets/images/prefectures/kumamoto.png",
+    image: "",
     tags: ["八代海", "い草", "港湾都市"],
     englishHospital: "あり",
     airport: "○（熊本空港経由）",
@@ -57,7 +57,7 @@ const kumamotoCities = {
     foreignPopulation: "約800人（1.6%）",
     features: "グリーンランド・競馬場・石炭",
     description: "遊園地グリーンランドで有名な都市。かつて石炭で栄えた歴史があり、現在は観光業が盛んです。",
-    image: "/assets/images/prefectures/kumamoto.png",
+    image: "",
     tags: ["グリーンランド", "競馬場", "観光"],
     englishHospital: "あり",
     airport: "○（熊本空港経由）",
@@ -79,7 +79,7 @@ const kumamotoCities = {
     foreignPopulation: "約1,800人（3.0%）",
     features: "熊本ベッドタウン・新しい街",
     description: "熊本市に隣接するベッドタウンとして急速に発展した新しい都市。2006年に市制施行し、若い世代や外国人に人気です。",
-    image: "/assets/images/prefectures/kumamoto.png",
+    image: "",
     tags: ["ベッドタウン", "新しい街", "熊本近郊", "若い世代"],
     englishHospital: "限定的",
     airport: "○（熊本空港へ車で30分）",
@@ -101,7 +101,7 @@ const kumamotoCities = {
     foreignPopulation: "約700人（1.8%）",
     features: "武者の街・宇土城跡",
     description: "戦国時代からの武者の街として栄えた武家屋敷の残る歴史ある都市。宇土城跡や伝統工芸で有名で、日本の武士文化を体験できます。",
-    image: "/assets/images/prefectures/kumamoto.png",
+    image: "",
     tags: ["武者の街", "宇土城跡", "武家屋敷", "武士文化"],
     englishHospital: "限定的",
     airport: "○（熊本空港へ車で45分）",
@@ -192,7 +192,7 @@ const kumamotoCities = {
       <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(kumamotoCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -235,7 +235,6 @@ const kumamotoCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -277,10 +276,6 @@ const kumamotoCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -295,7 +290,7 @@ const kumamotoCities = {
         foreignPopulation: "約12,000人（1.6%）",
         features: "県庁所在地・熊本城・政令指定都市",
         description: "熊本県の県庁所在地で政令指定都市。熊本城とくまモンで有名で、九州中央部の中核都市として発展しています。熊本ラーメンや馬刺しなど独自のグルメ文化も魅力です。",
-        image: "/assets/images/prefectures/kumamoto.png",
+        image: "",
         tags: ["県庁所在地", "熊本城", "くまモン", "政令指定都市"],
         englishHospital: "あり",
         airport: "○（熊本空港）",
@@ -309,7 +304,7 @@ const kumamotoCities = {
         foreignPopulation: "約2,400人（2.0%）",
         features: "八代海・い草・港湾都市",
         description: "八代海に面した港湾都市。い草や畳表の産地として有名で、熊本県南部の中心的な都市です。熊本城の歴史文化圏内で、伝統的な日本文化を体験できます。",
-        image: "/assets/images/prefectures/kumamoto.png",
+        image: "",
         tags: ["八代海", "い草", "港湾都市", "畳文化"],
         englishHospital: "あり",
         airport: "○（熊本空港経由）",
@@ -323,7 +318,7 @@ const kumamotoCities = {
         foreignPopulation: "約800人（1.6%）",
         features: "グリーンランド・競馬場・石炭",
         description: "遊園地グリーンランドで有名な都市。かつて石炭で栄えた歴史があり、現在は観光業が盛んです。熊本城から程近く、くまモンの故郷としても親しまれています。",
-        image: "/assets/images/prefectures/kumamoto.png",
+        image: "",
         tags: ["グリーンランド", "競馬場", "観光", "くまモン"],
         englishHospital: "あり",
         airport: "○（熊本空港経由）",
@@ -337,7 +332,7 @@ const kumamotoCities = {
         foreignPopulation: "約1,800人（3.0%）",
         features: "熊本ベッドタウン・新しい街",
         description: "熊本市に隣接するベッドタウンとして急速に発展した新しい都市。2006年に市制施行し、若い世代や外国人に人気です。",
-        image: "/assets/images/prefectures/kumamoto.png",
+        image: "",
         tags: ["ベッドタウン", "新しい街", "熊本近郊", "若い世代"],
         englishHospital: "限定的",
         airport: "○（熊本空港へ車で30分）",
@@ -351,7 +346,7 @@ const kumamotoCities = {
         foreignPopulation: "約700人（1.8%）",
         features: "武者の街・宇土城跡",
         description: "戦国時代からの武者の街として栄えた武家屋敷の残る武士文化都市。宇土城跡や伝統工芸で有名で、日本の武士文化を体験できます。",
-        image: "/assets/images/prefectures/kumamoto.png",
+        image: "",
         tags: ["武者の街", "宇土城跡", "武家屋敷", "武士文化"],
         englishHospital: "限定的",
         airport: "○（熊本空港へ車で45分）",
@@ -422,12 +417,6 @@ const kumamotoCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

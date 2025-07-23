@@ -13,7 +13,7 @@ const osakaCities = {
     foreignPopulation: "約13万人（4.7%）",
     features: "関西経済の中心地",
     description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["関西経済の中心", "商業文化", "多国籍", "西日本最大"],
     englishHospital: "あり",
     airport: "◎（関西空港・伊丹空港）",
@@ -35,7 +35,7 @@ const osakaCities = {
     foreignPopulation: "約2万人（2.4%）",
     features: "歴史ある商業都市",
     description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["古墳群", "歴史都市", "住環境良好", "大阪隣接"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -57,7 +57,7 @@ const osakaCities = {
     foreignPopulation: "約8,500人（2.1%）",
     features: "住宅地・空港アクセス良好",
     description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["住宅地", "空港近接", "都心アクセス良好", "閑静"],
     englishHospital: "あり",
     airport: "◎（伊丹空港直結）",
@@ -79,7 +79,7 @@ const osakaCities = {
     foreignPopulation: "約1.8万人（3.7%）",
     features: "工業都市・ラグビーの聖地",
     description: "中小企業の集積地として知られる工業都市。ラグビーの聖地として有名な花園ラグビー場があります。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["工業都市", "中小企業", "ラグビー", "製造業"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -101,7 +101,7 @@ const osakaCities = {
     foreignPopulation: "約8,200人（2.3%）",
     features: "京阪間のベッドタウン",
     description: "大阪と京都の中間に位置し、両都市への通勤に便利なベッドタウンとして発展しています。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["ベッドタウン", "京阪間", "通勤便利", "住宅地"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -123,7 +123,7 @@ const osakaCities = {
     foreignPopulation: "約8,000人（2.0%）",
     features: "学研都市・ベッドタウン",
     description: "関西学研都市の一部で、大阪と京都の中間に位置するベッドタウン。住環境が良く、ファミリー層に人気です。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["学研都市", "ベッドタウン", "大阪京都中間", "住環境良好"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -145,7 +145,7 @@ const osakaCities = {
     foreignPopulation: "約11,000人（2.9%）",
     features: "万博公園・大学都市",
     description: "万博記念公園があり、大阪大学をはじめ多くの大学・研究機関が集積。学術都市として国際色豊かです。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["万博公園", "大学都市", "学術機関", "国際色豊か"],
     englishHospital: "あり",
     airport: "○（伊丹空港経由）",
@@ -167,7 +167,7 @@ const osakaCities = {
     foreignPopulation: "約6,500人（2.3%）",
     features: "大阪北部・交通便利",
     description: "大阪都心部と京都の両方にアクセスしやすい立地。住宅地として発展し、外国人にも住みやすい環境です。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["大阪北部", "交通便利", "住宅地", "二都市アクセス"],
     englishHospital: "限定的",
     airport: "○（伊丹空港経由）",
@@ -189,7 +189,7 @@ const osakaCities = {
     foreignPopulation: "約7,800人（2.9%）",
     features: "製造業・中小企業集積",
     description: "中小企業の集積地として発展。製造業が盛んで、多くの外国人労働者が働いています。生活コストも比較的安価です。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["製造業", "中小企業", "外国人労働者", "コスト安"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -211,7 +211,7 @@ const osakaCities = {
     foreignPopulation: "約4,500人（2.0%）",
     features: "大阪近郊・住宅都市",
     description: "大阪都心部への通勤圏として発展した住宅都市。商業施設も充実し、外国人にも住みやすい環境が整っています。",
-    image: "/assets/images/prefectures/osaka.png",
+    image: "",
     tags: ["大阪近郊", "住宅都市", "通勤圏", "商業充実"],
     englishHospital: "限定的",
     airport: "○（関西空港経由）",
@@ -301,7 +301,7 @@ const osakaCities = {
       <!-- Cities Cards -->
       <div>
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(osakaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
                  onclick={`openCityModal('${key}')`}>
@@ -413,7 +413,7 @@ const osakaCities = {
         foreignPopulation: "約13万人（4.7%）",
         features: "関西経済の中心地",
         description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["関西経済の中心", "商業文化", "多国籍", "西日本最大"],
         englishHospital: "あり",
         airport: "◎（関西空港・伊丹空港）",
@@ -435,7 +435,7 @@ const osakaCities = {
         foreignPopulation: "約2万人（2.4%）",
         features: "歴史ある商業都市",
         description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["古墳群", "歴史都市", "住環境良好", "大阪隣接"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -457,7 +457,7 @@ const osakaCities = {
         foreignPopulation: "約8,500人（2.1%）",
         features: "住宅地・空港アクセス良好",
         description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["空港近接", "住宅地", "アクセス良好", "閑静"],
         englishHospital: "限定的",
         airport: "◎（伊丹空港近接）",
@@ -479,7 +479,7 @@ const osakaCities = {
         foreignPopulation: "約1.8万人（3.7%）",
         features: "工業都市・ラグビーの聖地",
         description: "中小企業の集積地として知られる工業都市。ラグビーの聖地として有名な花園ラグビー場があります。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["工業都市", "中小企業", "ラグビー", "製造業"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -493,7 +493,7 @@ const osakaCities = {
         foreignPopulation: "約8,200人（2.3%）",
         features: "京阪間のベッドタウン",
         description: "大阪と京都の中間に位置し、両都市への通勤に便利なベッドタウンとして発展しています。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["ベッドタウン", "京阪間", "通勤便利", "住宅地"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -507,7 +507,7 @@ const osakaCities = {
         foreignPopulation: "約8,000人（2.0%）",
         features: "学研都市・ベッドタウン",
         description: "関西学研都市の一部で、大阪と京都の中間に位置するベッドタウン。住環境が良く、ファミリー層に人気です。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["学研都市", "ベッドタウン", "大阪京都中間", "住環境良好"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -521,7 +521,7 @@ const osakaCities = {
         foreignPopulation: "約11,000人（2.9%）",
         features: "万博公園・大学都市",
         description: "万博記念公園があり、大阪大学をはじめ多くの大学・研究機関が集積。学術都市として国際色豊かです。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["万博公園", "大学都市", "学術機関", "国際色豊か"],
         englishHospital: "あり",
         airport: "○（伊丹空港経由）",
@@ -535,7 +535,7 @@ const osakaCities = {
         foreignPopulation: "約6,500人（2.3%）",
         features: "大阪北部・交通便利",
         description: "大阪都心部と京都の両方にアクセスしやすい立地。住宅地として発展し、外国人にも住みやすい環境です。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["大阪北部", "交通便利", "住宅地", "二都市アクセス"],
         englishHospital: "限定的",
         airport: "○（伊丹空港経由）",
@@ -549,7 +549,7 @@ const osakaCities = {
         foreignPopulation: "約7,800人（2.9%）",
         features: "製造業・中小企業集積",
         description: "中小企業の集積地として発展。製造業が盛んで、多くの外国人労働者が働いています。生活コストも比較的安価です。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["製造業", "中小企業", "外国人労働者", "コスト安"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -563,7 +563,7 @@ const osakaCities = {
         foreignPopulation: "約4,500人（2.0%）",
         features: "大阪近郊・住宅都市",
         description: "大阪都心部への通勤圏として発展した住宅都市。商業施設も充実し、外国人にも住みやすい環境が整っています。",
-        image: "/assets/images/prefectures/osaka.png",
+        image: "",
         tags: ["大阪近郊", "住宅都市", "通勤圏", "商業充実"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -665,11 +665,6 @@ const osakaCities = {
 
     document.addEventListener('DOMContentLoaded', function() {
       // モーダル関連のイベントリスナーを設定
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-      
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {
@@ -693,7 +688,6 @@ const osakaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -734,10 +728,6 @@ const osakaCities = {
       <div class="space-y-3">
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
-        </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
         </button>
       </div>
     </div>

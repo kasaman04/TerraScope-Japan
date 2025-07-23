@@ -13,7 +13,7 @@ const tottoriCities = {
     foreignPopulation: "約2,900人（1.5%）",
     features: "県庁所在地・鳥取砂丘",
     description: "鳥取県の県庁所在地。日本最大級の鳥取砂丘で有名で、日本海に面した自然豊かな都市です。",
-    image: "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["県庁所在地", "鳥取砂丘", "日本海"],
     englishHospital: "あり",
     airport: "○（鳥取砂丘コナン空港）",
@@ -35,7 +35,7 @@ const tottoriCities = {
     foreignPopulation: "約2,200人（1.5%）",
     features: "商業都市・大山",
     description: "鳥取県西部の中心都市。商業が発達し、大山の美しい景観を望む住みやすい都市です。",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["商業都市", "大山", "西部中心"],
     englishHospital: "あり",
     airport: "○（米子鬼太郎空港）",
@@ -57,7 +57,7 @@ const tottoriCities = {
     foreignPopulation: "約700人（1.4%）",
     features: "白壁土蔵群・温泉",
     description: "白壁土蔵群で有名な歴史ある街並みが残る都市。関金温泉などの温泉地もあり、のんびりとした環境です。",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["白壁土蔵群", "温泉", "歴史"],
     englishHospital: "あり",
     airport: "○（鳥取砂丘コナン空港経由）",
@@ -148,7 +148,7 @@ const tottoriCities = {
       <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(tottoriCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -191,7 +191,6 @@ const tottoriCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const tottoriCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const tottoriCities = {
         foreignPopulation: "約2,900人（1.5%）",
         features: "県庁所在地・鳥取砂丘",
         description: "鳥取県の県庁所在地。日本最大級の鳥取砂丘で有名で、日本海に面した自然豊かな都市。砂丘で有名な観光地。",
-        image: "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["県庁所在地", "鳥取砂丘", "日本海"],
         englishHospital: "あり",
         airport: "○（鳥取砂丘コナン空港）",
@@ -265,7 +260,7 @@ const tottoriCities = {
         foreignPopulation: "約2,200人（1.5%）",
         features: "商業都市・大山",
         description: "鳥取県西部の中心都市。商業が発達し、大山の美しい景観を望む住みやすい都市。山陰地方の交通要衝。",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["商業都市", "大山", "西部中心"],
         englishHospital: "あり",
         airport: "○（米子鬼太郎空港）",
@@ -279,7 +274,7 @@ const tottoriCities = {
         foreignPopulation: "約700人（1.4%）",
         features: "白壁土蔵群・温泉",
         description: "白壁土蔵群で有名な歴史ある街並みが残る都市。関金温泉などの温泉地もあり、のんびりとした環境が魅力。",
-        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["白壁土蔵群", "温泉", "歴史"],
         englishHospital: "あり",
         airport: "○（鳥取砂丘コナン空港経由）",
@@ -350,12 +345,6 @@ const tottoriCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

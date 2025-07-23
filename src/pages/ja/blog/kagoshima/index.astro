@@ -13,7 +13,7 @@ const kagoshimaCities = {
     foreignPopulation: "約7,800人（1.3%）",
     features: "県庁所在地・桜島・中核市",
     description: "鹿児島県の県庁所在地で中核市。桜島を望む美しい景観と、黒豚・焼酎などの名産品で有名。南九州の中心都市として発展しています。",
-    image: "/assets/images/prefectures/kagoshima.png",
+    image: "",
     tags: ["県庁所在地", "桜島", "中核市"],
     englishHospital: "あり",
     airport: "○（鹿児島空港）",
@@ -35,7 +35,7 @@ const kagoshimaCities = {
     foreignPopulation: "約1,600人（1.3%）",
     features: "霧島温泉・霧島神宮・自然豊か",
     description: "霧島連山の麓に位置し、霧島温泉や霧島神宮で有名。豊かな自然環境と温泉に恵まれた観光都市です。",
-    image: "/assets/images/prefectures/kagoshima.png",
+    image: "",
     tags: ["霧島温泉", "霧島神宮", "自然"],
     englishHospital: "あり",
     airport: "○（鹿児島空港）",
@@ -57,7 +57,7 @@ const kagoshimaCities = {
     foreignPopulation: "約1,200人（1.3%）",
     features: "川内川・原子力発電所・甑島",
     description: "川内川の河口に位置し、原子力発電所や甑島への玄関口として知られる。鹿児島県西部の中心都市として発展しています。",
-    image: "/assets/images/prefectures/kagoshima.png",
+    image: "",
     tags: ["川内川", "甑島", "原子力"],
     englishHospital: "あり",
     airport: "○（鹿児島空港経由）",
@@ -148,7 +148,7 @@ const kagoshimaCities = {
       <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(kagoshimaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
                  onclick={`openCityModal('${key}')`}>
@@ -189,7 +189,6 @@ const kagoshimaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -231,10 +230,6 @@ const kagoshimaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -248,7 +243,7 @@ const kagoshimaCities = {
         foreignPopulation: "約7,800人（1.3%）",
         features: "県庁所在地・桜島・中核市",
         description: "鹿児島県の県庁所在地で中核市。桜島を望む美しい景観と、黒豚・焼酎などの名産品で有名。南九州の中心都市として発展しています。",
-        image: "/assets/images/prefectures/kagoshima.png",
+        image: "",
         tags: ["県庁所在地", "桜島", "中核市"],
         englishHospital: "あり",
         airport: "○（鹿児島空港）",
@@ -262,7 +257,7 @@ const kagoshimaCities = {
         foreignPopulation: "約1,600人（1.3%）",
         features: "霧島温泉・霧島神宮・自然豊か",
         description: "霧島連山の麓に位置し、霧島温泉や霧島神宮で有名。豊かな自然環境と温泉に恵まれた観光都市です。",
-        image: "/assets/images/prefectures/kagoshima.png",
+        image: "",
         tags: ["霧島温泉", "霧島神宮", "自然"],
         englishHospital: "あり",
         airport: "○（鹿児島空港）",
@@ -276,7 +271,7 @@ const kagoshimaCities = {
         foreignPopulation: "約1,200人（1.3%）",
         features: "川内川・原子力発電所・甑島",
         description: "川内川の河口に位置し、原子力発電所や甑島への玄関口として知られる。鹿児島県西部の中心都市として発展しています。",
-        image: "/assets/images/prefectures/kagoshima.png",
+        image: "",
         tags: ["川内川", "甑島", "原子力"],
         englishHospital: "あり",
         airport: "○（鹿児島空港経由）",
@@ -341,12 +336,6 @@ const kagoshimaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      modalClose.addEventListener('click', closeModal);
-      closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       modal.addEventListener('click', (e) => {

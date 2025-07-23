@@ -13,7 +13,7 @@ const kagawaCities = {
     foreignPopulation: "約6,800人（1.6%）",
     features: "県庁所在地・栗林公園",
     description: "香川県の県庁所在地。栗林公園などの名勝地があり、四国の政治・経済の中心都市として発展しています。",
-    image: "/assets/images/prefectures/kagawa.png",
+    image: "",
     tags: ["県庁所在地", "栗林公園", "四国の中心"],
     englishHospital: "あり",
     airport: "○（高松空港）",
@@ -35,7 +35,7 @@ const kagawaCities = {
     foreignPopulation: "約2,100人（1.9%）",
     features: "丸亀城・団扇",
     description: "現存天守の丸亀城で有名な城下町。丸亀うちわの産地としても知られ、伝統工芸が息づく都市です。",
-    image: "/assets/images/prefectures/kagawa.png",
+    image: "",
     tags: ["丸亀城", "団扇", "城下町"],
     englishHospital: "あり",
     airport: "○（高松空港経由）",
@@ -57,7 +57,7 @@ const kagawaCities = {
     foreignPopulation: "約900人（1.8%）",
     features: "瀬戸大橋・工業",
     description: "瀬戸大橋の四国側玄関口。塩田跡地を利用した工業都市として発展し、本州とのアクセスが良好な都市です。",
-    image: "/assets/images/prefectures/kagawa.png",
+    image: "",
     tags: ["瀬戸大橋", "工業", "本州近い"],
     englishHospital: "あり",
     airport: "○（高松空港経由）",
@@ -191,7 +191,6 @@ const kagawaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -233,10 +232,6 @@ const kagawaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -251,7 +246,7 @@ const kagawaCities = {
         foreignPopulation: "約6,800人（1.6%）",
         features: "県庁所在地・栗林公園",
         description: "香川県の県庁所在地。栗林公園などの名勝地があり、四国の政治・経済の中心都市として発展しています。うどん県として有名で、讃岐うどんの本場として多くの外国人観光客が訪れます。",
-        image: "/assets/images/prefectures/kagawa.png",
+        image: "",
         tags: ["県庁所在地", "栗林公園", "四国の中心", "うどん県"],
         englishHospital: "あり",
         airport: "○（高松空港）",
@@ -265,7 +260,7 @@ const kagawaCities = {
         foreignPopulation: "約2,100人（1.9%）",
         features: "丸亀城・団扇",
         description: "現存天守の丸亀城で有名な城下町。丸亀うちわの産地としても知られ、伝統工芸が息づく都市です。讃岐うどんの名店も多く、うどん文化を深く体験できます。",
-        image: "/assets/images/prefectures/kagawa.png",
+        image: "",
         tags: ["丸亀城", "団扇", "城下町", "うどん文化"],
         englishHospital: "あり",
         airport: "○（高松空港経由）",
@@ -279,7 +274,7 @@ const kagawaCities = {
         foreignPopulation: "約900人（1.8%）",
         features: "瀬戸大橋・工業",
         description: "瀬戸大橋の四国側玄関口。塩田跡地を利用した工業都市として発展し、本州とのアクセスが良好な都市です。瀬戸内海の美しい景色と讃岐うどんを楽しめます。",
-        image: "/assets/images/prefectures/kagawa.png",
+        image: "",
         tags: ["瀬戸大橋", "工業", "本州近い", "瀬戸内海"],
         englishHospital: "あり",
         airport: "○（高松空港経由）",
@@ -350,12 +345,6 @@ const kagawaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {

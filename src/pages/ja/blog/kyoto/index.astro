@@ -13,7 +13,7 @@ const kyotoCities = {
     foreignPopulation: "約4.7万人（3.2%）",
     features: "古都・観光都市",
     description: "千年の歴史を持つ古都。伝統文化と現代が調和し、多くの外国人観光客・研究者が訪れます。",
-    image: "/assets/images/prefectures/kyoto.png",
+    image: "",
     articles: [
       { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/kyoto/article-01/" },
       { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/kyoto/article-02/" },
@@ -30,7 +30,7 @@ const kyotoCities = {
     foreignPopulation: "約3,200人（1.8%）",
     features: "宇治茶・世界遺産",
     description: "宇治茶で有名で、平等院などの世界遺産もある歴史ある都市。京都市へのアクセスも良好です。",
-    image: "/assets/images/prefectures/kyoto.png",
+    image: "",
     tags: ["宇治茶", "世界遺産", "平等院"],
     englishHospital: "限定的",
     airport: "△（関西空港へ電車で60分）",
@@ -52,7 +52,7 @@ const kyotoCities = {
     foreignPopulation: "約1,500人（1.8%）",
     features: "京阪ベッドタウン・端この里",
     description: "京都・大阪双方へのアクセスが良好なベッドタウン。端この里として有名で、武田製作所などハイテク企業も集積。",
-    image: "/assets/images/prefectures/kyoto.png",
+    image: "",
     tags: ["ベッドタウン", "京阪アクセス", "端この里", "ハイテク"],
     englishHospital: "限定的",
     airport: "△（関西空港へ電車で90分）",
@@ -74,7 +74,7 @@ const kyotoCities = {
     foreignPopulation: "約1,600人（1.8%）",
     features: "霧の街・保津川下り",
     description: "霧の街として知られ、保津川下りや湯の花温泉で有名。京都市への通勤圏内で自然豊かな環境が魅力です。",
-    image: "/assets/images/prefectures/kyoto.png",
+    image: "",
     tags: ["霧の街", "保津川下り", "湯の花温泉", "自然"],
     englishHospital: "限定的",
     airport: "△（関西空港へ電車で100分）",
@@ -271,7 +271,6 @@ const kyotoCities = {
       <!-- Modal -->
       <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
         <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-          <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
           <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
           
@@ -313,10 +312,6 @@ const kyotoCities = {
             <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-            <button id="close-modal-btn"
-                    class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-              閉じる
-            </button>
           </div>
         </div>
       </div>
@@ -408,7 +403,7 @@ const kyotoCities = {
         foreignPopulation: "約4.7万人（3.2%）",
         features: "古都・観光都市",
         description: "千年の歴史を持つ古都。伝統文化と現代が調和し、多くの外国人観光客・研究者が訪れます。",
-        image: "/assets/images/prefectures/kyoto.png",
+        image: "",
         tags: ["古都", "世界遺産", "観光都市"],
         englishHospital: "あり",
         airport: "○（関西空港）",
@@ -430,7 +425,7 @@ const kyotoCities = {
         foreignPopulation: "約3,200人（1.8%）",
         features: "宇治茶・世界遺産",
         description: "宇治茶で有名で、平等院などの世界遺産もある歴史ある都市。京都市へのアクセスも良好です。",
-        image: "/assets/images/prefectures/kyoto.png",
+        image: "",
         tags: ["宇治茶", "平等院", "世界遺産"],
         englishHospital: "限定的",
         airport: "○（関西空港経由）",
@@ -452,7 +447,7 @@ const kyotoCities = {
         foreignPopulation: "約1,500人（1.8%）",
         features: "京阪ベッドタウン・竹の里",
         description: "京都・大阪双方へのアクセスが良好なベッドタウン。竹の里として有名で、村田製作所などハイテク企業も集積。",
-        image: "/assets/images/prefectures/kyoto.png",
+        image: "",
         tags: ["ベッドタウン", "京阪アクセス", "竹の里", "ハイテク"],
         englishHospital: "限定的",
         airport: "△（関西空港へ電車で90分）",
@@ -474,7 +469,7 @@ const kyotoCities = {
         foreignPopulation: "約1,600人（1.8%）",
         features: "霧の街・保津川下り",
         description: "霧の街として知られ、保津川下りや湯の花温泉で有名。京都市への通勤圏内で自然豊かな環境が魅力です。",
-        image: "/assets/images/prefectures/kyoto.png",
+        image: "",
         tags: ["霧の街", "保津川下り", "湯の花温泉", "自然"],
         englishHospital: "限定的",
         airport: "△（関西空港へ電車で100分）",
@@ -487,8 +482,6 @@ const kyotoCities = {
     // モーダル関連の変数とイベント処理
     let currentCityKey = '';
     const modal = document.getElementById('city-modal');
-    const modalClose = document.getElementById('modal-close');
-    const closeModalBtn = document.getElementById('close-modal-btn');
 
     // モーダルを開く
     function openCityModal(cityKey) {
@@ -545,8 +538,6 @@ const kyotoCities = {
 
     // DOMContentLoaded後にイベントリスナーを設定
     document.addEventListener('DOMContentLoaded', function() {
-      modalClose.addEventListener('click', closeModal);
-      closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       modal.addEventListener('click', (e) => {

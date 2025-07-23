@@ -13,7 +13,7 @@ const hiroshimaCities = {
     foreignPopulation: "約30,000人（2.5%）",
     features: "県庁所在地・平和記念公園",
     description: "広島県の県庁所在地。平和記念公園や原爆ドームで世界的に有名で、国際平和文化都市として発展している中国地方最大の都市です。",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["県庁所在地", "平和記念公園", "国際都市"],
     englishHospital: "あり",
     airport: "○（広島空港）",
@@ -35,7 +35,7 @@ const hiroshimaCities = {
     foreignPopulation: "約12,000人（2.6%）",
     features: "工業都市・福山城",
     description: "広島県東部の中心都市。鉄鋼業を中心とした工業都市として発展し、多くの外国人労働者が住んでいます。",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["工業都市", "福山城", "鉄鋼業"],
     englishHospital: "あり",
     airport: "○（広島空港経由）",
@@ -57,7 +57,7 @@ const hiroshimaCities = {
     foreignPopulation: "約4,200人（1.9%）",
     features: "造船・海軍",
     description: "造船業で有名な港町。海上自衛隊の基地があり、大和ミュージアムでも知られる歴史ある海軍の街です。",
-    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["造船業", "海軍", "大和"],
     englishHospital: "あり",
     airport: "○（広島空港経由）",
@@ -79,7 +79,7 @@ const hiroshimaCities = {
     foreignPopulation: "約5,800人（2.9%）",
     features: "学園都市・酒どころ",
     description: "広島大学を中心とした学園都市。西条の酒蔵通りで有名で、製造業や研究機関が集積しています。",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["学園都市", "酒造業", "研究開発", "西条"],
     englishHospital: "あり",
     airport: "◎（広島空港へ車で30分）",
@@ -101,7 +101,7 @@ const hiroshimaCities = {
     foreignPopulation: "約2,800人（2.2%）",
     features: "映画の街・シマナミ海道",
     description: "映画の街として有名な山と海に囲まれた景観の美しい都市。シマナミ海道の玄関口で、文化・芸術の地として発展しています。",
-    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["映画の街", "シマナミ海道", "文化・芸術", "景観"],
     englishHospital: "限定的",
     airport: "○（広島空港へ車で60分）",
@@ -123,7 +123,7 @@ const hiroshimaCities = {
     foreignPopulation: "約2,400人（2.0%）",
     features: "宮島・厳島神社",
     description: "日本三景の一つである宮島の厳島神社がある観光都市。広島市に隣接し、伝統工芸や観光業が盛んです。",
-    image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    image: "",
     tags: ["宮島", "厳島神社", "日本三景", "観光"],
     englishHospital: "限定的",
     airport: "○（広島空港へ車で45分）",
@@ -214,7 +214,7 @@ const hiroshimaCities = {
       <div>
       <div class="mt-16">
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(hiroshimaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
@@ -257,7 +257,6 @@ const hiroshimaCities = {
   <!-- モーダル -->
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
-      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
 
       <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
@@ -299,10 +298,6 @@ const hiroshimaCities = {
         <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
           📖 詳しい記事を見る
         </button>
-        <button id="close-modal-btn"
-                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
-        </button>
       </div>
     </div>
   </div>
@@ -317,7 +312,7 @@ const hiroshimaCities = {
         foreignPopulation: "約3.5万人（2.9%）",
         features: "県庁所在地・平和記念都市",
         description: "中国地方最大の都市。平和記念公園で有名で、国際的な平和都市として発展しています。",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["県庁所在地", "平和記念都市", "中国地方最大"],
         englishHospital: "あり",
         airport: "◎（広島空港）",
@@ -331,7 +326,7 @@ const hiroshimaCities = {
         foreignPopulation: "約1.5万人（3.3%）",
         features: "工業都市・製造業",
         description: "広島県東部の中心都市。製造業が盛んで多くの外国人労働者が住んでいます。",
-        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["工業都市", "製造業", "外国人労働者"],
         englishHospital: "限定的",
         airport: "○（広島空港経由）",
@@ -345,7 +340,7 @@ const hiroshimaCities = {
         foreignPopulation: "約4,200人（1.9%）",
         features: "造船・海軍",
         description: "造船業で有名な港町。海上自衛隊の基地があり、大和ミュージアムでも知られる歴史ある海軍の街です。",
-        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["造船業", "海軍", "大和"],
         englishHospital: "あり",
         airport: "○（広島空港経由）",
@@ -359,7 +354,7 @@ const hiroshimaCities = {
         foreignPopulation: "約5,800人（2.9%）",
         features: "学園都市・酒どころ",
         description: "広島大学を中心とした学園都市。西条の酒蔵通りで有名で、製造業や研究機関が集積しています。",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["学園都市", "酒造業", "研究開発", "西条"],
         englishHospital: "あり",
         airport: "◎（広島空港へ車で30分）",
@@ -373,7 +368,7 @@ const hiroshimaCities = {
         foreignPopulation: "約2,800人（2.2%）",
         features: "映画の街・シマナミ海道",
         description: "映画の街として有名な山と海に囲まれた景観の美しい都市。シマナミ海道の玄関口で、文化・芸術の地として発展しています。",
-        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["映画の街", "シマナミ海道", "文化・芸術", "景観"],
         englishHospital: "限定的",
         airport: "○（広島空港へ車で60分）",
@@ -387,7 +382,7 @@ const hiroshimaCities = {
         foreignPopulation: "約2,400人（2.0%）",
         features: "宮島・厳島神社",
         description: "日本三景の一つである宮島の厳島神社がある観光都市。広島市に隣接し、伝統工芸や観光業が盛んです。",
-        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        image: "",
         tags: ["宮島", "厳島神社", "日本三景", "観光"],
         englishHospital: "限定的",
         airport: "○（広島空港へ車で45分）",
@@ -458,12 +453,6 @@ const hiroshimaCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
-      const modalClose = document.getElementById('modal-close');
-      const closeModalBtn = document.getElementById('close-modal-btn');
-
-      // 閉じるボタンのイベント
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
 
       // モーダル背景クリックで閉じる
       if (modal) {
