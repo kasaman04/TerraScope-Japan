@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Checklist from '../../../components/Checklist.astro';
+import PdfPreview from '../../../components/PdfPreview.astro';
+import StepTimeline from '../../../components/StepTimeline.astro';
+import Accordion from '../../../components/Accordion.astro';
+
+const title = "軽度調査 – 境界・用途地域クイックチェック";
+const description = "オファー前に必要な情報を入手したい海外投資家のための、迅速で手頃なデューデリジェンスパッケージ。";
+const lang = "ja";
+const price = "¥50,000";
+const turnaround = "3営業日";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Hero Section -->
+  <section class="relative isolate">
+    <img 
+      src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+      alt="" 
+      class="w-full h-[35vh] object-cover brightness-75"
+    />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">軽度調査</h1>
+      <p class="text-lg">{turnaround}でお届けする境界・用途地域の迅速チェック</p>
+      <span class="px-4 py-2 mt-4 bg-primary-600 rounded-md text-xl font-semibold">¥50,000</span>
+    </div>
+  </section>
+
+  <!-- Package Overview -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-6">含まれる内容</h2>
+    <Checklist items={[
+      "現地写真付き公式境界確認",
+      "英語での用途地域・土地利用マップオーバーレイ",
+      "基本的な災害スクリーニング（洪水・土砂災害）",
+      "4ページの英語サマリーPDF",
+      "次のステップを話し合う30分のフォローアップ通話"
+    ]}/>
+  </section>
+
+  <!-- Service Details -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold mb-8 text-center">サービス詳細</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-4 text-primary-600">境界確認</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• 登記簿に基づく正確な境界線確認</li>
+            <li>• 現地での境界標の写真撮影</li>
+            <li>• 隣接地との関係性チェック</li>
+            <li>• アクセス道路の確認</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-4 text-primary-600">用途地域分析</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• 都市計画区域での用途地域確認</li>
+            <li>• 建築可能な建物の種類</li>
+            <li>• 高さ制限・容積率の確認</li>
+            <li>• 将来の再開発計画情報</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-4 text-primary-600">災害リスク</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• ハザードマップによる洪水リスク</li>
+            <li>• 土砂災害警戒区域の確認</li>
+            <li>• 地震の揺れやすさマップ</li>
+            <li>• 過去の災害履歴調査</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-4 text-primary-600">レポート内容</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li>• 英語でのわかりやすいサマリー</li>
+            <li>• 現地写真と地図の添付</li>
+            <li>• リスク評価と推奨事項</li>
+            <li>• 次のステップの提案</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow Timeline -->
+  <StepTimeline steps={[
+    { title:"物件情報の提出", desc:"区画図、位置情報、ご懸念事項をお送りください。" },
+    { title:"机上調査・現地確認", desc:"境界、用途地域、災害リスクを確認します。" },
+    { title:"PDF・通話でのお渡し", desc:"レポートを受け取り、ビデオ通話でご質問いただけます。" },
+  ]}
+  />
+
+  <!-- Optional Add-ons -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-6">オプション追加サービス</h2>
+    <ul class="grid md:grid-cols-2 gap-6">
+      <li class="p-6 border rounded-xl">
+        <h3 class="font-semibold mb-2">360° VR撮影 <span class="text-primary-600">+¥30,000</span></h3>
+        <p class="text-gray-600">4Kドローン・360°映像をインタラクティブビューアーに編集。</p>
+      </li>
+      <li class="p-6 border rounded-xl">
+        <h3 class="font-semibold mb-2">全面リスク調査へアップグレード <span class="text-primary-600">+¥70,000</span></h3>
+        <p class="text-gray-600">災害詳細調査、法務・税務チェックリスト — 差額のみでアップグレード！</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Who Should Use This -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-semibold mb-8">こんな方におすすめ</h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">初回投資家</h3>
+          <p class="text-sm text-gray-600">日本での不動産投資が初めてで、基本的なリスクを把握したい方</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">時間重視</h3>
+          <p class="text-sm text-gray-600">迅速な判断が必要で、短期間で基本情報を取得したい方</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">予算重視</h3>
+          <p class="text-sm text-gray-600">コストを抑えながら、重要なポイントを確認したい方</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Limitations Notice -->
+  <section class="max-w-5xl mx-auto px-6 py-10">
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+      <h3 class="font-semibold text-amber-800 mb-2">⚠️ 軽度調査の制限事項</h3>
+      <ul class="text-sm text-amber-700 space-y-1">
+        <li>• 本調査は基本的な情報提供のみを目的としており、投資判断の保証はいたしません</li>
+        <li>• 詳細な地質調査や建築構造の検査は含まれません</li>
+        <li>• より包括的な調査が必要な場合は、全面リスク調査をお勧めします</li>
+        <li>• 法的・税務的な助言は含まれません（専門家への相談をお勧めします）</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">安心への第一歩を踏み出しませんか？</h2>
+    <p class="mb-6 text-primary-100">3営業日で基本的なリスクを把握し、投資判断をサポートします</p>
+    <a href="/ja/contact?service=light" class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg">
+      軽度調査を依頼する
+    </a>
+  </section>
+</BaseLayout>

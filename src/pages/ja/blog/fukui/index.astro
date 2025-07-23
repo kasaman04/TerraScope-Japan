@@ -1,0 +1,378 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "福井県での暮らし - 市区町村別生活情報";
+const description = "福井県の各市区町村での外国人向け生活情報。福井市・敦賀市・越前市など恐竜と原発の福井県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 福井県の市区町村データ
+const fukuiCities = {
+  fukui: {
+    title: "福井市",
+    population: "約26万人",
+    foreignPopulation: "約4,500人（1.7%）",
+    features: "県庁所在地・恐竜博物館",
+    description: "福井県の県庁所在地。恐竜化石の発掘地として有名で、福井県立恐竜博物館は世界的に注目されています。",
+    image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["県庁所在地", "恐竜", "化石発掘"],
+    englishHospital: "あり",
+    airport: "△（小松空港経由）",
+    rent: "安い",
+    recommend: "研究・教育関係で働く外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukui/fukui/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukui/fukui/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukui/fukui/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukui/fukui/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukui/fukui/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukui/fukui/article-06/" }
+    ],
+    pageUrl: "/ja/blog/fukui/fukui/"
+  },
+  tsuruga: {
+    title: "敦賀市",
+    population: "約6万人",
+    foreignPopulation: "約1,200人（2.0%）",
+    features: "港町・原子力発電所",
+    description: "若狭湾に面した港町。原子力発電所が立地し、エネルギー関連の産業が盛んです。",
+    image: "https://images.unsplash.com/photo-1566139206817-2177767c3df3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["港町", "原子力", "エネルギー"],
+    englishHospital: "なし",
+    airport: "△（小松空港経由）",
+    rent: "安い",
+    recommend: "エネルギー関係で働く外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukui/tsuruga/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukui/tsuruga/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukui/tsuruga/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukui/tsuruga/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukui/tsuruga/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukui/tsuruga/article-06/" }
+    ],
+    pageUrl: "/ja/blog/fukui/tsuruga/"
+  },
+  echizen: {
+    title: "越前市",
+    population: "約8万人",
+    foreignPopulation: "約3,800人（4.8%）",
+    features: "伝統工芸・越前和紙",
+    description: "越前和紙で有名な伝統工芸の街。多くの外国人技能実習生が住み、国際色豊かな地域となっています。",
+    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    tags: ["伝統工芸", "越前和紙", "国際色豊か"],
+    englishHospital: "あり",
+    airport: "△（小松空港経由）",
+    rent: "非常に安い",
+    recommend: "伝統工芸に興味のある外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/fukui/echizen/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/fukui/echizen/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/fukui/echizen/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/fukui/echizen/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/fukui/echizen/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/fukui/echizen/article-06/" }
+    ],
+    pageUrl: "/ja/blog/fukui/echizen/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">福井県</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-red-800 to-red-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="福井県の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 福井県
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          福井県での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          恐竜化石と伝統工芸で有名な福井県
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約76万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約15,500人（2.0%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">17自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-red-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
+          {Object.entries(fukuiCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer" onclick={`openCityModal('${key}')`}
+                 >
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white">
+                  <h4 class="font-bold text-lg">{city.title}</h4>
+                </div>
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
+                <!-- タグ表示 -->
+                <div class="flex gap-2 mb-3">
+                  {city.tags && city.tags.slice(0, 2).map(tag => (
+                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                  ))}
+                </div>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- モーダル -->
+  <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+      <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+
+      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
+      
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">人口:</strong> 
+          <span id="modal-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">外国人人口:</strong> 
+          <span id="modal-foreign-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">英語対応病院:</strong> 
+          <span id="modal-english-hospital" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">空港アクセス:</strong> 
+          <span id="modal-airport" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">家賃相場:</strong> 
+          <span id="modal-rent" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+          <strong class="text-gray-700">おすすめ:</strong> 
+          <span id="modal-recommend" class="text-gray-900"></span>
+        </div>
+      </div>
+
+      <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+      <div class="space-y-3">
+        <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+          📖 詳しい記事を見る
+        </button>
+        <button id="close-modal-btn"
+                class="w-full bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
+          閉じる
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // モーダル関連の関数（汎用版）
+    // fukui市区町村データ
+    const cityData = {
+      fukui: {
+        title: "福井市",
+        population: "約26万人",
+        foreignPopulation: "約4,500人（1.7%）",
+        features: "県庁所在地・恐竜博物館",
+        description: "福井県の県庁所在地。恐竜化石の発掘地として有名で、福井県立恐竜博物館は世界的に注目されています。",
+        image: "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["県庁所在地", "恐竜", "化石発掘"],
+        englishHospital: "あり",
+        airport: "△（小松空港経由）",
+        rent: "安い",
+        recommend: "研究・教育関係で働く外国人",
+        pageUrl: "/ja/blog/fukui/fukui/"
+      },
+      tsuruga: {
+        title: "敦賀市",
+        population: "約6万人",
+        foreignPopulation: "約1,200人（2.0%）",
+        features: "港町・原子力発電所",
+        description: "若狭湾に面した港町。原子力発電所が立地し、エネルギー関連の産業が盛んです。",
+        image: "https://images.unsplash.com/photo-1566139206817-2177767c3df3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["港町", "原子力", "エネルギー"],
+        englishHospital: "なし",
+        airport: "△（小松空港経由）",
+        rent: "安い",
+        recommend: "エネルギー関係で働く外国人",
+        pageUrl: "/ja/blog/fukui/tsuruga/"
+      },
+      echizen: {
+        title: "越前市",
+        population: "約8万人",
+        foreignPopulation: "約3,800人（4.8%）",
+        features: "伝統工芸・越前和紙",
+        description: "越前和紙で有名な伝統工芸の街。多くの外国人技能実習生が住み、国際色豊かな地域となっています。",
+        image: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+        tags: ["伝統工芸", "越前和紙", "国際色豊か"],
+        englishHospital: "あり",
+        airport: "△（小松空港経由）",
+        rent: "非常に安い",
+        recommend: "伝統工芸に興味のある外国人",
+        pageUrl: "/ja/blog/fukui/echizen/"
+      }
+    };
+
+
+    function openCityModal(cityKey) {
+      // cityDataが定義されていない場合は何もしない
+      if (typeof cityData === 'undefined') {
+        console.warn('cityData is not defined');
+        return;
+      }
+      
+      const city = cityData[cityKey];
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-image').src = city.image || '';
+      document.getElementById('modal-image').alt = city.title;
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // モーダルを表示（アニメーション付き）
+      const modal = document.getElementById('city-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      const modal = document.getElementById('city-modal');
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+      const modalClose = document.getElementById('modal-close');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+
+      // 閉じるボタンのイベント
+      if (modalClose) modalClose.addEventListener('click', closeModal);
+      if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+
+      // モーダル背景クリックで閉じる
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
+</BaseLayout>

@@ -1,0 +1,367 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "宮崎県での暮らし - 市区町村別生活情報";
+const description = "宮崎県の各市区町村での外国人向け生活情報。宮崎市・都城市・延岡市など日向の国と南国の宮崎県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 宮崎県の市区町村データ
+const miyazakiCities = {
+  miyazaki: {
+    title: "宮崎市",
+    population: "約40万人",
+    foreignPopulation: "約5,200人（1.3%）",
+    features: "県庁所在地・青島・シーガイア",
+    description: "宮崎県の県庁所在地。青島やシーガイアなどの観光地があり、南国情緒豊かな都市です。温暖な気候で住みやすい環境が特徴。",
+    image: "",
+    tags: ["県庁所在地", "青島", "シーガイア"],
+    englishHospital: "あり",
+    airport: "○（宮崎空港）",
+    rent: "普通",
+    recommend: "温暖な気候を好む外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/miyazaki/miyazaki/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/miyazaki/miyazaki/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/miyazaki/miyazaki/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/miyazaki/miyazaki/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/miyazaki/miyazaki/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/miyazaki/miyazaki/article-06/" }
+    ],
+    pageUrl: "/ja/blog/miyazaki/miyazaki/"
+  },
+  miyakonojo: {
+    title: "都城市",
+    population: "約16万人",
+    foreignPopulation: "約2,800人（1.8%）",
+    features: "畜産・焼酎・霧島連山",
+    description: "宮崎県西部の中心都市。畜産業が盛んで、焼酎の産地としても有名。霧島連山の麓に位置し、自然環境に恵まれています。",
+    image: "",
+    tags: ["畜産", "焼酎", "霧島"],
+    englishHospital: "あり",
+    airport: "○（宮崎空港経由）",
+    rent: "普通",
+    recommend: "農業・畜産業に興味のある外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/miyazaki/miyakonojo/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/miyazaki/miyakonojo/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/miyazaki/miyakonojo/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/miyazaki/miyakonojo/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/miyazaki/miyakonojo/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/miyazaki/miyakonojo/article-06/" }
+    ],
+    pageUrl: "/ja/blog/miyazaki/miyakonojo/"
+  },
+  nobeoka: {
+    title: "延岡市",
+    population: "約12万人",
+    foreignPopulation: "約1,600人（1.3%）",
+    features: "化学工業・延岡城・五ヶ瀬川",
+    description: "宮崎県北部の中心都市。旭化成発祥の地として化学工業が発達。延岡城跡や五ヶ瀬川など、歴史と自然が調和した都市です。",
+    image: "",
+    tags: ["化学工業", "延岡城", "五ヶ瀬川"],
+    englishHospital: "あり",
+    airport: "○（宮崎空港経由）",
+    rent: "普通",
+    recommend: "化学・製造業で働く外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/miyazaki/nobeoka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/miyazaki/nobeoka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/miyazaki/nobeoka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/miyazaki/nobeoka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/miyazaki/nobeoka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/miyazaki/nobeoka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/miyazaki/nobeoka/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-orange-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-orange-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">宮崎県</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-orange-700 to-red-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="/assets/images/prefectures/miyazaki.png"
+        alt="宮崎県の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 宮崎県
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          宮崎県での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          日向の国と南国情緒の宮崎県
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約107万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約13,000人（1.2%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">26自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-orange-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          {Object.entries(miyazakiCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
+                 >
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white">
+                  <h4 class="font-bold text-lg">{city.title}</h4>
+                </div>
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
+                <!-- タグ表示 -->
+                <div class="flex gap-2 mb-3">
+                  {city.tags && city.tags.slice(0, 2).map(tag => (
+                    <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                  ))}
+                </div>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+
+  <!-- モーダル -->
+  <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+
+      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
+      
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">人口:</strong> 
+          <span id="modal-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">外国人人口:</strong> 
+          <span id="modal-foreign-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">英語対応病院:</strong> 
+          <span id="modal-english-hospital" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">空港アクセス:</strong> 
+          <span id="modal-airport" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">家賃相場:</strong> 
+          <span id="modal-rent" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+          <strong class="text-gray-700">おすすめ:</strong> 
+          <span id="modal-recommend" class="text-gray-900"></span>
+        </div>
+      </div>
+
+      <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+      <div class="space-y-3">
+        <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+          📖 詳しい記事を見る
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // モーダル関連の関数（汎用版）
+    // miyazaki市区町村データ
+    const cityData = {
+      miyazaki: {
+        title: "宮崎市",
+        population: "約40万人",
+        foreignPopulation: "約5,200人（1.3%）",
+        features: "県庁所在地・青島・シーガイア",
+        description: "宮崎県の県庁所在地。青島やシーガイアなどの観光地があり、南国情緒豊かな都市です。温暖な気候で住みやすい環境が特徴で、南国リゾートの雰囲気を年中楽しめます。",
+        image: "",
+        tags: ["県庁所在地", "青島", "シーガイア", "南国リゾート"],
+        englishHospital: "あり",
+        airport: "○（宮崎空港）",
+        rent: "普通",
+        recommend: "温暖な気候を好む外国人",
+        pageUrl: "/ja/blog/miyazaki/miyazaki/"
+      },
+      miyakonojo: {
+        title: "都城市",
+        population: "約16万人",
+        foreignPopulation: "約2,800人（1.8%）",
+        features: "畜産・焼酎・霧島連山",
+        description: "宮崎県西部の中心都市。畜産業が盛んで、焼酎の産地としても有名。霧島連山の麓に位置し、自然環境に恵まれています。南国の豊かな自然と農業文化を体験できます。",
+        image: "",
+        tags: ["畜産", "焼酎", "霧島", "南国農業"],
+        englishHospital: "あり",
+        airport: "○（宮崎空港経由）",
+        rent: "普通",
+        recommend: "農業・畜産業に興味のある外国人",
+        pageUrl: "/ja/blog/miyazaki/miyakonojo/"
+      },
+      nobeoka: {
+        title: "延岡市",
+        population: "約12万人",
+        foreignPopulation: "約1,600人（1.3%）",
+        features: "化学工業・延岡城・五ヶ瀬川",
+        description: "宮崎県北部の中心都市。旭化成発祥の地として化学工業が発達。延岡城跡や五ヶ瀬川など、歴史と自然が調和した都市です。南国の工業都市として独特の魅力があります。",
+        image: "",
+        tags: ["化学工業", "延岡城", "五ヶ瀬川", "南国工業"],
+        englishHospital: "あり",
+        airport: "○（宮崎空港経由）",
+        rent: "普通",
+        recommend: "化学・製造業で働く外国人",
+        pageUrl: "/ja/blog/miyazaki/nobeoka/"
+      }
+    };
+
+
+    function openCityModal(cityKey) {
+      // cityDataが定義されていない場合は何もしない
+      if (typeof cityData === 'undefined') {
+        console.warn('cityData is not defined');
+        return;
+      }
+      
+      const city = cityData[cityKey];
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-image').src = city.image || '';
+      document.getElementById('modal-image').alt = city.title;
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-orange-100 text-orange-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // モーダルを表示（アニメーション付き）
+      const modal = document.getElementById('city-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      const modal = document.getElementById('city-modal');
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+
+      // モーダル背景クリックで閉じる
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
+</BaseLayout>

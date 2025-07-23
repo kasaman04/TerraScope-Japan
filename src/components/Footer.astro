@@ -1,0 +1,57 @@
+---
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get base URL for proper routing
+const baseUrl = import.meta.env.BASE_URL;
+
+// Helper function to create proper URLs with base path and language
+function getLocalizedUrl(path: string) {
+  // Ensure path has trailing slash for directories (but not for files or specific paths like legal pages)
+  const normalizedPath = path === '' ? '' : (path.endsWith('/') ? path : `${path}/`);
+  if (lang === 'en') {
+    return `${baseUrl}${normalizedPath}`.replace(/\/+/g, '/');
+  }
+  return `${baseUrl}${lang}/${normalizedPath}`.replace(/\/+/g, '/');
+}
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold mb-4">{t('footer.company')}</h3>
+        <p class="text-gray-400">See the land before you stand</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-4 uppercase tracking-wider">{t('nav.services')}</h4>
+        <ul class="space-y-2">
+          <li><a href={getLocalizedUrl('services/light-survey')} class="text-gray-400 hover:text-white">Light Survey</a></li>
+          <li><a href={getLocalizedUrl('services/full-report')} class="text-gray-400 hover:text-white">Full Risk Report</a></li>
+          <li><a href={getLocalizedUrl('services/vr-capture')} class="text-gray-400 hover:text-white">360° VR Capture</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-4 uppercase tracking-wider">Company</h4>
+        <ul class="space-y-2">
+          <li><a href={getLocalizedUrl('about')} class="text-gray-400 hover:text-white">{t('nav.about')}</a></li>
+          <li><a href={getLocalizedUrl('blog')} class="text-gray-400 hover:text-white">{t('nav.blog')}</a></li>
+          <li><a href={getLocalizedUrl('contact')} class="text-gray-400 hover:text-white">{t('nav.contact')}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold mb-4 uppercase tracking-wider">Legal</h4>
+        <ul class="space-y-2">
+          <li><a href={getLocalizedUrl('legal/privacy')} class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+          <li><a href={getLocalizedUrl('legal/disclaimer')} class="text-gray-400 hover:text-white">Disclaimer</a></li>
+          <li><a href={getLocalizedUrl('legal/cookies')} class="text-gray-400 hover:text-white">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+      <p>&copy; 2025 {t('footer.company')}. {t('footer.rights')}.</p>
+    </div>
+  </div>
+</footer>

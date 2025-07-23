@@ -1,0 +1,370 @@
+---
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get base URL for proper routing
+const baseUrl = import.meta.env.BASE_URL;
+
+// Helper function to create proper URLs with base path and language
+function getLocalizedUrl(path: string) {
+  // Ensure path has trailing slash for directories
+  const normalizedPath = path === '' ? '' : (path.endsWith('/') ? path : `${path}/`);
+  if (lang === 'en') {
+    return `${baseUrl}${normalizedPath}`.replace(/\/+/g, '/');
+  }
+  return `${baseUrl}${lang}/${normalizedPath}`.replace(/\/+/g, '/');
+}
+
+// Helper function to get current page path without language
+function getCurrentPath() {
+  let pathname = Astro.url.pathname;
+  const basePath = baseUrl.replace(/\/$/, '');
+  
+  if (basePath && pathname.startsWith(basePath)) {
+    pathname = pathname.substring(basePath.length);
+  }
+  
+  // Ensure pathname starts with /
+  if (!pathname.startsWith('/')) {
+    pathname = '/' + pathname;
+  }
+  
+  // Remove language prefix and normalize
+  if (pathname.match(/^\/(ja|zh|zh-TW|ko)\//)) {
+    // For paths like /ja/contact/ -> /contact/
+    pathname = pathname.replace(/^\/(ja|zh|zh-TW|ko)/, '');
+  } else if (pathname.match(/^\/(ja|zh|zh-TW|ko)$/)) {
+    // For paths like /ja -> /
+    pathname = '/';
+  }
+  
+  // Ensure we have at least / and proper trailing slash for directories
+  if (!pathname || pathname === '') {
+    pathname = '/';
+  } else if (!pathname.endsWith('/') && !pathname.includes('.')) {
+    pathname += '/';
+  }
+  
+  return pathname;
+}
+
+// Get current page path for JavaScript language switching
+const currentPath = getCurrentPath();
+---
+
+<header class="bg-white shadow-sm">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <a href={getLocalizedUrl('')} class="text-xl font-bold text-gray-900">
+          LAND VISTA Global
+        </a>
+      </div>
+      <div class="hidden md:block">
+        <nav class="ml-10 flex items-baseline space-x-4" aria-label="Main navigation">
+          <a href={getLocalizedUrl('')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.home')}</a>
+          <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.services')}</a>
+          <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.about')}</a>
+          {lang === 'en' || lang === 'ja' ? (
+            <a href={getLocalizedUrl('blog')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.blog')}</a>
+          ) : null}
+          <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">{t('nav.contact')}</a>
+        </nav>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <!-- Language Switcher -->
+        <div class="relative inline-block text-left">
+          <button 
+            type="button"
+            id="language-toggle" 
+            class="inline-flex items-center justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            🌐 Language
+            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <div 
+            id="language-menu"
+            class="hidden origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="language-toggle"
+          >
+            <div class="py-1" role="none">
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="en" data-current-path={currentPath}>
+                <span class="mr-3">🇺🇸</span>
+                English
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="ja" data-current-path={currentPath}>
+                <span class="mr-3">🇯🇵</span>
+                日本語
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="zh" data-current-path={currentPath}>
+                <span class="mr-3">🇨🇳</span>
+                中文
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="zh-TW" data-current-path={currentPath}>
+                <span class="mr-3">🇹🇼</span>
+                繁體中文
+              </a>
+              <a href="#" class="language-link group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem" data-lang="ko" data-current-path={currentPath}>
+                <span class="mr-3">🇰🇷</span>
+                한국어
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button 
+            id="mobile-menu-button"
+            type="button" 
+            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href={getLocalizedUrl('')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.home')}</a>
+        <a href={getLocalizedUrl('services')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.services')}</a>
+        <a href={getLocalizedUrl('about')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.about')}</a>
+        {lang === 'en' || lang === 'ja' ? (
+          <a href={getLocalizedUrl('blog')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.blog')}</a>
+        ) : null}
+        <a href={getLocalizedUrl('contact')} class="text-gray-700 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">{t('nav.contact')}</a>
+        
+        <!-- Mobile Language Switcher -->
+        <div class="border-t border-gray-200 pt-4 mt-4">
+          <div class="px-3 py-2 text-sm font-medium text-gray-500">言語 / Language</div>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="en" data-current-path={currentPath}>English</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="ja" data-current-path={currentPath}>日本語</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="zh" data-current-path={currentPath}>中文</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="zh-TW" data-current-path={currentPath}>繁體中文</a>
+          <a href="#" class="language-link block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md" data-lang="ko" data-current-path={currentPath}>한국어</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Language switcher and mobile menu functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== Header Script Initialize ===');
+    
+    // Get elements
+    const languageToggle = document.getElementById('language-toggle');
+    const languageMenu = document.getElementById('language-menu');
+    const languageLinks = document.querySelectorAll('.language-link');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    // Debug element detection
+    console.log('Elements found:');
+    console.log('- languageToggle:', !!languageToggle, languageToggle);
+    console.log('- languageMenu:', !!languageMenu, languageMenu);
+    console.log('- languageLinks:', languageLinks.length);
+    console.log('- mobileMenuButton:', !!mobileMenuButton);
+    console.log('- mobileMenu:', !!mobileMenu);
+    
+    // Language toggle functionality with multiple event types
+    function toggleLanguageMenu() {
+      console.log('=== Toggle Function Called ===');
+      if (!languageMenu) {
+        console.error('Language menu not found!');
+        return;
+      }
+      
+      const isHidden = languageMenu.classList.contains('hidden');
+      console.log('Current state - hidden:', isHidden);
+      
+      if (isHidden) {
+        languageMenu.classList.remove('hidden');
+        languageToggle?.setAttribute('aria-expanded', 'true');
+        console.log('✅ Menu opened');
+      } else {
+        languageMenu.classList.add('hidden');
+        languageToggle?.setAttribute('aria-expanded', 'false');
+        console.log('✅ Menu closed');
+      }
+    }
+    
+    // Add multiple event listeners for better compatibility
+    if (languageToggle) {
+      console.log('Adding event listeners to language toggle');
+      
+      // Primary click handler
+      languageToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('🖱️ Click event triggered');
+        toggleLanguageMenu();
+      });
+      
+      // Backup pointer events
+      languageToggle.addEventListener('pointerdown', function(e) {
+        console.log('👆 Pointer down event triggered');
+      });
+      
+      // Touch events for mobile
+      languageToggle.addEventListener('touchstart', function(e) {
+        console.log('📱 Touch start event triggered');
+      });
+      
+      // Keyboard support
+      languageToggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          console.log('⌨️ Keyboard event triggered:', e.key);
+          toggleLanguageMenu();
+        }
+      });
+    } else {
+      console.error('❌ Language toggle button not found!');
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (languageToggle && languageMenu && 
+          !languageToggle.contains(e.target) && 
+          !languageMenu.contains(e.target)) {
+        languageMenu.classList.add('hidden');
+        languageToggle.setAttribute('aria-expanded', 'false');
+        console.log('📍 Menu closed by outside click');
+      }
+    });
+    
+    // Handle language selection
+    languageLinks.forEach((link, index) => {
+      console.log(`Setting up language link ${index + 1}:`, link.dataset.lang);
+      
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const targetLang = this.dataset.lang;
+        console.log('🌍 Language selected:', targetLang);
+        
+        // Get current path and clean it
+        let currentPath = window.location.pathname;
+        
+        // Get base URL from meta tag
+        const baseUrlMeta = document.querySelector('meta[name="astro-base-url"]');
+        const baseUrl = baseUrlMeta ? baseUrlMeta.getAttribute('content') || '/' : '/';
+        const basePath = baseUrl.replace(/\/$/, '');
+        
+        // Remove base path first
+        if (basePath && currentPath.startsWith(basePath)) {
+          currentPath = currentPath.substring(basePath.length);
+        }
+        
+        // Ensure currentPath starts with /
+        if (!currentPath.startsWith('/')) {
+          currentPath = '/' + currentPath;
+        }
+        
+        // Remove language prefix
+        if (currentPath.match(/^\/(ja|zh|zh-TW|ko)\//)) {
+          currentPath = currentPath.replace(/^\/(ja|zh|zh-TW|ko)/, '');
+        } else if (currentPath.match(/^\/(ja|zh|zh-TW|ko)$/)) {
+          currentPath = '/';
+        }
+        
+        // Ensure proper format
+        if (!currentPath.startsWith('/')) {
+          currentPath = '/' + currentPath;
+        }
+        if (!currentPath.endsWith('/') && !currentPath.includes('.')) {
+          currentPath += '/';
+        }
+        
+        console.log('📍 Current path:', currentPath);
+        
+        // Available pages for each language
+        const availablePages = {
+          'en': ['/', '/services/', '/about/', '/contact/', '/blog/', '/case-studies/'],
+          'ja': ['/', '/services/', '/about/', '/contact/', '/blog/'],
+          'zh': ['/', '/services/', '/about/', '/contact/'],
+          'zh-TW': ['/', '/services/', '/about/', '/contact/'],
+          'ko': ['/', '/services/', '/about/', '/contact/']
+        };
+        
+        // Generate target URL
+        let targetUrl;
+        const pages = availablePages[targetLang] || ['/'];
+        
+        if (pages.includes(currentPath)) {
+          if (targetLang === 'en') {
+            targetUrl = basePath + currentPath;
+          } else {
+            targetUrl = basePath + `/${targetLang}${currentPath}`;
+          }
+        } else {
+          console.log('⚠️ Page not available, redirecting to home');
+          if (targetLang === 'en') {
+            targetUrl = basePath + '/';
+          } else {
+            targetUrl = basePath + `/${targetLang}/`;
+          }
+        }
+        
+        console.log('🎯 Target URL:', targetUrl);
+        
+        // Set session storage to prevent auto-redirect
+        sessionStorage.setItem('userChosenLanguage', targetLang);
+        
+        // Close menus
+        languageMenu?.classList.add('hidden');
+        languageToggle?.setAttribute('aria-expanded', 'false');
+        mobileMenu?.classList.add('hidden');
+        mobileMenuButton?.setAttribute('aria-expanded', 'false');
+        
+        // Navigate
+        console.log('🚀 Navigating to:', targetUrl);
+        window.location.href = targetUrl;
+      });
+    });
+    
+    // Toggle mobile menu
+    mobileMenuButton?.addEventListener('click', function() {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+    
+    // Close menus when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!languageToggle?.contains(e.target) && !languageMenu?.contains(e.target)) {
+        languageMenu?.classList.add('hidden');
+        languageToggle?.setAttribute('aria-expanded', 'false');
+      }
+      if (!mobileMenuButton?.contains(e.target) && !mobileMenu?.contains(e.target)) {
+        mobileMenu?.classList.add('hidden');
+        mobileMenuButton?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>

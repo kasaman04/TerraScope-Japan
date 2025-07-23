@@ -1,0 +1,206 @@
+---
+export interface Props {
+  article: {
+    id: string;
+    icon: string;
+    title: string;
+    description: string;
+    date: string;
+    content?: string;
+  };
+  cityName: string;
+  prefectureName: string;
+}
+
+const { article, cityName, prefectureName } = Astro.props;
+---
+
+<div class="blog-modal fixed inset-0 z-50 hidden" data-modal-id={article.id}>
+  <!-- Backdrop -->
+  <div class="modal-backdrop fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
+  
+  <!-- Modal Content -->
+  <div class="modal-content fixed inset-4 md:inset-x-8 md:inset-y-12 lg:inset-x-20 lg:inset-y-16 bg-white rounded-xl overflow-hidden shadow-2xl">
+    <!-- Close Button -->
+    <button 
+      class="modal-close absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/90 hover:bg-white shadow-md transition-colors"
+      aria-label="Close modal"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Scrollable Content -->
+    <div class="h-full overflow-y-auto">
+      <!-- Header -->
+      <div class="bg-gradient-to-br from-green-600 to-green-800 text-white p-6 md:p-8">
+        <div class="flex items-center mb-4">
+          <span class="text-4xl mr-4">{article.icon}</span>
+          <div>
+            <div class="text-sm opacity-80 mb-1">{prefectureName} {cityName}</div>
+            <h2 class="text-2xl md:text-3xl font-bold">{article.title}</h2>
+          </div>
+        </div>
+        <p class="text-lg opacity-90">{article.description}</p>
+        <div class="text-sm opacity-75 mt-4">
+          {new Date(article.date).toLocaleDateString('ja-JP')}
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 md:p-8 lg:p-10">
+        <!-- Preview Content -->
+        <div class="mb-8">
+          <h3 class="text-lg font-semibold mb-4 text-gray-900">記事プレビュー</h3>
+          <div class="prose max-w-none text-gray-700">
+            <p>この記事では、{cityName}での{article.title.split('：')[1] || article.title}について詳しく解説しています。</p>
+            
+            {article.id === 'article-01' && (
+              <div class="bg-red-50 border border-red-200 rounded-lg p-4 my-4">
+                <h4 class="font-semibold text-red-900 mb-2">🚨 防災情報</h4>
+                <ul class="text-sm text-red-800 space-y-1">
+                  <li>• 地震リスク評価と想定される被害</li>
+                  <li>• 水害・土砂災害の危険性</li>
+                  <li>• 避難場所と避難経路の確認</li>
+                  <li>• 外国人向け防災アプリと多言語情報</li>
+                </ul>
+              </div>
+            )}
+            
+            {article.id === 'article-02' && (
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 my-4">
+                <h4 class="font-semibold text-blue-900 mb-2">🏥 生活インフラ</h4>
+                <ul class="text-sm text-blue-800 space-y-1">
+                  <li>• 病院・クリニック（外国語対応可能施設）</li>
+                  <li>• スーパーマーケット・コンビニエンスストア</li>
+                  <li>• 学校・保育園・幼稚園情報</li>
+                  <li>• 公共施設と利用方法</li>
+                </ul>
+              </div>
+            )}
+            
+            {article.id === 'article-03' && (
+              <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 my-4">
+                <h4 class="font-semibold text-yellow-900 mb-2">💰 生活コスト</h4>
+                <ul class="text-sm text-yellow-800 space-y-1">
+                  <li>• 賃貸住宅の家賃相場（間取り別）</li>
+                  <li>• 光熱費・通信費の月額目安</li>
+                  <li>• 交通費・食費・日用品費</li>
+                  <li>• 子育て・教育にかかる費用</li>
+                </ul>
+              </div>
+            )}
+            
+            <p class="text-sm text-gray-600 italic">
+              ※ 詳細な内容は完全版記事でご確認いただけます
+            </p>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center pt-6 border-t">
+          <p class="text-gray-600 mb-4">完全版記事で詳しい情報をご覧ください</p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <a 
+              href={`/ja/blog/${prefectureName.toLowerCase()}/${cityName.toLowerCase()}/${article.id}/`}
+              class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-md"
+            >
+              完全版記事を読む
+            </a>
+            <a 
+              href="/ja/services/" 
+              class="inline-block bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors"
+            >
+              詳細調査を依頼
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Modal functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const modals = document.querySelectorAll('.blog-modal');
+    
+    modals.forEach(modal => {
+      const backdrop = modal.querySelector('.modal-backdrop');
+      const closeBtn = modal.querySelector('.modal-close');
+      
+      // Close on backdrop click
+      backdrop?.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+      
+      // Close on close button click
+      closeBtn?.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+      
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+    
+    // Open modal when article card is clicked
+    document.addEventListener('click', (e) => {
+      if (!e.target) return;
+      const card = (e.target as Element).closest('[data-article-id]');
+      if (card && !(e.target as Element).closest('a[href*="/"]')) {
+        e.preventDefault();
+        const articleId = card.dataset.articleId;
+        const modal = document.querySelector(`[data-modal-id="${articleId}"]`);
+        if (modal) {
+          modal.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .blog-modal {
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .modal-content {
+    animation: slideIn 0.3s ease-out;
+    max-height: calc(100vh - 2rem);
+  }
+  
+  @media (min-width: 768px) {
+    .modal-content {
+      max-height: calc(100vh - 6rem);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>

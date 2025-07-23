@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "关于我们 – 企业信息";
+const description = "了解LAND VISTA Global团队以及土地尽职调查透明度的重要性。";
+const lang = "zh";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative isolate">
+    <img 
+      src="/assets/img/about-hero.jpg" 
+      alt="" 
+      class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75 aspect-[16/9]"
+      loading="eager"
+      onerror="this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'"
+    >
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
+        土地尽职调查，重新构想。
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl opacity-90">
+        将分散的日本数据转化为面向海外投资者的清晰、可操作的洞察。
+      </p>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold mb-8 text-center">我们的价值观</h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <div class="text-center">
+        <div class="flex justify-center mb-4">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">透明度</h3>
+        <p class="text-gray-600 leading-relaxed">我们明示所有假设和数据来源。</p>
+      </div>
+
+      <div class="text-center">
+        <div class="flex justify-center mb-4">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">准确性</h3>
+        <p class="text-gray-600 leading-relaxed">认证测量师和双语法务合作伙伴审查每份报告。</p>
+      </div>
+
+      <div class="text-center">
+        <div class="flex justify-center mb-4">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-3 text-gray-900">可及性</h3>
+        <p class="text-gray-600 leading-relaxed">让全世界任何人都能理解日本的土地数据。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold mb-10 text-center">团队介绍</h2>
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
+        <div class="text-center bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <div class="mb-4">
+            <img 
+              src="/assets/img/team/ryo.jpg" 
+              alt="田中亮" 
+              class="w-24 h-24 rounded-full mx-auto object-cover"
+              loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'"
+            >
+          </div>
+          <h3 class="text-xl font-semibold mb-1 text-gray-900">田中 亮</h3>
+          <p class="text-primary-600 font-medium mb-3">创始人 / 调查负责人</p>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            在北海道和九州拥有10年经验的认证土地测量师。专门为国际客户提供农村和沿海房地产评估。
+          </p>
+        </div>
+
+        <div class="text-center bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <div class="mb-4">
+            <img 
+              src="/assets/img/team/sara.jpg" 
+              alt="陈 莎拉" 
+              class="w-24 h-24 rounded-full mx-auto object-cover"
+              loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'"
+            >
+          </div>
+          <h3 class="text-xl font-semibold mb-1 text-gray-900">陈 莎拉</h3>
+          <p class="text-primary-600 font-medium mb-3">法务分析师</p>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            专门从事房地产和分区法的双语法务助理。帮助海外投资者了解日本复杂的土地所有权法规。
+          </p>
+        </div>
+
+        <div class="text-center bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+          <div class="mb-4">
+            <img 
+              src="/assets/img/team/kenji.jpg" 
+              alt="山本 健二" 
+              class="w-24 h-24 rounded-full mx-auto object-cover"
+              loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80'"
+            >
+          </div>
+          <h3 class="text-xl font-semibold mb-1 text-gray-900">山本 健二</h3>
+          <p class="text-primary-600 font-medium mb-3">VR拍摄专家</p>
+          <p class="text-gray-600 text-sm leading-relaxed mb-4">
+            专业无人机飞行员和360°摄像师。为远程购买者创造身临其境的房地产游览，让日本土地栩栩如生。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">准备与我们合作？</h2>
+    <a 
+      href="/zh/contact/" 
+      class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg"
+    >
+      预约免费通话
+    </a>
+  </section>
+</BaseLayout>

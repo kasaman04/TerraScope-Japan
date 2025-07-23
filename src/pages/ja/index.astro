@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HeroVideo from '../../components/HeroVideo.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import Steps from '../../components/Steps.astro';
+import { sanity } from "../../lib/sanity";
+
+const pageData = {
+  title: "LAND VISTA Global - 日本の土地投資調査サービス",
+  description: "外国人投資家のための専門的な土地調査サービス。リスク評価から法的チェックまで、日本での土地投資を安全にサポートします。",
+  lang: "ja"
+};
+
+// Fetch services from Sanity with fallback
+let services = [];
+try {
+  if (sanity) {
+    services = await sanity.fetch(`*[_type=="service"]{
+      key, title, price, bullets
+    }`);
+  }
+} catch (error) {
+  console.log('Sanity fetch error, using fallback data:', error.message);
+  services = [
+    {
+      key: "light",
+      title: "ライト調査",
+      price: "¥50,000",
+      bullets: [
+        "境界・基本的ゾーニング確認",
+        "英語サマリー（4ページ）",
+        "3営業日で納品"
+      ]
+    },
+    {
+      key: "full",
+      title: "フルリスクレポート",
+      price: "¥120,000",
+      bullets: [
+        "洪水、地滑り、地震リスク",
+        "法的・税務チェックリスト",
+        "15ページPDF + Q&A通話"
+      ]
+    },
+    {
+      key: "vr",
+      title: "360° VRキャプチャー",
+      price: "¥30,000",
+      bullets: [
+        "4Kドローン＆360°映像",
+        "編集済みハイライトリール",
+        "5営業日で納品"
+      ]
+    }
+  ];
+}
+---
+
+<BaseLayout {...pageData}>
+  <HeroVideo 
+    src="/assets/video/sample-hero-360.mp4"
+    headline="投資する前に、土地を見る"
+    subheadline="360°映像・法的明確性・リスク分析"
+  />
+  <ServiceCards items={services} show="all" ctaLabel="詳細を見る" />
+  <Testimonials />
+  <Steps items={[
+    {
+      icon: "MapPin",
+      title: "土地を選択",
+      desc: "お客様の投資目標に合った土地を選択してください"
+    },
+    {
+      icon: "ClipboardCheck", 
+      title: "調査サービス選択",
+      desc: "ライト調査、フルリスクレポート、VRキャプチャーから選択"
+    },
+    {
+      icon: "Handshake",
+      title: "安心投資",
+      desc: "詳細なレポートで情報に基づいた投資判断を行ってください"
+    }
+  ]} />
+</BaseLayout>

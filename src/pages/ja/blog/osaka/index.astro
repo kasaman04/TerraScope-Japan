@@ -1,0 +1,736 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "大阪府での暮らし - 市区町村別生活情報";
+const description = "大阪府の各市区町村での外国人向け生活情報。大阪市・堺市・豊中市など関西圏の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 大阪府の市区町村データ
+const osakaCities = {
+  osaka: {
+    title: "大阪市",
+    population: "約275万人",
+    foreignPopulation: "約13万人（4.7%）",
+    features: "関西経済の中心地",
+    description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
+    image: "",
+    tags: ["関西経済の中心", "商業文化", "多国籍", "西日本最大"],
+    englishHospital: "あり",
+    airport: "◎（関西空港・伊丹空港）",
+    rent: "中程度",
+    recommend: "都市生活と多様性を求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/osaka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/osaka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/osaka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/osaka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/osaka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/osaka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/osaka/"
+  },
+  sakai: {
+    title: "堺市",
+    population: "約83万人",
+    foreignPopulation: "約2万人（2.4%）",
+    features: "歴史ある商業都市",
+    description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
+    image: "",
+    tags: ["古墳群", "歴史都市", "住環境良好", "大阪隣接"],
+    englishHospital: "限定的",
+    airport: "○（関西空港経由）",
+    rent: "安い",
+    recommend: "歴史と住環境を重視する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/sakai/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/sakai/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/sakai/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/sakai/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/sakai/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/sakai/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/sakai/"
+  },
+  toyonaka: {
+    title: "豊中市",
+    population: "約40万人",
+    foreignPopulation: "約8,500人（2.1%）",
+    features: "住宅地・空港アクセス良好",
+    description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
+    image: "",
+    tags: ["住宅地", "空港近接", "都心アクセス良好", "閑静"],
+    englishHospital: "あり",
+    airport: "◎（伊丹空港直結）",
+    rent: "中程度",
+    recommend: "静かな住環境とアクセスを求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/toyonaka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/toyonaka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/toyonaka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/toyonaka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/toyonaka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/toyonaka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/toyonaka/"
+  },
+  higashiosaka: {
+    title: "東大阪市",
+    population: "約49万人",
+    foreignPopulation: "約1.8万人（3.7%）",
+    features: "工業都市・ラグビーの聖地",
+    description: "中小企業の集積地として知られる工業都市。ラグビーの聖地として有名な花園ラグビー場があります。",
+    image: "",
+    tags: ["工業都市", "中小企業", "ラグビー", "製造業"],
+    englishHospital: "限定的",
+    airport: "○（関西空港経由）",
+    rent: "安い",
+    recommend: "製造業関係の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/higashiosaka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/higashiosaka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/higashiosaka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/higashiosaka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/higashiosaka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/higashiosaka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/higashiosaka/"
+  },
+  takatsuki: {
+    title: "高槻市",
+    population: "約35万人",
+    foreignPopulation: "約8,200人（2.3%）",
+    features: "京阪間のベッドタウン",
+    description: "大阪と京都の中間に位置し、両都市への通勤に便利なベッドタウンとして発展しています。",
+    image: "",
+    tags: ["ベッドタウン", "京阪間", "通勤便利", "住宅地"],
+    englishHospital: "限定的",
+    airport: "○（関西空港経由）",
+    rent: "中程度",
+    recommend: "大阪・京都勤務の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/takatsuki/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/takatsuki/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/takatsuki/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/takatsuki/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/takatsuki/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/takatsuki/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/takatsuki/"
+  },
+  hirakata: {
+    title: "枚方市",
+    population: "約40万人",
+    foreignPopulation: "約8,000人（2.0%）",
+    features: "学研都市・ベッドタウン",
+    description: "関西学研都市の一部で、大阪と京都の中間に位置するベッドタウン。住環境が良く、ファミリー層に人気です。",
+    image: "",
+    tags: ["学研都市", "ベッドタウン", "大阪京都中間", "住環境良好"],
+    englishHospital: "限定的",
+    airport: "○（関西空港経由）",
+    rent: "中程度",
+    recommend: "住環境を重視するファミリー外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/hirakata/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/hirakata/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/hirakata/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/hirakata/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/hirakata/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/hirakata/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/hirakata/"
+  },
+  suita: {
+    title: "吹田市",
+    population: "約39万人",
+    foreignPopulation: "約11,000人（2.9%）",
+    features: "万博公園・大学都市",
+    description: "万博記念公園があり、大阪大学をはじめ多くの大学・研究機関が集積。学術都市として国際色豊かです。",
+    image: "",
+    tags: ["万博公園", "大学都市", "学術機関", "国際色豊か"],
+    englishHospital: "あり",
+    airport: "○（伊丹空港経由）",
+    rent: "中程度",
+    recommend: "学術・研究関係の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/suita/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/suita/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/suita/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/suita/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/suita/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/suita/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/suita/"
+  },
+  ibaraki: {
+    title: "茨木市",
+    population: "約29万人",
+    foreignPopulation: "約6,500人（2.3%）",
+    features: "大阪北部・交通便利",
+    description: "大阪都心部と京都の両方にアクセスしやすい立地。住宅地として発展し、外国人にも住みやすい環境です。",
+    image: "",
+    tags: ["大阪北部", "交通便利", "住宅地", "二都市アクセス"],
+    englishHospital: "限定的",
+    airport: "○（伊丹空港経由）",
+    rent: "中程度",
+    recommend: "大阪・京都両方使いたい外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/ibaraki/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/ibaraki/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/ibaraki/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/ibaraki/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/ibaraki/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/ibaraki/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/ibaraki/"
+  },
+  yao: {
+    title: "八尾市",
+    population: "約26万人",
+    foreignPopulation: "約7,800人（2.9%）",
+    features: "製造業・中小企業集積",
+    description: "中小企業の集積地として発展。製造業が盛んで、多くの外国人労働者が働いています。生活コストも比較的安価です。",
+    image: "",
+    tags: ["製造業", "中小企業", "外国人労働者", "コスト安"],
+    englishHospital: "限定的",
+    airport: "○（関西空港経由）",
+    rent: "安い",
+    recommend: "製造業で働く外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/yao/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/yao/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/yao/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/yao/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/yao/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/yao/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/yao/"
+  },
+  neyagawa: {
+    title: "寝屋川市",
+    population: "約23万人",
+    foreignPopulation: "約4,500人（2.0%）",
+    features: "大阪近郊・住宅都市",
+    description: "大阪都心部への通勤圏として発展した住宅都市。商業施設も充実し、外国人にも住みやすい環境が整っています。",
+    image: "",
+    tags: ["大阪近郊", "住宅都市", "通勤圏", "商業充実"],
+    englishHospital: "限定的",
+    airport: "○（関西空港経由）",
+    rent: "安い",
+    recommend: "大阪勤務の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/neyagawa/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/neyagawa/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/neyagawa/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/neyagawa/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/neyagawa/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/neyagawa/article-06/" }
+    ],
+    pageUrl: "/ja/blog/osaka/neyagawa/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">大阪府</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-red-800 to-red-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="/assets/images/prefectures/osaka.png"
+        alt="大阪府の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 大阪府
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          大阪府での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          関西の中心地・大阪府で食文化と商業が栄える活気あふれる生活
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約880万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約25万人（2.8%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">43自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-red-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          {Object.entries(osakaCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-32 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-xs text-gray-500">人口：{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Osaka Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          大阪府で暮らす<span class="text-red-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって大阪府が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍜</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">食文化の都</h3>
+          <p class="text-gray-600">
+            たこ焼き、お好み焼きなど独特の食文化。多様な飲食店と外国料理も充実しています。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">💼</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">経済の中心地</h3>
+          <p class="text-gray-600">
+            西日本最大の経済圏。多様な業界と就労機会があり、キャリア形成に有利です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">😄</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">フレンドリーな気質</h3>
+          <p class="text-gray-600">
+            関西弁に代表される親しみやすい気質。外国人にもオープンで温かい地域性です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-red-600 to-red-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        大阪府での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-red-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // 大阪府市区町村データ
+    const cityData = {
+      osaka: {
+        title: "大阪市",
+        population: "約275万人",
+        foreignPopulation: "約13万人（4.7%）",
+        features: "関西経済の中心地",
+        description: "西日本最大の都市。商業と文化が栄え、多様な外国人コミュニティが形成されています。",
+        image: "",
+        tags: ["関西経済の中心", "商業文化", "多国籍", "西日本最大"],
+        englishHospital: "あり",
+        airport: "◎（関西空港・伊丹空港）",
+        rent: "中程度",
+        recommend: "都市生活と多様性を求める外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/osaka/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/osaka/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/osaka/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/osaka/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/osaka/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/osaka/article-06/" }
+        ],
+        pageUrl: "/ja/blog/osaka/osaka/"
+      },
+      sakai: {
+        title: "堺市",
+        population: "約83万人",
+        foreignPopulation: "約2万人（2.4%）",
+        features: "歴史ある商業都市",
+        description: "古墳群で有名な歴史都市。大阪市に隣接し、住環境と利便性のバランスが良い地域です。",
+        image: "",
+        tags: ["古墳群", "歴史都市", "住環境良好", "大阪隣接"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "安い",
+        recommend: "歴史と住環境を重視する外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/sakai/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/sakai/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/sakai/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/sakai/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/sakai/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/sakai/article-06/" }
+        ],
+        pageUrl: "/ja/blog/osaka/sakai/"
+      },
+      toyonaka: {
+        title: "豊中市",
+        population: "約40万人",
+        foreignPopulation: "約8,500人（2.1%）",
+        features: "住宅地・空港アクセス良好",
+        description: "伊丹空港に近く、大阪都心部へのアクセスも良好。閑静な住宅地として人気の高いエリアです。",
+        image: "",
+        tags: ["空港近接", "住宅地", "アクセス良好", "閑静"],
+        englishHospital: "限定的",
+        airport: "◎（伊丹空港近接）",
+        rent: "やや安い",
+        recommend: "空港利用が多い外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/osaka/toyonaka/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/osaka/toyonaka/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/osaka/toyonaka/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/osaka/toyonaka/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/osaka/toyonaka/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/osaka/toyonaka/article-06/" }
+        ],
+        pageUrl: "/ja/blog/osaka/toyonaka/"
+      },
+      higashiosaka: {
+        title: "東大阪市",
+        population: "約49万人",
+        foreignPopulation: "約1.8万人（3.7%）",
+        features: "工業都市・ラグビーの聖地",
+        description: "中小企業の集積地として知られる工業都市。ラグビーの聖地として有名な花園ラグビー場があります。",
+        image: "",
+        tags: ["工業都市", "中小企業", "ラグビー", "製造業"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "安い",
+        recommend: "製造業関係の外国人",
+        pageUrl: "/ja/blog/osaka/higashiosaka/"
+      },
+      takatsuki: {
+        title: "高槻市",
+        population: "約35万人",
+        foreignPopulation: "約8,200人（2.3%）",
+        features: "京阪間のベッドタウン",
+        description: "大阪と京都の中間に位置し、両都市への通勤に便利なベッドタウンとして発展しています。",
+        image: "",
+        tags: ["ベッドタウン", "京阪間", "通勤便利", "住宅地"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "中程度",
+        recommend: "大阪・京都勤務の外国人",
+        pageUrl: "/ja/blog/osaka/takatsuki/"
+      },
+      hirakata: {
+        title: "枚方市",
+        population: "約40万人",
+        foreignPopulation: "約8,000人（2.0%）",
+        features: "学研都市・ベッドタウン",
+        description: "関西学研都市の一部で、大阪と京都の中間に位置するベッドタウン。住環境が良く、ファミリー層に人気です。",
+        image: "",
+        tags: ["学研都市", "ベッドタウン", "大阪京都中間", "住環境良好"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "中程度",
+        recommend: "住環境を重視するファミリー外国人",
+        pageUrl: "/ja/blog/osaka/hirakata/"
+      },
+      suita: {
+        title: "吹田市",
+        population: "約39万人",
+        foreignPopulation: "約11,000人（2.9%）",
+        features: "万博公園・大学都市",
+        description: "万博記念公園があり、大阪大学をはじめ多くの大学・研究機関が集積。学術都市として国際色豊かです。",
+        image: "",
+        tags: ["万博公園", "大学都市", "学術機関", "国際色豊か"],
+        englishHospital: "あり",
+        airport: "○（伊丹空港経由）",
+        rent: "中程度",
+        recommend: "学術・研究関係の外国人",
+        pageUrl: "/ja/blog/osaka/suita/"
+      },
+      ibaraki: {
+        title: "茨木市",
+        population: "約29万人",
+        foreignPopulation: "約6,500人（2.3%）",
+        features: "大阪北部・交通便利",
+        description: "大阪都心部と京都の両方にアクセスしやすい立地。住宅地として発展し、外国人にも住みやすい環境です。",
+        image: "",
+        tags: ["大阪北部", "交通便利", "住宅地", "二都市アクセス"],
+        englishHospital: "限定的",
+        airport: "○（伊丹空港経由）",
+        rent: "中程度",
+        recommend: "大阪・京都両方使いたい外国人",
+        pageUrl: "/ja/blog/osaka/ibaraki/"
+      },
+      yao: {
+        title: "八尾市",
+        population: "約26万人",
+        foreignPopulation: "約7,800人（2.9%）",
+        features: "製造業・中小企業集積",
+        description: "中小企業の集積地として発展。製造業が盛んで、多くの外国人労働者が働いています。生活コストも比較的安価です。",
+        image: "",
+        tags: ["製造業", "中小企業", "外国人労働者", "コスト安"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "安い",
+        recommend: "製造業で働く外国人",
+        pageUrl: "/ja/blog/osaka/yao/"
+      },
+      neyagawa: {
+        title: "寝屋川市",
+        population: "約23万人",
+        foreignPopulation: "約4,500人（2.0%）",
+        features: "大阪近郊・住宅都市",
+        description: "大阪都心部への通勤圏として発展した住宅都市。商業施設も充実し、外国人にも住みやすい環境が整っています。",
+        image: "",
+        tags: ["大阪近郊", "住宅都市", "通勤圏", "商業充実"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "安い",
+        recommend: "大阪勤務の外国人",
+        pageUrl: "/ja/blog/osaka/neyagawa/"
+      }
+    };
+
+    // モーダル制御変数
+    let currentCityKey = '';
+    let modal = null;
+    
+    // モーダルを開く
+    function openCityModal(cityKey) {
+      currentCityKey = cityKey;
+      const city = cityData[cityKey];
+      
+      if (!city) {
+        console.error('City data not found for key:', cityKey);
+        return;
+      }
+
+      // モーダル要素を取得（存在チェック付き）
+      modal = document.getElementById('city-modal');
+      if (!modal) {
+        console.error('Modal element not found');
+        return;
+      }
+
+      // モーダル内容を更新（存在チェック付き）
+      const modalImage = document.getElementById('modal-image');
+      const modalTitle = document.getElementById('modal-title');
+      const modalFeatures = document.getElementById('modal-features');
+      const modalPopulation = document.getElementById('modal-population');
+      const modalForeignPopulation = document.getElementById('modal-foreign-population');
+      const modalEnglishHospital = document.getElementById('modal-english-hospital');
+      const modalAirport = document.getElementById('modal-airport');
+      const modalRent = document.getElementById('modal-rent');
+      const modalRecommend = document.getElementById('modal-recommend');
+      const modalDescription = document.getElementById('modal-description');
+      const tagsContainer = document.getElementById('modal-tags');
+
+      if (modalImage) {
+        modalImage.src = city.image || '';
+        modalImage.alt = city.title || '';
+      }
+      if (modalTitle) modalTitle.textContent = city.title || '';
+      if (modalFeatures) modalFeatures.textContent = city.features || '';
+      if (modalPopulation) modalPopulation.textContent = city.population || '';
+      if (modalForeignPopulation) modalForeignPopulation.textContent = city.foreignPopulation || '';
+      if (modalEnglishHospital) modalEnglishHospital.textContent = city.englishHospital || '';
+      if (modalAirport) modalAirport.textContent = city.airport || '';
+      if (modalRent) modalRent.textContent = city.rent || '';
+      if (modalRecommend) modalRecommend.textContent = city.recommend || '';
+      if (modalDescription) modalDescription.textContent = city.description || '';
+
+      // タグを表示
+      if (tagsContainer) {
+        tagsContainer.innerHTML = '';
+        if (city.tags && Array.isArray(city.tags)) {
+          city.tags.forEach(tag => {
+            const tagElement = document.createElement('span');
+            tagElement.className = 'text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium';
+            tagElement.textContent = tag;
+            tagsContainer.appendChild(tagElement);
+          });
+        }
+      }
+
+      // モーダルを表示（アニメーション付き）
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      const modalContent = modal.querySelector('.bg-white');
+      if (modalContent) {
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+      }
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      if (!modal) return;
+      
+      modal.classList.add('opacity-0');
+      const modalContent = modal.querySelector('.bg-white');
+      if (modalContent) {
+        modalContent.classList.add('scale-95');
+        modalContent.classList.remove('scale-100');
+      }
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+      currentCityKey = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // モーダル関連のイベントリスナーを設定
+
+      // モーダル背景クリックで閉じる
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      // ESCキーで閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+      
+    });
+  </script>
+
+  <!-- モーダル -->
+  <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+
+      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
+      
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">人口:</strong> 
+          <span id="modal-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">外国人人口:</strong> 
+          <span id="modal-foreign-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">英語対応病院:</strong> 
+          <span id="modal-english-hospital" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">空港アクセス:</strong> 
+          <span id="modal-airport" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">家賃相場:</strong> 
+          <span id="modal-rent" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+          <strong class="text-gray-700">おすすめ:</strong> 
+          <span id="modal-recommend" class="text-gray-900"></span>
+        </div>
+      </div>
+
+      <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+      <div class="space-y-3">
+        <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+          📖 詳しい記事を見る
+        </button>
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>

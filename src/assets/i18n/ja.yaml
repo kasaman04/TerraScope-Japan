@@ -1,0 +1,44 @@
+site:
+  title: "LAND VISTA Global"
+  description: "土地を見てから立つ"
+  tagline: "360°映像 • 法的明確性 • リスク洞察"
+
+nav:
+  home: "ホーム"
+  services: "サービス"
+  about: "会社概要"
+  contact: "お問い合わせ"
+
+hero:
+  headline: "土地を見てから立つ"
+  subheadline: "360°映像 • 法的明確性 • リスク洞察"
+  cta: "探索を開始"
+
+steps:
+  title: "仕組み"
+  subtitle: "日本の土地投資を確実にする3つの簡単なステップ"
+  explore:
+    title: "探索"
+    desc: "360°映像とハザードレイヤーを含むインタラクティブマップを閲覧。"
+  verify:
+    title: "検証"
+    desc: "法律、税金、公共サービスをカバーするカスタマイズされた調査レポートを取得。"
+  close:
+    title: "成約"
+    desc: "検証済みの地元専門家と連携して購入を完了。"
+
+services:
+  title: "私たちのサービス"
+  subtitle: "投資に適したレベルの詳細を選択"
+
+testimonials:
+  title: "お客様の声"
+  subtitle: "世界中の投資家から信頼されています"
+
+blog:
+  title: "最新の洞察"
+  subtitle: "日本の不動産について最新情報を入手"
+
+cta:
+  title: "日本でのあなたの土地を確保する準備はできていますか？"
+  button: "無料相談を受ける"

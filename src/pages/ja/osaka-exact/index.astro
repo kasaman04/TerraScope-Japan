@@ -1,0 +1,469 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "大阪府の生活情報";
+const description = "外国人が大阪府で暮らすことを検討する際の、地域ごとの生活視点情報を提供。";
+const lang = "ja";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="min-h-screen bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-6">
+            <h1 class="text-lg font-bold text-blue-600">LAND VISTA Global</h1>
+            <nav class="hidden md:flex space-x-6 text-sm">
+              <a href="#" class="text-gray-600 hover:text-gray-900">ホーム</a>
+              <a href="#" class="text-gray-600 hover:text-gray-900">記事一覧</a>
+              <a href="#" class="text-gray-600 hover:text-gray-900">お役立ち情報</a>
+              <a href="#" class="text-gray-600 hover:text-gray-900">FAQ</a>
+              <a href="#" class="text-gray-600 hover:text-gray-900">お問い合わせ</a>
+            </nav>
+          </div>
+          <div class="flex items-center space-x-4">
+            <button class="text-sm text-gray-600">🌐 Language</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+      <!-- Page Title -->
+      <div class="text-center mb-12">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">大阪府の生活情報</h1>
+        <p class="text-sm text-gray-600">外国人が大阪府で暮らすことを検討する際の、地域ごとの生活視点情報を提供。</p>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="space-y-16">
+        
+        <!-- 防災対策 -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">🛡️</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">防災対策</h2>
+              <span class="text-sm text-gray-500">自然災害</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="地震リスクと対策" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">地震リスクと対策</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">地震</span>
+                </div>
+                <p class="text-sm text-gray-600">大阪府の地震リスクと外国人が知っておくべき地震対策。避難経路の確認方法や緊急時の行動について詳しく解説します。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="水害・洪水リスクと対策" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">水害・洪水リスクと対策</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">水害</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">洪水</span>
+                </div>
+                <p class="text-sm text-gray-600">台風や集中豪雨による水害リスクと避難方法について。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="避難所情報と防災グッズ" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">避難所情報と防災グッズ</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">避難所</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">防災グッズ</span>
+                </div>
+                <p class="text-sm text-gray-600">緊急時の避難場所と準備しておくべき防災用品のリスト。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- アクセス -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">📍</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">アクセス</h2>
+              <span class="text-sm text-gray-500">交通機関</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="主要駅と電車アクセス" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">主要駅と電車アクセス</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">電車</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">駅</span>
+                </div>
+                <p class="text-sm text-gray-600">大阪駅、梅田駅、難波駅など主要駅からの交通アクセス情報。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="水害・洪水リスクと対策" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">水害・洪水リスクと対策</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">水害</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">洪水</span>
+                </div>
+                <p class="text-sm text-gray-600">台風や集中豪雨による水害リスクについての詳細情報。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="避難所情報と防災グッズ" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">避難所情報と防災グッズ</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">避難所</span>
+                </div>
+                <p class="text-sm text-gray-600">災害時の避難場所と緊急連絡先について。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 環境対応 -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">🏥</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">環境対応</h2>
+              <span class="text-sm text-gray-500">医療・教育</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="医療機関と英語対応" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">医療機関と英語対応</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">医療</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">英語対応</span>
+                </div>
+                <p class="text-sm text-gray-600">外国人が安心して利用できる英語対応の病院・クリニック情報。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="大学・専門学校・研究機関" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">大学・専門学校・研究機関</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">大学</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">専門学校</span>
+                </div>
+                <p class="text-sm text-gray-600">大阪府内の高等教育機関と研究施設について。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="外国人向け医療ガイド" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">外国人向け医療ガイド</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">医療</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">ガイド</span>
+                </div>
+                <p class="text-sm text-gray-600">医療制度の利用方法と保険の手続きについて。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 工事・開発 -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">🏗️</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">工事・開発</h2>
+              <span class="text-sm text-gray-500">再開発</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="大阪万博関連のインフラ整備" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">大阪万博関連のインフラ整備</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">万博</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">インフラ</span>
+                </div>
+                <p class="text-sm text-gray-600">2025年大阪万博に向けたインフラ整備の進捗と影響。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="関西国際空港アクセス改善" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">関西国際空港アクセス改善</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">空港</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">アクセス</span>
+                </div>
+                <p class="text-sm text-gray-600">関西空港への交通アクセス向上プロジェクトについて。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="商業施設・住宅地の開発動向" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">商業施設・住宅地の開発動向</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">開発</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">住宅</span>
+                </div>
+                <p class="text-sm text-gray-600">新しい商業施設と住宅エリアの開発計画。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 生活評価 -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">📊</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">生活評価</h2>
+              <span class="text-sm text-gray-500">住環境・コスト</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="家賃相場と住宅情報" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">家賃相場と住宅情報</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">家賃</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">住宅</span>
+                </div>
+                <p class="text-sm text-gray-600">エリア別の家賃相場と外国人におすすめの住宅エリア。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="光熱費・通信費・食費" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">光熱費・通信費・食費</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">光熱費</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">通信費</span>
+                </div>
+                <p class="text-sm text-gray-600">月々の生活費の目安と節約のコツについて。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="外国人向け生活サポート" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">外国人向け生活サポート</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">生活サポート</span>
+                </div>
+                <p class="text-sm text-gray-600">外国人向けの各種生活支援サービスについて。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- コスト -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">💰</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">コスト</h2>
+              <span class="text-sm text-gray-500">詳細な費用情報</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="キャッシュレス決済・銀行情報" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">キャッシュレス決済・銀行情報</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">決済</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">銀行</span>
+                </div>
+                <p class="text-sm text-gray-600">外国人が利用しやすい銀行口座開設と決済方法。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="生活必需品の価格比較" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">生活必需品の価格比較</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">価格</span>
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">比較</span>
+                </div>
+                <p class="text-sm text-gray-600">日用品や食料品の価格相場と購入場所の情報。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="光熱費・通信費・食費" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">光熱費・通信費・食費</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">光熱費</span>
+                </div>
+                <p class="text-sm text-gray-600">詳細な月額費用と節約方法について。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 要点・課題 -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">🔧</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">要点・課題</h2>
+              <span class="text-sm text-gray-500">重要ポイント</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="外国人が注意すべき点" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">外国人が注意すべき点</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">注意点</span>
+                </div>
+                <p class="text-sm text-gray-600">大阪府で生活する際に外国人が特に気をつけるべき事項。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="よくある質問と解決策" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">よくある質問と解決策</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">FAQ</span>
+                </div>
+                <p class="text-sm text-gray-600">外国人からよく寄せられる質問とその回答集。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 詳細 -->
+        <section>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-sm">📊</span>
+              </div>
+              <h2 class="text-lg font-bold text-gray-900">詳細</h2>
+              <span class="text-sm text-gray-500">さらに詳しい情報</span>
+            </div>
+            <a href="#" class="text-sm text-red-500 hover:text-red-600">もっと見る ></a>
+          </div>
+          
+          <div class="space-y-6">
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="詳細な統計データ" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">詳細な統計データ</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">統計</span>
+                </div>
+                <p class="text-sm text-gray-600">大阪府の人口、経済、社会に関する詳細データ。</p>
+              </div>
+            </div>
+            
+            <div class="flex space-x-4">
+              <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`} alt="専門的な分析" class="w-20 h-20 object-cover rounded" />
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">専門的な分析</h3>
+                <div class="mb-2">
+                  <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-orange-600 rounded mr-1">分析</span>
+                </div>
+                <p class="text-sm text-gray-600">専門家による大阪府の住環境分析レポート。</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-lg font-bold mb-4">TerraScope Japan</h3>
+            <p class="text-sm text-gray-400">外国人のための日本不動産情報</p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3">サービス</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-white">物件検索</a></li>
+              <li><a href="#" class="hover:text-white">地域情報</a></li>
+              <li><a href="#" class="hover:text-white">投資情報</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3">Company</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-white">会社概要</a></li>
+              <li><a href="#" class="hover:text-white">お問い合わせ</a></li>
+              <li><a href="#" class="hover:text-white">プライバシー</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-3">Legal</h4>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-white">利用規約</a></li>
+              <li><a href="#" class="hover:text-white">免責事項</a></li>
+              <li><a href="#" class="hover:text-white">Cookie</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+          <p class="text-sm text-gray-400">© 2025 TerraScope Japan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

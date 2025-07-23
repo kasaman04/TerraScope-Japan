@@ -1,0 +1,166 @@
+---
+export interface Props {
+  articleCategory: string;
+  title?: string;
+  description?: string;
+  recommendedPlans?: string[];
+}
+
+const { articleCategory, title, description, recommendedPlans } = Astro.props;
+
+// 7つのサービス案内パターン
+const servicePatterns = {
+  safety: {
+    title: "📍 防災・安全情報をさらに詳しく調査してみませんか？",
+    description: "この記事の情報をもとに、さらに詳しくその地域の災害リスクを確認したい方には、ハザードマップ分析や避難所の距離などを含む調査プランがおすすめです。",
+    recommendedPlans: ["light", "standard"],
+    additionalText: "より詳しいレポートや現地確認をご希望の方には『スタンダード調査プラン』もご用意しています。"
+  },
+  convenience: {
+    title: "📍 生活インフラをさらに詳しく調査してみませんか？",
+    description: "実際のスーパーや病院の外観、通いやすさ、混雑具合などが気になる方は、現地の写真・動画を交えた生活利便性レポートをご確認いただけます。",
+    recommendedPlans: ["standard"],
+    additionalText: "現地スタッフによる詳細な調査で、あなたの生活に必要な情報をお届けします。"
+  },
+  cost: {
+    title: "📍 生活コストをさらに詳しく調査してみませんか？",
+    description: "この記事で触れた情報以外にも、地域の家賃相場や生活費を詳しく知りたい場合は、物価データや生活コストを詳細に分析する調査プランをご活用ください。",
+    recommendedPlans: ["standard", "full"],
+    additionalText: "投資価値分析も含めた詳細レポートが必要な方には『フル調査プラン』もおすすめです。"
+  },
+  future: {
+    title: "📍 再開発・将来性をさらに詳しく調査してみませんか？",
+    description: "これからの都市開発状況や再開発の進捗が気になる方には、市町村の都市計画に基づいた将来予測やインフラ整備予定を網羅する調査プランが最適です。",
+    recommendedPlans: ["full"],
+    additionalText: "長期的な投資判断に必要な情報を専門家が徹底調査いたします。"
+  },
+  international: {
+    title: "📍 法制度・外国人対応をさらに詳しく調査してみませんか？",
+    description: "外国人による不動産購入には、法制度や手続きの違いが多数あります。税制や購入条件の詳細を知りたい方には、専門家監修のもと解説レポートをご提供しています。",
+    recommendedPlans: ["full"],
+    additionalText: "複雑な法的手続きもサポートいたします。"
+  },
+  location: {
+    title: "📍 現地の詳しい映像・写真が見たくありませんか？",
+    description: "記事では文章でご紹介していますが、実際の町並みや建物の雰囲気をもっとリアルに確認したい方は、動画・写真つきの調査をご依頼いただけます。",
+    recommendedPlans: ["light", "standard"],
+    additionalText: "現地スタッフが実際に足を運んで撮影した詳細な記録をお届けします。"
+  },
+  property: {
+    title: "📍 この記事の物件情報をさらに詳しく調査してみませんか？",
+    description: "この記事で紹介した物件が気になる方には、現地スタッフが代わりに内見を行い、写真・動画つきでご報告する内見代行オプションがご利用可能です。",
+    recommendedPlans: ["standard", "full"],
+    additionalText: "法的な制限や将来的な価値分析も含めて知りたい方は『フル調査プラン』をご検討ください。"
+  }
+};
+
+// プランデータ
+const plans = {
+  light: {
+    name: "ライト調査",
+    price: "¥50,000",
+    duration: "3営業日以内",
+    features: [
+      "基本的な地域データ収集",
+      "ハザードマップ分析",
+      "主要施設の位置確認",
+      "基本レポート（日英対応）"
+    ]
+  },
+  standard: {
+    name: "スタンダード調査",
+    price: "¥120,000",
+    duration: "5営業日以内",
+    features: [
+      "ライト調査のすべて",
+      "現地訪問調査（生活動線・騒音チェック）",
+      "写真・動画による記録（30枚以上＋歩行動画）",
+      "詳細PDFレポート（15ページ以上）",
+      "アフターサポート：7日間"
+    ],
+    recommended: true
+  },
+  full: {
+    name: "フル調査",
+    price: "¥300,000",
+    duration: "7営業日以内",
+    features: [
+      "スタンダード調査のすべて",
+      "法制度・外国人規制の詳細調査",
+      "将来の再開発計画調査",
+      "投資価値・利回り分析",
+      "内見代行（最大3件・室内対応可）",
+      "アフターサポート：30日間"
+    ]
+  }
+};
+
+// 表示するパターンを決定
+const pattern = servicePatterns[articleCategory] || servicePatterns.convenience;
+const displayTitle = title || pattern.title;
+const displayDescription = description || pattern.description;
+const displayPlans = recommendedPlans || pattern.recommendedPlans;
+---
+
+<section class="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        {displayTitle}
+      </h2>
+      <p class="text-blue-100 text-lg">
+        {displayDescription}
+      </p>
+    </div>
+
+    <div class={`grid gap-6 ${displayPlans.length === 1 ? 'max-w-md mx-auto' : displayPlans.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
+      {displayPlans.map((planKey) => {
+        const plan = plans[planKey];
+        if (!plan) return null;
+        
+        return (
+          <div class={`bg-white rounded-xl p-6 shadow-xl ${plan.recommended ? 'border-2 border-green-400 relative' : ''}`}>
+            {plan.recommended && (
+              <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span class="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+                  おすすめ
+                </span>
+              </div>
+            )}
+            
+            <div class="text-center mb-4">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+              <div class="text-2xl font-bold text-blue-600 mb-1">{plan.price}</div>
+              <div class="text-sm text-gray-500">{plan.duration}</div>
+            </div>
+            
+            <div class="space-y-2 mb-6">
+              {plan.features.map((feature) => (
+                <div class="flex items-center text-sm text-gray-700">
+                  <svg class="w-4 h-4 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                  </svg>
+                  {feature}
+                </div>
+              ))}
+            </div>
+            
+            <a href={`/ja/contact?plan=${planKey}`} class={`block w-full text-center py-3 font-bold rounded-lg transition-colors ${plan.recommended ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-blue-600 text-white hover:bg-blue-700'}`}>
+              このプランを相談
+            </a>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="text-center mt-8">
+      <p class="text-blue-100 mb-4">
+        {pattern.additionalText}
+      </p>
+      <a href="/ja/services/" class="inline-flex items-center px-6 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-lg hover:bg-yellow-300 transition-colors">
+        <span class="mr-2">📋</span>
+        全プランの詳細を見る
+      </a>
+    </div>
+  </div>
+</section>

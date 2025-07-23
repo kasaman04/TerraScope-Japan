@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import PricingTable from '../../components/PricingTable.astro';
+import Accordion from '../../components/Accordion.astro';
+import { sanity } from "../../lib/sanity";
+
+const title = "Services – Land Survey & VR Capture Packages";
+const description = "Select the right level of due diligence: Light Survey, Full Risk Report, or 360° VR Capture.";
+const lang = "en";
+const hero_bg = "/assets/img/hero-services.jpg";
+
+// Fetch services from Sanity with fallback
+let services = [];
+try {
+  if (sanity) {
+    services = await sanity.fetch(`*[_type=="service"]{
+      key, title, price, bullets
+    }`);
+  }
+} catch (error) {
+  console.log('Sanity fetch error, using fallback data:', error.message);
+  // Fallback data until Sanity is properly configured
+  services = [
+    {
+      key: "light",
+      title: "Light Survey",
+      price: "¥50,000",
+      bullets: [
+        "Boundary & basic zoning check",
+        "English summary (4 pages)",
+        "Delivery in 3 business days"
+      ]
+    },
+    {
+      key: "full",
+      title: "Full Risk Report",
+      price: "¥120,000",
+      bullets: [
+        "Flood, landslide, seismic risk",
+        "Legal & tax checklist",
+        "15-page PDF + Q&A call"
+      ]
+    },
+    {
+      key: "vr",
+      title: "360° VR Capture",
+      price: "¥30,000",
+      bullets: [
+        "4K drone & 360° footage",
+        "Edited highlight reel",
+        "Delivery in 5 business days"
+      ]
+    }
+  ];
+}
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- ===== Hero ===== -->
+  <section class="relative isolate">
+    <img src={hero_bg} alt="" class="w-full h-[40vh] object-cover brightness-75" />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+      <h1 class="text-3xl md:text-4xl font-bold mb-2">Our Services</h1>
+      <p class="text-lg">From quick checks to full due-diligence, choose a package that fits.</p>
+    </div>
+  </section>
+
+  <!-- ===== Service Cards (summary) ===== -->
+  <ServiceCards
+    items={services}
+    show="all"
+    ctaLabel="View details"
+  />
+
+  <!-- ===== Comparative Pricing Table ===== -->
+  <PricingTable items={services} />
+
+  <!-- ===== Workflow Timeline ===== -->
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold mb-8 text-center">How it works</h2>
+    <ol class="relative border-s border-gray-300">
+      <li class="mb-10 ms-4">
+        <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+        <h3 class="text-lg font-semibold">Submit property info & goals</h3>
+        <p class="text-gray-600">Location, plot map, intended use, and your key questions.</p>
+      </li>
+      <li class="mb-10 ms-4">
+        <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+        <h3 class="text-lg font-semibold">We conduct the survey</h3>
+        <p class="text-gray-600">Desktop research, GIS analysis, on-site check, or VR capture.</p>
+      </li>
+      <li class="ms-4">
+        <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+        <h3 class="text-lg font-semibold">Receive your report + Q&A call</h3>
+        <p class="text-gray-600">PDF download and a 30-min consultation to clarify next steps.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== FAQ Accordion ===== -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold text-center mb-8">Frequently Asked Questions</h2>
+      <Accordion dataSrc="/assets/data/faq_services.yaml" />
+    </div>
+  </section>
+
+  <!-- ===== Final CTA ===== -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">Need a custom scope?</h2>
+    <a href="/contact" class="btn btn-lg btn-white shadow-lg">
+      Request a free quote
+    </a>
+  </section>
+</BaseLayout>

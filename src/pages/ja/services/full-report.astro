@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Checklist from '../../../components/Checklist.astro';
+import PdfPreview from '../../../components/PdfPreview.astro';
+import StepTimeline from '../../../components/StepTimeline.astro';
+import Accordion from '../../../components/Accordion.astro';
+
+const title = "全面リスク調査 - 包括的土地デューデリジェンス";
+const description = "弊社最も包括的な土地評価サービス。7営業日で詳細なリスク分析、法務レビュー、現地調査をお届けします。";
+const lang = "ja";
+const price = "¥120,000";
+const turnaround = "7営業日";
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Hero Section -->
+  <section class="relative isolate">
+    <img 
+      src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+      alt="" 
+      class="w-full h-[35vh] object-cover brightness-75"
+    />
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold mb-3">全面リスク調査</h1>
+      <p class="text-lg">{turnaround}でお届けする包括的な土地デューデリジェンス</p>
+      <span class="px-4 py-2 mt-4 bg-primary-600 rounded-md text-xl font-semibold">¥120,000</span>
+    </div>
+  </section>
+
+  <!-- Package Overview -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-6">含まれる内容</h2>
+    <Checklist items={[
+      "有資格測量士による現地フィールド調査",
+      "境界確認およびアクセス道路評価",
+      "法的権利調査および所有権履歴",
+      "用途地域適合性および建築許可審査",
+      "環境災害評価（洪水、土砂災害、地震）",
+      "インフラ利用可能性および接続費用",
+      "土壌品質および汚染スクリーニング",
+      "インフラ・交通アクセス分析",
+      "地域市場状況および類似物件販売実績",
+      "税務影響および継続的コスト",
+      "投資ポテンシャルおよび開発制限",
+      "詳細なリスク評価および軽減戦略",
+      "エグゼクティブサマリー付き18ページの専門レポート",
+      "30日間のアフターサポートおよび相談"
+    ]}/>
+  </section>
+
+  <!-- Detailed Analysis -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold mb-8 text-center">詳細分析項目</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-lg font-semibold mb-4 text-primary-600">法務・権利関係</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>• 登記簿謄本の詳細分析</li>
+            <li>• 所有権移転履歴の確認</li>
+            <li>• 抵当権・地役権等の確認</li>
+            <li>• 外国人土地法の適用チェック</li>
+            <li>• 農地法等の規制確認</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-lg font-semibold mb-4 text-primary-600">物理的・環境要因</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>• 精密な境界測量</li>
+            <li>• 土壌の安定性・品質調査</li>
+            <li>• 地下水・排水状況</li>
+            <li>• 地盤の液状化リスク</li>
+            <li>• 環境汚染の可能性</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-lg font-semibold mb-4 text-primary-600">災害リスク評価</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>• 詳細な地震リスク分析</li>
+            <li>• 洪水・津波影響評価</li>
+            <li>• 土砂災害・地滑りリスク</li>
+            <li>• 過去の災害履歴調査</li>
+            <li>• 気候変動影響予測</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-lg font-semibold mb-4 text-primary-600">都市計画・開発</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>• 用途地域詳細分析</li>
+            <li>• 建築制限・容積率確認</li>
+            <li>• 将来の都市計画変更</li>
+            <li>• 再開発計画の影響</li>
+            <li>• 景観・眺望の将来性</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-lg font-semibold mb-4 text-primary-600">インフラ・アクセス</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>• 上下水道・ガス・電気</li>
+            <li>• インターネット接続環境</li>
+            <li>• 道路幅員・接道義務</li>
+            <li>• 公共交通アクセス</li>
+            <li>• 生活利便施設の距離</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-lg font-semibold mb-4 text-primary-600">市場・投資分析</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>• 類似物件の取引実績</li>
+            <li>• 地価動向・将来予測</li>
+            <li>• 賃貸需要・利回り分析</li>
+            <li>• 売却時の流動性評価</li>
+            <li>• 投資リスク・リターン評価</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow Timeline -->
+  <StepTimeline steps={[
+    { title:"詳細ヒアリング", desc:"投資目的、懸念事項、予算等を詳細にお聞きします。" },
+    { title:"机上調査・資料収集", desc:"各種公的資料、法務情報を収集・分析します。" },
+    { title:"現地調査・測量", desc:"有資格測量士による精密な現地調査を実施。" },
+    { title:"専門家レビュー", desc:"法務・税務・不動産の専門家による内容確認。" },
+    { title:"レポート作成・納品", desc:"18ページの詳細レポートと90分の説明通話。" }
+  ]}
+  />
+
+  <!-- Investment Scenarios -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-8 text-center">こんな投資にお勧め</h2>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-blue-800">高額投資物件</h3>
+        <ul class="space-y-2 text-blue-700">
+          <li>• 投資額が5,000万円以上</li>
+          <li>• 商業・開発用地の取得</li>
+          <li>• リゾート・別荘地の購入</li>
+          <li>• 将来の転売を想定</li>
+        </ul>
+      </div>
+
+      <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4 text-green-800">複雑な権利関係</h3>
+        <ul class="space-y-2 text-green-700">
+          <li>• 農地・山林の取得</li>
+          <li>• 複数所有者の土地</li>
+          <li>• 古い建物付き土地</li>
+          <li>• 法的制限が多い地域</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Team -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-semibold mb-8">専門チーム</h2>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg p-6">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">有資格測量士</h3>
+          <p class="text-sm text-gray-600">境界・面積の精密測量と現地状況の専門的評価</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">バイリンガル法務</h3>
+          <p class="text-sm text-gray-600">不動産法・外国人規制の専門知識と英語対応</p>
+        </div>
+
+        <div class="bg-white rounded-lg p-6">
+          <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h3 class="font-semibold mb-2">不動産アナリスト</h3>
+          <p class="text-sm text-gray-600">市場分析・投資評価・リスク算定の専門家</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Report Sample -->
+  <section class="max-w-5xl mx-auto px-6 py-14">
+    <h2 class="text-2xl font-semibold mb-8 text-center">レポートサンプル</h2>
+    
+    <div class="bg-white rounded-lg shadow-lg p-8">
+      <h3 class="text-lg font-semibold mb-4">18ページ構成の詳細レポート</h3>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="font-semibold mb-2 text-primary-600">第1部: エグゼクティブサマリー</h4>
+          <ul class="text-sm text-gray-600 space-y-1 mb-4">
+            <li>• 投資推奨度（5段階評価）</li>
+            <li>• 主要リスクの要約</li>
+            <li>• 投資判断のポイント</li>
+          </ul>
+
+          <h4 class="font-semibold mb-2 text-primary-600">第2部: 法務・権利分析</h4>
+          <ul class="text-sm text-gray-600 space-y-1 mb-4">
+            <li>• 所有権・登記状況</li>
+            <li>• 法的制限・規制</li>
+            <li>• 取得手続きの流れ</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-2 text-primary-600">第3部: 物理的・災害リスク</h4>
+          <ul class="text-sm text-gray-600 space-y-1 mb-4">
+            <li>• 現地調査結果</li>
+            <li>• 災害リスク評価</li>
+            <li>• 推奨する対策</li>
+          </ul>
+
+          <h4 class="font-semibold mb-2 text-primary-600">第4部: 投資・市場分析</h4>
+          <ul class="text-sm text-gray-600 space-y-1">
+            <li>• 市場価格の妥当性</li>
+            <li>• 将来価値予測</li>
+            <li>• 投資収益性分析</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="bg-blue-50 py-10">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-xl font-semibold mb-4 text-blue-800">品質保証</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="text-blue-700">
+          <h3 class="font-semibold mb-2">30日間サポート</h3>
+          <p class="text-sm">レポート納品後30日間、無料で追加質問にお答えします</p>
+        </div>
+        <div class="text-blue-700">
+          <h3 class="font-semibold mb-2">専門家による監修</h3>
+          <p class="text-sm">全レポートを有資格者・専門家がダブルチェック</p>
+        </div>
+        <div class="text-blue-700">
+          <h3 class="font-semibold mb-2">英語対応</h3>
+          <p class="text-sm">専門用語も含めて、わかりやすい英語で作成</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">本格的な投資判断をサポートします</h2>
+    <p class="mb-6 text-primary-100">18ページの詳細レポートで、リスクを最小化し投資成功率を高めます</p>
+    <a href="/ja/contact?service=full" class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg">
+      全面リスク調査を依頼する
+    </a>
+  </section>
+</BaseLayout>

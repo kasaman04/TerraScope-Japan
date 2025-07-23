@@ -1,0 +1,117 @@
+---
+export interface AccordionItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  items: AccordionItem[];
+}
+
+const { items = [] } = Astro.props;
+---
+
+<div class="space-y-6">
+  {items.map((item, index) => {
+    // Extract emoji from question if present
+    const questionParts = item.question.match(/^([\u{1F000}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}])\s*(.*)$/u);
+    const emoji = questionParts ? questionParts[1] : '❓';
+    const questionText = questionParts ? questionParts[2] : item.question;
+    
+    return (
+      <div class="bg-white border-2 border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
+        <button
+          type="button"
+          class="accordion-button w-full text-left px-6 py-5 focus:outline-none focus:ring-4 focus:ring-blue-100 hover:bg-blue-50 transition-all duration-200"
+          aria-expanded="false"
+          data-target={`accordion-${index}`}
+        >
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <div class="text-2xl flex-shrink-0">{emoji}</div>
+              <h3 class="text-lg font-semibold text-gray-900 leading-relaxed pr-4">{questionText}</h3>
+            </div>
+            <div class="flex-shrink-0">
+              <div class="accordion-icon w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center transform transition-all duration-300">
+                <svg
+                  class="w-5 h-5 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </button>
+        <div
+          id={`accordion-${index}`}
+          class="accordion-content hidden"
+        >
+          <div class="px-6 pb-6">
+            <div class="bg-gray-50 rounded-lg p-4 border-l-4 border-blue-400">
+              <div class="text-gray-700 leading-relaxed" set:html={item.answer.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>')} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+    
+    accordionButtons.forEach((button: Element) => {
+      button.addEventListener('click', function(this: HTMLButtonElement) {
+        const target = this.getAttribute('data-target');
+        if (!target) return;
+        
+        const content = document.getElementById(target);
+        const icon = this.querySelector('.accordion-icon') as HTMLElement;
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        
+        // Close all accordion items
+        accordionButtons.forEach((btn: Element) => {
+          const btnTarget = btn.getAttribute('data-target');
+          if (!btnTarget) return;
+          
+          const btnContent = document.getElementById(btnTarget);
+          const btnIcon = btn.querySelector('.accordion-icon') as HTMLElement;
+          
+          if (btnContent && btnIcon) {
+            btn.setAttribute('aria-expanded', 'false');
+            btnContent.classList.add('hidden');
+            btnIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Open clicked item if it was closed
+        if (!isExpanded && content && icon) {
+          this.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .accordion-content {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      max-height: 0;
+    }
+    to {
+      opacity: 1;
+      max-height: 200px;
+    }
+  }
+</style>

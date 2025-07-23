@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceCards from '../../../components/ServiceCards.astro';
+import PricingTable from '../../../components/PricingTable.astro';
+import Accordion from '../../../components/Accordion.astro';
+import { sanity } from "../../../lib/sanity";
+
+const title = "서비스 – 토지 조사 및 VR 촬영 패키지";
+const description = "적절한 수준의 실사를 선택하세요: 라이트 조사, 풀 리스크 리포트, 또는 360° VR 촬영.";
+const lang = "ko";
+const hero_bg = "/assets/img/hero-services.jpg";
+
+// Fetch services from Sanity with fallback
+let services = [];
+try {
+  if (sanity) {
+    services = await sanity.fetch(`*[_type=="service"]{
+      key, title, price, bullets
+    }`);
+  }
+} catch (error) {
+  console.log('Sanity fetch error, using fallback data:', error.message);
+  // Fallback data until Sanity is properly configured
+  services = [
+    {
+      key: "light",
+      title: "라이트 조사",
+      price: "¥50,000",
+      bullets: [
+        "경계선 및 기본 용도지역 확인",
+        "영문 요약 (4페이지)",
+        "3영업일 내 제공"
+      ]
+    },
+    {
+      key: "full",
+      title: "풀 리스크 리포트",
+      price: "¥120,000",
+      bullets: [
+        "홍수, 산사태, 지진 위험 평가",
+        "법률 및 세무 체크리스트",
+        "15페이지 PDF + Q&A 통화"
+      ]
+    },
+    {
+      key: "vr",
+      title: "360° VR 촬영",
+      price: "¥30,000",
+      bullets: [
+        "4K 드론 및 360° 영상",
+        "VR 헤드셋 호환",
+        "원격 시찰에 최적"
+      ]
+    }
+  ];
+}
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative">
+    <img 
+      src={hero_bg} 
+      alt="" 
+      class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75"
+      loading="eager"
+      onerror="this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80'"
+    >
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
+        일본 토지 투자를 안전하게
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl opacity-90">
+        3가지 서비스 레벨에서 투자 목적에 최적인 플랜을 선택
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">서비스 목록</h2>
+      <p class="text-xl text-gray-600">
+        라이트 조사부터 본격적인 위험 평가까지, 단계적 전문 지원 제공
+      </p>
+    </div>
+
+    <ServiceCards services={services} lang={lang} />
+  </section>
+
+  <!-- How it Works -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">이용 흐름</h2>
+        <p class="text-xl text-gray-600">
+          3단계로 안심할 수 있는 토지 조사를 제공합니다
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">1</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">정보 제출</h3>
+          <p class="text-gray-600">
+            조사 대상 토지 정보를 양식으로 보내주세요. 주소와 지번이 있으면 시작할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">2</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">조사 실시</h3>
+          <p class="text-gray-600">
+            데스크톱 조사 또는 현장 조사를 실시합니다. 전문 스태프가 자세히 검증합니다.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">3</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">리포트 납품</h3>
+          <p class="text-gray-600">
+            영문 리포트를 제공하고, 필요시 Q&A 세션을 통해 자세히 설명합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">자주 묻는 질문</h2>
+    
+    <Accordion items={[
+      {
+        question: "전국 어디든 대응하나요?",
+        answer: "네, 일본 전국 대응합니다. 단, 섬이나 일부 산간부에서는 추가 요금이 발생할 수 있습니다."
+      },
+      {
+        question: "영어 외의 언어도 지원하나요?",
+        answer: "현재 영어와 일본어로 대응하고 있습니다. 다른 언어는 개별적으로 상담해 주세요."
+      },
+      {
+        question: "조사 후 지원이 있나요?",
+        answer: "풀 리스크 리포트를 주문하신 고객에게는 30일간 무료 지원을 제공합니다."
+      },
+      {
+        question: "법인도 이용 가능한가요?",
+        answer: "네, 법인과 개인 모두 이용 가능합니다. 청구서 결제도 대응 가능합니다."
+      }
+    ]} />
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">
+      일본 토지 투자를 시작하시겠습니까?
+    </h2>
+    <a 
+      href="/ko/contact/" 
+      class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg"
+    >
+      무료 상담 신청
+    </a>
+  </section>
+</BaseLayout>

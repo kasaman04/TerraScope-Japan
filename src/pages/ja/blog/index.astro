@@ -1,0 +1,595 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "日本で暮らす - 地域別生活情報ガイド";
+const description = "外国人が日本で暮らすことを検討する際の、地域ごとの生活視点情報を提供。防災、インフラ、生活コスト、再開発、法制度などを詳しく解説。";
+const lang = "ja";
+
+// 47都道府県を8地方に分けたデータ定義
+const regions = [
+  {
+    name: "北海道地方",
+    prefectures: [
+      { 
+        name: "北海道", 
+        slug: "hokkaido",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`,
+        description: "広大な自然と冬のリゾート地",
+        cities: ["札幌市", "旭川市", "函館市", "小樽市", "帯広市"]
+      }
+    ]
+  },
+  {
+    name: "東北地方",
+    prefectures: [
+      { 
+        name: "青森県", 
+        slug: "aomori",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/aomori.png`,
+        description: "りんごと青い海の美しい県",
+        cities: ["青森市", "弘前市", "八戸市", "五所川原市"]
+      },
+      { 
+        name: "岩手県", 
+        slug: "iwate",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`,
+        description: "岩手山と豊かな自然の県",
+        cities: ["盛岡市", "一関市", "奥州市", "花巻市"]
+      },
+      { 
+        name: "宮城県", 
+        slug: "miyagi",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/miyagi.png`,
+        description: "仙台を中心とした東北の中核都市",
+        cities: ["仙台市", "石巻市", "塩竈市", "気仙沼市"]
+      },
+      { 
+        name: "秋田県", 
+        slug: "akita",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/akita.png`,
+        description: "美しい自然と文化の県",
+        cities: ["秋田市", "横手市", "大仙市", "能代市"]
+      },
+      { 
+        name: "山形県", 
+        slug: "yamagata",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/yamagata.png`,
+        description: "山形県の美しい自然環境",
+        cities: ["山形市", "酒田市", "鶴岡市", "米沢市"]
+      },
+      { 
+        name: "福島県", 
+        slug: "fukushima",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/fukushima.png`,
+        description: "桃の産地として有名な県",
+        cities: ["福島市", "いわき市", "郡山市", "会津若松市"]
+      }
+    ]
+  },
+  {
+    name: "関東地方",
+    prefectures: [
+      { 
+        name: "東京都", 
+        slug: "tokyo",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tokyo.png`,
+        description: "日本の首都。ビジネスと文化の中心地",
+        cities: ["武蔵野市", "国立市", "渋谷区", "港区", "世田谷区", "新宿区", "練馬区", "大田区"]
+      },
+      { 
+        name: "茨城県", 
+        slug: "ibaraki",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/ibaraki.png`,
+        description: "つくばと袋田の滝で有名",
+        cities: ["水戸市", "つくば市", "日立市", "ひたちなか市"]
+      },
+      { 
+        name: "栃木県", 
+        slug: "tochigi",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tochigi.png`,
+        description: "日光東照宮と温泉の県",
+        cities: ["宇都宮市", "小山市", "栃木市", "佐野市"]
+      },
+      { 
+        name: "群馬県", 
+        slug: "gunma",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/gunma.png`,
+        description: "温泉と上毛三山の県",
+        cities: ["前橋市", "高崎市", "桐生市", "伊勢崎市"]
+      },
+      { 
+        name: "埼玉県", 
+        slug: "saitama",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/saitama.png`,
+        description: "東京へのアクセス良好な住宅地",
+        cities: ["さいたま市", "川口市", "所沢市", "越谷市", "川越市"]
+      },
+      { 
+        name: "千葉県", 
+        slug: "chiba",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/chiba.png`,
+        description: "成田空港と東京ディズニーリゾートの所在地",
+        cities: ["千葉市", "船橋市", "柏市", "浦安市", "成田市"]
+      },
+      { 
+        name: "神奈川県", 
+        slug: "kanagawa",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kanagawa.png`,
+        description: "横浜・鎌倉・湘南エリアを持つ人気の居住地",
+        cities: ["横浜市", "川崎市", "鎌倉市", "藤沢市", "相模原市"]
+      }
+    ]
+  },
+  {
+    name: "中部地方",
+    prefectures: [
+      { 
+        name: "新潟県", 
+        slug: "niigata",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/niigata.png`,
+        description: "米どころとしても有名な県",
+        cities: ["新潟市", "長岡市", "上越市", "三条市"]
+      },
+      { 
+        name: "富山県", 
+        slug: "toyama",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/toyama.png`,
+        description: "立山連峰と富山湾の美しい県",
+        cities: ["富山市", "高岡市", "射水市", "氷見市"]
+      },
+      { 
+        name: "石川県", 
+        slug: "ishikawa",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/ishikawa.png`,
+        description: "金沢の伝統文化と工芸の県",
+        cities: ["金沢市", "白山市", "小松市", "野々市市"]
+      },
+      { 
+        name: "福井県", 
+        slug: "fukui",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/fukui.png`,
+        description: "恐竜の県として知られる福井",
+        cities: ["福井市", "敦賀市", "小浜市", "大野市"]
+      },
+      { 
+        name: "山梨県", 
+        slug: "yamanashi",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/yamanashi.png`,
+        description: "富士山と美しい山々の県",
+        cities: ["甲府市", "富士吉田市", "甲斐市", "南アルプス市"]
+      },
+      { 
+        name: "長野県", 
+        slug: "nagano",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/nagano.png`,
+        description: "アルプスの美しい自然環境",
+        cities: ["長野市", "松本市", "上田市", "飯田市"]
+      },
+      { 
+        name: "岐阜県", 
+        slug: "gifu",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/gifu.png`,
+        description: "白川郷と飛騨高山の県",
+        cities: ["岐阜市", "大垣市", "高山市", "多治見市"]
+      },
+      { 
+        name: "静岡県", 
+        slug: "shizuoka",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/shizuoka.png`,
+        description: "富士山と温暖な気候の県",
+        cities: ["静岡市", "浜松市", "沼津市", "富士市"]
+      },
+      { 
+        name: "愛知県", 
+        slug: "aichi",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/aichi.png`,
+        description: "自動車産業の中心地",
+        cities: ["名古屋市", "豊田市", "岡崎市", "一宮市", "豊橋市"]
+      }
+    ]
+  },
+  {
+    name: "近畿地方",
+    prefectures: [
+      { 
+        name: "京都府", 
+        slug: "kyoto",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kyoto.png`,
+        description: "伝統文化と現代が調和する古都",
+        cities: ["京都市", "宇治市", "長岡京市", "亀岡市"]
+      },
+      { 
+        name: "大阪府", 
+        slug: "osaka",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+        description: "西日本の経済中心地。食文化が豊か",
+        cities: ["大阪市", "堺市", "豊中市", "吹田市", "枚方市"]
+      },
+      { 
+        name: "三重県", 
+        slug: "mie",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/mie.png`,
+        description: "伊勢神宮と真珠の県",
+        cities: ["津市", "四日市市", "伊勢市", "松阪市"]
+      },
+      { 
+        name: "滋賀県", 
+        slug: "shiga",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/shiga.png`,
+        description: "琵琶湖の美しい自然環境",
+        cities: ["大津市", "彦根市", "長浜市", "近江八幡市"]
+      },
+      { 
+        name: "兵庫県", 
+        slug: "hyogo",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/hyogo.png`,
+        description: "神戸港を中心とした国際都市",
+        cities: ["神戸市", "姫路市", "西宮市", "尼崎市", "明石市"]
+      },
+      { 
+        name: "奈良県", 
+        slug: "nara",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/nara.png`,
+        description: "古都奈良の歴史と文化",
+        cities: ["奈良市", "橿原市", "生駒市", "大和郡山市"]
+      },
+      { 
+        name: "和歌山県", 
+        slug: "wakayama",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/wakayama.png`,
+        description: "熊野古道と温泉の県",
+        cities: ["和歌山市", "田辺市", "橋本市", "紀の川市"]
+      }
+    ]
+  },
+  {
+    name: "中国地方",
+    prefectures: [
+      { 
+        name: "鳥取県", 
+        slug: "tottori",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tottori.png`,
+        description: "鳥取砂丘で有名な県",
+        cities: ["鳥取市", "米子市", "倉吉市", "境港市"]
+      },
+      { 
+        name: "島根県", 
+        slug: "shimane",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/shimane.png`,
+        description: "出雲大社と神話の県",
+        cities: ["松江市", "出雲市", "益田市", "大田市"]
+      },
+      { 
+        name: "岡山県", 
+        slug: "okayama",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/okayama.png`,
+        description: "桃太郎伝説と晴れの国",
+        cities: ["岡山市", "倉敷市", "津山市", "玉野市"]
+      },
+      { 
+        name: "広島県", 
+        slug: "hiroshima",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/hiroshima.png`,
+        description: "平和記念公園と宮島の県",
+        cities: ["広島市", "福山市", "呉市", "東広島市"]
+      },
+      { 
+        name: "山口県", 
+        slug: "yamaguchi",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/yamaguchi.png`,
+        description: "秋吉台と関門海峡の県",
+        cities: ["山口市", "下関市", "宇部市", "周南市"]
+      }
+    ]
+  },
+  {
+    name: "四国地方",
+    prefectures: [
+      { 
+        name: "徳島県", 
+        slug: "tokushima",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tokushima.png`,
+        description: "阿波踊りと渦潮の県",
+        cities: ["徳島市", "阿南市", "鳴門市", "吉野川市"]
+      },
+      { 
+        name: "香川県", 
+        slug: "kagawa",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kagawa.png`,
+        description: "うどん県として有名",
+        cities: ["高松市", "丸亀市", "坂出市", "善通寺市"]
+      },
+      { 
+        name: "愛媛県", 
+        slug: "ehime",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/ehime.png`,
+        description: "みかんと道後温泉の県",
+        cities: ["松山市", "今治市", "宇和島市", "八幡浜市"]
+      },
+      { 
+        name: "高知県", 
+        slug: "kochi",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kochi.png`,
+        description: "坂本龍馬と桂浜の県",
+        cities: ["高知市", "南国市", "四万十市", "香南市"]
+      }
+    ]
+  },
+  {
+    name: "九州地方",
+    prefectures: [
+      { 
+        name: "福岡県", 
+        slug: "fukuoka",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/fukuoka.png`,
+        description: "九州の玄関口。アジアへのアクセス良好",
+        cities: ["福岡市", "北九州市", "久留米市", "春日市", "大野城市"]
+      },
+      { 
+        name: "佐賀県", 
+        slug: "saga",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/saga.png`,
+        description: "有田焼と美しい自然の県",
+        cities: ["佐賀市", "唐津市", "鳥栖市", "伊万里市"]
+      },
+      { 
+        name: "長崎県", 
+        slug: "nagasaki",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/nagasaki.png`,
+        description: "平和公園と歴史の県",
+        cities: ["長崎市", "佐世保市", "諫早市", "大村市"]
+      },
+      { 
+        name: "大分県", 
+        slug: "oita",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/oita.png`,
+        description: "温泉県として有名",
+        cities: ["大分市", "別府市", "中津市", "日田市"]
+      },
+      { 
+        name: "熊本県", 
+        slug: "kumamoto",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kumamoto.png`,
+        description: "熊本城と阿蘇山の県",
+        cities: ["熊本市", "八代市", "天草市", "玉名市"]
+      },
+      { 
+        name: "宮崎県", 
+        slug: "miyazaki",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/miyazaki.png`,
+        description: "南国の太陽と美しい海岸線",
+        cities: ["宮崎市", "都城市", "延岡市", "日向市"]
+      },
+      { 
+        name: "鹿児島県", 
+        slug: "kagoshima",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/kagoshima.png`,
+        description: "桜島と黒豚の県",
+        cities: ["鹿児島市", "鹿屋市", "薩摩川内市", "霧島市"]
+      },
+      { 
+        name: "沖縄県", 
+        slug: "okinawa",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/okinawa.png`,
+        description: "美しい海と独特の文化",
+        cities: ["那覇市", "沖縄市", "うるま市", "宜野湾市"]
+      }
+    ]
+  }
+];
+
+// 記事テーマの定義
+const articleThemes = [
+  { icon: "🛡️", title: "防災", subtitle: "地震・水害リスクと避難体制" },
+  { icon: "🏥", title: "生活インフラ", subtitle: "スーパー・病院・学校" },
+  { icon: "💰", title: "生活コスト", subtitle: "家賃・光熱費・交通費など" },
+  { icon: "🏗️", title: "再開発・公共整備", subtitle: "今後の暮らしやすさ" },
+  { icon: "📜", title: "法制度", subtitle: "外国人の購入制限・手続き" },
+  { icon: "📷", title: "現地調査レポート", subtitle: "映像と写真で見る街" }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-32 h-32 border border-white rounded-full"></div>
+      <div class="absolute top-40 right-32 w-24 h-24 border border-white rounded-full"></div>
+      <div class="absolute bottom-32 left-40 w-20 h-20 border border-white rounded-full"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center text-white">
+      <div class="mb-8">
+        <span class="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+          🏠 外国人のための地域別暮らし情報
+        </span>
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        日本で<span class="text-yellow-300">暮らす</span><br>
+        <span class="text-lg md:text-xl font-normal opacity-90">あなたに最適な地域を見つけよう</span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl mb-8 opacity-95 max-w-4xl mx-auto leading-relaxed">
+        外国人が日本で安心して暮らせるよう、各地域の生活情報を詳しく解説。<br class="hidden md:block">
+        防災・インフラ・生活コスト・法制度まで、居住者視点で徹底調査しています。
+      </p>
+    </div>
+  </section>
+
+  <!-- Article Themes Overview -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          6つの視点から<span class="text-blue-600">地域を理解</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          暮らしに必要な情報を、外国人の視点でわかりやすく解説します
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articleThemes.map((theme) => (
+          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+            <div class="flex items-center mb-4">
+              <span class="text-3xl mr-4">{theme.icon}</span>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900">{theme.title}</h3>
+                <p class="text-sm text-gray-600">{theme.subtitle}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Prefecture Selection -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          都道府県を選んで<span class="text-blue-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          都道府県を選択すると、その地域の市区町村情報をご覧いただけます
+        </p>
+      </div>
+
+      <div class="space-y-16">
+        {regions.map((region) => (
+          <div class="mb-16">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">{region.name}</h3>
+            
+            <div class={`grid gap-6 ${
+              region.prefectures.length === 1 ? 'md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 justify-center max-w-sm mx-auto' :
+              region.prefectures.length <= 4 ? 'md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4' :
+              region.prefectures.length <= 6 ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3' :
+              region.prefectures.length <= 8 ? 'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' :
+              'md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'
+            }`}>
+              {region.prefectures.map((prefecture) => (
+                <a href={`${import.meta.env.BASE_URL}ja/blog/${prefecture.slug}/`} class="group">
+                  <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-48 overflow-hidden">
+                      <img 
+                        src={prefecture.image}
+                        alt={prefecture.name}
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div class="absolute bottom-4 left-4 text-white">
+                        <h4 class="text-xl font-bold mb-1">{prefecture.name}</h4>
+                        <p class="text-sm opacity-90">{prefecture.description}</p>
+                      </div>
+                      <div class="absolute top-4 right-4">
+                        <div class="bg-white/20 backdrop-blur-sm rounded-full p-2">
+                          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="p-4">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm text-gray-600">
+                          {prefecture.cities.length}の市区町村
+                        </p>
+                        <span class="text-sm text-blue-600 font-medium">
+                          詳細を見る →
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Article Preview -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          記事サンプル：<span class="text-blue-600">東京都武蔵野市</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          実際の記事がどのような内容か、サンプルをご覧ください
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+        <div class="mb-8">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">東京都 武蔵野市での暮らし</h3>
+          <div class="grid md:grid-cols-2 gap-6 text-gray-700">
+            <div>
+              <p><strong>人口：</strong>約14万人</p>
+              <p><strong>特徴：</strong>井の頭公園が人気の閑静エリア。中央線で新宿にも近い。</p>
+            </div>
+            <div>
+              <p><strong>外国人人口：</strong>約3,000人（2.1%）</p>
+              <p><strong>主要言語：</strong>英語、中国語、韓国語対応施設あり</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t pt-6">
+          <h4 class="text-lg font-bold text-gray-900 mb-4">暮らしに役立つ記事一覧</h4>
+          <div class="grid md:grid-cols-2 gap-4">
+            {articleThemes.map((theme) => (
+              <a 
+                href={`${import.meta.env.BASE_URL}ja/blog/tokyo/musashino/article-01/`} 
+                class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <span class="text-2xl mr-3">{theme.icon}</span>
+                <div>
+                  <p class="font-semibold text-gray-900">{theme.title}</p>
+                  <p class="text-sm text-gray-600">{theme.subtitle}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        もっと詳しく<span class="text-yellow-300">調査してほしい</span>ですか？
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        あなたが検討している地域について、プロによる詳細な調査レポートを提供します
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href={`${import.meta.env.BASE_URL}ja/services/`} 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href={`${import.meta.env.BASE_URL}ja/contact/`} 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+

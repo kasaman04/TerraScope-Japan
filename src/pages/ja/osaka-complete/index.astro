@@ -1,0 +1,319 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "大阪府の生活情報";
+const description = "外国人が大阪府で暮らすことを検討する際の、地域ごとの生活視点情報を提供。";
+const lang = "ja";
+
+// 8カテゴリーの記事データ（画像通りに再現）
+const categories = [
+  {
+    id: "disaster-prevention",
+    title: "防災対策",
+    subtitle: "自然災害",
+    icon: "🛡️",
+    articles: [
+      {
+        title: "地震リスクと対策",
+        tags: ["地震"],
+        description: "大阪府の地震リスクと外国人が知っておくべき地震対策について。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "水害・洪水リスクと対策",
+        tags: ["水害", "洪水"],
+        description: "台風や集中豪雨による水害リスクと避難方法について解説。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "避難所情報と防災グッズ",
+        tags: ["避難所", "防災グッズ"],
+        description: "緊急時の避難場所と準備しておくべき防災用品のリスト。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  },
+  {
+    id: "access",
+    title: "アクセス",
+    subtitle: "交通機関",
+    icon: "📍",
+    articles: [
+      {
+        title: "主要駅と電車アクセス",
+        tags: ["電車", "駅"],
+        description: "大阪駅、梅田駅、難波駅など主要駅からの交通アクセス情報。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "水害・洪水リスクと対策",
+        tags: ["水害", "洪水"],
+        description: "台風や集中豪雨による水害リスクについての詳細情報。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "避難所情報と防災グッズ",
+        tags: ["避難所"],
+        description: "災害時の避難場所と緊急連絡先について。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  },
+  {
+    id: "environment",
+    title: "環境対応",
+    subtitle: "医療・教育",
+    icon: "🏥",
+    articles: [
+      {
+        title: "医療機関と英語対応",
+        tags: ["医療", "英語対応"],
+        description: "外国人が安心して利用できる英語対応の病院・クリニック情報。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "大学・専門学校・研究機関",
+        tags: ["大学", "専門学校"],
+        description: "大阪府内の高等教育機関と研究施設について。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "外国人向け医療ガイド",
+        tags: ["医療", "ガイド"],
+        description: "医療制度の利用方法と保険の手続きについて。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  },
+  {
+    id: "development",
+    title: "工事・開発",
+    subtitle: "再開発",
+    icon: "🏗️",
+    articles: [
+      {
+        title: "大阪万博関連のインフラ整備",
+        tags: ["万博", "インフラ"],
+        description: "2025年大阪万博に向けたインフラ整備の進捗と影響。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "関西国際空港アクセス改善",
+        tags: ["空港", "アクセス"],
+        description: "関西空港への交通アクセス向上プロジェクトについて。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "商業施設・住宅地の開発動向",
+        tags: ["開発", "住宅"],
+        description: "新しい商業施設と住宅エリアの開発計画。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  },
+  {
+    id: "living-evaluation",
+    title: "生活評価",
+    subtitle: "住環境・コスト",
+    icon: "💰",
+    articles: [
+      {
+        title: "家賃相場と住宅情報",
+        tags: ["家賃", "住宅"],
+        description: "エリア別の家賃相場と外国人におすすめの住宅エリア。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "光熱費・通信費・食費",
+        tags: ["光熱費", "通信費"],
+        description: "月々の生活費の目安と節約のコツについて。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "外国人向け生活サポート",
+        tags: ["生活サポート"],
+        description: "外国人向けの各種生活支援サービスについて。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  },
+  {
+    id: "cost",
+    title: "コスト",
+    subtitle: "詳細な費用情報",
+    icon: "💰",
+    articles: [
+      {
+        title: "キャッシュレス決済・銀行情報",
+        tags: ["決済", "銀行"],
+        description: "外国人が利用しやすい銀行口座開設と決済方法。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "生活必需品の価格比較",
+        tags: ["価格", "比較"],
+        description: "日用品や食料品の価格相場と購入場所の情報。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "光熱費・通信費・食費",
+        tags: ["光熱費"],
+        description: "詳細な月額費用と節約方法について。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  },
+  {
+    id: "key-points",
+    title: "要点・課題",
+    subtitle: "重要ポイント",
+    icon: "🔧",
+    articles: [
+      {
+        title: "外国人が注意すべき点",
+        tags: ["注意点"],
+        description: "大阪府で生活する際に外国人が特に気をつけるべき事項。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "よくある質問と解決策",
+        tags: ["FAQ"],
+        description: "外国人からよく寄せられる質問とその回答集。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  },
+  {
+    id: "details",
+    title: "詳細",
+    subtitle: "さらに詳しい情報",
+    icon: "📊",
+    articles: [
+      {
+        title: "詳細な統計データ",
+        tags: ["統計"],
+        description: "大阪府の人口、経済、社会に関する詳細データ。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      },
+      {
+        title: "専門的な分析",
+        tags: ["分析"],
+        description: "専門家による大阪府の住環境分析レポート。",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Header Section -->
+  <section class="bg-white py-8">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-2xl font-bold text-gray-900 mb-2">大阪府の生活情報</h1>
+      <p class="text-sm text-gray-600">
+        外国人が大阪府で暮らすことを検討する際の、地域ごとの生活視点情報を提供。
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="bg-gray-50 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="space-y-12">
+        {categories.map((category) => (
+          <div>
+            <!-- Category Header -->
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center">
+                <span class="text-xl mr-3">{category.icon}</span>
+                <h2 class="text-lg font-bold text-gray-900">{category.title}</h2>
+                <span class="ml-2 text-sm text-gray-500">{category.subtitle}</span>
+              </div>
+              <a href="#" class="text-sm text-red-500 hover:text-red-600 font-medium">
+                もっと見る <span class="ml-1">></span>
+              </a>
+            </div>
+            
+            <!-- Articles List -->
+            <div class="space-y-6">
+              {category.articles.map((article) => (
+                <div class="flex items-start space-x-4">
+                  <!-- Article Image -->
+                  <div class="w-16 h-16 flex-shrink-0">
+                    <img 
+                      src={article.image}
+                      alt={article.title}
+                      class="w-full h-full object-cover rounded"
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  <!-- Article Content -->
+                  <div class="flex-1">
+                    <h3 class="text-base font-semibold text-gray-900 mb-2 leading-tight">
+                      {article.title}
+                    </h3>
+                    
+                    <!-- Tags -->
+                    <div class="flex gap-1 mb-2">
+                      {article.tags.map(tag => (
+                        <span class="px-2 py-1 text-xs font-medium bg-yellow-200 text-orange-700 rounded-sm">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                      {article.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (matching the image) -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">TerraScope Japan</h3>
+          <p class="text-sm text-gray-400">外国人のための日本不動産情報</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">サービス</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white">物件検索</a></li>
+            <li><a href="#" class="hover:text-white">地域情報</a></li>
+            <li><a href="#" class="hover:text-white">投資情報</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Company</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white">会社概要</a></li>
+            <li><a href="#" class="hover:text-white">お問い合わせ</a></li>
+            <li><a href="#" class="hover:text-white">プライバシー</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Legal</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white">利用規約</a></li>
+            <li><a href="#" class="hover:text-white">免責事項</a></li>
+            <li><a href="#" class="hover:text-white">Cookie</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p class="text-sm text-gray-400">© 2025 TerraScope Japan. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</BaseLayout>

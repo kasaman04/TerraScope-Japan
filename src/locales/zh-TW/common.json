@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "首頁",
+    "services": "服務",
+    "blog": "部落格",
+    "about": "關於我們",
+    "contact": "聯絡我們",
+    "case_studies": "案例研究"
+  },
+  "cta": {
+    "contact": "聯絡我們",
+    "get_started": "開始使用",
+    "learn_more": "瞭解更多",
+    "read_more": "閱讀更多",
+    "view_details": "查看詳情"
+  },
+  "common": {
+    "loading": "載入中...",
+    "error": "錯誤",
+    "success": "成功",
+    "send": "傳送",
+    "cancel": "取消",
+    "save": "儲存",
+    "back": "返回",
+    "next": "下一頁",
+    "previous": "上一頁"
+  },
+  "footer": {
+    "company": "土地視野全球",
+    "description": "為日本外國投資者提供專業的土地盡職調查服務",
+    "rights": "版權所有"
+  },
+  "cookie": {
+    "message": "我們使用Cookie來改善您的體驗並分析網站使用情況。",
+    "learn": "瞭解更多",
+    "accept": "接受"
+  }
+}

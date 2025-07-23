@@ -1,0 +1,8 @@
+- name: "Alex Chen"
+  country: "Singapore"
+  quote: "The full report saved me weeks of research and gave me the confidence to buy."
+  avatar: "/assets/img/avatars/alex.jpg"
+- name: "Emma Wilson"
+  country: "Australia"
+  quote: "Seeing the land in 360° from my couch was a game-changer!"
+  avatar: "/assets/img/avatars/emma.jpg"

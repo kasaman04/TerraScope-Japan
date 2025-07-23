@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroStatic from '../components/HeroStatic.astro';
+import ValuesList from '../components/ValuesList.astro';
+import TeamGrid from '../components/TeamGrid.astro';
+import Timeline from '../components/Timeline.astro';
+import LogoCloud from '../components/LogoCloud.astro';
+import teamData from '../assets/data/team.js';
+import timelineData from '../assets/data/timeline.js';
+
+const pageData = {
+  title: 'About – Who We Are',
+  description: 'Meet the team behind LAND VISTA Global and learn why transparency in land due‑diligence matters.',
+  lang: 'en'
+};
+---
+
+<BaseLayout {...pageData}>
+  <HeroStatic
+    imgSrc="/assets/img/about-hero.jpg"
+    headline="Land due‑diligence, re‑imagined."
+    sub="We turn scattered Japanese data into clear, actionable insights for overseas buyers."
+  />
+
+  <!-- Core Values -->
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold mb-8 text-center">Our Values</h2>
+    <ValuesList items={[
+      {icon:"Search", title:"Transparency", desc:"We show every assumption and data source."},
+      {icon:"CheckCircle", title:"Accuracy", desc:"Certified surveyors & bilingual legal partners review each report."},
+      {icon:"Globe", title:"Access", desc:"We make Japan's land data understandable to anyone, anywhere."},
+    ]}/>
+  </section>
+
+  <!-- Team -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-semibold mb-10 text-center">Meet the Team</h2>
+      <TeamGrid teamData={teamData}/>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-2xl font-semibold mb-8 text-center">Our Journey</h2>
+    <Timeline timelineData={timelineData}/>
+  </section>
+
+  <!-- Social Proof -->
+  <LogoCloud
+    logos={[
+      "/assets/img/logos/hubspot.png",
+      "/assets/img/logos/aiconf.png",
+      "/assets/img/logos/japannews.png"
+    ]}
+  />
+
+  <!-- Final CTA -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">Ready to work with us?</h2>
+    <a href="/contact" class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg">Book a free call</a>
+  </section>
+</BaseLayout>

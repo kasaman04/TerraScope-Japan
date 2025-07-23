@@ -1,0 +1,104 @@
+---
+// Optional Table of Contents component for legal pages
+---
+
+<aside class="hidden lg:block fixed right-8 top-1/2 transform -translate-y-1/2 w-64 bg-white shadow-lg rounded-lg p-6 z-10">
+  <h3 class="text-lg font-semibold mb-4 text-gray-900">Contents</h3>
+  <nav class="legal-toc">
+    <ul class="space-y-2 text-sm">
+      <!-- TOC items will be populated by JavaScript -->
+    </ul>
+  </nav>
+</aside>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toc = document.querySelector('.legal-toc ul');
+    const headings = document.querySelectorAll('h2, h3');
+    
+    if (!toc || headings.length === 0) return;
+    
+    // Generate TOC items
+    headings.forEach((heading, index) => {
+      const id = `heading-${index}`;
+      heading.id = id;
+      
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = `#${id}`;
+      a.textContent = heading.textContent;
+      a.className = `block py-1 px-2 rounded hover:bg-gray-100 transition-colors ${
+        heading.tagName === 'H2' ? 'font-medium text-gray-900' : 'text-gray-600 ml-4'
+      }`;
+      
+      li.appendChild(a);
+      toc.appendChild(li);
+    });
+    
+    // Smooth scroll behavior
+    document.querySelectorAll('.legal-toc a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Highlight current section on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          const id = entry.target.id;
+          const tocLink = document.querySelector(`.legal-toc a[href="#${id}"]`);
+          
+          if (tocLink) {
+            if (entry.isIntersecting) {
+              document.querySelectorAll('.legal-toc a').forEach(link => {
+                link.classList.remove('bg-blue-50', 'text-blue-700');
+              });
+              tocLink.classList.add('bg-blue-50', 'text-blue-700');
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -70% 0px'
+      }
+    );
+    
+    headings.forEach(heading => {
+      observer.observe(heading);
+    });
+  });
+</script>
+
+<style>
+  .legal-toc {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  .legal-toc::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .legal-toc::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  .legal-toc::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 2px;
+  }
+  
+  .legal-toc::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+</style>

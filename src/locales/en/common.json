@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "case_studies": "Case Studies"
+  },
+  "cta": {
+    "contact": "Contact Us",
+    "get_started": "Get Started",
+    "learn_more": "Learn More",
+    "read_more": "Read More",
+    "view_details": "View Details"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "send": "Send",
+    "cancel": "Cancel",
+    "save": "Save",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "footer": {
+    "company": "Land Vista Global",
+    "description": "Professional land due diligence services for foreign investors in Japan",
+    "rights": "All rights reserved"
+  },
+  "cookie": {
+    "message": "We use cookies to improve your experience and analyze site usage.",
+    "learn": "Learn more",
+    "accept": "Accept"
+  }
+}

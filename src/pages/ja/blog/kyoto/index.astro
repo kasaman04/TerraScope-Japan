@@ -1,0 +1,557 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "京都府での暮らし - 市区町村別生活情報";
+const description = "京都府の各市区町村での外国人向け生活情報。京都市・宇治市など古都京都の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 京都府の市区町村データ
+const kyotoCities = {
+  kyoto: {
+    title: "京都市",
+    population: "約147万人",
+    foreignPopulation: "約4.7万人（3.2%）",
+    features: "古都・観光都市",
+    description: "千年の歴史を持つ古都。伝統文化と現代が調和し、多くの外国人観光客・研究者が訪れます。",
+    image: "",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/kyoto/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/kyoto/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kyoto/kyoto/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kyoto/kyoto/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kyoto/kyoto/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kyoto/kyoto/article-06/" }
+    ],
+    pageUrl: "/ja/blog/kyoto/kyoto/"
+  },
+  uji: {
+    title: "宇治市",
+    population: "約18万人",
+    foreignPopulation: "約3,200人（1.8%）",
+    features: "宇治茶・世界遺産",
+    description: "宇治茶で有名で、平等院などの世界遺産もある歴史ある都市。京都市へのアクセスも良好です。",
+    image: "",
+    tags: ["宇治茶", "世界遺産", "平等院"],
+    englishHospital: "限定的",
+    airport: "△（関西空港へ電車で60分）",
+    rent: "中程度",
+    recommend: "伝統文化に興味のある外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/uji/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/uji/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kyoto/uji/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kyoto/uji/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kyoto/uji/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kyoto/uji/article-06/" }
+    ],
+    pageUrl: "/ja/blog/kyoto/uji/"
+  },
+  nagaokakyo: {
+    title: "長岡京市",
+    population: "約8.2万人",
+    foreignPopulation: "約1,500人（1.8%）",
+    features: "京阪ベッドタウン・端この里",
+    description: "京都・大阪双方へのアクセスが良好なベッドタウン。端この里として有名で、武田製作所などハイテク企業も集積。",
+    image: "",
+    tags: ["ベッドタウン", "京阪アクセス", "端この里", "ハイテク"],
+    englishHospital: "限定的",
+    airport: "△（関西空港へ電車で90分）",
+    rent: "中程度",
+    recommend: "京阪勤務のファミリー外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/nagaokakyo/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/nagaokakyo/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kyoto/nagaokakyo/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kyoto/nagaokakyo/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kyoto/nagaokakyo/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kyoto/nagaokakyo/article-06/" }
+    ],
+    pageUrl: "/ja/blog/kyoto/nagaokakyo/"
+  },
+  kameoka: {
+    title: "亀岡市",
+    population: "約8.8万人",
+    foreignPopulation: "約1,600人（1.8%）",
+    features: "霧の街・保津川下り",
+    description: "霧の街として知られ、保津川下りや湯の花温泉で有名。京都市への通勤圏内で自然豊かな環境が魅力です。",
+    image: "",
+    tags: ["霧の街", "保津川下り", "湯の花温泉", "自然"],
+    englishHospital: "限定的",
+    airport: "△（関西空港へ電車で100分）",
+    rent: "安い",
+    recommend: "自然環境を重視する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/kameoka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/kameoka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kyoto/kameoka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kyoto/kameoka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kyoto/kameoka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kyoto/kameoka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/kyoto/kameoka/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">京都府</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-amber-800 to-orange-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="/assets/images/prefectures/kyoto.png"
+        alt="京都府の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 京都府
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          京都府での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          千年の歴史を持つ古都で伝統文化と現代が調和する特別な環境
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約258万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約6.5万人（2.5%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">26自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-amber-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
+          {Object.entries(kyotoCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-32 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kyoto Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          京都府で暮らす<span class="text-amber-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって京都府が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏛️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">文化遺産</h3>
+          <p class="text-gray-600">
+            数多くの世界遺産と伝統文化。日本の歴史と文化を身近に感じられる環境です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🎓</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">学術都市</h3>
+          <p class="text-gray-600">
+            京都大学をはじめ多くの大学があり、国際的な研究交流が活発です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🌸</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">四季の美しさ</h3>
+          <p class="text-gray-600">
+            桜、紅葉など四季折々の美しい景色を楽しめ、季節感豊かな生活ができます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-amber-600 to-orange-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        京都府での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-amber-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+      <!-- Modal -->
+      <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+
+          <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
+          
+          <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+          <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+          <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">人口:</strong> 
+              <span id="modal-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">外国人人口:</strong> 
+              <span id="modal-foreign-population" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">英語対応病院:</strong> 
+              <span id="modal-english-hospital" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">空港アクセス:</strong> 
+              <span id="modal-airport" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg">
+              <strong class="text-gray-700">家賃相場:</strong> 
+              <span id="modal-rent" class="text-gray-900"></span>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+              <strong class="text-gray-700">おすすめ:</strong> 
+              <span id="modal-recommend" class="text-gray-900"></span>
+            </div>
+          </div>
+
+          <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+          <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+          <div class="space-y-3">
+            <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+          📖 詳しい記事を見る
+        </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kyoto Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          京都府で暮らす<span class="text-amber-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって京都府が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏛️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">文化遺産</h3>
+          <p class="text-gray-600">
+            数多くの世界遺産と伝統文化。日本の歴史と文化を身近に感じられる環境です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🎓</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">学術都市</h3>
+          <p class="text-gray-600">
+            京都大学をはじめ多くの大学があり、国際的な研究交流が活発です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🌸</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">四季の美しさ</h3>
+          <p class="text-gray-600">
+            桜、紅葉など四季折々の美しい景色を楽しめ、季節感豊かな生活ができます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-amber-600 to-orange-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        京都府での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-amber-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // 京都府市区町村データ
+    const cityData = {
+      kyoto: {
+        title: "京都市",
+        population: "約147万人",
+        foreignPopulation: "約4.7万人（3.2%）",
+        features: "古都・観光都市",
+        description: "千年の歴史を持つ古都。伝統文化と現代が調和し、多くの外国人観光客・研究者が訪れます。",
+        image: "",
+        tags: ["古都", "世界遺産", "観光都市"],
+        englishHospital: "あり",
+        airport: "○（関西空港）",
+        rent: "高い",
+        recommend: "伝統文化に興味のある外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/kyoto/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/kyoto/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kyoto/kyoto/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kyoto/kyoto/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kyoto/kyoto/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kyoto/kyoto/article-06/" }
+        ],
+        pageUrl: "/ja/blog/kyoto/kyoto/"
+      },
+      uji: {
+        title: "宇治市",
+        population: "約18万人",
+        foreignPopulation: "約3,200人（1.8%）",
+        features: "宇治茶・世界遺産",
+        description: "宇治茶で有名で、平等院などの世界遺産もある歴史ある都市。京都市へのアクセスも良好です。",
+        image: "",
+        tags: ["宇治茶", "平等院", "世界遺産"],
+        englishHospital: "限定的",
+        airport: "○（関西空港経由）",
+        rent: "普通",
+        recommend: "日本文化を深く学びたい外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/uji/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/uji/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kyoto/uji/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kyoto/uji/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kyoto/uji/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kyoto/uji/article-06/" }
+        ],
+        pageUrl: "/ja/blog/kyoto/uji/"
+      },
+      nagaokakyo: {
+        title: "長岡京市",
+        population: "約8.2万人",
+        foreignPopulation: "約1,500人（1.8%）",
+        features: "京阪ベッドタウン・竹の里",
+        description: "京都・大阪双方へのアクセスが良好なベッドタウン。竹の里として有名で、村田製作所などハイテク企業も集積。",
+        image: "",
+        tags: ["ベッドタウン", "京阪アクセス", "竹の里", "ハイテク"],
+        englishHospital: "限定的",
+        airport: "△（関西空港へ電車で90分）",
+        rent: "中程度",
+        recommend: "京阪勤務のファミリー外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/kyoto/nagaokakyo/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/kyoto/nagaokakyo/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/kyoto/nagaokakyo/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/kyoto/nagaokakyo/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/kyoto/nagaokakyo/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/kyoto/nagaokakyo/article-06/" }
+        ],
+        pageUrl: "/ja/blog/kyoto/nagaokakyo/"
+      },
+      kameoka: {
+        title: "亀岡市",
+        population: "約8.8万人",
+        foreignPopulation: "約1,600人（1.8%）",
+        features: "霧の街・保津川下り",
+        description: "霧の街として知られ、保津川下りや湯の花温泉で有名。京都市への通勤圏内で自然豊かな環境が魅力です。",
+        image: "",
+        tags: ["霧の街", "保津川下り", "湯の花温泉", "自然"],
+        englishHospital: "限定的",
+        airport: "△（関西空港へ電車で100分）",
+        rent: "安い",
+        recommend: "自然環境を重視する外国人",
+        pageUrl: "/ja/blog/kyoto/kameoka/"
+      }
+    };
+
+    // モーダル関連の変数とイベント処理
+    let currentCityKey = '';
+    const modal = document.getElementById('city-modal');
+
+    // モーダルを開く
+    function openCityModal(cityKey) {
+      currentCityKey = cityKey;
+      const city = cityData[cityKey];
+      
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-image').src = city.image;
+      document.getElementById('modal-image').alt = city.title;
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // モーダルを表示（アニメーション付き）
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+      currentCityKey = '';
+    }
+
+    // DOMContentLoaded後にイベントリスナーを設定
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+</BaseLayout>

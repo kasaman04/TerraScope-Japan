@@ -1,0 +1,547 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "岩手県での暮らし - 市区町村別生活情報";
+const description = "岩手県の各市区町村での外国人向け生活情報。盛岡市・一関市・奥州市・花巻市など岩手山と豊かな自然の岩手県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 岩手県の市区町村データ
+const iwateCities = {
+  morioka: {
+    title: "盛岡市",
+    population: "約28.3万人",
+    foreignPopulation: "約2,100人（0.7%）",
+    features: "県庁所在地・盛岡城・三大麺",
+    description: "岩手県の政治・経済・文化の中心都市。南部藩の城下町として発展し、盛岡城跡公園や石川啄木ゆかりの地として知られる。わんこそば、盛岡冷麺、じゃじゃ麺の三大麺が有名。",
+    image: "",
+    tags: ["県庁所在地", "盛岡城", "三大麺", "石川啄木"],
+    englishHospital: "あり",
+    airport: "◎（いわて花巻空港経由）",
+    rent: "中程度",
+    recommend: "都市機能と歴史文化を求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/iwate/morioka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/iwate/morioka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/iwate/morioka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/iwate/morioka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/iwate/morioka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/iwate/morioka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/iwate/morioka/"
+  },
+  ichinoseki: {
+    title: "一関市",
+    population: "約10.6万人",
+    foreignPopulation: "約900人（0.8%）",
+    features: "平泉世界遺産・中尊寺",
+    description: "平泉の世界遺産「仏国土（浄土）を表す建築・庭園及び考古学的遺跡群」の玄関口。中尊寺金色堂をはじめとする奥州藤原氏の文化遺産と豊かな自然環境が魅力。",
+    image: "",
+    tags: ["世界遺産", "平泉", "中尊寺", "奥州藤原氏"],
+    englishHospital: "限定的",
+    airport: "○（いわて花巻空港経由）",
+    rent: "非常に安い",
+    recommend: "歴史文化と自然を愛する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/iwate/ichinoseki/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/iwate/ichinoseki/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/iwate/ichinoseki/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/iwate/ichinoseki/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/iwate/ichinoseki/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/iwate/ichinoseki/article-06/" }
+    ],
+    pageUrl: "/ja/blog/iwate/ichinoseki/"
+  },
+  oshu: {
+    title: "奥州市",
+    population: "約10.8万人",
+    foreignPopulation: "約1,100人（1.0%）",
+    features: "南部鉄器・えさし藤原の郷",
+    description: "伝統工芸の南部鉄器発祥の地として知られ、えさし藤原の郷では平安時代の文化を体験できる。農業と伝統工芸が息づく歴史ある街。",
+    image: "",
+    tags: ["南部鉄器", "えさし藤原の郷", "伝統工芸", "農業"],
+    englishHospital: "限定的",
+    airport: "○（いわて花巻空港経由）",
+    rent: "非常に安い",
+    recommend: "伝統工芸と歴史に興味がある外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/iwate/oshu/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/iwate/oshu/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/iwate/oshu/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/iwate/oshu/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/iwate/oshu/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/iwate/oshu/article-06/" }
+    ],
+    pageUrl: "/ja/blog/iwate/oshu/"
+  },
+  hanamaki: {
+    title: "花巻市",
+    population: "約8.9万人",
+    foreignPopulation: "約800人（0.9%）",
+    features: "宮沢賢治記念館・イーハトーヴ",
+    description: "詩人・童話作家宮沢賢治の生誕地。賢治が理想郷として描いた『イーハトーヴ』の世界観を体感できる。温泉地としても有名で、いわて花巻空港の立地により交通アクセスが良好。",
+    image: "",
+    tags: ["宮沢賢治", "イーハトーヴ", "温泉", "空港直結"],
+    englishHospital: "限定的",
+    airport: "◎（いわて花巻空港直結）",
+    rent: "非常に安い",
+    recommend: "文学・自然・温泉を愛する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/iwate/hanamaki/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/iwate/hanamaki/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/iwate/hanamaki/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/iwate/hanamaki/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/iwate/hanamaki/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/iwate/hanamaki/article-06/" }
+    ],
+    pageUrl: "/ja/blog/iwate/hanamaki/"
+  },
+  kitakami: {
+    title: "北上市",
+    population: "約9.2万人",
+    foreignPopulation: "約1,200人（1.3%）",
+    features: "工業都市・展勝地",
+    description: "岩手県南部の工業都市。工業団地が集中し、製造業が盛ん。春の北上展勝地の桜まつりで有名で、約4万本の桜が市内を彩る。",
+    image: "",
+    tags: ["工業都市", "展勝地", "桜まつり", "製造業"],
+    englishHospital: "あり",
+    airport: "○（いわて花巻空港経由）",
+    rent: "安い",
+    recommend: "工業系の仕事を求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/iwate/kitakami/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/iwate/kitakami/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/iwate/kitakami/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/iwate/kitakami/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/iwate/kitakami/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/iwate/kitakami/article-06/" }
+    ],
+    pageUrl: "/ja/blog/iwate/kitakami/"
+  },
+  miyako: {
+    title: "宮古市",
+    population: "約5.1万人",
+    foreignPopulation: "約350人（0.7%）",
+    features: "陸中海岸・浜者の町",
+    description: "三陸復興国立公園の中心部に位置し、美しいリアス式海岸で知られる浜者の町。浄土ヶ浜は本州最東端の絶景スポット。水産業が盛んで、新鮮な海の幸を味わえる。",
+    image: "",
+    tags: ["陸中海岸", "浄土ヶ浜", "浜者の町", "水産業"],
+    englishHospital: "限定的",
+    airport: "△（いわて花巻空港から遠い）",
+    rent: "非常に安い",
+    recommend: "海と自然を愛する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/iwate/miyako/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/iwate/miyako/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/iwate/miyako/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/iwate/miyako/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/iwate/miyako/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/iwate/miyako/article-06/" }
+    ],
+    pageUrl: "/ja/blog/iwate/miyako/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-green-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-green-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">岩手県</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-green-800 to-emerald-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="https://images.unsplash.com/photo-1580993889453-4b5b9ffe0da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
+        alt="岩手県の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🏔️ 岩手県
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          岩手県での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          岩手山と豊かな自然の県
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約116万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約8,400人（0.7%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">33自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-green-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Object.entries(iwateCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
+                 >
+              <div class="relative h-48 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white">
+                  <h4 class="font-bold text-lg">{city.title}</h4>
+                </div>
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-3">{city.features}</p>
+                <!-- タグ表示 -->
+                <div class="flex gap-2 mb-3">
+                  {city.tags && city.tags.slice(0, 2).map(tag => (
+                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                  ))}
+                </div>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Iwate Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          岩手県で暮らす<span class="text-green-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって岩手県が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏛️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">世界遺産</h3>
+          <p class="text-gray-600">
+            平泉の文化遺産など豊かな歴史文化。日本の伝統を身近に感じられる環境です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🍜</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな食文化</h3>
+          <p class="text-gray-600">
+            わんこそば、盛岡冷麺、南部鉄器など、独特の文化と美食を楽しめます。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏔️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな自然</h3>
+          <p class="text-gray-600">
+            岩手山をはじめとする雄大な自然環境。四季折々の美しい景観が魅力です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-green-600 to-emerald-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        岩手県での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-green-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- モーダル -->
+  <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+      
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">人口:</strong> 
+          <span id="modal-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">外国人人口:</strong> 
+          <span id="modal-foreign-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">英語対応病院:</strong> 
+          <span id="modal-english-hospital" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">空港アクセス:</strong> 
+          <span id="modal-airport" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">家賃相場:</strong> 
+          <span id="modal-rent" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+          <strong class="text-gray-700">おすすめ:</strong> 
+          <span id="modal-recommend" class="text-gray-900"></span>
+        </div>
+      </div>
+
+      <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+      <div>
+        <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+          📖 詳しい記事を見る
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // モーダル関連の関数（汎用版）
+    // iwate市区町村データ
+    const cityData = {
+      morioka: {
+        title: "盛岡市",
+        population: "約28.3万人",
+        foreignPopulation: "約2,100人（0.7%）",
+        features: "県庁所在地・盛岡城・三大麺",
+        description: "岩手県の政治・経済・文化の中心都市。南部藩の城下町として発展し、盛岡城跡公園や石川啄木ゆかりの地として知られる。わんこそば、盛岡冷麺、じゃじゃ麺の三大麺が有名。",
+        image: "",
+        tags: ["県庁所在地", "盛岡城", "三大麺", "石川啄木"],
+        englishHospital: "あり",
+        airport: "◎（いわて花巻空港経由）",
+        rent: "中程度",
+        recommend: "都市機能と歴史文化を求める外国人",
+        pageUrl: "/ja/blog/iwate/morioka/"
+      },
+      ichinoseki: {
+        title: "一関市",
+        population: "約10.6万人",
+        foreignPopulation: "約900人（0.8%）",
+        features: "平泉世界遺産・中尊寺",
+        description: "平泉の世界遺産「仏国土（浄土）を表す建築・庭園及び考古学的遺跡群」の玄関口。中尊寺金色堂をはじめとする奥州藤原氏の文化遺産と豊かな自然環境が魅力。",
+        image: "",
+        tags: ["世界遺産", "平泉", "中尊寺", "奥州藤原氏"],
+        englishHospital: "限定的",
+        airport: "○（いわて花巻空港経由）",
+        rent: "非常に安い",
+        recommend: "歴史文化と自然を愛する外国人",
+        pageUrl: "/ja/blog/iwate/ichinoseki/"
+      },
+      oshu: {
+        title: "奥州市",
+        population: "約10.8万人",
+        foreignPopulation: "約1,100人（1.0%）",
+        features: "南部鉄器・えさし藤原の郷",
+        description: "伝統工芸の南部鉄器発祥の地として知られ、えさし藤原の郷では平安時代の文化を体験できる。農業と伝統工芸が息づく歴史ある街。",
+        image: "",
+        tags: ["南部鉄器", "えさし藤原の郷", "伝統工芸", "農業"],
+        englishHospital: "限定的",
+        airport: "○（いわて花巻空港経由）",
+        rent: "非常に安い",
+        recommend: "伝統工芸と歴史に興味がある外国人",
+        pageUrl: "/ja/blog/iwate/oshu/"
+      },
+      hanamaki: {
+        title: "花巻市",
+        population: "約8.9万人",
+        foreignPopulation: "約800人（0.9%）",
+        features: "宮沢賢治記念館・イーハトーヴ",
+        description: "詩人・童話作家宮沢賢治の生誕地。賢治が理想郷として描いた『イーハトーヴ』の世界観を体感できる。温泉地としても有名で、いわて花巻空港の立地により交通アクセスが良好。",
+        image: "",
+        tags: ["宮沢賢治", "イーハトーヴ", "温泉", "空港直結"],
+        englishHospital: "限定的",
+        airport: "◎（いわて花巻空港直結）",
+        rent: "非常に安い",
+        recommend: "文学・自然・温泉を愛する外国人",
+        pageUrl: "/ja/blog/iwate/hanamaki/"
+      },
+      kitakami: {
+        title: "北上市",
+        population: "約9.2万人",
+        foreignPopulation: "約1,200人（1.3%）",
+        features: "工業都市・展勝地",
+        description: "岩手県南部の工業都市。工業団地が集中し、製造業が盛ん。春の北上展勝地の桜まつりで有名で、約4万本の桜が市内を彩る。",
+        image: "",
+        tags: ["工業都市", "展勝地", "桜まつり", "製造業"],
+        englishHospital: "あり",
+        airport: "○（いわて花巻空港経由）",
+        rent: "安い",
+        recommend: "工業系の仕事を求める外国人",
+        pageUrl: "/ja/blog/iwate/kitakami/"
+      },
+      miyako: {
+        title: "宮古市",
+        population: "約5.1万人",
+        foreignPopulation: "約350人（0.7%）",
+        features: "陸中海岸・浜者の町",
+        description: "三陸復興国立公園の中心部に位置し、美しいリアス式海岸で知られる浜者の町。浄土ヶ浜は本州最東端の絶景スポット。水産業が盛んで、新鮮な海の幸を味わえる。",
+        image: "",
+        tags: ["陸中海岸", "浄土ヶ浜", "浜者の町", "水産業"],
+        englishHospital: "限定的",
+        airport: "△（いわて花巻空港から遠い）",
+        rent: "非常に安い",
+        recommend: "海と自然を愛する外国人",
+        pageUrl: "/ja/blog/iwate/miyako/"
+      }
+    };
+
+
+    function openCityModal(cityKey) {
+      // cityDataが定義されていない場合は何もしない
+      if (typeof cityData === 'undefined') {
+        console.warn('cityData is not defined');
+        return;
+      }
+      
+      const city = cityData[cityKey];
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // モーダルを表示（アニメーション付き）
+      const modal = document.getElementById('city-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      const modal = document.getElementById('city-modal');
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+
+      // モーダル背景クリックで閉じる
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
+</BaseLayout>

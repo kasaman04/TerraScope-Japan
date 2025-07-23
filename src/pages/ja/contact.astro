@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const title = "お問い合わせ – 無料相談のご予約";
+const description = "日本の土地投資について専門スタッフと無料でご相談ください。初回コンサルテーションは無料です。";
+const lang = "ja";
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        無料相談のご予約
+      </h1>
+      <p class="text-xl text-gray-600 mb-8">
+        日本での土地投資について、専門スタッフが詳しくご説明いたします
+      </p>
+      <div class="text-sm text-gray-500">
+        初回コンサルテーション30分は無料 • 24時間以内にご返答
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">お問い合わせフォーム</h2>
+        <ContactForm lang={lang} />
+      </div>
+
+      <!-- Contact Information -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-6">お気軽にお問い合わせください</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">営業時間</h3>
+            <p class="text-gray-600">
+              月曜日 - 金曜日: 9:00 - 18:00 (JST)<br>
+              土曜日: 10:00 - 16:00 (JST)<br>
+              日曜日・祝日: 休業
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">対応エリア</h3>
+            <p class="text-gray-600">
+              日本全国対応<br>
+              *離島・山間部は追加料金が発生する場合があります
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">サポート言語</h3>
+            <p class="text-gray-600">
+              日本語、英語<br>
+              *その他の言語については個別にご相談ください
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">よくあるご質問</h3>
+            <div class="space-y-3 text-sm">
+              <details class="bg-gray-50 rounded-lg p-4">
+                <summary class="font-medium cursor-pointer">調査にはどのくらい時間がかかりますか？</summary>
+                <p class="mt-2 text-gray-600">
+                  ライト調査：3営業日、フルリスクレポート：7営業日、VRキャプチャー：5営業日が標準です。
+                </p>
+              </details>
+              
+              <details class="bg-gray-50 rounded-lg p-4">
+                <summary class="font-medium cursor-pointer">料金の支払い方法は？</summary>
+                <p class="mt-2 text-gray-600">
+                  銀行振込、クレジットカード、PayPalに対応しています。法人様は請求書払いも可能です。
+                </p>
+              </details>
+              
+              <details class="bg-gray-50 rounded-lg p-4">
+                <summary class="font-medium cursor-pointer">英語での対応は可能ですか？</summary>
+                <p class="mt-2 text-gray-600">
+                  はい、全てのサービスで英語対応いたします。レポートも英語で作成可能です。
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Overview -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-semibold mb-4">サービス概要</h2>
+        <p class="text-gray-600">投資目的に応じて最適なプランをお選びください</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">ライト調査</h3>
+          <div class="text-2xl font-bold mb-4">¥50,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 境界線・用途地域確認</li>
+            <li>• 4ページ英語サマリー</li>
+            <li>• 3営業日で納品</li>
+          </ul>
+          <a href="/ja/services/light-survey/" class="text-primary-600 hover:text-primary-700 font-medium">
+            詳細を見る →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md border-2 border-primary-500">
+          <div class="text-center mb-3">
+            <span class="bg-primary-500 text-white px-3 py-1 rounded-full text-xs">推奨</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">フルリスクレポート</h3>
+          <div class="text-2xl font-bold mb-4">¥120,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 自然災害リスク評価</li>
+            <li>• 法務・税務チェック</li>
+            <li>• 18ページ詳細レポート</li>
+            <li>• Q&Aコール付き</li>
+          </ul>
+          <a href="/ja/services/full-report/" class="text-primary-600 hover:text-primary-700 font-medium">
+            詳細を見る →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 shadow-md">
+          <h3 class="text-xl font-semibold mb-3 text-primary-600">360° VRキャプチャー</h3>
+          <div class="text-2xl font-bold mb-4">¥30,000</div>
+          <ul class="space-y-2 text-sm text-gray-600 mb-6">
+            <li>• 4Kドローン撮影</li>
+            <li>• 360°パノラマ映像</li>
+            <li>• VRヘッドセット対応</li>
+          </ul>
+          <a href="/ja/services/vr-capture/" class="text-primary-600 hover:text-primary-700 font-medium">
+            詳細を見る →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

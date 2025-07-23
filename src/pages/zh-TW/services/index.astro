@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ServiceCards from '../../../components/ServiceCards.astro';
+import PricingTable from '../../../components/PricingTable.astro';
+import Accordion from '../../../components/Accordion.astro';
+import { sanity } from "../../../lib/sanity";
+
+const title = "服務 – 土地調查與VR拍攝套餐";
+const description = "選擇合適的盡職調查級別：輕度調查、全面風險報告或360° VR拍攝。";
+const lang = "zh-TW";
+const hero_bg = "/assets/img/hero-services.jpg";
+
+// Fetch services from Sanity with fallback
+let services = [];
+try {
+  if (sanity) {
+    services = await sanity.fetch(`*[_type=="service"]{
+      key, title, price, bullets
+    }`);
+  }
+} catch (error) {
+  console.log('Sanity fetch error, using fallback data:', error.message);
+  // Fallback data until Sanity is properly configured
+  services = [
+    {
+      key: "light",
+      title: "輕度調查",
+      price: "¥50,000",
+      bullets: [
+        "邊界線和基本用途地域確認",
+        "英文摘要（4頁）",
+        "3個工作日內交付"
+      ]
+    },
+    {
+      key: "full",
+      title: "全面風險報告",
+      price: "¥120,000",
+      bullets: [
+        "洪水、山崩、地震風險評估",
+        "法律與稅務核查清單",
+        "15頁PDF報告 + 問答通話"
+      ]
+    },
+    {
+      key: "vr",
+      title: "360° VR拍攝",
+      price: "¥30,000",
+      bullets: [
+        "4K無人機和360°錄影",
+        "VR頭戴裝置相容",
+        "遠端看房的理想選擇"
+      ]
+    }
+  ];
+}
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative">
+    <img 
+      src={hero_bg} 
+      alt="" 
+      class="w-full h-[50vh] md:h-[60vh] object-cover brightness-75"
+      loading="eager"
+      onerror="this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2126&q=80'"
+    >
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 max-w-4xl">
+        安全投資日本土地
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl opacity-90">
+        從3個服務級別中選擇最適合您投資目標的計劃
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">服務列表</h2>
+      <p class="text-xl text-gray-600">
+        從輕度調查到全面風險評估，提供階段性專業支援
+      </p>
+    </div>
+
+    <ServiceCards services={services} lang={lang} />
+  </section>
+
+  <!-- How it Works -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">服務流程</h2>
+        <p class="text-xl text-gray-600">
+          透過3個步驟，為您提供安心的土地調查服務
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">1</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">資訊提交</h3>
+          <p class="text-gray-600">
+            請透過表單提交調查目標土地的資訊。有地址和地塊編號即可開始。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">2</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">實施調查</h3>
+          <p class="text-gray-600">
+            進行桌面調查或現場調查。專業人員將進行詳細驗證。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="bg-primary-100 text-primary-600 rounded-full p-4 mb-4 w-16 h-16 mx-auto flex items-center justify-center">
+            <span class="text-2xl font-bold">3</span>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">報告交付</h3>
+          <p class="text-gray-600">
+            提供英文報告，必要時透過問答環節詳細說明。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary-600 py-12 text-center text-white">
+    <h2 class="text-2xl font-semibold mb-4">
+      開始日本土地投資吧？
+    </h2>
+    <a 
+      href="/zh-TW/contact/" 
+      class="btn btn-lg bg-white text-primary-600 hover:bg-gray-100 shadow-lg"
+    >
+      申請免費諮詢
+    </a>
+  </section>
+</BaseLayout>

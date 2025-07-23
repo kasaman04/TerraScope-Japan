@@ -1,0 +1,703 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "北海道での暮らし - 市区町村別生活情報";
+const description = "北海道の各市区町村での外国人向け生活情報。札幌市・旭川市・函館市など広大な自然を持つ北海道の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 北海道の市区町村データ
+const hokkaidoCities = {
+  sapporo: {
+    title: "札幌市",
+    population: "約197万人",
+    foreignPopulation: "約3.2万人（1.6%）",
+    features: "道都・雪まつり",
+    description: "北海道の中心都市。四季がはっきりしており、特に雪景色と食文化で世界的に有名です。",
+    image: "/assets/images/prefectures/hokkaido.png",
+    tags: ["雪まつり", "道都", "外国人多め"],
+    englishHospital: "あり",
+    airport: "◎（新千歳空港直通）",
+    rent: "中程度",
+    recommend: "自然と都市生活を求める外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/sapporo/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/sapporo/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/sapporo/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/sapporo/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/sapporo/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/sapporo/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/sapporo/"
+  },
+  hakodate: {
+    title: "函館市",
+    population: "約25万人",
+    foreignPopulation: "約1,800人（0.7%）",
+    features: "歴史的港町・夜景",
+    description: "美しい夜景と歴史的な街並みが魅力の港町。国際的な観光地として発展しています。",
+    image: "",
+    tags: ["港町", "夜景", "観光地"],
+    englishHospital: "限定的",
+    airport: "○（函館空港）",
+    rent: "安め",
+    recommend: "歴史と景観を重視する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/hakodate/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/hakodate/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/hakodate/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/hakodate/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/hakodate/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/hakodate/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/hakodate/"
+  },
+  asahikawa: {
+    title: "旭川市",
+    population: "約32万人",
+    foreignPopulation: "約2,100人（0.7%）",
+    features: "動物園・ラーメン",
+    description: "旭山動物園で有名な北海道第二の都市。美味しいラーメンと自然豊かな環境が魅力です。",
+    image: "",
+    tags: ["動物園", "ラーメン", "自然"],
+    englishHospital: "あり",
+    airport: "△（旭川空港）",
+    rent: "安め",
+    recommend: "自然とグルメを楽しむ外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/asahikawa/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/asahikawa/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/asahikawa/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/asahikawa/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/asahikawa/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/asahikawa/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/asahikawa/"
+  },
+  obihiro: {
+    title: "帯広市",
+    population: "約16万人",
+    foreignPopulation: "約1,200人（0.7%）",
+    features: "十勝・農業・スイーツ",
+    description: "十勝平野の中心都市。農業が盛んで、美味しいスイーツと広大な農地が特徴です。",
+    image: "",
+    tags: ["農業", "スイーツ", "十勝"],
+    englishHospital: "限定的",
+    airport: "○（とかち帯広空港）",
+    rent: "安い",
+    recommend: "農業関係や自然志向の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/obihiro/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/obihiro/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/obihiro/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/obihiro/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/obihiro/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/obihiro/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/obihiro/"
+  },
+  kushiro: {
+    title: "釧路市",
+    population: "約16万人",
+    foreignPopulation: "約900人（0.6%）",
+    features: "湿原・漁業・港町",
+    description: "釧路湿原で有名な東北海道の拠点都市。漁業が盛んで新鮮な海産物が楽しめます。",
+    image: "",
+    tags: ["湿原", "漁業", "自然"],
+    englishHospital: "限定的",
+    airport: "○（釧路空港）",
+    rent: "安い",
+    recommend: "自然保護や漁業に興味のある外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/kushiro/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/kushiro/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/kushiro/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/kushiro/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/kushiro/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/kushiro/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/kushiro/"
+  },
+  muroran: {
+    title: "室蘭市",
+    population: "約7.8万人",
+    foreignPopulation: "約500人（0.6%）",
+    features: "工業・港町・夜景",
+    description: "製鉄業で栄えた工業都市。美しい夜景と港町の雰囲気が魅力的です。",
+    image: "",
+    tags: ["工業", "夜景", "港町"],
+    englishHospital: "限定的",
+    airport: "△（新千歳まで1時間）",
+    rent: "安い",
+    recommend: "工業関係で働く外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/muroran/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/muroran/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/muroran/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/muroran/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/muroran/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/muroran/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/muroran/"
+  },
+  otaru: {
+    title: "小樽市",
+    population: "約11万人",
+    foreignPopulation: "約700人（0.6%）",
+    features: "運河・ガラス・観光",
+    description: "歴史的な運河とガラス工芸で有名な観光都市。ロマンチックな街並みが魅力です。",
+    image: "",
+    tags: ["運河", "観光", "歴史"],
+    englishHospital: "限定的",
+    airport: "◎（新千歳まで1時間）",
+    rent: "安め",
+    recommend: "歴史と芸術を愛する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/otaru/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/otaru/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/otaru/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/otaru/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/otaru/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/otaru/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/otaru/"
+  },
+  tomakomai: {
+    title: "苫小牧市",
+    population: "約17万人",
+    foreignPopulation: "約2,400人（1.4%）",
+    features: "新千歳空港・工業都市",
+    description: "新千歳空港の所在地で北海道の玄関口。製紙・製油業が盛んで、多くの外国人が働いています。",
+    image: "",
+    tags: ["新千歳空港", "工業都市", "製紙業", "玄関口"],
+    englishHospital: "あり",
+    airport: "◎（新千歳空港内）",
+    rent: "中程度",
+    recommend: "工業関係・空港関係の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/tomakomai/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/tomakomai/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/tomakomai/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/tomakomai/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/tomakomai/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/tomakomai/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/tomakomai/"
+  },
+  iwamizawa: {
+    title: "岩見沢市",
+    population: "約8.1万人",
+    foreignPopulation: "約1,200人（1.5%）",
+    features: "農業都市・空知管理大学",
+    description: "北海道の農業中心地域。空知管理大学があり、米作や牧業が盛んで、留学生や研修生も多く住んでいます。",
+    image: "",
+    tags: ["農業都市", "空知管理大学", "米作", "留学生"],
+    englishHospital: "限定的",
+    airport: "○（新千歳空港へ車で60分）",
+    rent: "安い",
+    recommend: "農業・研究関係の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/iwamizawa/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/iwamizawa/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/iwamizawa/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/iwamizawa/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/iwamizawa/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/iwamizawa/article-06/" }
+    ],
+    pageUrl: "/ja/blog/hokkaido/iwamizawa/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">北海道</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-sky-800 to-blue-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="/assets/images/prefectures/hokkaido.png"
+        alt="北海道の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 北海道
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          北海道での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          広大な自然と豊かな食文化、四季の美しさを楽しむ北の大地
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約522万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約6.4万人（1.2%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">179自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-sky-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
+          {Object.entries(hokkaidoCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                 onclick={`openCityModal('${key}')`}>
+              <div class="relative h-32 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
+                </div>
+                <!-- 右上の詳細アイコン -->
+                <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hokkaido Features -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          北海道で暮らす<span class="text-sky-600">メリット</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          外国人にとって北海道が魅力的な理由
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🏔️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">雄大な自然</h3>
+          <p class="text-gray-600">
+            広大な大地と美しい自然環境。四季を通じて様々なアウトドア活動を楽しめます。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">🦀</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">豊かな食文化</h3>
+          <p class="text-gray-600">
+            新鮮な海産物、乳製品、農産物など、日本有数の食材の宝庫です。
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-3xl">❄️</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">ウィンタースポーツ</h3>
+          <p class="text-gray-600">
+            世界的なスキーリゾートと雪質。ウィンタースポーツ愛好者には最適の環境です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-sky-600 to-blue-800 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        北海道での住居選びを<span class="text-yellow-300">プロがサポート</span>
+      </h2>
+      
+      <p class="text-xl mb-8 opacity-95">
+        各市区町村の詳細な調査レポートで、最適な住居選択をお手伝いします
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/ja/services/" 
+          class="inline-flex items-center px-8 py-4 bg-yellow-400 text-sky-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300"
+        >
+          <span class="mr-3">🔍</span>
+          調査サービスを見る
+        </a>
+        <a 
+          href="/ja/contact/" 
+          class="inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+        >
+          <span class="mr-3">💬</span>
+          無料相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- モーダル -->
+  <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+      
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">人口:</strong> 
+          <span id="modal-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">外国人人口:</strong> 
+          <span id="modal-foreign-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">英語対応病院:</strong> 
+          <span id="modal-english-hospital" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">空港アクセス:</strong> 
+          <span id="modal-airport" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">家賃相場:</strong> 
+          <span id="modal-rent" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+          <strong class="text-gray-700">おすすめ:</strong> 
+          <span id="modal-recommend" class="text-gray-900"></span>
+        </div>
+      </div>
+
+      <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+      <div>
+        <button id="modal-article-link" type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors">
+          📖 詳しい記事を見る
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // 北海道市区町村データ
+    const cityData = {
+      sapporo: {
+        title: "札幌市",
+        population: "約197万人",
+        foreignPopulation: "約3.2万人（1.6%）",
+        features: "道都・雪まつり",
+        description: "北海道の中心都市。四季がはっきりしており、特に雪景色と食文化で世界的に有名です。",
+        image: "",
+        tags: ["雪まつり", "道都", "外国人多め"],
+        englishHospital: "あり",
+        airport: "◎（新千歳空港直通）",
+        rent: "中程度",
+        recommend: "自然と都市生活を求める外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/sapporo/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/sapporo/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/sapporo/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/sapporo/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/sapporo/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/sapporo/article-06/" }
+        ],
+        pageUrl: "/ja/blog/hokkaido/sapporo/"
+      },
+      hakodate: {
+        title: "函館市",
+        population: "約25万人",
+        foreignPopulation: "約1,800人（0.7%）",
+        features: "歴史的港町・夜景",
+        description: "美しい夜景と歴史的な街並みが魅力の港町。国際的な観光地として発展しています。",
+        image: "",
+        tags: ["港町", "夜景", "観光地"],
+        englishHospital: "限定的",
+        airport: "○（函館空港）",
+        rent: "安め",
+        recommend: "歴史と景観を重視する外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/hakodate/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/hakodate/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/hakodate/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/hakodate/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/hakodate/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/hakodate/article-06/" }
+        ],
+        pageUrl: "/ja/blog/hokkaido/hakodate/"
+      },
+      asahikawa: {
+        title: "旭川市",
+        population: "約32万人",
+        foreignPopulation: "約2,100人（0.7%）",
+        features: "動物園・ラーメン",
+        description: "旭山動物園で有名な北海道第二の都市。美味しいラーメンと自然豊かな環境が魅力です。",
+        image: "",
+        tags: ["動物園", "ラーメン", "自然"],
+        englishHospital: "あり",
+        airport: "△（旭川空港）",
+        rent: "安め",
+        recommend: "自然とグルメを楽しむ外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/asahikawa/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/asahikawa/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/asahikawa/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/asahikawa/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/asahikawa/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/asahikawa/article-06/" }
+        ],
+        pageUrl: "/ja/blog/hokkaido/asahikawa/"
+      },
+      obihiro: {
+        title: "帯広市",
+        population: "約16万人",
+        foreignPopulation: "約1,200人（0.7%）",
+        features: "十勝・農業・スイーツ",
+        description: "十勝平野の中心都市。農業が盛んで、美味しいスイーツと広大な農地が特徴です。",
+        image: "",
+        tags: ["農業", "スイーツ", "十勝"],
+        englishHospital: "限定的",
+        airport: "○（とかち帯広空港）",
+        rent: "安い",
+        recommend: "農業関係や自然志向の外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/obihiro/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/obihiro/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/obihiro/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/obihiro/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/obihiro/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/obihiro/article-06/" }
+        ],
+        pageUrl: "/ja/blog/hokkaido/obihiro/"
+      },
+      kushiro: {
+        title: "釧路市",
+        population: "約16万人",
+        foreignPopulation: "約900人（0.6%）",
+        features: "湿原・漁業・港町",
+        description: "釧路湿原で有名な東北海道の拠点都市。漁業が盛んで新鮮な海産物が楽しめます。",
+        image: "",
+        tags: ["湿原", "漁業", "自然"],
+        englishHospital: "限定的",
+        airport: "○（釧路空港）",
+        rent: "安い",
+        recommend: "自然保護や漁業に興味のある外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/kushiro/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/kushiro/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/kushiro/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/kushiro/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/kushiro/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/kushiro/article-06/" }
+        ],
+        pageUrl: "/ja/blog/hokkaido/kushiro/"
+      },
+      muroran: {
+        title: "室蘭市",
+        population: "約7.8万人",
+        foreignPopulation: "約500人（0.6%）",
+        features: "工業・港町・夜景",
+        description: "製鉄業で栄えた工業都市。美しい夜景と港町の雰囲気が魅力的です。",
+        image: "",
+        tags: ["工業", "夜景", "港町"],
+        englishHospital: "限定的",
+        airport: "△（新千歳まで1時間）",
+        rent: "安い",
+        recommend: "工業関係で働く外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/muroran/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/muroran/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/muroran/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/muroran/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/muroran/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/muroran/article-06/" }
+        ],
+        pageUrl: "/ja/blog/hokkaido/muroran/"
+      },
+      otaru: {
+        title: "小樽市",
+        population: "約11万人",
+        foreignPopulation: "約700人（0.6%）",
+        features: "運河・ガラス・観光",
+        description: "歴史的な運河とガラス工芸で有名な観光都市。ロマンチックな街並みが魅力です。",
+        image: "",
+        tags: ["運河", "観光", "歴史"],
+        englishHospital: "限定的",
+        airport: "◎（新千歳まで1時間）",
+        rent: "安め",
+        recommend: "歴史と芸術を愛する外国人",
+        articles: [
+          { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/hokkaido/otaru/article-01/" },
+          { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/hokkaido/otaru/article-02/" },
+          { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/hokkaido/otaru/article-03/" },
+          { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/hokkaido/otaru/article-04/" },
+          { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/hokkaido/otaru/article-05/" },
+          { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/hokkaido/otaru/article-06/" }
+        ],
+        pageUrl: "/ja/blog/hokkaido/otaru/"
+      },
+      tomakomai: {
+        title: "苫小牧市",
+        population: "約17万人",
+        foreignPopulation: "約2,400人（1.4%）",
+        features: "新千歳空港・工業都市",
+        description: "新千歳空港の所在地で北海道の玄関口。製紙・製油業が盛んで、多くの外国人が働いています。",
+        image: "",
+        tags: ["新千歳空港", "工業都市", "製紙業", "玄関口"],
+        englishHospital: "あり",
+        airport: "◎（新千歳空港内）",
+        rent: "中程度",
+        recommend: "工業関係・空港関係の外国人",
+        pageUrl: "/ja/blog/hokkaido/tomakomai/"
+      },
+      iwamizawa: {
+        title: "岩見沢市",
+        population: "約8.1万人",
+        foreignPopulation: "約1,200人（1.5%）",
+        features: "農業都市・空知管理大学",
+        description: "北海道の農業中心地域。空知管理大学があり、米作や牧業が盛んで、留学生や研修生も多く住んでいます。",
+        image: "",
+        tags: ["農業都市", "空知管理大学", "米作", "留学生"],
+        englishHospital: "限定的",
+        airport: "○（新千歳空港へ車で60分）",
+        rent: "安い",
+        recommend: "農業・研究関係の外国人",
+        pageUrl: "/ja/blog/hokkaido/iwamizawa/"
+      }
+    };
+
+
+    // モーダル関連の関数
+    function openCityModal(cityKey) {
+      const city = cityData[cityKey];
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // 記事リンクボタンの設定
+      const articleLinkBtn = document.getElementById('modal-article-link');
+      if (articleLinkBtn && city.pageUrl) {
+        articleLinkBtn.onclick = function() {
+          window.location.href = '/TerraScope-Japan' + city.pageUrl;
+        };
+      }
+
+      // モーダルを表示（アニメーション付き）
+      const modal = document.getElementById('city-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      const modal = document.getElementById('city-modal');
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+
+      // モーダル背景クリックで閉じる
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+</BaseLayout>

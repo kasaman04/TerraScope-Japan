@@ -1,0 +1,549 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+
+const title = "埼玉県での暮らし - 市区町村別生活情報";
+const description = "埼玉県の各市区町村での外国人向け生活情報。さいたま市・川口市・所沢市など東京近郊の埼玉県の防災、インフラ、生活コストなど詳細情報をお届け。";
+const lang = "ja";
+
+// 埼玉県の市区町村データ
+const saitamaCities = {
+  saitama: {
+    title: "さいたま市",
+    population: "約133万人",
+    foreignPopulation: "約3.2万人（2.4%）",
+    features: "県庁所在地・新幹線拠点",
+    description: "埼玉県の県庁所在地。新幹線の大宮駅があり、東京・関西方面へのアクセスが良好です。",
+    image: "",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/saitama/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/saitama/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/saitama/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/saitama/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/saitama/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/saitama/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/saitama/"
+  },
+  kawaguchi: {
+    title: "川口市",
+    population: "約61万人",
+    foreignPopulation: "約3.5万人（5.7%）",
+    features: "多文化共生都市",
+    description: "外国人人口比率が高く、多様な国籍の住民が共生する国際色豊かな都市です。",
+    image: "",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/kawaguchi/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/kawaguchi/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/kawaguchi/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/kawaguchi/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/kawaguchi/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/kawaguchi/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/kawaguchi/"
+  },
+  tokorozawa: {
+    title: "所沢市",
+    population: "約34万人",
+    foreignPopulation: "約6,200人（1.8%）",
+    features: "航空発祥の地・住宅地",
+    description: "日本の航空発祥の地として有名。西武線で都心アクセス良好な住宅地です。",
+    image: "",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/tokorozawa/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/tokorozawa/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/tokorozawa/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/tokorozawa/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/tokorozawa/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/tokorozawa/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/tokorozawa/"
+  },
+  kawagoe: {
+    title: "川越市",
+    population: "約35万人",
+    foreignPopulation: "約6,500人（1.9%）",
+    features: "歴史都市・小江戸",
+    description: "「小江戸」として知られる歴史と文化の街。蔵造りの街並みで有名で、観光地としても人気です。",
+    image: "",
+    tags: ["小江戸", "歴史都市", "蔵造り", "観光地"],
+    englishHospital: "限定的",
+    airport: "△（成田空港へ電車で90分）",
+    rent: "中程度",
+    recommend: "歴史と文化を重視する外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/kawagoe/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/kawagoe/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/kawagoe/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/kawagoe/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/kawagoe/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/kawagoe/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/kawagoe/"
+  },
+  koshigaya: {
+    title: "越谷市",
+    population: "約34万人",
+    foreignPopulation: "約7,200人（2.1%）",
+    features: "東京近郊住宅地",
+    description: "東京都心へのアクセスが良好な住宅地。イオンレイクタウンなど大規模商業施設も充実しています。",
+    image: "",
+    tags: ["住宅地", "東京近郊", "商業施設", "アクセス良好"],
+    englishHospital: "限定的",
+    airport: "○（成田空港へ電車で60分）",
+    rent: "中程度",
+    recommend: "東京勤務のファミリー外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/koshigaya/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/koshigaya/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/koshigaya/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/koshigaya/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/koshigaya/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/koshigaya/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/koshigaya/"
+  },
+  soka: {
+    title: "草加市",
+    population: "約25万人",
+    foreignPopulation: "約6,800人（2.7%）",
+    features: "東京近郊・草加せんべい",
+    description: "草加せんべいで有名な東京都に隣接する都市。東京スカイツリーラインで都心アクセス良好です。",
+    image: "",
+    tags: ["東京隣接", "せんべい", "都心アクセス", "住宅地"],
+    englishHospital: "限定的",
+    airport: "○（羽田空港へ電車で）",
+    rent: "中程度",
+    recommend: "東京勤務で埼玉在住希望の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/soka/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/soka/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/soka/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/soka/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/soka/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/soka/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/soka/"
+  },
+  kasukabe: {
+    title: "春日部市",
+    population: "約23万人",
+    foreignPopulation: "約4,200人（1.8%）",
+    features: "クレヨンしんちゃんの街",
+    description: "人気アニメ「クレヨンしんちゃん」の舞台として有名。東武線で都心アクセス良好な住宅都市です。",
+    image: "",
+    tags: ["クレヨンしんちゃん", "アニメの街", "住宅都市", "東武線"],
+    englishHospital: "限定的",
+    airport: "△（成田空港へ電車で）",
+    rent: "中程度",
+    recommend: "ファミリー外国人・アニメファン",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/kasukabe/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/kasukabe/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/kasukabe/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/kasukabe/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/kasukabe/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/kasukabe/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/kasukabe/"
+  },
+  ageo: {
+    title: "上尾市",
+    population: "約23万人",
+    foreignPopulation: "約3,800人（1.7%）",
+    features: "JR高崎線・住宅地",
+    description: "JR高崎線で東京駅まで直通の利便性の高い住宅都市。閑静な住宅地として人気があります。",
+    image: "",
+    tags: ["高崎線", "住宅地", "東京直通", "閑静"],
+    englishHospital: "限定的",
+    airport: "△（羽田空港へ電車で）",
+    rent: "中程度",
+    recommend: "東京通勤の外国人ファミリー",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/ageo/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/ageo/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/ageo/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/ageo/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/ageo/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/ageo/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/ageo/"
+  },
+  kumagaya: {
+    title: "熊谷市",
+    population: "約20万人",
+    foreignPopulation: "約4,800人（2.4%）",
+    features: "ラグビーの街・暑い街",
+    description: "ラグビーワールドカップの開催地として有名。埼玉県北部の中心都市で、夏の暑さでも知られます。",
+    image: "",
+    tags: ["ラグビー", "県北中心", "暑い街", "スポーツ"],
+    englishHospital: "あり",
+    airport: "△（羽田空港へ電車で）",
+    rent: "安い",
+    recommend: "スポーツ関係の外国人",
+    articles: [
+      { title: "🛡️ 防災：地震・水害リスクと避難体制", url: "/ja/blog/saitama/kumagaya/article-01/" },
+      { title: "🏥 生活インフラ：スーパー・病院・学校", url: "/ja/blog/saitama/kumagaya/article-02/" },
+      { title: "💰 生活コスト：家賃・光熱費・交通費など", url: "/ja/blog/saitama/kumagaya/article-03/" },
+      { title: "🏗️ 再開発・公共整備：今後の暮らしやすさ", url: "/ja/blog/saitama/kumagaya/article-04/" },
+      { title: "📜 法制度：外国人の購入制限・手続き", url: "/ja/blog/saitama/kumagaya/article-05/" },
+      { title: "📷 現地調査レポート：映像と写真で見る街", url: "/ja/blog/saitama/kumagaya/article-06/" }
+    ],
+    pageUrl: "/ja/blog/saitama/kumagaya/"
+  }
+};
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Breadcrumb -->
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <li><a href="/ja/" class="hover:text-blue-600">ホーム</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li><a href="/ja/blog/" class="hover:text-blue-600">地域別生活情報</a></li>
+      <li><span class="mx-2">/</span></li>
+      <li class="text-gray-900 font-medium">埼玉県</li>
+    </ol>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-purple-800 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <img 
+        src="/assets/images/prefectures/saitama.png"
+        alt="埼玉県の街並み"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 text-white">
+      <div class="max-w-3xl">
+        <div class="mb-6">
+          <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+            🗾 埼玉県
+          </span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          埼玉県での暮らし
+        </h1>
+        
+        <p class="text-xl md:text-2xl mb-8 opacity-95">
+          東京へのアクセス良好な住宅地として人気の埼玉県
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-sm">
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">人口</p>
+            <p class="text-lg">約734万人</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">外国人人口</p>
+            <p class="text-lg">約19万人（2.6%）</p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+            <p class="font-semibold mb-1">市町村</p>
+            <p class="text-lg">63自治体</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- City Selection -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          市区町村を選んで<span class="text-purple-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          下記の市区町村をクリックして、詳細な生活情報をご覧ください
+        </p>
+      </div>
+
+      <!-- Cities Cards -->
+      <div>
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          {Object.entries(saitamaCities).map(([key, city]) => (
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onclick={`openCityModal('${key}')`}
+                 >
+              <div class="relative h-32 overflow-hidden">
+                <img 
+                  src={city.image}
+                  alt={city.title}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
+                <p class="text-xs text-gray-500">{city.population}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+
+
+  <!-- モーダル -->
+  <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
+      
+      <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
+      <p id="modal-features" class="text-gray-600 mb-4"></p>
+
+      <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">人口:</strong> 
+          <span id="modal-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">外国人人口:</strong> 
+          <span id="modal-foreign-population" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">英語対応病院:</strong> 
+          <span id="modal-english-hospital" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">空港アクセス:</strong> 
+          <span id="modal-airport" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg">
+          <strong class="text-gray-700">家賃相場:</strong> 
+          <span id="modal-rent" class="text-gray-900"></span>
+        </div>
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
+          <strong class="text-gray-700">おすすめ:</strong> 
+          <span id="modal-recommend" class="text-gray-900"></span>
+        </div>
+      </div>
+
+      <p id="modal-description" class="text-gray-700 mb-6"></p>
+
+      <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
+
+      <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+        📖 詳しい記事を見る
+      </button>
+    </div>
+  </div>
+
+  <script is:inline>
+    // モーダル関連の関数（汎用版）
+    // saitama市区町村データ
+    const cityData = {
+      saitama: {
+        title: "さいたま市",
+        population: "約133万人",
+        foreignPopulation: "約3.2万人（2.4%）",
+        features: "県庁所在地・新幹線拠点",
+        description: "埼玉県の県庁所在地。新幹線の大宮駅があり、東京・関西方面へのアクセスが良好です。",
+        image: "",
+        tags: ["県庁所在地", "新幹線拠点", "東京近郊"],
+        englishHospital: "あり",
+        airport: "○（羽田空港へ電車で）",
+        rent: "やや高い",
+        recommend: "東京通勤・新幹線利用者",
+        pageUrl: "/ja/blog/saitama/saitama/"
+      },
+      kawaguchi: {
+        title: "川口市",
+        population: "約61万人",
+        foreignPopulation: "約3.5万人（5.7%）",
+        features: "多文化共生都市",
+        description: "外国人人口比率が高く、多様な国籍の住民が共生する国際色豊かな都市です。",
+        image: "",
+        tags: ["多文化共生", "外国人比率高", "国際都市"],
+        englishHospital: "あり",
+        airport: "○（羽田空港へ電車で）",
+        rent: "中程度",
+        recommend: "多文化環境を求める外国人",
+        pageUrl: "/ja/blog/saitama/kawaguchi/"
+      },
+      tokorozawa: {
+        title: "所沢市",
+        population: "約34万人",
+        foreignPopulation: "約6,200人（1.8%）",
+        features: "航空発祥の地・住宅地",
+        description: "日本の航空発祥の地として有名。西武線で都心アクセス良好な住宅地です。",
+        image: "",
+        tags: ["航空発祥の地", "住宅地", "西武線"],
+        englishHospital: "限定的",
+        airport: "△（羽田空港へ電車で）",
+        rent: "中程度",
+        recommend: "閑静な住宅地を求める外国人",
+        pageUrl: "/ja/blog/saitama/tokorozawa/"
+      },
+      kawagoe: {
+        title: "川越市",
+        population: "約35万人",
+        foreignPopulation: "約6,500人（1.9%）",
+        features: "歴史都市・小江戸",
+        description: "「小江戸」として知られる歴史と文化の街。蔵造りの街並みで有名で、観光地としても人気です。",
+        image: "",
+        tags: ["小江戸", "歴史都市", "蔵造り", "観光地"],
+        englishHospital: "限定的",
+        airport: "△（成田空港へ電車で90分）",
+        rent: "中程度",
+        recommend: "歴史と文化を重視する外国人",
+        pageUrl: "/ja/blog/saitama/kawagoe/"
+      },
+      koshigaya: {
+        title: "越谷市",
+        population: "約34万人",
+        foreignPopulation: "約7,200人（2.1%）",
+        features: "東京近郊住宅地",
+        description: "東京都心へのアクセスが良好な住宅地。イオンレイクタウンなど大規模商業施設も充実しています。",
+        image: "",
+        tags: ["住宅地", "東京近郊", "商業施設", "アクセス良好"],
+        englishHospital: "限定的",
+        airport: "○（成田空港へ電車で60分）",
+        rent: "中程度",
+        recommend: "東京勤務のファミリー外国人",
+        pageUrl: "/ja/blog/saitama/koshigaya/"
+      },
+      soka: {
+        title: "草加市",
+        population: "約25万人",
+        foreignPopulation: "約6,800人（2.7%）",
+        features: "東京近郊・草加せんべい",
+        description: "草加せんべいで有名な東京都に隣接する都市。東京スカイツリーラインで都心アクセス良好です。",
+        image: "",
+        tags: ["東京隣接", "せんべい", "都心アクセス", "住宅地"],
+        englishHospital: "限定的",
+        airport: "○（羽田空港へ電車で）",
+        rent: "中程度",
+        recommend: "東京勤務で埼玉在住希望の外国人",
+        pageUrl: "/ja/blog/saitama/soka/"
+      },
+      kasukabe: {
+        title: "春日部市",
+        population: "約23万人",
+        foreignPopulation: "約4,200人（1.8%）",
+        features: "クレヨンしんちゃんの街",
+        description: "人気アニメ「クレヨンしんちゃん」の舞台として有名。東武線で都心アクセス良好な住宅都市です。",
+        image: "",
+        tags: ["クレヨンしんちゃん", "アニメの街", "住宅都市", "東武線"],
+        englishHospital: "限定的",
+        airport: "△（成田空港へ電車で）",
+        rent: "中程度",
+        recommend: "ファミリー外国人・アニメファン",
+        pageUrl: "/ja/blog/saitama/kasukabe/"
+      },
+      ageo: {
+        title: "上尾市",
+        population: "約23万人",
+        foreignPopulation: "約3,800人（1.7%）",
+        features: "JR高崎線・住宅地",
+        description: "JR高崎線で東京駅まで直通の利便性の高い住宅都市。閑静な住宅地として人気があります。",
+        image: "",
+        tags: ["高崎線", "住宅地", "東京直通", "閑静"],
+        englishHospital: "限定的",
+        airport: "△（羽田空港へ電車で）",
+        rent: "中程度",
+        recommend: "東京通勤の外国人ファミリー",
+        pageUrl: "/ja/blog/saitama/ageo/"
+      },
+      kumagaya: {
+        title: "熊谷市",
+        population: "約20万人",
+        foreignPopulation: "約4,800人（2.4%）",
+        features: "ラグビーの街・暑い街",
+        description: "ラグビーワールドカップの開催地として有名。埼玉県北部の中心都市で、夏の暑さでも知られます。",
+        image: "",
+        tags: ["ラグビー", "県北中心", "暑い街", "スポーツ"],
+        englishHospital: "あり",
+        airport: "△（羽田空港へ電車で）",
+        rent: "安い",
+        recommend: "スポーツ関係の外国人",
+        pageUrl: "/ja/blog/saitama/kumagaya/"
+      }
+    };
+
+
+    function openCityModal(cityKey) {
+      // cityDataが定義されていない場合は何もしない
+      if (typeof cityData === 'undefined') {
+        console.warn('cityData is not defined');
+        return;
+      }
+      
+      const city = cityData[cityKey];
+      if (!city) return;
+
+      // モーダル内容を更新
+      document.getElementById('modal-title').textContent = city.title;
+      document.getElementById('modal-features').textContent = city.features;
+      document.getElementById('modal-population').textContent = city.population;
+      document.getElementById('modal-foreign-population').textContent = city.foreignPopulation;
+      document.getElementById('modal-english-hospital').textContent = city.englishHospital;
+      document.getElementById('modal-airport').textContent = city.airport;
+      document.getElementById('modal-rent').textContent = city.rent;
+      document.getElementById('modal-recommend').textContent = city.recommend;
+      document.getElementById('modal-description').textContent = city.description;
+
+      // タグを表示
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      if (city.tags) {
+        city.tags.forEach(tag => {
+          const tagElement = document.createElement('span');
+          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
+          tagElement.textContent = tag;
+          tagsContainer.appendChild(tagElement);
+        });
+      }
+
+      // モーダルを表示（アニメーション付き）
+      const modal = document.getElementById('city-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      modal.querySelector('.bg-white').classList.remove('scale-95');
+      modal.querySelector('.bg-white').classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // モーダルを閉じる
+    function closeModal() {
+      const modal = document.getElementById('city-modal');
+      modal.classList.add('opacity-0');
+      modal.querySelector('.bg-white').classList.add('scale-95');
+      modal.querySelector('.bg-white').classList.remove('scale-100');
+      
+      setTimeout(() => {
+        modal.classList.add('invisible');
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
+
+    // モーダルイベントリスナー
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('city-modal');
+
+      // モーダル背景クリックで閉じる
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      // ESCキーでモーダルを閉じる
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('invisible')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
+</BaseLayout>

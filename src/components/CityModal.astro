@@ -1,0 +1,137 @@
+---
+export interface Props {
+  city: {
+    slug: string;
+    title: string;
+    features: string;
+    population: string;
+    foreignPopulation: string;
+    englishHospital: string;
+    airportAccess: string;
+    rentLevel: string;
+    recommend: string;
+    description: string;
+    image: string;
+    tags: string[];
+    prefectureSlug: string;
+  };
+}
+
+const { city } = Astro.props;
+---
+
+<!-- Modal Background -->
+<div id={`modal-${city.slug}`} class="modal-overlay fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+  <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform transition-transform duration-300 scale-100">
+    
+    <!-- City Image -->
+    <img 
+      src={city.image} 
+      alt={city.title}
+      class="w-full h-56 object-cover rounded-lg mb-4"
+    />
+    
+    <!-- City Title -->
+    <h2 class="text-2xl font-bold mb-2">{city.title}</h2>
+    
+    <!-- Features -->
+    <p class="text-gray-600 mb-4">{city.features}</p>
+    
+    <!-- City Information Grid -->
+    <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+      <div class="bg-gray-50 p-3 rounded">
+        <strong class="text-gray-700">人口:</strong>
+        <span class="text-gray-900">{city.population}</span>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <strong class="text-gray-700">外国人人口:</strong>
+        <span class="text-gray-900">{city.foreignPopulation}</span>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <strong class="text-gray-700">英語対応病院:</strong>
+        <span class="text-gray-900">{city.englishHospital}</span>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <strong class="text-gray-700">空港アクセス:</strong>
+        <span class="text-gray-900">{city.airportAccess}</span>
+      </div>
+      <div class="bg-gray-50 p-3 rounded">
+        <strong class="text-gray-700">家賃相場:</strong>
+        <span class="text-gray-900">{city.rentLevel}</span>
+      </div>
+      <div class="bg-gray-50 p-3 rounded col-span-2">
+        <strong class="text-gray-700">おすすめ:</strong>
+        <span class="text-gray-900">{city.recommend}</span>
+      </div>
+    </div>
+    
+    <!-- Description -->
+    <p class="text-gray-700 mb-6">{city.description}</p>
+    
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-2 mb-6">
+      {city.tags.map((tag) => (
+        <span class="text-xs bg-red-100 text-red-800 px-3 py-1 rounded-full font-medium">
+          {tag}
+        </span>
+      ))}
+    </div>
+    
+    <!-- Action Button -->
+    <div class="flex">
+      <a 
+        href={`/ja/blog/${city.prefectureSlug}/${city.slug}/`}
+        class="w-full text-center bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition-colors"
+      >
+        📖 詳しい記事を見る
+      </a>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ citySlug: city.slug }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    // モーダルの開閉機能を実装
+    const modal = document.getElementById(`modal-${citySlug}`);
+    const closeBtns = modal?.querySelectorAll('.modal-close');
+    
+    // 閉じるボタンのイベント
+    closeBtns?.forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal?.classList.add('hidden');
+      });
+    });
+    
+    // 背景クリックで閉じる
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+      }
+    });
+    
+    // ESCキーで閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal?.classList.contains('hidden')) {
+        modal?.classList.add('hidden');
+      }
+    });
+  });
+  
+  // グローバル関数として定義（他のスクリプトから呼び出し可能）
+  if (typeof window !== 'undefined') {
+    window.openCityModal = function(targetCitySlug) {
+      const modal = document.getElementById(`modal-${targetCitySlug}`);
+      modal?.classList.remove('hidden');
+    };
+  }
+</script>
+
+<style>
+  .modal-overlay {
+    backdrop-filter: blur(4px);
+  }
+  
+  .modal-overlay.hidden {
+    display: none;
+  }
+</style>
