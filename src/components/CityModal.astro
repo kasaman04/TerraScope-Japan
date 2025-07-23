@@ -23,8 +23,6 @@ const { city } = Astro.props;
 <!-- Modal Background -->
 <div id={`modal-${city.slug}`} class="modal-overlay fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
   <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform transition-transform duration-300 scale-100">
-    <!-- Close Button -->
-    <button class="modal-close absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">×</button>
     
     <!-- City Image -->
     <img 
@@ -79,19 +77,14 @@ const { city } = Astro.props;
       ))}
     </div>
     
-    <!-- Action Buttons -->
-    <div class="flex gap-3">
+    <!-- Action Button -->
+    <div class="flex">
       <a 
         href={`/ja/blog/${city.prefectureSlug}/${city.slug}/`}
-        class="flex-1 text-center bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition-colors"
+        class="w-full text-center bg-red-600 text-white py-3 px-6 rounded-lg hover:bg-red-700 transition-colors"
       >
         📖 詳しい記事を見る
       </a>
-      <button 
-        class="modal-close bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors"
-      >
-        閉じる
-      </button>
     </div>
   </div>
 </div>
