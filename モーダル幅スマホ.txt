@@ -1,0 +1,15 @@
+▶北海道
+
+https://kasaman04.github.io/TerraScope-Japan/ja/blog/hokkaido/
+
+<div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="openCityModal('iwamizawa')"> <div class="relative h-32 overflow-hidden"> <img src="" alt="岩見沢市" class="w-full h-full object-cover" loading="lazy"> <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div> <div class="absolute bottom-2 left-3 text-white"> <h4 class="font-bold">岩見沢市</h4> </div> </div> <div class="p-4"> <p class="text-sm text-gray-600 mb-2">農業都市・空知管理大学</p> <p class="text-xs text-gray-500">約8.1万人</p> </div> </div>
+
+
+▶兵庫
+
+https://kasaman04.github.io/TerraScope-Japan/ja/blog/hyogo/
+
+<div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick="openCityModal('kobe')"> <div class="relative h-32 overflow-hidden"> <img src="" alt="神戸市" class="w-full h-full object-cover" loading="lazy"> <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div> <div class="absolute bottom-2 left-3 text-white"> <h4 class="font-bold">神戸市</h4> </div> </div> <div class="p-4"> <p class="text-sm text-gray-600 mb-2">国際港湾都市</p> <p class="text-xs text-gray-500">約153万人</p> </div> </div>
+
+
+スマホ表示のときの幅も兵庫に合わせて

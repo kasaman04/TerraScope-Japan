@@ -147,7 +147,7 @@ const mieCities = {
       <!-- Cities Cards -->
       <div>
         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">主要な市区町村</h3>
-        <div class="grid md:grid-cols-2 gap-6 justify-center max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-6">
           {Object.entries(mieCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
