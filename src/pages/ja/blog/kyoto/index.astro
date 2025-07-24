@@ -481,6 +481,7 @@ const kyotoCities = {
     // モーダル関連の変数とイベント処理
     let currentCityKey = '';
     const modal = document.getElementById('city-modal');
+  if (!modal) return;
 
     // モーダルを開く
     function openCityModal(cityKey) {

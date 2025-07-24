@@ -201,7 +201,7 @@ const niigataCities = {
                   <h4 class="font-bold text-lg">{city.title}</h4>
                 </div>
                   {city.tags && city.tags.slice(0, 2).map(tag => (
-                    <span class="text-xs bg-sky-100 text-sky-800 px-2 py-1 rounded-full font-medium">{tag}</span>
+                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">{tag}</span>
                   ))}
                 </div>
                 <p class="text-xs text-gray-500">{city.population}</p>
@@ -370,7 +370,7 @@ const niigataCities = {
       if (city.tags) {
         city.tags.forEach(tag => {
           const tagElement = document.createElement('span');
-          tagElement.className = 'text-xs bg-sky-100 text-sky-800 px-3 py-1 rounded-full font-medium';
+          tagElement.className = 'text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium';
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });
@@ -386,6 +386,7 @@ const niigataCities = {
 
       // モーダルを表示（アニメーション付き）
       const modal = document.getElementById('city-modal');
+  if (!modal) return;
       modal.classList.remove('invisible', 'opacity-0');
       modal.classList.add('opacity-100');
       modal.querySelector('.bg-white').classList.remove('scale-95');
@@ -396,6 +397,7 @@ const niigataCities = {
     // モーダルを閉じる
     function closeModal() {
       const modal = document.getElementById('city-modal');
+  if (!modal) return;
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -409,6 +411,7 @@ const niigataCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
+  if (!modal) return;
       const modalClose = document.getElementById('modal-close');
       const closeModalBtn = document.getElementById('close-modal-btn');
 

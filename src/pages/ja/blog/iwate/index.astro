@@ -498,6 +498,7 @@ const iwateCities = {
 
       // モーダルを表示（アニメーション付き）
       const modal = document.getElementById('city-modal');
+  if (!modal) return;
       modal.classList.remove('invisible', 'opacity-0');
       modal.classList.add('opacity-100');
       modal.querySelector('.bg-white').classList.remove('scale-95');
@@ -508,6 +509,7 @@ const iwateCities = {
     // モーダルを閉じる
     function closeModal() {
       const modal = document.getElementById('city-modal');
+  if (!modal) return;
       modal.classList.add('opacity-0');
       modal.querySelector('.bg-white').classList.add('scale-95');
       modal.querySelector('.bg-white').classList.remove('scale-100');
@@ -521,6 +523,7 @@ const iwateCities = {
     // モーダルイベントリスナー
     document.addEventListener('DOMContentLoaded', function() {
       const modal = document.getElementById('city-modal');
+  if (!modal) return;
 
       // モーダル背景クリックで閉じる
       if (modal) {
