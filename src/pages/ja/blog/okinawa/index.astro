@@ -152,13 +152,7 @@ const okinawaCities = {
           {Object.entries(okinawaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
-              <div class="relative h-48 overflow-hidden">
-                <img 
-                  src={city.image}
-                  alt={city.title}
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
+              <div class="relative h-48 overflow-hidden bg-gradient-to-br from-cyan-500 to-blue-600">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-3 left-3 text-white">
                   <h4 class="font-bold text-lg">{city.title}</h4>
@@ -192,7 +186,6 @@ const okinawaCities = {
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
 
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
@@ -229,7 +222,7 @@ const okinawaCities = {
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
       <div class="space-y-3">
-        <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+        <button type="button" id="modal-details-btn" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors">
           📖 詳しい記事を見る
         </button>
       </div>
@@ -296,8 +289,6 @@ const okinawaCities = {
       if (!city) return;
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title;
       document.getElementById('modal-title').textContent = city.title;
       document.getElementById('modal-features').textContent = city.features;
       document.getElementById('modal-population').textContent = city.population;
@@ -318,6 +309,14 @@ const okinawaCities = {
           tagElement.textContent = tag;
           tagsContainer.appendChild(tagElement);
         });
+      }
+
+      // ボタンのURL設定
+      const detailsBtn = document.getElementById('modal-details-btn');
+      if (detailsBtn && city.pageUrl) {
+        detailsBtn.onclick = () => {
+          window.location.href = city.pageUrl;
+        };
       }
 
       // モーダルを表示（アニメーション付き）

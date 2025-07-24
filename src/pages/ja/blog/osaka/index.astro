@@ -651,7 +651,6 @@ const osakaCities = {
       }
 
       // モーダル内容を更新（存在チェック付き）
-      const modalImage = document.getElementById('modal-image');
       const modalTitle = document.getElementById('modal-title');
       const modalFeatures = document.getElementById('modal-features');
       const modalPopulation = document.getElementById('modal-population');
@@ -663,10 +662,6 @@ const osakaCities = {
       const modalDescription = document.getElementById('modal-description');
       const tagsContainer = document.getElementById('modal-tags');
 
-      if (modalImage) {
-        modalImage.src = city.image || '';
-        modalImage.alt = city.title || '';
-      }
       if (modalTitle) modalTitle.textContent = city.title || '';
       if (modalFeatures) modalFeatures.textContent = city.features || '';
       if (modalPopulation) modalPopulation.textContent = city.population || '';
@@ -688,6 +683,14 @@ const osakaCities = {
             tagsContainer.appendChild(tagElement);
           });
         }
+      }
+
+      // ボタンのクリックイベントを設定
+      const articleLinkBtn = document.getElementById('modal-article-link');
+      if (articleLinkBtn && city.pageUrl) {
+        articleLinkBtn.onclick = function() {
+          window.location.href = city.pageUrl;
+        };
       }
 
       // モーダルを表示（アニメーション付き）
@@ -745,7 +748,6 @@ const osakaCities = {
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
 
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
@@ -782,7 +784,8 @@ const osakaCities = {
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
       <div class="space-y-3">
-        <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+        <button id="modal-article-link" type="button" 
+                class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors">
           📖 詳しい記事を見る
         </button>
       </div>
