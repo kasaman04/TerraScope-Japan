@@ -220,7 +220,7 @@ const aomoriCities = {
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
       <div>
-        <button type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" disabled>
+        <button id="modal-article-link" type="button" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors" >
           📖 詳しい記事を見る
         </button>
       </div>
@@ -297,6 +297,14 @@ const aomoriCities = {
       document.getElementById('modal-rent').textContent = city.rent;
       document.getElementById('modal-recommend').textContent = city.recommend;
       document.getElementById('modal-description').textContent = city.description;
+
+      // ボタンのクリックイベントを設定
+      const articleLinkBtn = document.getElementById('modal-article-link');
+      if (articleLinkBtn && city.pageUrl) {
+        articleLinkBtn.onclick = function() {
+          window.location.href = city.pageUrl;
+        };
+      }
 
       // タグを表示
       const tagsContainer = document.getElementById('modal-tags');
