@@ -152,9 +152,9 @@ const akitaCities = {
   <!-- Breadcrumb -->
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
     <ol class="flex items-center space-x-2 text-sm text-gray-600">
-      <li><a href="/ja/" class="hover:text-orange-600">ホーム</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-orange-600">ホーム</a></li>
       <li><span class="mx-2">/</span></li>
-      <li><a href="/ja/blog/" class="hover:text-orange-600">地域別生活情報</a></li>
+      <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-orange-600">地域別生活情報</a></li>
       <li><span class="mx-2">/</span></li>
       <li class="text-gray-900 font-medium">秋田県</li>
     </ol>
