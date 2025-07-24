@@ -152,16 +152,16 @@ const tottoriCities = {
           {Object.entries(tottoriCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
-              <div class="relative h-48 overflow-hidden">
+              <div class="relative h-32 overflow-hidden">
                 <img 
                   src={city.image}
                   alt={city.title}
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  class="w-full h-full object-cover "
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-3 left-3 text-white">
-                  <h4 class="font-bold text-lg">{city.title}</h4>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
                 </div>
                   {city.tags && city.tags.slice(0, 2).map(tag => (
                     <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full font-medium">{tag}</span>

@@ -152,10 +152,10 @@ const sagaCities = {
           {Object.entries(sagaCities).map(([key, city]) => (
             <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" onclick={`openCityModal('${key}')`}
                  >
-              <div class="relative h-48 overflow-hidden bg-gradient-to-br from-green-500 to-blue-600">
+              <div class="relative h-32 overflow-hidden bg-gradient-to-br from-green-500 to-blue-600">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div class="absolute bottom-3 left-3 text-white">
-                  <h4 class="font-bold text-lg">{city.title}</h4>
+                <div class="absolute bottom-2 left-3 text-white">
+                  <h4 class="font-bold">{city.title}</h4>
                 </div>
                   {city.tags && city.tags.slice(0, 2).map(tag => (
                     <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium">{tag}</span>
