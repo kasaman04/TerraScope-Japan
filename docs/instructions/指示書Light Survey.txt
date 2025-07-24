@@ -1,0 +1,132 @@
+Claude Code 指示書 – Light Survey（サービス詳細）ページ
+ファイル名 /services/light-survey.yaml.md
+Home → Services 一覧で “Light Survey” カードからリンクされる詳細ページです。
+そのままコピーし Claude Code に送れば実装できます。
+
+0. 追加・更新ファイル
+bash
+コピーする
+編集する
+/services/
+ └─ light-survey.yaml.md      ← ★今回作成
+/assets/
+ └─ data/
+     ├─ faq_light.yaml        ← ★新規（Light Survey 専用 FAQ）
+/components/
+ ├─ Checklist.astro           ← ★新規（チェックアイコン付き箇条書き）
+ ├─ PdfPreview.astro          ← ★新規（レポート抜粋をモーダル表示）
+ └─ StepTimeline.astro        ← Services 一覧の <ol> を独立化（再利用）
+1. ページ骨子（そのまま貼り付け可）
+yaml
+コピーする
+編集する
+---
+title: "Light Survey – Boundary & Zoning Quick Check"
+description: "A fast, affordable due-diligence package for overseas buyers who need essential insights before making an offer."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_bg: "/assets/img/light-hero.jpg"   # 任意の画像
+price: "¥50,000"
+turnaround: "3 business days"
+---
+
+<!-- ===== Hero ===== -->
+<section class="relative isolate">
+  <img src={frontmatter.hero_bg} alt="" class="w-full h-[35vh] object-cover brightness-75" />
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">Light Survey</h1>
+    <p class="text-lg">Quick boundary & zoning check, delivered in {frontmatter.turnaround}.</p>
+    <span class="px-4 py-2 mt-4 bg-primary-600 rounded-md text-xl font-semibold">¥50,000</span>
+  </div>
+</section>
+
+<!-- ===== Package Overview ===== -->
+<section class="max-w-5xl mx-auto px-6 py-14">
+  <h2 class="text-2xl font-semibold mb-6">What’s included</h2>
+  <Checklist items={[
+    "Official boundary confirmation with on-site photos",
+    "Zoning & land-use map overlay in English",
+    "Basic hazard screening (flood & landslide)",
+    "4-page English summary PDF",
+    "30-min follow-up call to discuss next steps"
+  ]}/>
+</section>
+
+<!-- ===== Sample Report Preview ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-2xl font-semibold mb-6">See a sample report</h2>
+    <PdfPreview
+      thumbnail="/assets/img/sample-light-thumb.jpg"
+      src="/assets/pdf/sample-light-survey.pdf"
+      caption="Download our redacted example (2 MB)"
+    />
+  </div>
+</section>
+
+<!-- ===== Workflow Timeline ===== -->
+<StepTimeline steps={[
+  { title:"Submit property info", desc:"Send us the plot map, location pin and your concerns." },
+  { title:"Desktop & on-site check", desc:"We verify boundaries, zoning, and hazards." },
+  { title:"Deliver PDF & call", desc:"Receive the report and ask questions in a video call." },
+]}
+/>
+
+<!-- ===== Optional Add-ons ===== -->
+<section class="max-w-5xl mx-auto px-6 py-14">
+  <h2 class="text-2xl font-semibold mb-6">Optional add-ons</h2>
+  <ul class="grid md:grid-cols-2 gap-6">
+    <li class="p-6 border rounded-xl">
+      <h3 class="font-semibold mb-2">360° VR Capture <span class="text-primary-600">+¥30,000</span></h3>
+      <p class="text-gray-600">4K drone & 360° footage stitched into an interactive viewer.</p>
+    </li>
+    <li class="p-6 border rounded-xl">
+      <h3 class="font-semibold mb-2">Full Risk Upgrade <span class="text-primary-600">+¥70,000</span></h3>
+      <p class="text-gray-600">Hazard deep-dive, legal & tax checklist — pays only the difference!</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-semibold text-center mb-8">FAQ</h2>
+    <Accordion dataSrc="/assets/data/faq_light.yaml" />
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="bg-primary-600 py-12 text-center text-white">
+  <h2 class="text-2xl font-semibold mb-4">Ready for peace of mind?</h2>
+  <a href="/contact?service=light" class="btn btn-lg btn-white shadow-lg">
+    Request your Light Survey
+  </a>
+</section>
+2. 新規データ例
+/assets/data/faq_light.yaml
+yaml
+コピーする
+編集する
+- q: "Do you visit the site in person?"
+  a: "Yes, we take on-site photos of boundary markers and surroundings."
+- q: "What if official maps are missing?"
+  a: "We will advise on additional surveys or suggest the Full Risk package."
+- q: "Can I upgrade after receiving the Light Survey?"
+  a: "Yes, pay only the price difference within 60 days."
+3. 新規コンポーネント概要
+コンポーネント	Props	概要
+Checklist.astro	items: string[]	✓ アイコン付きリスト (<li> + Lucide Check)
+PdfPreview.astro	thumbnail, src, caption	クリックで <dialog> モーダル表示＋ダウンロード
+StepTimeline.astro	steps: {title,desc}[]	縦ライン＋ドット。SP=縦、MD=横でも可
+
+StepTimeline は Services 一覧の <ol> を切り出して再利用しても OK。
+
+4. 実装チェックリスト
+ /services/index.yaml.md の ServiceCards のリンクを href="/services/light-survey" に更新
+
+ PdfPreview の PDF ファイルは仮で空ダミー可（ビルド通ること優先）
+
+ Lighthouse モバイル LCP < 2.5 s
+
+ CTA クエリパラメータ ?service=light が Contact フォームに渡る想定
+

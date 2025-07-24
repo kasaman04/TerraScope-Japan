@@ -1,0 +1,175 @@
+Claude Code 指示書 – Contact（問い合わせ ⇒ CRM 登録）
+目的
+1 ページ構成で
+
+問い合わせフォームを表示
+
+送信すると thank-you ページへリダイレクト
+
+同時に CRM（例：HubSpot / Airtable / Notion / Google Sheet）へリード情報を登録
+までを自動化します。
+ファイル名 /contact.yaml.md（フォーム） と /contact/thank-you.yaml.md（完了表示）
+
+0. 追加フォルダ & ファイル
+bash
+コピーする
+編集する
+/contact.yaml.md                  ← ★フォームページ
+/contact/thank-you.yaml.md        ← ★送信完了ページ
+/src/
+ └─ api/
+     └─ submit-contact.ts         ← ★サーバレス関数（CRM 連携）
+/components/
+ └─ ContactForm.astro             ← ★フォーム UI
+/env.example                       ← API キー用サンプル
+1. ルーティングとフロー図
+scss
+コピーする
+編集する
+[ /contact ]  ─ submit (fetch POST) ─►  [/api/submit-contact] ─► CRM REST API
+       │                                                │
+       └─────── 302 redirect (status=SeeOther) ◄────────┘
+                             ▼
+                  [ /contact/thank-you ]
+2. /contact.yaml.md – ページ骨子
+yaml
+コピーする
+編集する
+---
+title: "Contact – Free Consultation"
+description: "Get a tailored quote for land survey or VR capture."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+---
+
+<section class="max-w-3xl mx-auto px-6 py-16">
+  <h1 class="text-3xl font-semibold text-center mb-8">Get in Touch</h1>
+  <ContactForm action="/api/submit-contact" />
+  <p class="mt-6 text-sm text-gray-500">
+    By submitting, you agree to our <a href="/legal/privacy" class="underline">Privacy Policy</a>.
+  </p>
+</section>
+3. <ContactForm.astro> – Props & UI
+フィールド	name	type	validation
+Service	service	hidden or select (prefill via URL param)	
+Name	name	text	required, minLength=2
+Email	email	email	required, pattern check
+Message	msg	textarea	optional
+
+astro
+コピーする
+編集する
+<form
+  method="POST"
+  action={Astro.props.action}
+  class="space-y-4"
+>
+  <input type="hidden" name="service" value={Astro.url.searchParams.get('service') ?? ''}/>
+  <!-- Name -->
+  <div>
+    <label class="block font-medium mb-1">Name</label>
+    <input name="name" required class="input"/>
+  </div>
+  <!-- Email -->
+  <div>
+    <label class="block font-medium mb-1">Email</label>
+    <input name="email" type="email" required class="input"/>
+  </div>
+  <!-- Message -->
+  <div>
+    <label class="block font-medium mb-1">Message</label>
+    <textarea name="msg" rows="4" class="input"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary w-full md:w-auto">Send</button>
+</form>
+Tailwind helpers: .input { @apply w-full border rounded-md px-3 py-2 }
+
+4. /contact/thank-you.yaml.md
+yaml
+コピーする
+編集する
+---
+title: "Thank You"
+description: "We’ll get back within 24 h."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+---
+
+<section class="h-[60vh] flex flex-col items-center justify-center text-center px-6">
+  <h1 class="text-3xl font-semibold mb-4">Thank you!</h1>
+  <p class="text-lg mb-6">We’ve received your message and will respond soon.</p>
+  <a href="/" class="btn btn-primary">Back to Home</a>
+</section>
+5. /src/api/submit-contact.ts – サーバレス関数
+ts
+コピーする
+編集する
+import type { APIRoute } from "astro";
+import { z } from "zod";
+
+const schema = z.object({
+  service: z.string().optional(),
+  name: z.string().min(2),
+  email: z.string().email(),
+  msg: z.string().max(1000).optional(),
+});
+
+export const POST: APIRoute = async ({ request, redirect, env }) => {
+  const data = Object.fromEntries(await request.formData());
+  const parsed = schema.parse(data);
+
+  /** 1) CRM へ POST（例：HubSpot） */
+  await fetch("https://api.hsforms.com/submissions/v3/integration/submit/{portalId}/{formId}", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fields: [
+        { name: "email", value: parsed.email },
+        { name: "firstname", value: parsed.name },
+        { name: "message", value: parsed.msg },
+        { name: "service", value: parsed.service },
+      ],
+      context: { pageUri: request.url, pageName: "Contact" },
+    }),
+  });
+
+  /** 2) SendGrid で社内通知メール（例） */
+  await fetch("https://api.sendgrid.com/v3/mail/send", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${env.SENDGRID_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      personalizations: [{ to: [{ email: "info@example.com" }] }],
+      from: { email: "noreply@example.com" },
+      subject: "New contact form submission",
+      content: [{ type: "text/plain", value: JSON.stringify(parsed, null, 2) }],
+    }),
+  });
+
+  /** 3) 完了ページへリダイレクト */
+  return redirect("/contact/thank-you", 303);
+};
+.env.example
+ini
+コピーする
+編集する
+SENDGRID_API_KEY=SG.xxxxx
+HUBSPOT_PORTAL_ID=123456
+HUBSPOT_FORM_ID=abcdef
+別 CRM を使う場合
+Airtable → PATCH https://api.airtable.com/v0/{base}/{table}
+Notion → POST https://api.notion.com/v1/pages
+Google Sheet → Apps Script Web App エンドポイント
+
+6. 実装チェックリスト
+ フォーム入力 → 送信 → /contact/thank-you に遷移
+
+ CRM ダッシュボードでレコードが生成されること
+
+ .env.local を .gitignore して公開リポジトリにキーが漏れない
+
+ reCAPTCHA v3 を ContactForm に後付け（本番前推奨）
+
+ Lighthouse：アクセシビリティスコア 90 以上

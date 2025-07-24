@@ -1,0 +1,122 @@
+🏁 Step 7 — GitHub Pages CI/CD
+目標 : git push → GitHub Actions → gh‑pages ブランチに静的サイトが自動公開
+（Cloudflare Workerと Sanity は既に外部にあるので、Pages に置くのは 純粋な dist/ だけです）
+
+1. リポジトリ準備
+bash
+コピーする
+編集する
+git init
+git remote add origin https://github.com/<USER>/<REPO>.git
+git add .
+git commit -m "init"
+git push -u origin main
+astro.config.mjs はもう base/site 設定済み
+js
+コピーする
+編集する
+base: "/<REPO>",
+site: "https://<USER>.github.io/<REPO>",
+2. GitHub Pages 設定
+Settings ▸ Pages
+
+Build & Deploy: GitHub Actions
+
+Branch: 空欄（Actions が gh-pages を自動作成）
+
+Custom Domain を使う場合は後で CNAME を追加
+
+3. Actions ワークフロー
+.github/workflows/deploy.yml
+
+yaml
+コピーする
+編集する
+name: CI & Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      pages: write      # allow gh-pages push
+      id-token: write   # allow OIDC for Pages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v2
+        with: { version: 9 }
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run build
+        env:
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          PUBLIC_SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          PUBLIC_SANITY_API_VERSION: "2025-07-15"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with: { path: "./dist" }
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+Secrets に入れるのは READ 専用 (SANITY_PROJECT_ID など)。
+Cloudflare Worker の write‑tokenは Pages には不要です。
+
+4. Secrets 登録
+Settings ▸ Secrets → Actions
+
+Name	Value
+SANITY_PROJECT_ID	xxxxxxx
+SANITY_DATASET	production
+
+5. 初回ビルド & 公開確認
+bash
+コピーする
+編集する
+git push
+# → Actions が走る
+Actions タブ：デプロイ成功 (“Deployed to gh‑pages”)
+
+Pages URL：https://<USER>.github.io/<REPO>/ でサイト表示
+
+パスベース多言語も動くか確認
+
+/zh/services/、/ko/about/ など
+
+6. 404 フォールバック（single‑page 対応）
+GitHub Pages では 404.html にトップリダイレクトを置くと SPA でも破綻しない。
+astro.config.mjs build adapterは自動で 404 を吐くので追加作業不要。
+
+7. Pull Request Preview (任意)
+deploy.yml に
+
+yaml
+コピーする
+編集する
+on:
+  pull_request:
+    branches: [main]
+＋ actions/deploy-pages の preview: true オプションで
+PR ごとにプレビュー URL が生成できる。
+
+8. 完了チェック
+ Actions が緑
+
+ gh‑pages ブランチが自動生成
+
+ sitemap-index.xml が公開 URL で開ける
+
+ /contact フォーム → Worker → Sanity まで本番 URL で動く
+
+ Multi‑lang (/ja/, /zh/) が 200
+
+これが済んだら「Pages デプロイ OK」と伝えてください。
+次は Step 8 — Sanity Publish → GitHub Actions 再ビルド Webhook を案内します。

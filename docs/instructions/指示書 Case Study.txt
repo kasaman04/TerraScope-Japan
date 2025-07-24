@@ -1,0 +1,78 @@
+Claude Code 指示書 – Case Study 個別詳細ページ
+(Case Studies 一覧 ► カードの SEO 対応版 URL)
+
+ファイル名例 /case-studies/sapporo-lakefront.yaml.md
+一覧ページのカード & モーダルはそのまま残しつつ、<CaseCard> の “Read full story” ボタンを
+href="/case-studies/{slug}" に変更して独立 URL でも閲覧できるようにします。
+
+0. 追加・更新ファイル
+bash
+コピーする
+編集する
+/case-studies/
+ └─ {slug}.yaml.md             ← ★今回作成（各事例ごと）
+/components/
+ ├─ MetricBadges.astro         ← ★新規
+ └─ BeforeAfterSlider.astro    ← （任意：ビジュアル比較）
+1. ページ骨子テンプレ
+下記を複製 → slug やデータ部分を書き換えるだけで新事例が増やせる構成
+
+yaml
+コピーする
+編集する
+---
+title: "Case Study – Lakefront Plot in Sapporo"
+description: "Our Full‑Risk Report helped a Hong Kong investor save ¥3.2 M and build an eco‑lodge."
+lang: "en"
+layout: "@layouts/BlogLayout.astro"   # Blog と同じ長文レイアウトを再利用
+date: "2024‑11‑10"
+service: "full"         # services.yaml の key
+cover: "/assets/img/cases/sapporo-cover.jpg"
+location: "Sapporo, Hokkaido"
+metrics:
+  - "⏰ Turnaround: 10 days"
+  - "💰 Price saved: ¥3.2 M"
+  - "📄 Pages delivered: 18"
+reading_time: 4
+---
+
+<!-- Hero -->
+![Lakefront aerial]({frontmatter.cover})
+
+> **Key result**  
+> -¥3.2 M negotiated reduction after flooding risk offset identified.
+
+`<!-- excerpt-end -->`
+
+## Client Goal
+
+The buyer wanted to build **six eco‑cabins** overlooking Lake Shikotsu, but was unsure about flood zoning and building height limits …
+
+## Our Approach
+
+<MetricBadges list={frontmatter.metrics}/>
+
+1. **Floodplain analysis** using the newest MLIT 1 m mesh DEM.  
+2. **Legal zone check** — the plot straddled a quasi‑national park requiring a 5 m setback.  
+3. **Drone 360 ° survey** to visualise slope and lake view corridors.
+
+```mermaid
+flowchart LR
+A(Plot pin) --> B[GIS hazard overlay]
+B --> C{Risk?}
+C -- yes --> D[Recommend price negotiation]
+C -- no --> E[Proceed to contract]
+Outcome
+Seller accepted a 12 % discount due to flood mitigation cost.
+
+Buyer received bank approval with our report attached.
+
+Construction permits granted in April 2025.
+
+:::tip Next step
+Interested in a similar Full‑Risk Report?
+Get a quote
+:::
+
+<!-- optional before/after slider -->
+<BeforeAfterSlider before="/assets/img/cases/sapporo-before.jpg" after="/assets/img/cases/sapporo-after.jpg" caption="Drone orthophoto vs finished eco‑lodge" />

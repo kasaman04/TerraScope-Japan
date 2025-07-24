@@ -1,0 +1,34 @@
+🏁 Step 10 — 最終 QA & 公開チェックリスト
+これを通せば “正式公開” です。項目を一つずつ確認し、済んだら ✔ を入れてください。
+
+✅	チェック項目	具体的な確認方法
+1. ページ巡回	全 20 ページを手動クリック。404／画像欠け／言語切替をチェック
+2. 多言語 URL	/, /ja/, /zh/, /zh-TW/, /ko/ で
+ヘッダー文言・Cookie バナーが正しく翻訳
+3. フォーム送信	本番 URL /contact → 送信 → /contact/thank-you
+Sanity Studio で lead ドキュメント生成
+4. Cloudflare Worker	Network タブで 2xx 応答・CORS エラー無し
+5. GA4 ヒット	Realtime で page_view が計測
+バナー未承諾時はヒットなし
+6. Lighthouse モバイル	Performance / A11y / SEO / Best Practices ≥ 90
+7. robots.txt / sitemap	https://…/robots.txt に sitemap 行
+sitemap-index.xml がブラウザで開く
+8. canonical / hreflang	View Source で <link rel="canonical"> と 5 言語 <link rel="alternate" hreflang>
+9. Webhook 再ビルド	Studio で Post を Publish → GitHub Actions “Manual Redeploy via API” が走り、
+Pages に反映
+10. Cookie Consent 再表示	ブラウザ DevTools → Application → Local Storage → cookie-consent を削除 → ページ再読込でバナー再表示
+11. PWA (任意)	manifest.webmanifest／Service Worker が必要なら後追い
+12. README & ドキュメント	セットアップ手順・.env 例・CI フローを記載してコミット
+13. 独自ドメイン (任意)	DNS CNAME → GitHub Pages で HTTPS 有効化
+
+公開アナウンス
+Search Console : プロパティ追加 → sitemap-index.xml 送信
+
+SNS / メール : ヒーロー動画 GIF とともに告知
+
+業者向け DM : “無料 VR 撮影キャンペーン” で初期案件を募集
+
+これでロードマップはすべて達成です 🎉
+チェック完了後、何かバグや改善点が見つかったらいつでも相談してください。さらなる機能追加（PWA、プッシュ通知、多国通貨対応など）もお手伝いできます。
+
+公開準備が整ったら “Launch 完了！” と教えてください。

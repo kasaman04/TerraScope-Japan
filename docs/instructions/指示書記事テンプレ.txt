@@ -1,0 +1,91 @@
+Claude Code 指示書 – Blog 個別記事テンプレ
+用途
+
+/posts/ 配下に 1 記事 = 1 ファイルで追加
+
+Markdown + YAML Front-Matter 方式
+
+この記事テンプレを複製 → タイトル・日付・カテゴリなどを書き換えて運用
+
+0. ファイル命名ルール
+yaml
+コピーする
+編集する
+/posts/
+  2025-07-15-special-zone-guide.en.md   ← 日付-slug-lang.md
+  2025-07-15-special-zone-guide.ja.md   ← 言語別に拡張子前で切替
+要素	例	備考
+日付	YYYY-MM-DD	公開日（ISO）
+slug	kebab-case	記事 URL は自動で /blog/{slug}/
+lang	en / ja / zh	多言語運用（i18n フォルダと連携）
+
+1. テンプレート全文（コピー可）
+markdown
+コピーする
+編集する
+---
+title: "A Complete Guide to Japan’s Special Attention Zones"
+description: "Understand the 2024 Foreign Land Act amendments and how special zones affect property purchases."
+date: "2025-07-15"
+lang: "en"
+cover: "/assets/img/blog/special-zone-cover.jpg"
+categories: ["legal"]
+tags: ["permit", "zoning"]
+reading_time: 8        # 分
+cta_service: "full"    # services.yaml の key
+faq:
+  - q: "Do I need to file a notification before purchase?"
+    a: "Yes, if the land is inside a Special Attention Zone you must file..."
+  - q: "What qualifies as a military facility?"
+    a: "Any JSDF base, designated..."
+layout: "@layouts/BlogLayout.astro"
+---
+
+<!-- 🏷️ イントロ -->
+> **TL;DR**&nbsp;  
+> Since 2024, foreign buyers must **file a notification 2 weeks prior** to acquiring land within a Special Attention Zone.  
+> Skipping this step can lead to fines up to **¥1 million**.
+
+`<!-- excerpt-end -->`
+
+### 1. What Is a Special Attention Zone?
+
+Japan’s “Important Land & Property Act” (重要土地等調査法) introduced two designations:
+
+| Designation            | Purpose                                 | Current Count |
+|------------------------|-----------------------------------------|--------------|
+| ⛰️ **Watch Zone**      | Monitor sensitive areas near bases      | 332          |
+| 🚫 **Special Zone**    | Stricter review, pre-purchase notice    | 251          |
+
+### 2. How to Check If Your Plot Falls Inside a Zone
+
+1. Grab the coordinates of your land pin.  
+2. Use the official KML file (link below) in QGIS **or** visit our online map:
+
+```mermaid
+sequenceDiagram
+    User->>Map: Paste location
+    Map-->>User: Zone = Special
+    User-->>SurveyTeam: Request Full Report
+3. Filing the Notification – Step-by-Step
+Step	Form	Who to submit	Lead Time
+1	特調法第8条様式第1	Prefectural Governor	14 days
+2	添付図面	City Hall	—
+3	Translation (JP→EN)	—	2 days
+
+Need help? Our Full Risk Report includes drafting and filing the notification for you.
+Request a quote
+
+4. Penalties & Real-World Cases
+March 2025 – A Hong Kong investor was fined ¥600k for failing to notify in Aomori.
+
+June 2025 – Purchase blocked near Sasebo Naval Base; buyer withdrew.
+
+Key Takeaways
+Always verify zone status before signing a purchase contract.
+
+Notification is mandatory only in Special (🚫) zones.
+
+Professional guidance can cut lead time by 2 weeks.
+
+<!-- 👇 自動 CTA セクションは BlogLayout で挿入 <BlogCTA service={frontmatter.cta_service}/> --> <!-- FAQ は layout で Accordion に変換 -->

@@ -1,0 +1,89 @@
+🛰 Step 8 — Sanity → GitHub Actions 自動再ビルド Webhook
+ゴール : Studio で “Publish” を押すたびに GitHub Pages が再ビルド＆再デプロイ
+（新しい記事・FAQ・サービスを追加しても手動デプロイ不要に）
+
+1. GitHub Personal Access Token (PAT)
+GitHub ▸ Settings ▸ Developer settings ▸ PATs (Fine‑grained)
+
+Repository access → Only select repositories → 選択
+
+Permissions
+
+Actions: Read & Write
+
+Contents: Read & Write (dispatch endpoint内部で必要)
+
+Generate token → コピー（ghp_xxxxxxxxx）
+
+2. 新しい GitHub Actions ワークフロー (dispatch)
+.github/workflows/dispatch-deploy.yml
+
+yaml
+コピーする
+編集する
+name: Manual Redeploy via API
+on:
+  repository_dispatch:
+    types: [sanity-publish]
+
+jobs:
+  redeploy:
+    uses: ./.github/workflows/deploy.yml   # 既存ワークフローを再利用
+    secrets: inherit
+既に main→deploy.yml ワークフローがあるので、
+repository_dispatch で同じ build ステップを再利用します。
+
+3. Sanity Webhook 設定
+Sanity Studio ▸ Project settings ▸ API ▸ Webhooks ▸ + New
+
+Trigger on → document.publish
+
+URL
+
+bash
+コピーする
+編集する
+https://api.github.com/repos/<USER>/<REPO>/dispatches
+HTTP method → POST
+
+Headers
+
+Authorization: token YOUR_GH_PAT
+
+Accept: application/vnd.github+json
+
+Payload (Body)
+
+json
+コピーする
+編集する
+{
+  "event_type": "sanity-publish"
+}
+Filter (任意)
+
+Type: include -> posts, caseStudy, faq, service, team
+
+4. テスト
+Studio で任意ドキュメントを Publish
+
+GitHub ▸ Actions → Manual Redeploy via API ワークフローが走る
+
+完了後 Pages URL で Ctrl+F5 → 反映を確認
+
+/services/ に新サービスが出るなど
+
+5. 安全対策
+リスク	対策
+PAT 露出	スコープ最小 (1 repo) + Expiration 90 d
+ビルド頻度過多	Webhook filterで doc type を絞る / Draft Save はトリガしない
+
+6. 完了チェック
+ repository_dispatch が成功ログ (“triggered via sanity‑publish”)
+
+ ページが更新（サイトに新記事等が出現）
+
+ No manual push needed
+
+終わったら「Webhook OK」 とだけ返信してください。
+確認後、Step 9 — GA4 設定 & Cookie Consent バナー をガイドします。

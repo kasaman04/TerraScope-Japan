@@ -1,0 +1,97 @@
+1. リポジトリを本番 GitHub に Push
+bash
+コピーする
+編集する
+# まだなら
+git init
+git remote add origin https://github.com/<USER>/<REPO>.git
+git branch -M main
+
+# キャッシュ無視ファイルを追加（念のため）
+echo ".env.local" >> .gitignore
+
+# コミット & プッシュ
+git add .
+git commit -m "🚀 initial deploy"
+git push -u origin main
+✅
+
+2. Secrets を本番値にセット
+Secret 名	値の確認先
+SANITY_PROJECT_ID	Sanity Studio ▸ Project ID
+SANITY_DATASET	production
+PUBLIC_GA_ID	GA4 測定 ID (G‑XXXXXXXXXX)
+
+Settings ▸ Secrets ▸ Actions ▸ New repository secret
+入力後 Save を押す。
+
+✅
+
+3. GitHub Pages を有効化
+Repository ▸ Settings ▸ Pages
+
+Build & Deploy → “GitHub Actions” を選択
+（branch / folder の入力欄は 空のまま）
+
+Save
+
+Actions が動き、gh-pages ブランチが自動生成 → 数分後公開 URL が表示されます。
+✅
+
+4. 独自ドメイン (任意ならスキップ)
+ドメイン DNS 管理で
+
+A レコード → 185.199.108.153 など Pages 用４ IP
+
+CNAME → <USER>.github.io
+
+GitHub Pages ページで Custom domain に入力 → Save → Enforce HTTPS を ON
+
+✅ / ❎（スキップ）
+
+5. Search Console 登録
+https://search.google.com/search-console
+
+URL プレフィックス → https://yourdomain/
+
+“HTML タグ” を選び、<meta name="google-site-verification"...> をコピー
+
+SeoHead.astro の <head> 内に一度だけ貼付
+
+Verify → OK 後 meta タグは残しておく
+
+サイトマップ ➜ https://yourdomain/sitemap-index.xml 送信
+
+✅
+
+6. GA4 動作確認
+公開 URL を開き まだ同意しない状態 → GA Realtime にヒットしない
+
+Cookie バナーで Accept → GA Realtime で page_view が計測
+
+✅
+
+7. テスト送信
+本番 /contact でテスト入力 → Send
+
+Studio → lead ドキュメントが作成
+
+GitHub Actions repository_dispatch が走らないか確認
+（lead ではトリガしない設計なら動作しなくて OK）
+
+✅
+
+8. ファイナル QA
+404：ランダム URL でカスタム 404 が出る
+
+多言語：/zh/services/ など 200
+
+Performance：Live URL で Lighthouse モバイル ≥ 90
+
+Cookie バナー：他言語でも翻訳が正しい
+
+✅
+
+全チェック ✅ で「公開完了」です！
+もし途中でエラーが出たら症状をそのまま教えてください（ログ・URL・スクショなど）。
+成功が確認できたらリリースアナウンスの文案や、次のマーケティング施策もサポートできます。

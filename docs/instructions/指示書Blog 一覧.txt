@@ -1,0 +1,125 @@
+Claude Code 指示書 – Blog 一覧ページ
+ファイル名 /blog/index.yaml.md
+既存記事（Markdown）をカード形式で一覧表示し、カテゴリ／タグでフィルタできるページです。
+Home や Services と同様に コピー → Claude Code へ貼り付ければ実装できます。
+
+0. 追加・更新ファイル
+bash
+コピーする
+編集する
+/blog/
+ └─ index.yaml.md                ← ★今回作成
+/posts/
+ └─ {slug}.md                    ← 既存 or 後日追加する記事
+/assets/
+ └─ data/
+     ├─ blog_categories.yaml     ← ★新規（カテゴリ定義）
+     └─ blog_tags.yaml           ← ★新規（タグ色などオプション）
+/components/
+ ├─ BlogCard.astro               ← ★新規（記事カード）
+ ├─ CategoryFilter.astro         ← ★新規（カテゴリ Pills）
+ ├─ TagFilter.astro              ← ★新規（タグドロップダウン）
+ └─ Pagination.astro             ← ★新規（簡易ページネーション）
+1. ページ骨子（そのまま貼り付け可）
+yaml
+コピーする
+編集する
+---
+title: "Insights – Blog Index"
+description: "In-depth guides on Japanese land purchase, regulations and risk management."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_bg: "/assets/img/blog-hero.jpg"
+per_page: 9   # 1 ページあたり記事件数
+---
+
+<!-- ===== Hero ===== -->
+<section class="relative isolate">
+  <img src={frontmatter.hero_bg} alt="" class="w-full h-[35vh] object-cover brightness-75" />
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Knowledge Hub</h1>
+    <p class="text-lg">Actionable insights for overseas buyers.</p>
+  </div>
+</section>
+
+<!-- ===== Filters ===== -->
+<section class="max-w-6xl mx-auto px-6 py-10">
+  <div class="flex flex-wrap items-center gap-4">
+    <CategoryFilter dataSrc="/assets/data/blog_categories.yaml" />
+    <TagFilter dataSrc="/assets/data/blog_tags.yaml" />
+  </div>
+</section>
+
+<!-- ===== Blog Grid ===== -->
+<section class="max-w-6xl mx-auto px-6 pb-16">
+  <div
+    class="grid gap-8"
+    class:md="grid-cols-2"
+    class:lg="grid-cols-3"
+  >
+    {
+      /** Astro glob import */
+      const { currentPage, collection } = Astro.pagination;
+      const posts = await Astro.glob('../posts/**/*.md');
+      const filtered = filterPosts(posts, Astro.props); // util to apply cat/tag
+      const paginated = paginate(filtered, frontmatter.per_page, currentPage);
+      for (const post of paginated.data) {
+    }
+      <BlogCard entry={post} />
+    { }
+  </div>
+
+  <!-- Pagination -->
+  <Pagination total={paginated.total} current={paginated.page} url="/blog/" />
+</section>
+ユーティリティ注
+
+filterPosts と paginate は /utils/blog.ts に置く想定（Claude Code で実装）。
+
+カテゴリ・タグの状態管理は クエリパラメータ（例 ?cat=hazard&tag=law）で行うとシンプル。
+
+2. コンポーネント仕様
+コンポーネント	Props	概要
+BlogCard.astro	entry	- entry.frontmatter.{title,date,cover,excerpt,categories,tags} をカード表示
+- カバー画像を object-cover h-40 w-full rounded-t-xl
+CategoryFilter.astro	dataSrc	- YAML の id, label を読み込み
+- 選択中は bg-primary-600 text-white Pill
+TagFilter.astro	dataSrc	- ドロップダウン or react-select 風 UI
+- タグ選択ごとに URL 更新
+Pagination.astro	total, current, url	- 前後ボタン＋ページ番号 (<=7)
+
+3. データファイル例
+/assets/data/blog_categories.yaml
+yaml
+コピーする
+編集する
+- id: hazard
+  label: "Hazard Risk"
+- id: legal
+  label: "Legal & Tax"
+- id: drone
+  label: "Drone & VR"
+- id: case
+  label: "Case Studies"
+/assets/data/blog_tags.yaml
+yaml
+コピーする
+編集する
+- id: flood
+  label: "Flood"
+  color: "cyan"
+- id: zoning
+  label: "Zoning"
+  color: "emerald"
+- id: permit
+  label: "Permit"
+  color: "amber"
+4. 実装チェックリスト
+ Home の BlogTeasers のリンクを /blog/ に更新
+
+ filterPosts()：カテゴリは AND, タグは OR など適宜ロジック定義
+
+ 404 防止のため記事が 0 件でも “Coming soon” プレースホルダ表示
+
+ Lighthouse モバイル LCP < 2.5 s
+

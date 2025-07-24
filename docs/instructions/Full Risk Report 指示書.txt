@@ -1,0 +1,96 @@
+
+title: "Full Risk Report – Comprehensive Due‑Diligence"
+description: "Flood, landslide, seismic, legal & tax analysis in a single 15‑page English report."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_bg: "/assets/img/full-hero.jpg"
+price: "¥120,000"
+turnaround: "7 business days"
+---
+
+<!-- ===== Hero ===== -->
+<section class="relative isolate">
+  <img src={frontmatter.hero_bg} alt="" class="w-full h-[35vh] object-cover brightness-75"/>
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">Full Risk Report</h1>
+    <p class="text-lg">All‑in‑one due‑diligence, delivered in {frontmatter.turnaround}.</p>
+    <span class="px-4 py-2 mt-4 bg-primary-600 rounded-md text-xl font-semibold">¥120,000</span>
+  </div>
+</section>
+
+<!-- ===== Package Overview ===== -->
+<section class="max-w-6xl mx-auto px-6 py-14">
+  <h2 class="text-2xl font-semibold mb-6">What’s included</h2>
+  <Checklist items={[
+    "Official boundary & zoning verification",
+    "Comprehensive hazard analysis (flood, landslide, tsunami, liquefaction)",
+    "Seismic intensity forecast & building code check",
+    "Legal & tax checklist (foreign ownership, notification requirements)",
+    "Utilities & infrastructure cost estimate",
+    "15‑page English PDF + GIS map overlay",
+    "60‑min video consultation with our surveyor & legal analyst"
+  ]}/>
+</section>
+
+<!-- ===== Sample Report Preview ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-2xl font-semibold mb-6">See a sample report</h2>
+    <PdfPreview
+      thumbnail="/assets/img/sample-full-thumb.jpg"
+      src="/assets/pdf/sample-full-risk.pdf"
+      caption="Download redacted sample (4 MB)"
+    />
+  </div>
+</section>
+
+<!-- ===== Workflow Timeline ===== -->
+<StepTimeline steps={[
+  { title:"Kick‑off call", desc:"Define scope, goals & key concerns (15 min)." },
+  { title:"Desktop & field survey", desc:"Hazard GIS, legal docs, on‑site checks, photos." },
+  { title:"Report delivery", desc:"15‑page PDF, GIS layers, consultation meeting." },
+]}
+/>
+
+<!-- ===== Value‑add Add‑ons ===== -->
+<section class="max-w-6xl mx-auto px-6 py-14">
+  <h2 class="text-2xl font-semibold mb-6">Optional add‑ons</h2>
+  <ul class="grid md:grid-cols-2 gap-6">
+    <li class="p-6 border rounded-xl">
+      <h3 class="font-semibold mb-2">360° VR Capture <span class="text-primary-600">+¥30,000</span></h3>
+      <p class="text-gray-600">4 K drone & interior 360° footage, interactive viewer.</p>
+    </li>
+    <li class="p-6 border rounded-xl">
+      <h3 class="font-semibold mb-2">Post‑purchase zoning follow‑up <span class="text-primary-600">+¥20,000</span></h3>
+      <p class="text-gray-600">Municipal approval liaison & document translation.</p>
+    </li>
+  </ul>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-semibold text-center mb-8">FAQ</h2>
+    <Accordion dataSrc="/assets/data/faq_full.yaml" />
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="bg-primary-600 py-12 text-center text-white">
+  <h2 class="text-2xl font-semibold mb-4">Ready for full peace of mind?</h2>
+  <a href="/contact?service=full" class="btn btn-lg btn-white shadow-lg">
+    Request your Full Risk Report
+  </a>
+</section>
+併せて追加するデータファイル
+/assets/data/faq_full.yaml
+
+yaml
+コピーする
+編集する
+- q: "How long does the field survey take?"
+  a: "Typically 1–2 days, depending on location and weather."
+- q: "Will you file the Special Attention Zone notification?"
+  a: "Yes, filing assistance is included if your land is in a Special Zone."
+- q: "Can I apply the report for bank financing?"
+  a: "Many lenders accept our reports; we can provide supplementary docs on request."

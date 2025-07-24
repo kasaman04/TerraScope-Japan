@@ -1,0 +1,142 @@
+ClaudeCode 指示書 – Home（トップ）ページ
+このドキュメントは index.yaml.md （ルート直下）を 1 ファイルで実装するための設計書です。
+下記の順にコピー & ペーストすれば、段階的に動作確認 → 調整が行えます。
+
+0. 前提フォルダ構成（MVP）
+css
+コピーする
+編集する
+/                             ← プロジェクト root
+├─ index.yaml.md              ← ★今回作成
+├─ assets/
+│   ├─ data/
+│   │   ├─ services.yaml      ← 料金・説明を一元管理
+│   │   └─ testimonials.yaml
+│   └─ i18n/
+│       ├─ ja.yaml
+│       └─ en.yaml
+└─ components/
+    ├─ Header.astro
+    ├─ Footer.astro
+    ├─ HeroVideo.astro
+    ├─ Steps.astro
+    ├─ ServiceCards.astro
+    ├─ Testimonials.astro
+    └─ BlogTeasers.astro
+1. index.yaml.md – テンプレート骨子
+💡 まずはこのまま貼り付け → ブラウザ確認 → 文言・パスを調整
+
+yaml
+コピーする
+編集する
+---
+title: "See the land before you stand – LAND VISTA Global"
+description: "日本の土地購入を検討する海外投資家向けに、360°映像と法規・リスクをワンストップで提供するサイト"
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_video: "/assets/video/sample-hero-360.mp4"   # 後で差し替え
+---
+
+<!-- ===== Hero Section ===== -->
+<HeroVideo
+  src={frontmatter.hero_video}
+  headline="See the land before you stand"
+  subheadline="360° views • Legal clarity • Risk insight"
+/>
+
+<!-- ===== 3-Step Flow ===== -->
+<Steps
+  items={[
+    { icon:"MapPin",  title:"Explore",  desc:"Browse interactive maps with 360° views and hazard layers." },
+    { icon:"ClipboardCheck", title:"Verify", desc:"Get a tailored survey report covering law, tax and utilities." },
+    { icon:"Handshake", title:"Close", desc:"Connect with vetted local experts to complete your purchase." },
+  ]}
+/>
+
+<!-- ===== Featured Services ===== -->
+<ServiceCards
+  dataSrc="/assets/data/services.yaml"
+  show={3}
+/>
+
+<!-- ===== Social Proof ===== -->
+<Testimonials dataSrc="/assets/data/testimonials.yaml"/>
+
+<!-- ===== Latest Articles ===== -->
+<BlogTeasers count={3} cta="Read more insights"/>
+
+<!-- ===== Final CTA ===== -->
+<section class="bg-primary-600 py-12 text-center text-white">
+  <h2 class="text-2xl font-semibold mb-4">
+    Ready to secure your piece of Japan?
+  </h2>
+  <a href="/contact" class="btn btn-lg btn-white shadow-lg">
+    Get your free consultation
+  </a>
+</section>
+2. セクション詳細 & 実装メモ
+セクション	要点 / スタイル指針	依存
+HeroVideo	- フル幅 video (16:9) or 360 iframe（poster 画像も指定）
+- 上中央にヘッドライン + サブヘッドライン + CTA Ghost ボタン	HeroVideo.astro
+Steps	- 3 カラム（SP=縦並び）
+- アイコンは lucide-react	Steps.astro
+ServiceCards	- services.yaml 内 key, title, price, bullet[] を読み込み
+- 3 件を横並び Card 表示	ServiceCards.astro, Tailwind grid
+Testimonials	- Swiper.js で横スクロール
+- testimonials.yaml に name, country, quote, avatar	Testimonials.astro
+BlogTeasers	- /blog 配下 Markdown の front-matter (title, cover, date) を自動取得	BlogTeasers.astro, Astro glob import
+Final CTA	- 背景色 primary-600、白文字。rounded btn。	なし
+
+3. 参照データサンプル
+assets/data/services.yaml
+yaml
+コピーする
+編集する
+- key: light
+  title: "Light Survey"
+  price: "¥50,000"
+  bullets:
+    - "Boundary & basic zoning check"
+    - "English summary (4 pages)"
+    - "Delivery in 3 business days"
+- key: full
+  title: "Full Risk Report"
+  price: "¥120,000"
+  bullets:
+    - "Flood, landslide, seismic risk"
+    - "Legal & tax checklist"
+    - "15-page PDF + Q&A call"
+- key: vr
+  title: "360° VR Capture"
+  price: "¥30,000"
+  bullets:
+    - "4K drone & 360° footage"
+    - "Edited highlight reel"
+    - "Delivery in 5 business days"
+assets/data/testimonials.yaml
+yaml
+コピーする
+編集する
+- name: "Alex Chen"
+  country: "Singapore"
+  quote: "The full report saved me weeks of research and gave me the confidence to buy."
+  avatar: "/assets/img/avatars/alex.jpg"
+- name: "Emma Wilson"
+  country: "Australia"
+  quote: "Seeing the land in 360° from my couch was a game-changer!"
+  avatar: "/assets/img/avatars/emma.jpg"
+4. 多言語への備え（i18n）
+assets/i18n/en.yaml / ja.yaml にキーを定義
+
+上記 <Steps> などのテキストを <T key="steps.explore.title"/> 形式に置換
+
+ルートに en/ ja/ プレフィックスを付与するため、astro.config.mjs の i18n プラグインを後で追加
+
+5. 最初の動作チェック手順
+動画・画像プレースを /assets へ仮置き
+
+npm run dev（または pnpm dev）→ localhost:3000
+
+レイアウト崩れを Tailwind クラスで微調整
+
+Lighthouse で初速パフォーマンスを確認（LCP < 2.5s が目標）

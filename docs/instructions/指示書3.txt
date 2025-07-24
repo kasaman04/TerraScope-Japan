@@ -1,0 +1,98 @@
+1. astro.config.mjs を更新
+js
+コピーする
+編集する
+import i18next from "astro-i18next";
+
+export default defineConfig({
+  integrations: [
+    i18next({
+      defaultLocale: "en",
+      locales: ["en", "ja", "zh", "zh-TW", "ko"],
+      namespaces: ["common"],
+      load: "lazy",
+      routing: "path",        // /zh/..., /ko/... etc.
+    }),
+  ],
+  base: "/<repo-name>",
+  site: "https://<user>.github.io/<repo-name>",
+});
+2. フォルダを追加
+bash
+コピーする
+編集する
+/src/locales/
+  ├─ en/common.json
+  ├─ ja/common.json
+  ├─ zh/common.json
+  ├─ zh-TW/common.json
+  └─ ko/common.json
+
+最小キー例（common.json）
+
+| Key            | en         | ja     | zh   | zh‑TW | ko   |
+| -------------- | ---------- | ------ | ---- | ----- | ---- |
+| `nav.home`     | Home       | ホーム    | 首页   | 首頁    | 홈    |
+| `nav.services` | Services   | サービス   | 服务   | 服務    | 서비스  |
+| `cta.contact`  | Contact Us | お問い合わせ | 联系我们 | 聯絡我們  | 문의하기 |
+
+足りないキーは i18next が自動で en にフォールバックします。
+
+3. ヘッダー／フッターに言語スイッチャー
+astro
+コピーする
+編集する
+<button on:click={openMenu}>🌐</button>
+<ul if={menuOpen}>
+  {["en","ja","zh","zh-TW","ko"].map(l => (
+    <li><a href={changeLocaleHref(l)}>{l.toUpperCase()}</a></li>
+  ))}
+</ul>
+ts
+コピーする
+編集する
+function changeLocaleHref(target:string){
+  const path = new URL(location.href).pathname.replace(/^\/(en|ja|zh|zh-TW|ko)/, "");
+  return target==="en" ? path : `/${target}${path}`;
+}
+4. 自動リダイレクト（任意）
+astro
+コピーする
+編集する
+<script client:visible>
+const map = { ja:"ja", zh:"zh", "zh-CN":"zh", "zh-TW":"zh-TW", ko:"ko" };
+const lang = navigator.language.split("-")[0];
+if(lang!=="en" && map[lang] && !location.pathname.startsWith("/"+map[lang]))
+  location.pathname = "/"+map[lang]+location.pathname;
+</script>
+5. ビルド確認
+bash
+コピーする
+編集する
+pnpm dev
+# /zh/services/ などへアクセス
+pnpm build
+各言語サブフォルダが生成されれば OK
+
+未翻訳部分は英語表示になっていれば正常
+
+次アクション
+翻訳ファイルを作成 – 上表のキーをコピーし最小文言を入れる
+
+pnpm dev → /zh/services/ /ko/about/ 等で表示確認
+
+「i18n 5 言語 OK」 と返信してください。
+
+完了を確認次第、Step 5（SEO & メタデータ自動生成：canonical / hreflang / sitemap） へ進みます。
+
+
+
+
+
+
+
+
+
+情報源
+
+ChatGPT に質問する

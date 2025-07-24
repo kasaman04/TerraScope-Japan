@@ -1,0 +1,126 @@
+Claude Code 指示書 – 360 ° VR Capture（サービス詳細）ページ
+ファイル名 /services/vr-capture.yaml.md
+Home ▸ Services 一覧の “360 ° VR Capture” カードから遷移するページです。
+このドキュメントを丸ごとコピー → Claude Code に貼れば実装できます。
+
+0. 新規・更新ファイル
+bash
+コピーする
+編集する
+/services/
+ └─ vr-capture.yaml.md            ← ★今回作成
+/assets/
+ └─ data/
+     └─ faq_vr.yaml               ← ★新規（専用 FAQ）
+/components/
+ ├─ VideoCarousel.astro           ← ★新規（動画カルーセル）
+ ├─ GearList.astro                ← ★新規（使用機材カード）
+ ├─ Checklist.astro               ← 既存
+ ├─ StepTimeline.astro            ← 既存
+ └─ PdfPreview.astro              ← （不要）
+1. ページ骨子（そのまま貼り付け可）
+yaml
+コピーする
+編集する
+---
+title: "360 ° VR Capture – Immersive Land Viewing"
+description: "4 K drone footage & 360 ° interior capture, delivered as an interactive web viewer."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_bg: "/assets/img/vr-hero.jpg"
+price: "¥30,000"
+turnaround: "5 business days"
+---
+
+<!-- ===== Hero ===== -->
+<section class="relative isolate">
+  <img src={frontmatter.hero_bg} alt="" class="w-full h-[35vh] object-cover brightness-75"/>
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+    <h1 class="text-3xl md:text-4xl font-bold mb-3">360 ° VR Capture</h1>
+    <p class="text-lg">See every angle without stepping on site.</p>
+    <span class="px-4 py-2 mt-4 bg-primary-600 rounded-md text-xl font-semibold">¥30,000</span>
+  </div>
+</section>
+
+<!-- ===== Demo Carousel ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-2xl font-semibold mb-6">Experience the difference</h2>
+    <VideoCarousel
+      videos={[
+        {thumb:"/assets/img/vr-demo-thumb1.jpg", src:"/assets/video/vr-demo1.mp4"},
+        {thumb:"/assets/img/vr-demo-thumb2.jpg", src:"/assets/video/vr-demo2.mp4"}
+      ]}
+    />
+  </div>
+</section>
+
+<!-- ===== What’s included ===== -->
+<section class="max-w-6xl mx-auto px-6 py-14">
+  <h2 class="text-2xl font-semibold mb-6">Package details</h2>
+  <Checklist items={[
+    "4 K drone aerial footage (up to 10 min raw)",
+    "Insta360 X4 interior & ground‑level capture",
+    "Stitched & colour‑graded highlight reel (90 sec)",
+    "Interactive web viewer (Kuula link or self‑host)",
+    "High‑res still photos (10+)",
+    "Royalty‑free soundtrack & basic captions"
+  ]}/>
+</section>
+
+<!-- ===== Gear used ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Our toolkit</h2>
+    <GearList items={[
+      {img:"/assets/img/gear/dji-mini4.jpg", name:"DJI Mini 4 Pro", desc:"4 K/60 FPS drone with obstacle avoidance."},
+      {img:"/assets/img/gear/insta360-x4.jpg", name:"Insta360 X4", desc:"10‑bit 360 ° capture, FlowState stabilisation."},
+      {img:"/assets/img/gear/zoom-h1.jpg", name:"Zoom H1 N", desc:"Ambience audio recorder for natural sound."}
+    ]}/>
+  </div>
+</section>
+
+<!-- ===== Workflow Timeline ===== -->
+<StepTimeline steps={[
+  { title:"Flight planning & permit", desc:"We secure local drone flight clearance." },
+  { title:"On‑site shoot", desc:"Aerial + 360° capture, ambient audio." },
+  { title:"Editing & delivery", desc:"Highlight reel + interactive viewer link in 5 days." },
+]}
+/>
+
+<!-- ===== FAQ ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-semibold text-center mb-8">FAQ</h2>
+    <Accordion dataSrc="/assets/data/faq_vr.yaml" />
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="bg-primary-600 py-12 text-center text-white">
+  <h2 class="text-2xl font-semibold mb-4">Show your land in 360° clarity.</h2>
+  <a href="/contact?service=vr" class="btn btn-lg btn-white shadow-lg">
+    Book VR Capture
+  </a>
+</section>
+2. FAQ データ例 /assets/data/faq_vr.yaml
+yaml
+コピーする
+編集する
+- q: "Do I need to be on‑site during the shoot?"
+  a: "No, we handle everything and send you a live location update."
+- q: "Is drone flight legal everywhere?"
+  a: "We follow Japan’s DIPS regulation; some no‑fly zones may require extra lead time."
+- q: "Can I embed the VR viewer on my own site?"
+  a: "Yes, you receive an iframe embed code or original files for self‑hosting."
+3. 新規コンポーネント概要
+Component	Props	備考
+VideoCarousel	videos[{thumb,src}]	Swiper.js or Splide; autoplay muted on click.
+GearList	items[{img,name,desc}]	1 → 3 列 responsive, subtle hover tilt.
+
+4. 実装チェックリスト
+項目	完了条件
+リンク修正	/services/index.yaml.md の VR Capture カード href="/services/vr-capture"
+Contact パラメータ	?service=vr が Contact hidden inputに反映
+動画軽量	demo MP4 ≤ 4 MB each (H.264 + faststart)
+Lighthouse	モバイル LCP < 2.5 s / A11y ≥ 95

@@ -1,0 +1,84 @@
+# STEP 2 – Services 一覧ページを実装してください
+## 目的
+- /services/index.yaml.md を追加し、サービス一覧ページを実装
+- Home → Services のリンク確認まで行い、他ページは触らない
+
+## 作業内容
+1. `/services/index.yaml.md` を新規作成
+2. ★ここから★ の指示書どおりにコーディング
+3. 新コンポーネント `PricingTable.astro` と `Accordion.astro` を実装
+4. `npm run dev` で動作確認し、Hero・Pricing Table・FAQ が正しく表示されるスクリーンショットを添付
+5. 「Services 一覧ページ完成」と報告したら作業終了（次指示が来るまで待機）
+
+## 納品形式
+- 生成ファイルのパス一覧
+- 主要コード抜粋
+- 動作スクリーンショット
+
+## 指示書（Services 一覧ページ仕様）
+★ここから★
+---
+title: "Services – Land Survey & VR Capture Packages"
+description: "Select the right level of due diligence: Light Survey, Full Risk Report, or 360° VR Capture."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_bg: "/assets/img/hero-services.jpg"
+---
+
+<!-- ===== Hero ===== -->
+<section class="relative isolate">
+  <img src={frontmatter.hero_bg} alt="" class="w-full h-[40vh] object-cover brightness-75" />
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Our Services</h1>
+    <p class="text-lg">From quick checks to full due-diligence, choose a package that fits.</p>
+  </div>
+</section>
+
+<!-- ===== Service Cards (summary) ===== -->
+<ServiceCards
+  dataSrc="/assets/data/services.yaml"
+  show="all"
+  ctaLabel="View details"
+/>
+
+<!-- ===== Comparative Pricing Table ===== -->
+<PricingTable dataSrc="/assets/data/services.yaml" />
+
+<!-- ===== Workflow Timeline ===== -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+  <h2 class="text-2xl font-semibold mb-8 text-center">How it works</h2>
+  <ol class="relative border-s border-gray-300">
+    <li class="mb-10 ms-4">
+      <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+      <h3 class="text-lg font-semibold">Submit property info & goals</h3>
+      <p class="text-gray-600">Location, plot map, intended use, and your key questions.</p>
+    </li>
+    <li class="mb-10 ms-4">
+      <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+      <h3 class="text-lg font-semibold">We conduct the survey</h3>
+      <p class="text-gray-600">Desktop research, GIS analysis, on-site check, or VR capture.</p>
+    </li>
+    <li class="ms-4">
+      <span class="absolute -start-1.5 flex h-3 w-3 rounded-full bg-primary-600"></span>
+      <h3 class="text-lg font-semibold">Receive your report + Q&A call</h3>
+      <p class="text-gray-600">PDF download and a 30-min consultation to clarify next steps.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ===== FAQ Accordion ===== -->
+<section class="bg-gray-50 py-14">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-semibold text-center mb-8">Frequently Asked Questions</h2>
+    <Accordion dataSrc="/assets/data/faq_services.yaml" />
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="bg-primary-600 py-12 text-center text-white">
+  <h2 class="text-2xl font-semibold mb-4">Need a custom scope?</h2>
+  <a href="/contact" class="btn btn-lg btn-white shadow-lg">
+    Request a free quote
+  </a>
+</section>
+★ここまで★

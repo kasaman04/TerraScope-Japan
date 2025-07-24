@@ -1,0 +1,84 @@
+🚀 Step 6 — Performance & Accessibility チューニング
+目標 : Lighthouse モバイル & デスクトップで全カテゴリ ≥ 90
+（特に Performance LCP < 2.5 s、A11y ≥ 95 を必達）
+
+1. Lighthouse CI をローカルで回す
+bash
+コピーする
+編集する
+pnpm add -D @lhci/cli
+npx lhci autorun --collect.staticDistDir=dist
+Out-of-the‑box レポート が ./.lighthouseci/ に出力される
+
+主要 URL：/, /ja/, /services/full-report, /contact
+
+2. 典型ボトルネックと対処
+指標	よく出る原因	対策
+LCP / TTFB	Hero 画像や 4 K 動画が重い	astro-imagetools で <Image format="avif" width={1200} />
+動画は poster + loading="lazy"
+CLS	ヒーロー画像高さ未指定	class="aspect-[16/9]" でレイアウト保留を回避
+TBT / JS 容量	Swiper.js フルバンドル	import('swiper/bundle') の dynamic import & chunk split
+A11y	ボタンに aria-label 無	🌐 言語スイッチャー・ハンバーガー等にラベル追加
+Best Practices	Mixed content / insecure links	http: 画像 URL を https: に置換
+
+3. Astro 側の簡易チューニング
+3‑a. 画像コンポーネント化
+astro
+コピーする
+編集する
+---
+import { Image } from 'astro:assets';
+---
+<Image src="/assets/img/full-hero.jpg" format="avif;webp" widths="[400,800,1200]" alt="Lake view" />
+3‑b. 3rd‑party JS 遅延
+astro
+コピーする
+編集する
+<script>
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(()=> import('/js/videoCarousel.js'));
+} else {
+  setTimeout(()=> import('/js/videoCarousel.js'), 2000);
+}
+</script>
+3‑c. A11y quick‑win
+astro
+コピーする
+編集する
+<button aria-label="Toggle language menu">🌐</button>
+<nav aria-label="Main"></nav>
+4. CI に Lighthouse 実行を組み込む（推奨）
+.github/workflows/lhci.yml
+
+yaml
+コピーする
+編集する
+name: Lighthouse CI
+on: pull_request
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with: { version: 9 }
+      - run: pnpm install && pnpm run build
+      - run: npx lhci autorun --collect.staticDistDir=dist
+PR で 90 未満なら赤く表示 → 品質ゲートに。
+
+5. 完了判定
+lhci autorun HTML レポートですべて ≥ 90
+
+実機（モバイル 4G）で /services/ ヒーロー画像が < 2 s で表示
+
+キーボード Tab で全ボタンがフォーカス可視 & ラベル読み上げ
+
+Lighthouse “Low‑contrast text” 警告 0 件
+
+作業後…
+pnpm run build → npx lhci autorun
+
+スコアスクショを確認
+
+「Lighthouse OK」 とだけ返信してください。
+‑ それで Step 6 完了 → 次は Step 7 GitHub Pages CI/CD の設定ガイドに進みます。

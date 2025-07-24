@@ -1,0 +1,125 @@
+Claude Code 指示書 – About（運営者紹介・信頼性向上ページ）
+目的
+
+会社／運営者の顔が見えるようにし、初訪ユーザーに「安心感」を与える
+
+平均滞在時間（Average Time on Page）を 20 秒以上 に保てるだけの “読み物” ボリュームを配置
+
+SEO 的にはブランドクエリ（ “Who runs LAND VISTA?” など）への着地ページになる
+
+0. 追加・更新ファイル
+bash
+コピーする
+編集する
+/about.yaml.md                    ← ★今回作成
+/assets/
+ └─ data/
+     ├─ team.yaml                 ← ★新規（顔写真・SNS リンク）
+     └─ timeline.yaml             ← ★新規（沿革）
+/components/
+ ├─ HeroStatic.astro              ← ★新規（アイキャッチ＋ヘッドライン）
+ ├─ ValuesList.astro              ← ★新規（バリュー3つ）
+ ├─ TeamGrid.astro                ← ★新規（顔写真＋肩書）
+ ├─ Timeline.astro                ← ★新規（沿革縦ライン）
+ └─ LogoCloud.astro               ← （任意：掲載メディア・資格バッジ）
+1. /about.yaml.md – ページ骨子 (そのまま貼り付け可) 
+yaml
+コピーする
+編集する
+---
+title: "About – Who We Are"
+description: "Meet the team behind LAND VISTA Global and learn why transparency in land due‑diligence matters."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_img: "/assets/img/about-hero.jpg"
+---
+
+<HeroStatic
+  imgSrc={frontmatter.hero_img}
+  headline="Land due‑diligence, re‑imagined."
+  sub="We turn scattered Japanese data into clear, actionable insights for overseas buyers."
+/>
+
+<!-- ===== Core Values  ===== -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Our Values</h2>
+  <ValuesList items={[
+    {icon:"Search", title:"Transparency", desc:"We show every assumption and data source."},
+    {icon:"CheckCircle", title:"Accuracy", desc:"Certified surveyors & bilingual legal partners review each report."},
+    {icon:"Globe", title:"Access", desc:"We make Japan’s land data understandable to anyone, anywhere."},
+  ]}/>
+</section>
+
+<!-- ===== Team ===== -->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl font-semibold mb-10 text-center">Meet the Team</h2>
+    <TeamGrid dataSrc="/assets/data/team.yaml"/>
+  </div>
+</section>
+
+<!-- ===== Timeline ===== -->
+<section class="max-w-5xl mx-auto px-6 py-16">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Our Journey</h2>
+  <Timeline dataSrc="/assets/data/timeline.yaml"/>
+</section>
+
+<!-- ===== Social Proof (optional) ===== -->
+<LogoCloud
+  logos={[
+    "/assets/img/logos/hubspot.png",
+    "/assets/img/logos/aiconf.png",
+    "/assets/img/logos/japannews.png"
+  ]}
+/>
+
+<!-- ===== Final CTA ===== -->
+<section class="bg-primary-600 py-12 text-center text-white">
+  <h2 class="text-2xl font-semibold mb-4">Ready to work with us?</h2>
+  <a href="/contact" class="btn btn-lg btn-white shadow-lg">Book a free call</a>
+</section>
+2. サポートデータ例
+/assets/data/team.yaml
+yaml
+コピーする
+編集する
+- name: "Ryo Tanaka"
+  title: "Founder / Survey Lead"
+  photo: "/assets/img/team/ryo.jpg"
+  bio: "Licensed land surveyor with 10 yrs experience in Hokkaido & Kyushu."
+  linkedIn: "https://linkedin.com/in/ryotanaka"
+
+- name: "Sara Chen"
+  title: "Legal Analyst"
+  photo: "/assets/img/team/sara.jpg"
+  bio: "Bilingual paralegal specialised in property & zoning law."
+  linkedIn: "https://linkedin.com/in/sarachen"
+/assets/data/timeline.yaml
+yaml
+コピーする
+編集する
+- year: "2023"
+  event: "Prototype map tool released to closed beta users."
+- year: "2024"
+  event: "First overseas client purchased land in Niseko using our Full Report."
+- year: "2025"
+  event: "360° VR capture service launched; featured at AI Conf Tokyo."
+3. 新規コンポーネント概要
+Component	Props	実装メモ
+HeroStatic	imgSrc, headline, sub	フル幅画像 + center caption
+ValuesList	items[{icon,title,desc}]	1 → 3 列 Responsive、Lucide icons
+TeamGrid	dataSrc	丸型写真 + 役職 + SNS アイコン
+Timeline	dataSrc	左縦線 + ドット + 年号 & イベント
+LogoCloud	logos[] (optional)	グレースケール→hover color
+
+4. 滞在時間 20 秒達成 Tips
+視線誘導 – Hero → Values → 顔写真 → スクロール続行率向上
+
+バイオ文 (80–100 words/人) で読み応えを追加
+
+画像 LCP 最適化 – hero < 200 kB, lazy‑load team photos
+
+内部リンク – 各 Values ブロック下に関連 Blog 記事への小リンク
+
+Web Analytics – GA4 カスタムイベント scroll_depth を設定しページ品質を測る
+

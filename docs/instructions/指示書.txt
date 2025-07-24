@@ -1,0 +1,91 @@
+1. スキーマファイルを作る
+/studio/schemas/service.js
+js
+コピーする
+編集する
+export default {
+  name: 'service',
+  type: 'document',
+  title: 'Service',
+  fields: [
+    {name: 'key',    type: 'string', title: 'Key', validation: R => R.required()},
+    {name: 'title',  type: 'string', title: 'Title'},
+    {name: 'price',  type: 'string', title: 'Price'},
+    {name: 'bullets',type: 'array',  title: 'Bullets', of: [{type: 'string'}]},
+    {name: 'slug',   type: 'slug',   options: {source: 'title', maxLength: 96}},
+  ],
+}
+同じ要領で 5 ファイル追加
+ファイル	中身の雛形
+faq.js	fields: [{name:'q',type:'string'},{name:'a',type:'text'}]
+post.js	title, cover, date, slug, body (blockContent)
+caseStudy.js	title, service->, date, location, summary, metrics[]
+team.js	name, title, photo, bio
+lead.js	name, email, service, message, createdAt
+
+スキーマ丸ごとが必要なら「全部ちょうだい」と言ってください。
+
+2. Sanity クライアントを Astro に追加
+/src/lib/sanity.ts
+ts
+コピーする
+編集する
+import { createClient } from "@sanity/client";
+
+export const sanity = createClient({
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+  dataset:   import.meta.env.PUBLIC_SANITY_DATASET,
+  apiVersion:"2025-07-15",
+  useCdn:    true,
+});
+.env（Astro プロジェクト直下）
+ini
+コピーする
+編集する
+PUBLIC_SANITY_PROJECT_ID=yourProjectId
+PUBLIC_SANITY_DATASET=production
+yourProjectId は Sanity Studio の Project ID をコピペ
+
+.env は .gitignore に追加しておくと安全
+
+3. Services 一覧ページを書き換える
+services/index.astro で YAML 読み込みを削除
+
+以下を最上部に追加→ServiceCards に渡す
+
+astro
+コピーする
+編集する
+---
+import { sanity } from "../../lib/sanity";
+const services = await sanity.fetch(`*[_type=="service"]{
+  key, title, price, bullets
+}`);
+---
+<ServiceCards items={services}/>
+ServiceCards が items prop を受け取る設計でない場合は、
+コンポーネント側を export interface Service { key:string; title:string; price:string; bullets:string[] } に合わせて修正してください。
+
+4. 動作確認手順
+bash
+コピーする
+編集する
+# Astro 側
+pnpm dev
+# 別ターミナルで Sanity Studio
+sanity start
+Studio で Service ドキュメントを 1 件作成
+
+ブラウザ http://localhost:3000/services/ を更新
+
+カードに Sanity のデータが表示されれば OK
+
+つまずいたら…
+Project ID / Dataset 名が一致しない → fetch が空配列になります
+
+CORS 設定忘れ → ブラウザ Console に 403
+
+スキーマ未登録 → Studio に名前が出てこない
+
+何かエラーが出たらメッセージを教えてください。
+次に進む準備ができたら「スキーマ作った＆データ取れた」と教えていただければ、フォーム→Sanity への書き込み（Cloudflare Worker）のコード例をお渡しします。

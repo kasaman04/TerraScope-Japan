@@ -1,0 +1,173 @@
+次は Step 3：フォーム → Sanity へ書き込み を実装します。
+
+Step 3 のゴール
+ゴール	完了判定
+a. Cloudflare Worker がデプロイされる	https://land-vista-form.<subdomain>.workers.dev が 200
+b. Contact フォーム POST → Worker	/contact 送信後 /contact/thank‑you へリダイレクト
+c. Sanity に lead ドキュメント が作成される	Studio でレコード確認
+
+1. Cloudflare Worker ‑ 50 行の最小実装
+1‑a. プロジェクト生成
+bash
+コピーする
+編集する
+npm create cloudflare@latest land-vista-form
+# → Select: "TypeScript", "API"
+cd land-vista-form
+1‑b. src/index.ts
+ts
+コピーする
+編集する
+import { z } from "zod";
+
+const schema = z.object({
+  name:    z.string().min(2),
+  email:   z.string().email(),
+  service: z.string().optional(),
+  msg:     z.string().max(1000).optional(),
+});
+
+export default {
+  async fetch(request: Request, env: Env) {
+    if (request.method !== "POST") {
+      return new Response("Method Not Allowed", { status: 405 });
+    }
+    const data = Object.fromEntries(await request.formData());
+    const parsed = schema.safeParse(data);
+    if (!parsed.success) {
+      return new Response("Bad Request", { status: 400 });
+    }
+
+    /** Sanity Mutation */
+    await fetch(
+      `https://${env.SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/mutate/${env.SANITY_DATASET}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${env.SANITY_WRITE_TOKEN}`,
+        },
+        body: JSON.stringify({
+          mutations: [
+            { create: { _type: "lead", ...parsed.data, createdAt: new Date().toISOString() } },
+          ],
+        }),
+      }
+    );
+
+    /* 303 Redirect */
+    return Response.redirect("https://<YOUR_SITE>/contact/thank-you", 303);
+  },
+} satisfies ExportedHandler;
+
+/** wrangler.toml の [vars] セクションで以下を定義
+SANITY_PROJECT_ID="xxxxxx"
+SANITY_DATASET="production"
+SANITY_WRITE_TOKEN="skw_..."   # lead 作成専用トークン
+*/
+1‑c. wrangler.toml 変更点
+toml
+コピーする
+編集する
+name = "land-vista-form"
+compatibility_date = "2025-07-15"
+
+[vars]
+SANITY_PROJECT_ID = "xxxxxx"
+SANITY_DATASET    = "production"
+SANITY_WRITE_TOKEN = "skw_xxxxxxxxxxxxxxxxx"
+
+[routes]
+# 本番 GitHub Pages URL に合わせる
+pattern = "https://<USERNAME>.github.io/<REPO>/*"
+zone_id = ""
+1‑d. デプロイ
+bash
+コピーする
+編集する
+npx wrangler deploy
+URL が表示されるのでメモ（例：https://land-vista-form.pages.dev）。
+
+2. Contact フォームを書き換える
+2‑a. <ContactForm.astro>
+astro
+コピーする
+編集する
+---
+const workerUrl = "https://land-vista-form.pages.dev"; // デプロイURL
+---
+<form id="contact" class="space-y-4" on:submit|preventDefault={handleSubmit}>
+  <!-- hidden service -->
+  <input type="hidden" name="service" value={Astro.url.searchParams.get('service') ?? ''} />
+  <!-- name / email / message inputs … -->
+  <button class="btn btn-primary">Send</button>
+</form>
+
+<script>
+async function handleSubmit(e) {
+  const form = e.target;
+  const fd = new FormData(form);
+  const res = await fetch(workerUrl, { method: "POST", body: fd });
+  if (res.redirected) window.location.href = res.url;
+  else alert("Failed, please try again.");
+}
+</script>
+2‑b. reCAPTCHA v3（任意）
+Google Console → v3 キーを取得
+
+<script src="https://www.google.com/recaptcha/api.js?render=site_key"></script>
+
+grecaptcha.execute で token を取得し fd.append('g-recaptcha', token)
+
+Worker 側で https://www.google.com/recaptcha/api/siteverify に検証
+
+3. Sanity: lead スキーマ（例）
+js
+コピーする
+編集する
+export default {
+  name: 'lead',
+  type: 'document',
+  title: 'Lead',
+  fields: [
+    {name:'name',    type:'string'},
+    {name:'email',   type:'string'},
+    {name:'service', type:'string'},
+    {name:'msg',     type:'text'},
+    {name:'createdAt', type:'datetime'}
+  ],
+  readOnly: true
+}
+Security: トークンは mutation:create のみ権限（read 自ドキュメント可）。
+
+4. チェックリスト
+Worker 部署成功 → エンドポイントに curl -I で 405 以外返る
+
+フォーム送信 → サイト上から送信 → /contact/thank-you へ遷移
+
+Sanity Studio → lead コレクションにレコードが生成
+
+GitHub Pages 上 でも動くか (CORS OK) を確認
+
+完了したら「フォーム書き込みOK」と教えてください。
+さらに GA4・Cookie バナー (Step 9) へ進む準備ができます。
+
+
+
+
+
+
+
+
+
+情報源
+
+ChatGPT に質問する
+
+
+
+ツール
+
+
+
+ChatGPT の回答は必ずしも正しいとは限りません。重要な情報は確認するようにしてくださ

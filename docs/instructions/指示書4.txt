@@ -1,0 +1,103 @@
+🚀 Step 5 — SEO & メタデータ自動生成
+（canonical／hreflang／sitemap／robots.txt）
+
+5 言語対応が整ったので、検索エンジンに**「正規 URL と言語別 URL」**を正しく伝えます。
+下を順番に進めれば、⟪ビルド→GitHub Pages⟫ですぐ反映されます。
+
+5‑a. ページごとの canonical & hreflang
+共通ヘッドコンポーネントを作成
+/src/components/SeoHead.astro
+
+astro
+コピーする
+編集する
+---
+import { baseLocale, locales } from "@astro-i18next";
+const { title, description, noindex = false } = Astro.props;
+const path = Astro.url.pathname.replace(/^\/(en|ja|zh|zh-TW|ko)/, "");
+const canonical = `${Astro.site.origin}${path === "/" ? "" : path}`;
+---
+<head>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="canonical" href={canonical} />
+  {locales.map(l => (
+    <link rel="alternate" hreflang={l} href={`${Astro.site.origin}${l==="en"?"":"/"+l}${path}`} />
+  ))}
+</head>
+各レイアウトで差し替え
+
+astro
+コピーする
+編集する
+---
+import SeoHead from "@/components/SeoHead.astro";
+---
+<SeoHead title={frontmatter.title} description={frontmatter.description}/>
+5‑b. 自動 sitemap.xml
+インストール
+
+bash
+コピーする
+編集する
+pnpm add @astrojs/sitemap
+astro.config.mjs
+
+js
+コピーする
+編集する
+import sitemap from "@astrojs/sitemap";
+export default defineConfig({
+  integrations:[sitemap({
+    filter: (page) => !page.includes("/draft/")   // draft を除外
+  })]
+});
+ビルド確認
+pnpm build → dist/sitemap-index.xml が生成される
+
+5‑c. robots.txt
+/public/robots.txt
+
+pgsql
+コピーする
+編集する
+User-agent: *
+Allow: /
+
+Sitemap: https://<user>.github.io/<repo>/sitemap-index.xml
+5‑d. 構造化データ（簡易 How‑To）
+例：Full Risk Report ページに商品スキーマ
+
+astro
+コピーする
+編集する
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Full Risk Report",
+  "description": "Comprehensive due‑diligence for land purchase.",
+  "offers": {
+    "@type": "Offer",
+    "price": "120000",
+    "priceCurrency": "JPY",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+5‑e. テスト
+Google Search Console → リッチリザルト テスト
+URL を投入し、hreflang / Product schema が認識されるか確認
+
+Ahrefs / Screaming Frog で canonical & hreflang をクロール
+
+Lighthouse SEO スコアが ≥ 95 になることを確認
+
+作業が終わったら
+pnpm build → dist に sitemap-index.xml と robots.txt がある
+
+任意ページの HTML ソースで <link rel="canonical"> と 5 言語の <link rel="alternate" hreflang> が生成されている
+
+完了したら「SEO OK」 と教えてください。
+確認後、Step 6 （パフォーマンス & A11y 調整 / Lighthouse ≥ 90） へ進みます。

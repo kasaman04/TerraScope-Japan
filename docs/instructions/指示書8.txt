@@ -1,0 +1,112 @@
+🚀 Step 9 — GA4 ＋ Cookie Consent バナー
+目的 : 計測を開始しつつ、GDPR／改正個人情報保護法に準拠。ユーザーに “利用前に同意” を明示します。
+
+1. GA4 測定 ID を取得
+Google Analytics ▸ 管理 ▸ アカウント作成
+
+プロパティ ➜ GA4
+
+データストリーム → Web ➜ 測定 ID G‑XXXXXXXXXX
+
+2. 環境変数に格納
+.env
+
+ini
+コピーする
+編集する
+PUBLIC_GA_ID=G-XXXXXXXXXX
+3. BaseLayout に GA4 スニペットをオプトイン方式で挿入
+/src/layouts/BaseLayout.astro
+
+astro
+コピーする
+編集する
+---
+import CookieBar from "@/components/CookieBar.astro";
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
+---
+<html lang={locale.value}>
+  <head>
+    <!-- 既存 SeoHead など -->
+    {GA_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){{dataLayer.push(arguments);}}
+          // 初期状態: コンセントが取れるまで GA をオフ
+          window.disable={GA_ID}=true;
+        </script>
+      </>
+    )}
+  </head>
+  <body>
+    <slot />
+    <CookieBar gaId={GA_ID}/>
+  </body>
+</html>
+4. 最小 CookieBar コンポーネント
+/src/components/CookieBar.astro
+
+astro
+コピーする
+編集する
+---
+const { gaId } = Astro.props;
+---
+{gaId && (
+  <div id="cookiebar" class="fixed bottom-4 inset-x-4 bg-gray-800 text-white p-4 rounded-xl shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
+    <span>{t("cookie.message")}</span>
+    <div class="flex gap-3">
+      <a href="/legal/cookies" class="underline">{t("cookie.learn")}</a>
+      <button class="btn btn-primary" on:click={accept}>{t("cookie.accept")}</button>
+    </div>
+  </div>
+)}
+
+<script>
+function accept() {
+  localStorage.setItem("cookie-consent","yes");
+  document.getElementById("cookiebar").remove();
+  // Enable GA after consent
+  if(window.disable{gaId}!==undefined){ window["disable-"+gaId]=false; }
+  gtag('js', new Date()); 
+  gtag('config', '{gaId}', { 'anonymize_ip': true });
+}
+if(localStorage.getItem("cookie-consent")==="yes"){
+  document.getElementById("cookiebar")?.remove();
+}
+</script>
+i18n キー追加（common.json）
+json
+コピーする
+編集する
+{
+  "cookie.message": "We use cookies to improve your experience.",
+  "cookie.learn": "Learn more",
+  "cookie.accept": "Accept"
+}
+（各言語ファイルにも翻訳を追加）
+
+5. A/B : 先読みタグを GA 有効時だけ
+astro
+コピーする
+編集する
+{localStorage.getItem("cookie-consent")==="yes" && (
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+)}
+6. テスト
+テスト	期待
+初訪問	バナーが表示・GA ヒットなし (Network で collect?v=2 が出ない)
+「Accept」クリック	バナー消える・GA リクエスト送信開始
+再読込	バナー非表示・GA 継続
+Multi‑lang	/ja/ でも翻訳されたバナー文が出る
+Lighthouse	A11y & Best‑Practices ≥ 90 を維持
+
+作業後にやること
+GA4 Realtime でヒット確認
+
+legal/cookies ページに Cookie 使用目的を追記（既に Step 5 で生成済み）
+
+完了したら「GA4 & Cookie OK」 と返信してください。
+その後 Step 10 — 最終 QA & 公開チェック のチェックリストをお渡しします。

@@ -14,34 +14,32 @@ function generateModalHTML(colorTheme = 'red') {
   <div id="city-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-white rounded-xl w-full max-w-2xl mx-4 p-6 relative max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300">
       <button id="modal-close" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
-
-      <img id="modal-image" src="" alt="" class="w-full h-56 object-cover rounded-lg mb-4" />
       
       <h2 id="modal-title" class="text-2xl font-bold mb-2"></h2>
       <p id="modal-features" class="text-gray-600 mb-4"></p>
 
       <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
-        <div class="bg-gray-50 p-3 rounded">
+        <div class="bg-gray-50 p-3 rounded-lg">
           <strong class="text-gray-700">人口:</strong> 
           <span id="modal-population" class="text-gray-900"></span>
         </div>
-        <div class="bg-gray-50 p-3 rounded">
+        <div class="bg-gray-50 p-3 rounded-lg">
           <strong class="text-gray-700">外国人人口:</strong> 
           <span id="modal-foreign-population" class="text-gray-900"></span>
         </div>
-        <div class="bg-gray-50 p-3 rounded">
+        <div class="bg-gray-50 p-3 rounded-lg">
           <strong class="text-gray-700">英語対応病院:</strong> 
           <span id="modal-english-hospital" class="text-gray-900"></span>
         </div>
-        <div class="bg-gray-50 p-3 rounded">
+        <div class="bg-gray-50 p-3 rounded-lg">
           <strong class="text-gray-700">空港アクセス:</strong> 
           <span id="modal-airport" class="text-gray-900"></span>
         </div>
-        <div class="bg-gray-50 p-3 rounded">
+        <div class="bg-gray-50 p-3 rounded-lg">
           <strong class="text-gray-700">家賃相場:</strong> 
           <span id="modal-rent" class="text-gray-900"></span>
         </div>
-        <div class="bg-gray-50 p-3 rounded col-span-2">
+        <div class="bg-gray-50 p-3 rounded-lg col-span-2">
           <strong class="text-gray-700">おすすめ:</strong> 
           <span id="modal-recommend" class="text-gray-900"></span>
         </div>
@@ -51,14 +49,10 @@ function generateModalHTML(colorTheme = 'red') {
 
       <div id="modal-tags" class="flex flex-wrap gap-2 mb-6"></div>
 
-      <div class="flex gap-3">
-        <a id="modal-article-link" href="#" 
-           class="flex-1 text-center bg-${colorTheme}-600 text-white py-3 px-6 rounded-lg hover:bg-${colorTheme}-700 transition-colors">
+      <div>
+        <button id="modal-article-link" type="button" 
+                class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition-colors">
           📖 詳しい記事を見る
-        </a>
-        <button id="close-modal-btn"
-                class="bg-gray-100 text-gray-700 py-3 px-6 rounded-lg hover:bg-gray-200 transition-colors">
-          閉じる
         </button>
       </div>
     </div>
@@ -89,8 +83,6 @@ function generateModalScript(cityDataVarName, colorTheme = 'red') {
       }
 
       // モーダル内容を更新
-      document.getElementById('modal-image').src = city.image || '';
-      document.getElementById('modal-image').alt = city.title || '';
       document.getElementById('modal-title').textContent = city.title || '';
       document.getElementById('modal-features').textContent = city.features || '';
       document.getElementById('modal-population').textContent = city.population || '';
@@ -100,7 +92,14 @@ function generateModalScript(cityDataVarName, colorTheme = 'red') {
       document.getElementById('modal-rent').textContent = city.rent || '';
       document.getElementById('modal-recommend').textContent = city.recommend || '';
       document.getElementById('modal-description').textContent = city.description || '';
-      document.getElementById('modal-article-link').href = city.pageUrl || '#';
+      
+      // ボタンのクリックイベントを設定
+      const articleLinkBtn = document.getElementById('modal-article-link');
+      if (articleLinkBtn && city.pageUrl) {
+        articleLinkBtn.onclick = function() {
+          window.location.href = city.pageUrl;
+        };
+      }
 
       // タグを表示
       const tagsContainer = document.getElementById('modal-tags');

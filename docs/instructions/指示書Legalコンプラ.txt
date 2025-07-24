@@ -1,0 +1,139 @@
+Claude Code 指示書 – Legal（コンプライアンス）セクション
+目的
+
+日本の個人情報保護法（改正個人情報保護法 2022）＋ GDPR に配慮した Privacy Policy
+
+宅建業免許未取得の情報提供サイトとしての Disclaimer / Terms of Use
+
+Cookie（Google Analytics・reCAPTCHA・HubSpot）使用の Cookie Notice
+
+すべて静的 Markdown＋YAML Front‑Matter で管理し、検索エンジンにインデックスさせる。
+
+0. フォルダ & ファイル構成
+bash
+コピーする
+編集する
+/legal/
+ ├─ privacy.yaml.md        ← プライバシーポリシー
+ ├─ disclaimer.yaml.md     ← 免責事項 / 利用規約
+ └─ cookies.yaml.md        ← Cookie ポリシー
+/components/
+ └─ LegalTOC.astro         ← セクション見出しを自動目次化
+1. 共通スタイル (LegalLayout.astro)
+astro
+コピーする
+編集する
+<article class="prose prose-zinc md:prose-lg mx-auto px-6 pb-24">
+  <slot />
+</article>
+prose クラスで長文可読性を確保
+
+LegalTOC を <slot name="toc" /> でサイドバーに差し込み可（後日）
+
+2. privacy.yaml.md テンプレ
+yaml
+コピーする
+編集する
+---
+title: "Privacy Policy"
+description: "How LAND VISTA Global collects, uses and protects your personal data."
+lang: "en"
+layout: "@layouts/LegalLayout.astro"
+updated: "2025‑07‑15"
+---
+
+## 1. Scope  
+This Privacy Policy applies to `landvista.global` and related sub‑domains.
+
+## 2. Data We Collect  
+| Category | Examples | Purpose |
+|----------|----------|---------|
+| Contact data | Name, Email | Respond to inquiries |
+| Browsing data | IP, UA, GA4 cookies | Improve UX & security |
+| Transaction data | Property info, service scope | Generate survey reports |
+
+## 3. Legal Basis (GDPR)  
+- **Consent** ‑ newsletter opt‑in  
+- **Contract** ‑ survey report orders  
+- **Legitimate interest** ‑ site analytics
+
+## 4. Retention  
+Personal data is stored no longer than **5 years** or until deletion request.
+
+## 5. Third‑Party Processors  
+| Processor | Purpose | Safeguard |
+|-----------|---------|-----------|
+| Google Analytics | Analytics | IP anonymisation |
+| SendGrid | Transactional email | SCCs in place |
+| HubSpot | CRM | Data hosted in EU DC |
+
+## 6. Your Rights  
+- Access / Rectification / Erasure  
+- Data portability (CSV within 30 days)  
+- Lodge a complaint with **PPC Japan** (個人情報保護委員会)
+
+## 7. Contact  
+> privacy@landvista.global
+3. disclaimer.yaml.md テンプレ
+yaml
+コピーする
+編集する
+---
+title: "Disclaimer & Terms of Use"
+description: "Important information about the limitations of our services."
+lang: "en"
+layout: "@layouts/LegalLayout.astro"
+updated: "2025‑07‑15"
+---
+
+## 1. No Brokerage – Information Only  
+LAND VISTA Global **is not a licensed real‑estate broker** in Japan.  
+All content and reports are provided for informational purposes.  
+We do **not** negotiate contracts or hold client funds.
+
+## 2. Accuracy of Information  
+We strive for accuracy but **make no warranties** that content is error‑free.  
+Users should verify data with qualified professionals.
+
+## 3. Limitation of Liability  
+In no event shall our aggregate liability exceed **JPY 50,000** or the fee paid for the report, whichever is lower.
+
+## 4. Copyright  
+All maps, graphics and texts are © 2025 LAND VISTA Global.  
+Unauthorised reproduction is prohibited.
+
+## 5. Governing Law & Jurisdiction  
+This site is governed by the laws of **Japan**.  
+Tokyo District Court shall have exclusive jurisdiction.
+
+## 6. Revision  
+We may update these terms; continued use constitutes acceptance.
+4. cookies.yaml.md テンプレ
+yaml
+コピーする
+編集する
+---
+title: "Cookie Notice"
+description: "Details on the cookies and similar technologies we use."
+lang: "en"
+layout: "@layouts/LegalLayout.astro"
+updated: "2025‑07‑15"
+---
+
+We use cookies to:
+
+1. **Remember preferences** (locale, category filters)  
+2. **Measure traffic** via Google Analytics 4  
+3. **Protect forms** with reCAPTCHA v3
+
+You can disable non‑essential cookies via the banner or browser settings.
+5. 目次コンポーネント LegalTOC.astro（オプション）
+Headings h2 を Intersection Observer でハイライト
+
+<aside> 固定右サイドに表示（md:static sm:hidden）
+
+6. Lighthouse & UX 要件
+指標	目標値
+A11y	≥ 95 (色コントラスト, skip links)
+CLS	≈ 0 (テキストのみ)
+Time on page	≥ 20 秒（文字量 600+ 語）

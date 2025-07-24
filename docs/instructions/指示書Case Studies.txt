@@ -1,0 +1,125 @@
+Claude Code 指示書 – Case Studies （社会的証明ページ）
+目的
+過去に実施した「Light Survey／Full Risk／VR Capture」の事例を一覧で提示し、
+信頼性を高めて再訪・問い合わせを促す“ソーシャルプルーフ”ページを実装します。
+ファイル名 /case-studies/index.yaml.md（一覧）＋
+/case-studies/{slug}.yaml.md（各事例の詳細ページ：後日追加）
+
+0. 追加フォルダ & ファイル
+bash
+コピーする
+編集する
+/case-studies/
+ ├─ index.yaml.md                ← ★今回作成
+ └─ sapporo-lakefront.yaml.md    ← 例：個別事例（後日）
+/assets/
+ └─ data/
+     └─ case_studies.yaml        ← ★新規（事例メタデータ）
+/components/
+ ├─ CaseCard.astro               ← ★新規（カード）
+ ├─ CaseModal.astro              ← ★新規（モーダル詳細：MVP では読み込み式）
+ └─ RatingStars.astro            ← （任意：顧客満足度⭐表示）
+1. データファイル雛形
+/assets/data/case_studies.yaml
+
+yaml
+コピーする
+編集する
+- slug: sapporo-lakefront
+  title: "Lakefront Plot in Sapporo"
+  service: full
+  cover: "/assets/img/cases/sapporo-cover.jpg"
+  summary: "Identified flood-zone offsets and negotiated a 12% price reduction."
+  result: "Buyer converted the land into an eco-lodge, opening 2025."
+  date: "2024-11"
+  location: "Sapporo, Hokkaido"
+  metrics:
+    - "⏰ Turnaround: 10 days"
+    - "💰 Price saved: ¥3.2 M"
+    - "📄 Pages delivered: 18"
+- slug: fukuoka-vr
+  title: "VR Capture for Coastal Land in Fukuoka"
+  service: vr
+  cover: "/assets/img/cases/fukuoka-cover.jpg"
+  summary: "4K drone & 360° interior capture increased listing views by 5×."
+  result: "Property sold to a Singapore investor within 3 weeks."
+  date: "2025-02"
+  location: "Itoshima, Fukuoka"
+  metrics:
+    - "🎥 Clips delivered: 12"
+    - "📈 Listing views: +500%"
+2. /case-studies/index.yaml.md – ページ骨子
+yaml
+コピーする
+編集する
+---
+title: "Case Studies – Real Results"
+description: "See how overseas buyers used our surveys and VR capture to purchase land in Japan with confidence."
+lang: "en"
+layout: "@layouts/BaseLayout.astro"
+hero_bg: "/assets/img/case-hero.jpg"
+---
+
+<!-- ===== Hero ===== -->
+<section class="relative isolate">
+  <img src={frontmatter.hero_bg} alt="" class="w-full h-[40vh] object-cover brightness-75" />
+  <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Success Stories</h1>
+    <p class="text-lg">Proof that thorough due-diligence pays off.</p>
+  </div>
+</section>
+
+<!-- ===== Case Grid ===== -->
+<section class="max-w-6xl mx-auto px-6 py-16">
+  <div
+    class="grid gap-10"
+    class:md="grid-cols-2"
+    class:lg="grid-cols-3"
+  >
+    {
+      const cases = await import('/assets/data/case_studies.yaml').then(m => m.default);
+      for (const c of cases) {
+    }
+      <CaseCard entry={c}/>
+    { }
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="bg-primary-600 py-12 text-center text-white">
+  <h2 class="text-2xl font-semibold mb-4">Your project could be next.</h2>
+  <a href="/contact" class="btn btn-lg btn-white shadow-lg">
+    Get a free quote
+  </a>
+</section>
+3. CaseCard.astro – 仕様
+プロップ	型	説明
+entry	object	上記 YAML 1 件分
+動作	クリック → CaseModal を開く
+MVP では同一ページ内モーダルで詳細表示（後に /case-studies/{slug} へ遷移させても可）	
+
+astro
+コピーする
+編集する
+<article class="cursor-pointer group" on:click={() => show = true}>
+  <img src={entry.cover} alt="" class="h-44 w-full object-cover rounded-t-xl group-hover:scale-105 transition"/>
+  <div class="border border-t-0 rounded-b-xl p-4 bg-white">
+    <h3 class="font-semibold text-lg mb-1">{entry.title}</h3>
+    <p class="text-sm text-gray-600 mb-2">{entry.summary}</p>
+    <p class="text-xs text-gray-400">{entry.date} • {entry.location}</p>
+  </div>
+  { show && <CaseModal entry={entry} onClose={() => show=false}/> }
+</article>
+4. CaseModal.astro – 概要
+<dialog> エレメント ＋ Backdrop (fixed inset-0 bg-black/40)
+
+詳細項目: ①Cover large ②Metrics (badge list) ③Result paragraph ④CTA 「相談する」
+
+閉じる：Esc キー & ✕ ボタン
+
+5. 実装チェックポイント
+チェック	達成基準
+レスポンシブ	1 列 → 2 列 → 3 列でカード崩れなし
+モーダル	キーボード操作で開閉可（a11y）
+再訪促進	各 CaseCard 最下部に “Related article” (blog slug) を later で出せる構造
+Lighthouse	Best Practices & Access ≥ 90
