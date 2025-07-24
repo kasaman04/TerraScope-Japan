@@ -222,17 +222,16 @@ const iwateCities = {
                 <img 
                   src={city.image}
                   alt={city.title}
-                  class="w-full h-full object-cover "
+                  class="w-full h-full object-cover"
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-2 left-3 text-white">
                   <h4 class="font-bold">{city.title}</h4>
                 </div>
-                  {city.tags && city.tags.slice(0, 2).map(tag => (
-                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium">{tag}</span>
-                  ))}
-                </div>
+              </div>
+              <div class="p-4">
+                <p class="text-sm text-gray-600 mb-2">{city.features}</p>
                 <p class="text-xs text-gray-500">{city.population}</p>
               </div>
             </div>
