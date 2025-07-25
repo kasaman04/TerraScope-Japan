@@ -1,0 +1,868 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+
+const title = "奥州市 記事カテゴリー一覧";
+const description = "奥州市の外国人向け生活情報カテゴリー一覧";
+const lang = "ja";
+
+// 奥州市で人気の記事ランキング
+const popularArticles = [
+  {
+    title: "奥州市の雪対策と冬の生活",
+    category: "生活利便性",
+    url: "/ja/blog/iwate/living-convenience-article-1/"
+  },
+  {
+    title: "最寄りの主要空港からのアクセス",
+    category: "アクセス",
+    url: "/ja/blog/iwate/access-article-1/"
+  },
+  {
+    title: "奥州市の住宅事情：家賃・光熱費",
+    category: "コスト",
+    url: "/ja/blog/iwate/cost-article-1/"
+  }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-6xl mx-auto px-4">
+      
+      <!-- Breadcrumb -->
+      <nav class="mb-8">
+        <ol class="flex items-center space-x-2 text-sm text-gray-600">
+          <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-blue-600">ホーム</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-blue-600">地域別生活情報</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/iwate/`} class="hover:text-blue-600">岩手県</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li class="text-gray-900 font-medium">奥州市</li>
+        </ol>
+      </nav>
+      
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-2xl font-bold text-gray-900 mb-2">奥州市の<span class="text-red-500">生活情報</span></h1>
+        <p class="text-sm text-gray-600">外国人向けの生活情報をカテゴリー別にまとめました</p>
+      </div>
+
+
+      <!-- Main Content Layout -->
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        
+        <!-- Categories List (Main Content) -->
+        <div class="lg:col-span-3 space-y-12">
+        
+        <!-- 地域情報 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🗾</span>
+              <h2 class="text-xl font-bold text-gray-900">地域情報</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/regional-info/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/regional-info-article-1/" title="奥州市の地域特性と外国人コミュニティ" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の地域特性と外国人コミュニティ"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の地域特性と外国人コミュニティ
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    地域情報
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.15
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/regional-info-article-2/" title="奥州市の各区エリア比較" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の各区エリア比較"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の各区エリア比較
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    地域情報
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.20
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/regional-info-article-3/" title="岩手県の文化と奥州市の生活習慣" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="岩手県の文化と奥州市の生活習慣"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    岩手県の文化と奥州市の生活習慣
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    地域情報
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.28
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/regional-info/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- アクセス -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🚃</span>
+              <h2 class="text-xl font-bold text-gray-900">アクセス</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/access/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/access-article-1/" title="最寄りの主要空港からのアクセス方法" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="最寄りの主要空港からのアクセス方法"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    最寄りの主要空港からのアクセス方法
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    アクセス
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.08
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/access-article-2/" title="奥州市営交通システム完全ガイド" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市営交通システム完全ガイド"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市営交通システム完全ガイド
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    アクセス
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.15
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/access-article-3/" title="奥州市の冬季交通事情と注意点" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の冬季交通事情と注意点"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の冬季交通事情と注意点
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    アクセス
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.22
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/access/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 生活利便性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🏪</span>
+              <h2 class="text-xl font-bold text-gray-900">生活利便性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/living-convenience/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/living-convenience-article-1/" title="奥州市の雪対策と冬の生活" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の雪対策と冬の生活"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の雪対策と冬の生活
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    生活利便性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.18
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/living-convenience-article-2/" title="奥州市のショッピング施設と食材調達" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市のショッピング施設と食材調達"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市のショッピング施設と食材調達
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    生活利便性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.10
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/living-convenience-article-3/" title="奥州市の暖房事情とエネルギー対策" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の暖房事情とエネルギー対策"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の暖房事情とエネルギー対策
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    生活利便性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.25
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/living-convenience/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 国際対応 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🌏</span>
+              <h2 class="text-xl font-bold text-gray-900">国際対応</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/international-support/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/international-support-article-1/" title="岩手県の多言語対応医療機関" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="岩手県の多言語対応医療機関"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    岩手県の多言語対応医療機関
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    国際対応
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.12
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/international-support-article-2/" title="奥州市の外国人支援サービス" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の外国人支援サービス"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の外国人支援サービス
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    国際対応
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.05
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/international-support-article-3/" title="奥州市の外国人コミュニティとイベント" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の外国人コミュニティとイベント"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の外国人コミュニティとイベント
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    国際対応
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.18
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/international-support/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 子育て・教育 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">👨‍👩‍👧‍👦</span>
+              <h2 class="text-xl font-bold text-gray-900">子育て・教育</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/childcare-education/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/childcare-education-article-1/" title="奥州市のインターナショナルスクール" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市のインターナショナルスクール"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市のインターナショナルスクール
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    子育て・教育
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.03
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/childcare-education-article-2/" title="奥州市の保育園・幼稚園事情" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の保育園・幼稚園事情"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の保育園・幼稚園事情
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    子育て・教育
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.20
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/childcare-education-article-3/" title="岩手県の教育システムと進路選択" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="岩手県の教育システムと進路選択"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    岩手県の教育システムと進路選択
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    子育て・教育
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.30
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/childcare-education/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- コスト -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">💰</span>
+              <h2 class="text-xl font-bold text-gray-900">コスト</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/cost/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/cost-article-1/" title="奥州市の住宅事情：家賃・光熱費" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の住宅事情：家賃・光熱費"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の住宅事情：家賃・光熱費
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    コスト
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.05
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/cost-article-2/" title="奥州市の食費と物価水準" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の食費と物価水準"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の食費と物価水準
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    コスト
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.08
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/cost-article-3/" title="冬季の暖房費と生活コスト" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="冬季の暖房費と生活コスト"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    冬季の暖房費と生活コスト
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    コスト
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.20
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/cost/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 安全性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🛡️</span>
+              <h2 class="text-xl font-bold text-gray-900">安全性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/safety/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/safety-article-1/" title="奥州市の治安情報と安全な地域" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の治安情報と安全な地域"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の治安情報と安全な地域
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    安全性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.10
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/safety-article-2/" title="奥州市の自然災害対策と雪害対策" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の自然災害対策と雪害対策"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の自然災害対策と雪害対策
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    安全性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.25
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/safety-article-3/" title="冬季の歩行安全対策ガイド" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="冬季の歩行安全対策ガイド"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    冬季の歩行安全対策ガイド
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    安全性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.15
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/safety/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- 将来性 -->
+        <section>
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🚀</span>
+              <h2 class="text-xl font-bold text-gray-900">将来性</h2>
+              <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded">4件の記事</span>
+            </div>
+            <a href="/ja/blog/iwate/future-potential/" class="hidden md:inline-block text-sm text-red-500 hover:text-red-600" style="font-weight: 700;">
+              もっと見る <span class="ml-1">></span>
+            </a>
+          </div>
+
+          <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8">
+            <a href="/ja/blog/iwate/future-potential-article-1/" title="奥州市の都市開発と地域発展" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の都市開発と地域発展"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の都市開発と地域発展
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    将来性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2024.01.02
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/future-potential-article-2/" title="岩手県での外国人向け就職・起業支援" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="岩手県での外国人向け就職・起業支援"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    岩手県での外国人向け就職・起業支援
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    将来性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.12.12
+                  </p>
+                </div>
+              </div>
+            </a>
+            
+            <a href="/ja/blog/iwate/future-potential-article-3/" title="奥州市の不動産投資と長期居住計画" class="block">
+              <!-- Mobile: horizontal layout, Desktop: vertical layout -->
+              <div class="flex md:block group h-full">
+                <div class="flex-shrink-0 w-24 h-16 md:w-full md:aspect-[3/2] overflow-hidden md:mb-4">
+                  <img src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                       alt="奥州市の不動産投資と長期居住計画"
+                       class="w-full h-full object-cover"
+                       loading="lazy" />
+                </div>
+                <div class="flex-1 ml-3 md:ml-0">
+                  <h4 class="text-sm md:text-[15px] font-normal text-gray-900 mb-2 md:mb-3 leading-[1.4] md:leading-[1.6] line-clamp-2">
+                    奥州市の不動産投資と長期居住計画
+                  </h4>
+                  <p class="text-xs text-[#0066cc] mb-1 md:mb-2">
+                    将来性
+                  </p>
+                  <p class="text-xs text-gray-500">
+                    2023.11.08
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- もっと見るボタン (Mobile only) -->
+          <div class="md:hidden mt-6">
+            <a href="/ja/blog/iwate/future-potential/" class="block w-full py-3 border border-gray-300 rounded text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors text-center">
+              もっと見る
+            </a>
+          </div>
+        </section>
+
+        <!-- Popular Articles Ranking (Mobile) -->
+        <div class="lg:hidden mt-12">
+          <div class="mb-6">
+            <h2 class="text-gray-900 text-xl font-bold mb-2">人気の記事</h2>
+          </div>
+          
+          <div class="space-y-0">
+              {popularArticles.map((article, index) => (
+                <a href={article.url} class="block group">
+                  <div class="flex items-start space-x-3 py-4 hover:bg-gray-50 transition-colors border-b border-gray-200">
+                    <div class="flex-shrink-0">
+                      <img 
+                        src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                        alt={article.title}
+                        class="w-24 h-16 object-cover rounded"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="flex-1 min-w-0 pt-1">
+                      <h3 class="text-gray-900 font-medium text-sm leading-snug line-clamp-3 mb-2 group-hover:text-blue-600 transition-colors">
+                        {article.title}
+                      </h3>
+                      <div class="text-gray-600 text-xs">
+                        {article.category}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+          </div>
+        </div>
+
+        </div>
+
+        <!-- Popular Articles Sidebar (Desktop) -->
+        <div class="hidden lg:block lg:col-span-1">
+          <div class="sticky top-8">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+              <div class="mb-4">
+                <h2 class="text-gray-900 text-lg font-bold">人気の記事</h2>
+              </div>
+              
+              <div class="space-y-0">
+                {popularArticles.map((article, index) => (
+                  <a href={article.url} class="block group">
+                    <div class="flex items-start space-x-2 py-3 hover:bg-gray-50 transition-colors border-b border-gray-200">
+                      <div class="flex-shrink-0">
+                        <img 
+                          src={`${import.meta.env.BASE_URL}assets/images/prefectures/iwate.png`}
+                          alt={article.title}
+                          class="w-18 h-12 object-cover rounded"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <h3 class="text-gray-900 font-medium text-xs leading-tight line-clamp-2 mb-2 group-hover:text-blue-600 transition-colors">
+                          {article.title}
+                        </h3>
+                        <div class="text-gray-600 text-xs">
+                          {article.category}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
