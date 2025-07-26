@@ -133,8 +133,18 @@ const categories = [
     <div class="max-w-7xl mx-auto px-4">
       
       <!-- Breadcrumb -->
-      <nav class="mb-8">
-        <ol class="flex items-center space-x-2 text-sm text-gray-600">
+      <nav class="mb-6">
+        <!-- Mobile Breadcrumb -->
+        <div class="md:hidden">
+          <ol class="flex items-center text-xs text-gray-600">
+            <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/`} class="hover:text-blue-600">札幌市</a></li>
+            <li><span class="mx-1.5">/</span></li>
+            <li class="text-gray-900 font-medium truncate">地域情報</li>
+          </ol>
+        </div>
+        
+        <!-- Desktop Breadcrumb -->
+        <ol class="hidden md:flex items-center space-x-2 text-sm text-gray-600">
           <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-blue-600">ホーム</a></li>
           <li><span class="mx-2">/</span></li>
           <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-blue-600">地域別生活情報</a></li>
