@@ -9,6 +9,7 @@ const lang = "ja";
 const regions = [
   {
     name: "北海道地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/北海道地方.png`,
     prefectures: [
       { 
         name: "北海道", 
@@ -21,6 +22,7 @@ const regions = [
   },
   {
     name: "東北地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/東北地方.png`,
     prefectures: [
       { 
         name: "青森県", 
@@ -68,6 +70,7 @@ const regions = [
   },
   {
     name: "関東地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/関東地方.png`,
     prefectures: [
       { 
         name: "東京都", 
@@ -122,6 +125,7 @@ const regions = [
   },
   {
     name: "中部地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/中部地方.png`,
     prefectures: [
       { 
         name: "新潟県", 
@@ -190,6 +194,7 @@ const regions = [
   },
   {
     name: "近畿地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/近畿地方.png`,
     prefectures: [
       { 
         name: "京都府", 
@@ -244,6 +249,7 @@ const regions = [
   },
   {
     name: "中国地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/中国地方.png`,
     prefectures: [
       { 
         name: "鳥取県", 
@@ -284,6 +290,7 @@ const regions = [
   },
   {
     name: "四国地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/四国地方.png`,
     prefectures: [
       { 
         name: "徳島県", 
@@ -317,6 +324,7 @@ const regions = [
   },
   {
     name: "九州地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/九州地方.png`,
     prefectures: [
       { 
         name: "福岡県", 
@@ -460,7 +468,14 @@ const articleThemes = [
       <div class="space-y-16">
         {regions.map((region) => (
           <div class="mb-16">
-            <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">{region.name}</h3>
+            <div class="flex items-center justify-center mb-8">
+              <img 
+                src={region.image}
+                alt={region.name}
+                class="w-12 h-12 mr-4 object-contain"
+              />
+              <h3 class="text-2xl font-bold text-gray-900">{region.name}</h3>
+            </div>
             
             <div class={`grid gap-6 ${
               region.prefectures.length === 1 ? 'md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 justify-center max-w-sm mx-auto' :
