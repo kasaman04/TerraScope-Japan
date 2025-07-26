@@ -1,0 +1,19 @@
+https://kasaman04.github.io/TerraScope-Japan/ja/blog/hokkaido/sapporo/regional-info/foreign-community/
+
+web版は
+
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6"> <h3 class="text-lg font-bold text-gray-900 mb-4">関連記事</h3> <div class="space-y-4"> <a href="../area-comparison/" class="block group"> <h4 class="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1"> 札幌市10区エリア徹底比較ガイド </h4> <p class="text-xs text-gray-500">エリア情報</p> </a><a href="../hokkaido-culture/" class="block group"> <h4 class="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1"> 北海道の文化と札幌市民の生活習慣 </h4> <p class="text-xs text-gray-500">文化・習慣</p> </a><a href="../city-overview/" class="block group"> <h4 class="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1"> 札幌市基本情報：外国人のための完全ガイド </h4> <p class="text-xs text-gray-500">基本情報</p> </a> </div> </div>
+
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6"> <h3 class="text-lg font-bold text-gray-900 mb-4">札幌市の情報</h3> <ul class="space-y-2"> <li> <a href="/TerraScope-Japan/ja/blog/hokkaido/sapporo/" class="text-sm text-blue-600 hover:underline">
+← 札幌市トップに戻る
+</a> </li> <li> <a href="/TerraScope-Japan/ja/blog/hokkaido/sapporo/cost/" class="text-sm text-blue-600 hover:underline">
+生活コスト情報
+</a> </li> <li> <a href="/TerraScope-Japan/ja/blog/hokkaido/sapporo/safety/" class="text-sm text-blue-600 hover:underline">
+安全性・防災情報
+</a> </li> </ul> </div>
+
+<div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg p-6 text-white"> <h3 class="text-lg font-bold mb-2">札幌移住をお考えですか？</h3> <p class="text-sm mb-4">詳細な地域調査レポートで安心して移住計画を</p> <a href="/TerraScope-Japan/ja/services/" class="inline-block bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
+調査サービス詳細
+</a> </div>
+
+ここを記事の下にして
