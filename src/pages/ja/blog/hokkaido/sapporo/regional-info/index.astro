@@ -104,17 +104,17 @@ const popularArticles = [
   {
     title: "札幌市10区エリア徹底比較ガイド",
     category: "エリア情報",
-    url: "#area-comparison"
+    url: "area-comparison/"
   },
   {
     title: "札幌市の外国人コミュニティと支援団体",
     category: "コミュニティ",
-    url: "#foreign-community"
+    url: "foreign-community/"
   },
   {
     title: "北海道の文化と札幌市民の生活習慣",
     category: "文化・習慣",
-    url: "#hokkaido-culture"
+    url: "hokkaido-culture/"
   }
 ];
 
@@ -182,7 +182,7 @@ const categories = [
         <div class="lg:col-span-3 space-y-6">
           {articles.map((article) => (
             <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-              <a href={`#${article.id}`} class="block">
+              <a href={`${article.id}/`} class="block">
                 <div class="md:flex">
                   <!-- Mobile Compact Layout -->
                   <div class="flex md:hidden p-4">

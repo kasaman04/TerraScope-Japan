@@ -1,0 +1,370 @@
+---
+import BaseLayout from '../../../../../../../layouts/BaseLayout.astro';
+
+const title = "札幌市の外国人コミュニティと支援団体";
+const description = "札幌市内で活動する外国人コミュニティ、国際交流団体、支援サービスの詳細情報をまとめました。";
+const lang = "ja";
+const publishedDate = "2024.01.15";
+const category = "コミュニティ";
+
+// 関連記事
+const relatedArticles = [
+  {
+    title: "札幌市10区エリア徹底比較ガイド",
+    category: "エリア情報",
+    url: "../area-comparison/"
+  },
+  {
+    title: "北海道の文化と札幌市民の生活習慣",
+    category: "文化・習慣", 
+    url: "../hokkaido-culture/"
+  },
+  {
+    title: "札幌市基本情報：外国人のための完全ガイド",
+    category: "基本情報",
+    url: "../city-overview/"
+  }
+];
+
+// 支援団体データ
+const supportOrganizations = [
+  {
+    name: "札幌国際プラザ",
+    type: "公的機関",
+    services: ["生活相談", "日本語教室", "国際交流イベント", "通訳支援"],
+    contact: "札幌市中央区北1条西3丁目",
+    phone: "011-211-3678",
+    website: "https://www.plaza-sapporo.or.jp/",
+    languages: ["英語", "中国語", "韓国語", "ロシア語"]
+  },
+  {
+    name: "北海道国際交流センター",
+    type: "NPO法人",
+    services: ["文化交流", "語学支援", "就職相談", "住居相談"],
+    contact: "札幌市中央区北4条西7丁目",
+    phone: "011-221-7840",
+    languages: ["英語", "中国語"]
+  },
+  {
+    name: "札幌YWCA",
+    type: "NPO法人",
+    services: ["日本語教室", "子育て支援", "女性支援", "生活相談"],
+    contact: "札幌市中央区北2条西7丁目",
+    phone: "011-271-0118",
+    languages: ["英語", "中国語", "タガログ語"]
+  }
+];
+
+// コミュニティ団体
+const communities = [
+  {
+    country: "中国",
+    name: "札幌中国人会",
+    activities: ["春節祭", "文化交流", "ビジネス支援"],
+    contact: "月1回の定例会議"
+  },
+  {
+    country: "韓国",
+    name: "札幌韓国人会",
+    activities: ["韓国文化祭", "語学交換", "観光案内"],
+    contact: "札幌韓国総領事館経由"
+  },
+  {
+    country: "アメリカ・欧州",
+    name: "Sapporo International Community",
+    activities: ["英語イベント", "ハイキング", "文化体験"],
+    contact: "Facebook グループ"
+  },
+  {
+    country: "東南アジア",
+    name: "ASEAN Friends Sapporo",
+    activities: ["料理教室", "言語交換", "就職支援"],
+    contact: "LINE グループ"
+  }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <article class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      
+      <!-- Breadcrumb -->
+      <nav class="mb-6">
+        <!-- Mobile Breadcrumb -->
+        <div class="md:hidden">
+          <ol class="flex items-center text-xs text-gray-600">
+            <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/regional-info/`} class="hover:text-blue-600">地域情報</a></li>
+            <li><span class="mx-1.5">/</span></li>
+            <li class="text-gray-900 font-medium truncate">外国人コミュニティ</li>
+          </ol>
+        </div>
+        
+        <!-- Desktop Breadcrumb -->
+        <ol class="hidden md:flex items-center space-x-2 text-sm text-gray-600">
+          <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-blue-600">ホーム</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-blue-600">地域別生活情報</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/`} class="hover:text-blue-600">北海道</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/`} class="hover:text-blue-600">札幌市</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/regional-info/`} class="hover:text-blue-600">地域情報</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li class="text-gray-900 font-medium">外国人コミュニティ</li>
+        </ol>
+      </nav>
+
+      <!-- Article Header -->
+      <header class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 mb-8">
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+            {category}
+          </span>
+          <span class="text-xs text-gray-500">{publishedDate}</span>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+          {title}
+        </h1>
+        
+        <p class="text-xl text-gray-600 leading-relaxed">
+          {description}
+        </p>
+      </header>
+
+      <!-- Main Content -->
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        
+        <!-- Article Content -->
+        <div class="lg:col-span-3">
+          <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8 prose prose-lg max-w-none">
+            
+            <!-- Introduction -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">札幌市の外国人コミュニティとは</h2>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                札幌市には約15,000人の外国人が住んでおり、全人口の約0.8%を占めています。中国、韓国、東南アジア、欧米など多様な国籍の方々が暮らしており、
+                それぞれのコミュニティが文化交流や相互支援を通じて活発に活動しています。
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                この記事では、札幌市で外国人の方々が利用できる支援団体、コミュニティ、サービスについて詳しく解説します。
+                新しく札幌に住む予定の方、既に住んでいるが情報を求めている方に役立つ情報をまとめました。
+              </p>
+            </div>
+
+            <!-- 札幌国際プラザ -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">札幌国際プラザ（公的支援の中心）</h2>
+              <div class="bg-blue-50 rounded-lg p-6 mb-4">
+                <h3 class="text-lg font-bold text-blue-900 mb-2">主要サービス</h3>
+                <ul class="list-disc list-inside text-blue-800 space-y-1">
+                  <li>多言語での生活相談（英語、中国語、韓国語、ロシア語）</li>
+                  <li>日本語教室の運営・紹介</li>
+                  <li>国際交流イベントの開催</li>
+                  <li>通訳・翻訳サービス</li>
+                  <li>住居・就職に関する情報提供</li>
+                </ul>
+              </div>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                札幌国際プラザは、札幌市が設立した外国人支援の中心的機関です。市内で最も包括的なサービスを提供しており、
+                生活に関するあらゆる相談に対応しています。特に、行政手続きや医療機関受診時の通訳サービスは、
+                多くの外国人住民に利用されています。
+              </p>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <p class="text-sm text-gray-600">
+                  <strong>所在地:</strong> 札幌市中央区北1条西3丁目<br>
+                  <strong>電話:</strong> 011-211-3678<br>
+                  <strong>開館時間:</strong> 月～金 9:00-17:30（土日祝は要確認）
+                </p>
+              </div>
+            </div>
+
+            <!-- 支援団体一覧 -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">主要な支援団体</h2>
+              <div class="space-y-6">
+                {supportOrganizations.map((org) => (
+                  <div class="border border-gray-200 rounded-lg p-6">
+                    <div class="flex items-center justify-between mb-3">
+                      <h3 class="text-xl font-bold text-gray-900">{org.name}</h3>
+                      <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{org.type}</span>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                      <div>
+                        <h4 class="font-medium text-gray-900 mb-2">提供サービス</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                          {org.services.map((service) => (
+                            <li class="flex items-center">
+                              <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                              </svg>
+                              {service}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 class="font-medium text-gray-900 mb-2">対応言語</h4>
+                        <div class="flex flex-wrap gap-1">
+                          {org.languages.map((lang) => (
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{lang}</span>
+                          ))}
+                        </div>
+                        
+                        <div class="mt-3 text-sm text-gray-600">
+                          <p><strong>所在地:</strong> {org.contact}</p>
+                          <p><strong>電話:</strong> {org.phone}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- 各国コミュニティ -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">国別コミュニティ団体</h2>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                札幌市内には各国出身者によるコミュニティ団体があり、文化交流や相互支援を行っています。
+                同郷の人々とのつながりを求める方や、文化的なイベントに参加したい方におすすめです。
+              </p>
+              
+              <div class="grid md:grid-cols-2 gap-4">
+                {communities.map((community) => (
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <h3 class="font-bold text-gray-900 mb-1">{community.name}</h3>
+                    <p class="text-sm text-blue-600 mb-3">{community.country}</p>
+                    
+                    <div class="mb-3">
+                      <h4 class="text-sm font-medium text-gray-900 mb-1">主な活動</h4>
+                      <ul class="text-sm text-gray-600 space-y-1">
+                        {community.activities.map((activity) => (
+                          <li>• {activity}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    <p class="text-xs text-gray-500">
+                      <strong>連絡方法:</strong> {community.contact}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- 日本語学習支援 -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">日本語学習支援</h2>
+              <div class="bg-yellow-50 rounded-lg p-6 mb-4">
+                <h3 class="text-lg font-bold text-yellow-900 mb-2">無料・低料金の日本語教室</h3>
+                <ul class="text-yellow-800 space-y-2">
+                  <li><strong>札幌国際プラザ日本語教室</strong> - 初級～上級、週2回</li>
+                  <li><strong>札幌YWCA日本語クラス</strong> - 女性向け、子連れ参加OK</li>
+                  <li><strong>北海道大学ボランティア教室</strong> - 学生との交流も</li>
+                  <li><strong>各区民センター</strong> - 地域密着型、月2-4回</li>
+                </ul>
+              </div>
+              <p class="text-gray-700 leading-relaxed">
+                札幌市内には多数の日本語学習支援があります。レベルや目的に応じて選択でき、
+                多くは無料または低料金で受講できます。日本語能力試験（JLPT）対策コースもあります。
+              </p>
+            </div>
+
+            <!-- 緊急時・生活相談 -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">緊急時・生活相談窓口</h2>
+              <div class="bg-red-50 rounded-lg p-6">
+                <h3 class="text-lg font-bold text-red-900 mb-3">緊急連絡先</h3>
+                <div class="grid md:grid-cols-2 gap-4 text-red-800">
+                  <div>
+                    <p><strong>救急・消防・警察:</strong> 119 / 110</p>
+                    <p><strong>札幌市外国人相談窓口:</strong> 011-211-3678</p>
+                    <p><strong>北海道外国人相談センター:</strong> 011-221-7840</p>
+                  </div>
+                  <div>
+                    <p><strong>医療通訳サービス:</strong> 011-211-3678</p>
+                    <p><strong>法律相談（英語）:</strong> 月1回、要予約</p>
+                    <p><strong>DV相談（多言語）:</strong> 011-232-4712</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- まとめ -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-bold text-gray-900 mb-4">まとめ</h2>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                札幌市は外国人住民への支援体制が充実しており、公的機関から民間団体まで様々な選択肢があります。
+                言語の壁や文化の違いで困った時は、一人で悩まず、これらの支援団体に相談することをお勧めします。
+              </p>
+              <div class="bg-blue-50 rounded-lg p-4">
+                <p class="text-blue-800 text-sm">
+                  <strong>💡 ポイント:</strong> 最初は札幌国際プラザに相談し、そこから自分に合った支援やコミュニティを紹介してもらうのが効率的です。
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 mt-8 lg:mt-0">
+          <div class="sticky top-8 space-y-6">
+            
+            <!-- 関連記事 -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">関連記事</h3>
+              <div class="space-y-4">
+                {relatedArticles.map((article) => (
+                  <a href={article.url} class="block group">
+                    <h4 class="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1">
+                      {article.title}
+                    </h4>
+                    <p class="text-xs text-gray-500">{article.category}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <!-- 札幌市カテゴリー -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">札幌市の情報</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/`} class="text-sm text-blue-600 hover:underline">
+                    ← 札幌市トップに戻る
+                  </a>
+                </li>
+                <li>
+                  <a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/cost/`} class="text-sm text-blue-600 hover:underline">
+                    生活コスト情報
+                  </a>
+                </li>
+                <li>
+                  <a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/safety/`} class="text-sm text-blue-600 hover:underline">
+                    安全性・防災情報
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg p-6 text-white">
+              <h3 class="text-lg font-bold mb-2">札幌移住をお考えですか？</h3>
+              <p class="text-sm mb-4">詳細な地域調査レポートで安心して移住計画を</p>
+              <a href={`${import.meta.env.BASE_URL}ja/services/`} 
+                 class="inline-block bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
+                調査サービス詳細
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>
