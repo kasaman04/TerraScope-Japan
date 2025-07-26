@@ -311,13 +311,25 @@ const communities = [
           </div>
 
           <!-- CTA -->
-          <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg p-6 text-white">
-            <h3 class="text-lg font-bold mb-2">札幌移住をお考えですか？</h3>
-            <p class="text-sm mb-4">詳細な地域調査レポートで安心して移住計画を</p>
-            <a href={`${import.meta.env.BASE_URL}ja/services/`} 
-               class="inline-block bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
-              調査サービス詳細
-            </a>
+          <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl p-8 text-white shadow-lg">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div class="flex-1">
+                <h3 class="text-xl font-bold mb-2">札幌移住をお考えですか？</h3>
+                <p class="text-blue-100 leading-relaxed">
+                  プロの現地調査員が、あなたの条件に合った<br class="hidden md:inline">
+                  最適なエリアを詳細レポートでご提案します
+                </p>
+              </div>
+              <div class="flex-shrink-0">
+                <a href={`${import.meta.env.BASE_URL}ja/services/`} 
+                   class="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-md hover:shadow-lg group">
+                  <span>調査サービス詳細</span>
+                  <svg class="w-4 h-4 ml-2 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
 
           <!-- 関連記事セクション -->
