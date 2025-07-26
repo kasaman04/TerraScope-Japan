@@ -23,3 +23,19 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Python
+__pycache__/
+*.pyc
+research_output/
+
+# Temporary files
+*.png
+*.html
+*.py
+*.txt
+記事フォルダ/
+blog_output/
+kasaman04.github.io/
+日本地図/
+都道府県写真/
