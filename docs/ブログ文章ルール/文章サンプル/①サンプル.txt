@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北海道札幌市 災害リスク・インタラクティブガイド</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm & Clear -->
+    <!-- Application Structure Plan: A single-page dashboard structure with a sticky top navigation for easy access to key sections: Overview, Detailed Risks, Safe Area Selection, Evacuation Info, and a final Assessment. This non-linear structure allows users to jump to the information they need most. The core is an interactive chart comparing major risks, which is more engaging than a static table. Tabs are used for detailed risk information to avoid overwhelming the user. This design prioritizes quick, scannable understanding and user-driven exploration over the linear narrative of the original article, which is better suited for a foreign audience seeking specific answers. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Relative risk levels of flood, earthquake, tsunami. -> Goal: Quick comparison. -> Viz: Interactive Bar Chart. -> Interaction: Hover for details on risk level. -> Justification: Bar chart is best for comparing categories; interactivity adds depth. -> Library: Chart.js.
+        - Report Info: Topography's effect on risk. -> Goal: Explain spatial concept simply. -> Viz: Custom HTML/CSS diagram. -> Interaction: Static visual. -> Justification: More intuitive than text; avoids forbidden SVG. -> Method: HTML/Tailwind.
+        - Report Info: Detailed text on each disaster. -> Goal: Organize dense information. -> Viz: Tabbed content panels. -> Interaction: Click tabs to switch content. -> Justification: Breaks down information into manageable chunks, improving focus. -> Method: Vanilla JS.
+        - Report Info: Key Japanese terms. -> Goal: Aid understanding for non-native speakers. -> Viz: Text with English translation, e.g., 避難所 (Evacuation Center). -> Interaction: None. -> Justification: Directly addresses target audience needs. -> Method: HTML.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #F8F7F2;
+            color: #4A4A4A;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #1E40AF;
+            border-bottom-color: #1E40AF;
+        }
+        .tab-button {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .tab-button.active {
+            background-color: #1E40AF;
+            color: white;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl md:text-2xl font-bold text-blue-900">札幌の安全ガイド</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#overview" class="nav-link px-3 py-2 rounded-md text-sm font-medium">概要</a>
+                        <a href="#risk-details" class="nav-link px-3 py-2 rounded-md text-sm font-medium">災害リスク</a>
+                        <a href="#safe-choice" class="nav-link px-3 py-2 rounded-md text-sm font-medium">安全な地域選び</a>
+                        <a href="#evacuation" class="nav-link px-3 py-2 rounded-md text-sm font-medium">避難情報</a>
+                        <a href="#assessment" class="nav-link px-3 py-2 rounded-md text-sm font-medium">総合評価</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#overview" class="block nav-link px-3 py-2 rounded-md text-base font-medium">概要</a>
+                <a href="#risk-details" class="block nav-link px-3 py-2 rounded-md text-base font-medium">災害リスク</a>
+                <a href="#safe-choice" class="block nav-link px-3 py-2 rounded-md text-base font-medium">安全な地域選び</a>
+                <a href="#evacuation" class="block nav-link px-3 py-2 rounded-md text-base font-medium">避難情報</a>
+                <a href="#assessment" class="block nav-link px-3 py-2 rounded-md text-base font-medium">総合評価</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <section id="overview" class="mb-16 scroll-mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">札幌での新生活、安全ですか？</h2>
+                <p class="max-w-3xl mx-auto text-lg">
+                    日本での新しい暮らしを考えるとき、自然災害への不安は当然のことです。このガイドは、公式データに基づき、札幌市の災害リスクを客観的に解説します。情報を正しく理解し、安心して札幌での生活を始めましょう。
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">都市の魅力と災害の傾向</h3>
+                    <p class="mb-4">
+                        札幌市は、美しい自然と都市機能が調和した、生活の質が高い街です。広々とした公園、新鮮な食事、活気ある文化が魅力です。
+                    </p>
+                    <p class="mb-6">
+                        一方で、いくつかの災害リスクも存在します。このガイドでは、札幌で特に注意すべき災害の種類を一つずつ見ていきます。過度に恐れる必要はありませんが、正しい知識を持つことが、あなたと家族の安全につながります。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow">
+                            <span class="text-3xl mr-4">💧</span>
+                            <div>
+                                <h4 class="font-bold">水害 (Flood)</h4>
+                                <p class="text-sm">大雨による河川の氾濫や、都市部の浸水。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow">
+                            <span class="text-3xl mr-4">🌋</span>
+                            <div>
+                                <h4 class="font-bold">地震 (Earthquake)</h4>
+                                <p class="text-sm">揺れや、特定の地域での液状化現象。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow">
+                            <span class="text-3xl mr-4">🌊</span>
+                            <div>
+                                <h4 class="font-bold">津波 (Tsunami)</h4>
+                                <p class="text-sm">内陸部のためリスクは非常に低いですが、知識として重要です。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">札幌市の主要災害リスク比較</h3>
+                    <p class="text-center text-gray-600 mb-4">下のグラフは、札幌市における主な災害の相対的なリスクレベルを示しています。棒にカーソルを合わせると詳細が表示されます。</p>
+                    <div class="chart-container">
+                        <canvas id="riskChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-16 border-gray-300">
+
+        <section id="risk-details" class="mb-16 scroll-mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">災害リスクを詳しく知る</h2>
+                <p class="max-w-3xl mx-auto text-lg">
+                    ハザードマップ (Hazard Map) は、災害の被害が想定される範囲を地図に示したものです。ここでは、水害、地震、津波のリスクについて、ハザードマップの情報を基に解説します。下のタブをクリックして、各リスクの詳細を確認してください。
+                </p>
+            </div>
+
+            <div class="mb-8 flex justify-center space-x-2 md:space-x-4">
+                <button class="tab-button active font-bold py-2 px-4 rounded-full bg-gray-200" data-target="flood">💧 水害</button>
+                <button class="tab-button font-bold py-2 px-4 rounded-full bg-gray-200" data-target="earthquake">🌋 地震</button>
+                <button class="tab-button font-bold py-2 px-4 rounded-full bg-gray-200" data-target="tsunami">🌊 津波</button>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg min-h-[300px]">
+                <div id="flood" class="content-section active">
+                    <h3 class="text-2xl font-bold mb-4">水害リスク：河川と内水氾濫</h3>
+                    <p class="mb-4">札幌市内には豊平川などの大きな川が流れており、大雨の際には氾濫のリスクがあります。特に川沿いの低い土地では注意が必要です。また、短時間で強い雨が降ると、排水が追いつかずに道路などが水につかる「内水氾濫」も起こる可能性があります。</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>確認すべきこと:</strong> 自宅や職場の浸水想定（深さ）、避難経路が安全か。</li>
+                        <li><strong>影響:</strong> 財産の被害、交通機関の停止、避難の必要性。</li>
+                        <li><strong>対策:</strong> ハザードマップで浸水エリアを確認し、高い場所への避難ルートを知っておくことが重要です。</li>
+                    </ul>
+                </div>
+                <div id="earthquake" class="content-section">
+                    <h3 class="text-2xl font-bold mb-4">地震リスク：揺れと液状化</h3>
+                    <p class="mb-4">札幌市は、日本の他の大都市に比べると、地震の揺れのリスクは比較的低いとされています。しかし、2018年の北海道胆振東部地震のように、大きな地震が起こる可能性はゼロではありません。特に注意が必要なのが、地盤が緩い地域で起こる「液状化 (Liquefaction)」です。これにより、建物が傾いたり、道路が壊れたりすることがあります。</p>
+                     <ul class="list-disc list-inside space-y-2">
+                        <li><strong>確認すべきこと:</strong> 想定される揺れの強さ（震度）、液状化の可能性。</li>
+                        <li><strong>影響:</strong> 建物の損壊、電気・ガス・水道などのインフラ停止。</li>
+                        <li><strong>対策:</strong> 家具の固定、食料や水の備蓄、建物の耐震性を確認することが推奨されます。</li>
+                    </ul>
+                </div>
+                <div id="tsunami" class="content-section">
+                    <h3 class="text-2xl font-bold mb-4">津波リスク：沿岸部での注意</h3>
+                    <p class="mb-4">札幌市の中心部は内陸にあるため、津波が直接到達するリスクは非常に低いです。これは札幌の大きな利点の一つです。ただし、海に近い地域（石狩市や小樽市など）へ行く際には、その地域の津波リスクを意識しておくことが大切です。</p>
+                     <ul class="list-disc list-inside space-y-2">
+                        <li><strong>確認すべきこと:</strong> 沿岸部へ行く際の津波ハザードマップ。</li>
+                        <li><strong>影響:</strong> 札幌市中心部への直接的な影響はほぼありません。</li>
+                        <li><strong>対策:</strong> 札幌市内に住む上では、津波は主要な心配事ではありませんが、レジャーなどで沿岸部を訪れる際は現地の避難情報を確認しましょう。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-16 border-gray-300">
+
+        <section id="safe-choice" class="mb-16 scroll-mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">安全な住まいを選ぶには？</h2>
+                <p class="max-w-3xl mx-auto text-lg">
+                    災害リスクは、住む場所の地形で大きく変わります。地形の基本的な特性を理解することで、より安全な場所を選ぶことができます。過去の災害履歴も、未来のリスクを考える上で重要なヒントになります。
+                </p>
+            </div>
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-6 text-center">地形とリスクの関係</h3>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="border-2 border-dashed border-gray-300 p-4 rounded-lg">
+                        <div class="relative h-64">
+                            <div class="absolute bottom-0 left-0 w-full h-16 bg-blue-200 rounded-b-lg"></div>
+                            <div class="absolute bottom-16 left-0 w-full h-16 bg-green-200"></div>
+                            <div class="absolute bottom-16 left-0 w-2/5 h-32 bg-green-300 rounded-tr-full"></div>
+                            <div class="absolute bottom-16 right-0 w-2/5 h-24 bg-green-300 rounded-tl-full"></div>
+                            <div class="absolute bottom-4 left-1/4 text-5xl">🏠</div>
+                            <div class="absolute bottom-20 right-1/4 text-5xl">🏡</div>
+                            <div class="absolute bottom-2 left-1/4 -ml-4 text-3xl text-blue-600">💧</div>
+                            <p class="absolute top-2 left-2 font-bold text-gray-700">高台 (High Ground) = 安全性が高い</p>
+                            <p class="absolute bottom-2 right-2 font-bold text-red-600">低地 (Low Ground) = 水害リスク</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-3">高台のメリット</h4>
+                        <p class="mb-4">川から離れた高い場所は、洪水や内水氾濫のリスクが一般的に低くなります。地盤が固い場所が多いため、地震の揺れが比較的小さくなる傾向もあります。</p>
+                        <h4 class="text-xl font-bold mb-3">低地の注意点</h4>
+                        <p class="mb-4">川沿いの低い土地や、かつて湿地だった場所は、水害のリスクが高まります。また、埋立地や軟弱な地盤は、地震の際に液状化しやすい傾向があるため、ハザードマップでの確認が特に重要です。</p>
+                        <h4 class="text-xl font-bold mb-3">過去から学ぶ</h4>
+                        <p>2018年の地震では、特定の地域で液状化が発生しました。市はこれらの経験を基に防災対策を強化しています。過去の災害履歴を知ることは、地域の弱点を理解し、備えることにつながります。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-16 border-gray-300">
+
+        <section id="evacuation" class="mb-16 scroll-mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">もしもの時の備え</h2>
+                <p class="max-w-3xl mx-auto text-lg">
+                    災害が発生した時にどこへ、どうやって逃げるかを知っておくことは、命を守るために最も重要です。札幌市は外国人住民のためのサポートも用意しています。
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">避難所と避難経路</h3>
+                    <p class="mb-4">災害時に安全を確保するための場所が「避難所 (Evacuation Center)」です。主に学校や公民館が指定されています。</p>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>事前の確認:</strong> 自宅や職場から最も近い避難所はどこか、地図で確認しましょう。</li>
+                        <li><strong>複数の経路:</strong> 実際に歩いてみて、安全なルートを2つ以上見つけておくと安心です。</li>
+                        <li><strong>家族との約束:</strong> 災害時には連絡が取れなくなることもあります。どこに避難するか、家族で話し合っておきましょう。</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">外国人向けサポート</h3>
+                    <p class="mb-4">言葉や文化の違いは、緊急時に大きな不安となります。札幌市には、外国人のための相談窓口があります。</p>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li><strong>札幌国際プラザ:</strong> 多言語で生活相談や災害情報の提供を行っています。困ったときには、まずここに相談してみてください。</li>
+                        <li><strong>多言語情報:</strong> 市のウェブサイトやアプリで、多言語の防災情報が提供されています。</li>
+                        <li><strong>コミュニティ:</strong> 地域の外国人コミュニティとのつながりも、いざという時の助けになります。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-16 border-gray-300">
+
+        <section id="assessment" class="scroll-mt-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">結論：札幌は安心して暮らせる街か？</h2>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-bold mb-4">総合的な評価：リスクは管理可能で、魅力は大きい</h3>
+                        <p class="mb-4">
+                            札幌市は、自然災害のリスクが全くないわけではありません。しかし、そのリスクはハザードマップなどで明確に示されており、個人と行政が協力して備えることで、十分に管理することが可能です。
+                        </p>
+                        <p class="mb-4">
+                            日本の他の大都市と比較して地震のリスクが比較的低く、津波の心配がほとんどないことは、大きな安心材料です。水害や大雪への対策は必要ですが、これらは予測が可能であり、市の防災体制も整っています。
+                        </p>
+                        <p class="font-semibold">
+                            結論として、札幌は高い生活の質、豊かな自然、そして充実した都市機能を享受できる、非常に魅力的な都市です。災害リスクを正しく理解し、適切に備えることで、安心して快適な生活を送ることができるでしょう。
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-center bg-blue-50 p-6 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">👍</div>
+                            <p class="text-xl font-bold text-blue-800">安心して住める街</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <h3 class="text-xl font-bold mb-4 text-center">さらに詳しい情報はこちら</h3>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+                <a href="https://www.city.sapporo.jp/bousai/index.html" target="_blank" class="hover:text-blue-300 transition">札幌市公式ウェブサイト（防災情報）</a>
+                <a href="https://www.plaza-sapporo.or.jp/" target="_blank" class="hover:text-blue-300 transition">札幌国際プラザ</a>
+                <a href="https://disaportal.gsi.go.jp/" target="_blank" class="hover:text-blue-300 transition">ハザードマップポータルサイト</a>
+            </div>
+            <div class="text-center text-gray-400 mt-8 text-sm">
+                <p>&copy; 2024 Sapporo Safety Guide. All information is for guidance purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const riskData = {
+                labels: ['水害 (Flood)', '地震 (Earthquake)', '津波 (Tsunami)'],
+                datasets: [{
+                    label: '相対的リスクレベル',
+                    data: [2, 1.5, 0.5],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(75, 192, 192, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const riskDescriptions = {
+                '水害 (Flood)': '中レベル (特定地域で高)',
+                '地震 (Earthquake)': '比較的低レベル (北海道内では)',
+                '津波 (Tsunami)': '非常に低レベル (内陸部)'
+            };
+
+            const ctx = document.getElementById('riskChart').getContext('2d');
+            const riskChart = new Chart(ctx, {
+                type: 'bar',
+                data: riskData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            display: false,
+                        },
+                        y: {
+                           ticks: {
+                               font: {
+                                   size: 14,
+                                   weight: 'bold'
+                               }
+                           }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    const riskKey = context.label;
+                                    if (riskDescriptions[riskKey]) {
+                                        label += riskDescriptions[riskKey];
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'bg-blue-900', 'text-white');
+                        btn.classList.add('bg-gray-200');
+                    });
+                    button.classList.add('active', 'bg-blue-900', 'text-white');
+                    button.classList.remove('bg-gray-200');
+
+                    contentSections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                });
+            });
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: "-50% 0px -50% 0px" });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

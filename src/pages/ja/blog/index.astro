@@ -425,33 +425,6 @@ const articleThemes = [
     </div>
   </section>
 
-  <!-- Article Themes Overview -->
-  <section class="py-16 lg:py-24 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          6つの視点から<span class="text-blue-600">地域を理解</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          暮らしに必要な情報を、外国人の視点でわかりやすく解説します
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articleThemes.map((theme) => (
-          <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-            <div class="flex items-center mb-4">
-              <span class="text-3xl mr-4">{theme.icon}</span>
-              <div>
-                <h3 class="text-lg font-bold text-gray-900">{theme.title}</h3>
-                <p class="text-sm text-gray-600">{theme.subtitle}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
   <!-- Prefecture Selection -->
   <section class="py-16 lg:py-24 bg-white">
@@ -528,53 +501,6 @@ const articleThemes = [
     </div>
   </section>
 
-  <!-- Sample Article Preview -->
-  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-50 to-indigo-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          記事サンプル：<span class="text-blue-600">東京都武蔵野市</span>
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          実際の記事がどのような内容か、サンプルをご覧ください
-        </p>
-      </div>
-
-      <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
-        <div class="mb-8">
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">東京都 武蔵野市での暮らし</h3>
-          <div class="grid md:grid-cols-2 gap-6 text-gray-700">
-            <div>
-              <p><strong>人口：</strong>約14万人</p>
-              <p><strong>特徴：</strong>井の頭公園が人気の閑静エリア。中央線で新宿にも近い。</p>
-            </div>
-            <div>
-              <p><strong>外国人人口：</strong>約3,000人（2.1%）</p>
-              <p><strong>主要言語：</strong>英語、中国語、韓国語対応施設あり</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="border-t pt-6">
-          <h4 class="text-lg font-bold text-gray-900 mb-4">暮らしに役立つ記事一覧</h4>
-          <div class="grid md:grid-cols-2 gap-4">
-            {articleThemes.map((theme) => (
-              <a 
-                href={`${import.meta.env.BASE_URL}ja/blog/tokyo/musashino/article-01/`} 
-                class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                <span class="text-2xl mr-3">{theme.icon}</span>
-                <div>
-                  <p class="font-semibold text-gray-900">{theme.title}</p>
-                  <p class="text-sm text-gray-600">{theme.subtitle}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Call to Action -->
   <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
