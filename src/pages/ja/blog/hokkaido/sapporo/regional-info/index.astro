@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../../../../../../layouts/BaseLayout.astro';
+
+const title = "札幌市 地域情報";
+const description = "札幌市の地域特性、エリア情報、外国人コミュニティなど、暮らしに役立つ地域情報をまとめました";
+const lang = "ja";
+
+// 地域情報の記事データ
+const articles = [
+  {
+    id: "foreign-community",
+    title: "札幌市の外国人コミュニティと支援団体",
+    description: "札幌市内で活動する外国人コミュニティ、国際交流団体、支援サービスの詳細情報をまとめました。",
+    category: "コミュニティ",
+    date: "2024.01.15",
+    image: "hokkaido.png",
+    tags: ["外国人コミュニティ", "国際交流", "支援団体"],
+    readTime: "5分",
+    highlights: [
+      "札幌国際プラザの活動",
+      "各国コミュニティの連絡先",
+      "日本語学習支援",
+      "生活相談窓口"
+    ]
+  },
+  {
+    id: "area-comparison",
+    title: "札幌市10区エリア徹底比較ガイド",
+    description: "中央区、北区、東区など札幌市10区の特徴、家賃相場、利便性、外国人居住者の評価を比較。",
+    category: "エリア情報",
+    date: "2024.01.20",
+    image: "hokkaido.png",
+    tags: ["エリア比較", "住環境", "家賃相場"],
+    readTime: "8分",
+    highlights: [
+      "各区の特徴と雰囲気",
+      "平均家賃と物件タイプ",
+      "交通アクセスの違い",
+      "外国人に人気のエリア"
+    ]
+  },
+  {
+    id: "hokkaido-culture",
+    title: "北海道の文化と札幌市民の生活習慣",
+    description: "本州とは異なる北海道独特の文化、食文化、季節のイベント、地域の慣習について解説。",
+    category: "文化・習慣",
+    date: "2023.12.28",
+    image: "hokkaido.png",
+    tags: ["北海道文化", "生活習慣", "地域性"],
+    readTime: "6分",
+    highlights: [
+      "北海道の食文化",
+      "季節のイベント・祭り",
+      "地域独特の習慣",
+      "方言と日常会話"
+    ]
+  },
+  {
+    id: "city-overview",
+    title: "札幌市基本情報：外国人のための完全ガイド",
+    description: "人口、行政サービス、市役所手続き、区役所の場所など、札幌市の基本情報を網羅。",
+    category: "基本情報",
+    date: "2023.12.15",
+    image: "hokkaido.png",
+    tags: ["基本情報", "行政サービス", "手続き"],
+    readTime: "7分",
+    highlights: [
+      "札幌市の概要と統計",
+      "市役所・区役所の場所",
+      "必要な行政手続き",
+      "外国人向け窓口"
+    ]
+  },
+  {
+    id: "neighborhood-life",
+    title: "札幌市の町内会と地域コミュニティ活動",
+    description: "町内会の仕組み、参加方法、地域清掃、回覧板など、地域社会への参加方法を解説。",
+    category: "地域社会",
+    date: "2023.11.30",
+    image: "hokkaido.png",
+    tags: ["町内会", "地域活動", "コミュニティ"],
+    readTime: "5分",
+    highlights: [
+      "町内会の役割と活動",
+      "加入方法と会費",
+      "地域イベント参加",
+      "ゴミ出しルール"
+    ]
+  },
+  {
+    id: "historical-spots",
+    title: "札幌市の歴史と観光スポット巡り",
+    description: "時計台、大通公園、すすきのなど、札幌の歴史的建造物と観光名所を詳しく紹介。",
+    category: "観光・歴史",
+    date: "2023.11.20",
+    image: "hokkaido.png",
+    tags: ["観光", "歴史", "名所"],
+    readTime: "6分",
+    highlights: [
+      "札幌の歴史的背景",
+      "主要観光スポット",
+      "季節別の見どころ",
+      "アクセス情報"
+    ]
+  }
+];
+
+// 人気記事（サイドバー用）
+const popularArticles = [
+  {
+    title: "札幌市10区エリア徹底比較ガイド",
+    category: "エリア情報",
+    url: "#area-comparison"
+  },
+  {
+    title: "札幌市の外国人コミュニティと支援団体",
+    category: "コミュニティ",
+    url: "#foreign-community"
+  },
+  {
+    title: "北海道の文化と札幌市民の生活習慣",
+    category: "文化・習慣",
+    url: "#hokkaido-culture"
+  }
+];
+
+// カテゴリー別に記事を分類
+const categories = [
+  { name: "すべて", count: articles.length },
+  { name: "エリア情報", count: articles.filter(a => a.category === "エリア情報").length },
+  { name: "コミュニティ", count: articles.filter(a => a.category === "コミュニティ").length },
+  { name: "文化・習慣", count: articles.filter(a => a.category === "文化・習慣").length },
+  { name: "基本情報", count: articles.filter(a => a.category === "基本情報").length }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      
+      <!-- Breadcrumb -->
+      <nav class="mb-8">
+        <ol class="flex items-center space-x-2 text-sm text-gray-600">
+          <li><a href={`${import.meta.env.BASE_URL}ja/`} class="hover:text-blue-600">ホーム</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/`} class="hover:text-blue-600">地域別生活情報</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/`} class="hover:text-blue-600">北海道</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li><a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/`} class="hover:text-blue-600">札幌市</a></li>
+          <li><span class="mx-2">/</span></li>
+          <li class="text-gray-900 font-medium">地域情報</li>
+        </ol>
+      </nav>
+      
+      <!-- Page Header -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 mb-8">
+        <div class="flex items-center space-x-4 mb-4">
+          <span class="text-4xl">🗾</span>
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900">札幌市の地域情報</h1>
+            <p class="text-gray-600 mt-2">エリア特性、コミュニティ、文化など暮らしに役立つ地域情報</p>
+          </div>
+        </div>
+        
+        <!-- Category Filter -->
+        <div class="mt-6 flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <button class="px-4 py-2 rounded-full text-sm font-medium transition-colors
+                     bg-gray-100 text-gray-700 hover:bg-gray-200">
+              {cat.name} ({cat.count})
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Main Content Layout -->
+      <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+        
+        <!-- Articles List (Main Content) -->
+        <div class="lg:col-span-3 space-y-6">
+          {articles.map((article) => (
+            <article class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+              <a href={`#${article.id}`} class="block">
+                <div class="md:flex">
+                  <!-- Image -->
+                  <div class="md:flex-shrink-0">
+                    <img 
+                      src={`${import.meta.env.BASE_URL}assets/images/prefectures/${article.image}`}
+                      alt={article.title}
+                      class="h-48 w-full md:h-full md:w-64 object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  
+                  <!-- Content -->
+                  <div class="p-6 flex-1">
+                    <div class="flex items-center space-x-4 mb-3">
+                      <span class="text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                        {article.category}
+                      </span>
+                      <span class="text-xs text-gray-500">{article.date}</span>
+                      <span class="text-xs text-gray-500">読了時間: {article.readTime}</span>
+                    </div>
+                    
+                    <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      {article.title}
+                    </h2>
+                    
+                    <p class="text-gray-600 mb-4 line-clamp-2">
+                      {article.description}
+                    </p>
+                    
+                    <!-- Highlights -->
+                    <div class="space-y-1 mb-4">
+                      {article.highlights.slice(0, 3).map((highlight) => (
+                        <div class="flex items-center text-sm text-gray-600">
+                          <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          {highlight}
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2">
+                      {article.tags.map((tag) => (
+                        <span class="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <!-- Sidebar (Desktop) -->
+        <div class="hidden lg:block lg:col-span-1">
+          <div class="sticky top-8 space-y-6">
+            
+            <!-- Popular Articles -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">人気の記事</h3>
+              <div class="space-y-4">
+                {popularArticles.map((article) => (
+                  <a href={article.url} class="block group">
+                    <h4 class="text-sm font-medium text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2 mb-1">
+                      {article.title}
+                    </h4>
+                    <p class="text-xs text-gray-500">{article.category}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-4">関連情報</h3>
+              <ul class="space-y-2">
+                <li>
+                  <a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/`} class="text-sm text-blue-600 hover:underline">
+                    ← 札幌市カテゴリー一覧に戻る
+                  </a>
+                </li>
+                <li>
+                  <a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/access/`} class="text-sm text-blue-600 hover:underline">
+                    アクセス情報を見る
+                  </a>
+                </li>
+                <li>
+                  <a href={`${import.meta.env.BASE_URL}ja/blog/hokkaido/sapporo/cost/`} class="text-sm text-blue-600 hover:underline">
+                    生活コスト情報を見る
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Contact CTA -->
+            <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg p-6 text-white">
+              <h3 class="text-lg font-bold mb-2">もっと詳しく知りたい？</h3>
+              <p class="text-sm mb-4">札幌市の詳細な調査レポートをご提供します</p>
+              <a href={`${import.meta.env.BASE_URL}ja/contact/`} 
+                 class="inline-block bg-white text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors">
+                お問い合わせ
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>
