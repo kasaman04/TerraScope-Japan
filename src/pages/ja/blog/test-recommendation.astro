@@ -1,0 +1,568 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LazyImage from '../../../components/LazyImage.astro';
+
+const title = "日本で暮らす - 地域別生活情報ガイド（テスト版）";
+const description = "外国人が日本で暮らすことを検討する際の、地域ごとの生活視点情報を提供。防災、インフラ、生活コスト、再開発、法制度などを詳しく解説。";
+const lang = "ja";
+
+// 市区町村データに属性を追加
+const citiesData = [
+  // 北海道
+  {
+    name: "札幌市",
+    prefecture: "北海道",
+    prefectureSlug: "hokkaido",
+    citySlug: "sapporo",
+    image: `${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`,
+    attributes: {
+      budget: ["high"], // low, medium, high
+      climate: ["cold", "snow"], // warm, moderate, cold, snow
+      environment: ["large-city"], // large-city, medium-city, nature-rich
+      international: ["foreign-community", "multilingual-medical", "international-school"],
+      access: ["airport-close", "public-transport"]
+    },
+    description: "北海道の中心都市。雪は多いが都市機能充実"
+  },
+  {
+    name: "函館市",
+    prefecture: "北海道", 
+    prefectureSlug: "hokkaido",
+    citySlug: "hakodate",
+    image: `${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`,
+    attributes: {
+      budget: ["medium"],
+      climate: ["cold", "snow"],
+      environment: ["medium-city", "nature-rich"],
+      international: ["multilingual-medical"],
+      access: ["airport-close"]
+    },
+    description: "歴史ある港町。観光業が盛ん"
+  },
+  
+  // 東京都
+  {
+    name: "渋谷区",
+    prefecture: "東京都",
+    prefectureSlug: "tokyo",
+    citySlug: "shibuya",
+    image: `${import.meta.env.BASE_URL}assets/images/prefectures/tokyo.png`,
+    attributes: {
+      budget: ["high"],
+      climate: ["moderate"],
+      environment: ["large-city"],
+      international: ["foreign-community", "multilingual-medical", "international-school"],
+      access: ["airport-close", "tokyo-access", "public-transport"]
+    },
+    description: "東京の中心地。国際的で便利だが家賃は高い"
+  },
+  {
+    name: "八王子市",
+    prefecture: "東京都",
+    prefectureSlug: "tokyo",
+    citySlug: "hachioji",
+    image: `${import.meta.env.BASE_URL}assets/images/prefectures/tokyo.png`,
+    attributes: {
+      budget: ["medium"],
+      climate: ["moderate"],
+      environment: ["medium-city", "nature-rich"],
+      international: ["multilingual-medical"],
+      access: ["tokyo-access", "public-transport"]
+    },
+    description: "東京西部の自然豊かな地域。都心へのアクセスも良好"
+  },
+  
+  // 大阪府
+  {
+    name: "大阪市",
+    prefecture: "大阪府",
+    prefectureSlug: "osaka",
+    citySlug: "osaka",
+    image: `${import.meta.env.BASE_URL}assets/images/prefectures/osaka.png`,
+    attributes: {
+      budget: ["medium", "high"],
+      climate: ["warm"],
+      environment: ["large-city"],
+      international: ["foreign-community", "multilingual-medical", "international-school"],
+      access: ["airport-close", "public-transport"]
+    },
+    description: "西日本の中心都市。活気があり外国人も多い"
+  },
+  
+  // 福岡県
+  {
+    name: "福岡市",
+    prefecture: "福岡県",
+    prefectureSlug: "fukuoka",
+    citySlug: "fukuoka",
+    image: `${import.meta.env.BASE_URL}assets/images/prefectures/fukuoka.png`,
+    attributes: {
+      budget: ["medium"],
+      climate: ["warm"],
+      environment: ["large-city"],
+      international: ["foreign-community", "multilingual-medical"],
+      access: ["airport-close", "public-transport"]
+    },
+    description: "アジアに近い九州の玄関口。住みやすい都市"
+  },
+  
+  // 沖縄県
+  {
+    name: "那覇市",
+    prefecture: "沖縄県",
+    prefectureSlug: "okinawa",
+    citySlug: "naha",
+    image: `${import.meta.env.BASE_URL}assets/images/prefectures/okinawa.png`,
+    attributes: {
+      budget: ["medium"],
+      climate: ["warm"],
+      environment: ["medium-city", "nature-rich"],
+      international: ["foreign-community"],
+      access: ["airport-close"]
+    },
+    description: "温暖な気候と美しい海。独特の文化"
+  }
+];
+
+// 質問項目の定義
+const questions = [
+  {
+    id: "budget",
+    title: "月々の家賃予算はどのくらいですか？",
+    options: [
+      { value: "low", label: "5万円以下", icon: "💰" },
+      { value: "medium", label: "5-10万円", icon: "💵" },
+      { value: "high", label: "10万円以上でもOK", icon: "💴" }
+    ]
+  },
+  {
+    id: "climate",
+    title: "どんな気候がお好みですか？",
+    options: [
+      { value: "warm", label: "温暖な地域", icon: "☀️" },
+      { value: "moderate", label: "四季がはっきり", icon: "🍂" },
+      { value: "cold", label: "涼しい地域", icon: "❄️" },
+      { value: "snow", label: "雪が降っても構わない", icon: "⛄" }
+    ]
+  },
+  {
+    id: "environment",
+    title: "どんな生活環境を希望しますか？",
+    options: [
+      { value: "large-city", label: "大都市（便利さ重視）", icon: "🏙️" },
+      { value: "medium-city", label: "中規模都市（バランス型）", icon: "🏘️" },
+      { value: "nature-rich", label: "自然豊かな地域", icon: "🌲" }
+    ]
+  },
+  {
+    id: "international",
+    title: "必要な国際対応サービスは？",
+    options: [
+      { value: "foreign-community", label: "外国人コミュニティ", icon: "🌍" },
+      { value: "multilingual-medical", label: "多言語対応医療機関", icon: "🏥" },
+      { value: "international-school", label: "インターナショナルスクール", icon: "🎒" }
+    ]
+  },
+  {
+    id: "access",
+    title: "アクセスで重視する点は？",
+    options: [
+      { value: "airport-close", label: "国際空港に近い", icon: "✈️" },
+      { value: "tokyo-access", label: "東京へのアクセス", icon: "🚄" },
+      { value: "public-transport", label: "公共交通機関が充実", icon: "🚇" }
+    ]
+  }
+];
+
+// 既存の地域データ（都道府県選択用）
+const regions = [
+  {
+    name: "北海道地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/北海道地方.png`,
+    prefectures: [
+      { 
+        name: "北海道", 
+        slug: "hokkaido",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/hokkaido.png`,
+        description: "広大な自然と冬のリゾート地",
+        cities: ["札幌市", "旭川市", "函館市", "小樽市", "帯広市", "室蘭市", "岩見沢市", "苫小牧市", "釧路市"]
+      }
+    ]
+  },
+  {
+    name: "関東地方",
+    image: `${import.meta.env.BASE_URL}assets/images/regions/関東地方.png`,
+    prefectures: [
+      { 
+        name: "東京都", 
+        slug: "tokyo",
+        image: `${import.meta.env.BASE_URL}assets/images/prefectures/tokyo.png`,
+        description: "日本の首都。ビジネスと文化の中心地",
+        cities: ["武蔵野市", "国立市", "渋谷区", "港区", "世田谷区", "新宿区", "練馬区", "大田区", "文京区", "八王子市", "江東区", "町田市", "杉並区", "豊島区"]
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout {title} {description} {lang}>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-20 w-32 h-32 border border-white rounded-full"></div>
+      <div class="absolute top-40 right-32 w-24 h-24 border border-white rounded-full"></div>
+      <div class="absolute bottom-32 left-40 w-20 h-20 border border-white rounded-full"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 text-center text-white">
+      <div class="mb-8">
+        <span class="inline-flex items-center px-6 py-3 rounded-full text-sm font-semibold bg-white/20 backdrop-blur-sm border border-white/30">
+          🏠 外国人のための地域別暮らし情報
+        </span>
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        日本で<span class="text-yellow-300">暮らす</span><br>
+        <span class="text-lg md:text-xl font-normal opacity-90">あなたに最適な地域を見つけよう</span>
+      </h1>
+      
+      <p class="text-xl md:text-2xl mb-12 opacity-95 max-w-4xl mx-auto leading-relaxed">
+        外国人が日本で安心して暮らせるよう、各地域の生活情報を詳しく解説。<br class="hidden md:block">
+        防災・インフラ・生活コスト・法制度まで、居住者視点で徹底調査しています。
+      </p>
+      
+      <!-- Selection Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button 
+          id="prefecture-mode-btn"
+          class="mode-btn inline-flex items-center px-8 py-4 bg-yellow-400 text-blue-900 font-bold text-lg rounded-full hover:bg-yellow-300 transition-all duration-300 shadow-xl"
+          data-mode="prefecture"
+        >
+          <span class="mr-3">📍</span>
+          都道府県から選ぶ
+        </button>
+        <button 
+          id="quiz-mode-btn"
+          class="mode-btn inline-flex items-center px-8 py-4 bg-white/20 backdrop-blur-sm text-white font-semibold text-lg rounded-full border border-white/30 hover:bg-white/30 transition-all duration-300"
+          data-mode="quiz"
+        >
+          <span class="mr-3">🎯</span>
+          質問に答えて探す
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prefecture Mode (default visible) -->
+  <section id="prefecture-mode" class="mode-content py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          都道府県を選んで<span class="text-blue-600">詳しい情報を見る</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          都道府県を選択すると、その地域の市区町村情報をご覧いただけます
+        </p>
+      </div>
+
+      <div class="space-y-16">
+        {regions.map((region) => (
+          <div class="mb-16">
+            <div class="flex items-center justify-center mb-8">
+              <img 
+                src={region.image}
+                alt={region.name}
+                class="w-8 h-8 mr-3 object-contain"
+                width="32"
+                height="32"
+                loading="lazy"
+                decoding="async"
+              />
+              <h3 class="text-2xl font-bold text-gray-900">{region.name}</h3>
+            </div>
+            
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {region.prefectures.map((prefecture) => (
+                <a href={`${import.meta.env.BASE_URL}ja/blog/${prefecture.slug}/`} class="group">
+                  <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                      <LazyImage
+                        src={prefecture.image}
+                        alt={prefecture.name}
+                        width={384}
+                        height={192}
+                        class="relative w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        placeholder="blur"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+                      <div class="absolute bottom-4 left-4 text-white pointer-events-none">
+                        <h4 class="text-xl font-bold mb-1">{prefecture.name}</h4>
+                        <p class="text-sm opacity-90">{prefecture.description}</p>
+                      </div>
+                    </div>
+                    
+                    <div class="p-4">
+                      <div class="flex items-center justify-between">
+                        <p class="text-sm text-gray-600">
+                          {prefecture.cities.length}の市区町村
+                        </p>
+                        <span class="text-sm text-blue-600 font-medium">
+                          詳細を見る →
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Mode (hidden by default) -->
+  <section id="quiz-mode" class="mode-content hidden py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          あなたに<span class="text-blue-600">ぴったりの街</span>を見つけましょう
+        </h2>
+        <p class="text-xl text-gray-600">
+          いくつかの質問に答えると、おすすめの市区町村をご提案します
+        </p>
+      </div>
+
+      <!-- Questions Container -->
+      <div id="questions-container" class="space-y-8 mb-12">
+        {questions.map((question, index) => (
+          <div class="bg-white rounded-xl shadow-lg p-8" data-question={question.id}>
+            <div class="mb-6">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mb-3">
+                質問 {index + 1} / {questions.length}
+              </span>
+              <h3 class="text-xl font-bold text-gray-900">{question.title}</h3>
+            </div>
+            
+            <div class="grid gap-3 sm:grid-cols-2">
+              {question.options.map((option) => (
+                <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-all cursor-pointer">
+                  <input 
+                    type="checkbox" 
+                    name={question.id}
+                    value={option.value}
+                    class="quiz-checkbox mr-3 w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+                  />
+                  <span class="text-2xl mr-3">{option.icon}</span>
+                  <span class="text-gray-700">{option.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button 
+          id="show-recommendations"
+          class="inline-flex items-center px-12 py-4 bg-blue-600 text-white font-bold text-lg rounded-full hover:bg-blue-700 transition-all duration-300 shadow-xl disabled:bg-gray-400 disabled:cursor-not-allowed"
+        >
+          <span class="mr-3">🔍</span>
+          おすすめを表示
+        </button>
+      </div>
+
+      <!-- Results Container -->
+      <div id="results-container" class="hidden mt-16">
+        <div class="text-center mb-8">
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">
+            あなたにおすすめの<span class="text-blue-600">市区町村</span>
+          </h3>
+          <p class="text-gray-600">選択した条件に基づいたおすすめ順に表示しています</p>
+        </div>
+        
+        <div id="recommendations-list" class="space-y-6">
+          <!-- Results will be inserted here by JavaScript -->
+        </div>
+        
+        <div class="text-center mt-8">
+          <button 
+            id="reset-quiz"
+            class="inline-flex items-center px-8 py-3 bg-gray-200 text-gray-700 font-medium rounded-full hover:bg-gray-300 transition-all duration-300"
+          >
+            <span class="mr-2">↺</span>
+            もう一度試す
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ citiesData }}>
+    // モード切り替え
+    const modeBtns = document.querySelectorAll('.mode-btn');
+    const modeContents = document.querySelectorAll('.mode-content');
+    
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const mode = btn.dataset.mode;
+        
+        // ボタンのスタイル切り替え
+        modeBtns.forEach(b => {
+          if (b.dataset.mode === mode) {
+            b.classList.add('bg-yellow-400', 'text-blue-900');
+            b.classList.remove('bg-white/20', 'text-white');
+          } else {
+            b.classList.remove('bg-yellow-400', 'text-blue-900');
+            b.classList.add('bg-white/20', 'text-white');
+          }
+        });
+        
+        // コンテンツの表示切り替え
+        modeContents.forEach(content => {
+          if (content.id === `${mode}-mode`) {
+            content.classList.remove('hidden');
+          } else {
+            content.classList.add('hidden');
+          }
+        });
+      });
+    });
+    
+    // クイズ機能
+    const showRecommendationsBtn = document.getElementById('show-recommendations');
+    const resultsContainer = document.getElementById('results-container');
+    const recommendationsList = document.getElementById('recommendations-list');
+    const resetQuizBtn = document.getElementById('reset-quiz');
+    const checkboxes = document.querySelectorAll('.quiz-checkbox');
+    
+    // チェックボックスの変更を監視
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const checkedCount = document.querySelectorAll('.quiz-checkbox:checked').length;
+        showRecommendationsBtn.disabled = checkedCount === 0;
+      });
+    });
+    
+    // おすすめ表示
+    showRecommendationsBtn.addEventListener('click', () => {
+      const selectedValues = {};
+      
+      // 選択された値を収集
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          const questionId = checkbox.name;
+          if (!selectedValues[questionId]) {
+            selectedValues[questionId] = [];
+          }
+          selectedValues[questionId].push(checkbox.value);
+        }
+      });
+      
+      // 各都市のスコアを計算
+      const cityScores = citiesData.map(city => {
+        let score = 0;
+        let matches = [];
+        
+        Object.entries(selectedValues).forEach(([category, values]) => {
+          const cityValues = city.attributes[category] || [];
+          const matchingValues = values.filter(v => cityValues.includes(v));
+          
+          if (matchingValues.length > 0) {
+            score += matchingValues.length;
+            matches.push({ category, values: matchingValues });
+          }
+        });
+        
+        return { ...city, score, matches, percentage: Math.round((score / Object.keys(selectedValues).length) * 100) };
+      });
+      
+      // スコア順にソート
+      cityScores.sort((a, b) => b.score - a.score);
+      
+      // 結果を表示
+      recommendationsList.innerHTML = cityScores
+        .filter(city => city.score > 0)
+        .map((city, index) => `
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                <img 
+                  src="${city.image}"
+                  alt="${city.name}"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex-1 p-6">
+                <div class="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">${city.name}</h4>
+                    <p class="text-gray-600">${city.prefecture}</p>
+                  </div>
+                  <div class="text-right">
+                    <div class="text-2xl font-bold text-blue-600">${city.percentage}%</div>
+                    <div class="text-sm text-gray-500">マッチ度</div>
+                  </div>
+                </div>
+                
+                <p class="text-gray-700 mb-4">${city.description}</p>
+                
+                <div class="mb-4">
+                  <p class="text-sm font-medium text-gray-600 mb-2">マッチした条件：</p>
+                  <div class="flex flex-wrap gap-2">
+                    ${city.matches.map(match => {
+                      const categoryLabels = {
+                        budget: { low: "低予算", medium: "中予算", high: "高予算OK" },
+                        climate: { warm: "温暖", moderate: "四季", cold: "涼しい", snow: "雪OK" },
+                        environment: { "large-city": "大都市", "medium-city": "中規模都市", "nature-rich": "自然豊か" },
+                        international: { "foreign-community": "外国人コミュニティ", "multilingual-medical": "多言語医療", "international-school": "インターナショナルスクール" },
+                        access: { "airport-close": "空港近い", "tokyo-access": "東京アクセス", "public-transport": "公共交通充実" }
+                      };
+                      
+                      return match.values.map(v => `
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          ${categoryLabels[match.category][v]}
+                        </span>
+                      `).join('');
+                    }).join('')}
+                  </div>
+                </div>
+                
+                <a 
+                  href="${import.meta.env.BASE_URL}ja/blog/${city.prefectureSlug}/${city.citySlug}/"
+                  class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  詳しく見る
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('') || '<p class="text-center text-gray-600">条件に合う市区町村が見つかりませんでした。別の条件でお試しください。</p>';
+      
+      // 結果を表示し、質問を隠す
+      document.getElementById('questions-container').classList.add('hidden');
+      showRecommendationsBtn.classList.add('hidden');
+      resultsContainer.classList.remove('hidden');
+      
+      // スクロール
+      resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    
+    // リセット
+    resetQuizBtn.addEventListener('click', () => {
+      checkboxes.forEach(checkbox => checkbox.checked = false);
+      showRecommendationsBtn.disabled = true;
+      resultsContainer.classList.add('hidden');
+      document.getElementById('questions-container').classList.remove('hidden');
+      showRecommendationsBtn.classList.remove('hidden');
+      
+      // 上部にスクロール
+      document.getElementById('quiz-mode').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  </script>
+</BaseLayout>

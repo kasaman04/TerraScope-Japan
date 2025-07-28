@@ -1,0 +1,58 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  loading?: 'lazy' | 'eager';
+  class?: string;
+  sizes?: string;
+  fetchpriority?: 'high' | 'low' | 'auto';
+}
+
+const { src, alt, width, height, loading = 'lazy', class: className = '', sizes, fetchpriority } = Astro.props;
+
+// WebP対応のsrcsetを生成
+const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+const avifSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.avif');
+
+// 複数解像度のsrcsetを生成（1x, 2x）
+const srcset1x = src;
+const srcset2x = src.replace(/(\.\w+)$/, '@2x$1');
+const webpSrcset1x = webpSrc;
+const webpSrcset2x = webpSrc.replace(/(\.\w+)$/, '@2x$1');
+---
+
+<picture>
+  <!-- AVIF形式（最新ブラウザ用） -->
+  <source
+    type="image/avif"
+    srcset={`${avifSrc} 1x, ${avifSrc.replace(/(\.\w+)$/, '@2x$1')} 2x`}
+    {sizes}
+  />
+  
+  <!-- WebP形式（モダンブラウザ用） -->
+  <source
+    type="image/webp"
+    srcset={`${webpSrcset1x} 1x, ${webpSrcset2x} 2x`}
+    {sizes}
+  />
+  
+  <!-- フォールバック用の通常形式 -->
+  <source
+    type={src.match(/\.png$/i) ? 'image/png' : 'image/jpeg'}
+    srcset={`${srcset1x} 1x, ${srcset2x} 2x`}
+    {sizes}
+  />
+  
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    class={className}
+    fetchpriority={fetchpriority}
+  />
+</picture>
